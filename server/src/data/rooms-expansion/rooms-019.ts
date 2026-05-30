@@ -8,7 +8,7 @@ ember_march_bonekiln_pass: {
     image: 'ember_march_bonekiln_pass.png',
     imagePrompt: '骨窯隘口 in ember_march, volcanic ash borderland with ember cracks, cinder roads, burned watchposts, slag bridge, war camp ruins, molten breach, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain ash, clear lantern light',
     description:
-      '骨窯隘口位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，旅人可以 觀察 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 搜索 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。南側焦泉被骨窯熱流截斷，只能從焦泉東側推進到隘口。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線',
+      '骨窯隘口夾在黑砂盆地與龍印脊之間，兩側石壁黏著白灰骨粉，窄路中央有一條被熱流烤亮的黑線。西面乾渠繞回黑砂盆地，北側骨灰階坡接向倒旗坡，東方龍印脊的爪痕在紅霧裡若隱若現。隘口深處傳出乾骨爆裂聲，地面散著燒白肋骨、破釘靴和熔灰結塊；風穿過窄口時會把骨粉推成旋流，短暫遮住前後道路。',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_black_sand_basin', description: '西側骨窯隘口沿熔灰坡折返，穿過焦骨路標與蒸汽乾渠回到黑砂盆地', edgeKind: 'distant_route', edgeNote: '骨窯隘口回黑砂盆地需沿熔灰坡與蒸汽乾渠折返，實際路程長於相鄰一格。' },
       { direction: 'north', targetRoomId: 'ember_march_fallen_banner', description: '北側骨窯隘口沿熱風窄口上攀，穿過骨灰階坡與燒斷軍旗列回到倒旗坡', edgeKind: 'distant_route', edgeNote: '骨窯隘口回倒旗坡需沿熱風窄口與軍旗列上攀，實際路程長於相鄰一格。' },
@@ -35,7 +35,7 @@ ember_march_molten_toll: {
     image: 'ember_march_molten_toll.png',
     imagePrompt: '熔火關卡 in ember_march, volcanic ash borderland with ember cracks, cinder roads, burned watchposts, slag bridge, war camp ruins, molten breach, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain ash, clear lantern light',
     description:
-      '熔火關卡位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，旅人可以 觀察 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 搜索 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線',
+      '熔火關卡橫在倒旗坡與邊堡外殼之間，兩座坍塌門墩仍流著暗紅熔痕，像一條被火封存的稅道。西側坡面插著殘旗，東面坍塌門洞後可見邊堡黑牆，關卡下方堆著燒紅鐵拒馬。地面有被熔渣包住的銅牌、破碎鎖鏈和重靴踩出的凹坑，熱風穿過門洞時會發出尖嘯，門墩陰影裡的火光忽明忽暗，像仍在審視往來者。',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_fallen_banner', description: '回到倒旗坡' },
       { direction: 'east', targetRoomId: 'ember_march_border_keep_shell', description: '東側熔火關卡沿熔渣稅道折上，穿過坍塌門洞與燒紅鐵拒馬抵達邊堡外殼', edgeKind: 'distant_route', edgeNote: '熔火關卡到邊堡外殼需沿熔渣稅道與坍塌門洞折上，實際路程長於相鄰一格。' },
@@ -61,7 +61,7 @@ ember_march_dragonprint_ridge: {
     image: 'ember_march_dragonprint_ridge.png',
     imagePrompt: '龍印脊 in ember_march, volcanic ash borderland with ember cracks, cinder roads, burned watchposts, slag bridge, war camp ruins, molten breach, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain ash, clear lantern light',
     description:
-      '龍印脊位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，旅人可以 觀察 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 搜索 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線',
+      '龍印脊是一道被巨大爪痕壓出的焦黑山脊，三條深槽沿西東方向穿過岩面，槽底仍有暗紅熱光。西側骨窯隘口吹來骨粉煙，北面外牆缺口通向邊堡外殼，東側灰脊斷坡被紅霧吞沒。脊背上散著剝落鱗片般的玄武岩、燒裂長骨和被爪痕切斷的舊石階，風沿凹槽上衝時帶出低沉共鳴，讓整道山脊像某種龐然足跡的殘響。',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_bonekiln_pass', description: '回到骨窯隘口' },
       { direction: 'north', targetRoomId: 'ember_march_border_keep_shell', description: '北側龍印脊沿龍爪熱脊攀升，避開噴火裂縫後從焦黑外牆缺口抵達邊堡外殼', edgeKind: 'distant_route', edgeNote: '龍印脊到邊堡外殼需沿龍爪熱脊與外牆缺口攀升，實際路程長於相鄰一格。' },
@@ -87,7 +87,7 @@ ember_march_border_keep_shell: {
     image: 'ember_march_border_keep_shell.png',
     imagePrompt: '邊堡外殼 in ember_march, volcanic ash borderland with ember cracks, cinder roads, burned watchposts, slag bridge, war camp ruins, molten breach, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain ash, clear lantern light',
     description:
-      '邊堡外殼位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，旅人可以 觀察 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 搜索 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線',
+      '邊堡外殼只剩一圈被燒空的黑石牆，牆內地面下陷，外側掛滿熔渣垂痕。西面坍塌門洞折回熔火關卡，南側缺口落向龍印脊，東方心火缺口透出最刺眼的紅光。城牆根部堆著碎盾、燒彎鉸鏈和倒塌箭窗石，牆內還有焦黑箭架與碎陶油罐；熱風在空殼裡繞行形成回音，破牆投下的影子像一座仍試圖守住邊境的空堡。',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_molten_toll', description: '西側邊堡外殼沿坍塌門洞折返，穿過燒紅鐵拒馬與熔渣稅道回到熔火關卡', edgeKind: 'distant_route', edgeNote: '邊堡外殼回熔火關卡需沿門洞與熔渣稅道折返，實際路程長於相鄰一格。' },
       { direction: 'south', targetRoomId: 'ember_march_dragonprint_ridge', description: '南側邊堡外殼從焦黑外牆缺口下切，穿過噴火裂縫與龍爪熱脊回到龍印脊', edgeKind: 'distant_route', edgeNote: '邊堡外殼回龍印脊需沿外牆缺口與龍爪熱脊下切，實際路程長於相鄰一格。' },
@@ -114,7 +114,7 @@ ember_march_heartfire_breach: {
     image: 'ember_march_heartfire_breach.png',
     imagePrompt: '心火缺口 in ember_march, volcanic ash borderland with ember cracks, cinder roads, burned watchposts, slag bridge, war camp ruins, molten breach, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain ash, clear lantern light',
     description:
-      '心火缺口位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，旅人可以 觀察 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 搜索 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線',
+      '心火缺口位於邊堡外殼東側盡頭，地面被一道深紅裂光劈開，裂口內像有心臟般緩慢搏動。西面黑石堡牆的殘影被火光拉長，其他方向皆被熔化岩脊與噴火裂縫切斷。缺口周圍散落焦黑龍鱗、碎裂鐵盾和凝成淚滴狀的熔石，空氣厚重得難以流動；每次紅光脈動，灰塵便從牆縫和地面同時升起，讓整片邊境的熱源集中於此。',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_border_keep_shell', description: '回到邊堡外殼' },
     ],
