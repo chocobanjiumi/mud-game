@@ -8,7 +8,7 @@ celestial_broken_colonnade: {
     image: 'celestial_broken_colonnade.png',
     imagePrompt: '破碎柱廊 in celestial_ruins, collapsed colonnade of glowing white pillars, star dust, torn banners and guardian patrols, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '星光走廊西側的柱廊曾由七十二根光柱撐起，如今只剩半數仍在斷續發亮。每根殘柱都刻著一段諸神戰爭紀錄，有些字句被深淵黑痕抹去，只留下焦黑空白。柱廊南端連向墜星廣場，北端通往永恆聖所，是玩家在主線外觀察天界歷史的安全但不平靜路線。巡邏守衛會在光柱亮起時重整隊形。斷柱之間還掛著沒有風也會飄動的戰旗，旗面上逐漸浮現玩家經過的足跡，讓守軍能追蹤入侵者動向。柱廊地面偶爾會投出完整神殿的昔日幻象，玩家可藉此找到隱藏聖所側門。殘柱陰影裡還藏著被撕下的審判符。',
+      '星光走廊西側的柱廊曾由七十二根光柱撐起，如今只剩半數仍在斷續發亮。每根殘柱都刻著一段諸神戰爭紀錄，有些字句被深淵黑痕抹去，只留下焦黑空白。柱廊南端連向墜星廣場，北端通往永恆聖所，是旅人在主線外觀察天界歷史的安全但不平靜路線。巡邏守衛會在光柱亮起時重整隊形。斷柱之間還掛著沒有風也會飄動的戰旗，旗面上逐漸浮現旅人經過的足跡，讓守軍能追蹤入侵者動向。柱廊地面偶爾會投出完整神殿的昔日幻象，旅人可藉此找到隱藏聖所側門。殘柱陰影裡還藏著被撕下的審判符',
     exits: [
       { direction: 'east', targetRoomId: 'starlight_path', description: '回到星光走廊' },
       { direction: 'south', targetRoomId: 'celestial_starfall_plaza', description: '沿斷柱回到墜星廣場' },
@@ -62,7 +62,7 @@ celestial_lumen_archive: {
     image: 'celestial_lumen_archive.png',
     imagePrompt: '流明檔案庫 in celestial_ruins, archive of suspended light pages and golden memory crystals, divine constructs guarding knowledge, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '流明檔案庫不是普通房間，而是一座由懸浮光頁組成的立體迷宮。每片光頁都記錄一段神祇、天使或凡人英雄的記憶，靠近時會把畫面直接投進腦海。檔案庫中央封著數枚金色記憶晶，記載戰神沉睡前最後下達的命令。深淵污染已在部分光頁邊緣形成黑斑，若不整理檔案，審判大廳的法則會繼續失準。南側可看見聖文抄寫室的卷軸軌道，但資料回流已被鎖住，需回神之圖書館再進入抄寫室。檔案庫東側的光頁偶爾會翻到空白頁，等待玩家把本次試煉的見聞寫入天界記錄。若錯誤觸碰污染光頁，整座檔案庫會把玩家過去的任務選擇重播成審判證據。中央記憶晶也會短暫鎖住出口。',
+      '流明檔案庫不是普通房間，而是一座由懸浮光頁組成的立體迷宮。每片光頁都記錄一段神祇、天使或凡人英雄的記憶，靠近時會把畫面直接投進腦海。檔案庫中央封著數枚金色記憶晶，記載戰神沉睡前最後下達的命令。深淵污染已在部分光頁邊緣形成黑斑，若不整理檔案，審判大廳的法則會繼續失準。南側可看見聖文抄寫室的卷軸軌道，但資料回流已被鎖住，需回神之圖書館再進入抄寫室。檔案庫東側的光頁偶爾會翻到空白頁，等待旅人把本次試煉的見聞寫入天界記錄。若錯誤觸碰污染光頁，整座檔案庫會把旅人過去的任務選擇重播成審判證據。中央記憶晶也會短暫鎖住出口',
     exits: [
       { direction: 'west', targetRoomId: 'divine_library', description: '光頁階梯回到神之圖書館' },
       { direction: 'north', targetRoomId: 'judgment_hall', description: '律法檔案指向審判大廳' },
@@ -145,7 +145,7 @@ celestial_penitent_steps: {
     image: 'celestial_penitent_steps.png',
     imagePrompt: '懺悔階 in celestial_ruins, long stair of white stone behind judgment hall, kneeling angel statues, golden dust and dark cracks, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
     description:
-      '審判大廳北方有一段長階，每一階都刻著不同的罪名與救贖誓句。階梯兩側跪著無臉天使像，掌心托著空白石牌，等待來者寫下自己的懺悔。越往上走，天界王座的威壓越明顯，越往下看，深淵裂隙留下的黑色脈絡也越清楚。北側能望見聖物庫結界，但階頂門只接受聖所火光，需從永恆聖所進入。這裡是審判線與王座線之間的過渡房，適合放置道德選擇、任務交付或精英伏擊。每當有人說謊，石牌會自行裂開並召出執行裁決的神造機械。長階最高處還有一塊沒有刻字的石板，似乎等待玩家親手定義新的天界法則。階梯下方則回響著被赦免者的腳步聲與鎖鏈聲。',
+      '審判大廳北方有一段長階，每一階都刻著不同的罪名與救贖誓句。階梯兩側跪著無臉天使像，掌心托著空白石牌，等待來者寫下自己的懺悔。越往上走，天界王座的威壓越明顯，越往下看，深淵裂隙留下的黑色脈絡也越清楚。北側能望見聖物庫結界，但階頂門只接受聖所火光，需從永恆聖所進入。這裡是審判線與王座線之間的過渡房，適合放置道德選擇、任務交付或精英伏擊。每當有人說謊，石牌會自行裂開並召出執行裁決的神造機械。長階最高處還有一塊沒有刻字的石板，似乎等待旅人親手定義新的天界法則。階梯下方則回響著被赦免者的腳步聲與鎖鏈聲',
     exits: [
       { direction: 'south', targetRoomId: 'judgment_hall', description: '長階回到審判大廳' },
       { direction: 'east', targetRoomId: 'celestial_throne_room', description: '側門通向天界王座' },
@@ -199,7 +199,7 @@ celestial_sundial_court: {
     image: 'celestial_sundial_court.png',
     imagePrompt: '日晷庭 in celestial_ruins, open courtyard with giant golden sundial, moving beams of holy light, white marble and star shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '誓約之泉東側是一座開闊日晷庭，巨大的金色指針懸浮在半空，投下的影子不是時間，而是天界曾經的戰役順序。白石地面被分成十二個光區，每個光區會在不同時刻啟動守護法陣。深淵污染讓其中兩個光區變成黑影，導致巡邏路線出現危險空窗。這裡能作為事件點、定時戰鬥點，也能讓玩家理解天界防線如何運作。',
+      '誓約之泉東側是一座開闊日晷庭，巨大的金色指針懸浮在半空，投下的影子不是時間，而是天界曾經的戰役順序。白石地面被分成十二個光區，每個光區會在不同時刻啟動守護法陣。深淵污染讓其中兩個光區變成黑影，導致巡邏路線出現危險空窗。這裡能作為事件點、定時戰鬥點，也能讓旅人理解天界防線如何運作',
     exits: [
       { direction: 'west', targetRoomId: 'celestial_fountain_of_oaths', description: '水光小徑回到誓約之泉' },
       { direction: 'north', targetRoomId: 'celestial_armory_of_dawn', description: '晨光指向黎明武庫' },
@@ -254,7 +254,7 @@ celestial_astral_observatory: {
     image: 'celestial_astral_observatory.png',
     imagePrompt: '天象觀測所 in celestial_ruins, celestial observatory of golden astrolabes, star maps, open dome and divine constellations, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '神之間西側的星軌門通向天象觀測所，穹頂整片敞開，能看見不屬於凡間夜空的神聖星座。金色星盤層層旋轉，把深淵裂隙、龍谷墜星坑與天界王座的位置連成一條明亮弧線。觀測所內散落著戰神沉睡前的星圖批註，提到只有當凡人、龍族與天界試煉全部交會時，最終封印才會鬆動。觀測台下方還有一張被燒焦的星圖，標出深淵信標曾試圖對準的天界薄弱點。若調整星盤角度，玩家能短暫看見其他 zone 的危機投影與未來任務線。星盤核心也記錄著戰神甦醒的倒數，並標出封印失敗後的墜落軌道。',
+      '神之間西側的星軌門通向天象觀測所，穹頂整片敞開，能看見不屬於凡間夜空的神聖星座。金色星盤層層旋轉，把深淵裂隙、龍谷墜星坑與天界王座的位置連成一條明亮弧線。觀測所內散落著戰神沉睡前的星圖批註，提到只有當凡人、龍族與天界試煉全部交會時，最終封印才會鬆動。觀測台下方還有一張被燒焦的星圖，標出深淵信標曾試圖對準的天界薄弱點。若調整星盤角度，旅人能短暫看見其他 zone 的危機投影與未來任務線。星盤核心也記錄著戰神甦醒的倒數，並標出封印失敗後的墜落軌道',
     exits: [
       { direction: 'east', targetRoomId: 'god_chamber', description: '星軌門回到神之間' },
       { direction: 'south', targetRoomId: 'celestial_armory_of_dawn', description: '觀測台階回到黎明武庫' },
@@ -281,7 +281,7 @@ celestial_final_seal: {
     image: 'celestial_final_seal.png',
     imagePrompt: '最終封印 in celestial_ruins, final divine seal of radiant rings and black abyss cracks, war god light, floating relics, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '神之間東側的光裂縫後方懸著最終封印，數十道金白圓環互相咬合，把一枚黑色裂核鎖在中央。封印周圍漂浮著來自聖所、審判大廳、武庫與觀測所的象徵物，每件都代表解開或加固封印的一種條件。戰神的氣息從南方傳來，與裂核深處的深淵低鳴互相衝撞。這裡是天界遺跡的大型事件鉤子，可承接最終戰後的世界狀態選擇。圓環每轉動一次，凡間、龍谷與深淵的幻象便會輪流浮現，提醒玩家封印結果會影響所有區域。封印中心還有一個空白插槽，大小正好能放入戰神神槍或被淨化的聖物核心。',
+      '神之間東側的光裂縫後方懸著最終封印，數十道金白圓環互相咬合，把一枚黑色裂核鎖在中央。封印周圍漂浮著來自聖所、審判大廳、武庫與觀測所的象徵物，每件都代表解開或加固封印的一種條件。戰神的氣息從南方傳來，與裂核深處的深淵低鳴互相衝撞。這裡是天界遺跡的大型事件鉤子，可承接最終戰後的世界狀態選擇。圓環每轉動一次，凡間、龍谷與深淵的幻象便會輪流浮現，提醒旅人封印結果會影響所有區域。封印中心還有一個空白插槽，大小正好能放入戰神神槍或被淨化的聖物核心',
     exits: [
       { direction: 'west', targetRoomId: 'god_chamber', description: '光裂縫回到神之間' },
       { direction: 'south', targetRoomId: 'celestial_astral_observatory', description: '星軌下行到天象觀測所' },
@@ -426,7 +426,7 @@ old_farmland_collapsed_barn: {
     image: 'old_farmland_collapsed_barn.png',
     imagePrompt: '塌陷穀倉 in old_farmland, collapsed wooden barn with hay piles, broken beams, rat nests and shafts of dusty light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '穀倉屋頂塌了一半，陽光從破洞照進堆滿霉味的乾草與碎木樑。牆邊舊穀袋被咬破，穀粒灑了一地，引來田鼠、黑鴉和偶爾鑽入的野狼。穀倉後門通往南瓜地，東側有一條去舊井的小徑。玩家可在乾草堆裡找材料或任務物品，但不穩的木樑會在戰鬥中掉落。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
+      '穀倉屋頂塌了一半，陽光從破洞照進堆滿霉味的乾草與碎木樑。牆邊舊穀袋被咬破，穀粒灑了一地，引來田鼠、黑鴉和偶爾鑽入的野狼。穀倉後門通往南瓜地，東側有一條去舊井的小徑。旅人可在乾草堆裡找材料或任務物品，但不穩的木樑會在戰鬥中掉落。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口',
     exits: [
       { direction: 'west', targetRoomId: 'old_farmland_overgrown_field', description: '回到荒草麥田' },
       { direction: 'south', targetRoomId: 'old_farmland_rat_ditch', description: '水溝從倉牆旁流過', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -511,7 +511,7 @@ old_farmland_pumpkin_patch: {
     image: 'old_farmland_pumpkin_patch.png',
     imagePrompt: '膨脹南瓜地 in old_farmland, oversized pumpkins among vines, gnawed gourds, crow shadows and damp orange light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '穀倉後方的南瓜地長得異常茂盛，藤蔓爬過田埂，幾顆南瓜大得像小木桶。表皮有被啃咬和抓裂的痕跡，裂縫裡散出甜膩又帶霉味的氣息，引來田鼠和黑鴉爭食。南瓜地可作為採集點，玩家能取得食材或任務種子，但過度膨脹的南瓜受到魔力刺激，碰撞時可能噴出刺激性孢子。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
+      '穀倉後方的南瓜地長得異常茂盛，藤蔓爬過田埂，幾顆南瓜大得像小木桶。表皮有被啃咬和抓裂的痕跡，裂縫裡散出甜膩又帶霉味的氣息，引來田鼠和黑鴉爭食。南瓜地可作為採集點，旅人能取得食材或任務種子，但過度膨脹的南瓜受到魔力刺激，碰撞時可能噴出刺激性孢子。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口',
     exits: [
       {
         direction: 'south',
@@ -595,7 +595,7 @@ old_farmland_granary: {
     image: 'old_farmland_granary.png',
     imagePrompt: '小糧倉 in old_farmland, small grain storage hut with sacks, cracked floor, rat nests and dusty sunbeam, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '水渠旁的小糧倉比主穀倉完整，但木門已被啃出洞，地板下傳來密集奔跑聲。牆邊堆著幾袋發霉穀物，最上方的袋子被人重新縫過，像是有人最近翻找過。糧倉可作為任務與資源點，玩家能回收穀袋、種子或老農具；若踩到鬆動地板，藏在底下的田鼠群會立刻湧出。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
+      '水渠旁的小糧倉比主穀倉完整，但木門已被啃出洞，地板下傳來密集奔跑聲。牆邊堆著幾袋發霉穀物，最上方的袋子被人重新縫過，像是有人最近翻找過。糧倉可作為任務與資源點，旅人能回收穀袋、種子或老農具；若踩到鬆動地板，藏在底下的田鼠群會立刻湧出。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口',
     exits: [
       { direction: 'west', targetRoomId: 'old_farmland_irrigation_channel', description: '木梯回到灌溉渠旁' },
       { direction: 'north', targetRoomId: 'old_farmland_abandoned_farmhouse', description: '糧倉後方通往農舍', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -654,7 +654,7 @@ old_farmland_abandoned_farmhouse: {
     image: 'old_farmland_abandoned_farmhouse.png',
     imagePrompt: '荒廢農舍 in old_farmland, abandoned farmhouse with sagging porch, dusty table, broken windows and creeping vines, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '農舍木門半開，門廊下的搖椅仍朝著田地，像主人只是暫時離開。屋內桌上留著發黃餐具和一盞熄滅油燈，牆上掛著褪色全家畫像。藤蔓從窗戶爬進來，根鬚壓住地板通往地下根窖的縫隙。這裡是農場任務線的核心房，玩家可調查日記、家書與失蹤農夫留下的線索。日記最後幾頁反覆提到收成圓陣、舊石界碑與一場失敗的豐收儀式，桌腳旁還有被田鼠怪物咬碎的求救信。若玩家先修復水渠或清理根窖，屋內某些隱藏抽屜會變得更容易發現。火爐灰燼裡還壓著半枚焦黑護符，與稻草人胸口的布片圖案相同。',
+      '農舍木門半開，門廊下的搖椅仍朝著田地，像主人只是暫時離開。屋內桌上留著發黃餐具和一盞熄滅油燈，牆上掛著褪色全家畫像。藤蔓從窗戶爬進來，根鬚壓住地板通往地下根窖的縫隙。這裡是農場任務線的核心房，旅人可調查日記、家書與失蹤農夫留下的線索。日記最後幾頁反覆提到收成圓陣、舊石界碑與一場失敗的豐收儀式，桌腳旁還有被田鼠怪物咬碎的求救信。若旅人先修復水渠或清理根窖，屋內某些隱藏抽屜會變得更容易發現。火爐灰燼裡還壓著半枚焦黑護符，與稻草人胸口的布片圖案相同',
     exits: [
       { direction: 'south', targetRoomId: 'old_farmland_granary', description: '後門回到小糧倉', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
@@ -687,7 +687,7 @@ old_farmland_beehive_rows: {
     image: 'old_farmland_beehive_rows.png',
     imagePrompt: '蜂箱行列 in old_farmland, rows of old beehives under fruit trees, buzzing insects, wax frames and golden haze, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '果園東側排列著十幾只舊蜂箱，木箱裂縫滲出深色蜂蠟，空氣裡充滿嗡鳴與甜味。部分蜂箱已空，部分卻住進過度活躍的野蜂，牠們被霉斑果香吸引，對任何接近者都非常敏感。玩家可採集蜂蠟、蜂蜜或修理蜂箱，也能找到通往防風樹列的窄徑。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '果園東側排列著十幾只舊蜂箱，木箱裂縫滲出深色蜂蠟，空氣裡充滿嗡鳴與甜味。部分蜂箱已空，部分卻住進過度活躍的野蜂，牠們被霉斑果香吸引，對任何接近者都非常敏感。旅人可採集蜂蠟、蜂蜜或修理蜂箱，也能找到通往防風樹列的窄徑。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       {
         direction: 'west',
@@ -720,7 +720,7 @@ old_farmland_toolshed: {
     image: 'old_farmland_toolshed.png',
     imagePrompt: '破工具棚 in old_farmland, broken toolshed with rusty hoes, saws, seed boxes, cracked lantern and dust light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '小糧倉東側的工具棚門板只剩一半，裡面掛著生鏽鋤頭、木柄鐮刀、破鋸和幾只標著年份的種子盒。棚頂漏雨，雨水把地面沖出小溝，卻也讓某些舊種子重新發芽。東側可看見舊車道車輪印，但木車堵住棚外岔口，需從舊農路口南側進入車道。這裡適合放置修理、採集與任務道具，工具箱旁有史萊姆怪物黏痕與鼠群咬印，玩家若能找齊工具，也許能重開灌溉渠或修復農場捷徑。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
+      '小糧倉東側的工具棚門板只剩一半，裡面掛著生鏽鋤頭、木柄鐮刀、破鋸和幾只標著年份的種子盒。棚頂漏雨，雨水把地面沖出小溝，卻也讓某些舊種子重新發芽。東側可看見舊車道車輪印，但木車堵住棚外岔口，需從舊農路口南側進入車道。這裡適合放置修理、採集與任務道具，工具箱旁有史萊姆怪物黏痕與鼠群咬印，旅人若能找齊工具，也許能重開灌溉渠或修復農場捷徑。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口',
     exits: [
       { direction: 'west', targetRoomId: 'old_farmland_granary', description: '回到小糧倉' },
       { direction: 'south', targetRoomId: 'old_farmland_fill_n4_1', description: '南側廢棄農道通往破雞舍' },
@@ -746,7 +746,7 @@ old_farmland_moonlit_pasture: {
     image: 'old_farmland_moonlit_pasture.png',
     imagePrompt: '月光牧草地 in old_farmland, quiet pasture with broken fence, silver grass, wolf tracks and pale moonlit clouds, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '農場東北角是一片被破柵欄圍住的牧草地，草葉在白天也泛著微弱銀光，像記住了長年照落的月色。地上有羊蹄印、野狼腳印和拖曳乾草的痕跡，顯示過去圈養的牲畜早已不在。南側能看見破雞舍的屋頂，北側能望見舊石界碑，但牧草地邊界的柵門都已塌死，實際需從防風樹列繞行。這裡視野開闊，適合低等精英遭遇；玩家可沿牧草地調查防風樹列與收成儀式圈線索。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
+      '農場東北角是一片被破柵欄圍住的牧草地，草葉在白天也泛著微弱銀光，像記住了長年照落的月色。地上有羊蹄印、野狼腳印和拖曳乾草的痕跡，顯示過去圈養的牲畜早已不在。南側能看見破雞舍的屋頂，北側能望見舊石界碑，但牧草地邊界的柵門都已塌死，實際需從防風樹列繞行。這裡視野開闊，適合低等精英遭遇；旅人可沿牧草地調查防風樹列與收成儀式圈線索。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口',
     exits: [
       { direction: 'west', targetRoomId: 'old_farmland_windbreak_trees', description: '草坡回到防風樹列' },
     ],
@@ -803,7 +803,7 @@ old_farmland_chicken_coop: {
     image: 'old_farmland_chicken_coop.png',
     imagePrompt: '破雞舍 in old_farmland, ruined chicken coop with straw nests, broken wire, feathers, rats and cloudy farmyard light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '農舍東側的雞舍早已沒有家禽，只剩破網、乾草窩和滿地羽毛。幾個巢箱裡堆著田鼠偷來的穀粒，屋樑上則有黑鴉築巢。雞舍連接工具棚和蜂箱行列，東側破柵欄後可望見牧草地但洞口太窄無法直接通過。玩家可搜索巢箱取得小材料，但要注意腳下破網會絆住移動。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '農舍東側的雞舍早已沒有家禽，只剩破網、乾草窩和滿地羽毛。幾個巢箱裡堆著田鼠偷來的穀粒，屋樑上則有黑鴉築巢。雞舍連接工具棚和蜂箱行列，東側破柵欄後可望見牧草地但洞口太窄無法直接通過。旅人可搜索巢箱取得小材料，但要注意腳下破網會絆住移動。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       { direction: 'west', targetRoomId: 'old_farmland_abandoned_farmhouse', description: '窗邊小路回到農舍', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'north', targetRoomId: 'old_farmland_fill_n4_1', description: '北側廢棄農道回到工具棚' },
@@ -829,7 +829,7 @@ old_farmland_windbreak_trees: {
     image: 'old_farmland_windbreak_trees.png',
     imagePrompt: '防風樹列 in old_farmland, row of old windbreak trees, tangled roots, crow nests, fence shadows and green field haze, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain field, clear lantern light',
     description:
-      '農場北側種著一排老防風樹，樹幹被歲月吹得向同一方向傾斜，根部盤住石界碑與蜂箱小路。鳥巢、乾草和舊繩子掛在枝間，黑鴉會利用樹影遮蔽行蹤。這裡能阻擋平原強風，也把農場和更北方荒野分隔開來。玩家可調查根部裂縫，找到石界碑與牧草地之間的隱藏路線。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
+      '農場北側種著一排老防風樹，樹幹被歲月吹得向同一方向傾斜，根部盤住石界碑與蜂箱小路。鳥巢、乾草和舊繩子掛在枝間，黑鴉會利用樹影遮蔽行蹤。這裡能阻擋平原強風，也把農場和更北方荒野分隔開來。旅人可調查根部裂縫，找到石界碑與牧草地之間的隱藏路線。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口',
     exits: [
       { direction: 'south', targetRoomId: 'old_farmland_beehive_rows', description: '樹根小路回到蜂箱行列', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'old_farmland_moonlit_pasture', description: '樹影外是月光牧草地' },
@@ -881,7 +881,7 @@ old_farmland_harvest_circle: {
     image: 'old_farmland_harvest_circle.png',
     imagePrompt: '收成圓陣 in old_farmland, eerie crop circle of wheat and pumpkins, old harvest runes, scarecrow shadows and moonlit soil, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '農場最北側的作物並非自然生長，而是被排列成一個巨大的收成圓陣。麥穗、南瓜藤、果枝和草繩交錯成古老符號，中心插著一把生鏽鐮刀。圓陣周圍安靜得不自然，連黑鴉都只敢停在邊緣，亡靈怪物的冷霧貼著麥穗流動。東側倒伏草痕可對應舊石界碑，但根鬚封住界碑方向，需從稻草人看守地重新繞回。這裡是老舊農場的大型事件鉤子，可能與豐收祝福失控、農夫失蹤和魔化作物來源有關。玩家若在此完成調查，能串起舊井、根窖、界碑與稻草人的線索。',
+      '農場最北側的作物並非自然生長，而是被排列成一個巨大的收成圓陣。麥穗、南瓜藤、果枝和草繩交錯成古老符號，中心插著一把生鏽鐮刀。圓陣周圍安靜得不自然，連黑鴉都只敢停在邊緣，亡靈怪物的冷霧貼著麥穗流動。東側倒伏草痕可對應舊石界碑，但根鬚封住界碑方向，需從稻草人看守地重新繞回。這裡是老舊農場的大型事件鉤子，可能與豐收祝福失控、農夫失蹤和魔化作物來源有關。旅人若在此完成調查，能串起舊井、根窖、界碑與稻草人的線索',
     exits: [
       { direction: 'south', targetRoomId: 'old_farmland_scarecrow_watch', description: '草影回到稻草人看守地', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
@@ -907,7 +907,7 @@ old_farmland_cart_shortcut: {
     image: 'old_farmland_cart_shortcut.png',
     imagePrompt: '舊車道捷徑 in old_farmland, shortcut cart track with broken wagon, muddy ruts, low fences and village road light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain village, clear lantern light',
     description:
-      '路口南側的舊車道繞過大部分田地，兩側低矮籬笆倒了一半，泥地上還留著深深車輪印。斷掉的木車橫在路中央，車斗裡堆著空麻袋和幾只被啃破的木箱。東側車輪印指向工具棚但木車卡住岔口，需回舊農路口再走小糧倉路線。這裡是交通與捷徑節點，玩家清理木車後可快速往返路口和村外小路，也能作為低等玩家撤退時的安全路線。',
+      '路口南側的舊車道繞過大部分田地，兩側低矮籬笆倒了一半，泥地上還留著深深車輪印。斷掉的木車橫在路中央，車斗裡堆著空麻袋和幾只被啃破的木箱。東側車輪印指向工具棚但木車卡住岔口，需回舊農路口再走小糧倉路線。這裡是交通與捷徑節點，旅人清理木車後可快速往返路口和村外小路，也能作為低等旅人撤退時的安全路線',
     exits: [
       { direction: 'north', targetRoomId: 'old_farmland_crossroads', description: '車道回到舊農路口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
@@ -941,7 +941,7 @@ old_farmland_cart_shortcut: {
     image: 'whispering_valley_entrance.png',
     imagePrompt: '溪谷入口 in whispering_valley, narrow valley entrance with clear creek, leaning trail marker, reeds and cool morning mist, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain valley, clear lantern light',
     description:
-      '老舊農場北方的小徑在兩面岩壁間收窄，清澈溪水沿石縫流出，風穿過谷口時會發出像低聲說話的聲音。入口木牌標著釣點、草藥坡與瀑布方向，是低語溪谷的交通節點與安全錨點。玩家可在此確認退路，也能沿南側小徑回到老農場界碑。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '老舊農場北方的小徑在兩面岩壁間收窄，清澈溪水沿石縫流出，風穿過谷口時會發出像低聲說話的聲音。入口木牌標著釣點、草藥坡與瀑布方向，是低語溪谷的交通節點與安全錨點。旅人可在此確認退路，也能沿南側小徑回到老農場界碑。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       {
         direction: 'south',
@@ -975,7 +975,7 @@ whispering_valley_reed_bank: {
     image: 'whispering_valley_reed_bank.png',
     imagePrompt: '蘆葦岸 in whispering_valley, creek bank of tall reeds, dragonflies, muddy animal tracks and filtered green light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain fantasy terrain, clear lantern light',
     description:
-      '溪谷入口北側長滿及肩蘆葦，細長葉片在風裡彼此摩擦，像無數人在輕聲交談。泥岸上留著田鼠、野狼和巡林靴印，溪面則偶爾泛起史萊姆經過的圓形波紋。玩家可採集蘆葦、尋找魚餌或沿岸追蹤腳印，但視線會被草葉遮住。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '溪谷入口北側長滿及肩蘆葦，細長葉片在風裡彼此摩擦，像無數人在輕聲交談。泥岸上留著田鼠、野狼和巡林靴印，溪面則偶爾泛起史萊姆經過的圓形波紋。旅人可採集蘆葦、尋找魚餌或沿岸追蹤腳印，但視線會被草葉遮住。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       { direction: 'south', targetRoomId: 'whispering_valley_entrance', description: '沿岸回到溪谷入口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'north', targetRoomId: 'whispering_valley_clear_stream', description: '溪水變得更清澈', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -1002,7 +1002,7 @@ whispering_valley_clear_stream: {
     image: 'whispering_valley_clear_stream.png',
     imagePrompt: '清溪淺灘 in whispering_valley, shallow clear stream over smooth stones, minnows, slime bubbles and bright green valley light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain valley, clear lantern light',
     description:
-      '溪水在此變淺，能看見鵝卵石、魚苗和幾片被水流打磨得發亮的藥草葉。淺灘兩側岩壁回音很強，腳步聲會被放大成遠處低語。玩家可在這裡釣小魚、清洗採集物或搜索水底亮點，但過於靠近水泡會驚動潛伏的史萊姆。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '溪水在此變淺，能看見鵝卵石、魚苗和幾片被水流打磨得發亮的藥草葉。淺灘兩側岩壁回音很強，腳步聲會被放大成遠處低語。旅人可在這裡釣小魚、清洗採集物或搜索水底亮點，但過於靠近水泡會驚動潛伏的史萊姆。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       { direction: 'south', targetRoomId: 'whispering_valley_reed_bank', description: '水流回到蘆葦岸', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'north', targetRoomId: 'whispering_valley_echo_rocks', description: '上游有回音岩群', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -1028,7 +1028,7 @@ whispering_valley_mossy_footbridge: {
     image: 'whispering_valley_mossy_footbridge.png',
     imagePrompt: '苔石小橋 in whispering_valley, moss-covered stone footbridge over creek, ferns, wet rocks and soft mist, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain stone, clear lantern light',
     description:
-      '一座低矮石橋橫跨溪水，橋面長滿濕滑青苔，欄杆上刻著巡林人留下的箭頭。橋下水聲被石拱壓成低沉耳語，偶爾會把上游的動靜提前送到腳邊。這裡是溪谷東西兩側的交通節點，玩家可從橋上前往草藥坡、冷泉或回到谷口。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '一座低矮石橋橫跨溪水，橋面長滿濕滑青苔，欄杆上刻著巡林人留下的箭頭。橋下水聲被石拱壓成低沉耳語，偶爾會把上游的動靜提前送到腳邊。這裡是溪谷東西兩側的交通節點，旅人可從橋上前往草藥坡、冷泉或回到谷口。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       { direction: 'west', targetRoomId: 'whispering_valley_entrance', description: '石橋西側回到入口' },
       { direction: 'east', targetRoomId: 'whispering_valley_cold_spring', description: '橋東有冷泉冒霧' },
@@ -1055,7 +1055,7 @@ whispering_valley_herb_slope: {
     image: 'whispering_valley_herb_slope.png',
     imagePrompt: '草藥斜坡 in whispering_valley, sloped bank with medicinal herbs, dew, small flowers, spider threads and green light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '溪谷東坡長滿薄荷、冷葉草與銀邊蕨，清晨露珠讓整面斜坡閃閃發亮。草藥之間有細細蛛絲和小獸腳印，顯示這裡不只有採集者來過。玩家可按藥性採集草藥，也能順著坡頂前往回音岩群或冰蕨叢；若採錯未成熟草株，附近蜘蛛會被震動吸引。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '溪谷東坡長滿薄荷、冷葉草與銀邊蕨，清晨露珠讓整面斜坡閃閃發亮。草藥之間有細細蛛絲和小獸腳印，顯示這裡不只有採集者來過。旅人可按藥性採集草藥，也能順著坡頂前往回音岩群或冰蕨叢；若採錯未成熟草株，附近蜘蛛會被震動吸引。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       { direction: 'west', targetRoomId: 'whispering_valley_clear_stream', description: '斜坡下方是清溪淺灘' },
       { direction: 'north', targetRoomId: 'whispering_valley_fishing_bend', description: '北側溪岸小徑回到釣魚灣' },
@@ -1082,7 +1082,7 @@ whispering_valley_fishing_bend: {
     image: 'whispering_valley_fishing_bend.png',
     imagePrompt: '釣魚灣 in whispering_valley, quiet bend of creek with flat stones, fishing line, reeds and silver fish ripples, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '溪水在蘆葦岸東側轉出一個平靜彎灣，幾塊扁平石頭正好能坐下垂釣。水面有銀色魚影穿梭，岸邊還插著被遺忘的竹釣竿。這裡是明顯資源點，玩家可釣魚、找魚餌或修補舊竿，但腐木下的田鼠和水邊史萊姆會干擾安靜作業。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '溪水在蘆葦岸東側轉出一個平靜彎灣，幾塊扁平石頭正好能坐下垂釣。水面有銀色魚影穿梭，岸邊還插著被遺忘的竹釣竿。這裡是明顯資源點，旅人可釣魚、找魚餌或修補舊竿，但腐木下的田鼠和水邊史萊姆會干擾安靜作業。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       { direction: 'west', targetRoomId: 'whispering_valley_reed_bank', description: '回到蘆葦岸' },
       { direction: 'east', targetRoomId: 'whispering_valley_mist_pool', description: '彎灣深處起了霧', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -1110,7 +1110,7 @@ whispering_valley_echo_rocks: {
     image: 'whispering_valley_echo_rocks.png',
     imagePrompt: '回音岩群 in whispering_valley, clustered echo rocks beside stream, carved marks, moss, birds and sound wave mist, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '上游岩壁崩落形成一片奇特岩群，每塊岩石都能把聲音折成不同方向。站在中央說話，回音會像從四面八方的陌生人嘴裡傳回。岩面刻有巡林記號與更古老的溪谷符號，玩家可藉回音尋找隱藏通道，也可能被黑鴉和野狼利用聲音誤導。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
+      '上游岩壁崩落形成一片奇特岩群，每塊岩石都能把聲音折成不同方向。站在中央說話，回音會像從四面八方的陌生人嘴裡傳回。岩面刻有巡林記號與更古老的溪谷符號，旅人可藉回音尋找隱藏通道，也可能被黑鴉和野狼利用聲音誤導。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進',
     exits: [
       { direction: 'south', targetRoomId: 'whispering_valley_clear_stream', description: '下坡回到清溪淺灘', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
@@ -1149,7 +1149,7 @@ whispering_valley_willow_camp: {
     image: 'whispering_valley_willow_camp.png',
     imagePrompt: '柳樹營地 in whispering_valley, small camp under willow trees, cold fire pit, bedroll, ranger supplies and creek mist, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain camp, clear lantern light',
     description:
-      '冷泉北側有一處臨時營地，幾棵柳樹把枝條垂成天然簾幕，冷掉的火坑旁放著巡林人的舊背包和簡易草藥架。營地看似安全，卻有被匆忙翻找過的痕跡，地上留下朝蜘蛛洞方向的怪物拖痕。玩家可在此取得任務線索、補給或休息資訊，也能通往山谷東側支線。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
+      '冷泉北側有一處臨時營地，幾棵柳樹把枝條垂成天然簾幕，冷掉的火坑旁放著巡林人的舊背包和簡易草藥架。營地看似安全，卻有被匆忙翻找過的痕跡，地上留下朝蜘蛛洞方向的怪物拖痕。旅人可在此取得任務線索、補給或休息資訊，也能通往山谷東側支線。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口',
     exits: [
       {
         direction: 'west',

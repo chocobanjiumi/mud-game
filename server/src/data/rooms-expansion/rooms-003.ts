@@ -8,7 +8,7 @@ elder_dragon_sanctum: {
     image: 'elder_dragon_sanctum.png',
     imagePrompt: '古龍聖殿 in dragon_valley, sacred hall of dragon bones and crystal, star scaled elder dragon coiled in center, ancient pressure, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain hall, clear lantern light',
     description:
-      '隱藏在風暴之巔背後的神聖殿堂，由巨大的龍骨和水晶構成。' +
+      '隱藏在風暴之巔背後的神聖殿堂，由巨大的龍骨和水晶構成。古龍聖殿周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '殿堂中央盤踞著一條體型驚人的古龍，牠的鱗片如同星空般閃耀。' +
       '空氣中充滿了遠古的威壓，連呼吸都變得沉重。這是龍谷最強大的存在。聖殿柱廊由歷代古龍的脫落角骨堆疊而成，水晶地面下能看見雲海、星光與更深處的紫黑裂隙。古龍並未立刻攻擊，而是用低沉目光審視來者，彷彿牠早已知道魔族、龍谷與深淵之間的下一場災難。四周側殿分別通往鍛台、天衛營地與墜星坑，每一條路都代表龍族仍在維持的古老職責。殿門會隨古龍呼吸緩慢開合。',
     exits: [
@@ -38,7 +38,7 @@ dragon_egg_chamber: {
     image: 'dragon_egg_chamber.png',
     imagePrompt: '龍蛋室 in dragon_valley, warm hidden cavern with giant glowing dragon eggs on volcanic ash beds, geothermal steam and vigilant young dragons, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain ash, clear lantern light',
     description:
-      '隱蔽在岩壁深處的溫暖洞穴，地熱從地底湧出，維持著恆定的溫度。' +
+      '隱蔽在岩壁深處的溫暖洞穴，地熱從地底湧出，維持著恆定的溫度。龍蛋室周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '數顆巨大的龍蛋安靜地排列在柔軟的火山灰床上，蛋殼上的紋路隱隱發光。' +
       '這是龍族孕育下一代的聖地，任何威脅都會招致所有龍族的瘋狂報復。洞穴上方有許多細小通風孔，能把風暴之巔的雷鳴轉成低沉搖籃聲。灰床旁擺著由鱗片、草藥與晶砂編成的護巢圈，說明幼龍的孵化需要火、風與星光共同維持平衡。後方隘口由護巢龍爪親自開鑿，只允許守衛在緊急時快速抵達飛龍崖。牆上還掛著破損鞍布與幼龍初次飛行的紀念鱗片，讓這裡兼具危險與神聖意味。',
     exits: [
@@ -66,7 +66,7 @@ dragon_wind_roost: {
     image: 'dragon_wind_roost.png',
     imagePrompt: '風棲岩棚 in dragon_valley, western ledge full of wind-carved nests, feathered banners, warm updrafts and young dragons resting, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '龍谷入口西側的岩棚被長年上升氣流切成弧形，岩壁上掛滿被風磨亮的龍巢與舊布旗。幼龍會在此練習短距離滑翔，牠們用爪子抓住岩脊，等待熱風將身體托起。棚底有幾處天然凹槽，積著雨水、白羽與細碎龍鱗，可供玩家觀察風向或尋找可用材料。這裡雖靠近入口，卻能很快引來巡空飛龍。',
+      '龍谷入口西側的岩棚被長年上升氣流切成弧形，岩壁上掛滿被風磨亮的龍巢與舊布旗。幼龍會在此練習短距離滑翔，牠們用爪子抓住岩脊，等待熱風將身體托起。棚底有幾處天然凹槽，積著雨水、白羽與細碎龍鱗，可供旅人觀察風向或尋找可用材料。這裡雖靠近入口，卻能很快引來巡空飛龍。風棲岩棚周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
     exits: [
       { direction: 'east', targetRoomId: 'dragon_valley_entrance', description: '沿岩棚回到龍谷入口' },
       { direction: 'north', targetRoomId: 'dragon_egg_chamber', description: '窄洞通往龍蛋室外壁' },
@@ -123,7 +123,7 @@ dragon_claw_pass: {
     image: 'dragon_claw_pass.png',
     imagePrompt: '龍爪隘口 in dragon_valley, narrow pass carved by huge dragon claws, broken stone teeth, egg chamber back route and cliff winds, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain stone, clear lantern light',
     description:
-      '龍蛋室北方的隘口像被巨爪撕開，兩側岩壁留下平行深痕，足以讓成年人整個人藏進爪溝。地面散著像牙齒般尖銳的白石，踩錯位置會發出刺耳回聲，驚動飛龍崖上的巢群。這條路是龍族護巢時使用的側道，能在龍蛋室與飛龍崖之間快速移動，也讓玩家看見龍谷防衛網的內層結構。',
+      '龍蛋室北方的隘口像被巨爪撕開，兩側岩壁留下平行深痕，足以讓成年人整個人藏進爪溝。地面散著像牙齒般尖銳的白石，踩錯位置會發出刺耳回聲，驚動飛龍崖上的巢群。這條路是龍族護巢時使用的側道，能在龍蛋室與飛龍崖之間快速移動，也讓旅人看見龍谷防衛網的內層結構。龍爪隘口周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
     exits: [
       { direction: 'south', targetRoomId: 'dragon_egg_chamber', description: '回到溫暖的龍蛋室' },
       { direction: 'east', targetRoomId: 'wyvern_cliff', description: '爪痕石階通往飛龍崖' },
@@ -178,7 +178,7 @@ dragon_thunder_nest: {
     image: 'dragon_thunder_nest.png',
     imagePrompt: '雷巢 in dragon_valley, storm-charged dragon nest of black branches and lightning rods, blue sparks, cloud abyss below, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '天空之橋西側的巢穴由黑色枝幹、龍骨碎片與天然避雷石編成，巢底不斷跳動藍白電弧。風暴巨龍會在此磨亮犄角，牠們用雷電淬鍊鱗片，使整座巢穴像活物一樣發出低鳴。巢外有幾根斷裂的龍騎長槍，槍尖仍殘留焦黑煙痕。玩家若想穿越此處，必須避開週期性落雷，也可觀察雷光流向判斷風暴之巔的祭壇狀態。巢壁深處還有半埋的雲石蛋殼，代表這裡曾孵化過掌控雷雲的古老血脈。每次雷鳴後，巢口會短暫露出通往熔火高巢的安全落腳點。若停留太久，避雷石會逐漸充能並吸引更多飛龍回巢。',
+      '天空之橋西側的巢穴由黑色枝幹、龍骨碎片與天然避雷石編成，巢底不斷跳動藍白電弧。風暴巨龍會在此磨亮犄角，牠們用雷電淬鍊鱗片，使整座巢穴像活物一樣發出低鳴。巢外有幾根斷裂的龍騎長槍，槍尖仍殘留焦黑煙痕。旅人若想穿越此處，必須避開週期性落雷，也可觀察雷光流向判斷風暴之巔的祭壇狀態。巢壁深處還有半埋的雲石蛋殼，代表這裡曾孵化過掌控雷雲的古老血脈。每次雷鳴後，巢口會短暫露出通往熔火高巢的安全落腳點。若停留太久，避雷石會逐漸充能並吸引更多飛龍回巢',
     exits: [
       { direction: 'east', targetRoomId: 'sky_bridge', description: '回到天空之橋' },
       { direction: 'south', targetRoomId: 'dragon_claw_pass', description: '下坡回到龍爪隘口' },
@@ -293,7 +293,7 @@ dragon_skywarden_camp: {
     image: 'dragon_skywarden_camp.png',
     imagePrompt: '天衛營地 in dragon_valley, elite dragon knight camp on high ridge, banners, saddle racks, maps of sky patrols and cloud fires, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain camp, clear lantern light',
     description:
-      '古龍聖殿西廊外是一處守衛營地，石平台上排列著龍騎士鞍具、長槍架與記錄天空巡邏線的皮革地圖。營火不是木柴燃起，而是由小型風暴晶核維持，火焰會隨天候改變顏色。天衛負責攔截從魔族領地、山外航路與深淵裂縫靠近的威脅，因此此處保留大量戰報。玩家若能突破守衛，便能取得關於龍谷防線與下一區裂隙的清楚線索。',
+      '古龍聖殿西廊外是一處守衛營地，石平台上排列著龍騎士鞍具、長槍架與記錄天空巡邏線的皮革地圖。營火不是木柴燃起，而是由小型風暴晶核維持，火焰會隨天候改變顏色。天衛負責攔截從魔族領地、山外航路與深淵裂縫靠近的威脅，因此此處保留大量戰報。旅人若能突破守衛，便能取得關於龍谷防線與下一區裂隙的清楚線索',
     exits: [
       { direction: 'east', targetRoomId: 'elder_dragon_sanctum', description: '西廊回到古龍聖殿' },
       { direction: 'south', targetRoomId: 'dragon_molten_aerie', description: '斜坡下到熔火高巢' },
@@ -349,7 +349,7 @@ dragon_starfall_crater: {
     image: 'abyss_entrance.png',
     imagePrompt: '深淵入口 in abyss_rift, cracked stairway descending from elder dragon sanctum into purple black void, impossible geometry, dimensional hum, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain fantasy terrain, clear lantern light',
     description:
-      '古龍聖殿地板上的裂縫延伸成一道深不見底的階梯，向下通往一片紫黑色的虛空。' +
+      '古龍聖殿地板上的裂縫延伸成一道深不見底的階梯，向下通往一片紫黑色的虛空。深淵入口周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '空間在此處開始扭曲，牆壁岩石折成不可能的幾何形狀，裂縫邊緣還凝著微亮的時空碎片。' +
       '耳邊傳來低沉嗡鳴，像維度壁壘正被緩慢磨穿；南側仍能感到墜星坑的熱度，北方虛空迴廊吞著星光，東面花園幽香與西側錨鏈震動同時從黑暗裡傳來。',
     exits: [
@@ -381,7 +381,7 @@ void_corridor: {
     image: 'void_corridor.png',
     imagePrompt: '虛空迴廊 in abyss_rift, floating stone corridor over endless purple void, transparent floor with star abyss below, crawling shadow shapes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain stone, clear lantern light',
     description:
-      '一條漂浮在虛空中的石質走廊，兩側是無盡的紫黑色虛無。' +
+      '一條漂浮在虛空中的石質走廊，兩側是無盡的紫黑色虛無。虛空迴廊周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '走廊地板時而凝固時而透明，腳下能看見星辰般閃爍的深淵，邊緣則有暗影生物像墨水般貼著石縫蠕動。' +
       '偶爾有扭曲光芒從虛空中射出，照亮牆面缺口，也帶來其他時間線的低語。南端入口仍有裂階輪廓，北方暗影領域吸走光線，東側時間裂縫和西側鏡湖冷光把走廊拉成四條不穩的方向。',
     exits: [
@@ -412,7 +412,7 @@ shadow_realm: {
     image: 'shadow_realm.png',
     imagePrompt: '暗影領域 in abyss_rift, realm swallowed by pure shadow, black rippling floor, ghost eyes and fading body silhouettes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '一片被純粹暗影能量籠罩的空間，所有光源在這裡都會被吞噬。' +
+      '一片被純粹暗影能量籠罩的空間，所有光源在這裡都會被吞噬。暗影領域周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '只有暗影生物的眼睛在黑暗中如幽靈般閃爍，流動地面每受壓一次，就激起漣漪般的黑色波紋。' +
       '南側虛空迴廊還保留一截透明石板輪廓，北方混沌之橋像裂開的彩色傷口，西邊暗影檔案館的書架影子則一排排浮現。黑暗不只是遮蔽視線，更像正在試探每一個能被吞掉的記憶。',
     exits: [
@@ -441,7 +441,7 @@ chaos_bridge: {
     image: 'chaos_bridge.png',
     imagePrompt: '混沌之橋 in abyss_rift, bridge of shifting chaos matter changing between stone crystal and void, elemental colors along both sides, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain bridge, clear lantern light',
     description:
-      '一座由不斷變換形態的混沌物質構成的橋樑，橋面時而是石頭，時而是水晶，時而又像被挖空的虛無。' +
+      '一座由不斷變換形態的混沌物質構成的橋樑，橋面時而是石頭，時而是水晶，時而又像被挖空的虛無。混沌之橋周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '橋的兩側翻湧著不同顏色的能量，火、冰、雷、光與暗交替閃爍，讓每一步都踩在不同法則上。' +
       '橋面邊緣會短暫浮現先前失敗者留下的腳印，又很快被混沌抹平。南方暗影領域沉得像墨，北端深淵核心一下一下發光，西側引力井與東側記憶迷宮把橋身拉得微微扭曲。',
     exits: [
@@ -471,7 +471,7 @@ nightmare_garden: {
     image: 'nightmare_garden.png',
     imagePrompt: '噩夢花園 in abyss_rift, floating garden of nightmare crystal flowers, silent blooming and withering, twisted human silhouettes in purple mist, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain crystal, clear lantern light',
     description:
-      '一座詭異花園漂浮在虛空之中，花朵由凝固的噩夢結晶長成，每一朵都在無聲綻放與凋零，散發令人昏沉的幽香。' +
+      '一座詭異花園漂浮在虛空之中，花朵由凝固的噩夢結晶長成，每一朵都在無聲綻放與凋零，散發令人昏沉的幽香。噩夢花園周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '花叢裡偶爾浮現扭曲人影，像被夢境吞噬後殘留的意識仍在尋找出口。西側深淵入口的裂階輪廓在霧中忽明忽暗，北方花徑被扭曲時間切成斷續光帶，東面更深的果園則垂著半透明黑果。花粉落到地面時會形成短暫夢境，映出不屬於此地的天空。',
     exits: [
       { direction: 'west', targetRoomId: 'abyss_entrance', description: '回到深淵入口' },
@@ -499,7 +499,7 @@ abyss_core: {
     image: 'abyss_core.png',
     imagePrompt: '深淵核心 in abyss_rift, giant dark purple sphere pulsing in collapsed void, broken gravity, warped light, chaos and shadow source, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '裂隙的最深處，一顆巨大的暗紫色球體懸浮在虛空中央，不斷脈動著。' +
+      '裂隙的最深處，一顆巨大的暗紫色球體懸浮在虛空中央，不斷脈動著。深淵核心周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '這是深淵的核心——所有混沌和暗影力量的源頭。' +
       '核心周圍的空間已經完全崩壞，重力、時間、光線都失去了意義。碎裂石台像衛星般繞著核心旋轉，每一次脈動都會把遠處的迴廊、花園與時空區短暫拉近。核心表面浮現無數陌生眼睛，又在下一瞬間變成古代術式，說明它既是入侵錨點，也是封印失敗後扭曲的魔法裝置。脈動間隙裡能聽見古代術士留下的警告，任何對核心的衝擊都會同時震動整條裂隙。西側熔爐正把剝落碎片重新鑄成武器。',
     exits: [
@@ -528,7 +528,7 @@ time_distortion: {
     image: 'time_distortion.png',
     imagePrompt: '時空扭曲區 in abyss_rift, overlapping past present future ruins, branching time streams, broken clocks and dimensional light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '空間在此處嚴重扭曲，過去、現在和未來的景象交疊在一起；同一面斷牆上一半還保持千年前的繁華，一半已化為千年後的廢墟。' +
+      '空間在此處嚴重扭曲，過去、現在和未來的景象交疊在一起；同一面斷牆上一半還保持千年前的繁華，一半已化為千年後的廢墟。時空扭曲區周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '時間之流在腳邊分岔又匯合，一步之差就會踩過百年灰塵。西側殘影指回虛空迴廊，南面噩夢花園的花粉被倒流成種子，北方斷裂光帶通往領主之間，東側晶格門後則漂著時間碎片。地面裂縫裡卡著不同年代的武器殘影。',
     exits: [
       { direction: 'west', targetRoomId: 'void_corridor', description: '回到虛空迴廊' },
@@ -558,7 +558,7 @@ abyss_lord_chamber: {
     image: 'abyss_lord_chamber.png',
     imagePrompt: '深淵領主之間 in abyss_rift, enormous floating platform of solid chaos, shadow void throne, many-eyed abyss lord warping reality, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain fantasy terrain, clear lantern light',
     description:
-      '一個懸浮在虛空中心的巨大平台，由凝固的混沌能量構成。' +
+      '一個懸浮在虛空中心的巨大平台，由凝固的混沌能量構成。深淵領主之間周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '平台中央矗立著一座由暗影和虛空編織而成的王座，深淵領主端坐其上，' +
       '多隻眼睛同時注視著來訪者。牠的存在本身就在扭曲周圍的現實，空間在牠身邊不停裂開又癒合。王座後方懸著破碎的天界門影，腳下則能看見深淵核心的脈動倒影。每當領主抬手，平台邊緣的時鐘、鏡面與暗影柱便會重新排列，像是在為下一次維度入侵校準座標。王座側面的信標持續向外發出黑紫脈衝，北方尖塔則把這些座標刺入天界裂口；西南兩側仍殘留核心與時空區撕出的裂光。',
     exits: [
@@ -918,7 +918,7 @@ sealbreak_spire: {
     image: 'celestial_gate.png',
     imagePrompt: '天界之門 in celestial_ruins, vast white light arch above void, sacred lost glyphs, starstone floor, golden celestial ruins in distance, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '一道由純白光芒構成的巨大拱門矗立在虛空之上，門框上刻著失傳已久的神聖文字。' +
+      '一道由純白光芒構成的巨大拱門矗立在虛空之上，門框上刻著失傳已久的神聖文字。天界之門周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '穿過光門的瞬間，世界從混沌的深淵轉變為金色的光輝。' +
       '腳下是由凝固的星光構成的地面，遠方的天際線上浮現著壯麗的天界廢墟。門後仍能看見深淵裂口的黑紫殘影，像一道尚未癒合的傷口貼在純白光幕上。破碎聖階兩側倒伏著天界守衛的旗杆與被燒焦的羽翼印記，提示深淵曾經衝擊到這裡。玩家踏入此處時，門框文字會逐行亮起，判斷來者是入侵者、朝聖者，還是被迫接受最終試煉的挑戰者。門前光塵會記錄第一次踏入者的名字。',
     exits: [
@@ -950,7 +950,7 @@ starlight_path: {
     image: 'starlight_path.png',
     imagePrompt: '星光走廊 in celestial_ruins, corridor paved with solid star fragments, broken celestial halls, holy dust and guardian silhouettes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '一條由凝固的星辰碎片鋪成的走廊，每一步都踩在閃爍的星光之上。' +
+      '一條由凝固的星辰碎片鋪成的走廊，每一步都踩在閃爍的星光之上。星光走廊周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '走廊兩側是破碎的天界建築殘骸，曾經宏偉的殿堂如今只剩下斷壁殘垣。' +
       '但即便是廢墟，這裡的每一塊石頭都散發著令人敬畏的神聖之力。' +
       '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
@@ -982,7 +982,7 @@ angel_garden: {
     image: 'angel_garden.png',
     imagePrompt: '天使花園 in celestial_ruins, miraculous golden white garden amid ruins, glowing holy fountain, seraph patrols and eternal blossoms, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '一片在天界廢墟中奇蹟般存活的花園，金色和白色的花朵永不凋零地綻放。' +
+      '一片在天界廢墟中奇蹟般存活的花園，金色和白色的花朵永不凋零地綻放。天使花園周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '花園中央的噴泉仍在流淌著發光的聖水，空氣中充滿了治癒和安寧的氣息。' +
       '幾位熾天使在花園中巡遊，牠們的翅膀散發出溫暖的金色光芒。' +
       '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
@@ -1014,7 +1014,7 @@ divine_library: {
     image: 'divine_library.png',
     imagePrompt: '神之圖書館 in celestial_ruins, enormous divine library with shelves of light, glowing books, automaton guardians and endless height, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '一座超越凡人想像的巨大圖書館，書架延伸到視線無法觸及的高度。' +
+      '一座超越凡人想像的巨大圖書館，書架延伸到視線無法觸及的高度。神之圖書館周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '書冊由光線構成，翻開後會直接將知識灌入閱讀者的意識中。' +
       '圖書館中漫步著由神造兵器守護的自動機械，確保知識不被褻瀆。西側光門回到天界之門，北方書架後藏著抄寫室。' +
       '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
@@ -1045,7 +1045,7 @@ judgment_hall: {
     image: 'judgment_hall.png',
     imagePrompt: '審判大廳 in celestial_ruins, solemn hall with divine judgment murals, glowing scales, angel juror silhouettes and white gold pillars, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain hall, clear lantern light',
     description:
-      '一座莊嚴肅穆的大廳，穹頂上繪著諸神審判的壁畫。' +
+      '一座莊嚴肅穆的大廳，穹頂上繪著諸神審判的壁畫。審判大廳周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '大廳中央的天秤仍在緩慢擺動，衡量著每一個進入者的善惡。' +
       '兩排由光線構成的陪審席上坐著沉默的天使虛影，注視著到來的冒險者。每當武器出鞘，穹頂壁畫就會改變內容，把進入者過去的選擇投射成金白與黑灰兩色。大廳地面刻著數百條審判法則，其中有些已被深淵裂痕污染，導致神聖裁決不再完全公正。玩家若想通往天界王座，必須理解天秤偏移的原因，而不是單純擊倒守衛。審判席後方還有通往懺悔階的窄門，只有承認錯誤的人才會看見門縫中的白光。',
     exits: [
@@ -1076,7 +1076,7 @@ celestial_throne_room: {
     image: 'celestial_throne_room.png',
     imagePrompt: '天界王座 in celestial_ruins, grand celestial throne hall of pure light, white platinum throne, rotating stars in ceiling, divine pressure, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain hall, clear lantern light',
     description:
-      '天界最宏偉的殿堂，穹頂由純淨的光線構成，無數星辰在其中旋轉。' +
+      '天界最宏偉的殿堂，穹頂由純淨的光線構成，無數星辰在其中旋轉。天界王座周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '一座由永恆白金鑄造的王座矗立在殿堂最高處，王座上空無一人，' +
       '但王座本身散發的神聖威壓足以讓凡人跪地臣服。通往最終之間的道路就在王座背後。王座階梯兩側排列著破碎冠冕與戰旗，記錄曾經挑戰神權的王國與英雄。深淵裂隙造成的黑色細紋已爬上白金扶手，讓空置王座看起來像正在等待新的審判者。只有理解審判、聖所與軍械庫留下的線索，才能判斷最終光門究竟是祝福還是試煉。王座側面的黎明武庫仍傳來機械啟動聲，表示最終防線尚未完全沉默。',
     exits: [
@@ -1109,7 +1109,7 @@ eternal_sanctuary: {
     image: 'eternal_sanctuary.png',
     imagePrompt: '永恆聖所 in celestial_ruins, small forgotten chapel with creation mural, eternal fire, warm holy light and fallen angel shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '一座被時間遺忘的小型聖堂，穹頂上的壁畫描繪著世界創生的場景。' +
+      '一座被時間遺忘的小型聖堂，穹頂上的壁畫描繪著世界創生的場景。永恆聖所周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '聖堂中央的永恆之火仍在燃燒，散發出溫暖而安詳的光芒。' +
       '這裡是天界最後的寧靜之地，據說在此祈禱可以恢復所有傷勢。聖堂長椅上覆著薄薄星塵，幾件破裂羽甲整齊擺放，像守衛臨走前仍保持儀式。永恆之火的外焰呈金色，內焰卻帶著微弱黑影，暗示深淵污染已經觸碰到最神聖的地方。玩家可在此獲得喘息，也可能面對曾守護聖所的墮天使試煉。聖火後方的暗門通往聖物庫，裡面保存著淨化污染與修復封印所需的關鍵材料。',
     exits: [
@@ -1138,7 +1138,7 @@ god_chamber: {
     image: 'god_chamber.png',
     imagePrompt: '神之間 in celestial_ruins, perfect circular chamber of pure light, sleeping war god in golden armor floating at center, final trial, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain chamber, clear lantern light',
     description:
-      '天界遺跡的最深處，一個完美的圓形空間。牆壁、地面和天頂都由純粹的光構成。' +
+      '天界遺跡的最深處，一個完美的圓形空間。牆壁、地面和天頂都由純粹的光構成。神之間周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '空間正中央懸浮著一位身著金色戰甲的神祇——戰神，沉睡中的他仍散發著毀天滅地的威壓。' +
       '當冒險者踏入這片領域的瞬間，戰神的雙眼猛然睜開，億萬年的寂靜在此刻被打破。' +
       '這是這個世界最強大的存在，也是最終的挑戰。圓形空間外圍漂浮著十二面戰旗，每一面都記錄一場曾由戰神親自終結的遠古戰爭。旗影在地面形成不同武器圖案，預告戰神甦醒後可能切換的攻擊姿態。西側星軌門與東側封印裂縫同時發光，表示這場戰鬥不只決定勝負，也會決定天界遺跡是否繼續封鎖深淵。',
@@ -1168,7 +1168,7 @@ celestial_starfall_plaza: {
     image: 'celestial_starfall_plaza.png',
     imagePrompt: '墜星廣場 in celestial_ruins, white gold plaza covered in fallen star shards, broken angel statues, abyss scar at gate edge, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
     description:
-      '天界之門西側是一片廣場，地面由白金石板鋪成，卻被無數墜星碎片砸出細密裂坑。破碎天使像倒在四周，石翼仍反射著微弱星光。廣場中央有一圈尚未熄滅的防禦法陣，陣線一端連著天界之門，另一端指向破碎柱廊。這裡曾是抵禦深淵入侵的第一道防線，現在則成為玩家辨認天界戰況與收集星辰材料的入口支線。若修復法陣缺口，廣場會短暫投影出深淵攻城時的路線，揭露哪些守衛在戰前失蹤。廣場外緣還有幾座半毀傳送台，台面符號與凡間多處遺跡相同，暗示天界曾直接監看世界各地。',
+      '天界之門西側是一片廣場，地面由白金石板鋪成，卻被無數墜星碎片砸出細密裂坑。破碎天使像倒在四周，石翼仍反射著微弱星光。廣場中央有一圈尚未熄滅的防禦法陣，陣線一端連著天界之門，另一端指向破碎柱廊。這裡曾是抵禦深淵入侵的第一道防線，現在則成為旅人辨認天界戰況與收集星辰材料的入口支線。若修復法陣缺口，廣場會短暫投影出深淵攻城時的路線，揭露哪些守衛在戰前失蹤。廣場外緣還有幾座半毀傳送台，台面符號與凡間多處遺跡相同，暗示天界曾直接監看世界各地',
     exits: [
       { direction: 'east', targetRoomId: 'celestial_gate', description: '回到天界之門' },
       { direction: 'north', targetRoomId: 'celestial_broken_colonnade', description: '裂痕道路通向破碎柱廊' },

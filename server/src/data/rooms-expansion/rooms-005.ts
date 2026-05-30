@@ -8,7 +8,7 @@ whispering_valley_cold_spring: {
     image: 'whispering_valley_cold_spring.png',
     imagePrompt: '冷泉 in whispering_valley, clear cold spring steaming lightly, blue stones, mossy bridge path and healing herbs, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain bridge, clear lantern light',
     description:
-      '苔石小橋東側冒出一眼清冷泉水，泉面泛著淡藍光，周圍石頭比溪谷其他地方更冷。泉邊長著冰蕨幼苗和細小白花，水中偶爾有半透明史萊姆滑過。這裡是治療與資源節點，玩家可採集冷泉水或尋找冰屬性材料，但泉水過冷會讓行動變慢。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '苔石小橋東側冒出一眼清冷泉水，泉面泛著淡藍光，周圍石頭比溪谷其他地方更冷。泉邊長著冰蕨幼苗和細小白花，水中偶爾有半透明史萊姆滑過。這裡是治療與資源節點，旅人可採集冷泉水或尋找冰屬性材料，但泉水過冷會讓行動變慢。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       { direction: 'west', targetRoomId: 'whispering_valley_mossy_footbridge', description: '回到苔石小橋' },
       {
@@ -42,7 +42,7 @@ whispering_valley_spider_grotto: {
     image: 'whispering_valley_spider_grotto.png',
     imagePrompt: '蛛網岩洞 in whispering_valley, shallow grotto covered in webs, cold droplets, bones, spider silhouettes and blue cave light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain cave, clear lantern light',
     description:
-      '冷泉東側的岩縫通向一座淺洞，洞頂滲水滴落在蛛網上，讓整片白網像結霜一樣閃亮。洞內散著小動物骨骸和被拖入的巡林布片，顯示蜘蛛在此築巢已有一段時間。這裡是精英感較強的戰鬥點，玩家若想救出營地線索，必須清理洞口與深處蛛群。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
+      '冷泉東側的岩縫通向一座淺洞，洞頂滲水滴落在蛛網上，讓整片白網像結霜一樣閃亮。洞內散著小動物骨骸和被拖入的巡林布片，顯示蜘蛛在此築巢已有一段時間。這裡是精英感較強的戰鬥點，旅人若想救出營地線索，必須清理洞口與深處蛛群。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口',
     exits: [
       { direction: 'west', targetRoomId: 'whispering_valley_cold_spring', description: '岩縫回到冷泉' },
       { direction: 'south', targetRoomId: 'whispering_valley_willow_camp', description: '南側拖痕穿過灌木回到柳樹營地' },
@@ -76,7 +76,7 @@ whispering_valley_fallen_log: {
     image: 'whispering_valley_fallen_log.png',
     imagePrompt: '倒木淺橋 in whispering_valley, fallen tree across creek, moss, mushrooms, bird tracks and rushing water below, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain water, clear lantern light',
     description:
-      '一棵老樹倒在釣魚灣上游，樹幹橫跨溪水，形成勉強可走的天然淺橋。樹皮長滿蘑菇和青苔，枝杈間卡著羽毛、魚骨和幾段破線。通過倒木可到達霧潭或回音岩群，但腳下濕滑，戰鬥時很容易被史萊姆逼退到水裡。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '一棵老樹倒在釣魚灣上游，樹幹橫跨溪水，形成勉強可走的天然淺橋。樹皮長滿蘑菇和青苔，枝杈間卡著羽毛、魚骨和幾段破線。通過倒木可到達霧潭或回音岩群，但腳下濕滑，戰鬥時很容易被史萊姆逼退到水裡。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰。倒木淺橋周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
     exits: [
       { direction: 'north', targetRoomId: 'whispering_valley_herb_slope', description: '北側採集坡面回到草藥斜坡' },
       { direction: 'south', targetRoomId: 'whispering_valley_ice_fern_patch', description: '南側冷霧坡面通往冰蕨叢' },
@@ -110,7 +110,7 @@ whispering_valley_mist_pool: {
     image: 'whispering_valley_mist_pool.png',
     imagePrompt: '霧潭 in whispering_valley, round misty pool with dark water, reeds, pale fish shadows and spider cave slope, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain water, clear lantern light',
     description:
-      '溪水在倒木與蛛洞之間積成一口圓潭，潭面常年飄著薄霧，看不清水底。西側倒木回到上游，北面濕坡通向蛛網岩洞；南側可聽見釣魚灣水聲，但潭岸塌陷後無法直接退回彎灣。霧中偶爾浮現魚影和像手指般的水草，岸邊石頭濕滑而寒冷。這裡可作為釣魚、採水與遭遇點；玩家若在霧中停留太久，會聽見不屬於同伴的低語引導自己靠近深水。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '溪水在倒木與蛛洞之間積成一口圓潭，潭面常年飄著薄霧，看不清水底。西側倒木回到上游，北面濕坡通向蛛網岩洞；南側可聽見釣魚灣水聲，但潭岸塌陷後無法直接退回彎灣。霧中偶爾浮現魚影和像手指般的水草，岸邊石頭濕滑而寒冷。這裡可作為釣魚、採水與遭遇點；旅人若在霧中停留太久，會聽見不屬於同伴的低語引導自己靠近深水。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       {
         direction: 'west',
@@ -149,7 +149,7 @@ whispering_valley_old_shrine: {
     image: 'whispering_valley_old_shrine.png',
     imagePrompt: '溪畔舊神龕 in whispering_valley, old creekside shrine with mossy stones, ribbons, candles and whispering water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain shrine, clear lantern light',
     description:
-      '柳樹營地北方的溪畔藏著一座小神龕，石面覆滿青苔，幾條褪色祈願布被系在枝上。神龕供奉的不是明確神像，而是一塊被水磨圓的白石，石上刻著代表水聲、風聲與回音的三枚符號。這裡是溪谷任務線的重要地標，玩家可獻上冷泉水或找回巡林徽章，讓神龕重新回應溪谷低語。神龕後方的岩壁有許多被蛛絲遮住的舊刻痕，記錄巡林人曾用聲音安撫溪谷水脈；東側蛛洞裂縫只夠細小生物穿過，玩家需從冷泉岩縫進入蛛網岩洞。若玩家先清理蛛網岩洞，再回到此處調查，白石會短暫發光並指出隱瀑石室方向。祈願布末端還綁著幾枚小鈴，風起時會敲出與低語裂縫相同的節奏。',
+      '柳樹營地北方的溪畔藏著一座小神龕，石面覆滿青苔，幾條褪色祈願布被系在枝上。神龕供奉的不是明確神像，而是一塊被水磨圓的白石，石上刻著代表水聲、風聲與回音的三枚符號。這裡是溪谷任務線的重要地標，旅人可獻上冷泉水或找回巡林徽章，讓神龕重新回應溪谷低語。神龕後方的岩壁有許多被蛛絲遮住的舊刻痕，記錄巡林人曾用聲音安撫溪谷水脈；東側蛛洞裂縫只夠細小生物穿過，旅人需從冷泉岩縫進入蛛網岩洞。若旅人先清理蛛網岩洞，再回到此處調查，白石會短暫發光並指出隱瀑石室方向。祈願布末端還綁著幾枚小鈴，風起時會敲出與低語裂縫相同的節奏',
     exits: [
       { direction: 'north', targetRoomId: 'whispering_valley_willow_camp', description: '北側柳樹小徑回到營地' },
       {
@@ -181,7 +181,7 @@ whispering_valley_ice_fern_patch: {
     image: 'whispering_valley_ice_fern_patch.png',
     imagePrompt: '冰蕨叢 in whispering_valley, patch of pale blue ferns frosted by cold spring mist, dew crystals and spider silk, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '草藥坡北端突然變冷，地面長出一片淡藍冰蕨，每片葉緣都凝著霜珠。冰蕨會隨聲音微微顫動，把腳步聲傳向回音岩群和瀑布方向。這裡是稀有採集點，玩家可取得冰屬性藥草，也要小心藏在葉背的蜘蛛和被寒氣吸引的史萊姆。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '草藥坡北端突然變冷，地面長出一片淡藍冰蕨，每片葉緣都凝著霜珠。冰蕨會隨聲音微微顫動，把腳步聲傳向回音岩群和瀑布方向。這裡是稀有採集點，旅人可取得冰屬性藥草，也要小心藏在葉背的蜘蛛和被寒氣吸引的史萊姆。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       { direction: 'north', targetRoomId: 'whispering_valley_fallen_log', description: '北側冷霧坡面回到倒木淺橋' },
       {
@@ -214,7 +214,7 @@ whispering_valley_wolf_den: {
     image: 'whispering_valley_wolf_den.png',
     imagePrompt: '溪狼巢 in whispering_valley, shallow wolf den under roots beside creek, bones, wet fur tracks and dim green light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '瀑布西側的樹根下有一個低矮狼巢，入口堆著魚骨、黑鴉羽毛和濕泥腳印。溪谷野狼比平原狼更安靜，牠們會利用水聲掩蓋接近的腳步。北側狼徑氣味指向石堰，但巢後根洞塌陷，玩家需從巡林哨站小徑抵達石堰。這裡是低等精英戰鬥房，玩家若要安全前往瀑布或隱瀑，最好先處理狼巢，否則牠們會沿溪追擊。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
+      '瀑布西側的樹根下有一個低矮狼巢，入口堆著魚骨、黑鴉羽毛和濕泥腳印。溪谷野狼比平原狼更安靜，牠們會利用水聲掩蓋接近的腳步。北側狼徑氣味指向石堰，但巢後根洞塌陷，旅人需從巡林哨站小徑抵達石堰。這裡是低等精英戰鬥房，旅人若要安全前往瀑布或隱瀑，最好先處理狼巢，否則牠們會沿溪追擊。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進',
     exits: [
       {
         direction: 'east',
@@ -252,7 +252,7 @@ whispering_valley_waterfall_base: {
     image: 'whispering_valley_waterfall_base.png',
     imagePrompt: '瀑布底部 in whispering_valley, waterfall base with spray, slick rocks, rainbow mist and roaring hidden whispers, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain fantasy terrain, clear lantern light',
     description:
-      '溪谷上游的瀑布從灰白岩壁落下，水霧把周圍石頭和樹根都染成濕亮銀色。瀑聲很大，卻能在某些角度聽見清楚低語，像有人站在水幕後說話。這裡是溪谷中段地標，連接狼巢、舊神龕方向、隱瀑與石堰；舊神龕可在東側水霧中看見，但濕石崩塌後不能直接橫切，需從下游柳樹營地繞行。玩家可搜索水幕、採集濕苔或尋找隱藏通路。瀑布落點周圍的石頭被水流磨出三圈同心紋，與低語裂縫符號相同。若調整石堰水量，水幕會短暫分開，露出通往隱瀑石室的安全落腳點。瀑布背後還有巡林人刻下的高度標記，顯示近年水位忽高忽低，溪谷低語也隨之變得混亂。霧中可見藍白光點上下漂移。',
+      '溪谷上游的瀑布從灰白岩壁落下，水霧把周圍石頭和樹根都染成濕亮銀色。瀑聲很大，卻能在某些角度聽見清楚低語，像有人站在水幕後說話。這裡是溪谷中段地標，連接狼巢、舊神龕方向、隱瀑與石堰；舊神龕可在東側水霧中看見，但濕石崩塌後不能直接橫切，需從下游柳樹營地繞行。旅人可搜索水幕、採集濕苔或尋找隱藏通路。瀑布落點周圍的石頭被水流磨出三圈同心紋，與低語裂縫符號相同。若調整石堰水量，水幕會短暫分開，露出通往隱瀑石室的安全落腳點。瀑布背後還有巡林人刻下的高度標記，顯示近年水位忽高忽低，溪谷低語也隨之變得混亂。霧中可見藍白光點上下漂移',
     exits: [
       {
         direction: 'south',
@@ -297,7 +297,7 @@ whispering_valley_hidden_cascade: {
     image: 'whispering_valley_hidden_cascade.png',
     imagePrompt: '隱瀑石室 in whispering_valley, hidden chamber behind waterfall, glowing wet stone, secret cascade, fern roots and blue mist, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain chamber, clear lantern light',
     description:
-      '穿過瀑布水幕後，岩壁內竟藏著一間狹長石室，第二道更細的隱瀑沿著裂縫落入深潭。石室牆面佈滿水蝕符號，形狀與舊神龕白石上的符文一致。東側冷霧連到冰蕨叢，但裂縫被水流沖蝕得過窄，只能從冰蕨叢方向找到入口。這裡是隱藏探索房，玩家能揭開低語來源、找到稀有水晶，也會遭遇從蛛洞和冷泉追來的怪物。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
+      '穿過瀑布水幕後，岩壁內竟藏著一間狹長石室，第二道更細的隱瀑沿著裂縫落入深潭。石室牆面佈滿水蝕符號，形狀與舊神龕白石上的符文一致。東側冷霧連到冰蕨叢，但裂縫被水流沖蝕得過窄，只能從冰蕨叢方向找到入口。這裡是隱藏探索房，旅人能揭開低語來源、找到稀有水晶，也會遭遇從蛛洞和冷泉追來的怪物。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進',
     exits: [
       {
         direction: 'south',
@@ -335,7 +335,7 @@ whispering_valley_ranger_post: {
     image: 'whispering_valley_ranger_post.png',
     imagePrompt: '巡林哨站 in whispering_valley, small wooden ranger post, map board, hanging lantern, valley trail signs and cool shade, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain valley, clear lantern light',
     description:
-      '谷口西側的木棚是廢棄巡林哨站，牆上釘著溪谷路線圖、怪物出沒記錄和幾張被雨水暈開的告示。桌面還留著半瓶驅蟲油與一盞可重新點燃的舊燈。這裡是任務與交通提示房，玩家可取得溪谷路線、蛛洞警告或失蹤巡林人的初始線索。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
+      '谷口西側的木棚是廢棄巡林哨站，牆上釘著溪谷路線圖、怪物出沒記錄和幾張被雨水暈開的告示。桌面還留著半瓶驅蟲油與一盞可重新點燃的舊燈。這裡是任務與交通提示房，旅人可取得溪谷路線、蛛洞警告或失蹤巡林人的初始線索。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進',
     exits: [
       { direction: 'east', targetRoomId: 'whispering_valley_entrance', description: '木棚外就是溪谷入口' },
       { direction: 'south', targetRoomId: 'whispering_valley_fill_n7_6', description: '南側巡林小徑通往谷底通道' },
@@ -361,7 +361,7 @@ whispering_valley_stone_weir: {
     image: 'whispering_valley_stone_weir.png',
     imagePrompt: '石堰 in whispering_valley, old stone weir across stream, shallow steps, water control stones and wolf tracks, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain stone, clear lantern light',
     description:
-      '巡林小徑北端有一座矮石堰，把溪水分成幾條淺流，石塊上刻著水位線和修補記號。若移動幾塊鬆動石頭，就能改變下游冷泉與釣魚灣的水量。這裡是事件與捷徑點，玩家可修復石堰、追蹤狼群，或由西側小路快速切到瀑布附近。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '巡林小徑北端有一座矮石堰，把溪水分成幾條淺流，石塊上刻著水位線和修補記號。若移動幾塊鬆動石頭，就能改變下游冷泉與釣魚灣的水量。這裡是事件與捷徑點，旅人可修復石堰、追蹤狼群，或由西側小路快速切到瀑布附近。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       { direction: 'north', targetRoomId: 'whispering_valley_fill_n7_7', description: '北側蘆葦路回到谷底通道方向' },
       {
@@ -400,7 +400,7 @@ whispering_valley_whispering_rift: {
     image: 'whispering_valley_whispering_rift.png',
     imagePrompt: '低語裂縫 in whispering_valley, narrow glowing rift in wet valley rock, water threads, echo symbols, mist and gathered beasts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain valley, clear lantern light',
     description:
-      '隱瀑石室與石堰水聲最終都指向這道狹窄岩縫，南側水蝕小徑可退回石室，西面水聲可聽見石堰但岩縫落差過大，需從巡林哨站路線抵達石堰。裂縫裡不是黑暗，而是細細流動的藍白光絲，所有溪谷低語都從這裡被水聲帶出。岩壁符號會回應舊神龕白石、巡林哨站記錄和石堰水位，像在要求玩家完成一套修復溪谷聲音的儀式。這裡是低語溪谷的大型事件鉤子與 Boss 前哨，怪物會被過強的回音吸引而來。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
+      '隱瀑石室與石堰水聲最終都指向這道狹窄岩縫，南側水蝕小徑可退回石室，西面水聲可聽見石堰但岩縫落差過大，需從巡林哨站路線抵達石堰。裂縫裡不是黑暗，而是細細流動的藍白光絲，所有溪谷低語都從這裡被水聲帶出。岩壁符號會回應舊神龕白石、巡林哨站記錄和石堰水位，像在要求旅人完成一套修復溪谷聲音的儀式。這裡是低語溪谷的大型事件鉤子與 Boss 前哨，怪物會被過強的回音吸引而來。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進',
     exits: [
       {
         direction: 'south',
@@ -974,7 +974,7 @@ wildgrass_hills_windbreak_gate: {
     image: 'wildgrass_hills_windbreak_gate.png',
     imagePrompt: '防風柵門 in wildgrass_hills, windbreak fence gate at yellow grass hills, leaning posts, road marker, sweeping clouds, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
     description:
-      '西境舊路在這裡穿過一排傾斜防風柵，正式進入荒草丘陵。枯黃高草被強風吹成同一方向，路牌上用焦黑字跡警告旅人不要在夜裡離開石道。柵門旁有避風凹槽、舊補給箱和被半獸人斥候削尖的木樁，是進出丘陵時最安全的錨點。玩家能在這裡整理路線、觀察風向，也能從草浪間辨認野豬踐踏痕與哥布林巡邏腳印。柵門柱上刻著近月失蹤商隊的記號，旁邊繫著還未完全褪色的求救布條，表示危險已經逼近入口。若回頭沿舊路撤離，這裡也是最快的交通節點，適合護送任務重新集合出發。',
+      '西境舊路在這裡穿過一排傾斜防風柵，正式進入荒草丘陵。枯黃高草被強風吹成同一方向，路牌上用焦黑字跡警告旅人不要在夜裡離開石道。柵門旁有避風凹槽、舊補給箱和被半獸人斥候削尖的木樁，是進出丘陵時最安全的錨點。旅人能在這裡整理路線、觀察風向，也能從草浪間辨認野豬踐踏痕與哥布林巡邏腳印。柵門柱上刻著近月失蹤商隊的記號，旁邊繫著還未完全褪色的求救布條，表示危險已經逼近入口。若回頭沿舊路撤離，這裡也是最快的交通節點，適合護送任務重新集合出發',
     exits: [
       { direction: 'east', targetRoomId: 'wildgrass_hills_lower_slope', description: '石道爬向低坡' },
       { direction: 'south', targetRoomId: 'wildgrass_hills_old_road_cut', description: '舊路切口可快速離開丘陵', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -1000,7 +1000,7 @@ wildgrass_hills_lower_slope: {
     image: 'wildgrass_hills_lower_slope.png',
     imagePrompt: '低風坡 in wildgrass_hills, rolling lower slope of yellow grass, gust trails, exposed stones and distant watchfires, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '防風柵後的低坡看似開闊，實際上到處藏著半人高的草溝。風從西面壓過丘線，把草葉刮出像水面一樣的波紋，偶爾露出白石、斷箭和小型獸骨。這裡是丘陵主路的第一段，能通往高草徑、彎橡樹與舊柵門。玩家可在坡頂觀察遠方煙火，判斷哥布林營地位置，也會被野豬與巡邏斥候測試實力。坡面沒有真正遮蔽，一旦交戰，風聲會把動靜傳得很遠。',
+      '防風柵後的低坡看似開闊，實際上到處藏著半人高的草溝。風從西面壓過丘線，把草葉刮出像水面一樣的波紋，偶爾露出白石、斷箭和小型獸骨。這裡是丘陵主路的第一段，能通往高草徑、彎橡樹與舊柵門。旅人可在坡頂觀察遠方煙火，判斷哥布林營地位置，也會被野豬與巡邏斥候測試實力。坡面沒有真正遮蔽，一旦交戰，風聲會把動靜傳得很遠',
     exits: [
       { direction: 'west', targetRoomId: 'wildgrass_hills_windbreak_gate', description: '石道回到防風柵門' },
       { direction: 'east', targetRoomId: 'wildgrass_hills_tallgrass_lane', description: '草浪形成狹長通道' },
@@ -1027,7 +1027,7 @@ wildgrass_hills_tallgrass_lane: {
     image: 'wildgrass_hills_tallgrass_lane.png',
     imagePrompt: '高草徑 in wildgrass_hills, narrow lane through towering dry grass, hidden tracks, wind ribbons and amber light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain fantasy terrain, clear lantern light',
     description:
-      '一條被腳步和獸蹄壓出的細徑穿過高草，兩側草葉高過肩頭，人在其中幾乎看不見十步外的同伴。風穿過草莖時發出像耳語的摩擦聲，掩蓋了哥布林斥候拉弓與野豬低吼。地面散著被折斷的標記枝，顯示這條路被多支巡邏隊反覆使用。玩家可沿路追蹤草籽、獸皮和箭羽材料，也能轉往野豬泥窪、斥候岩臺或溪切溝。這裡是典型伏擊走廊，任何火把都會在風中搖晃暴露位置。',
+      '一條被腳步和獸蹄壓出的細徑穿過高草，兩側草葉高過肩頭，人在其中幾乎看不見十步外的同伴。風穿過草莖時發出像耳語的摩擦聲，掩蓋了哥布林斥候拉弓與野豬低吼。地面散著被折斷的標記枝，顯示這條路被多支巡邏隊反覆使用。旅人可沿路追蹤草籽、獸皮和箭羽材料，也能轉往野豬泥窪、斥候岩臺或溪切溝。這裡是典型伏擊走廊，任何火把都會在風中搖晃暴露位置',
     exits: [
       { direction: 'west', targetRoomId: 'wildgrass_hills_lower_slope', description: '草徑回到低風坡' },
       { direction: 'east', targetRoomId: 'wildgrass_hills_boar_wallow', description: '泥味通往野豬泥窪' },
@@ -1061,7 +1061,7 @@ wildgrass_hills_boar_wallow: {
     image: 'wildgrass_hills_boar_wallow.png',
     imagePrompt: '野豬泥窪 in wildgrass_hills, muddy wallow among dry grass, tusk marks, trampled reeds and storm clouds, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '高草徑東側的低洼地被野豬翻成一片爛泥，泥面插著斷草、白骨和被撞碎的木盾。濕泥保存了清楚足跡，有小豬、成年巨豬，也有哥布林試圖繞行後被追撞的痕跡。這裡是丘陵最早能感受到高密度怪物活動的戰鬥房，玩家可收集草根、硬皮與帶礦物味的泥塊。泥窪周圍視野低，野豬會從草牆後突然衝出；若能引牠撞上石塊，反而能打開通向果園廢址的短路。',
+      '高草徑東側的低洼地被野豬翻成一片爛泥，泥面插著斷草、白骨和被撞碎的木盾。濕泥保存了清楚足跡，有小豬、成年巨豬，也有哥布林試圖繞行後被追撞的痕跡。這裡是丘陵最早能感受到高密度怪物活動的戰鬥房，旅人可收集草根、硬皮與帶礦物味的泥塊。泥窪周圍視野低，野豬會從草牆後突然衝出；若能引牠撞上石塊，反而能打開通向果園廢址的短路',
     exits: [
       { direction: 'west', targetRoomId: 'wildgrass_hills_tallgrass_lane', description: '乾草徑在西側' },
       { direction: 'east', targetRoomId: 'wildgrass_hills_orchard_ruin', description: '泥痕延向果園廢址' },
@@ -1088,7 +1088,7 @@ wildgrass_hills_scout_ledge: {
     image: 'wildgrass_hills_scout_ledge.png',
     imagePrompt: '斥候岩臺 in wildgrass_hills, rocky scout ledge above grassland, crude signal flags, bows, wind and long view, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '高草徑北面露出一片平整岩臺，能俯瞰低坡、泥窪和遠方煙火。哥布林斥候在石縫插著破布旗，用不同顏色標示旅人隊伍、商車和巡獵野獸。岩臺邊緣留有磨平的腳印與弓弦蠟，說明這裡長期被當作監視點。玩家可奪下旗號，短暫干擾丘陵巡邏，也能從望向北方的視角找到石環與雷丘位置。這裡的戰鬥容易被高低差影響，若不先清掉弓手，往下撤退會一直受到追射。',
+      '高草徑北面露出一片平整岩臺，能俯瞰低坡、泥窪和遠方煙火。哥布林斥候在石縫插著破布旗，用不同顏色標示旅人隊伍、商車和巡獵野獸。岩臺邊緣留有磨平的腳印與弓弦蠟，說明這裡長期被當作監視點。旅人可奪下旗號，短暫干擾丘陵巡邏，也能從望向北方的視角找到石環與雷丘位置。這裡的戰鬥容易被高低差影響，若不先清掉弓手，往下撤退會一直受到追射',
     exits: [
       { direction: 'south', targetRoomId: 'wildgrass_hills_tallgrass_lane', description: '下坡回到高草徑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'wildgrass_hills_hawk_perch', description: '岩脊延向鷹棲柱' },
@@ -1115,7 +1115,7 @@ wildgrass_hills_bent_oak: {
     image: 'wildgrass_hills_bent_oak.png',
     imagePrompt: '彎橡樹 in wildgrass_hills, wind-bent lone oak on grassy hill, hanging charms, roots, amber sky, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sky, clear lantern light',
     description:
-      '低風坡北側有一棵被長年強風吹彎的橡樹，樹冠幾乎貼著地面，根部卻牢牢抓住岩層。枝條上掛著旅人留下的布條、獸牙和小鈴，風一吹便發出細碎聲響。這裡比周圍安靜，適合短暫避風與整理採集品，也藏著通往種籽溝和隱泉的自然線索。玩家能辨認哪些布條是求平安，哪些是哥布林用來標記獵物的暗號。若夜裡停留，樹影會像低伏巨獸，容易引來巡邏狼群與斥候。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
+      '低風坡北側有一棵被長年強風吹彎的橡樹，樹冠幾乎貼著地面，根部卻牢牢抓住岩層。枝條上掛著旅人留下的布條、獸牙和小鈴，風一吹便發出細碎聲響。這裡比周圍安靜，適合短暫避風與整理採集品，也藏著通往種籽溝和隱泉的自然線索。旅人能辨認哪些布條是求平安，哪些是哥布林用來標記獵物的暗號。若夜裡停留，樹影會像低伏巨獸，容易引來巡邏狼群與斥候。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進',
     exits: [
       { direction: 'south', targetRoomId: 'wildgrass_hills_lower_slope', description: '坡路回到低風坡', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
@@ -1154,7 +1154,7 @@ wildgrass_hills_stream_cut: {
     image: 'wildgrass_hills_stream_cut.png',
     imagePrompt: '溪切溝 in wildgrass_hills, narrow stream cut through grass hill, eroded banks, stepping stones, reeds and wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain fantasy terrain, clear lantern light',
     description:
-      '高草徑南側突然裂出一道被溪水切開的溝谷，清水沿著褐色土壁流下，露出草根、碎石和被沖出的舊陶片。溪岸比草地低，能暫時避開遠處斥候視線，但水聲也會掩蓋靠近的腳步。這裡是資源與探索房，玩家可採集水草、沖洗泥塊，或沿濕滑踏石前往隱泉與舊路切口。溝壁上有野豬磨牙痕、風暴蛇爬痕和哥布林挖出的藏物洞，代表這條溪同時是敵群水源與偷運路線。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
+      '高草徑南側突然裂出一道被溪水切開的溝谷，清水沿著褐色土壁流下，露出草根、碎石和被沖出的舊陶片。溪岸比草地低，能暫時避開遠處斥候視線，但水聲也會掩蓋靠近的腳步。這裡是資源與探索房，旅人可採集水草、沖洗泥塊，或沿濕滑踏石前往隱泉與舊路切口。溝壁上有野豬磨牙痕、風暴蛇爬痕和哥布林挖出的藏物洞，代表這條溪同時是敵群水源與偷運路線。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進',
     exits: [
       {
         direction: 'north',

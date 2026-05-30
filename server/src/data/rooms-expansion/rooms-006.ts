@@ -8,7 +8,7 @@ wildgrass_hills_hawk_perch: {
     image: 'wildgrass_hills_hawk_perch.png',
     imagePrompt: '鷹棲柱 in wildgrass_hills, tall stone perch with wind hawks, nests, feathers and sweeping hill view, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
     description:
-      '泥窪北側的石柱從草地裡孤立聳起，頂端築著幾座用枯枝、布片和細骨堆成的鷹巢。風之鷹沿著上升氣流盤旋，會在獵物露出破綻時從背光處俯衝。柱腳有許多被摔碎的甲片和閃亮小物，是猛禽從戰場或商路叼回的戰利品。玩家可攀爬石縫採集羽毛、尋找被偷走的任務物，也能從高處看見看火營與雷丘。這裡視野開闊但缺少掩體，遠程敵人與空中敵人會同時施壓。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
+      '泥窪北側的石柱從草地裡孤立聳起，頂端築著幾座用枯枝、布片和細骨堆成的鷹巢。風之鷹沿著上升氣流盤旋，會在獵物露出破綻時從背光處俯衝。柱腳有許多被摔碎的甲片和閃亮小物，是猛禽從戰場或商路叼回的戰利品。旅人可攀爬石縫採集羽毛、尋找被偷走的任務物，也能從高處看見看火營與雷丘。這裡視野開闊但缺少掩體，遠程敵人與空中敵人會同時施壓。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進',
     exits: [
       { direction: 'west', targetRoomId: 'wildgrass_hills_scout_ledge', description: '岩脊回到斥候岩臺' },
       { direction: 'south', targetRoomId: 'wildgrass_hills_boar_wallow', description: '下方是野豬泥窪', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -35,7 +35,7 @@ wildgrass_hills_stone_ring: {
     image: 'wildgrass_hills_stone_ring.png',
     imagePrompt: '風刻石環 in wildgrass_hills, ancient stone ring carved by wind, grass, runes, storm light and open hilltop, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain stone, clear lantern light',
     description:
-      '斥候岩臺北面有一圈古老立石，石面被風砂磨得圓滑，只剩幾道像閃電與草籽交纏的符號。高草在石環內倒伏成螺旋，中央堆著乾草、獸骨和焦黑祭灰。哥布林不敢長久停留，只會把偷來的護符丟進環中換取風向庇護。這裡是探索與任務線索房，玩家可解讀符號，得知雷丘並非自然形成，而是舊祭儀引來的風暴焦點。石環偶爾會讓聲音失真，使怪物從錯誤方向靠近。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
+      '斥候岩臺北面有一圈古老立石，石面被風砂磨得圓滑，只剩幾道像閃電與草籽交纏的符號。高草在石環內倒伏成螺旋，中央堆著乾草、獸骨和焦黑祭灰。哥布林不敢長久停留，只會把偷來的護符丟進環中換取風向庇護。這裡是探索與任務線索房，旅人可解讀符號，得知雷丘並非自然形成，而是舊祭儀引來的風暴焦點。石環偶爾會讓聲音失真，使怪物從錯誤方向靠近。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進',
     exits: [
       { direction: 'south', targetRoomId: 'wildgrass_hills_scout_ledge', description: '下坡回到斥候岩臺', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'wildgrass_hills_thunder_mound', description: '石環缺口指向雷丘' },
@@ -62,7 +62,7 @@ wildgrass_hills_orchard_ruin: {
     image: 'wildgrass_hills_orchard_ruin.png',
     imagePrompt: '果園廢址 in wildgrass_hills, abandoned hill orchard, dead fruit trees, broken fence, yellow grass and goblin tracks, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '泥窪東面仍能看見一片舊果園的輪廓，矮牆倒塌，乾枯果樹被高草吞沒，只剩幾顆酸澀野果掛在扭曲枝頭。樹幹上刻著農戶撤離前留下的數字，旁邊卻被哥布林加上粗糙塗鴉，標記可藏箭、可埋伏和可燒毀的位置。這裡是資源與敘事房，玩家能採集野果、乾木與舊農具，也能追查荒草丘陵從農地變成戰場的過程。果園視線被樹影切碎，野豬敵群會從破籬後衝出，哥布林盜匪則躲在倒木後投石。',
+      '泥窪東面仍能看見一片舊果園的輪廓，矮牆倒塌，乾枯果樹被高草吞沒，只剩幾顆酸澀野果掛在扭曲枝頭。樹幹上刻著農戶撤離前留下的數字，旁邊卻被哥布林加上粗糙塗鴉，標記可藏箭、可埋伏和可燒毀的位置。這裡是資源與敘事房，旅人能採集野果、乾木與舊農具，也能追查荒草丘陵從農地變成戰場的過程。果園視線被樹影切碎，野豬敵群會從破籬後衝出，哥布林盜匪則躲在倒木後投石',
     exits: [
       { direction: 'west', targetRoomId: 'wildgrass_hills_boar_wallow', description: '泥路回到野豬泥窪' },
       { direction: 'east', targetRoomId: 'wildgrass_hills_goblin_blind', description: '樹後有哥布林伏棚' },
@@ -89,7 +89,7 @@ wildgrass_hills_goblin_blind: {
     image: 'wildgrass_hills_goblin_blind.png',
     imagePrompt: '哥布林伏棚 in wildgrass_hills, crude goblin hunting blind hidden in grass and orchard debris, bows, traps, smoke, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain fantasy terrain, clear lantern light',
     description:
-      '果園廢址東側架著幾座低矮伏棚，用乾草、破布和果樹枝偽裝成自然草堆。棚內擺著短弓、投石袋、捕獸夾和簡陋骨笛，地面還畫著附近路線的粗略地圖。東側能看見風車空殼，但伏棚後方草徑布滿捕獸夾，實際需從看火營破路前往風車。這是哥布林斥候和戰士混合出沒的伏擊房，玩家若直接穿過，會同時觸發陷阱與遠程攻擊。仔細拆除伏棚可取得巡邏線索，得知看火營、酋長脊與雷丘之間如何互相傳訊。棚後藏有一條被草蓋住的小徑，可以繞開部分主路危險。',
+      '果園廢址東側架著幾座低矮伏棚，用乾草、破布和果樹枝偽裝成自然草堆。棚內擺著短弓、投石袋、捕獸夾和簡陋骨笛，地面還畫著附近路線的粗略地圖。東側能看見風車空殼，但伏棚後方草徑布滿捕獸夾，實際需從看火營破路前往風車。這是哥布林斥候和戰士混合出沒的伏擊房，旅人若直接穿過，會同時觸發陷阱與遠程攻擊。仔細拆除伏棚可取得巡邏線索，得知看火營、酋長脊與雷丘之間如何互相傳訊。棚後藏有一條被草蓋住的小徑，可以繞開部分主路危險',
     exits: [
       { direction: 'west', targetRoomId: 'wildgrass_hills_orchard_ruin', description: '回到果園廢址' },
       {
@@ -121,7 +121,7 @@ wildgrass_hills_thunder_mound: {
     image: 'wildgrass_hills_thunder_mound.png',
     imagePrompt: '雷擊丘 in wildgrass_hills, storm-struck mound, blackened grass, cracked stones, lightning scars and windy sky, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sky, clear lantern light',
     description:
-      '風刻石環東側隆起一座焦黑小丘，草根像被雷火燒成細炭，石縫仍殘留淡淡藍光。每逢雲影掠過，丘頂便傳來低沉轟鳴，讓金屬裝備微微發麻。哥布林把這裡當成試膽地點，會把俘虜綁在焦木旁等待風暴裁決。這裡是大型事件前置房，玩家可收集雷痕石、調查祭儀殘留，並理解荒草丘陵的風暴力量為何逐漸失控。若在雷鳴時戰鬥，風之鷹怪群與雷丘祭司敵人會變得更躁動，整個戰場也更難掌控。',
+      '風刻石環東側隆起一座焦黑小丘，草根像被雷火燒成細炭，石縫仍殘留淡淡藍光。每逢雲影掠過，丘頂便傳來低沉轟鳴，讓金屬裝備微微發麻。哥布林把這裡當成試膽地點，會把俘虜綁在焦木旁等待風暴裁決。這裡是大型事件前置房，旅人可收集雷痕石、調查祭儀殘留，並理解荒草丘陵的風暴力量為何逐漸失控。若在雷鳴時戰鬥，風之鷹怪群與雷丘祭司敵人會變得更躁動，整個戰場也更難掌控',
     exits: [
       { direction: 'west', targetRoomId: 'wildgrass_hills_stone_ring', description: '焦草路回到石環' },
       { direction: 'east', targetRoomId: 'wildgrass_hills_chief_ridge', description: '雷痕延向酋長脊' },
@@ -154,7 +154,7 @@ wildgrass_hills_seed_gully: {
     image: 'wildgrass_hills_seed_gully.png',
     imagePrompt: '種籽溝 in wildgrass_hills, sheltered gully full of grass seeds, seed heads, bent oak roots and warm wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '彎橡樹東側的淺溝聚滿被風吹落的草籽，金黃籽穗堆在石縫、樹根和小水窪邊，像一條細碎河流。這裡比主坡安靜，許多小動物、野豬敵群與風暴蛇都會來翻找食物，也吸引哥布林收集乾籽製作引火包。玩家可採集草籽、草藥根與乾燥纖維，完成補給或製作任務。溝底有幾處被刻意鋪平，像是舊農人曾經用來晾種的地方。若仔細尋找，還能找到通往石環的古老腳印，證明此地曾被祭儀使用。',
+      '彎橡樹東側的淺溝聚滿被風吹落的草籽，金黃籽穗堆在石縫、樹根和小水窪邊，像一條細碎河流。這裡比主坡安靜，許多小動物、野豬敵群與風暴蛇都會來翻找食物，也吸引哥布林收集乾籽製作引火包。旅人可採集草籽、草藥根與乾燥纖維，完成補給或製作任務。溝底有幾處被刻意鋪平，像是舊農人曾經用來晾種的地方。若仔細尋找，還能找到通往石環的古老腳印，證明此地曾被祭儀使用',
     exits: [
       {
         direction: 'west',
@@ -187,7 +187,7 @@ wildgrass_hills_watchfire_camp: {
     image: 'wildgrass_hills_watchfire_camp.png',
     imagePrompt: '看火營 in wildgrass_hills, goblin watchfire camp on hill saddle, smoke, hide tents, weapon racks and dry grass, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain camp, clear lantern light',
     description:
-      '鷹棲柱與雷擊丘之間的鞍部搭著一座哥布林看火營，幾堆煙火用濕草悶燒，能把信號送到酋長脊和伏棚。營地用獸皮、破帆布和果園木板搭成，武器架上掛滿短矛、投石袋與偷來的銅鍋。這裡是丘陵中段的高密度戰鬥與任務房，玩家可以破壞煙火、奪取巡邏令牌，或解救被綁在木柱旁的旅人。營地四周沒有城牆，卻被高草與陷坑保護；若沒有先觀察煙向，很容易從錯誤入口闖進包圍圈。',
+      '鷹棲柱與雷擊丘之間的鞍部搭著一座哥布林看火營，幾堆煙火用濕草悶燒，能把信號送到酋長脊和伏棚。營地用獸皮、破帆布和果園木板搭成，武器架上掛滿短矛、投石袋與偷來的銅鍋。這裡是丘陵中段的高密度戰鬥與任務房，旅人可以破壞煙火、奪取巡邏令牌，或解救被綁在木柱旁的旅人。營地四周沒有城牆，卻被高草與陷坑保護；若沒有先觀察煙向，很容易從錯誤入口闖進包圍圈',
     exits: [
       { direction: 'west', targetRoomId: 'wildgrass_hills_hawk_perch', description: '石柱在西側' },
       { direction: 'south', targetRoomId: 'wildgrass_hills_orchard_ruin', description: '坡下是果園廢址', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -221,7 +221,7 @@ wildgrass_hills_windmill_shell: {
     image: 'wildgrass_hills_windmill_shell.png',
     imagePrompt: '風車空殼 in wildgrass_hills, ruined hill windmill shell, broken sails, gears, dry grass and goblin marks, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '看火營東側殘留一座舊風車，木翼早被強風吹斷，只剩石塔空殼和卡住的齒輪。塔內牆上刻著農戶收成記號，外牆則被哥布林塗上戰利品數量。風穿過破窗時會帶動斷齒輪發出沉重敲擊，像有人在塔內拖著鎖鏈。這裡是探索與捷徑房，玩家能修復部分機關，放下通往酋長脊的繩梯，也能找到失落農具與舊倉庫鑰匙。塔內狹窄，哥布林首領敵人會利用樓梯轉角逼近，風之鷹怪群則從破窗撲入。',
+      '看火營東側殘留一座舊風車，木翼早被強風吹斷，只剩石塔空殼和卡住的齒輪。塔內牆上刻著農戶收成記號，外牆則被哥布林塗上戰利品數量。風穿過破窗時會帶動斷齒輪發出沉重敲擊，像有人在塔內拖著鎖鏈。這裡是探索與捷徑房，旅人能修復部分機關，放下通往酋長脊的繩梯，也能找到失落農具與舊倉庫鑰匙。塔內狹窄，哥布林首領敵人會利用樓梯轉角逼近，風之鷹怪群則從破窗撲入',
     exits: [
       { direction: 'west', targetRoomId: 'wildgrass_hills_watchfire_camp', description: '煙火營在西側' },
       { direction: 'south', targetRoomId: 'wildgrass_hills_goblin_blind', description: '草棚伏點在南側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -254,7 +254,7 @@ wildgrass_hills_hidden_spring: {
     image: 'wildgrass_hills_hidden_spring.png',
     imagePrompt: '隱泉 in wildgrass_hills, hidden spring under bent grass and stones, clear water, reeds, animal tracks, soft light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain water, clear lantern light',
     description:
-      '彎橡樹北面的濕草一路引到一處被石塊遮住的泉眼，清水從岩縫滲出，形成小小水潭。潭邊有野豬、狼、鷹和哥布林混雜的足跡，代表所有生物都知道這是丘陵最穩定的水源。泉水清甜，卻在雷雨前會泛出細小氣泡，像地下也在回應雷擊丘。這裡是補給與事件房，玩家可取水、採集水草，或發現被藏在石後的求救布條。若在此休息太久，爭水的野獸會陸續靠近。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
+      '彎橡樹北面的濕草一路引到一處被石塊遮住的泉眼，清水從岩縫滲出，形成小小水潭。潭邊有野豬、狼、鷹和哥布林混雜的足跡，代表所有生物都知道這是丘陵最穩定的水源。泉水清甜，卻在雷雨前會泛出細小氣泡，像地下也在回應雷擊丘。這裡是補給與事件房，旅人可取水、採集水草，或發現被藏在石後的求救布條。若在此休息太久，爭水的野獸會陸續靠近。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進',
     exits: [
       {
         direction: 'south',
@@ -293,7 +293,7 @@ wildgrass_hills_broken_totem: {
     image: 'wildgrass_hills_broken_totem.png',
     imagePrompt: '斷圖騰 in wildgrass_hills, broken wooden totem on windy hill, charms, skulls, grass seeds and storm signs, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '隱泉東側的小丘立著半截斷裂圖騰，木面刻有草籽、風線和張口獸首，頂端被雷火劈黑。哥布林在圖騰周圍插上獸骨，試圖把古老標記改造成部落戰旗，但每次大風都會把骨牌吹散。東側草脊通向風暴草冠的痕跡仍在，但斷旗與骨牌擋住上坡路，需從酋長脊進入最高草冠後再折返。這裡是精英前置與任務線索房，玩家能比較圖騰符號與石環刻痕，推斷丘陵曾有守風祭儀。斷木內部藏著空腔，裡面有一卷被油布保護的舊誓詞。取走誓詞會引來巡邏隊，也會打開通往風暴草冠的線索。',
+      '隱泉東側的小丘立著半截斷裂圖騰，木面刻有草籽、風線和張口獸首，頂端被雷火劈黑。哥布林在圖騰周圍插上獸骨，試圖把古老標記改造成部落戰旗，但每次大風都會把骨牌吹散。東側草脊通向風暴草冠的痕跡仍在，但斷旗與骨牌擋住上坡路，需從酋長脊進入最高草冠後再折返。這裡是精英前置與任務線索房，旅人能比較圖騰符號與石環刻痕，推斷丘陵曾有守風祭儀。斷木內部藏著空腔，裡面有一卷被油布保護的舊誓詞。取走誓詞會引來巡邏隊，也會打開通往風暴草冠的線索',
     exits: [
       { direction: 'west', targetRoomId: 'wildgrass_hills_hidden_spring', description: '石徑回到隱泉', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'south', targetRoomId: 'wildgrass_hills_seed_gully', description: '下坡是種籽溝', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -320,7 +320,7 @@ wildgrass_hills_chief_ridge: {
     image: 'wildgrass_hills_chief_ridge.png',
     imagePrompt: '酋長脊 in wildgrass_hills, ridge camp of goblin chief, banners, bone throne, storm clouds and dry grass, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain camp, clear lantern light',
     description:
-      '雷擊丘東側的長脊被哥布林改造成首領營地，骨旗沿著稜線排列，中央有一張用野豬獠牙和舊車輪拼成的粗糙王座。從這裡可以俯瞰看火營、風車和大片高草，任何闖入者都很難避開巡邏目光。酋長會在風最大時召集戰士，讓吼聲順著山脊傳遍丘陵。王座旁堆著從旅人身上搶來的路牌、鍋具和破甲，像一座炫耀戰利品的小山。這裡是精英戰鬥房，玩家可挑戰哥布林首領、奪取部落號角，或破壞控制巡邏的旗令。若未先削弱看火營與伏棚，這場戰鬥會持續召來支援，直到旗號全被奪下為止才會停止。',
+      '雷擊丘東側的長脊被哥布林改造成首領營地，骨旗沿著稜線排列，中央有一張用野豬獠牙和舊車輪拼成的粗糙王座。從這裡可以俯瞰看火營、風車和大片高草，任何闖入者都很難避開巡邏目光。酋長會在風最大時召集戰士，讓吼聲順著山脊傳遍丘陵。王座旁堆著從旅人身上搶來的路牌、鍋具和破甲，像一座炫耀戰利品的小山。這裡是精英戰鬥房，旅人可挑戰哥布林首領、奪取部落號角，或破壞控制巡邏的旗令。若未先削弱看火營與伏棚，這場戰鬥會持續召來支援，直到旗號全被奪下為止才會停止',
     exits: [
       { direction: 'west', targetRoomId: 'wildgrass_hills_thunder_mound', description: '焦草脊回到雷擊丘' },
       {
@@ -354,7 +354,7 @@ wildgrass_hills_stormgrass_crown: {
     image: 'wildgrass_hills_stormgrass_crown.png',
     imagePrompt: '風暴草冠 in wildgrass_hills, highest crown of storm-tossed grass, lightning sky, ancient marker stones, wild banners, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain sky, clear lantern light',
     description:
-      '酋長脊東端升到荒草丘陵最高處，整片草冠被狂風壓成巨大旋渦，像一頂不停轉動的金色王冠。中央立著幾塊古老界石，石縫間有雷痕、草籽和被綁住的部落旗。當雲層低垂時，風會在草冠中心形成肉眼可見的漏斗，將聲音、灰燼與羽毛全捲向天空。界石底部還有被草根纏住的舊祭盤，盤面刻著安撫風暴的步驟，只是關鍵符號被哥布林刀痕刮壞。這裡是荒草丘陵的大型事件鉤子與最終地標，玩家可用守風誓詞安撫風暴，也可擊敗首領後拆除旗幟，讓丘陵巡邏失去統一指揮。若選擇強行採集雷草，整片草冠會引來猛禽與殘餘戰士。',
+      '酋長脊東端升到荒草丘陵最高處，整片草冠被狂風壓成巨大旋渦，像一頂不停轉動的金色王冠。中央立著幾塊古老界石，石縫間有雷痕、草籽和被綁住的部落旗。當雲層低垂時，風會在草冠中心形成肉眼可見的漏斗，將聲音、灰燼與羽毛全捲向天空。界石底部還有被草根纏住的舊祭盤，盤面刻著安撫風暴的步驟，只是關鍵符號被哥布林刀痕刮壞。這裡是荒草丘陵的大型事件鉤子與最終地標，旅人可用守風誓詞安撫風暴，也可擊敗首領後拆除旗幟，讓丘陵巡邏失去統一指揮。若選擇強行採集雷草，整片草冠會引來猛禽與殘餘戰士',
     exits: [
       {
         direction: 'north',
@@ -387,7 +387,7 @@ wildgrass_hills_old_road_cut: {
     image: 'wildgrass_hills_old_road_cut.png',
     imagePrompt: '舊路切口 in wildgrass_hills, eroded old road cut below grass hills, milestone, wagon ruts, dusk wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain road, clear lantern light',
     description:
-      '防風柵門南側有一段被溪水和車輪切出的舊路，路面低於草坡，兩側土壁露出層層壓實的輪轍。半倒里程碑標著通往西境村落的方向，旁邊還有商隊臨時修車留下的鐵釘與木楔。這裡是荒草丘陵的撤離與捷徑交通房，玩家可從溪切溝繞回入口，也能在完成酋長脊事件後護送旅人離開。雖然比主坡安全，舊路仍會被流竄野獸利用；若忽視土壁上的新爪痕，回程也可能遭遇伏擊。',
+      '防風柵門南側有一段被溪水和車輪切出的舊路，路面低於草坡，兩側土壁露出層層壓實的輪轍。半倒里程碑標著通往西境村落的方向，旁邊還有商隊臨時修車留下的鐵釘與木楔。這裡是荒草丘陵的撤離與捷徑交通房，旅人可從溪切溝繞回入口，也能在完成酋長脊事件後護送旅人離開。雖然比主坡安全，舊路仍會被流竄野獸利用；若忽視土壁上的新爪痕，回程也可能遭遇伏擊',
     exits: [
       { direction: 'north', targetRoomId: 'wildgrass_hills_windbreak_gate', description: '坡上是防風柵門', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'wildgrass_hills_fill_2_n12', description: '東側風口通道連向溪切溝' },
@@ -413,7 +413,7 @@ mist_harbor_fog_gate: {
     image: 'mist_harbor_fog_gate.png',
     imagePrompt: '霧港城門 in mist_harbor, harbor town stone gate in heavy sea fog, wet cobbles, lanterns, gull silhouettes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain harbor, clear lantern light',
     description:
-      '霧港城門不是高牆要塞，而是一座跨在濕滑石路上的拱門，門頂掛著被海鹽腐蝕的銅鐘。霧從港灣一路推進城內，讓旅人只能看見近處燈火與地上閃亮水痕。守門人會在這裡檢查船票、旅店名牌與貨運封條，也提醒新來者別在退潮前靠近外防波堤。這裡是霧港的入口與回程錨點，玩家可接到尋船、護送與失物任務，並從路牌判斷市集、傳送燈塔與舊海門方向。城門旁的公告板每天都會被潮氣弄皺，卻仍貼滿急件；若公告被撕下，通常代表某艘船的消息被人刻意封住。門洞下方還留著昨夜車輪壓出的深痕。',
+      '霧港城門不是高牆要塞，而是一座跨在濕滑石路上的拱門，門頂掛著被海鹽腐蝕的銅鐘。霧從港灣一路推進城內，讓旅人只能看見近處燈火與地上閃亮水痕。守門人會在這裡檢查船票、旅店名牌與貨運封條，也提醒新來者別在退潮前靠近外防波堤。這裡是霧港的入口與回程錨點，旅人可接到尋船、護送與失物任務，並從路牌判斷市集、傳送燈塔與舊海門方向。城門旁的公告板每天都會被潮氣弄皺，卻仍貼滿急件；若公告被撕下，通常代表某艘船的消息被人刻意封住。門洞下方還留著昨夜車輪壓出的深痕',
     exits: [
       { direction: 'east', targetRoomId: 'mist_harbor_tide_plaza', description: '濕石路通向潮汐廣場' },
       { direction: 'south', targetRoomId: 'mist_harbor_sea_gate', description: '城牆坡道通往舊海門', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -435,7 +435,7 @@ mist_harbor_tide_plaza: {
     image: 'mist_harbor_tide_plaza.png',
     imagePrompt: '潮汐廣場 in mist_harbor, wet harbor town plaza with tide clock, lantern poles, misty market arches, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain harbor, clear lantern light',
     description:
-      '潮汐廣場鋪著深灰石板，中央立著一座以浮標、齒輪和月相盤組成的潮鐘。每當潮位改變，鐘內銅錘便敲出低沉聲響，提醒商人調整船期，也提醒漁民避開暗流。廣場四周連著魚市、海關、旅店與傳送燈塔，是霧港最常被任務、交易與找人流程使用的核心房。街邊攤販用油布蓋住貨箱，霧中能聞到鹽、焦糖、魚腥與濕繩混合的味道。玩家可在此確認城市路線、等待 NPC 會合，或從潮鐘記錄推斷某艘船是否在夜裡偷偷進港。廣場石縫裡積著退潮留下的白鹽，像一圈圈未完成的航線。每次鐘響都會讓霧裡的人群短暫停步。',
+      '潮汐廣場鋪著深灰石板，中央立著一座以浮標、齒輪和月相盤組成的潮鐘。每當潮位改變，鐘內銅錘便敲出低沉聲響，提醒商人調整船期，也提醒漁民避開暗流。廣場四周連著魚市、海關、旅店與傳送燈塔，是霧港最常被任務、交易與找人流程使用的核心房。街邊攤販用油布蓋住貨箱，霧中能聞到鹽、焦糖、魚腥與濕繩混合的味道。旅人可在此確認城市路線、等待 NPC 會合，或從潮鐘記錄推斷某艘船是否在夜裡偷偷進港。廣場石縫裡積著退潮留下的白鹽，像一圈圈未完成的航線。每次鐘響都會讓霧裡的人群短暫停步',
     exits: [
       { direction: 'west', targetRoomId: 'mist_harbor_fog_gate', description: '濕路回到城門' },
       { direction: 'north', targetRoomId: 'mist_harbor_portal_lantern', description: '藍燈指向傳送燈塔', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -459,7 +459,7 @@ mist_harbor_portal_lantern: {
     image: 'mist_harbor_portal_lantern.png',
     imagePrompt: '傳送燈塔 in mist_harbor, blue portal lantern tower in harbor fog, rune mirrors, wet steps, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain tower, clear lantern light',
     description:
-      '潮汐廣場北側矗立著一座短塔，塔頂不是火焰，而是一盞被符文鏡片包住的藍色傳送燈。燈光穿過海霧後像水波一樣擴散，能與公共傳送網路對齊，讓旅人從遠方城市抵達霧港。塔內石階總是潮濕，牆上掛滿各地港印與傳送費率牌。這裡是霧港的主要傳送節點，玩家可使用公共傳送、設定回城位置、查詢船運目的地，也能接到修復鏡片與追查錯誤傳送記錄的任務。若燈色偏綠，代表霧港外海正在出現異常魔潮；守塔人會立刻封存當日名冊，等待可靠冒險者核對。塔底水槽會收集傳送後落下的鹽霧結晶。',
+      '潮汐廣場北側矗立著一座短塔，塔頂不是火焰，而是一盞被符文鏡片包住的藍色傳送燈。燈光穿過海霧後像水波一樣擴散，能與公共傳送網路對齊，讓旅人從遠方城市抵達霧港。塔內石階總是潮濕，牆上掛滿各地港印與傳送費率牌。這裡是霧港的主要傳送節點，旅人可使用公共傳送、設定回城位置、查詢船運目的地，也能接到修復鏡片與追查錯誤傳送記錄的任務。若燈色偏綠，代表霧港外海正在出現異常魔潮；守塔人會立刻封存當日名冊，等待可靠冒險者核對。塔底水槽會收集傳送後落下的鹽霧結晶',
     exits: [
       { direction: 'south', targetRoomId: 'mist_harbor_tide_plaza', description: '石階回到潮汐廣場', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'mist_harbor_chart_archive', description: '塔後小門通向海圖檔案室', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -482,7 +482,7 @@ mist_harbor_customs_house: {
     image: 'mist_harbor_customs_house.png',
     imagePrompt: '海關廳 in mist_harbor, harbor customs hall with ledgers, wet crates, brass scales, foggy windows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain harbor, clear lantern light',
     description:
-      '海關廳是一棟低矮石屋，窗戶常被霧水糊成乳白色，屋內卻點著明亮油燈。長桌上攤著貨運簿、關稅印章、銅秤與未拆封的潮濕木箱，港務員在此核對每一批進出霧港的船貨。這裡是服務與任務房，玩家可登記貿易貨物、查詢船名、繳納港稅，也能接到追查走私印章或尋找失蹤貨箱的委託。牆上掛著近三十日的進港表，其中幾行被墨水暈開，像有人刻意在霧夜改過紀錄。通往倉庫與船長辦公室的門永遠有人盯著。',
+      '海關廳是一棟低矮石屋，窗戶常被霧水糊成乳白色，屋內卻點著明亮油燈。長桌上攤著貨運簿、關稅印章、銅秤與未拆封的潮濕木箱，港務員在此核對每一批進出霧港的船貨。這裡是服務與任務房，旅人可登記貿易貨物、查詢船名、繳納港稅，也能接到追查走私印章或尋找失蹤貨箱的委託。牆上掛著近三十日的進港表，其中幾行被墨水暈開，像有人刻意在霧夜改過紀錄。通往倉庫與船長辦公室的門永遠有人盯著',
     exits: [
       { direction: 'north', targetRoomId: 'mist_harbor_tide_plaza', description: '台階回到潮汐廣場', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
@@ -511,7 +511,7 @@ mist_harbor_fish_market: {
     image: 'mist_harbor_fish_market.png',
     imagePrompt: '晨霧魚市 in mist_harbor, misty fish market with wet stalls, lanterns, silver fish, shouting vendors, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain market, clear lantern light',
     description:
-      '晨霧魚市從天未亮就開始吵鬧，濕木桌上堆著銀鱗魚、黑殼蟹、海草籃和仍在滴水的網袋。攤販用鐵鉤敲桶喊價，廚師、藥師與水手在霧裡互相討價還價。這裡是交易與採集交付房，玩家可購買食材、交付釣魚成果、尋找海怪目擊者，也能從異常魚獲判斷外海副本狀況。魚市後方有一條滑膩小巷通往走私者活動區，地上常混著魚血與看不清來源的黑色油跡。若某天魚市突然安靜，通常代表霧裡出了大事。',
+      '晨霧魚市從天未亮就開始吵鬧，濕木桌上堆著銀鱗魚、黑殼蟹、海草籃和仍在滴水的網袋。攤販用鐵鉤敲桶喊價，廚師、藥師與水手在霧裡互相討價還價。這裡是交易與採集交付房，旅人可購買食材、交付釣魚成果、尋找海怪目擊者，也能從異常魚獲判斷外海副本狀況。魚市後方有一條滑膩小巷通往走私者活動區，地上常混著魚血與看不清來源的黑色油跡。若某天魚市突然安靜，通常代表霧裡出了大事',
     exits: [
       { direction: 'west', targetRoomId: 'mist_harbor_tide_plaza', description: '叫賣聲回到廣場' },
       { direction: 'east', targetRoomId: 'mist_harbor_sailmakers_row', description: '帆布棚連向帆匠街' },
@@ -534,7 +534,7 @@ mist_harbor_sailmakers_row: {
     image: 'mist_harbor_sailmakers_row.png',
     imagePrompt: '帆匠街 in mist_harbor, narrow sailmaker street with hanging canvas, ropes, needles, fog and harbor lamps, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain street, clear lantern light',
     description:
-      '帆匠街兩側掛滿正在晾乾的帆布，厚重布面吸飽海霧，像一排排低垂白牆。工匠坐在棚下補縫破洞、測試防水蠟，也替冒險者修補背包、斗篷與船用繩索。這裡是城鎮服務房，玩家可購買繩索、修理航海裝備、委託製作帆布包，或從老帆匠口中聽到風向與失事船的傳聞。街道盡頭接著船匠塢，腳下排水溝則會把細碎布條沖向走私巷。霧重時，垂帆之間的人影很難分辨，適合秘密會面，也適合偷換貨籤。',
+      '帆匠街兩側掛滿正在晾乾的帆布，厚重布面吸飽海霧，像一排排低垂白牆。工匠坐在棚下補縫破洞、測試防水蠟，也替冒險者修補背包、斗篷與船用繩索。這裡是城鎮服務房，旅人可購買繩索、修理航海裝備、委託製作帆布包，或從老帆匠口中聽到風向與失事船的傳聞。街道盡頭接著船匠塢，腳下排水溝則會把細碎布條沖向走私巷。霧重時，垂帆之間的人影很難分辨，適合秘密會面，也適合偷換貨籤',
     exits: [
       { direction: 'west', targetRoomId: 'mist_harbor_fish_market', description: '帆布棚回到魚市' },
       { direction: 'east', targetRoomId: 'mist_harbor_shipwright_yard', description: '木槌聲來自船匠塢' },
@@ -558,7 +558,7 @@ mist_harbor_shipwright_yard: {
     image: 'mist_harbor_shipwright_yard.png',
     imagePrompt: '船匠塢 in mist_harbor, harbor shipwright yard with half-built boats, tar pots, cranes, foggy slips, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain harbor, clear lantern light',
     description:
-      '船匠塢靠著內港斜坡，半修好的小船被木架支起，船腹刷著新鮮焦油，旁邊堆滿橡木板、鉚釘、桅杆和滑輪。工頭用粉筆在船殼上標出裂縫，學徒則在霧裡推動沉重吊臂。這裡是修理與交通準備房，玩家可修補船隻、委託打造渡船零件、學習外海航線需求，也能接到尋找失竊龍骨木或測試新船的任務。塢邊水面經常漂來來歷不明的碎板，若板上還有新鮮爪痕，代表某條近海航線剛剛出事。',
+      '船匠塢靠著內港斜坡，半修好的小船被木架支起，船腹刷著新鮮焦油，旁邊堆滿橡木板、鉚釘、桅杆和滑輪。工頭用粉筆在船殼上標出裂縫，學徒則在霧裡推動沉重吊臂。這裡是修理與交通準備房，旅人可修補船隻、委託打造渡船零件、學習外海航線需求，也能接到尋找失竊龍骨木或測試新船的任務。塢邊水面經常漂來來歷不明的碎板，若板上還有新鮮爪痕，代表某條近海航線剛剛出事',
     exits: [
       { direction: 'west', targetRoomId: 'mist_harbor_sailmakers_row', description: '帆匠街在西側' },
       { direction: 'south', targetRoomId: 'mist_harbor_ferry_pier', description: '滑道下到渡船棧橋', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -581,7 +581,7 @@ mist_harbor_anchor_inn: {
     image: 'mist_harbor_anchor_inn.png',
     imagePrompt: '沉錨旅店 in mist_harbor, cozy harbor inn with anchor sign, wet cloaks, hearth, sailors in fogged windows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain harbor, clear lantern light',
     description:
-      '沉錨旅店的招牌是一只真正的舊鐵錨，吊在門樑下隨海風輕晃。屋內爐火溫暖，牆上掛滿濕斗篷、船旗與各地酒杯，水手們圍著長桌交換航線消息。這裡是休息、存點與社交服務房，玩家可租房恢復、查看留言、接受護送船員或尋人委託，也能從吟遊者口中聽到霧港外海的副本傳說。櫃台後有一本厚厚住客簿，最近幾頁的名字被人撕掉，留下的紙屑帶著海關封蠟味。旅店後門通往鹽診所，方便受傷水手夜裡求醫。',
+      '沉錨旅店的招牌是一只真正的舊鐵錨，吊在門樑下隨海風輕晃。屋內爐火溫暖，牆上掛滿濕斗篷、船旗與各地酒杯，水手們圍著長桌交換航線消息。這裡是休息、存點與社交服務房，旅人可租房恢復、查看留言、接受護送船員或尋人委託，也能從吟遊者口中聽到霧港外海的副本傳說。櫃台後有一本厚厚住客簿，最近幾頁的名字被人撕掉，留下的紙屑帶著海關封蠟味。旅店後門通往鹽診所，方便受傷水手夜裡求醫',
     exits: [
       {
         direction: 'east',
@@ -622,7 +622,7 @@ mist_harbor_clinic_of_salt: {
     image: 'mist_harbor_clinic_of_salt.png',
     imagePrompt: '鹽診所 in mist_harbor, small harbor clinic with salt jars, bandages, sea herbs, fogged glass, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain harbor, clear lantern light',
     description:
-      '鹽診所聞起來像海鹽、藥草和燒熱金屬。白牆上掛著繃帶、魚骨夾板、止血鉗與一排排標有潮汐日期的鹽罐，醫師相信不同潮位採來的鹽能處理不同傷口。這裡是治療與藥品服務房，玩家可購買補給、處理中毒或凍傷、交付海草藥材，也能接到尋找失蹤病患或調查奇怪海霧病的任務。診所窗台放著幾瓶發藍的霧水樣本，偶爾會自行凝結成薄冰。若玩家從外海副本回來，醫師會要求先在此檢查，避免把未知病症帶進城裡。',
+      '鹽診所聞起來像海鹽、藥草和燒熱金屬。白牆上掛著繃帶、魚骨夾板、止血鉗與一排排標有潮汐日期的鹽罐，醫師相信不同潮位採來的鹽能處理不同傷口。這裡是治療與藥品服務房，旅人可購買補給、處理中毒或凍傷、交付海草藥材，也能接到尋找失蹤病患或調查奇怪海霧病的任務。診所窗台放著幾瓶發藍的霧水樣本，偶爾會自行凝結成薄冰。若旅人從外海副本回來，醫師會要求先在此檢查，避免把未知病症帶進城裡',
     exits: [
       {
         direction: 'west',
@@ -657,7 +657,7 @@ mist_harbor_guild_quay: {
     image: 'mist_harbor_guild_quay.png',
     imagePrompt: '冒險者碼頭 in mist_harbor, adventurers guild quay with notice boards, moored skiffs, lanterns and fog, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain fantasy terrain, clear lantern light',
     description:
-      '冒險者碼頭是一段專供委託船停靠的木棧道，柱子上綁滿任務牌、失物畫像、海怪懸賞與臨時招募紙。公會書記坐在防潮棚下登記隊伍，旁邊小船隨霧潮起伏，船頭掛著不同顏色的任務燈。西側可見沉錨旅店的木階，但潮濕人潮堵住回程，需從旅店方向下到碼頭。這裡是霧港最重要的任務服務房，玩家可接取外海副本、護航、搜救、釣魚與走私調查委託，也能組隊前往渡船棧橋。碼頭下方有水聲敲擊空木箱，偶爾會浮出不屬於任何登記船隻的繩結，暗示有人借公會名義私下出海。',
+      '冒險者碼頭是一段專供委託船停靠的木棧道，柱子上綁滿任務牌、失物畫像、海怪懸賞與臨時招募紙。公會書記坐在防潮棚下登記隊伍，旁邊小船隨霧潮起伏，船頭掛著不同顏色的任務燈。西側可見沉錨旅店的木階，但潮濕人潮堵住回程，需從旅店方向下到碼頭。這裡是霧港最重要的任務服務房，旅人可接取外海副本、護航、搜救、釣魚與走私調查委託，也能組隊前往渡船棧橋。碼頭下方有水聲敲擊空木箱，偶爾會浮出不屬於任何登記船隻的繩結，暗示有人借公會名義私下出海',
     exits: [
       { direction: 'south', targetRoomId: 'mist_harbor_sailmakers_row', description: '南側繩梯回到帆匠街' },
       { direction: 'east', targetRoomId: 'mist_harbor_ferry_pier', description: '棧道連向渡船棧橋' },
@@ -686,7 +686,7 @@ mist_harbor_smugglers_alley: {
     image: 'mist_harbor_smugglers_alley.png',
     imagePrompt: '走私巷 in mist_harbor, narrow wet smuggler alley behind fish market, crates, shadowed doors, fog lamps, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain market, clear lantern light',
     description:
-      '魚市後方的走私巷狹窄潮濕，兩側堆滿標籤被刮掉的木箱、破網和空酒桶。霧在屋檐下盤旋，讓每扇半掩的門都像藏著耳朵。西側碼頭燈影若隱若現，但暗巷出口被臨檢木欄封住，只能從公會碼頭陰影小路進巷。這裡不是公開服務點，卻是許多任務線的灰色交會處，玩家可追查假港印、打聽黑市船票、尋找失蹤貨物，也可能遇到不願在廣場露面的 NPC。巷底水溝連到九號倉，退潮時能看見刻在石壁上的暗號。雖然城內禁止械鬥，走私者仍會用價格、情報與沉默威脅旅人。若帶著海關封條進巷，幾盞窗燈會同時熄滅。牆面潮痕旁還刻著只有夜航人看得懂的數字，暗門後傳來壓低的笑聲。',
+      '魚市後方的走私巷狹窄潮濕，兩側堆滿標籤被刮掉的木箱、破網和空酒桶。霧在屋檐下盤旋，讓每扇半掩的門都像藏著耳朵。西側碼頭燈影若隱若現，但暗巷出口被臨檢木欄封住，只能從公會碼頭陰影小路進巷。這裡不是公開服務點，卻是許多任務線的灰色交會處，旅人可追查假港印、打聽黑市船票、尋找失蹤貨物，也可能遇到不願在廣場露面的 NPC。巷底水溝連到九號倉，退潮時能看見刻在石壁上的暗號。雖然城內禁止械鬥，走私者仍會用價格、情報與沉默威脅旅人。若帶著海關封條進巷，幾盞窗燈會同時熄滅。牆面潮痕旁還刻著只有夜航人看得懂的數字，暗門後傳來壓低的笑聲',
     exits: [
       { direction: 'north', targetRoomId: 'mist_harbor_sea_gate', description: '北側濕石坡回到舊海門' },
       { direction: 'south', targetRoomId: 'mist_harbor_warehouse_nine', description: '南側暗號水溝通往九號倉' },
@@ -708,7 +708,7 @@ mist_harbor_captains_office: {
     image: 'mist_harbor_captains_office.png',
     imagePrompt: '船長辦公室 in mist_harbor, harbor captains office with maps, ship bells, ledgers, misted windows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain harbor, clear lantern light',
     description:
-      '船長辦公室位在海關廳後方，牆上掛滿航線圖、舊船鐘、風暴記錄和幾把失去主人的船鑰匙。值班船長在此核准出航、調停碼頭爭議，也替冒險者安排可靠船員。這裡是 NPC 與交通任務房，玩家可申請外海通行、查詢失事船、簽署護航契約，或追問某艘沒有進港記錄卻出現在潮鐘上的船。辦公桌抽屜裡有一疊被海水泡皺的求救信，日期全都落在同一場大霧之夜。若玩家完成港務線，這裡會成為解鎖遠洋路線的關鍵地點。',
+      '船長辦公室位在海關廳後方，牆上掛滿航線圖、舊船鐘、風暴記錄和幾把失去主人的船鑰匙。值班船長在此核准出航、調停碼頭爭議，也替冒險者安排可靠船員。這裡是 NPC 與交通任務房，旅人可申請外海通行、查詢失事船、簽署護航契約，或追問某艘沒有進港記錄卻出現在潮鐘上的船。辦公桌抽屜裡有一疊被海水泡皺的求救信，日期全都落在同一場大霧之夜。若旅人完成港務線，這裡會成為解鎖遠洋路線的關鍵地點',
     exits: [
       { direction: 'north', targetRoomId: 'mist_harbor_customs_house', description: '內廊回到海關廳', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
@@ -743,7 +743,7 @@ mist_harbor_lighthouse_stairs: {
     image: 'mist_harbor_lighthouse_stairs.png',
     imagePrompt: '燈室階梯 in mist_harbor, spiral lighthouse stairs with wet stone, brass rail, fog light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain stone, clear lantern light',
     description:
-      '傳送燈塔北面的石橋接上一段螺旋階梯，階梯沿著老燈塔內壁向上盤繞，扶手被鹽霧磨得發亮。牆面每隔幾步就嵌著小窗，能看見霧港屋頂、內港船桅與遠處防波堤在白霧中若隱若現。東側維修門標向防波堤端，但門內落石堵住通道，需由防波堤端進入燈塔維修線。這裡是交通與探索房，玩家可前往霧望燈室，也能在階梯牆上找到歷代守燈人刻下的潮汐備忘。階梯間回音很重，適合觸發回憶、偵查或找人任務。若外海有異常，窗縫會吹進帶冰味的霧，讓牆上銅釘結霜。守燈人的腳印常停在某扇小窗前，似乎那裡能看見官方不願承認的航線。階梯越往上，海浪聲就越像低語。',
+      '傳送燈塔北面的石橋接上一段螺旋階梯，階梯沿著老燈塔內壁向上盤繞，扶手被鹽霧磨得發亮。牆面每隔幾步就嵌著小窗，能看見霧港屋頂、內港船桅與遠處防波堤在白霧中若隱若現。東側維修門標向防波堤端，但門內落石堵住通道，需由防波堤端進入燈塔維修線。這裡是交通與探索房，旅人可前往霧望燈室，也能在階梯牆上找到歷代守燈人刻下的潮汐備忘。階梯間回音很重，適合觸發回憶、偵查或找人任務。若外海有異常，窗縫會吹進帶冰味的霧，讓牆上銅釘結霜。守燈人的腳印常停在某扇小窗前，似乎那裡能看見官方不願承認的航線。階梯越往上，海浪聲就越像低語',
     exits: [
       { direction: 'south', targetRoomId: 'mist_harbor_portal_lantern', description: '石橋回到傳送燈塔', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'mist_harbor_fogwatch_lantern', description: '燈室迴廊通往霧望燈室', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -765,7 +765,7 @@ mist_harbor_fogwatch_lantern: {
     image: 'mist_harbor_fogwatch_lantern.png',
     imagePrompt: '霧望燈室 in mist_harbor, lighthouse lantern room above foggy harbor, huge lens, beacon flame, sea mist, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain harbor, clear lantern light',
     description:
-      '霧望燈室位在老燈塔頂端，巨大的玻璃透鏡被銅架固定，中心燃著帶藍邊的港燈。守燈人用它穿透濃霧，替返航船隻標出內港安全水道，也觀測外海是否有幽霧船、冰潮或海怪陰影。東側外梯可俯看防波堤端，但高處梯門被鹽蝕卡死，需從防波堤端外梯上來。這裡是地標與大型事件觀測房，玩家可校準燈光、解讀遠方燈號，或在夜裡尋找失蹤船隊的回應。燈室地板刻著一圈方位線，某些刻度被反覆磨損，表示有人常把燈光轉向官方航線以外的黑暗海面。完成霧港主線時，這裡會成為選擇公開真相或掩護私航的關鍵場景，也決定哪些船能穿過霧回家。透鏡背面還殘留舊日撞擊裂紋。',
+      '霧望燈室位在老燈塔頂端，巨大的玻璃透鏡被銅架固定，中心燃著帶藍邊的港燈。守燈人用它穿透濃霧，替返航船隻標出內港安全水道，也觀測外海是否有幽霧船、冰潮或海怪陰影。東側外梯可俯看防波堤端，但高處梯門被鹽蝕卡死，需從防波堤端外梯上來。這裡是地標與大型事件觀測房，旅人可校準燈光、解讀遠方燈號，或在夜裡尋找失蹤船隊的回應。燈室地板刻著一圈方位線，某些刻度被反覆磨損，表示有人常把燈光轉向官方航線以外的黑暗海面。完成霧港主線時，這裡會成為選擇公開真相或掩護私航的關鍵場景，也決定哪些船能穿過霧回家。透鏡背面還殘留舊日撞擊裂紋',
     exits: [
       { direction: 'west', targetRoomId: 'mist_harbor_lighthouse_stairs', description: '燈室迴廊回到階梯間', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
@@ -786,7 +786,7 @@ mist_harbor_ferry_pier: {
     image: 'mist_harbor_ferry_pier.png',
     imagePrompt: '渡船棧橋 in mist_harbor, ferry pier with small boats, rope posts, fog, lantern reflections, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain fantasy terrain, clear lantern light',
     description:
-      '渡船棧橋伸入內港水面，小船依照目的地排成幾列，船頭掛著紅、藍、白不同顏色的航燈。船夫靠在繩樁邊等潮位，腳下木板被海水泡得發黑，縫隙間能看見細碎銀魚游過。東側外棧道能看見防波堤端，但退潮後踏板斷開，需從防波堤端回到棧橋。這裡是交通服務房，玩家可搭乘短程渡船前往外島、海上副本入口或對岸倉區，也能護送 NPC、運送藥箱與追查未登記船票。渡船時刻受潮鐘控制，若霧太重，船夫會要求額外燈油或可靠護衛。棧橋末端有一只空船總是無人認領，船底卻常保持乾淨。',
+      '渡船棧橋伸入內港水面，小船依照目的地排成幾列，船頭掛著紅、藍、白不同顏色的航燈。船夫靠在繩樁邊等潮位，腳下木板被海水泡得發黑，縫隙間能看見細碎銀魚游過。東側外棧道能看見防波堤端，但退潮後踏板斷開，需從防波堤端回到棧橋。這裡是交通服務房，旅人可搭乘短程渡船前往外島、海上副本入口或對岸倉區，也能護送 NPC、運送藥箱與追查未登記船票。渡船時刻受潮鐘控制，若霧太重，船夫會要求額外燈油或可靠護衛。棧橋末端有一只空船總是無人認領，船底卻常保持乾淨',
     exits: [
       { direction: 'north', targetRoomId: 'mist_harbor_shipwright_yard', description: '滑道上到船匠塢', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'west', targetRoomId: 'mist_harbor_guild_quay', description: '棧道回到冒險者碼頭' },
@@ -808,7 +808,7 @@ mist_harbor_warehouse_nine: {
     image: 'mist_harbor_warehouse_nine.png',
     imagePrompt: '九號倉 in mist_harbor, sealed harbor warehouse with stacked crates, wet rope, lantern shadows, fogged skylight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain harbor, clear lantern light',
     description:
-      '九號倉的門上貼滿海關封條，但封條邊緣總有新鮮割痕。倉內高高堆著木箱、油布包、鹽袋與等候驗放的遠方貨物，霧氣從天窗滲下，讓每一道箱影都像可疑人形。東側貨道與南側水溝都留下可疑拖痕，但倉內封條從這端扣死，需由舊海門或走私巷進入九號倉。這裡是倉儲服務與走私任務房，玩家可存放大宗貨物、查找遺失箱號、協助盤點，也能沿著暗號追查假封條來源。地板上有幾條拖痕通往走私巷水溝，旁邊散著不該出現在官方倉庫的黑市船票。若港務線推進，九號倉會成為揭露私航網路的重要證據點。',
+      '九號倉的門上貼滿海關封條，但封條邊緣總有新鮮割痕。倉內高高堆著木箱、油布包、鹽袋與等候驗放的遠方貨物，霧氣從天窗滲下，讓每一道箱影都像可疑人形。東側貨道與南側水溝都留下可疑拖痕，但倉內封條從這端扣死，需由舊海門或走私巷進入九號倉。這裡是倉儲服務與走私任務房，旅人可存放大宗貨物、查找遺失箱號、協助盤點，也能沿著暗號追查假封條來源。地板上有幾條拖痕通往走私巷水溝，旁邊散著不該出現在官方倉庫的黑市船票。若港務線推進，九號倉會成為揭露私航網路的重要證據點',
     exits: [
       {
         direction: 'west',
@@ -837,7 +837,7 @@ mist_harbor_tidepool_shrine: {
     image: 'mist_harbor_tidepool_shrine.png',
     imagePrompt: '潮池小祠 in mist_harbor, small tidepool shrine with shells, candles, sea glass, fog and moonlit water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain shrine, clear lantern light',
     description:
-      '舊海門旁的岩地凹出一座天然潮池，池邊立著小小石祠，供奉無名海路守護靈。漁民會在出航前放下貝殼、海玻璃、魚骨和一小撮鹽，祈求霧中看得見回家的燈。潮池水面平靜時像鏡子，偶爾會映出不屬於當下天空的星點。這裡是任務與信仰房，玩家可替失蹤水手獻祭、解讀潮池異象，或收集特殊貝殼完成居民委託。若從霧望燈室取得方位片，再來此比對倒影，能發現某條被隱藏的夜航路線。',
+      '舊海門旁的岩地凹出一座天然潮池，池邊立著小小石祠，供奉無名海路守護靈。漁民會在出航前放下貝殼、海玻璃、魚骨和一小撮鹽，祈求霧中看得見回家的燈。潮池水面平靜時像鏡子，偶爾會映出不屬於當下天空的星點。這裡是任務與信仰房，旅人可替失蹤水手獻祭、解讀潮池異象，或收集特殊貝殼完成居民委託。若從霧望燈室取得方位片，再來此比對倒影，能發現某條被隱藏的夜航路線',
     exits: [
       {
         direction: 'north',
@@ -864,7 +864,7 @@ mist_harbor_chart_archive: {
     image: 'mist_harbor_chart_archive.png',
     imagePrompt: '海圖檔案室 in mist_harbor, archive of sea charts, map tubes, brass dividers, fogged skylight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain sea, clear lantern light',
     description:
-      '海圖檔案室夾在傳送燈塔、診所與船長辦公室之間，屋內用防潮木櫃保存各年代航線圖。長桌上擺著黃銅分規、潮汐尺、乾燥沙盤和許多被鉛筆反覆修正的霧區邊界。東側書架門通往船長辦公室的標記仍在，但檔案櫃倒塌卡住門軸，需由船長辦公室開門進入。這裡是知識與任務房，玩家可查詢副本入口、比對失蹤船位、解鎖遠洋路線，也能幫檔案員修補被霧水侵蝕的古海圖。某些圖管沒有登記號，卻被放在最容易取用的位置，內容指向官方航線以外的私航港灣。若與傳送燈塔記錄交叉檢查，能找出誰在霧夜改變過燈塔方位。檔案員會要求玩家保密，因為錯誤海圖足以毀掉整個港鎮的信用。',
+      '海圖檔案室夾在傳送燈塔、診所與船長辦公室之間，屋內用防潮木櫃保存各年代航線圖。長桌上擺著黃銅分規、潮汐尺、乾燥沙盤和許多被鉛筆反覆修正的霧區邊界。東側書架門通往船長辦公室的標記仍在，但檔案櫃倒塌卡住門軸，需由船長辦公室開門進入。這裡是知識與任務房，旅人可查詢副本入口、比對失蹤船位、解鎖遠洋路線，也能幫檔案員修補被霧水侵蝕的古海圖。某些圖管沒有登記號，卻被放在最容易取用的位置，內容指向官方航線以外的私航港灣。若與傳送燈塔記錄交叉檢查，能找出誰在霧夜改變過燈塔方位。檔案員會要求旅人保密，因為錯誤海圖足以毀掉整個港鎮的信用',
     exits: [
       { direction: 'west', targetRoomId: 'mist_harbor_portal_lantern', description: '小門回到傳送燈塔', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
@@ -892,7 +892,7 @@ mist_harbor_sea_gate: {
     image: 'mist_harbor_sea_gate.png',
     imagePrompt: '舊海門 in mist_harbor, old sea gate with iron chains, wet stone arch, harbor fog and tide marks, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain sea, clear lantern light',
     description:
-      '舊海門是內港最老的防潮門，兩扇厚木閘板被鐵鏈吊著，表面滿是潮痕、貝殼和修補鐵片。漲潮時門外海水會拍上石階，退潮時則露出通往潮池與防波堤的濕滑岩路。西側港務坡道通向船長辦公室，但舊門這端閘鏈橫倒，需從辦公室下坡抵達。這裡是交通與港務房，玩家可協助升降閘門、護送貨車通過、查看近海潮位，也能追查某些貨物為何不經海關而從舊門進城。門洞上方掛著一排退役船鈴，只在濃霧中無風自響。若鈴聲與潮鐘不一致，代表外海有船正在使用錯誤航道靠近。守門員會把此事記在潮濕小冊裡，等待有人願意查下去。閘鏈深處還卡著新鮮黑帆纖維與碎木。',
+      '舊海門是內港最老的防潮門，兩扇厚木閘板被鐵鏈吊著，表面滿是潮痕、貝殼和修補鐵片。漲潮時門外海水會拍上石階，退潮時則露出通往潮池與防波堤的濕滑岩路。西側港務坡道通向船長辦公室，但舊門這端閘鏈橫倒，需從辦公室下坡抵達。這裡是交通與港務房，旅人可協助升降閘門、護送貨車通過、查看近海潮位，也能追查某些貨物為何不經海關而從舊門進城。門洞上方掛著一排退役船鈴，只在濃霧中無風自響。若鈴聲與潮鐘不一致，代表外海有船正在使用錯誤航道靠近。守門員會把此事記在潮濕小冊裡，等待有人願意查下去。閘鏈深處還卡著新鮮黑帆纖維與碎木',
     exits: [
       { direction: 'north', targetRoomId: 'mist_harbor_fog_gate', description: '坡道回到霧港城門', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'south', targetRoomId: 'mist_harbor_smugglers_alley', description: '南側濕石坡通往走私巷' },
@@ -921,7 +921,7 @@ mist_harbor_breakwater_end: {
     image: 'mist_harbor_breakwater_end.png',
     imagePrompt: '防波堤端 in mist_harbor, end of stone breakwater in thick fog, crashing waves, beacon posts, distant lighthouse, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain stone, clear lantern light',
     description:
-      '防波堤端伸向白霧最深處，黑色礁石和人工石塊交錯堆疊，浪花不斷越過邊緣，把地面打得濕亮。這裡遠離市集喧鬧，只聽得見海浪、霧角與偶爾從燈塔傳來的金屬回音。維修工在石柱上掛著小信標，船夫則把這裡當作判斷外海能否出航的最後觀察點。這裡是交通邊界與大型事件鉤子，玩家可前往外海副本、調查漂來殘骸，或在霧望燈室指引下等待失蹤船影出現。若霧突然退開，遠處可能露出不在任何海圖上的黑帆。',
+      '防波堤端伸向白霧最深處，黑色礁石和人工石塊交錯堆疊，浪花不斷越過邊緣，把地面打得濕亮。這裡遠離市集喧鬧，只聽得見海浪、霧角與偶爾從燈塔傳來的金屬回音。維修工在石柱上掛著小信標，船夫則把這裡當作判斷外海能否出航的最後觀察點。這裡是交通邊界與大型事件鉤子，旅人可前往外海副本、調查漂來殘骸，或在霧望燈室指引下等待失蹤船影出現。若霧突然退開，遠處可能露出不在任何海圖上的黑帆',
     exits: [
       { direction: 'west', targetRoomId: 'mist_harbor_shipwright_yard', description: '木道回到船匠塢', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {

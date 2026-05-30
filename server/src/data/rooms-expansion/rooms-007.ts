@@ -304,7 +304,7 @@ marsh_of_mirrors_reed_gate: {
     image: 'marsh_of_mirrors_reed_gate.png',
     imagePrompt: '蘆葦入口 in marsh_of_mirrors, marsh entrance framed by tall reeds, black water, mist, warning posts and mirrored sky, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain marsh, clear lantern light',
     description:
-      '鏡沼外圍的蘆葦高過人頭，入口只是一道被旅人踩出的濕泥缺口，兩側插著刻有警告符號的木樁。水面倒映出的天空比真實天空更暗，偶爾還會映出不存在的鳥影。這裡是進出鏡沼的交通錨點，玩家可整理解毒藥、標記回程路線，並從木樁上的缺口判斷最近有哪些隊伍進入後沒有返回。入口附近看似安靜，實際上毒蛙會藏在蘆葦根部，史萊姆則沿黑水邊緣蠕動。若霧突然變厚，回頭路會被蘆葦重新遮住。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵。',
+      '鏡沼外圍的蘆葦高過人頭，入口只是一道被旅人踩出的濕泥缺口，兩側插著刻有警告符號的木樁。水面倒映出的天空比真實天空更暗，偶爾還會映出不存在的鳥影。這裡是進出鏡沼的交通錨點，旅人可整理解毒藥、標記回程路線，並從木樁上的缺口判斷最近有哪些隊伍進入後沒有返回。入口附近看似安靜，實際上毒蛙會藏在蘆葦根部，史萊姆則沿黑水邊緣蠕動。若霧突然變厚，回頭路會被蘆葦重新遮住。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵',
     exits: [
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_blackwater_path', description: '黑水小徑伸入沼澤' },
       { direction: 'north', targetRoomId: 'marsh_of_mirrors_peat_islet', description: '較乾的泥脊通向泥炭小洲', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -330,7 +330,7 @@ marsh_of_mirrors_blackwater_path: {
     image: 'marsh_of_mirrors_blackwater_path.png',
     imagePrompt: '黑水小徑 in marsh_of_mirrors, narrow muddy path over black marsh water, reeds, reflections, pale fog, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain marsh, clear lantern light',
     description:
-      '蘆葦入口後方的黑水小徑只比鞋底寬些，兩側水面深得看不見底，倒影卻清楚得像玻璃。每走幾步，水中倒影就會慢半拍才跟上，讓人忍不住懷疑自己是否還在原來的位置。這裡是鏡沼的主要路線房，連接銀面池、毒蛙泥潭與歪木棧道，也是最容易迷路的第一段。玩家可沿著水邊拾取草藥與腐木，但必須記住真實路標而非倒影。毒蛙、史萊姆和水下蛇影會輪流利用黑水遮掩靠近。若失去方向，應回到蘆葦入口重新校準路線。',
+      '蘆葦入口後方的黑水小徑只比鞋底寬些，兩側水面深得看不見底，倒影卻清楚得像玻璃。每走幾步，水中倒影就會慢半拍才跟上，讓人忍不住懷疑自己是否還在原來的位置。這裡是鏡沼的主要路線房，連接銀面池、毒蛙泥潭與歪木棧道，也是最容易迷路的第一段。旅人可沿著水邊拾取草藥與腐木，但必須記住真實路標而非倒影。毒蛙、史萊姆和水下蛇影會輪流利用黑水遮掩靠近。若失去方向，應回到蘆葦入口重新校準路線',
     exits: [
       { direction: 'west', targetRoomId: 'marsh_of_mirrors_reed_gate', description: '泥路回到蘆葦入口' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_silver_pool', description: '銀色水光在前方' },
@@ -359,7 +359,7 @@ marsh_of_mirrors_silver_pool: {
     image: 'marsh_of_mirrors_silver_pool.png',
     imagePrompt: '銀面池 in marsh_of_mirrors, silver reflective marsh pool, pale reeds, mist, moonlike surface and dark trees, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain marsh, clear lantern light',
     description:
-      '黑水小徑東端展開一片平靜水池，池面泛著銀灰光澤，無論白天夜晚都像映著月亮。池邊泥土硬實，卻佈滿方向相反的足跡，像有人從倒影世界走上岸。這裡是探索與資源房，玩家可採集銀藻、觀察錯位倒影，並學會判斷鏡沼幻象的基本規則。池底偶爾浮出完整的星空圖案，與天空並不一致，暗示鏡沼深處有更強的反射核心。若玩家盯著池面太久，倒影會先一步做出不屬於本人的動作，引來毒蛙與水蛇圍攻。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵。',
+      '黑水小徑東端展開一片平靜水池，池面泛著銀灰光澤，無論白天夜晚都像映著月亮。池邊泥土硬實，卻佈滿方向相反的足跡，像有人從倒影世界走上岸。這裡是探索與資源房，旅人可採集銀藻、觀察錯位倒影，並學會判斷鏡沼幻象的基本規則。池底偶爾浮出完整的星空圖案，與天空並不一致，暗示鏡沼深處有更強的反射核心。若旅人盯著池面太久，倒影會先一步做出不屬於本人的動作，引來毒蛙與水蛇圍攻。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵',
     exits: [
       { direction: 'west', targetRoomId: 'marsh_of_mirrors_blackwater_path', description: '黑水小徑在西側' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_mirror_pond', description: '更深倒影通向鏡池' },
@@ -387,7 +387,7 @@ marsh_of_mirrors_frog_mire: {
     image: 'marsh_of_mirrors_frog_mire.png',
     imagePrompt: '毒蛙泥潭 in marsh_of_mirrors, muddy frog mire with toxic bubbles, reeds, green fog and huge toad silhouettes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '黑水小徑南側的泥潭被毒蛙佔據，濃綠氣泡從泥底冒出，破裂時釋放出刺鼻霧氣。泥面看似柔軟，實際下方有許多被蛙舌拖出的深洞。這裡是高密度戰鬥與採集房，玩家可收集毒腺、蛙皮與解毒草，也能完成清理毒霧或捕捉活體樣本的任務。泥潭周圍的蘆葦倒影比實物更加密集，會遮住真正安全的落腳點。若不先辨認氣泡方向，隊伍可能被毒蛙從三面同時包圍。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
+      '黑水小徑南側的泥潭被毒蛙佔據，濃綠氣泡從泥底冒出，破裂時釋放出刺鼻霧氣。泥面看似柔軟，實際下方有許多被蛙舌拖出的深洞。這裡是高密度戰鬥與採集房，旅人可收集毒腺、蛙皮與解毒草，也能完成清理毒霧或捕捉活體樣本的任務。泥潭周圍的蘆葦倒影比實物更加密集，會遮住真正安全的落腳點。若不先辨認氣泡方向，隊伍可能被毒蛙從三面同時包圍。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進',
     exits: [
       { direction: 'north', targetRoomId: 'marsh_of_mirrors_blackwater_path', description: '泥痕回到黑水小徑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_poison_bloom_bed', description: '毒花氣味往東延伸' },
@@ -414,7 +414,7 @@ marsh_of_mirrors_crooked_boardwalk: {
     image: 'marsh_of_mirrors_crooked_boardwalk.png',
     imagePrompt: '歪木棧道 in marsh_of_mirrors, crooked wooden boardwalk over marsh, broken planks, hanging moss, fog and mirrored water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain marsh, clear lantern light',
     description:
-      '黑水小徑北側有一段歪斜木棧道，木板被水泡得發黑，許多地方只靠生鏽釘子勉強固定。棧道下方的水面映出完整直路，與現實裡的破洞和彎折完全不同。北側可看見泥炭小洲的測路桿，但棧道端橋板斷裂，需由小洲方向接回。這裡是交通與探索房，玩家可在較安全高度穿過沼澤，前往霧盲處與沉柳，也能修補木板建立回程捷徑。棧道柱子上綁著前人留下的布條，顏色越新，代表迷路風險越高。若踩到會回聲的空板，水下湖蛇會跟著震動追來。',
+      '黑水小徑北側有一段歪斜木棧道，木板被水泡得發黑，許多地方只靠生鏽釘子勉強固定。棧道下方的水面映出完整直路，與現實裡的破洞和彎折完全不同。北側可看見泥炭小洲的測路桿，但棧道端橋板斷裂，需由小洲方向接回。這裡是交通與探索房，旅人可在較安全高度穿過沼澤，前往霧盲處與沉柳，也能修補木板建立回程捷徑。棧道柱子上綁著前人留下的布條，顏色越新，代表迷路風險越高。若踩到會回聲的空板，水下湖蛇會跟著震動追來',
     exits: [
       { direction: 'south', targetRoomId: 'marsh_of_mirrors_blackwater_path', description: '木階下回黑水小徑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_mist_blind', description: '棧道伸向霧盲處' },
@@ -447,7 +447,7 @@ marsh_of_mirrors_mist_blind: {
     image: 'marsh_of_mirrors_mist_blind.png',
     imagePrompt: '霧盲處 in marsh_of_mirrors, dense blind fog over marsh, reed silhouettes, faint lantern, mirrored puddles, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain marsh, clear lantern light',
     description:
-      '銀面池與歪木棧道之間有一片霧盲處，白霧濃到伸手只能看見指尖水珠。聲音在霧裡被拉長，腳步聲可能來自同伴，也可能只是倒影模仿。這裡是迷路與任務觸發房，玩家可用蘆葦入口取得的標記校準方向，尋找被霧困住的旅人，或追蹤一盞總在遠處閃爍的假燈。霧盲處不適合久留，毒蛙與蜘蛛會利用視線阻隔進行伏擊。若玩家跟著倒影前進，可能直接走入鏡池或破碎倒影區。',
+      '銀面池與歪木棧道之間有一片霧盲處，白霧濃到伸手只能看見指尖水珠。聲音在霧裡被拉長，腳步聲可能來自同伴，也可能只是倒影模仿。這裡是迷路與任務觸發房，旅人可用蘆葦入口取得的標記校準方向，尋找被霧困住的旅人，或追蹤一盞總在遠處閃爍的假燈。霧盲處不適合久留，毒蛙與蜘蛛會利用視線阻隔進行伏擊。若旅人跟著倒影前進，可能直接走入鏡池或破碎倒影區',
     exits: [
       { direction: 'west', targetRoomId: 'marsh_of_mirrors_crooked_boardwalk', description: '摸索回歪木棧道' },
       { direction: 'south', targetRoomId: 'marsh_of_mirrors_silver_pool', description: '銀色水光在南面', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -480,7 +480,7 @@ marsh_of_mirrors_mirror_pond: {
     image: 'marsh_of_mirrors_mirror_pond.png',
     imagePrompt: '鏡池 in marsh_of_mirrors, perfect mirror pond reflecting impossible sky, black reeds, pale mist and still water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sky, clear lantern light',
     description:
-      '鏡池比銀面池更平靜，水面平整得像磨亮黑玻璃，倒映出一座不存在的塔、一輪不合時令的月亮，以及站在玩家身後的陌生人影。池邊沒有蟲鳴，只有自己的呼吸被倒影重複。這裡是核心解謎前置房，玩家可觀察錯誤倒影、取得鏡水樣本，並確認鏡沼真正的力量源頭並非毒霧，而是水面下的反射核心。若玩家攻擊倒影，水面會裂成多片，直接連向破碎倒影區。鏡池周圍潛伏的湖蛇會利用玩家分神時發動突襲。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵。',
+      '鏡池比銀面池更平靜，水面平整得像磨亮黑玻璃，倒映出一座不存在的塔、一輪不合時令的月亮，以及站在旅人身後的陌生人影。池邊沒有蟲鳴，只有自己的呼吸被倒影重複。這裡是核心解謎前置房，旅人可觀察錯誤倒影、取得鏡水樣本，並確認鏡沼真正的力量源頭並非毒霧，而是水面下的反射核心。若旅人攻擊倒影，水面會裂成多片，直接連向破碎倒影區。鏡池周圍潛伏的湖蛇會利用旅人分神時發動突襲。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵',
     exits: [
       { direction: 'west', targetRoomId: 'marsh_of_mirrors_silver_pool', description: '水光回到銀面池' },
       { direction: 'north', targetRoomId: 'marsh_of_mirrors_shattered_reflection', description: '裂紋水面通向破碎倒影' },
@@ -521,7 +521,7 @@ marsh_of_mirrors_sunken_willow: {
     image: 'marsh_of_mirrors_sunken_willow.png',
     imagePrompt: '沉水柳 in marsh_of_mirrors, sunken willow tree in black marsh water, hanging roots, mist, reflections and pale fungi, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain marsh, clear lantern light',
     description:
-      '一棵巨大的柳樹半沉在沼水中，樹冠倒垂，細長枝條像濕髮般貼著水面。根部仍活著，卻從黑水中吸收了暗色汁液，樹皮上長出微微發亮的白菌。西側倒木可看見歪木棧道，東側倒影可看見鏡池，但沉水柳周圍的水下根鬚會把回程纏住，需由棧道或鏡池方向進入。這裡是自然資源與精英前置房，玩家可採集柳根、白菌與腐化樹液，也能追查暗黑樹人的活動痕跡。沉水柳的倒影比本體更完整，像另一棵樹正從水下向上生長。若砍錯枝條，水下倒影會先流血，然後引來樹人與蜘蛛守衛。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
+      '一棵巨大的柳樹半沉在沼水中，樹冠倒垂，細長枝條像濕髮般貼著水面。根部仍活著，卻從黑水中吸收了暗色汁液，樹皮上長出微微發亮的白菌。西側倒木可看見歪木棧道，東側倒影可看見鏡池，但沉水柳周圍的水下根鬚會把回程纏住，需由棧道或鏡池方向進入。這裡是自然資源與精英前置房，旅人可採集柳根、白菌與腐化樹液，也能追查暗黑樹人的活動痕跡。沉水柳的倒影比本體更完整，像另一棵樹正從水下向上生長。若砍錯枝條，水下倒影會先流血，然後引來樹人與蜘蛛守衛。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進',
     exits: [
       {
         direction: 'north',
@@ -553,7 +553,7 @@ marsh_of_mirrors_poison_bloom_bed: {
     image: 'marsh_of_mirrors_poison_bloom_bed.png',
     imagePrompt: '毒花床 in marsh_of_mirrors, bed of poisonous marsh flowers, green vapor, mirrored puddles, dark reeds, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain marsh, clear lantern light',
     description:
-      '毒蛙泥潭東側長滿紫綠色毒花，花瓣厚得像濕蠟，花心持續吐出淡綠霧氣。這裡的水窪倒映出花朵尚未開放時的樣子，讓採集者很難分辨哪一株已經成熟。這裡是資源與事件房，玩家可採集毒花、調配解毒材料，或完成淨化霧源的任務。毒花根部常有綠色史萊姆吸附，毒蛙也會在霧氣最濃處等待獵物暈眩。若玩家採下帶有錯誤倒影的花，毒霧會短暫變成黑色，指向鏡水核心正在污染整片沼澤。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵。',
+      '毒蛙泥潭東側長滿紫綠色毒花，花瓣厚得像濕蠟，花心持續吐出淡綠霧氣。這裡的水窪倒映出花朵尚未開放時的樣子，讓採集者很難分辨哪一株已經成熟。這裡是資源與事件房，旅人可採集毒花、調配解毒材料，或完成淨化霧源的任務。毒花根部常有綠色史萊姆吸附，毒蛙也會在霧氣最濃處等待獵物暈眩。若旅人採下帶有錯誤倒影的花，毒霧會短暫變成黑色，指向鏡水核心正在污染整片沼澤。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵',
     exits: [
       { direction: 'west', targetRoomId: 'marsh_of_mirrors_frog_mire', description: '毒泥路回到蛙潭' },
       {
@@ -592,7 +592,7 @@ marsh_of_mirrors_spider_reeds: {
     image: 'marsh_of_mirrors_spider_reeds.png',
     imagePrompt: '蛛網蘆叢 in marsh_of_mirrors, reeds strung with spider webs, dew, black water, green fog and hidden spiders, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain water, clear lantern light',
     description:
-      '毒蛙泥潭南面是一片密集蘆叢，蛛絲從蘆葉連到枯木，掛滿水珠後像一面面破碎小鏡。許多絲線不在視線正前方，而是藏在倒影裡，等旅人跨步時才拉住腳踝。這裡是戰鬥與採集房，玩家可收集蛛絲、蛛毒和被困旅人的物品，也能清出一條通往失路石堆的安全路線。蜘蛛會利用毒霧與水面反光遮掩位置，毒蛙則躲在蘆根補上第二波攻擊。若隊伍帶火，蛛網會迅速收縮，暴露隱藏巢穴。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵。務必小心前進。',
+      '毒蛙泥潭南面是一片密集蘆叢，蛛絲從蘆葉連到枯木，掛滿水珠後像一面面破碎小鏡。許多絲線不在視線正前方，而是藏在倒影裡，等旅人跨步時才拉住腳踝。這裡是戰鬥與採集房，旅人可收集蛛絲、蛛毒和被困旅人的物品，也能清出一條通往失路石堆的安全路線。蜘蛛會利用毒霧與水面反光遮掩位置，毒蛙則躲在蘆根補上第二波攻擊。若隊伍帶火，蛛網會迅速收縮，暴露隱藏巢穴。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵。務必小心前進',
     exits: [
       { direction: 'north', targetRoomId: 'marsh_of_mirrors_frog_mire', description: '蛙鳴來自北側泥潭', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_lost_cairn', description: '蛛絲路通往失路石堆' },
@@ -618,7 +618,7 @@ marsh_of_mirrors_lost_cairn: {
     image: 'marsh_of_mirrors_lost_cairn.png',
     imagePrompt: '失路石堆 in marsh_of_mirrors, cairn of stones in marsh fog, charms, wet moss, reflected false paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain marsh, clear lantern light',
     description:
-      '蛛網蘆叢東側有一堆人為壘起的濕石，每顆石頭都刻著方向箭頭，卻沒有兩個箭頭指向同一條路。石堆上掛著失蹤旅人的護符、魚骨、布條和被水泡白的名字牌。這裡是探索與任務房，玩家可辨認正確路標、收集失蹤者遺物，或把鏡沼裡的錯誤路線重新記錄下來。石堆倒影中有時會出現尚未壘上的新石，像在預告下一個迷路者。若玩家隨意搬動石頭，整片霧會改變方向，把隊伍推向破碎倒影或蛇道。',
+      '蛛網蘆叢東側有一堆人為壘起的濕石，每顆石頭都刻著方向箭頭，卻沒有兩個箭頭指向同一條路。石堆上掛著失蹤旅人的護符、魚骨、布條和被水泡白的名字牌。這裡是探索與任務房，旅人可辨認正確路標、收集失蹤者遺物，或把鏡沼裡的錯誤路線重新記錄下來。石堆倒影中有時會出現尚未壘上的新石，像在預告下一個迷路者。若旅人隨意搬動石頭，整片霧會改變方向，把隊伍推向破碎倒影或蛇道',
     exits: [
       { direction: 'west', targetRoomId: 'marsh_of_mirrors_spider_reeds', description: '蛛絲路回到蘆叢' },
       {
@@ -651,7 +651,7 @@ marsh_of_mirrors_shattered_reflection: {
     image: 'marsh_of_mirrors_shattered_reflection.png',
     imagePrompt: '破碎倒影 in marsh_of_mirrors, cracked mirror-like water surface, shards of reflected sky, black reeds and eerie fog, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain water, clear lantern light',
     description:
-      '鏡池北側的水面像被看不見的力量敲碎，分成無數不連續的倒影碎片。每一片都映出不同天色、不同隊伍位置，甚至不同時間的自己，中央黑玻祭壇刻著奈薩虛空之眼的禁忌紋。這裡是大型事件前置房，玩家可研究倒影裂紋、收集鏡片水膜，並找到通往玻璃水核心的第一組路徑規則。破碎倒影會讓怪物行動看似瞬移，毒蛙與湖蛇會從不該相連的水面突然躍出。若玩家能找出哪一片倒影沒有延遲，就能避開錯誤路線；若判斷失敗，隊伍會被送往蛇道或迷霧更深處。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。',
+      '鏡池北側的水面像被看不見的力量敲碎，分成無數不連續的倒影碎片。每一片都映出不同天色、不同隊伍位置，甚至不同時間的自己，中央黑玻祭壇刻著奈薩虛空之眼的禁忌紋。這裡是大型事件前置房，旅人可研究倒影裂紋、收集鏡片水膜，並找到通往玻璃水核心的第一組路徑規則。破碎倒影會讓怪物行動看似瞬移，毒蛙與湖蛇會從不該相連的水面突然躍出。若旅人能找出哪一片倒影沒有延遲，就能避開錯誤路線；若判斷失敗，隊伍會被送往蛇道或迷霧更深處。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影',
     exits: [
       { direction: 'south', targetRoomId: 'marsh_of_mirrors_mirror_pond', description: '裂紋水面回到鏡池' },
       {
@@ -698,7 +698,7 @@ marsh_of_mirrors_peat_islet: {
     image: 'marsh_of_mirrors_peat_islet.png',
     imagePrompt: '泥炭小洲 in marsh_of_mirrors, small peat islet above marsh water, moss, reeds, camp remains and fog, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain marsh, clear lantern light',
     description:
-      '蘆葦入口北面的泥炭小洲是少數不會立刻下陷的乾地，地面覆滿黑褐苔蘚，中央留著舊營火圈與幾根插成三角的測路桿。這裡是補給與交通房，玩家可短暫休息、重新整理鏡沼標記，也能從營火灰裡發現前一隊留下的未完成地圖。小洲邊緣水面不斷退縮又回來，像有什麼在測量岸線。若玩家修復測路桿，可以建立通往歪木棧道與回聲濕地的穩定捷徑；若忽略苔蘚上的蛇痕，夜裡會被湖蛇包圍。',
+      '蘆葦入口北面的泥炭小洲是少數不會立刻下陷的乾地，地面覆滿黑褐苔蘚，中央留著舊營火圈與幾根插成三角的測路桿。這裡是補給與交通房，旅人可短暫休息、重新整理鏡沼標記，也能從營火灰裡發現前一隊留下的未完成地圖。小洲邊緣水面不斷退縮又回來，像有什麼在測量岸線。若旅人修復測路桿，可以建立通往歪木棧道與回聲濕地的穩定捷徑；若忽略苔蘚上的蛇痕，夜裡會被湖蛇包圍',
     exits: [
       { direction: 'south', targetRoomId: 'marsh_of_mirrors_reed_gate', description: '泥脊回到蘆葦入口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_crooked_boardwalk', description: '乾木橋通往歪木棧道' },
@@ -725,7 +725,7 @@ marsh_of_mirrors_dark_treant_grove: {
     image: 'marsh_of_mirrors_dark_treant_grove.png',
     imagePrompt: '暗樹林 in marsh_of_mirrors, grove of dark twisted treants, mirror pools, roots, purple shadow sap and fog, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '沉水柳北面的樹林被暗色樹液污染，樹幹扭曲成像人形一樣的姿勢，根系伸入一口口小鏡池中。每棵樹都有兩個影子，一個落在地面，一個倒掛在水下。這裡是精英戰鬥與大型事件前置房，玩家可追查暗黑樹人如何被鏡水腐化，採集暗樹皮與黑色樹液，也能找到通往玻璃水核心的根系路線。暗樹林的敵人行動慢卻壓迫感強，會用根系封路，把隊伍逼到錯誤倒影旁。若玩家淨化沉水柳，這裡的部分樹根會暫時停止攻擊。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。',
+      '沉水柳北面的樹林被暗色樹液污染，樹幹扭曲成像人形一樣的姿勢，根系伸入一口口小鏡池中。每棵樹都有兩個影子，一個落在地面，一個倒掛在水下。這裡是精英戰鬥與大型事件前置房，旅人可追查暗黑樹人如何被鏡水腐化，採集暗樹皮與黑色樹液，也能找到通往玻璃水核心的根系路線。暗樹林的敵人行動慢卻壓迫感強，會用根系封路，把隊伍逼到錯誤倒影旁。若旅人淨化沉水柳，這裡的部分樹根會暫時停止攻擊。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影',
     exits: [
       {
         direction: 'south',
@@ -759,7 +759,7 @@ marsh_of_mirrors_serpent_channel: {
     image: 'marsh_of_mirrors_serpent_channel.png',
     imagePrompt: '蛇行水道 in marsh_of_mirrors, winding serpent channel through dark marsh water, reeds, ripples and fog, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain marsh, clear lantern light',
     description:
-      '失路石堆南面的水道蜿蜒得像巨蛇身體，水面一段明亮一段漆黑，讓人難以看清深度。兩岸蘆葦低伏，像被巨大身軀反覆壓過。這裡是高風險通道與戰鬥房，玩家可沿水道繞往沉沒小祠，也能追查湖蛇巢穴與失蹤貨箱。水道中段有多處氣泡旋渦，若倒影裡先出現波紋，真正的湖蛇很快會從身旁水面竄出。毒蛙也會利用蛇道留下的空洞藏身，形成連續伏擊。安全通過後，隊伍可取得通往小祠的隱蔽路線。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵。',
+      '失路石堆南面的水道蜿蜒得像巨蛇身體，水面一段明亮一段漆黑，讓人難以看清深度。兩岸蘆葦低伏，像被巨大身軀反覆壓過。這裡是高風險通道與戰鬥房，旅人可沿水道繞往沉沒小祠，也能追查湖蛇巢穴與失蹤貨箱。水道中段有多處氣泡旋渦，若倒影裡先出現波紋，真正的湖蛇很快會從身旁水面竄出。毒蛙也會利用蛇道留下的空洞藏身，形成連續伏擊。安全通過後，隊伍可取得通往小祠的隱蔽路線。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵',
     exits: [
       { direction: 'north', targetRoomId: 'marsh_of_mirrors_lost_cairn', description: '低水道回到失路石堆', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
@@ -798,7 +798,7 @@ marsh_of_mirrors_echo_fen: {
     image: 'marsh_of_mirrors_echo_fen.png',
     imagePrompt: '回聲濕地 in marsh_of_mirrors, open fen with echoing fog, shallow water, reeds, distant lights and mirrored ripples, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain water, clear lantern light',
     description:
-      '泥炭小洲北面是一片開闊濕地，水淺卻沒有明確路線，聲音會在霧裡反覆返回。隊伍喊出的名字可能從三個方向回應，其中一個回聲甚至會多說半句。這裡是迷路事件與交通分岔房，玩家可用測路桿校準聲音來源，尋找失蹤旅人，也能分辨暗樹林、破碎倒影與月光堤道的方向。濕地看似空曠，實際上毒蛙和蜘蛛會被聲音吸引，綠色史萊姆則貼著淺水邊緣移動。若追逐錯誤回聲，隊伍會被帶進霧更厚的區域。',
+      '泥炭小洲北面是一片開闊濕地，水淺卻沒有明確路線，聲音會在霧裡反覆返回。隊伍喊出的名字可能從三個方向回應，其中一個回聲甚至會多說半句。這裡是迷路事件與交通分岔房，旅人可用測路桿校準聲音來源，尋找失蹤旅人，也能分辨暗樹林、破碎倒影與月光堤道的方向。濕地看似空曠，實際上毒蛙和蜘蛛會被聲音吸引，綠色史萊姆則貼著淺水邊緣移動。若追逐錯誤回聲，隊伍會被帶進霧更厚的區域',
     exits: [
       { direction: 'south', targetRoomId: 'marsh_of_mirrors_peat_islet', description: '測路桿回到泥炭小洲', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_dark_treant_grove', description: '低沉回聲來自暗樹林', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -826,7 +826,7 @@ marsh_of_mirrors_moonlit_causeway: {
     image: 'marsh_of_mirrors_moonlit_causeway.png',
     imagePrompt: '月光堤道 in marsh_of_mirrors, narrow moonlit causeway across mirror marsh, pale stones, mist, black water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain marsh, clear lantern light',
     description:
-      '回聲濕地北面浮出一條由白石鋪成的窄堤，石面像被月光浸過，即使陰天也會發出微亮光澤。堤道兩側水面倒映著不存在的滿月，讓石路看起來像懸在夜空上。這裡是通往鏡沼深處的交通節點，玩家可藉由白石排列判斷前往沉沒小祠、巫燈處與玻璃水核心的路線。月光堤道上的敵人不多，但一旦戰鬥，任何後退都可能踏進倒影而非真路。若玩家帶著鏡池樣本，白石會短暫顯示安全順序。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵。務必小心前進。',
+      '回聲濕地北面浮出一條由白石鋪成的窄堤，石面像被月光浸過，即使陰天也會發出微亮光澤。堤道兩側水面倒映著不存在的滿月，讓石路看起來像懸在夜空上。這裡是通往鏡沼深處的交通節點，旅人可藉由白石排列判斷前往沉沒小祠、巫燈處與玻璃水核心的路線。月光堤道上的敵人不多，但一旦戰鬥，任何後退都可能踏進倒影而非真路。若旅人帶著鏡池樣本，白石會短暫顯示安全順序。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵。務必小心前進',
     exits: [
       { direction: 'south', targetRoomId: 'marsh_of_mirrors_echo_fen', description: '回聲濕地在南側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_fill_27_19', description: '東側鏡沼通道接向巫燈處' },
@@ -860,7 +860,7 @@ marsh_of_mirrors_sinking_shrine: {
     image: 'marsh_of_mirrors_sinking_shrine.png',
     imagePrompt: '沉沒小祠 in marsh_of_mirrors, sinking shrine half submerged in marsh, candles, reeds, mirror water, green fog, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain shrine, clear lantern light',
     description:
-      '蛇行水道與月光堤道之間有一座半沉入水中的小祠，屋脊只剩一半露出，供桌卻奇異地保持乾燥。祠內擺著濕蠟燭、鏡片、解毒草和刻有陌生祈詞的石碗。這裡是任務與大型事件前置房，玩家可替失蹤者獻上名字牌，調查鏡沼過去是否曾被人祭祀，或取得通往巫燈處的護符。小祠倒影比本體完整，像另一座未沉沒的祠堂仍在水下等待香火。若玩家拿走錯誤供品，水下倒影會召來湖蛇與毒蛙阻止離開。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵。',
+      '蛇行水道與月光堤道之間有一座半沉入水中的小祠，屋脊只剩一半露出，供桌卻奇異地保持乾燥。祠內擺著濕蠟燭、鏡片、解毒草和刻有陌生祈詞的石碗。這裡是任務與大型事件前置房，旅人可替失蹤者獻上名字牌，調查鏡沼過去是否曾被人祭祀，或取得通往巫燈處的護符。小祠倒影比本體完整，像另一座未沉沒的祠堂仍在水下等待香火。若旅人拿走錯誤供品，水下倒影會召來湖蛇與毒蛙阻止離開。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵',
     exits: [
       {
         direction: 'west',
@@ -900,7 +900,7 @@ marsh_of_mirrors_hag_lantern: {
     image: 'marsh_of_mirrors_hag_lantern.png',
     imagePrompt: '巫燈處 in marsh_of_mirrors, lone witch lantern over marsh water, crooked poles, fog, charms and mirror reflections, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain marsh, clear lantern light',
     description:
-      '月光堤道東側懸著一盞孤燈，燈不是掛在樹上，而是被三根歪木桿支在水面中央。燈火呈暗綠色，倒影卻是深紫色，兩種光在霧中互相拉扯。周圍掛滿骨牌、草繩、破鏡片和不知名的藥包。這裡是精英事件與任務交涉房，玩家可追查操控假燈的巫術來源，破解鏡沼迷路現象，或取得進入玻璃水核心前需要的最後警示。雖然沒有真正的女巫站在燈下，但每次玩家靠近，燈影裡都會多出一個彎腰身影。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵。',
+      '月光堤道東側懸著一盞孤燈，燈不是掛在樹上，而是被三根歪木桿支在水面中央。燈火呈暗綠色，倒影卻是深紫色，兩種光在霧中互相拉扯。周圍掛滿骨牌、草繩、破鏡片和不知名的藥包。這裡是精英事件與任務交涉房，旅人可追查操控假燈的巫術來源，破解鏡沼迷路現象，或取得進入玻璃水核心前需要的最後警示。雖然沒有真正的女巫站在燈下，但每次旅人靠近，燈影裡都會多出一個彎腰身影。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵',
     exits: [
       { direction: 'west', targetRoomId: 'marsh_of_mirrors_fill_27_19', description: '西側鏡沼通道回到月光堤道' },
       {
@@ -940,7 +940,7 @@ marsh_of_mirrors_glasswater_core: {
     image: 'marsh_of_mirrors_glasswater_core.png',
     imagePrompt: '玻璃水核心 in marsh_of_mirrors, central glasslike water core, impossible reflections, black reeds, glowing mist and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain water, clear lantern light',
     description:
-      '鏡沼最深處是一片圓形水域，水面透明如玻璃，能看見下方並不是泥底，而是一片倒置天空。黑色蘆葦圍成外圈，暗樹根、月光堤道與破碎倒影都在此交會。中央水面浮著一枚緩慢轉動的透明核心，每次轉動都會讓整片沼澤的倒影偏移。東側黑根與北側雙色燈影都能辨認，但核心周圍倒影會把回程反折，需由暗樹林或巫燈處方向進入核心。這裡是鏡沼的大型事件鉤子與最終地標，玩家可選擇穩定核心、打碎它，或取走鏡片碎核作為任務證據。任何選擇都會引來沼澤生物反應：毒蛙鳴叫、湖蛇破水、暗樹根從邊緣收攏。若隊伍沒有先取得巫燈警示與鏡池樣本，核心會顯示錯誤出口，把人送回迷霧深處。',
+      '鏡沼最深處是一片圓形水域，水面透明如玻璃，能看見下方並不是泥底，而是一片倒置天空。黑色蘆葦圍成外圈，暗樹根、月光堤道與破碎倒影都在此交會。中央水面浮著一枚緩慢轉動的透明核心，每次轉動都會讓整片沼澤的倒影偏移。東側黑根與北側雙色燈影都能辨認，但核心周圍倒影會把回程反折，需由暗樹林或巫燈處方向進入核心。這裡是鏡沼的大型事件鉤子與最終地標，旅人可選擇穩定核心、打碎它，或取走鏡片碎核作為任務證據。任何選擇都會引來沼澤生物反應：毒蛙鳴叫、湖蛇破水、暗樹根從邊緣收攏。若隊伍沒有先取得巫燈警示與鏡池樣本，核心會顯示錯誤出口，把人送回迷霧深處',
     exits: [
       {
         direction: 'south',
@@ -980,7 +980,7 @@ redrock_badlands_dust_gate: {
     image: 'redrock_badlands_dust_gate.png',
     imagePrompt: '沙塵隘口 in redrock_badlands, red rock desert pass with dust gate, warning stakes, dry wind and bandit tracks, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain desert, clear lantern light',
     description:
-      '赤岩荒地的入口是一道被紅色岩壁夾住的狹長隘口，風把細沙推成斜線，打在警告木樁與破旗上。地面同時有商隊車轍、盜匪靴印和野獸爪痕，沒有哪一種痕跡能保持完整太久。這裡是荒地的交通錨點與 PvP 風險提示房，玩家可確認補水、標記撤退路線，並從木樁上的懸賞紙判斷近期哪支盜匪團最活躍。隘口不完全安全，落單旅人常在進入後第一道轉彎就被盯上。若風聲突然變低，代表岩脊上有人正在觀察。這裡的地形與視野會直接影響玩家遭遇和撤退判定，隊伍最好先確認高處、掩體與回程路線。',
+      '赤岩荒地的入口是一道被紅色岩壁夾住的狹長隘口，風把細沙推成斜線，打在警告木樁與破旗上。地面同時有商隊車轍、盜匪靴印和野獸爪痕，沒有哪一種痕跡能保持完整太久。這裡是荒地的交通錨點與 PvP 風險提示房，旅人可確認補水、標記撤退路線，並從木樁上的懸賞紙判斷近期哪支盜匪團最活躍。隘口不完全安全，落單旅人常在進入後第一道轉彎就被盯上。若風聲突然變低，代表岩脊上有人正在觀察。這裡的地形與視野會直接影響旅人遭遇和撤退判定，隊伍最好先確認高處、掩體與回程路線',
     exits: [
       { direction: 'east', targetRoomId: 'redrock_badlands_rustwash_pass', description: '紅沙路通向鏽水隘道' },
       { direction: 'north', targetRoomId: 'redrock_badlands_burnt_wagon', description: '焦黑車轍通向焚車殘骸', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -1006,7 +1006,7 @@ redrock_badlands_rustwash_pass: {
     image: 'redrock_badlands_rustwash_pass.png',
     imagePrompt: '鏽水隘道 in redrock_badlands, dry wash stained rust red, narrow canyon path, cracked mud, dust and cliffs, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '隘口後方是一條乾涸河道，泥面被鐵鏽色礦物染成深紅，像曾有血水沿著谷底流過。兩側岩壁不高，卻足夠讓盜匪躲在上方投石或射箭。這裡是主路第一段，連接碎岩脊、乾裂谷與沙塵隘口，也是玩家第一次感受到 open PvP 壓力的地方。河道中央散著補給箱碎片和被曬裂的水袋，提醒隊伍不要把這裡當成普通通道。若沿著鏽色水痕追蹤，能找到紅礦切口與流放者活動方向。',
+      '隘口後方是一條乾涸河道，泥面被鐵鏽色礦物染成深紅，像曾有血水沿著谷底流過。兩側岩壁不高，卻足夠讓盜匪躲在上方投石或射箭。這裡是主路第一段，連接碎岩脊、乾裂谷與沙塵隘口，也是旅人第一次感受到 open PvP 壓力的地方。河道中央散著補給箱碎片和被曬裂的水袋，提醒隊伍不要把這裡當成普通通道。若沿著鏽色水痕追蹤，能找到紅礦切口與流放者活動方向',
     exits: [
       { direction: 'west', targetRoomId: 'redrock_badlands_dust_gate', description: '紅沙路回到沙塵隘口' },
       { direction: 'east', targetRoomId: 'redrock_badlands_splinter_ridge', description: '河道爬向碎岩脊' },
@@ -1033,7 +1033,7 @@ redrock_badlands_splinter_ridge: {
     image: 'redrock_badlands_splinter_ridge.png',
     imagePrompt: '碎岩脊 in redrock_badlands, jagged red stone ridge, narrow ledges, dust storm horizon, ambush shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
     description:
-      '鏽水隘道東端爬上碎岩脊，紅色石片像斷刀一樣斜插在地面，腳下每一步都會發出清脆碎裂聲。岩脊視野開闊，可以看見盜匪哨塔、紅礦切口與遠處黑旗瞭望點，但也讓行蹤暴露給所有高處敵人。這裡是交通與伏擊房，玩家可選擇繞往哨塔、進入乾谷，或沿岩脊快速穿越荒地。碎岩縫中躲著毒蛇，野狼則會利用背風處接近。若隊伍在此交戰，聲音會傳得很遠，引來其他玩家或盜匪巡邏。',
+      '鏽水隘道東端爬上碎岩脊，紅色石片像斷刀一樣斜插在地面，腳下每一步都會發出清脆碎裂聲。岩脊視野開闊，可以看見盜匪哨塔、紅礦切口與遠處黑旗瞭望點，但也讓行蹤暴露給所有高處敵人。這裡是交通與伏擊房，旅人可選擇繞往哨塔、進入乾谷，或沿岩脊快速穿越荒地。碎岩縫中躲著毒蛇，野狼則會利用背風處接近。若隊伍在此交戰，聲音會傳得很遠，引來其他旅人或盜匪巡邏',
     exits: [
       { direction: 'west', targetRoomId: 'redrock_badlands_rustwash_pass', description: '碎坡回到鏽水隘道' },
       { direction: 'east', targetRoomId: 'redrock_badlands_bandit_watch', description: '岩脊通向盜匪哨塔' },
@@ -1068,7 +1068,7 @@ redrock_badlands_bandit_watch: {
     image: 'redrock_badlands_bandit_watch.png',
     imagePrompt: '盜匪哨塔 in redrock_badlands, crude bandit watchtower on red cliffs, flags, ladders, dust and weapons, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '碎岩脊東側立著一座用枯木、車輪和紅岩支柱拼成的哨塔，塔頂掛著破布旗，能監視鏽水隘道與紅礦切口。盜匪會在這裡交換信號、分配伏擊位置，也會把搶來的水袋吊在塔下示眾。這裡是高衝突戰鬥房，玩家可清除哨兵、奪取旗號，或利用塔頂視野標記其他玩家與敵對隊伍動向。若沒有先解決哨塔，後續進入營地與伏擊峽谷時會更容易遭遇增援。塔梯狹窄，一旦交手很難快速撤退。',
+      '碎岩脊東側立著一座用枯木、車輪和紅岩支柱拼成的哨塔，塔頂掛著破布旗，能監視鏽水隘道與紅礦切口。盜匪會在這裡交換信號、分配伏擊位置，也會把搶來的水袋吊在塔下示眾。這裡是高衝突戰鬥房，旅人可清除哨兵、奪取旗號，或利用塔頂視野標記其他旅人與敵對隊伍動向。若沒有先解決哨塔，後續進入營地與伏擊峽谷時會更容易遭遇增援。塔梯狹窄，一旦交手很難快速撤退',
     exits: [
       { direction: 'west', targetRoomId: 'redrock_badlands_splinter_ridge', description: '岩脊回到碎岩路' },
       { direction: 'east', targetRoomId: 'redrock_badlands_outlaw_camp', description: '旗號指向盜匪營地' },
@@ -1101,7 +1101,7 @@ redrock_badlands_dry_gulch: {
     image: 'redrock_badlands_dry_gulch.png',
     imagePrompt: '乾裂谷 in redrock_badlands, dry cracked gulch, red clay walls, bones, heat haze and thorn brush, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '鏽水隘道南側陷成一條乾裂谷，谷底泥土龜裂成大片硬殼，裂縫間有熱氣與細小蛇洞。風被谷壁擋住，空氣悶得像石窯，連遠方喊聲都變得模糊。這裡是資源與戰鬥房，玩家可採集乾土礦、蛇毒與耐旱草根，也能避開主路哨塔繞往毒蛇平地或焦泉。乾裂谷看似低調，實際常被盜匪當成藏貨線，地上骨頭多半不是野獸留下。若裂縫突然冒出熱氣，附近可能有熔岩蟲通道。',
+      '鏽水隘道南側陷成一條乾裂谷，谷底泥土龜裂成大片硬殼，裂縫間有熱氣與細小蛇洞。風被谷壁擋住，空氣悶得像石窯，連遠方喊聲都變得模糊。這裡是資源與戰鬥房，旅人可採集乾土礦、蛇毒與耐旱草根，也能避開主路哨塔繞往毒蛇平地或焦泉。乾裂谷看似低調，實際常被盜匪當成藏貨線，地上骨頭多半不是野獸留下。若裂縫突然冒出熱氣，附近可能有熔岩蟲通道',
     exits: [
       { direction: 'north', targetRoomId: 'redrock_badlands_rustwash_pass', description: '爬坡回到鏽水隘道', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
@@ -1140,7 +1140,7 @@ redrock_badlands_cinder_spring: {
     image: 'redrock_badlands_cinder_spring.png',
     imagePrompt: '焦泉 in redrock_badlands, steaming cinder spring in red desert, black mineral crust, orange heat, dry reeds, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain desert, clear lantern light',
     description:
-      '乾裂谷南端有一口冒著灰白蒸汽的焦泉，泉水不多，卻含有濃烈礦味，周圍結著黑色礦殼。流放者與盜匪都會冒險來此取水，因為整片荒地沒有幾處可靠水源。這裡是資源與衝突房，玩家可採集火成礦殼、補充有限水源，或設伏爭奪水權。泉邊有燒焦腳印與破陶罐，說明地下熱流最近變得不穩。火焰精靈偶爾會在蒸汽中現身，熔岩蟲也會沿熱流靠近。任何戰鬥都可能把泉口震裂。',
+      '乾裂谷南端有一口冒著灰白蒸汽的焦泉，泉水不多，卻含有濃烈礦味，周圍結著黑色礦殼。流放者與盜匪都會冒險來此取水，因為整片荒地沒有幾處可靠水源。這裡是資源與衝突房，旅人可採集火成礦殼、補充有限水源，或設伏爭奪水權。泉邊有燒焦腳印與破陶罐，說明地下熱流最近變得不穩。火焰精靈偶爾會在蒸汽中現身，熔岩蟲也會沿熱流靠近。任何戰鬥都可能把泉口震裂',
     exits: [
       {
         direction: 'north',
