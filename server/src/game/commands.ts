@@ -2971,6 +2971,9 @@ function handleCrossRoomFieldSkill(
       ? [parsed.direction]
       : [];
   if (directions.length === 0) {
+    if (parsed.target && world.findMonsterInRoom(char.roomId, parsed.target)) {
+      return false;
+    }
     sendError(session.sessionId, `「${skillDef.name}」需要指定方向：north/east/south/west。`);
     return true;
   }
