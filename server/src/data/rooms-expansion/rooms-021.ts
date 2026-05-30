@@ -8,7 +8,7 @@ royal_hunting_grounds_permit_lodge: {
     image: 'royal_hunting_grounds_permit_lodge.png',
     imagePrompt: '狩獵許可屋 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
     description:
-      '狩獵許可屋位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+      '狩獵許可屋位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，旅人可以 觀察 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章',
     exits: [
       { direction: 'west', targetRoomId: 'royal_hunting_grounds_horn_gate', description: '回到獵角門' },
       { direction: 'east', targetRoomId: 'royal_hunting_grounds_hounds_yard', description: '獵犬院在東側' },
@@ -35,7 +35,7 @@ royal_hunting_grounds_deer_run: {
     image: 'royal_hunting_grounds_deer_run.png',
     imagePrompt: '鹿徑 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
     description:
-      '鹿徑位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+      '鹿徑位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，旅人可以 觀察 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章',
     exits: [
       { direction: 'south', targetRoomId: 'royal_hunting_grounds_horn_gate', description: '回到獵角門', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
@@ -74,7 +74,7 @@ royal_hunting_grounds_boar_wallows: {
     image: 'royal_hunting_grounds_boar_wallows.png',
     imagePrompt: '野豬泥塘 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
     description:
-      '野豬泥塘位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+      '野豬泥塘位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，旅人可以 觀察 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章',
     exits: [
       {
         direction: 'west',
@@ -107,7 +107,7 @@ royal_hunting_grounds_falcon_perch: {
     image: 'royal_hunting_grounds_falcon_perch.png',
     imagePrompt: '獵鷹棲臺 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
     description:
-      '獵鷹棲臺位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+      '獵鷹棲臺位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，旅人可以 觀察 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章',
     exits: [
       { direction: 'west', targetRoomId: 'royal_hunting_grounds_boar_wallows', description: '回到野豬泥塘' },
       {
@@ -146,7 +146,7 @@ royal_hunting_grounds_noble_blind: {
     image: 'royal_hunting_grounds_noble_blind.png',
     imagePrompt: '貴族隱棚 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain gate, clear lantern light',
     description:
-      '貴族隱棚位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+      '貴族隱棚位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，旅人可以 觀察 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章',
     exits: [
       { direction: 'north', targetRoomId: 'royal_hunting_grounds_boar_wallows', description: '北側泥塘邊路回到野豬泥塘' },
       { direction: 'east', targetRoomId: 'royal_hunting_grounds_stag_mirror', description: '鹿影水鏡在東側' },
@@ -172,7 +172,7 @@ royal_hunting_grounds_silver_trail: {
     image: 'royal_hunting_grounds_silver_trail.png',
     imagePrompt: '銀葉獵徑 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
     description:
-      '銀葉獵徑位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+      '銀葉獵徑位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，旅人可以 觀察 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章',
     exits: [
       {
         direction: 'south',
@@ -211,7 +211,7 @@ royal_hunting_grounds_hounds_yard: {
     image: 'royal_hunting_grounds_hounds_yard.png',
     imagePrompt: '獵犬院 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
     description:
-      '獵犬院位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+      '獵犬院位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，旅人可以 觀察 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章',
     exits: [
       { direction: 'west', targetRoomId: 'royal_hunting_grounds_permit_lodge', description: '回到狩獵許可屋' },
       {
@@ -244,7 +244,7 @@ royal_hunting_grounds_herb_copse: {
     image: 'royal_hunting_grounds_herb_copse.png',
     imagePrompt: '草藥矮林 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
     description:
-      '草藥矮林位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+      '草藥矮林位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，旅人可以 觀察 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章',
     exits: [
       {
         direction: 'west',
@@ -282,7 +282,7 @@ royal_hunting_grounds_stag_mirror: {
     image: 'royal_hunting_grounds_stag_mirror.png',
     imagePrompt: '鹿影水鏡 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
     description:
-      '鹿影水鏡位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+      '鹿影水鏡位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，旅人可以 觀察 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章',
     exits: [
       { direction: 'west', targetRoomId: 'royal_hunting_grounds_noble_blind', description: '回到貴族隱棚' },
       {
@@ -321,7 +321,7 @@ royal_hunting_grounds_old_oak_stand: {
     image: 'royal_hunting_grounds_old_oak_stand.png',
     imagePrompt: '古橡木群 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
     description:
-      '古橡木群位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+      '古橡木群位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，旅人可以 觀察 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章',
     exits: [
       { direction: 'south', targetRoomId: 'royal_hunting_grounds_silver_trail', description: '回到銀葉獵徑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'royal_hunting_grounds_hidden_poacher_path', description: '偷獵者小徑在東側' },
@@ -348,7 +348,7 @@ royal_hunting_grounds_gamekeeper_camp: {
     image: 'royal_hunting_grounds_gamekeeper_camp.png',
     imagePrompt: '獵場看守營 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
     description:
-      '獵場看守營位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+      '獵場看守營位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，旅人可以 觀察 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章',
     exits: [
       {
         direction: 'west',
@@ -381,7 +381,7 @@ royal_hunting_grounds_arrow_range: {
     image: 'royal_hunting_grounds_arrow_range.png',
     imagePrompt: '箭靶場 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
     description:
-      '箭靶場位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+      '箭靶場位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，旅人可以 觀察 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章',
     exits: [
       { direction: 'west', targetRoomId: 'royal_hunting_grounds_hounds_yard', description: '回到獵犬院' },
       { direction: 'north', targetRoomId: 'royal_hunting_grounds_gamekeeper_camp', description: '獵場看守營在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -408,7 +408,7 @@ royal_hunting_grounds_wolf_cut: {
     image: 'royal_hunting_grounds_wolf_cut.png',
     imagePrompt: '狼切道 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
     description:
-      '狼切道位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+      '狼切道位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，旅人可以 觀察 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章',
     exits: [
       { direction: 'west', targetRoomId: 'royal_hunting_grounds_arrow_range', description: '回到箭靶場' },
       { direction: 'north', targetRoomId: 'royal_hunting_grounds_trophy_pavilion', description: '獵物陳列亭在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -435,7 +435,7 @@ royal_hunting_grounds_royal_marker: {
     image: 'royal_hunting_grounds_royal_marker.png',
     imagePrompt: '王室界碑 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
     description:
-      '王室界碑位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+      '王室界碑位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，旅人可以 觀察 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章',
     exits: [
       {
         direction: 'west',
@@ -474,7 +474,7 @@ royal_hunting_grounds_hidden_poacher_path: {
     image: 'royal_hunting_grounds_hidden_poacher_path.png',
     imagePrompt: '偷獵者小徑 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
     description:
-      '偷獵者小徑位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+      '偷獵者小徑位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，旅人可以 觀察 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章',
     exits: [
       { direction: 'west', targetRoomId: 'royal_hunting_grounds_old_oak_stand', description: '回到古橡木群' },
       {
@@ -506,7 +506,7 @@ royal_hunting_grounds_moonlit_clearing: {
     image: 'royal_hunting_grounds_moonlit_clearing.png',
     imagePrompt: '月光空地 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
     description:
-      '月光空地位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+      '月光空地位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，旅人可以 觀察 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章',
     exits: [
       {
         direction: 'west',
@@ -539,7 +539,7 @@ royal_hunting_grounds_griffon_ledge: {
     image: 'royal_hunting_grounds_griffon_ledge.png',
     imagePrompt: '獅鷲岩棚 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
     description:
-      '獅鷲岩棚位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+      '獅鷲岩棚位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，旅人可以 觀察 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章',
     exits: [
       { direction: 'west', targetRoomId: 'royal_hunting_grounds_wolf_cut', description: '回到狼切道' },
       {
@@ -571,7 +571,7 @@ royal_hunting_grounds_trophy_pavilion: {
     image: 'royal_hunting_grounds_trophy_pavilion.png',
     imagePrompt: '獵物陳列亭 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
     description:
-      '獵物陳列亭位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+      '獵物陳列亭位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，旅人可以 觀察 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章',
     exits: [
       { direction: 'west', targetRoomId: 'royal_hunting_grounds_gamekeeper_camp', description: '回到獵場看守營' },
       { direction: 'south', targetRoomId: 'royal_hunting_grounds_wolf_cut', description: '回到狼切道', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -598,7 +598,7 @@ royal_hunting_grounds_white_stag_grove: {
     image: 'royal_hunting_grounds_white_stag_grove.png',
     imagePrompt: '白鹿林 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
     description:
-      '白鹿林位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+      '白鹿林位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，旅人可以 觀察 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章',
     exits: [
       { direction: 'west', targetRoomId: 'royal_hunting_grounds_fill_n6_n4', description: '西側月光草線回到月光空地' },
       { direction: 'south', targetRoomId: 'royal_hunting_grounds_trophy_pavilion', description: '回到獵物陳列亭', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -627,7 +627,7 @@ royal_hunting_grounds_white_stag_grove: {
     image: 'ashfall_monastery_ash_gate.png',
     imagePrompt: '灰門 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '灰門位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+      '灰門位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，旅人可以 觀察 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印',
     exits: [
       { direction: 'east', targetRoomId: 'ashfall_monastery_bell_court', description: '鐘庭在東側' },
       { direction: 'north', targetRoomId: 'ashfall_monastery_scorched_cloister', description: '焦黑迴廊在北側' },
@@ -653,7 +653,7 @@ ashfall_monastery_bell_court: {
     image: 'ashfall_monastery_bell_court.png',
     imagePrompt: '鐘庭 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '鐘庭位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+      '鐘庭位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，旅人可以 觀察 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印',
     exits: [
       { direction: 'west', targetRoomId: 'ashfall_monastery_ash_gate', description: '回到灰門' },
       { direction: 'east', targetRoomId: 'ashfall_monastery_cinder_garden', description: '餘燼庭園在東側' },
@@ -680,7 +680,7 @@ ashfall_monastery_scorched_cloister: {
     image: 'ashfall_monastery_scorched_cloister.png',
     imagePrompt: '焦黑迴廊 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '焦黑迴廊位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+      '焦黑迴廊位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，旅人可以 觀察 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印',
     exits: [
       { direction: 'south', targetRoomId: 'ashfall_monastery_ash_gate', description: '回到灰門' },
       { direction: 'east', targetRoomId: 'ashfall_monastery_broken_font', description: '破聖水盤在東側' },
@@ -707,7 +707,7 @@ ashfall_monastery_cinder_garden: {
     image: 'ashfall_monastery_cinder_garden.png',
     imagePrompt: '餘燼庭園 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '餘燼庭園位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+      '餘燼庭園位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，旅人可以 觀察 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印',
     exits: [
       { direction: 'west', targetRoomId: 'ashfall_monastery_bell_court', description: '回到鐘庭' },
       { direction: 'north', targetRoomId: 'ashfall_monastery_ember_chapel', description: '餘火小禮拜堂在北側' },
@@ -733,7 +733,7 @@ ashfall_monastery_broken_font: {
     image: 'ashfall_monastery_broken_font.png',
     imagePrompt: '破聖水盤 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '破聖水盤位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+      '破聖水盤位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，旅人可以 觀察 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印',
     exits: [
       { direction: 'west', targetRoomId: 'ashfall_monastery_scorched_cloister', description: '回到焦黑迴廊' },
       { direction: 'south', targetRoomId: 'ashfall_monastery_bell_court', description: '回到鐘庭' },
@@ -760,7 +760,7 @@ ashfall_monastery_penitent_cells: {
     image: 'ashfall_monastery_penitent_cells.png',
     imagePrompt: '懺悔小室 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '懺悔小室位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+      '懺悔小室位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，旅人可以 觀察 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印',
     exits: [
       { direction: 'south', targetRoomId: 'ashfall_monastery_scorched_cloister', description: '回到焦黑迴廊' },
       { direction: 'east', targetRoomId: 'ashfall_monastery_ash_scriptorium', description: '灰抄經室在東側' },
@@ -786,7 +786,7 @@ ashfall_monastery_blackened_library: {
     image: 'ashfall_monastery_blackened_library.png',
     imagePrompt: '燻黑書庫 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '燻黑書庫位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+      '燻黑書庫位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，旅人可以 觀察 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印',
     exits: [
       { direction: 'west', targetRoomId: 'ashfall_monastery_broken_font', description: '回到破聖水盤' },
       { direction: 'east', targetRoomId: 'ashfall_monastery_fallen_refectory', description: '墮落食堂在東側' },
@@ -813,7 +813,7 @@ ashfall_monastery_ember_chapel: {
     image: 'ashfall_monastery_ember_chapel.png',
     imagePrompt: '餘火小禮拜堂 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '餘火小禮拜堂位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+      '餘火小禮拜堂位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，旅人可以 觀察 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印',
     exits: [
       { direction: 'south', targetRoomId: 'ashfall_monastery_cinder_garden', description: '回到餘燼庭園' },
       { direction: 'west', targetRoomId: 'ashfall_monastery_blackened_library', description: '燻黑書庫在西側' },
@@ -841,7 +841,7 @@ ashfall_monastery_fallen_refectory: {
     image: 'ashfall_monastery_fallen_refectory.png',
     imagePrompt: '墮落食堂 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '墮落食堂位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+      '墮落食堂位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，旅人可以 觀察 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印',
     exits: [
       { direction: 'west', targetRoomId: 'ashfall_monastery_blackened_library', description: '回到燻黑書庫' },
       { direction: 'north', targetRoomId: 'ashfall_monastery_censer_hall', description: '香爐廳在北側' },
@@ -867,7 +867,7 @@ ashfall_monastery_ash_scriptorium: {
     image: 'ashfall_monastery_ash_scriptorium.png',
     imagePrompt: '灰抄經室 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '灰抄經室位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+      '灰抄經室位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，旅人可以 觀察 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印',
     exits: [
       { direction: 'west', targetRoomId: 'ashfall_monastery_penitent_cells', description: '回到懺悔小室' },
       { direction: 'east', targetRoomId: 'ashfall_monastery_smoke_ambulatory', description: '煙霧步廊在東側' },
@@ -893,7 +893,7 @@ ashfall_monastery_smoke_ambulatory: {
     image: 'ashfall_monastery_smoke_ambulatory.png',
     imagePrompt: '煙霧步廊 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '煙霧步廊位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+      '煙霧步廊位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，旅人可以 觀察 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印',
     exits: [
       { direction: 'west', targetRoomId: 'ashfall_monastery_ash_scriptorium', description: '回到灰抄經室' },
       { direction: 'south', targetRoomId: 'ashfall_monastery_blackened_library', description: '回到燻黑書庫' },
@@ -921,7 +921,7 @@ ashfall_monastery_crypt_stairs: {
     image: 'ashfall_monastery_crypt_stairs.png',
     imagePrompt: '地下墓階 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '地下墓階位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+      '地下墓階位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，旅人可以 觀察 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印',
     exits: [
       { direction: 'south', targetRoomId: 'ashfall_monastery_smoke_ambulatory', description: '回到煙霧步廊' },
       { direction: 'east', targetRoomId: 'ashfall_monastery_bone_ossuary', description: '骨灰藏室在東側' },
@@ -947,7 +947,7 @@ ashfall_monastery_bone_ossuary: {
     image: 'ashfall_monastery_bone_ossuary.png',
     imagePrompt: '骨灰藏室 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain ash, clear lantern light',
     description:
-      '骨灰藏室位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+      '骨灰藏室位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，旅人可以 觀察 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印',
     exits: [
       { direction: 'west', targetRoomId: 'ashfall_monastery_crypt_stairs', description: '回到地下墓階' },
       { direction: 'south', targetRoomId: 'ashfall_monastery_censer_hall', description: '回到香爐廳' },
@@ -973,7 +973,7 @@ ashfall_monastery_censer_hall: {
     image: 'ashfall_monastery_censer_hall.png',
     imagePrompt: '香爐廳 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '香爐廳位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+      '香爐廳位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，旅人可以 觀察 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印',
     exits: [
       { direction: 'west', targetRoomId: 'ashfall_monastery_smoke_ambulatory', description: '回到煙霧步廊' },
       { direction: 'south', targetRoomId: 'ashfall_monastery_fallen_refectory', description: '回到墮落食堂' },
@@ -1000,7 +1000,7 @@ ashfall_monastery_saint_mosaic: {
     image: 'ashfall_monastery_saint_mosaic.png',
     imagePrompt: '聖者碎像 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '聖者碎像位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+      '聖者碎像位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，旅人可以 觀察 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印',
     exits: [
       { direction: 'south', targetRoomId: 'ashfall_monastery_ember_chapel', description: '回到餘火小禮拜堂' },
       { direction: 'east', targetRoomId: 'ashfall_monastery_shadow_belfry', description: '暗影鐘樓在東側' },
@@ -1026,7 +1026,7 @@ ashfall_monastery_firelit_apocrypha: {
     image: 'ashfall_monastery_firelit_apocrypha.png',
     imagePrompt: '火照外典室 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '火照外典室位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+      '火照外典室位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，旅人可以 觀察 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印',
     exits: [
       { direction: 'south', targetRoomId: 'ashfall_monastery_blackened_library', description: '回到燻黑書庫' },
       { direction: 'east', targetRoomId: 'ashfall_monastery_dual_altar', description: '雙相祭壇在東側' },
@@ -1052,7 +1052,7 @@ ashfall_monastery_shadow_belfry: {
     image: 'ashfall_monastery_shadow_belfry.png',
     imagePrompt: '暗影鐘樓 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '暗影鐘樓位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+      '暗影鐘樓位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，旅人可以 觀察 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印',
     exits: [
       { direction: 'west', targetRoomId: 'ashfall_monastery_saint_mosaic', description: '回到聖者碎像' },
       { direction: 'north', targetRoomId: 'ashfall_monastery_dual_altar', description: '雙相祭壇在北側' },
@@ -1078,7 +1078,7 @@ ashfall_monastery_reliquary_vault: {
     image: 'ashfall_monastery_reliquary_vault.png',
     imagePrompt: '聖物庫 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '聖物庫位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+      '聖物庫位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，旅人可以 觀察 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印',
     exits: [
       { direction: 'west', targetRoomId: 'ashfall_monastery_bone_ossuary', description: '回到骨灰藏室' },
       { direction: 'north', targetRoomId: 'ashfall_monastery_dual_altar', description: '雙相祭壇在北側' },
@@ -1104,7 +1104,7 @@ ashfall_monastery_dual_altar: {
     image: 'ashfall_monastery_dual_altar.png',
     imagePrompt: '雙相祭壇 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '雙相祭壇位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+      '雙相祭壇位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，旅人可以 觀察 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印',
     exits: [
       { direction: 'west', targetRoomId: 'ashfall_monastery_firelit_apocrypha', description: '回到火照外典室' },
       { direction: 'south', targetRoomId: 'ashfall_monastery_reliquary_vault', description: '回到聖物庫' },
@@ -1132,7 +1132,7 @@ ashfall_monastery_ashen_sanctum: {
     image: 'ashfall_monastery_ashen_sanctum.png',
     imagePrompt: '灰燼聖所 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '灰燼聖所位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+      '灰燼聖所位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，旅人可以 觀察 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印',
     exits: [
       { direction: 'west', targetRoomId: 'ashfall_monastery_dual_altar', description: '回到雙相祭壇' },
     ],
@@ -1160,7 +1160,7 @@ ashfall_monastery_ashen_sanctum: {
     image: 'frostbite_pass_snow_gate.png',
     imagePrompt: '雪門 in frostbite_pass, frozen mountain pass with blizzard, blue ice bridge, buried caravan wagons, snow gate, glacier cliffs and polar wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain mountain, clear lantern light',
     description:
-      '雪門位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
+      '雪門位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，旅人可以 觀察 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄',
     exits: [
       { direction: 'east', targetRoomId: 'frostbite_pass_caravan_marker', description: '商隊路標在東側' },
       { direction: 'north', targetRoomId: 'frostbite_pass_frozen_switchback', description: '凍結折路在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },

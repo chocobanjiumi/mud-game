@@ -8,7 +8,7 @@ serpent_delta_manymouth_confluence: {
     image: 'serpent_delta_manymouth_confluence.png',
     imagePrompt: '百口合流 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain river, clear lantern light',
     description:
-      '百口合流位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，玩家可以 inspect 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標。',
+      '百口合流位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
     exits: [
       { direction: 'west', targetRoomId: 'serpent_delta_blue_lotus_marsh', description: '藍蓮沼在西側' },
       { direction: 'east', targetRoomId: 'serpent_delta_serpent_god_backwater', description: '蛇神背水在東側' },
@@ -34,7 +34,7 @@ serpent_delta_serpent_god_backwater: {
     image: 'serpent_delta_serpent_god_backwater.png',
     imagePrompt: '蛇神背水 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain river, clear lantern light',
     description:
-      '蛇神背水位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，玩家可以 inspect 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標。',
+      '蛇神背水位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
     exits: [
       { direction: 'west', targetRoomId: 'serpent_delta_manymouth_confluence', description: '百口合流在西側' },
     ],
@@ -62,7 +62,7 @@ serpent_delta_serpent_god_backwater: {
     image: 'kingdom_frontier_portal_muster.png',
     imagePrompt: '傳送點兵場 in kingdom_frontier, contested kingdom war frontier with portal muster yard, watchtowers, banners, supply camps, siege engines, resource claims, redoubt gate and command bunker, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain frontier, clear lantern light',
     description:
-      '傳送點兵場位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，玩家可以 inspect 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令。',
+      '傳送點兵場位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，旅人可以 觀察 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令',
     exits: [
       { direction: 'east', targetRoomId: 'kingdom_frontier_border_road', description: '邊境軍路在東側' },
     ],
@@ -87,7 +87,7 @@ kingdom_frontier_border_road: {
     image: 'kingdom_frontier_border_road.png',
     imagePrompt: '邊境軍路 in kingdom_frontier, contested kingdom war frontier with portal muster yard, watchtowers, banners, supply camps, siege engines, resource claims, redoubt gate and command bunker, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain frontier, clear lantern light',
     description:
-      '邊境軍路位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，玩家可以 inspect 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令。',
+      '邊境軍路位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，旅人可以 觀察 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令',
     exits: [
       { direction: 'south', targetRoomId: 'kingdom_frontier_supply_camp', description: '補給營在南側' },
       { direction: 'west', targetRoomId: 'kingdom_frontier_portal_muster', description: '傳送點兵場在西側' },
@@ -114,7 +114,7 @@ kingdom_frontier_watchtower_west: {
     image: 'kingdom_frontier_watchtower_west.png',
     imagePrompt: '西哨塔 in kingdom_frontier, contested kingdom war frontier with portal muster yard, watchtowers, banners, supply camps, siege engines, resource claims, redoubt gate and command bunker, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain frontier, clear lantern light',
     description:
-      '西哨塔位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，玩家可以 inspect 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令。',
+      '西哨塔位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，旅人可以 觀察 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令',
     exits: [
       { direction: 'south', targetRoomId: 'kingdom_frontier_battlefield_crossing', description: '戰場岔口在南側' },
       { direction: 'west', targetRoomId: 'kingdom_frontier_border_road', description: '邊境軍路在西側' },
@@ -140,7 +140,7 @@ kingdom_frontier_supply_camp: {
     image: 'kingdom_frontier_supply_camp.png',
     imagePrompt: '補給營 in kingdom_frontier, contested kingdom war frontier with portal muster yard, watchtowers, banners, supply camps, siege engines, resource claims, redoubt gate and command bunker, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain frontier, clear lantern light',
     description:
-      '補給營位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，玩家可以 inspect 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令。',
+      '補給營位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，旅人可以 觀察 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令',
     exits: [
       { direction: 'north', targetRoomId: 'kingdom_frontier_border_road', description: '邊境軍路在北側' },
       { direction: 'south', targetRoomId: 'kingdom_frontier_iron_claim', description: '鐵礦據點在南側' },
@@ -167,7 +167,7 @@ kingdom_frontier_battlefield_crossing: {
     image: 'kingdom_frontier_battlefield_crossing.png',
     imagePrompt: '戰場岔口 in kingdom_frontier, contested kingdom war frontier with portal muster yard, watchtowers, banners, supply camps, siege engines, resource claims, redoubt gate and command bunker, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain frontier, clear lantern light',
     description:
-      '戰場岔口位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，玩家可以 inspect 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令。',
+      '戰場岔口位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，旅人可以 觀察 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令',
     exits: [
       { direction: 'north', targetRoomId: 'kingdom_frontier_watchtower_west', description: '西哨塔在北側' },
       { direction: 'south', targetRoomId: 'kingdom_frontier_siege_yard', description: '攻城器械場在南側' },
@@ -195,7 +195,7 @@ kingdom_frontier_watchtower_east: {
     image: 'kingdom_frontier_watchtower_east.png',
     imagePrompt: '東哨塔 in kingdom_frontier, contested kingdom war frontier with portal muster yard, watchtowers, banners, supply camps, siege engines, resource claims, redoubt gate and command bunker, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain frontier, clear lantern light',
     description:
-      '東哨塔位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，玩家可以 inspect 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令。',
+      '東哨塔位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，旅人可以 觀察 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令',
     exits: [
       { direction: 'south', targetRoomId: 'kingdom_frontier_banner_hill', description: '戰旗丘在南側' },
       { direction: 'west', targetRoomId: 'kingdom_frontier_battlefield_crossing', description: '戰場岔口在西側' },
@@ -221,7 +221,7 @@ kingdom_frontier_lumber_claim: {
     image: 'kingdom_frontier_lumber_claim.png',
     imagePrompt: '木材據點 in kingdom_frontier, contested kingdom war frontier with portal muster yard, watchtowers, banners, supply camps, siege engines, resource claims, redoubt gate and command bunker, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain frontier, clear lantern light',
     description:
-      '木材據點位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，玩家可以 inspect 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令。',
+      '木材據點位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，旅人可以 觀察 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令',
     exits: [
       { direction: 'east', targetRoomId: 'kingdom_frontier_iron_claim', description: '鐵礦據點在東側' },
     ],
@@ -246,7 +246,7 @@ kingdom_frontier_iron_claim: {
     image: 'kingdom_frontier_iron_claim.png',
     imagePrompt: '鐵礦據點 in kingdom_frontier, contested kingdom war frontier with portal muster yard, watchtowers, banners, supply camps, siege engines, resource claims, redoubt gate and command bunker, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain frontier, clear lantern light',
     description:
-      '鐵礦據點位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，玩家可以 inspect 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令。',
+      '鐵礦據點位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，旅人可以 觀察 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令',
     exits: [
       { direction: 'north', targetRoomId: 'kingdom_frontier_supply_camp', description: '補給營在北側' },
       { direction: 'south', targetRoomId: 'kingdom_frontier_burnt_farmstead', description: '焚農莊在南側' },
@@ -274,7 +274,7 @@ kingdom_frontier_siege_yard: {
     image: 'kingdom_frontier_siege_yard.png',
     imagePrompt: '攻城器械場 in kingdom_frontier, contested kingdom war frontier with portal muster yard, watchtowers, banners, supply camps, siege engines, resource claims, redoubt gate and command bunker, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain frontier, clear lantern light',
     description:
-      '攻城器械場位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，玩家可以 inspect 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令。',
+      '攻城器械場位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，旅人可以 觀察 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令',
     exits: [
       { direction: 'north', targetRoomId: 'kingdom_frontier_battlefield_crossing', description: '戰場岔口在北側' },
       { direction: 'south', targetRoomId: 'kingdom_frontier_darkwood_cut', description: '暗林缺口在南側' },
@@ -302,7 +302,7 @@ kingdom_frontier_banner_hill: {
     image: 'kingdom_frontier_banner_hill.png',
     imagePrompt: '戰旗丘 in kingdom_frontier, contested kingdom war frontier with portal muster yard, watchtowers, banners, supply camps, siege engines, resource claims, redoubt gate and command bunker, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain frontier, clear lantern light',
     description:
-      '戰旗丘位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，玩家可以 inspect 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令。',
+      '戰旗丘位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，旅人可以 觀察 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令',
     exits: [
       { direction: 'north', targetRoomId: 'kingdom_frontier_watchtower_east', description: '東哨塔在北側' },
       { direction: 'south', targetRoomId: 'kingdom_frontier_firebreak_ridge', description: '防火嶺在南側' },
@@ -330,7 +330,7 @@ kingdom_frontier_truce_tent: {
     image: 'kingdom_frontier_truce_tent.png',
     imagePrompt: '停戰帳 in kingdom_frontier, contested kingdom war frontier with portal muster yard, watchtowers, banners, supply camps, siege engines, resource claims, redoubt gate and command bunker, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain frontier, clear lantern light',
     description:
-      '停戰帳位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，玩家可以 inspect 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令。',
+      '停戰帳位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，旅人可以 觀察 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令',
     exits: [
       { direction: 'south', targetRoomId: 'kingdom_frontier_spyglass_ruin', description: '望遠鏡遺跡在南側' },
       { direction: 'west', targetRoomId: 'kingdom_frontier_banner_hill', description: '戰旗丘在西側' },
@@ -356,7 +356,7 @@ kingdom_frontier_burnt_farmstead: {
     image: 'kingdom_frontier_burnt_farmstead.png',
     imagePrompt: '焚農莊 in kingdom_frontier, contested kingdom war frontier with portal muster yard, watchtowers, banners, supply camps, siege engines, resource claims, redoubt gate and command bunker, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain frontier, clear lantern light',
     description:
-      '焚農莊位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，玩家可以 inspect 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令。',
+      '焚農莊位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，旅人可以 觀察 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令',
     exits: [
       { direction: 'north', targetRoomId: 'kingdom_frontier_iron_claim', description: '鐵礦據點在北側' },
       { direction: 'east', targetRoomId: 'kingdom_frontier_darkwood_cut', description: '暗林缺口在東側' },
@@ -382,7 +382,7 @@ kingdom_frontier_darkwood_cut: {
     image: 'kingdom_frontier_darkwood_cut.png',
     imagePrompt: '暗林缺口 in kingdom_frontier, contested kingdom war frontier with portal muster yard, watchtowers, banners, supply camps, siege engines, resource claims, redoubt gate and command bunker, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain frontier, clear lantern light',
     description:
-      '暗林缺口位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，玩家可以 inspect 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令。',
+      '暗林缺口位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，旅人可以 觀察 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令',
     exits: [
       { direction: 'north', targetRoomId: 'kingdom_frontier_siege_yard', description: '攻城器械場在北側' },
       { direction: 'south', targetRoomId: 'kingdom_frontier_treasury_wagon', description: '國庫車隊在南側' },
@@ -410,7 +410,7 @@ kingdom_frontier_firebreak_ridge: {
     image: 'kingdom_frontier_firebreak_ridge.png',
     imagePrompt: '防火嶺 in kingdom_frontier, contested kingdom war frontier with portal muster yard, watchtowers, banners, supply camps, siege engines, resource claims, redoubt gate and command bunker, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain frontier, clear lantern light',
     description:
-      '防火嶺位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，玩家可以 inspect 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令。',
+      '防火嶺位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，旅人可以 觀察 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令',
     exits: [
       { direction: 'north', targetRoomId: 'kingdom_frontier_banner_hill', description: '戰旗丘在北側' },
       { direction: 'south', targetRoomId: 'kingdom_frontier_prisoner_stockade', description: '俘虜柵欄在南側' },
@@ -438,7 +438,7 @@ kingdom_frontier_spyglass_ruin: {
     image: 'kingdom_frontier_spyglass_ruin.png',
     imagePrompt: '望遠鏡遺跡 in kingdom_frontier, contested kingdom war frontier with portal muster yard, watchtowers, banners, supply camps, siege engines, resource claims, redoubt gate and command bunker, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain frontier, clear lantern light',
     description:
-      '望遠鏡遺跡位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，玩家可以 inspect 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令。',
+      '望遠鏡遺跡位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，旅人可以 觀察 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令',
     exits: [
       { direction: 'north', targetRoomId: 'kingdom_frontier_truce_tent', description: '停戰帳在北側' },
       { direction: 'south', targetRoomId: 'kingdom_frontier_redoubt_gate', description: '前壘門在南側' },
@@ -465,7 +465,7 @@ kingdom_frontier_treasury_wagon: {
     image: 'kingdom_frontier_treasury_wagon.png',
     imagePrompt: '國庫車隊 in kingdom_frontier, contested kingdom war frontier with portal muster yard, watchtowers, banners, supply camps, siege engines, resource claims, redoubt gate and command bunker, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain frontier, clear lantern light',
     description:
-      '國庫車隊位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，玩家可以 inspect 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令。',
+      '國庫車隊位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，旅人可以 觀察 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令',
     exits: [
       { direction: 'north', targetRoomId: 'kingdom_frontier_darkwood_cut', description: '暗林缺口在北側' },
       { direction: 'east', targetRoomId: 'kingdom_frontier_prisoner_stockade', description: '俘虜柵欄在東側' },
@@ -491,7 +491,7 @@ kingdom_frontier_prisoner_stockade: {
     image: 'kingdom_frontier_prisoner_stockade.png',
     imagePrompt: '俘虜柵欄 in kingdom_frontier, contested kingdom war frontier with portal muster yard, watchtowers, banners, supply camps, siege engines, resource claims, redoubt gate and command bunker, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain frontier, clear lantern light',
     description:
-      '俘虜柵欄位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，玩家可以 inspect 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令。',
+      '俘虜柵欄位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，旅人可以 觀察 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令',
     exits: [
       { direction: 'north', targetRoomId: 'kingdom_frontier_firebreak_ridge', description: '防火嶺在北側' },
       { direction: 'west', targetRoomId: 'kingdom_frontier_treasury_wagon', description: '國庫車隊在西側' },
@@ -518,7 +518,7 @@ kingdom_frontier_redoubt_gate: {
     image: 'kingdom_frontier_redoubt_gate.png',
     imagePrompt: '前壘門 in kingdom_frontier, contested kingdom war frontier with portal muster yard, watchtowers, banners, supply camps, siege engines, resource claims, redoubt gate and command bunker, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain frontier, clear lantern light',
     description:
-      '前壘門位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，玩家可以 inspect 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令。',
+      '前壘門位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，旅人可以 觀察 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令',
     exits: [
       { direction: 'north', targetRoomId: 'kingdom_frontier_spyglass_ruin', description: '望遠鏡遺跡在北側' },
       { direction: 'west', targetRoomId: 'kingdom_frontier_prisoner_stockade', description: '俘虜柵欄在西側' },
@@ -545,7 +545,7 @@ kingdom_frontier_war_table_bunker: {
     image: 'kingdom_frontier_war_table_bunker.png',
     imagePrompt: '戰圖地堡 in kingdom_frontier, contested kingdom war frontier with portal muster yard, watchtowers, banners, supply camps, siege engines, resource claims, redoubt gate and command bunker, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain frontier, clear lantern light',
     description:
-      '戰圖地堡位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，玩家可以 inspect 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令。',
+      '戰圖地堡位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，旅人可以 觀察 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令',
     exits: [
       { direction: 'west', targetRoomId: 'kingdom_frontier_redoubt_gate', description: '前壘門在西側' },
       { direction: 'east', targetRoomId: 'kingdom_frontier_command_front', description: '前線指揮所在東側' },
@@ -571,7 +571,7 @@ kingdom_frontier_command_front: {
     image: 'kingdom_frontier_command_front.png',
     imagePrompt: '前線指揮所 in kingdom_frontier, contested kingdom war frontier with portal muster yard, watchtowers, banners, supply camps, siege engines, resource claims, redoubt gate and command bunker, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain frontier, clear lantern light',
     description:
-      '前線指揮所位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，玩家可以 inspect 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令。',
+      '前線指揮所位於各王國勢力交錯的王國邊境，傳送點兵場、哨塔、補給營、資源據點、戰旗丘與前線地堡隨戰線推移反覆易手。這裡是王國戰、資源戰與開放衝突區，旅人可以 觀察 旗幟顏色、車轍方向、哨塔火盆和戰圖標記來判斷敵我控制，也能 search 木材據點、鐵礦據點、國庫車隊與戰圖地堡尋找軍需、稅銀、攻城零件與密令。若隊伍忽略偵騎號角、防火嶺煙線與暗林缺口的伏兵，龍騎士、深淵軍、天界守衛與戰神化身會把補給線切斷；若穩定沿傳送點兵場、前壘門與前線指揮所推進，則能帶回王國戰報、資源控制記錄、撤退路線與可交付的前線軍令',
     exits: [
       { direction: 'west', targetRoomId: 'kingdom_frontier_war_table_bunker', description: '戰圖地堡在西側' },
     ],

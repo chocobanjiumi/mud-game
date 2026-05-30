@@ -8,7 +8,7 @@ sunspire_hymn_gallery: {
     image: 'sunspire_hymn_gallery.png',
     imagePrompt: '聖歌廊 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
     description:
-      '聖歌廊位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+      '聖歌廊位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，旅人可以 觀察 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線',
     exits: [
       { direction: 'south', targetRoomId: 'sunspire_solar_armory', description: '回到太陽武庫' },
       { direction: 'east', targetRoomId: 'sunspire_celestial_guard_hall', description: '天界守衛廳在東側' },
@@ -35,7 +35,7 @@ sunspire_burning_archive: {
     image: 'sunspire_burning_archive.png',
     imagePrompt: '燃書庫 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
     description:
-      '燃書庫位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+      '燃書庫位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，旅人可以 觀察 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線',
     exits: [
       { direction: 'south', targetRoomId: 'sunspire_flameglass_walk', description: '回到焰玻步道' },
       { direction: 'east', targetRoomId: 'sunspire_trial_of_embers', description: '餘燼試煉室在東側' },
@@ -61,7 +61,7 @@ sunspire_celestial_guard_hall: {
     image: 'sunspire_celestial_guard_hall.png',
     imagePrompt: '天界守衛廳 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
     description:
-      '天界守衛廳位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。南側日耀升降井的光門從守衛廳這端關閉，只能由升降井進入守衛廳。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+      '天界守衛廳位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，旅人可以 觀察 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。南側日耀升降井的光門從守衛廳這端關閉，只能由升降井進入守衛廳。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線',
     exits: [
       { direction: 'west', targetRoomId: 'sunspire_hymn_gallery', description: '回到聖歌廊' },
       { direction: 'east', targetRoomId: 'sunspire_lens_chamber', description: '聚光鏡室在東側' },
@@ -87,7 +87,7 @@ sunspire_trial_of_embers: {
     image: 'sunspire_trial_of_embers.png',
     imagePrompt: '餘燼試煉室 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
     description:
-      '餘燼試煉室位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+      '餘燼試煉室位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，旅人可以 觀察 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線',
     exits: [
       { direction: 'west', targetRoomId: 'sunspire_burning_archive', description: '回到燃書庫' },
       { direction: 'south', targetRoomId: 'sunspire_hymn_gallery', description: '回到聖歌廊' },
@@ -114,7 +114,7 @@ sunspire_trial_of_dawn: {
     image: 'sunspire_trial_of_dawn.png',
     imagePrompt: '黎明試煉室 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
     description:
-      '黎明試煉室位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+      '黎明試煉室位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，旅人可以 觀察 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線',
     exits: [
       { direction: 'west', targetRoomId: 'sunspire_trial_of_embers', description: '回到餘燼試煉室' },
       { direction: 'east', targetRoomId: 'sunspire_gold_flare_bridge', description: '金焰橋在東側' },
@@ -141,7 +141,7 @@ sunspire_winged_balcony: {
     image: 'sunspire_winged_balcony.png',
     imagePrompt: '翼影露臺 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
     description:
-      '翼影露臺位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+      '翼影露臺位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，旅人可以 觀察 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線',
     exits: [
       { direction: 'east', targetRoomId: 'sunspire_ashen_shadow_edge', description: '灰影邊緣在東側' },
       { direction: 'north', targetRoomId: 'sunspire_sunfire_choir', description: '日火唱詩席在北側' },
@@ -167,7 +167,7 @@ sunspire_lens_chamber: {
     image: 'sunspire_lens_chamber.png',
     imagePrompt: '聚光鏡室 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
     description:
-      '聚光鏡室位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+      '聚光鏡室位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，旅人可以 觀察 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線',
     exits: [
       { direction: 'west', targetRoomId: 'sunspire_celestial_guard_hall', description: '回到天界守衛廳' },
       { direction: 'east', targetRoomId: 'sunspire_gold_flare_bridge', description: '金焰橋在東側' },
@@ -193,7 +193,7 @@ sunspire_sunfire_choir: {
     image: 'sunspire_sunfire_choir.png',
     imagePrompt: '日火唱詩席 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
     description:
-      '日火唱詩席位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。西側翼影露臺被日火唱詩的光幕封住，只能從翼影露臺北側登上唱詩席。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+      '日火唱詩席位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，旅人可以 觀察 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。西側翼影露臺被日火唱詩的光幕封住，只能從翼影露臺北側登上唱詩席。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線',
     exits: [
       { direction: 'south', targetRoomId: 'sunspire_trial_of_dawn', description: '回到黎明試煉室' },
       { direction: 'east', targetRoomId: 'sunspire_seraph_watch', description: '熾天使哨臺在東側' },
@@ -219,7 +219,7 @@ sunspire_ashen_shadow_edge: {
     image: 'sunspire_ashen_shadow_edge.png',
     imagePrompt: '灰影邊緣 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
     description:
-      '灰影邊緣位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+      '灰影邊緣位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，旅人可以 觀察 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線',
     exits: [
       { direction: 'west', targetRoomId: 'sunspire_winged_balcony', description: '回到翼影露臺' },
       { direction: 'east', targetRoomId: 'sunspire_gold_flare_bridge', description: '金焰橋在東側' },
@@ -245,7 +245,7 @@ sunspire_gold_flare_bridge: {
     image: 'sunspire_gold_flare_bridge.png',
     imagePrompt: '金焰橋 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
     description:
-      '金焰橋位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。南側黎明試煉室的橋面在踏上金焰後熔斷，只能從黎明試煉室東側進入金焰橋。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+      '金焰橋位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，旅人可以 觀察 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。南側黎明試煉室的橋面在踏上金焰後熔斷，只能從黎明試煉室東側進入金焰橋。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線',
     exits: [
       { direction: 'west', targetRoomId: 'sunspire_lens_chamber', description: '回到聚光鏡室' },
       { direction: 'east', targetRoomId: 'sunspire_seraph_watch', description: '熾天使哨臺在東側' },
@@ -271,7 +271,7 @@ sunspire_seraph_watch: {
     image: 'sunspire_seraph_watch.png',
     imagePrompt: '熾天使哨臺 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
     description:
-      '熾天使哨臺位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+      '熾天使哨臺位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，旅人可以 觀察 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線',
     exits: [
       { direction: 'west', targetRoomId: 'sunspire_gold_flare_bridge', description: '回到金焰橋' },
       { direction: 'north', targetRoomId: 'sunspire_apex_antechamber', description: '塔頂前室在北側' },
@@ -297,7 +297,7 @@ sunspire_apex_antechamber: {
     image: 'sunspire_apex_antechamber.png',
     imagePrompt: '塔頂前室 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
     description:
-      '塔頂前室位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+      '塔頂前室位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，旅人可以 觀察 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線',
     exits: [
       { direction: 'south', targetRoomId: 'sunspire_seraph_watch', description: '回到熾天使哨臺' },
       { direction: 'east', targetRoomId: 'sunspire_war_god_sigil', description: '戰神印記在東側' },
@@ -323,7 +323,7 @@ sunspire_war_god_sigil: {
     image: 'sunspire_war_god_sigil.png',
     imagePrompt: '戰神印記 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
     description:
-      '戰神印記位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+      '戰神印記位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，旅人可以 觀察 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線',
     exits: [
       { direction: 'west', targetRoomId: 'sunspire_apex_antechamber', description: '回到塔頂前室' },
       { direction: 'east', targetRoomId: 'sunspire_crown_of_day', description: '日冠核心在東側' },
@@ -349,7 +349,7 @@ sunspire_crown_of_day: {
     image: 'sunspire_crown_of_day.png',
     imagePrompt: '日冠核心 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
     description:
-      '日冠核心位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+      '日冠核心位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，旅人可以 觀察 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線',
     exits: [
       { direction: 'west', targetRoomId: 'sunspire_war_god_sigil', description: '回到戰神印記' },
     ],
@@ -376,7 +376,7 @@ sunspire_crown_of_day: {
     image: 'moonshadow_court_moonlit_gate.png',
     imagePrompt: '月影門 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain bridge, clear lantern light',
     description:
-      '月影門位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+      '月影門位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，旅人可以 觀察 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記',
     exits: [
       { direction: 'east', targetRoomId: 'moonshadow_court_dreamglass_foyer', description: '夢玻前廳在東側' },
       { direction: 'north', targetRoomId: 'moonshadow_court_whispering_hedge', description: '低語樹籬在北側' },
@@ -402,7 +402,7 @@ moonshadow_court_dreamglass_foyer: {
     image: 'moonshadow_court_dreamglass_foyer.png',
     imagePrompt: '夢玻前廳 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain bridge, clear lantern light',
     description:
-      '夢玻前廳位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+      '夢玻前廳位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，旅人可以 觀察 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記',
     exits: [
       { direction: 'west', targetRoomId: 'moonshadow_court_moonlit_gate', description: '回到月影門' },
       { direction: 'east', targetRoomId: 'moonshadow_court_silver_bramble_path', description: '銀棘小徑在東側' },
@@ -429,7 +429,7 @@ moonshadow_court_silver_bramble_path: {
     image: 'moonshadow_court_silver_bramble_path.png',
     imagePrompt: '銀棘小徑 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain bridge, clear lantern light',
     description:
-      '銀棘小徑位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+      '銀棘小徑位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，旅人可以 觀察 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記',
     exits: [
       { direction: 'west', targetRoomId: 'moonshadow_court_dreamglass_foyer', description: '回到夢玻前廳' },
       { direction: 'north', targetRoomId: 'moonshadow_court_masked_ball_hall', description: '假面舞廳在北側' },
@@ -455,7 +455,7 @@ moonshadow_court_twilight_fountain: {
     image: 'moonshadow_court_twilight_fountain.png',
     imagePrompt: '暮光噴泉 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain bridge, clear lantern light',
     description:
-      '暮光噴泉位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+      '暮光噴泉位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，旅人可以 觀察 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記',
     exits: [
       { direction: 'south', targetRoomId: 'moonshadow_court_dreamglass_foyer', description: '回到夢玻前廳' },
       { direction: 'east', targetRoomId: 'moonshadow_court_masked_ball_hall', description: '假面舞廳在東側' },
@@ -482,7 +482,7 @@ moonshadow_court_masked_ball_hall: {
     image: 'moonshadow_court_masked_ball_hall.png',
     imagePrompt: '假面舞廳 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain bridge, clear lantern light',
     description:
-      '假面舞廳位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+      '假面舞廳位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，旅人可以 觀察 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記',
     exits: [
       { direction: 'west', targetRoomId: 'moonshadow_court_twilight_fountain', description: '回到暮光噴泉' },
       { direction: 'south', targetRoomId: 'moonshadow_court_silver_bramble_path', description: '回到銀棘小徑' },
@@ -510,7 +510,7 @@ moonshadow_court_moth_lantern_gallery: {
     image: 'moonshadow_court_moth_lantern_gallery.png',
     imagePrompt: '蛾燈長廊 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain bridge, clear lantern light',
     description:
-      '蛾燈長廊位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+      '蛾燈長廊位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，旅人可以 觀察 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記',
     exits: [
       { direction: 'west', targetRoomId: 'moonshadow_court_masked_ball_hall', description: '回到假面舞廳' },
       { direction: 'north', targetRoomId: 'moonshadow_court_velvet_duel_court', description: '絨幕決鬥庭在北側' },
@@ -535,7 +535,7 @@ moonshadow_court_whispering_hedge: {
     image: 'moonshadow_court_whispering_hedge.png',
     imagePrompt: '低語樹籬 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain bridge, clear lantern light',
     description:
-      '低語樹籬位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+      '低語樹籬位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，旅人可以 觀察 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記',
     exits: [
       { direction: 'south', targetRoomId: 'moonshadow_court_moonlit_gate', description: '回到月影門' },
       { direction: 'east', targetRoomId: 'moonshadow_court_lunar_arboretum', description: '月相樹園在東側' },
@@ -561,7 +561,7 @@ moonshadow_court_lunar_arboretum: {
     image: 'moonshadow_court_lunar_arboretum.png',
     imagePrompt: '月相樹園 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain bridge, clear lantern light',
     description:
-      '月相樹園位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+      '月相樹園位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，旅人可以 觀察 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記',
     exits: [
       { direction: 'west', targetRoomId: 'moonshadow_court_whispering_hedge', description: '回到低語樹籬' },
       { direction: 'south', targetRoomId: 'moonshadow_court_twilight_fountain', description: '回到暮光噴泉' },
@@ -589,7 +589,7 @@ moonshadow_court_oath_mirror_room: {
     image: 'moonshadow_court_oath_mirror_room.png',
     imagePrompt: '誓鏡室 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain bridge, clear lantern light',
     description:
-      '誓鏡室位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+      '誓鏡室位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，旅人可以 觀察 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記',
     exits: [
       { direction: 'west', targetRoomId: 'moonshadow_court_lunar_arboretum', description: '回到月相樹園' },
       { direction: 'south', targetRoomId: 'moonshadow_court_masked_ball_hall', description: '回到假面舞廳' },
@@ -617,7 +617,7 @@ moonshadow_court_velvet_duel_court: {
     image: 'moonshadow_court_velvet_duel_court.png',
     imagePrompt: '絨幕決鬥庭 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain bridge, clear lantern light',
     description:
-      '絨幕決鬥庭位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+      '絨幕決鬥庭位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，旅人可以 觀察 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記',
     exits: [
       { direction: 'west', targetRoomId: 'moonshadow_court_oath_mirror_room', description: '回到誓鏡室' },
       { direction: 'south', targetRoomId: 'moonshadow_court_moth_lantern_gallery', description: '回到蛾燈長廊' },
@@ -645,7 +645,7 @@ moonshadow_court_fae_archive: {
     image: 'moonshadow_court_fae_archive.png',
     imagePrompt: '妖精檔案館 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain bridge, clear lantern light',
     description:
-      '妖精檔案館位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+      '妖精檔案館位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，旅人可以 觀察 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記',
     exits: [
       { direction: 'west', targetRoomId: 'moonshadow_court_velvet_duel_court', description: '回到絨幕決鬥庭' },
       { direction: 'north', targetRoomId: 'moonshadow_court_queen_silence_chapel', description: '靜后小禮拜堂在北側' },
@@ -671,7 +671,7 @@ moonshadow_court_nightbloom_garden: {
     image: 'moonshadow_court_nightbloom_garden.png',
     imagePrompt: '夜花庭 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain bridge, clear lantern light',
     description:
-      '夜花庭位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+      '夜花庭位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，旅人可以 觀察 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記',
     exits: [
       { direction: 'south', targetRoomId: 'moonshadow_court_lunar_arboretum', description: '回到月相樹園' },
       { direction: 'east', targetRoomId: 'moonshadow_court_crescent_bridge', description: '弦月橋在東側' },
@@ -697,7 +697,7 @@ moonshadow_court_crescent_bridge: {
     image: 'moonshadow_court_crescent_bridge.png',
     imagePrompt: '弦月橋 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain bridge, clear lantern light',
     description:
-      '弦月橋位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+      '弦月橋位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，旅人可以 觀察 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記',
     exits: [
       { direction: 'west', targetRoomId: 'moonshadow_court_nightbloom_garden', description: '回到夜花庭' },
       { direction: 'south', targetRoomId: 'moonshadow_court_oath_mirror_room', description: '回到誓鏡室' },
@@ -725,7 +725,7 @@ moonshadow_court_shadow_throne_steps: {
     image: 'moonshadow_court_shadow_throne_steps.png',
     imagePrompt: '影王座階 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain bridge, clear lantern light',
     description:
-      '影王座階位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+      '影王座階位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，旅人可以 觀察 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記',
     exits: [
       { direction: 'west', targetRoomId: 'moonshadow_court_crescent_bridge', description: '回到弦月橋' },
       { direction: 'south', targetRoomId: 'moonshadow_court_velvet_duel_court', description: '回到絨幕決鬥庭' },
@@ -753,7 +753,7 @@ moonshadow_court_queen_silence_chapel: {
     image: 'moonshadow_court_queen_silence_chapel.png',
     imagePrompt: '靜后小禮拜堂 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain bridge, clear lantern light',
     description:
-      '靜后小禮拜堂位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+      '靜后小禮拜堂位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，旅人可以 觀察 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記',
     exits: [
       { direction: 'west', targetRoomId: 'moonshadow_court_shadow_throne_steps', description: '回到影王座階' },
       { direction: 'south', targetRoomId: 'moonshadow_court_fae_archive', description: '回到妖精檔案館' },
@@ -780,7 +780,7 @@ moonshadow_court_moonwell_balcony: {
     image: 'moonshadow_court_moonwell_balcony.png',
     imagePrompt: '月井露臺 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain bridge, clear lantern light',
     description:
-      '月井露臺位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+      '月井露臺位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，旅人可以 觀察 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記',
     exits: [
       { direction: 'south', targetRoomId: 'moonshadow_court_crescent_bridge', description: '回到弦月橋' },
       { direction: 'east', targetRoomId: 'moonshadow_court_dream_harvest_grove', description: '夢收穫林在東側' },
@@ -806,7 +806,7 @@ moonshadow_court_dream_harvest_grove: {
     image: 'moonshadow_court_dream_harvest_grove.png',
     imagePrompt: '夢收穫林 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain bridge, clear lantern light',
     description:
-      '夢收穫林位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+      '夢收穫林位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，旅人可以 觀察 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記',
     exits: [
       { direction: 'west', targetRoomId: 'moonshadow_court_moonwell_balcony', description: '回到月井露臺' },
       { direction: 'south', targetRoomId: 'moonshadow_court_shadow_throne_steps', description: '回到影王座階' },
@@ -833,7 +833,7 @@ moonshadow_court_glass_deer_paddock: {
     image: 'moonshadow_court_glass_deer_paddock.png',
     imagePrompt: '玻鹿欄 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain bridge, clear lantern light',
     description:
-      '玻鹿欄位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+      '玻鹿欄位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，旅人可以 觀察 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記',
     exits: [
       { direction: 'west', targetRoomId: 'moonshadow_court_dream_harvest_grove', description: '回到夢收穫林' },
       { direction: 'south', targetRoomId: 'moonshadow_court_queen_silence_chapel', description: '回到靜后小禮拜堂' },
@@ -860,7 +860,7 @@ moonshadow_court_eclipse_curtain: {
     image: 'moonshadow_court_eclipse_curtain.png',
     imagePrompt: '月蝕帷幕 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain bridge, clear lantern light',
     description:
-      '月蝕帷幕位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+      '月蝕帷幕位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，旅人可以 觀察 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記',
     exits: [
       { direction: 'west', targetRoomId: 'moonshadow_court_glass_deer_paddock', description: '回到玻鹿欄' },
       { direction: 'east', targetRoomId: 'moonshadow_court_hidden_court_core', description: '隱庭核心在東側' },
@@ -886,7 +886,7 @@ moonshadow_court_hidden_court_core: {
     image: 'moonshadow_court_hidden_court_core.png',
     imagePrompt: '隱庭核心 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain bridge, clear lantern light',
     description:
-      '隱庭核心位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+      '隱庭核心位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，旅人可以 觀察 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記',
     exits: [
       { direction: 'west', targetRoomId: 'moonshadow_court_eclipse_curtain', description: '回到月蝕帷幕' },
     ],
@@ -914,7 +914,7 @@ moonshadow_court_hidden_court_core: {
     image: 'machine_graveyard_entrance_crane.png',
     imagePrompt: '入口吊臂 in machine_graveyard, underground ancient machine graveyard with rusted cranes, broken gears, sparking rails, oil cisterns, magnet tower, dormant reactor core, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain tower, clear lantern light',
     description:
-      '入口吊臂位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，玩家可以 inspect 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 search 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標。',
+      '入口吊臂位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 search 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
     exits: [
       { direction: 'east', targetRoomId: 'machine_graveyard_rusted_turnstile', description: '鏽轉閘在東側' },
       { direction: 'north', targetRoomId: 'machine_graveyard_copper_vein_shelf', description: '銅脈棚在北側' },
@@ -940,7 +940,7 @@ machine_graveyard_rusted_turnstile: {
     image: 'machine_graveyard_rusted_turnstile.png',
     imagePrompt: '鏽轉閘 in machine_graveyard, underground ancient machine graveyard with rusted cranes, broken gears, sparking rails, oil cisterns, magnet tower, dormant reactor core, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain tower, clear lantern light',
     description:
-      '鏽轉閘位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，玩家可以 inspect 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 search 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標。',
+      '鏽轉閘位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 search 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
     exits: [
       { direction: 'west', targetRoomId: 'machine_graveyard_entrance_crane', description: '回到入口吊臂' },
       { direction: 'east', targetRoomId: 'machine_graveyard_scrap_canyon', description: '廢鐵峽在東側' },
@@ -967,7 +967,7 @@ machine_graveyard_scrap_canyon: {
     image: 'machine_graveyard_scrap_canyon.png',
     imagePrompt: '廢鐵峽 in machine_graveyard, underground ancient machine graveyard with rusted cranes, broken gears, sparking rails, oil cisterns, magnet tower, dormant reactor core, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain tower, clear lantern light',
     description:
-      '廢鐵峽位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，玩家可以 inspect 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 search 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標。',
+      '廢鐵峽位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 search 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
     exits: [
       { direction: 'west', targetRoomId: 'machine_graveyard_rusted_turnstile', description: '回到鏽轉閘' },
       { direction: 'north', targetRoomId: 'machine_graveyard_broken_foundry', description: '斷爐場在北側' },
@@ -992,7 +992,7 @@ machine_graveyard_sparking_rail: {
     image: 'machine_graveyard_sparking_rail.png',
     imagePrompt: '火花軌 in machine_graveyard, underground ancient machine graveyard with rusted cranes, broken gears, sparking rails, oil cisterns, magnet tower, dormant reactor core, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain tower, clear lantern light',
     description:
-      '火花軌位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，玩家可以 inspect 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 search 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標。',
+      '火花軌位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 search 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
     exits: [
       { direction: 'south', targetRoomId: 'machine_graveyard_rusted_turnstile', description: '回到鏽轉閘' },
       { direction: 'east', targetRoomId: 'machine_graveyard_broken_foundry', description: '斷爐場在東側' },
@@ -1019,7 +1019,7 @@ machine_graveyard_broken_foundry: {
     image: 'machine_graveyard_broken_foundry.png',
     imagePrompt: '斷爐場 in machine_graveyard, underground ancient machine graveyard with rusted cranes, broken gears, sparking rails, oil cisterns, magnet tower, dormant reactor core, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain tower, clear lantern light',
     description:
-      '斷爐場位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，玩家可以 inspect 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 search 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標。',
+      '斷爐場位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 search 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
     exits: [
       { direction: 'west', targetRoomId: 'machine_graveyard_sparking_rail', description: '回到火花軌' },
       { direction: 'south', targetRoomId: 'machine_graveyard_scrap_canyon', description: '回到廢鐵峽' },
@@ -1047,7 +1047,7 @@ machine_graveyard_gearbone_pit: {
     image: 'machine_graveyard_gearbone_pit.png',
     imagePrompt: '齒骨坑 in machine_graveyard, underground ancient machine graveyard with rusted cranes, broken gears, sparking rails, oil cisterns, magnet tower, dormant reactor core, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain tower, clear lantern light',
     description:
-      '齒骨坑位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，玩家可以 inspect 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 search 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標。',
+      '齒骨坑位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 search 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
     exits: [
       { direction: 'west', targetRoomId: 'machine_graveyard_broken_foundry', description: '回到斷爐場' },
       { direction: 'north', targetRoomId: 'machine_graveyard_magnet_tower_base', description: '磁塔基座在北側' },
@@ -1073,7 +1073,7 @@ machine_graveyard_copper_vein_shelf: {
     image: 'machine_graveyard_copper_vein_shelf.png',
     imagePrompt: '銅脈棚 in machine_graveyard, underground ancient machine graveyard with rusted cranes, broken gears, sparking rails, oil cisterns, magnet tower, dormant reactor core, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain tower, clear lantern light',
     description:
-      '銅脈棚位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，玩家可以 inspect 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 search 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標。',
+      '銅脈棚位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 search 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
     exits: [
       { direction: 'south', targetRoomId: 'machine_graveyard_entrance_crane', description: '回到入口吊臂' },
       { direction: 'east', targetRoomId: 'machine_graveyard_oil_black_cistern', description: '黑油蓄池在東側' },
@@ -1099,7 +1099,7 @@ machine_graveyard_oil_black_cistern: {
     image: 'machine_graveyard_oil_black_cistern.png',
     imagePrompt: '黑油蓄池 in machine_graveyard, underground ancient machine graveyard with rusted cranes, broken gears, sparking rails, oil cisterns, magnet tower, dormant reactor core, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain tower, clear lantern light',
     description:
-      '黑油蓄池位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，玩家可以 inspect 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 search 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標。',
+      '黑油蓄池位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 search 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
     exits: [
       { direction: 'west', targetRoomId: 'machine_graveyard_copper_vein_shelf', description: '回到銅脈棚' },
       { direction: 'south', targetRoomId: 'machine_graveyard_sparking_rail', description: '回到火花軌' },
@@ -1127,7 +1127,7 @@ machine_graveyard_clockwork_nest: {
     image: 'machine_graveyard_clockwork_nest.png',
     imagePrompt: '鐘械巢 in machine_graveyard, underground ancient machine graveyard with rusted cranes, broken gears, sparking rails, oil cisterns, magnet tower, dormant reactor core, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain tower, clear lantern light',
     description:
-      '鐘械巢位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，玩家可以 inspect 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 search 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標。',
+      '鐘械巢位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 search 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
     exits: [
       { direction: 'west', targetRoomId: 'machine_graveyard_oil_black_cistern', description: '回到黑油蓄池' },
       { direction: 'south', targetRoomId: 'machine_graveyard_broken_foundry', description: '回到斷爐場' },
@@ -1155,7 +1155,7 @@ machine_graveyard_magnet_tower_base: {
     image: 'machine_graveyard_magnet_tower_base.png',
     imagePrompt: '磁塔基座 in machine_graveyard, underground ancient machine graveyard with rusted cranes, broken gears, sparking rails, oil cisterns, magnet tower, dormant reactor core, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain tower, clear lantern light',
     description:
-      '磁塔基座位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，玩家可以 inspect 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 search 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標。',
+      '磁塔基座位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 search 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
     exits: [
       { direction: 'west', targetRoomId: 'machine_graveyard_clockwork_nest', description: '回到鐘械巢' },
       { direction: 'south', targetRoomId: 'machine_graveyard_gearbone_pit', description: '回到齒骨坑' },
