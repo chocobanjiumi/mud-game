@@ -45,7 +45,7 @@ export function calculateDerived(s: CombatStats): DerivedStats {
     def: Math.floor(s.vit * 1.5) + s.armorDef,
     mdef: Math.floor(s.int * 0.5 + s.vit * 0.5) + s.armorMdef,
     critRate: s.dex * 0.3 + s.luk * 0.2 + s.bonusCritRate,
-    critDamage: 150 + s.bonusCritDamage, // 基礎 150%
+    critDamage: Math.min(400, 150 + s.bonusCritDamage),
     dodgeRate: s.dex * 0.4 + s.luk * 0.1 + s.bonusDodgeRate,
     hitRate: 95 + s.bonusHitRate,
   };

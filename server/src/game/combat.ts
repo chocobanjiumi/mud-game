@@ -91,6 +91,8 @@ export interface CombatSession {
   affixCooldowns: Map<string, number>;
   /** Boss 控制免疫：targetId -> immunity expires after this round */
   bossControlImmunityUntilRound: Map<string, number>;
+  /** 已觸發護盾破裂回血的角色（每場戰鬥一次） */
+  shieldBreakHealUsed: Set<string>;
   /** 回合計時器 */
   turnTimerHandle: ReturnType<typeof setTimeout> | null;
   /** 回合開始時間 */
@@ -241,6 +243,7 @@ export class CombatEngine {
       skillCooldowns: new Map(),
       affixCooldowns: new Map(),
       bossControlImmunityUntilRound: new Map(),
+      shieldBreakHealUsed: new Set(),
       turnTimerHandle: null,
       turnStartTime: Date.now(),
       onEnd: onEnd ?? null,
@@ -351,12 +354,12 @@ export class CombatEngine {
     const specialBonus = this.getSpecialDamageBonusPct(session, actor, target, skillDef);
     const penalty = getPveHighLevelCombatPenalty(actor, target);
     attackerStats.hitRate = Math.max(5, attackerStats.hitRate - penalty.hitRatePenalty);
-    const multiplier = skillDef.multiplier
+    const multiplier = Math.min(10, skillDef.multiplier
       * this.getMonsterPhaseDamageMultiplier(actor)
       * (1 + (outputAffixModifiers?.damageBonusPct ?? 0) / 100)
       * (1 + markBonus / 100)
       * (1 + specialBonus / 100)
-      * penalty.damageMultiplier;
+      * penalty.damageMultiplier);
 
     const dmgResult = calculateDamage({
       attackerId: actor.id,
@@ -852,11 +855,11 @@ export class CombatEngine {
         ...attackerStats,
         hitRate: Math.max(5, attackerStats.hitRate - penalty.hitRatePenalty),
       };
-      const multiplier = targetBaseMultiplier
+      const multiplier = Math.min(10, targetBaseMultiplier
         * (1 + (outputAffixModifiers?.damageBonusPct ?? 0) / 100)
         * (1 + markBonus / 100)
         * (1 + specialBonus / 100)
-        * penalty.damageMultiplier;
+        * penalty.damageMultiplier);
       this.interruptTelegraphIfPossible(session, actor, target, skillDef, log);
       this.dispelShieldIfPossible(actor, target, skillDef, log);
 
@@ -1013,12 +1016,11 @@ export class CombatEngine {
 
   private executeItem(
     _session: CombatSession,
-    action: CombatAction,
+    _action: CombatAction,
     actor: CombatantState,
     log: string[],
   ): void {
-    // 物品使用（簡化版本，具體在物品系統中完善）
-    log.push(`${actor.name}使用 1 次戰鬥道具行動，行動已排入本輪結算；具體治療、傷害或狀態效果會依道具資料套用。`);
+    log.push(`${actor.name}嘗試使用戰鬥道具，但戰鬥中無法使用物品，改為普通攻擊。`);
   }
 
   private executeMountRide(session: CombatSession, actor: CombatantState, log: string[]): void {
@@ -1277,7 +1279,9 @@ export class CombatEngine {
     if (shieldResult.absorbedDamage > 0) {
       log.push(`  ${target.name}的護盾吸收了 ${shieldResult.absorbedDamage} 點傷害。`);
     }
-    if (hadShield && shieldResult.absorbedDamage > 0 && !target.activeEffects.some(effect => effect.type === 'shield')) {
+    if (hadShield && shieldResult.absorbedDamage > 0 && !target.activeEffects.some(effect => effect.type === 'shield')
+      && !session.shieldBreakHealUsed.has(target.id)) {
+      session.shieldBreakHealUsed.add(target.id);
       const heal = Math.max(1, Math.floor(target.maxHp * 0.08));
       const before = target.hp;
       target.hp = Math.min(target.maxHp, target.hp + heal);
@@ -2226,16 +2230,9 @@ export class CombatEngine {
       if (result.affix.behavior === 'counter_on_block' && !attacker.isDead) {
         const defenderStats = this.getCombatStats(session, defender);
         const counterDamage = Math.max(1, Math.floor(defenderStats.atk * 0.35));
-        attacker.hp = Math.max(0, attacker.hp - counterDamage);
         log.push(`  ${defender.name}的「${result.affix.name}」反擊${attacker.name}，造成 ${counterDamage} 點傷害。`);
-        if (attacker.hp <= 0) {
-          attacker.isDead = true;
-          log.push(`  ${attacker.name}被反擊擊倒了！`);
-          this.triggerAffixEvents(session, defender, 'on_kill', log, {
-            targetHpPercent: 0,
-            isFirstHit: context.isFirstHit,
-          });
-        }
+        this.applyDamageToTarget(session, attacker, counterDamage, log, defender);
+        this.triggerMonsterPhases(session, attacker, log);
       }
     }
 

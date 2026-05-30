@@ -279,29 +279,28 @@ export class EffectEngine {
     remainingDamage: number;
   } {
     let remaining = damage;
+    let totalAbsorbed = 0;
 
     for (let i = effects.length - 1; i >= 0; i--) {
+      if (remaining <= 0) break;
       const eff = effects[i];
-      if (eff.type === 'shield' && remaining > 0) {
+      if (eff.type === 'shield') {
         if (eff.value >= remaining) {
           eff.value -= remaining;
-          const absorbed = remaining;
+          totalAbsorbed += remaining;
           remaining = 0;
-
           if (eff.value <= 0) {
             effects.splice(i, 1);
           }
-          return { absorbedDamage: absorbed, remainingDamage: 0 };
         } else {
           remaining -= eff.value;
-          const absorbed = eff.value;
+          totalAbsorbed += eff.value;
           effects.splice(i, 1);
-          return { absorbedDamage: absorbed, remainingDamage: remaining };
         }
       }
     }
 
-    return { absorbedDamage: 0, remainingDamage: damage };
+    return { absorbedDamage: totalAbsorbed, remainingDamage: remaining };
   }
 
   // ──────────────────────────────────────────────────────────
