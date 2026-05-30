@@ -114,6 +114,7 @@ import {
   cmdMount, cmdMountedCharge, cmdMounted, cmdMountedIntercept,
 } from './commands/cmd-combat.js';
 import { cmdInspect } from './commands/cmd-inspect.js';
+import { createCommandRegistry, listCommandCategories, type CommandDefinition } from './commands/registry.js';
 
 world.setRoomStateChangeFunction((roomId) => {
   broadcastRoomState(roomId);
@@ -320,126 +321,13 @@ export function handleCommand(session: WsSession, input: string, aliasDepth = 0)
     }
   }
 
-  switch (cmd) {
-    case 'look': cmdLook(session, argStr); break;
-    case 'search': cmdSearch(session, argStr); break;
-    case 'inspect': cmdInspect(session, argStr); break;
-    case 'open': cmdOpen(session, argStr); break;
-    case 'go': case 'move': cmdGo(session, argStr); break;
-    case 'status': cmdStatus(session); break;
-    case 'inventory': cmdInventory(session); break;
-    case 'skills': cmdSkills(session); break;
-    case 'attack': cmdAttack(session, argStr, 'melee'); break;
-    case 'melee': cmdAttack(session, argStr, 'melee'); break;
-    case 'ranged': case 'range': cmdAttack(session, argStr, 'ranged'); break;
-    case 'skill': cmdSkill(session, args); break;
-    case 'defend': cmdDefend(session); break;
-    case 'escape': cmdEscape(session); break;
-    case 'mount': cmdMount(session, args); break;
-    case 'charge': cmdMountedCharge(session, argStr); break;
-    case 'intercept': cmdMountedIntercept(session, args); break;
-    case 'mounted': cmdMounted(session, args); break;
-    case 'equip': cmdEquip(session, argStr); break;
-    case 'unequip': cmdUnequip(session, argStr); break;
-    case 'use': cmdUse(session, argStr); break;
-    case 'enter': cmdEnterInstanceEntry(session, argStr); break;
-    case 'take': case 'pick': case 'pickup': case 'get': cmdTake(session, argStr); break;
-    case 'loot': cmdLoot(session, argStr); break;
-    case 'drop': cmdDrop(session, argStr); break;
-    case 'say': cmdSay(session, argStr); break;
-    case 'talk': cmdTalk(session, argStr); break;
-    case 'shop': cmdShop(session, argStr); break;
-    case 'buy': cmdBuy(session, argStr); break;
-    case 'sell': cmdSell(session, argStr); break;
-    case 'allocate': case 'alloc': cmdAllocate(session, args); break;
-    case 'map': cmdMap(session); break;
-    case 'rest': cmdRest(session); break;
-    case 'activate': cmdActivate(session, args); break;
-    case 'portals': cmdPortals(session); break;
-    case 'travel': cmdTravel(session, argStr); break;
-    case 'recall': cmdRecall(session); break;
-    // 新系統指令
-    case 'party': cmdParty(session, args); break;
-    case 'trade': cmdTrade(session, args); break;
-    case 'quest': cmdQuest(session, args); break;
-    case 'duel': cmdDuel(session, args); break;
-    case 'arena': cmdArena(session, args); break;
-    case 'dungeon': cmdDungeon(session, args); break;
-    case 'leaderboard': case 'rank': cmdLeaderboard(session, args); break;
-    case 'classchange': case 'job': cmdClassChange(session, argStr); break;
-    case 'classquest': case 'cq': cmdClassQuest(session, args); break;
-    // 守護靈系統
-    case 'ask': cmdAsk(session, argStr); break;
-    case 'guardian': cmdGuardian(session, args); break;
-    // 王國系統
-    case 'kingdom': case 'k': cmdKingdom(session, args); break;
-    case 'appoint': cmdAppoint(session, args); break;
-    case 'demote': cmdDemote(session, args); break;
-    case 'kick': cmdKick(session, args); break;
-    case 'build': cmdBuild(session, args); break;
-    case 'mob': cmdMob(session, args); break;
-    case 'npc': cmdNpc(session, args); break;
-    case 'war': cmdWar(session, args); break;
-    case 'army': cmdArmy(session, args); break;
-    case 'bounty': cmdBounty(session, args); break;
-    case 'treasury': cmdTreasury(session, args); break;
-    case 'diplomacy': cmdDiplomacy(session, args); break;
-    // 強化系統
-    case 'upgrade': case 'enhance': cmdUpgrade(session, argStr); break;
-    case 'reroll': cmdReroll(session, args); break;
-    case 'lock': cmdLock(session, args); break;
-    case 'reforge': cmdReforge(session, args); break;
-    case 'disassemble': cmdDisassemble(session, args); break;
-    // 製作系統
-    case 'craft': cmdCraft(session, args); break;
-    case 'gather': cmdGather(session, args); break;
-    // 拍賣系統
-    case 'auction': case 'ah': cmdAuction(session, args); break;
-    // 釣魚系統
-    case 'fish': cmdFish(session, args); break;
-    // 成就/稱號系統
-    case 'achievement': case 'ach': cmdAchievement(session, args); break;
-    case 'title': cmdTitle(session); break;
-    case 'codex': cmdCodex(session, args); break;
-    case 'appearance': case 'cosmetic': cmdAppearance(session, args); break;
-    // 寵物系統
-    case 'pet': cmdPet(session, args); break;
-    case 'tame': cmdTame(session); break;
-    // 世界事件系統
-    case 'event': cmdEvent(session, args); break;
-    // 天氣系統
-    case 'weather': cmdWeather(session); break;
-    // 郵件系統
-    case 'mail': cmdMail(session, args); break;
-    // 表情系統
-    case 'emote': cmdEmote(session, argStr); break;
-    // 好友系統
-    case 'friend': case 'friends': cmdFriend(session, args); break;
-    // 教學系統
-    case 'tutorial': cmdTutorial(session, args); break;
-    // 自動戰鬥系統
-    case 'auto': cmdAuto(session, args); break;
-    // 二轉任務系統
-    case 'classquest2': case 'cq2': cmdClassQuest2(session, args); break;
-    // 技能樹系統
-    case 'skilltree': case 'st': cmdSkillTree(session, args); break;
-    // 交易所系統
-    case 'market': cmdMarket(session, args); break;
-    // 公會系統
-    case 'guild': case 'g': cmdGuild(session, args); break;
-    // 每日簽到
-    case 'signin': case 'checkin': cmdSignin(session); break;
-    case 'faith': cmdFaith(session, args); break;
-    case 'pray': cmdFaith(session, ['pray', ...args]); break;
-    case 'offering': cmdOffering(session, args); break;
-    case 'renounce': cmdRenounce(session, args); break;
-    case 'debug': cmdDebug(session, args); break;
-    case 'help': cmdHelp(session, argStr); break;
-    case 'alias': cmdAlias(session, args); break;
-    case 'unalias': cmdUnalias(session, args); break;
-    default:
-      sendError(session.sessionId, `未知指令：${cmd}。輸入 help 查看可用指令。`);
+  const command = COMMAND_REGISTRY.byName.get(cmd);
+  if (!command) {
+    sendError(session.sessionId, `未知指令：${cmd}。輸入 help 查看可用指令。`);
+    return;
   }
+
+  command.handler(session, { cmd, args, argStr, input: trimmed });
 }
 
 // ─── 基本指令 ───
@@ -5455,269 +5343,155 @@ function cmdFish(session: WsSession, args: string[]): void {
   }
 }
 
-// ─── 幫助 ───
+// ─── 指令 registry / 幫助 ───
+
+const COMMAND_CATEGORY_TITLES: Record<string, string> = {
+  explore: '移動與探索',
+  character: '角色資訊',
+  item: '物品操作',
+  combat: '戰鬥指令',
+  mount: '坐騎',
+  social: '社交',
+  quest: '任務系統',
+  dungeon: '副本與競技',
+  craft: '製作系統',
+  guardian: '守護靈',
+  kingdom: '王國系統',
+  build: '建設系統',
+  war: '軍事系統',
+  treasury: '國庫系統',
+  auction: '拍賣系統',
+  fish: '釣魚系統',
+  diplomacy: '外交系統',
+  achievement: '成就/稱號/圖鑑',
+  pet: '寵物系統',
+  event: '世界事件',
+  auto: '自動戰鬥',
+  other: '其他',
+};
+
+const COMMAND_DEFINITIONS: CommandDefinition[] = [
+  { names: ['look'], category: 'explore', usage: 'look [目標]', description: '查看周圍環境、NPC、怪物或玩家', handler: (session, { argStr }) => cmdLook(session, argStr) },
+  { names: ['search'], category: 'explore', usage: 'search [目標]', description: '搜尋房間線索', handler: (session, { argStr }) => cmdSearch(session, argStr) },
+  { names: ['inspect'], category: 'explore', usage: 'inspect <目標>', description: '檢查物件、出口或生物', handler: (session, { argStr }) => cmdInspect(session, argStr) },
+  { names: ['open'], category: 'explore', usage: 'open <目標>', description: '開啟出口或寶箱', handler: (session, { argStr }) => cmdOpen(session, argStr) },
+  { names: ['go', 'move'], category: 'explore', usage: 'go <方向>', description: '往 north/east/south/west 移動', handler: (session, { argStr }) => cmdGo(session, argStr) },
+  { names: ['map'], category: 'explore', usage: 'map', description: '顯示地圖', handler: session => cmdMap(session) },
+  { names: ['activate'], category: 'explore', usage: 'activate portal', description: '啟用目前區域傳送陣', handler: (session, { args }) => cmdActivate(session, args) },
+  { names: ['portals'], category: 'explore', usage: 'portals', description: '查看傳送點解鎖狀態', handler: session => cmdPortals(session) },
+  { names: ['travel'], category: 'explore', usage: 'travel <傳送點>', description: '傳送到已啟用區域', handler: (session, { argStr }) => cmdTravel(session, argStr) },
+  { names: ['recall'], category: 'explore', usage: 'recall', description: '回到新手村廣場', handler: session => cmdRecall(session) },
+  { names: ['rest'], category: 'explore', usage: 'rest', description: '原地休息，恢復 HP 與資源', handler: session => cmdRest(session) },
+
+  { names: ['status'], category: 'character', usage: 'status', description: '查看角色狀態', handler: session => cmdStatus(session) },
+  { names: ['faith'], category: 'character', usage: 'faith', description: '查看信仰、祈禱與改信', handler: (session, { args }) => cmdFaith(session, args) },
+  { names: ['pray'], category: 'character', usage: 'pray', description: '祈禱提高恩寵', handler: (session, { args }) => cmdFaith(session, ['pray', ...args]) },
+  { names: ['offering'], category: 'character', usage: 'offering <數量>', description: '獻金提高恩寵', handler: (session, { args }) => cmdOffering(session, args) },
+  { names: ['renounce'], category: 'character', usage: 'renounce', description: '放棄目前信仰', handler: (session, { args }) => cmdRenounce(session, args) },
+  { names: ['inventory'], category: 'character', usage: 'inventory', description: '查看背包', handler: session => cmdInventory(session) },
+  { names: ['skills'], category: 'character', usage: 'skills', description: '查看技能列表', handler: session => cmdSkills(session) },
+  { names: ['allocate', 'alloc'], category: 'character', usage: 'allocate <屬性> <點>', description: '分配屬性點', handler: (session, { args }) => cmdAllocate(session, args) },
+
+  { names: ['equip'], category: 'item', usage: 'equip <物品>', description: '裝備物品', handler: (session, { argStr }) => cmdEquip(session, argStr) },
+  { names: ['unequip'], category: 'item', usage: 'unequip <物品>', description: '卸下裝備', handler: (session, { argStr }) => cmdUnequip(session, argStr) },
+  { names: ['use'], category: 'item', usage: 'use <物品>', description: '使用物品', handler: (session, { argStr }) => cmdUse(session, argStr) },
+  { names: ['take', 'pick', 'pickup', 'get'], category: 'item', usage: 'take <物品>', description: '拾取地上物品', handler: (session, { argStr }) => cmdTake(session, argStr) },
+  { names: ['loot'], category: 'item', usage: 'loot [目標]', description: '拾取戰利品', handler: (session, { argStr }) => cmdLoot(session, argStr) },
+  { names: ['drop'], category: 'item', usage: 'drop <物品>', description: '丟棄物品', handler: (session, { argStr }) => cmdDrop(session, argStr) },
+  { names: ['sell'], category: 'item', usage: 'sell <物品> [數量]', description: '在商人旁出售背包物品', handler: (session, { argStr }) => cmdSell(session, argStr) },
+  { names: ['upgrade', 'enhance'], category: 'item', usage: 'upgrade [裝備]', description: '強化裝備', handler: (session, { argStr }) => cmdUpgrade(session, argStr) },
+  { names: ['reroll'], category: 'item', usage: 'reroll affix <instance> <序號>', description: '重骰裝備詞綴', handler: (session, { args }) => cmdReroll(session, args) },
+  { names: ['lock'], category: 'item', usage: 'lock affix <instance> <序號>', description: '鎖定裝備詞綴', handler: (session, { args }) => cmdLock(session, args) },
+  { names: ['reforge'], category: 'item', usage: 'reforge quality <instance>', description: '重鑄裝備品質', handler: (session, { args }) => cmdReforge(session, args) },
+  { names: ['disassemble'], category: 'item', usage: 'disassemble <物品>', description: '分解裝備取得重鑄材料', handler: (session, { args }) => cmdDisassemble(session, args) },
+
+  { names: ['attack'], category: 'combat', usage: 'attack <目標>', description: '近戰普攻', handler: (session, { argStr }) => cmdAttack(session, argStr, 'melee') },
+  { names: ['melee'], category: 'combat', usage: 'melee <目標>', description: '切換近戰普攻', handler: (session, { argStr }) => cmdAttack(session, argStr, 'melee') },
+  { names: ['ranged', 'range'], category: 'combat', usage: 'ranged <目標>', description: '切換遠程/施法普攻', handler: (session, { argStr }) => cmdAttack(session, argStr, 'ranged') },
+  { names: ['skill'], category: 'combat', usage: 'skill <技能> [目標]', description: '使用技能', handler: (session, { args }) => cmdSkill(session, args) },
+  { names: ['defend'], category: 'combat', usage: 'defend', description: '防禦', handler: session => cmdDefend(session) },
+  { names: ['escape'], category: 'combat', usage: 'escape', description: '逃跑', handler: session => cmdEscape(session) },
+  { names: ['charge'], category: 'combat', usage: 'charge <目標>', description: '騎乘衝鋒', handler: (session, { argStr }) => cmdMountedCharge(session, argStr) },
+  { names: ['intercept'], category: 'combat', usage: 'intercept <方向>', description: '騎乘攔截', handler: (session, { args }) => cmdMountedIntercept(session, args) },
+  { names: ['mounted'], category: 'combat', usage: 'mounted <動作>', description: '騎乘戰鬥動作', handler: (session, { args }) => cmdMounted(session, args) },
+
+  { names: ['mount'], category: 'mount', usage: 'mount [ride|dismount]', description: '查看或控制坐騎', handler: (session, { args }) => cmdMount(session, args) },
+
+  { names: ['say'], category: 'social', usage: 'say <訊息>', description: '說話', handler: (session, { argStr }) => cmdSay(session, argStr) },
+  { names: ['talk'], category: 'social', usage: 'talk <NPC>', description: '與 NPC 對話', handler: (session, { argStr }) => cmdTalk(session, argStr) },
+  { names: ['party'], category: 'social', usage: 'party <子指令>', description: '組隊系統', handler: (session, { args }) => cmdParty(session, args) },
+  { names: ['trade'], category: 'social', usage: 'trade <子指令>', description: '交易系統', handler: (session, { args }) => cmdTrade(session, args) },
+  { names: ['emote'], category: 'social', usage: 'emote <動作>', description: '表情動作', handler: (session, { argStr }) => cmdEmote(session, argStr) },
+  { names: ['friend', 'friends'], category: 'social', usage: 'friend <子指令>', description: '好友系統', handler: (session, { args }) => cmdFriend(session, args) },
+  { names: ['mail'], category: 'social', usage: 'mail <子指令>', description: '郵件系統', handler: (session, { args }) => cmdMail(session, args) },
+  { names: ['weather'], category: 'social', usage: 'weather', description: '查看天氣與時段', handler: session => cmdWeather(session) },
+
+  { names: ['quest'], category: 'quest', usage: 'quest <子指令>', description: '任務系統', handler: (session, { args }) => cmdQuest(session, args) },
+  { names: ['classchange', 'job'], category: 'quest', usage: 'classchange <職業>', description: '轉職', handler: (session, { argStr }) => cmdClassChange(session, argStr) },
+  { names: ['classquest', 'cq'], category: 'quest', usage: 'classquest <子指令>', description: '職業任務', handler: (session, { args }) => cmdClassQuest(session, args) },
+  { names: ['classquest2', 'cq2'], category: 'quest', usage: 'classquest2 <子指令>', description: '進階職業任務', handler: (session, { args }) => cmdClassQuest2(session, args) },
+  { names: ['skilltree', 'st'], category: 'quest', usage: 'skilltree <子指令>', description: '技能樹系統', handler: (session, { args }) => cmdSkillTree(session, args) },
+
+  { names: ['enter'], category: 'dungeon', usage: 'enter <入口>', description: '進入副本入口', handler: (session, { argStr }) => cmdEnterInstanceEntry(session, argStr) },
+  { names: ['dungeon'], category: 'dungeon', usage: 'dungeon <子指令>', description: '副本系統', handler: (session, { args }) => cmdDungeon(session, args) },
+  { names: ['duel'], category: 'dungeon', usage: 'duel <玩家>', description: 'PvP 決鬥', handler: (session, { args }) => cmdDuel(session, args) },
+  { names: ['arena'], category: 'dungeon', usage: 'arena', description: '競技場', handler: (session, { args }) => cmdArena(session, args) },
+  { names: ['leaderboard', 'rank'], category: 'dungeon', usage: 'leaderboard', description: '排行榜', handler: (session, { args }) => cmdLeaderboard(session, args) },
+
+  { names: ['craft'], category: 'craft', usage: 'craft <配方|子指令>', description: '製作系統', handler: (session, { args }) => cmdCraft(session, args) },
+  { names: ['gather'], category: 'craft', usage: 'gather', description: '採集資源', handler: (session, { args }) => cmdGather(session, args) },
+
+  { names: ['ask'], category: 'guardian', usage: 'ask', description: '向守護靈詢問建議', handler: (session, { argStr }) => cmdAsk(session, argStr) },
+  { names: ['guardian'], category: 'guardian', usage: 'guardian <子指令>', description: '守護靈系統', handler: (session, { args }) => cmdGuardian(session, args) },
+
+  { names: ['kingdom', 'k'], category: 'kingdom', usage: 'kingdom <子指令>', description: '王國系統', handler: (session, { args }) => cmdKingdom(session, args) },
+  { names: ['appoint'], category: 'kingdom', usage: 'appoint <玩家> <職位>', description: '任命王國成員', handler: (session, { args }) => cmdAppoint(session, args) },
+  { names: ['demote'], category: 'kingdom', usage: 'demote <玩家>', description: '降職王國成員', handler: (session, { args }) => cmdDemote(session, args) },
+  { names: ['kick'], category: 'kingdom', usage: 'kick <玩家>', description: '踢出王國成員', handler: (session, { args }) => cmdKick(session, args) },
+  { names: ['guild', 'g'], category: 'kingdom', usage: 'guild <子指令>', description: '公會系統', handler: (session, { args }) => cmdGuild(session, args) },
+
+  { names: ['build'], category: 'build', usage: 'build <子指令>', description: '建設系統', handler: (session, { args }) => cmdBuild(session, args) },
+  { names: ['mob'], category: 'build', usage: 'mob <spawn|remove>', description: '管理怪物生成點', handler: (session, { args }) => cmdMob(session, args) },
+  { names: ['npc'], category: 'build', usage: 'npc <place|remove|config>', description: '管理 NPC', handler: (session, { args }) => cmdNpc(session, args) },
+
+  { names: ['war'], category: 'war', usage: 'war <子指令>', description: '戰爭系統', handler: (session, { args }) => cmdWar(session, args) },
+  { names: ['army'], category: 'war', usage: 'army <子指令>', description: '軍隊管理', handler: (session, { args }) => cmdArmy(session, args) },
+  { names: ['bounty'], category: 'war', usage: 'bounty <子指令>', description: '懸賞系統', handler: (session, { args }) => cmdBounty(session, args) },
+
+  { names: ['treasury'], category: 'treasury', usage: 'treasury <子指令>', description: '國庫系統', handler: (session, { args }) => cmdTreasury(session, args) },
+  { names: ['diplomacy'], category: 'diplomacy', usage: 'diplomacy <子指令>', description: '外交系統', handler: (session, { args }) => cmdDiplomacy(session, args) },
+
+  { names: ['shop'], category: 'auction', usage: 'shop [NPC]', description: '開啟商店', handler: (session, { argStr }) => cmdShop(session, argStr) },
+  { names: ['buy'], category: 'auction', usage: 'buy <物品>', description: '購買商店物品', handler: (session, { argStr }) => cmdBuy(session, argStr) },
+  { names: ['auction', 'ah'], category: 'auction', usage: 'auction <子指令>', description: '拍賣系統', handler: (session, { args }) => cmdAuction(session, args) },
+  { names: ['market'], category: 'auction', usage: 'market <子指令>', description: '交易所系統', handler: (session, { args }) => cmdMarket(session, args) },
+
+  { names: ['fish'], category: 'fish', usage: 'fish [level]', description: '在水邊釣魚或查看釣魚等級', handler: (session, { args }) => cmdFish(session, args) },
+
+  { names: ['achievement', 'ach'], category: 'achievement', usage: 'achievement [equip]', description: '查看或裝備成就稱號', handler: (session, { args }) => cmdAchievement(session, args) },
+  { names: ['title'], category: 'achievement', usage: 'title', description: '查看當前稱號', handler: session => cmdTitle(session) },
+  { names: ['codex'], category: 'achievement', usage: 'codex <monster|fish|boss>', description: '查看圖鑑', handler: (session, { args }) => cmdCodex(session, args) },
+  { names: ['appearance', 'cosmetic'], category: 'achievement', usage: 'appearance <子指令>', description: '外觀收藏', handler: (session, { args }) => cmdAppearance(session, args) },
+
+  { names: ['pet'], category: 'pet', usage: 'pet <子指令>', description: '寵物系統', handler: (session, { args }) => cmdPet(session, args) },
+  { names: ['tame'], category: 'pet', usage: 'tame', description: '馴服野生寵物', handler: session => cmdTame(session) },
+
+  { names: ['event'], category: 'event', usage: 'event <子指令>', description: '世界事件', handler: (session, { args }) => cmdEvent(session, args) },
+  { names: ['auto'], category: 'auto', usage: 'auto <子指令>', description: '自動戰鬥', handler: (session, { args }) => cmdAuto(session, args) },
+
+  { names: ['tutorial'], category: 'other', usage: 'tutorial [skip]', description: '教學系統', handler: (session, { args }) => cmdTutorial(session, args) },
+  { names: ['signin', 'checkin'], category: 'other', usage: 'signin', description: '每日簽到', handler: session => cmdSignin(session) },
+  { names: ['debug'], category: 'other', usage: 'debug <子指令>', description: '除錯指令', handler: (session, { args }) => cmdDebug(session, args), hidden: true },
+  { names: ['help'], category: 'other', usage: 'help [分類]', description: '查看指令說明', handler: (session, { argStr }) => cmdHelp(session, argStr) },
+  { names: ['alias'], category: 'other', usage: 'alias <名稱> <指令>', description: '設定指令別名', handler: (session, { args }) => cmdAlias(session, args) },
+  { names: ['unalias'], category: 'other', usage: 'unalias <名稱>', description: '刪除指令別名', handler: (session, { args }) => cmdUnalias(session, args) },
+];
+
+const COMMAND_REGISTRY = createCommandRegistry(COMMAND_DEFINITIONS);
+const HELP_CATEGORIES = listCommandCategories(COMMAND_REGISTRY.definitions, COMMAND_CATEGORY_TITLES);
 
 function cmdHelp(session: WsSession, topic?: string): void {
-  const categories: Record<string, { title: string; lines: string[] }> = {
-    explore: {
-      title: '移動與探索',
-      lines: [
-        'look (l)            查看周圍環境',
-        'search [目標]        搜尋房間線索',
-        'inspect <目標>       檢查物件、出口或生物',
-        'open <目標>          開啟出口或寶箱',
-        'go <方向> (n/s/e/w)  移動',
-        'map                 顯示地圖',
-        'activate portal     啟用目前區域傳送陣',
-        'portals             查看傳送點解鎖狀態',
-        'travel <傳送點>      傳送到已啟用區域',
-        'recall              回到新手村廣場',
-        'rest                原地休息，恢復 HP 與資源',
-      ],
-    },
-    character: {
-      title: '角色資訊',
-      lines: [
-        'status (stat)       查看角色狀態',
-        'faith               查看信仰、祈禱與改信',
-        'pray / offering     祈禱 / 獻金提高恩寵',
-        'inventory (i)       查看背包',
-        'skills (sk)         查看技能列表',
-        'allocate <屬性> <點> 分配屬性點',
-      ],
-    },
-    item: {
-      title: '物品操作',
-      lines: [
-        'equip/unequip <物品> 裝備/卸下',
-        'use <物品>           使用物品',
-        'sell <物品> [數量]    在商人旁出售背包物品',
-        'drop <物品>          丟棄物品',
-        'upgrade / enhance    強化當前武器',
-        'upgrade armor        強化身體裝備',
-        'reroll affix <instance> <序號> 重骰裝備詞綴',
-        'lock affix <instance> <序號> 鎖定裝備詞綴',
-        'reforge quality <instance> 重鑄裝備品質',
-        'disassemble <物品|instance> 分解裝備取得重鑄材料',
-      ],
-    },
-    combat: {
-      title: '戰鬥指令',
-      lines: [
-        'melee <目標>         切換近戰普攻',
-        'ranged <目標>        切換遠程/施法普攻',
-        'attack <目標>        近戰普攻（舊指令）',
-        'skill <技能> [目標]   使用技能',
-        'defend / flee        防禦 / 逃跑',
-        'mount ride/dismount  騎士上馬 / 下馬',
-      ],
-    },
-    mount: {
-      title: '坐騎',
-      lines: [
-        'mount               查看坐騎狀態',
-        'mount ride          呼喚坐騎並上馬',
-        'mount dismount      解除騎乘姿態',
-        'mount dismiss       讓坐騎退到戰線外',
-      ],
-    },
-    social: {
-      title: '社交',
-      lines: [
-        'say <訊息>           說話',
-        'party                組隊系統（help party）',
-        'trade                交易系統',
-        'emote <動作>         表情動作（bow/wave/laugh/cry/dance等）',
-        'friend add/remove/list/online 好友系統',
-        'mail list/read/send/delete   郵件系統',
-        'weather              查看天氣與時段',
-      ],
-    },
-    quest: {
-      title: '任務系統',
-      lines: [
-        'quest list           所有可接任務',
-        'quest active         進行中的任務',
-        'quest accept <ID>    接受任務',
-        'quest complete <ID>  完成任務',
-        'quest abandon <ID>   放棄任務',
-        'quest info <ID>      任務詳情',
-        'classquest (cq)      職業任務',
-        'classquest2 (cq2)    進階職業任務',
-      ],
-    },
-    dungeon: {
-      title: '副本與競技',
-      lines: [
-        'dungeon list         副本列表',
-        'dungeon enter <ID>   進入副本',
-        'dungeon queue <ID>   排隊副本',
-        'dungeon status       副本狀態',
-        'dungeon leave        離開副本',
-        'duel <玩家>          PvP 決鬥',
-        'arena                競技場',
-        'leaderboard (lb)     排行榜',
-      ],
-    },
-    craft: {
-      title: '製作系統',
-      lines: [
-        'craft list [forge|tailoring|leather|jewel|alchemy|enchant|cooking] 查看配方',
-        'craft <配方ID> slot:<slot> affix:<tag> 指定裝備欄與詞綴傾向',
-        'craft forge <配方ID>   鍛造裝備',
-        'craft tailoring <配方ID> 裁縫裝備',
-        'craft leather <配方ID>  皮革裝備',
-        'craft jewel <配方ID>    珠寶飾品',
-        'craft alchemy <配方ID> 煉金製藥',
-        'craft enchant <配方ID> 附魔媒材',
-        'craft cook <配方ID>    烹飪料理',
-        'craft info <配方ID>    查看配方詳情',
-        'craft level            查看製作等級',
-      ],
-    },
-    guardian: {
-      title: '守護靈',
-      lines: [
-        'ask                  向守護靈詢問建議',
-        'guardian sense       主動感知環境',
-        'guardian advice      請求策略建議',
-        'guardian select <ID> 選擇守護靈',
-        'guardian info        查看守護靈狀態',
-      ],
-    },
-    kingdom: {
-      title: '王國系統',
-      lines: [
-        'kingdom create <名>  建立王國（需 10000 金幣）',
-        'kingdom dissolve     解散王國',
-        'kingdom info [名]    查看王國資訊',
-        'kingdom members      成員列表',
-        'kingdom join <名>    加入王國',
-        'kingdom leave        離開王國',
-        'kingdom chat <訊息>  王國頻道聊天',
-        'kingdom map          王國領地地圖',
-        'kingdom rank/list    排名/列表',
-        'kingdom motto <文字> 設定王國格言',
-        'appoint/demote/kick  管理成員',
-      ],
-    },
-    build: {
-      title: '建設系統',
-      lines: [
-        'build room <方向> <名> 建造房間',
-        'build destroy        拆除當前房間',
-        'build desc <描述>    設定房間描述',
-        'build type <類型>    設定房間類型',
-        'build lock/unlock <方向> 鎖定/解鎖出口',
-        'mob spawn/remove <ID> 管理怪物生成點',
-        'npc place/remove/config 管理 NPC',
-      ],
-    },
-    war: {
-      title: '軍事系統',
-      lines: [
-        'war declare <王國>   宣戰',
-        'war peace <王國>     提議和平',
-        'war status           戰爭狀態',
-        'war siege <王國>     發動攻城',
-        'war defend/rally     防守/集結',
-        'army recruit/deploy/dismiss/list 軍隊管理',
-        'bounty set/remove/list 懸賞系統',
-      ],
-    },
-    treasury: {
-      title: '國庫系統',
-      lines: [
-        'treasury balance     查看國庫',
-        'treasury deposit <額> 存入',
-        'treasury withdraw <額> 提取',
-        'treasury log         交易紀錄',
-        'treasury tax <率>    設定稅率',
-      ],
-    },
-    auction: {
-      title: '拍賣系統',
-      lines: [
-        'auction sell <物品> <最低價> [直購價] [時長] 上架',
-        'auction search [關鍵字]     搜尋',
-        'auction bid <ID> <金額>     出價',
-        'auction buyout <ID>         直購',
-        'auction my                  我的拍賣',
-        'auction cancel <ID>         取消',
-        'auction info <ID>           詳情',
-      ],
-    },
-    fish: {
-      title: '釣魚系統',
-      lines: [
-        'fish                        在水邊釣魚',
-        'fish level                  查看釣魚等級/統計',
-      ],
-    },
-    diplomacy: {
-      title: '外交系統',
-      lines: [
-        'diplomacy ally/unally <王國>  結盟/解盟',
-        'diplomacy status     外交狀態',
-        'diplomacy message <王國> <訊息> 外交訊息',
-        'diplomacy trade <王國> <條款>   貿易提議',
-        'diplomacy embargo/lift <王國>   禁運管理',
-      ],
-    },
-    achievement: {
-      title: '成就/稱號/圖鑑',
-      lines: [
-        'achievement (ach)    查看所有成就',
-        'achievement equip <ID> 裝備稱號',
-        'title                查看當前稱號',
-        'codex monster        查看怪物圖鑑',
-        'codex fish           查看釣魚圖鑑',
-        'codex boss           查看 Boss 擊殺次數',
-        'appearance list      查看外觀收藏',
-        'appearance equip <ID> 裝備外觀',
-      ],
-    },
-    pet: {
-      title: '寵物系統',
-      lines: [
-        'pet list             查看所有寵物',
-        'pet info <petId>     寵物詳情',
-        'pet summon <petId>   召喚寵物',
-        'pet dismiss          解散寵物',
-        'pet feed <petId> <itemId> 餵食',
-        'pet rename <petId> <name> 重命名',
-        'tame                 馴服野生寵物（馴獸師專用）',
-      ],
-    },
-    event: {
-      title: '世界事件',
-      lines: [
-        'event info           查看當前/下次世界事件',
-        'event join           加入當前世界事件',
-        'event ranking        當前事件傷害排名',
-      ],
-    },
-    auto: {
-      title: '自動戰鬥',
-      lines: [
-        'auto / auto on       啟用自動戰鬥',
-        'auto off             停用自動戰鬥',
-        'auto status          查看自動戰鬥設定',
-        'auto config flee <百分比>   逃跑 HP 閾值',
-        'auto config potion <on/off> 自動使用藥水',
-        'auto config loot <on/off>   自動拾取',
-      ],
-    },
-    other: {
-      title: '其他',
-      lines: [
-        'classchange (job)    轉職',
-        'tutorial             教學系統',
-        'tutorial skip        跳過教學',
-        'signin / checkin     每日簽到',
-      ],
-    },
-  };
+  const categories = HELP_CATEGORIES;
 
   const t = topic?.toLowerCase();
 
