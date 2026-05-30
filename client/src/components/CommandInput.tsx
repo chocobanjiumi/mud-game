@@ -1,19 +1,10 @@
 import { useState, useRef, useCallback, type KeyboardEvent } from 'react';
 import { useGameStore } from '../stores/gameStore';
-import { SKILL_DEFS } from '@game/shared';
+import { COMMAND_METADATA, SKILL_DEFS } from '@game/shared';
 
-const COMMON_COMMANDS = [
-  'look', 'go', 'north', 'south', 'east', 'west',
-  'attack', 'defend', 'flee', 'use', 'equip', 'unequip',
-  'inventory', 'status', 'skills', 'skill', 'party', 'map',
-  'say', 'shout', 'whisper', 'help',
-  'buy', 'sell', 'talk', 'quest',
-  'rest', 'pickup', 'drop',
-  'search', 'inspect', 'open',
-  'activate', 'portals', 'travel', 'recall',
-  'loot', 'faith', 'pray', 'alias', 'unalias',
-  'mount',
-];
+const COMMON_COMMANDS = COMMAND_METADATA
+  .filter(command => !command.hidden)
+  .flatMap(command => command.names);
 
 const COMMON_ALIASES = ['l', 'i', 'stat', 'stats', 'atk', 'kill', 'sk', 'n', 's', 'e', 'w'];
 
