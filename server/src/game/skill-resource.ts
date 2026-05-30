@@ -5,11 +5,14 @@ export interface ResourceCarrier {
   maxResource: number;
   resourceType: ResourceType;
   mp?: number;
+  hp?: number;
+  maxHp?: number;
 }
 
 export interface SkillResourceCheck {
   ok: boolean;
   effectiveCost: number;
+  hpCost?: number;
   message?: string;
 }
 
@@ -49,6 +52,22 @@ export function checkSkillResource(
       message: `資源不足，${skillDef.name}目前資源 ${actor.resource}，需求 ${effectiveCost} 點。`,
     };
   }
+
+  // HP 消耗檢查 (H-6: berserker hpCostPercent)
+  const hpCostPercent = getNumericSpecial(skillDef, 'hpCostPercent');
+  if (hpCostPercent !== undefined && hpCostPercent > 0 && actor.hp !== undefined && actor.maxHp !== undefined) {
+    const hpCost = Math.max(1, Math.floor(actor.maxHp * hpCostPercent / 100));
+    if (actor.hp <= hpCost) {
+      return {
+        ok: false,
+        effectiveCost,
+        hpCost,
+        message: `生命不足，${skillDef.name}需要消耗 ${hpCost} HP（${hpCostPercent}%），目前 HP ${actor.hp}。`,
+      };
+    }
+    return { ok: true, effectiveCost, hpCost };
+  }
+
   return { ok: true, effectiveCost };
 }
 
@@ -71,6 +90,14 @@ export function applySkillResourceChange(
   if (actor.resourceType === 'mp' && actor.mp !== undefined) {
     actor.mp = Math.max(0, actor.mp - cost);
   }
+
+  // HP 消耗 (H-6: berserker hpCostPercent)
+  const hpCostPercent = getNumericSpecial(skillDef, 'hpCostPercent');
+  if (hpCostPercent !== undefined && hpCostPercent > 0 && actor.hp !== undefined && actor.maxHp !== undefined) {
+    const hpCost = Math.max(1, Math.floor(actor.maxHp * hpCostPercent / 100));
+    actor.hp = Math.max(1, actor.hp - hpCost);
+  }
+
   return actor.resource - before;
 }
 

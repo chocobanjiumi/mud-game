@@ -390,7 +390,7 @@ export class CombatEngine {
           isFirstHit: session.state.round === 1,
         });
       }
-      this.applyDamageToTarget(session, target, dmgResult.damage, log);
+      this.applyDamageToTarget(session, target, dmgResult.damage, log, actor);
       this.triggerMonsterPhases(session, target, log);
       this.applySkillHitResourceEffects(actor, target, skillDef, log);
       this.triggerAffixEvents(session, actor, 'on_hit', log, {
@@ -410,12 +410,6 @@ export class CombatEngine {
         log.push(`  ${target.name}${msg}`);
       }
 
-      if (target.isDead) {
-        this.triggerAffixEvents(session, actor, 'on_kill', log, {
-          targetHpPercent: 0,
-          isFirstHit: session.state.round === 1,
-        });
-      }
     }
 
     const killed = target.isDead;
@@ -753,12 +747,6 @@ export class CombatEngine {
         targetHpPercent,
         isFirstHit: session.state.round === 1,
       });
-      if (target.isDead) {
-        this.triggerAffixEvents(session, actor, 'on_kill', log, {
-          targetHpPercent: 0,
-          isFirstHit: session.state.round === 1,
-        });
-      }
       this.gainResourceOnAttack(actor, dmgResult, log);
     }
   }
@@ -904,6 +892,11 @@ export class CombatEngine {
           healAmount = Math.floor(healAmount * (1 + outputAffixModifiers.healingBonusPct / 100));
         }
         healAmount = applyHealingReceivedOriginModifier(target, healAmount);
+        // heal_reduction：降低受到的治療量 (H-2)
+        const healReduction = this.effectEngine.getEffectValue(target.activeEffects, 'heal_reduction');
+        if (healReduction > 0) {
+          healAmount = Math.max(1, Math.floor(healAmount * (1 - Math.min(healReduction, 100) / 100)));
+        }
         const before = target.hp;
         target.hp = Math.min(target.maxHp, target.hp + healAmount);
         const actual = target.hp - before;
@@ -950,7 +943,7 @@ export class CombatEngine {
             dmgResult.damage = Math.max(1, Math.floor(dmgResult.damage * 0.85));
             log.push(`  ${target.name}穩住陣線，抵住逼近攻勢，傷害降低 ${before - dmgResult.damage} 點。`);
           }
-          this.applyDamageToTarget(session, target, dmgResult.damage, log);
+          this.applyDamageToTarget(session, target, dmgResult.damage, log, actor);
           this.consumeNextShotDamageBonus(actor, skillDef, log);
           this.triggerMonsterPhases(session, target, log);
           this.applySkillHitResourceEffects(actor, target, skillDef, log);
@@ -958,12 +951,6 @@ export class CombatEngine {
             targetHpPercent,
             isFirstHit: session.state.round === 1,
           });
-          if (target.isDead) {
-            this.triggerAffixEvents(session, actor, 'on_kill', log, {
-              targetHpPercent: 0,
-              isFirstHit: session.state.round === 1,
-            });
-          }
         }
       }
 
@@ -1238,13 +1225,8 @@ export class CombatEngine {
       }
     }
 
-    this.applyDamageToTarget(session, target, result.damage, log);
+    this.applyDamageToTarget(session, target, result.damage, log, actor);
     this.triggerMonsterPhases(session, target, log);
-
-    // 仇恨值：玩家對怪物造成傷害時累積仇恨
-    if (actor.isPlayer && !target.isPlayer && result.damage > 0) {
-      actor.threat += result.damage;
-    }
 
     // 資源系統：戰士系被擊中獲得怒氣
     this.gainResourceOnHit(target, log);
@@ -1261,13 +1243,14 @@ export class CombatEngine {
     target: CombatantState,
     rawDamage: number,
     log: string[],
-  ): void {
+    actor?: CombatantState,
+  ): number {
     let damage = rawDamage;
 
     // 無敵判定
     if (this.effectEngine.isInvincible(target.activeEffects)) {
       log.push(`  ${target.name}處於無敵狀態，免疫了所有傷害！`);
-      return;
+      return 0;
     }
 
     // 傷害減免
@@ -1309,11 +1292,55 @@ export class CombatEngine {
     if (monsterInstance) {
       monsterInstance.hp = target.hp;
     }
+
+    // 仇恨值：用實際傷害累積（S-2）
+    if (actor && actor.isPlayer && !target.isPlayer && damage > 0) {
+      actor.threat += damage;
+    }
+
+    // unyielding：瀕死時保留一絲生機 (H-2)
+    if (target.hp <= 0) {
+      const unyieldingVal = this.effectEngine.getEffectValue(target.activeEffects, 'unyielding');
+      if (unyieldingVal > 0) {
+        target.hp = 1;
+        if (monsterInstance) monsterInstance.hp = 1;
+        this.effectEngine.removeEffect(target.activeEffects, 'unyielding');
+        log.push(`  ${target.name}的不屈意志發動，以 1 HP 存活！`);
+        return damage;
+      }
+    }
+
     if (target.hp <= 0) {
       target.isDead = true;
       if (monsterInstance) monsterInstance.isDead = true;
       log.push(`  ${target.name}倒下了！`);
+      // 統一擊殺歸屬 on_kill（S-3）
+      if (actor) {
+        this.triggerAffixEvents(session, actor, 'on_kill', log, {
+          targetHpPercent: 0,
+          isFirstHit: session.state.round === 1,
+        });
+      }
     }
+
+    // thorns：受到近戰傷害時反射傷害給攻擊者 (H-2)
+    if (actor && !target.isDead && damage > 0) {
+      const thornsPct = this.effectEngine.getEffectValue(target.activeEffects, 'thorns');
+      if (thornsPct > 0) {
+        const thornsDmg = Math.max(1, Math.floor(damage * thornsPct / 100));
+        actor.hp = Math.max(0, actor.hp - thornsDmg);
+        log.push(`  ${target.name}的荊棘反射了 ${thornsDmg} 點傷害給${actor.name}。`);
+        const actorMonster = session.monsterInstances.get(actor.id);
+        if (actorMonster) actorMonster.hp = actor.hp;
+        if (actor.hp <= 0) {
+          actor.isDead = true;
+          if (actorMonster) actorMonster.isDead = true;
+          log.push(`  ${actor.name}被荊棘反射擊倒了！`);
+        }
+      }
+    }
+
+    return damage;
   }
 
   // ──────────────────────────────────────────────────────────
@@ -1332,13 +1359,10 @@ export class CombatEngine {
 
       const result = this.effectEngine.tickEffects(c.activeEffects, c.name);
 
-      // DoT 傷害
+      // DoT 傷害 — 走 applyDamageToTarget 尊重無敵/護盾/減傷/仇恨/on_kill (H-1)
       if (result.damage > 0) {
-        c.hp = Math.max(0, c.hp - result.damage);
-        if (c.hp <= 0) {
-          c.isDead = true;
-          log.push(`  ${c.name}因狀態效果倒下了！`);
-        }
+        const dotSource = this.findDotSource(session, c);
+        this.applyDamageToTarget(session, c, result.damage, log, dotSource);
       }
 
       // HoT 回血
@@ -1356,6 +1380,12 @@ export class CombatEngine {
 
       log.push(...result.messages);
     }
+  }
+
+  private findDotSource(session: CombatSession, target: CombatantState): CombatantState | undefined {
+    const dotEffect = target.activeEffects.find(e => (e.type === 'poison' || e.type === 'burn' || e.type === 'bleed') && e.source);
+    if (!dotEffect?.source) return undefined;
+    return this.findCombatant(session, dotEffect.source);
   }
 
   // ──────────────────────────────────────────────────────────
@@ -1476,6 +1506,14 @@ export class CombatEngine {
       return this.selectRandomAlive(allies);
     }
     if (skillDef.targetType === 'all_allies') return actor;
+
+    // 怪物 offensive 技能走 selectMonsterTarget 尊重嘲諷/前後排/仇恨 (H-4, H-5)
+    if (!actor.isPlayer) {
+      const instance = session.monsterInstances.get(actor.id);
+      if (instance) {
+        return this.selectMonsterTarget(session, instance, actor);
+      }
+    }
 
     return this.selectRandomAlive(actor.isPlayer ? session.state.enemyTeam : session.state.playerTeam);
   }
