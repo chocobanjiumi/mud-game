@@ -162,7 +162,7 @@ export default function BattlefieldView() {
           if (items.length === 0) return null;
           return items.map((a, i) => (
             <ApproachDot key={a.instanceId} instanceId={a.instanceId} dir={dir} index={i} total={items.length}
-              img={a.image ? `/mud/images/monsters/${a.image}` : getMonsterImagePath(a.monsterId)}
+              img={a.image ? `/mud${a.image}` : getMonsterImagePath(a.monsterId)}
               name={a.name} ticks={a.arrivalTicks} />
           ));
         })}
@@ -290,7 +290,7 @@ function RoomCell({ dir, neighbor }: { dir: string; neighbor?: NearbyCombatNeigh
         <div className="flex-1 flex items-center justify-center gap-1 flex-wrap">
           {neighbor?.scouted && neighbor.monsters ? (
             neighbor.monsters.map(m => (
-              <MonIcon key={m.id} name={m.name} img={m.image ? `/mud/images/monsters/${m.image}` : getMonsterImagePath(m.monsterId)} hp={m.maxHp > 0 ? (m.hp / m.maxHp) * 100 : 100} size={28} />
+              <MonIcon key={m.id} name={m.name} img={m.image ? `/mud${m.image}` : getMonsterImagePath(m.monsterId)} hp={m.maxHp > 0 ? (m.hp / m.maxHp) * 100 : 100} size={28} />
             ))
           ) : (
             <span className="text-[9px] text-red-400">怪×{neighbor?.monsterCount}</span>
