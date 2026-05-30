@@ -8,7 +8,7 @@ final_battleground_siege_trench: {
     image: 'final_battleground_siege_trench.png',
     imagePrompt: '攻城壕溝 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '攻城壕溝位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 搜索 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
+      '攻城壕溝被巨型車輪和爆裂火石挖得極深，溝壁上還嵌著折斷攻城梯與燒黑盾牌。西面破旗原的旗影倒入溝底，北側碎石坡連回誓約石圈，東方血雨盆地泛著暗紅水光。溝底積著焦泥、鐵釘和腐爛皮帶，殘存的木樁被火烤成黑刺；遠處偶爾傳來金屬崩落聲，使整條壕溝像仍在承受最後一次攻城。',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_broken_banner_field', description: '攻城壕溝回到破旗原' },
       { direction: 'north', targetRoomId: 'final_battleground_oath_circle', description: '碎石坡回到誓約石圈' },
@@ -35,7 +35,7 @@ final_battleground_ember_mud: {
     image: 'final_battleground_ember_mud.png',
     imagePrompt: '餘火泥地 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '餘火泥地位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 搜索 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
+      '餘火泥地位在破旗原南側，厚重黑泥下藏著未熄餘燼，泥泡破裂時會吐出短促紅光。北面斷旗平地仍能看見焦旗，東側攻城機殘骸橫在泥路盡頭。泥面漂著燒焦木屑、破甲環和被火烤白的骨片，腳印很快被熱泥吞平；空氣裡混著濕土、焦肉與金屬味，像整片戰場把最後的火焰壓進泥裡，卻始終沒有真正冷卻。',
     exits: [
       { direction: 'north', targetRoomId: 'final_battleground_broken_banner_field', description: '餘火泥地回到破旗原' },
       { direction: 'east', targetRoomId: 'final_battleground_war_machine_wreck', description: '攻城機殘骸在東側' },
@@ -61,7 +61,7 @@ final_battleground_sunless_chapel: {
     image: 'final_battleground_sunless_chapel.png',
     imagePrompt: '無日禮拜堂 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '無日禮拜堂位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 搜索 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
+      '無日禮拜堂只剩塌陷拱頂與半截祭壇，屋頂破口卻透不進光，陰影像厚布般壓在石地上。西側誓約石圈的裂石立在灰霧裡，東面墜天坑泛出蒼白光柱。禮拜堂內散著碎聖徽、黑化燭臺和被火焰熔歪的鐘舌，長椅被壓成斷木，牆上仍留有羽翼形焦痕；這裡的寂靜不像安息，更像祈禱在戰爭中被硬生生截斷。',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_oath_circle', description: '禮拜堂回到誓約石圈' },
       { direction: 'east', targetRoomId: 'final_battleground_angel_fall', description: '墜天坑在東側' },
@@ -87,7 +87,7 @@ final_battleground_blood_rain_basin: {
     image: 'final_battleground_blood_rain_basin.png',
     imagePrompt: '血雨盆地 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '血雨盆地位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 搜索 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
+      '血雨盆地是一處被紅雨長年擊出的低窪，水面呈暗鏽色，雨滴落下時濺起細小黑煙。西側攻城壕溝把焦泥引入盆地，東方王座殘骸露出破碎臺階，南面血水渠流向攻城機殘骸。盆邊堆著濕旗布、破盔和被染紅的白骨，石壁上有一道道雨痕像倒寫的戰報；雨聲密集卻沒有雲影，使盆地像戰場本身仍在滲血。',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_siege_trench', description: '血雨盆地回到攻城壕溝' },
       { direction: 'east', targetRoomId: 'final_battleground_throne_wreck', description: '王座殘骸在東側' },
@@ -114,7 +114,7 @@ final_battleground_war_machine_wreck: {
     image: 'final_battleground_war_machine_wreck.png',
     imagePrompt: '攻城機殘骸 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '攻城機殘骸位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 搜索 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
+      '攻城機殘骸橫倒在餘火泥地與魔神爪痕之間，巨輪碎成黑色弧片，弩臂插入焦土深處。西側熱泥仍在冒泡，北面血水渠接回血雨盆地，東方地面被魔神爪痕撕成斜裂。殘骸內部纏著斷鏈、焦皮繩與燒紅齒輪，木梁上有箭雨留下的密孔；整具機械像戰爭最後的骨架，被黑火烤硬後永遠停在衝鋒前一刻。',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_ember_mud', description: '攻城機殘骸回到餘火泥地' },
       { direction: 'north', targetRoomId: 'final_battleground_blood_rain_basin', description: '血水渠回到血雨盆地' },
@@ -141,7 +141,7 @@ final_battleground_angel_fall: {
     image: 'final_battleground_angel_fall.png',
     imagePrompt: '墜天坑 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '墜天坑位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 搜索 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
+      '墜天坑是一道被白光砸出的巨大陷坑，坑底鋪滿碎翼般的晶片，蒼白光芒從裂縫裡向上滲出。西面無日禮拜堂的陰影在坑緣斷開，東側斷光橋由殘存光束與黑石橋墩勉強相連。坑邊散著羽骨、熔化聖徽和被灼白的鐵甲，泥土呈現放射狀翻起；每當白光閃爍，坑壁都浮現羽翼撞擊的痕跡，像天空曾在此墜落並留下無法癒合的空洞。',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_sunless_chapel', description: '墜天坑回到禮拜堂' },
       { direction: 'east', targetRoomId: 'final_battleground_light_sundered_bridge', description: '斷光橋在東側' },
@@ -167,7 +167,7 @@ final_battleground_throne_wreck: {
     image: 'final_battleground_throne_wreck.png',
     imagePrompt: '王座殘骸 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '王座殘骸位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 搜索 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
+      '王座殘骸立在血雨盆地東側，破碎王座只剩半截靠背和被斬斷的扶手，石面染著黑紅水痕。西側血雨仍滴落，北面王旗階通向斷光橋，東方黑焰前線翻出低伏火光。殘骸周圍散落王冠碎片、鎧甲扣、斷裂權杖和踩碎的金階磚，座下裂縫滲出冷霧；昔日權柄在這裡變成戰場路標，仍被血雨一遍遍沖洗。',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_blood_rain_basin', description: '王座殘骸回到血雨盆地' },
       { direction: 'north', targetRoomId: 'final_battleground_light_sundered_bridge', description: '王旗階通往斷光橋' },
@@ -194,7 +194,7 @@ final_battleground_demon_scar: {
     image: 'final_battleground_demon_scar.png',
     imagePrompt: '魔神爪痕 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '魔神爪痕位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 搜索 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
+      '魔神爪痕把焦土撕成三道平行深溝，溝底黑火時明時暗，像巨爪剛從地底拖過。西側攻城機殘骸斜插在土坡上，東方焦土路被爪痕牽向黑焰前線。裂溝邊緣有融化石塊、扭曲鐵甲和巨大指節壓出的碎坑，空氣帶著硫磺與濃重血味；每道爪痕都寬到足以吞沒一列士兵，留下的壓迫感比任何屍骸都更清楚。',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_war_machine_wreck', description: '魔神爪痕回到殘骸' },
       { direction: 'east', targetRoomId: 'final_battleground_black_flame_front', description: '焦土路通往黑焰前線' },
@@ -220,7 +220,7 @@ final_battleground_light_sundered_bridge: {
     image: 'final_battleground_light_sundered_bridge.png',
     imagePrompt: '斷光橋 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '斷光橋位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 搜索 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
+      '斷光橋懸在墜天坑與末令高臺之間，橋面由斷裂石板和殘存白光拼接，許多段落只剩發亮邊緣。西側墜天坑向上噴出蒼白裂光，南面王旗階落回王座殘骸，東方末令高臺矗立在灰霧裡。橋下是無聲深淵，石板上嵌著羽晶、焦黑靴印和被光切斷的長矛；每一道白光都像在支撐橋身，也像隨時會再次斷裂。',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_angel_fall', description: '斷光橋回到墜天坑' },
       { direction: 'south', targetRoomId: 'final_battleground_throne_wreck', description: '王旗階回到王座殘骸' },
@@ -247,7 +247,7 @@ final_battleground_black_flame_front: {
     image: 'final_battleground_black_flame_front.png',
     imagePrompt: '黑焰前線 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '黑焰前線位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 搜索 王骨、軍令、破甲和祭火尋找世界王線索。南側焦土路已被黑焰壓成單向戰線，只能從魔神爪痕推進到黑焰前線。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
+      '黑焰前線是一片橫向燃燒的暗火牆，火焰沒有熱浪，卻把地面和天空都染成深黑。西側王座殘骸在火光中只剩輪廓，東方裂世縫透出更深的紅黑裂光。前線前堆著燒空戰車、焦化盾牌、碎旗骨桿、黑鐵箭雨和成排倒下的長矛，灰燼落地後又被黑火捲回；火牆像最後軍陣的邊界，把所有聲音壓成低沉轟鳴。',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_throne_wreck', description: '黑焰前線回到王座殘骸' },
       { direction: 'east', targetRoomId: 'final_battleground_worldsplit_crack', description: '裂世縫在東側' },
@@ -273,7 +273,7 @@ final_battleground_last_command_post: {
     image: 'final_battleground_last_command_post.png',
     imagePrompt: '末令高臺 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '末令高臺位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 搜索 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
+      '末令高臺由破石和燒黑軍令牌堆成，頂端插著斷裂指揮旗，旗尾被白光與黑灰同時侵蝕。西側斷光橋連著殘光，東面無冠戰場展開成空曠灰原。高臺四周散著石桌碎片、燒焦地圖、斷印章、碎沙盤和帶血羽筆，臺階被重靴踏得崩裂；風在這裡忽然變得乾冷，像最後一道命令仍停在空中，沒有士兵能回應。',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_light_sundered_bridge', description: '末令高臺回到斷光橋' },
       { direction: 'east', targetRoomId: 'final_battleground_crownless_field', description: '無冠戰場在東側' },
@@ -299,7 +299,7 @@ final_battleground_worldsplit_crack: {
     image: 'final_battleground_worldsplit_crack.png',
     imagePrompt: '裂世縫 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '裂世縫位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 搜索 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
+      '裂世縫是一道橫穿戰場的巨大裂口，裂縫內有紅黑光層層翻動，深處像能看見另一片破碎天空。西側黑焰前線的火光沿裂邊跳動，北面裂縫坡通往無冠戰場，東方神傷核心散出黯淡血晶光。裂口邊緣懸著斷石、熔化鐵索和被撕開的戰旗，細小碎片不斷落入深處卻沒有回聲；整片大地在此像被戰爭劈成兩半。',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_black_flame_front', description: '裂世縫回到黑焰前線' },
       { direction: 'north', targetRoomId: 'final_battleground_crownless_field', description: '裂縫坡通往無冠戰場' },
@@ -326,7 +326,7 @@ final_battleground_crownless_field: {
     image: 'final_battleground_crownless_field.png',
     imagePrompt: '無冠戰場 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '無冠戰場位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 搜索 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
+      '無冠戰場是一片失去所有旗幟與王冠的灰原，地面只剩被踩扁的冠圈印和無數交錯兵器影。西側末令高臺仍立著斷旗，南面裂縫坡落向裂世縫，東方終末軍旗在遠處孤獨燃燒。灰原上散落沒有徽記的頭盔、折斷權杖、破碎寶石、冷灰勳章和被燒白的披風扣，霧氣貼地流動，使每具殘甲都像跪伏身影。',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_last_command_post', description: '無冠戰場回到末令高臺' },
       { direction: 'south', targetRoomId: 'final_battleground_worldsplit_crack', description: '裂縫坡回到裂世縫' },
@@ -353,7 +353,7 @@ final_battleground_godscar_core: {
     image: 'final_battleground_godscar_core.png',
     imagePrompt: '神傷核心 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '神傷核心位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 搜索 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
+      '神傷核心位於裂世縫東側，地面鼓起成一圈血晶狀岩瘤，中央裂口滲出暗金與黑紅交錯的光。西側裂世縫仍在低鳴，北面神血階蜿蜒通向終末軍旗。核心周圍有破碎神像指節、熔化祭器、裂開聖環和凝固血晶，石面像皮膚般留下被撕開的紋路；光芒每次脈動，附近碎甲與骨片都會輕輕震顫，像傷口仍活著。',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_worldsplit_crack', description: '神傷核心回到裂世縫' },
       { direction: 'north', targetRoomId: 'final_battleground_final_standard', description: '神血階通往終末軍旗' },
@@ -379,7 +379,7 @@ final_battleground_final_standard: {
     image: 'final_battleground_final_standard.png',
     imagePrompt: '終末軍旗 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '終末軍旗位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 搜索 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
+      '終末軍旗插在無冠戰場與神傷核心之間的高處，旗布只剩黑紅殘片，卻仍筆直指向戰場盡頭。西側無冠戰場鋪著灰白殘甲，南面神血階落回神傷核心，東方戰後寂地安靜得沒有火光。旗桿由多支斷矛綁成，底部堆著王冠碎片、神血晶和燒焦誓牌；它不像勝利標記，更像所有軍隊最後共同承認的終點。',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_crownless_field', description: '終末軍旗回到無冠戰場' },
       { direction: 'south', targetRoomId: 'final_battleground_godscar_core', description: '神血階回到神傷核心' },
@@ -407,7 +407,7 @@ final_battleground_silence_after_war: {
     image: 'final_battleground_silence_after_war.png',
     imagePrompt: '戰後寂地 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '戰後寂地位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 搜索 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
+      '戰後寂地位在終末軍旗東側，焦土忽然變得平坦，沒有火焰、戰鼓或雨聲，只剩灰塵緩慢落下。西面終末軍旗的殘片還能看見，前方則是一片被戰爭掏空的暗色荒地。地面散著不再發亮的晶片、冷卻血泥和被折成兩半的長劍，所有屍骸都被灰覆成同一種顏色；這片寂靜不像和平，更像世界在最後一擊後短暫停止呼吸。',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_final_standard', description: '戰後寂地回到終末軍旗' },
     ],

@@ -1093,7 +1093,7 @@ final_battleground_war_gate: {
     image: 'final_battleground_war_gate.png',
     imagePrompt: '終戰入口 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '終戰入口位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 搜索 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
+      '終戰入口是一座被黑火燒裂的巨門，門框上殘留諸王徽記與魔神爪印，兩種力量在石縫中互相侵蝕。東側破旗原鋪滿折斷旗桿，北面王骨石堆像灰白小丘立在荒風裡。門下的石階被血泥與焦灰覆住，破甲片、熔化銅扣和碎號角散在門洞兩側；沒有尋常風聲，只有遠處戰鼓般的地鳴從戰場深處慢慢傳回。',
     exits: [
       { direction: 'east', targetRoomId: 'final_battleground_broken_banner_field', description: '破旗原在前方' },
       { direction: 'north', targetRoomId: 'final_battleground_king_cairn', description: '王骨石堆在北側' },
@@ -1119,7 +1119,7 @@ final_battleground_broken_banner_field: {
     image: 'final_battleground_broken_banner_field.png',
     imagePrompt: '破旗原 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '破旗原位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 搜索 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
+      '破旗原是一片插滿斷旗的焦黑平地，旗布被火雨燒成硬殼，仍在無風處微微顫動。西側終戰入口的巨門投下長影，東面攻城壕溝裂開深線，南側餘火泥地冒著暗紅泥泡。地上堆著碎盾、斷矛、箭簇和不同王國的殘布，旗杆影子交疊成凌亂隊列；每一步都會踩碎乾硬血泥，露出下方尚未冷卻的黑紅灰層。',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_war_gate', description: '破旗原回到終戰入口' },
       { direction: 'east', targetRoomId: 'final_battleground_siege_trench', description: '攻城壕溝在東側' },
@@ -1146,7 +1146,7 @@ final_battleground_king_cairn: {
     image: 'final_battleground_king_cairn.png',
     imagePrompt: '王骨石堆 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '王骨石堆位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 搜索 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
+      '王骨石堆由王冠、白骨和戰場石塊堆成，灰白骨架間夾著裂開的金屬冠圈，像一座沒有墓碑的王陵。南側可回望終戰入口的黑門，東面誓約石圈圍著更暗的誓痕。石堆下方滲出乾涸血線，破碎披風被壓在骨縫裡，幾枚寶石在灰塵中失去光澤；四周安靜得過分，彷彿戰敗的王名都被火焰抹去，只剩骨頭承受天空重量。',
     exits: [
       { direction: 'south', targetRoomId: 'final_battleground_war_gate', description: '王骨石堆回到終戰入口' },
       { direction: 'east', targetRoomId: 'final_battleground_oath_circle', description: '誓約石圈在東側' },
@@ -1172,7 +1172,7 @@ final_battleground_oath_circle: {
     image: 'final_battleground_oath_circle.png',
     imagePrompt: '誓約石圈 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '誓約石圈位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 搜索 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
+      '誓約石圈以十二根裂石圍成，石面刻滿被刀刮過的誓文，字痕內凝著黑血與銀灰。西側王骨石堆透出冰冷白色，東面無日禮拜堂的塌頂輪廓壓在陰影中，南側碎石坡落向攻城壕溝。石圈中央有破碎劍柄、斷戒和被踩扁的誓牌，灰土呈現同心裂紋；每道裂縫都指向不同戰線，像曾有許多軍隊在此立誓後再也未返。',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_king_cairn', description: '誓約石圈回到王骨石堆' },
       { direction: 'east', targetRoomId: 'final_battleground_sunless_chapel', description: '無日禮拜堂在東側' },
