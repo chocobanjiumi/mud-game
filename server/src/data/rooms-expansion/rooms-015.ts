@@ -8,7 +8,7 @@ final_battleground_siege_trench: {
     image: 'final_battleground_siege_trench.png',
     imagePrompt: '攻城壕溝 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '攻城壕溝位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，玩家可以 inspect 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線。',
+      '攻城壕溝位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_broken_banner_field', description: '攻城壕溝回到破旗原' },
       { direction: 'north', targetRoomId: 'final_battleground_oath_circle', description: '碎石坡回到誓約石圈' },
@@ -35,7 +35,7 @@ final_battleground_ember_mud: {
     image: 'final_battleground_ember_mud.png',
     imagePrompt: '餘火泥地 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '餘火泥地位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，玩家可以 inspect 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線。',
+      '餘火泥地位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
     exits: [
       { direction: 'north', targetRoomId: 'final_battleground_broken_banner_field', description: '餘火泥地回到破旗原' },
       { direction: 'east', targetRoomId: 'final_battleground_war_machine_wreck', description: '攻城機殘骸在東側' },
@@ -61,7 +61,7 @@ final_battleground_sunless_chapel: {
     image: 'final_battleground_sunless_chapel.png',
     imagePrompt: '無日禮拜堂 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '無日禮拜堂位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，玩家可以 inspect 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線。',
+      '無日禮拜堂位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_oath_circle', description: '禮拜堂回到誓約石圈' },
       { direction: 'east', targetRoomId: 'final_battleground_angel_fall', description: '墜天坑在東側' },
@@ -87,7 +87,7 @@ final_battleground_blood_rain_basin: {
     image: 'final_battleground_blood_rain_basin.png',
     imagePrompt: '血雨盆地 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '血雨盆地位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，玩家可以 inspect 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線。',
+      '血雨盆地位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_siege_trench', description: '血雨盆地回到攻城壕溝' },
       { direction: 'east', targetRoomId: 'final_battleground_throne_wreck', description: '王座殘骸在東側' },
@@ -114,7 +114,7 @@ final_battleground_war_machine_wreck: {
     image: 'final_battleground_war_machine_wreck.png',
     imagePrompt: '攻城機殘骸 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '攻城機殘骸位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，玩家可以 inspect 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線。',
+      '攻城機殘骸位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_ember_mud', description: '攻城機殘骸回到餘火泥地' },
       { direction: 'north', targetRoomId: 'final_battleground_blood_rain_basin', description: '血水渠回到血雨盆地' },
@@ -141,7 +141,7 @@ final_battleground_angel_fall: {
     image: 'final_battleground_angel_fall.png',
     imagePrompt: '墜天坑 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '墜天坑位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，玩家可以 inspect 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線。',
+      '墜天坑位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_sunless_chapel', description: '墜天坑回到禮拜堂' },
       { direction: 'east', targetRoomId: 'final_battleground_light_sundered_bridge', description: '斷光橋在東側' },
@@ -167,7 +167,7 @@ final_battleground_throne_wreck: {
     image: 'final_battleground_throne_wreck.png',
     imagePrompt: '王座殘骸 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '王座殘骸位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，玩家可以 inspect 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線。',
+      '王座殘骸位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_blood_rain_basin', description: '王座殘骸回到血雨盆地' },
       { direction: 'north', targetRoomId: 'final_battleground_light_sundered_bridge', description: '王旗階通往斷光橋' },
@@ -194,7 +194,7 @@ final_battleground_demon_scar: {
     image: 'final_battleground_demon_scar.png',
     imagePrompt: '魔神爪痕 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '魔神爪痕位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，玩家可以 inspect 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線。',
+      '魔神爪痕位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_war_machine_wreck', description: '魔神爪痕回到殘骸' },
       { direction: 'east', targetRoomId: 'final_battleground_black_flame_front', description: '焦土路通往黑焰前線' },
@@ -220,7 +220,7 @@ final_battleground_light_sundered_bridge: {
     image: 'final_battleground_light_sundered_bridge.png',
     imagePrompt: '斷光橋 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '斷光橋位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，玩家可以 inspect 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線。',
+      '斷光橋位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_angel_fall', description: '斷光橋回到墜天坑' },
       { direction: 'south', targetRoomId: 'final_battleground_throne_wreck', description: '王旗階回到王座殘骸' },
@@ -247,7 +247,7 @@ final_battleground_black_flame_front: {
     image: 'final_battleground_black_flame_front.png',
     imagePrompt: '黑焰前線 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '黑焰前線位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，玩家可以 inspect 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。南側焦土路已被黑焰壓成單向戰線，只能從魔神爪痕推進到黑焰前線。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線。',
+      '黑焰前線位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。南側焦土路已被黑焰壓成單向戰線，只能從魔神爪痕推進到黑焰前線。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_throne_wreck', description: '黑焰前線回到王座殘骸' },
       { direction: 'east', targetRoomId: 'final_battleground_worldsplit_crack', description: '裂世縫在東側' },
@@ -273,7 +273,7 @@ final_battleground_last_command_post: {
     image: 'final_battleground_last_command_post.png',
     imagePrompt: '末令高臺 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '末令高臺位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，玩家可以 inspect 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線。',
+      '末令高臺位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_light_sundered_bridge', description: '末令高臺回到斷光橋' },
       { direction: 'east', targetRoomId: 'final_battleground_crownless_field', description: '無冠戰場在東側' },
@@ -299,7 +299,7 @@ final_battleground_worldsplit_crack: {
     image: 'final_battleground_worldsplit_crack.png',
     imagePrompt: '裂世縫 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '裂世縫位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，玩家可以 inspect 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線。',
+      '裂世縫位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_black_flame_front', description: '裂世縫回到黑焰前線' },
       { direction: 'north', targetRoomId: 'final_battleground_crownless_field', description: '裂縫坡通往無冠戰場' },
@@ -326,7 +326,7 @@ final_battleground_crownless_field: {
     image: 'final_battleground_crownless_field.png',
     imagePrompt: '無冠戰場 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '無冠戰場位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，玩家可以 inspect 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線。',
+      '無冠戰場位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_last_command_post', description: '無冠戰場回到末令高臺' },
       { direction: 'south', targetRoomId: 'final_battleground_worldsplit_crack', description: '裂縫坡回到裂世縫' },
@@ -353,7 +353,7 @@ final_battleground_godscar_core: {
     image: 'final_battleground_godscar_core.png',
     imagePrompt: '神傷核心 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '神傷核心位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，玩家可以 inspect 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線。',
+      '神傷核心位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_worldsplit_crack', description: '神傷核心回到裂世縫' },
       { direction: 'north', targetRoomId: 'final_battleground_final_standard', description: '神血階通往終末軍旗' },
@@ -379,7 +379,7 @@ final_battleground_final_standard: {
     image: 'final_battleground_final_standard.png',
     imagePrompt: '終末軍旗 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '終末軍旗位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，玩家可以 inspect 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線。',
+      '終末軍旗位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_crownless_field', description: '終末軍旗回到無冠戰場' },
       { direction: 'south', targetRoomId: 'final_battleground_godscar_core', description: '神血階回到神傷核心' },
@@ -407,7 +407,7 @@ final_battleground_silence_after_war: {
     image: 'final_battleground_silence_after_war.png',
     imagePrompt: '戰後寂地 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '戰後寂地位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，玩家可以 inspect 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線。',
+      '戰後寂地位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_final_standard', description: '戰後寂地回到終末軍旗' },
     ],
@@ -433,7 +433,7 @@ moonlit_fen_reed_gate: {
     image: 'moonlit_fen_reed_gate.png',
     imagePrompt: '蘆葦入口 in moonlit_fen, silver moonlit wetland with reeds, glowing night flowers, fireflies, shallow black water, moss and fae lights, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain water, clear lantern light',
     description:
-      '蘆葦入口位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
+      '蘆葦入口位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，旅人可以 採集 夜花、燈苔、毒腺與濕地草藥，也能 觀察 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處',
     exits: [
       { direction: 'east', targetRoomId: 'moonlit_fen_moonflower_bank', description: '月花岸在東側' },
       { direction: 'north', targetRoomId: 'moonlit_fen_firefly_pool', description: '螢火池在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -458,7 +458,7 @@ moonlit_fen_moonflower_bank: {
     image: 'moonlit_fen_moonflower_bank.png',
     imagePrompt: '月花岸 in moonlit_fen, silver moonlit wetland with reeds, glowing night flowers, fireflies, shallow black water, moss and fae lights, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain water, clear lantern light',
     description:
-      '月花岸位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
+      '月花岸位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，旅人可以 採集 夜花、燈苔、毒腺與濕地草藥，也能 觀察 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_reed_gate', description: '月花岸回到蘆葦入口' },
       { direction: 'east', targetRoomId: 'moonlit_fen_silver_mire', description: '銀泥沼在東側' },
@@ -485,7 +485,7 @@ moonlit_fen_firefly_pool: {
     image: 'moonlit_fen_firefly_pool.png',
     imagePrompt: '螢火池 in moonlit_fen, silver moonlit wetland with reeds, glowing night flowers, fireflies, shallow black water, moss and fae lights, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain water, clear lantern light',
     description:
-      '螢火池位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
+      '螢火池位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，旅人可以 採集 夜花、燈苔、毒腺與濕地草藥，也能 觀察 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處',
     exits: [
       { direction: 'south', targetRoomId: 'moonlit_fen_reed_gate', description: '螢火池回到蘆葦入口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'moonlit_fen_willow_hush', description: '靜柳叢在東側' },
@@ -511,7 +511,7 @@ moonlit_fen_willow_hush: {
     image: 'moonlit_fen_willow_hush.png',
     imagePrompt: '靜柳叢 in moonlit_fen, silver moonlit wetland with reeds, glowing night flowers, fireflies, shallow black water, moss and fae lights, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain water, clear lantern light',
     description:
-      '靜柳叢位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
+      '靜柳叢位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，旅人可以 採集 夜花、燈苔、毒腺與濕地草藥，也能 觀察 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_firefly_pool', description: '靜柳叢回到螢火池' },
       { direction: 'east', targetRoomId: 'moonlit_fen_glimmer_ford', description: '微光淺灘在東側' },
@@ -538,7 +538,7 @@ moonlit_fen_silver_mire: {
     image: 'moonlit_fen_silver_mire.png',
     imagePrompt: '銀泥沼 in moonlit_fen, silver moonlit wetland with reeds, glowing night flowers, fireflies, shallow black water, moss and fae lights, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain water, clear lantern light',
     description:
-      '銀泥沼位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
+      '銀泥沼位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，旅人可以 採集 夜花、燈苔、毒腺與濕地草藥，也能 觀察 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_moonflower_bank', description: '銀泥沼回到月花岸' },
       { direction: 'north', targetRoomId: 'moonlit_fen_willow_hush', description: '北側銀泥沼沿倒影草線上行，穿過銀霧水洼與露根水道回到靜柳叢', edgeKind: 'distant_route', edgeNote: '銀泥沼回靜柳叢需沿倒影草線與露根水道上行，實際路程長於相鄰一格。' },
@@ -565,7 +565,7 @@ moonlit_fen_fishing_cut: {
     image: 'moonlit_fen_fishing_cut.png',
     imagePrompt: '釣水缺口 in moonlit_fen, silver moonlit wetland with reeds, glowing night flowers, fireflies, shallow black water, moss and fae lights, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain water, clear lantern light',
     description:
-      '釣水缺口位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
+      '釣水缺口位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，旅人可以 採集 夜花、燈苔、毒腺與濕地草藥，也能 觀察 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處',
     exits: [
       { direction: 'north', targetRoomId: 'moonlit_fen_moonflower_bank', description: '釣水缺口回到月花岸', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'moonlit_fen_mosquito_haze', description: '蚊霧溝在東側' },
@@ -591,7 +591,7 @@ moonlit_fen_glimmer_ford: {
     image: 'moonlit_fen_glimmer_ford.png',
     imagePrompt: '微光淺灘 in moonlit_fen, silver moonlit wetland with reeds, glowing night flowers, fireflies, shallow black water, moss and fae lights, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain water, clear lantern light',
     description:
-      '微光淺灘位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
+      '微光淺灘位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，旅人可以 採集 夜花、燈苔、毒腺與濕地草藥，也能 觀察 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_willow_hush', description: '微光淺灘回到靜柳叢' },
       { direction: 'east', targetRoomId: 'moonlit_fen_night_bloom_grove', description: '夜花小林在東側' },
@@ -617,7 +617,7 @@ moonlit_fen_frog_choir: {
     image: 'moonlit_fen_frog_choir.png',
     imagePrompt: '蛙鳴洲 in moonlit_fen, silver moonlit wetland with reeds, glowing night flowers, fireflies, shallow black water, moss and fae lights, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain water, clear lantern light',
     description:
-      '蛙鳴洲位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
+      '蛙鳴洲位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，旅人可以 採集 夜花、燈苔、毒腺與濕地草藥，也能 觀察 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_silver_mire', description: '蛙鳴洲回到銀泥沼' },
       { direction: 'east', targetRoomId: 'moonlit_fen_lantern_moss', description: '燈苔坡在東側' },
@@ -644,7 +644,7 @@ moonlit_fen_mosquito_haze: {
     image: 'moonlit_fen_mosquito_haze.png',
     imagePrompt: '蚊霧溝 in moonlit_fen, silver moonlit wetland with reeds, glowing night flowers, fireflies, shallow black water, moss and fae lights, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain water, clear lantern light',
     description:
-      '蚊霧溝位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
+      '蚊霧溝位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，旅人可以 採集 夜花、燈苔、毒腺與濕地草藥，也能 觀察 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_fishing_cut', description: '蚊霧溝回到釣水缺口' },
       { direction: 'north', targetRoomId: 'moonlit_fen_frog_choir', description: '北側蚊霧溝沿銀蚊霧帶回穿，踏過月影水痕、蛙卵淺灣與濕草道回到蛙鳴洲', edgeKind: 'distant_route', edgeNote: '蚊霧溝回蛙鳴洲需沿銀蚊霧帶與濕草道回穿，實際路程長於相鄰一格。' },
@@ -671,7 +671,7 @@ moonlit_fen_night_bloom_grove: {
     image: 'moonlit_fen_night_bloom_grove.png',
     imagePrompt: '夜花小林 in moonlit_fen, silver moonlit wetland with reeds, glowing night flowers, fireflies, shallow black water, moss and fae lights, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain water, clear lantern light',
     description:
-      '夜花小林位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
+      '夜花小林位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，旅人可以 採集 夜花、燈苔、毒腺與濕地草藥，也能 觀察 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_glimmer_ford', description: '夜花小林回到微光淺灘' },
       { direction: 'east', targetRoomId: 'moonlit_fen_fae_ring', description: '妖光環在東側' },
@@ -697,7 +697,7 @@ moonlit_fen_lantern_moss: {
     image: 'moonlit_fen_lantern_moss.png',
     imagePrompt: '燈苔坡 in moonlit_fen, silver moonlit wetland with reeds, glowing night flowers, fireflies, shallow black water, moss and fae lights, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain water, clear lantern light',
     description:
-      '燈苔坡位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
+      '燈苔坡位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，旅人可以 採集 夜花、燈苔、毒腺與濕地草藥，也能 觀察 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_frog_choir', description: '燈苔坡回到蛙鳴洲' },
       { direction: 'north', targetRoomId: 'moonlit_fen_fae_ring', description: '苔光路通往妖光環', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -724,7 +724,7 @@ moonlit_fen_blackwater_run: {
     image: 'moonlit_fen_blackwater_run.png',
     imagePrompt: '黑水流 in moonlit_fen, silver moonlit wetland with reeds, glowing night flowers, fireflies, shallow black water, moss and fae lights, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain water, clear lantern light',
     description:
-      '黑水流位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
+      '黑水流位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，旅人可以 採集 夜花、燈苔、毒腺與濕地草藥，也能 觀察 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_mosquito_haze', description: '黑水流回到蚊霧溝' },
       { direction: 'east', targetRoomId: 'moonlit_fen_sunken_log_bridge', description: '沉木橋在東側' },
@@ -750,7 +750,7 @@ moonlit_fen_fae_ring: {
     image: 'moonlit_fen_fae_ring.png',
     imagePrompt: '妖光環 in moonlit_fen, silver moonlit wetland with reeds, glowing night flowers, fireflies, shallow black water, moss and fae lights, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain water, clear lantern light',
     description:
-      '妖光環位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
+      '妖光環位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，旅人可以 採集 夜花、燈苔、毒腺與濕地草藥，也能 觀察 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_night_bloom_grove', description: '妖光環回到夜花小林' },
       { direction: 'south', targetRoomId: 'moonlit_fen_lantern_moss', description: '苔光路回到燈苔坡', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -777,7 +777,7 @@ moonlit_fen_halfmoon_pond: {
     image: 'moonlit_fen_halfmoon_pond.png',
     imagePrompt: '半月池 in moonlit_fen, silver moonlit wetland with reeds, glowing night flowers, fireflies, shallow black water, moss and fae lights, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain water, clear lantern light',
     description:
-      '半月池位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
+      '半月池位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，旅人可以 採集 夜花、燈苔、毒腺與濕地草藥，也能 觀察 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_lantern_moss', description: '半月池回到燈苔坡' },
       { direction: 'east', targetRoomId: 'moonlit_fen_white_reed_maze', description: '白蘆迷道在東側' },
@@ -803,7 +803,7 @@ moonlit_fen_sunken_log_bridge: {
     image: 'moonlit_fen_sunken_log_bridge.png',
     imagePrompt: '沉木橋 in moonlit_fen, silver moonlit wetland with reeds, glowing night flowers, fireflies, shallow black water, moss and fae lights, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain water, clear lantern light',
     description:
-      '沉木橋位於月光濕地的銀色水道與夜花叢之間，北側半沉木支脈連向黑水汊道，東側舊舟營仍有微弱槳影。水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
+      '沉木橋位於月光濕地的銀色水道與夜花叢之間，北側半沉木支脈連向黑水汊道，東側舊舟營仍有微弱槳影。水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，旅人可以 採集 夜花、燈苔、毒腺與濕地草藥，也能 觀察 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處',
     exits: [
       { direction: 'north', targetRoomId: 'moonlit_fen_fill_18_13', description: '北側沉木支脈沿黑水汊道上行，回到月沼北汊', edgeKind: 'distant_route', edgeNote: '沉木橋北返月沼北汊需沿半沉木支脈繞過黑水汊道，實際路程長於相鄰一格。' },
       { direction: 'west', targetRoomId: 'moonlit_fen_blackwater_run', description: '沉木橋回到黑水流' },
@@ -830,7 +830,7 @@ moonlit_fen_moonwell: {
     image: 'moonlit_fen_moonwell.png',
     imagePrompt: '月井 in moonlit_fen, silver moonlit wetland with reeds, glowing night flowers, fireflies, shallow black water, moss and fae lights, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain water, clear lantern light',
     description:
-      '月井位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
+      '月井位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，旅人可以 採集 夜花、燈苔、毒腺與濕地草藥，也能 觀察 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_fae_ring', description: '月井回到妖光環' },
       { direction: 'south', targetRoomId: 'moonlit_fen_white_reed_maze', description: '南側月井沿井邊濕石路斜落，穿過月影水紋與白蘆迴圈入口抵達白蘆迷道', edgeKind: 'distant_route', edgeNote: '月井到白蘆迷道需沿井邊濕石路與白蘆迴圈斜行，實際路程長於相鄰一格。' },
@@ -856,7 +856,7 @@ moonlit_fen_white_reed_maze: {
     image: 'moonlit_fen_white_reed_maze.png',
     imagePrompt: '白蘆迷道 in moonlit_fen, silver moonlit wetland with reeds, glowing night flowers, fireflies, shallow black water, moss and fae lights, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain water, clear lantern light',
     description:
-      '白蘆迷道位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
+      '白蘆迷道位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，旅人可以 採集 夜花、燈苔、毒腺與濕地草藥，也能 觀察 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_halfmoon_pond', description: '白蘆迷道回到半月池' },
       { direction: 'north', targetRoomId: 'moonlit_fen_moonwell', description: '北側白蘆迷道沿白蘆迴圈折返，穿過月影水紋與井邊濕石路回到月井', edgeKind: 'distant_route', edgeNote: '白蘆迷道回月井需沿白蘆迴圈與井邊濕石路折返，實際路程長於相鄰一格。' },
@@ -883,7 +883,7 @@ moonlit_fen_old_canoe_camp: {
     image: 'moonlit_fen_old_canoe_camp.png',
     imagePrompt: '舊舟營 in moonlit_fen, silver moonlit wetland with reeds, glowing night flowers, fireflies, shallow black water, moss and fae lights, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain water, clear lantern light',
     description:
-      '舊舟營位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
+      '舊舟營位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，旅人可以 採集 夜花、燈苔、毒腺與濕地草藥，也能 觀察 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_sunken_log_bridge', description: '舊舟營回到沉木橋' },
       { direction: 'east', targetRoomId: 'moonlit_fen_lunar_altar', description: '東側舊舟營沿半沉舟痕橫渡，繞過黑水倒影與白蘆暗汊抵達月沼祭壇', edgeKind: 'distant_route', edgeNote: '舊舟營到月沼祭壇需沿半沉舟痕與白蘆暗汊橫渡，實際路程長於相鄰一格。' },
@@ -909,7 +909,7 @@ moonlit_fen_lunar_altar: {
     image: 'moonlit_fen_lunar_altar.png',
     imagePrompt: '月沼祭壇 in moonlit_fen, silver moonlit wetland with reeds, glowing night flowers, fireflies, shallow black water, moss and fae lights, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain water, clear lantern light',
     description:
-      '月沼祭壇位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔；莎蘭月影女神的夜晚、秘密與夢境徽記刻在濕冷石面上。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。南側舟痕被月沼水面吞成倒影，真正路徑只能從舊舟營划入祭壇。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
+      '月沼祭壇位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔；莎蘭月影女神的夜晚、秘密與夢境徽記刻在濕冷石面上。這裡是低中階野外、採集與釣魚混合節點，旅人可以 採集 夜花、燈苔、毒腺與濕地草藥，也能 觀察 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。南側舟痕被月沼水面吞成倒影，真正路徑只能從舊舟營划入祭壇。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_white_reed_maze', description: '月沼祭壇回到白蘆迷道' },
       { direction: 'east', targetRoomId: 'moonlit_fen_dreamwater_core', description: '夢水核心在東側' },
@@ -935,7 +935,7 @@ moonlit_fen_dreamwater_core: {
     image: 'moonlit_fen_dreamwater_core.png',
     imagePrompt: '夢水核心 in moonlit_fen, silver moonlit wetland with reeds, glowing night flowers, fireflies, shallow black water, moss and fae lights, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain water, clear lantern light',
     description:
-      '夢水核心位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
+      '夢水核心位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，旅人可以 採集 夜花、燈苔、毒腺與濕地草藥，也能 觀察 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_lunar_altar', description: '夢水核心回到月沼祭壇' },
       {
@@ -968,7 +968,7 @@ pilgrim_road_waygate: {
     image: 'pilgrim_road_waygate.png',
     imagePrompt: '古道起點 in pilgrim_road, ancient pilgrimage road with broken stone slabs, roadside shrines, caravan tracks, dry grass, white markers and ambush shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain road, clear lantern light',
     description:
-      '古道起點位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，玩家可以 inspect 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞。',
+      '古道起點位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
     exits: [
       { direction: 'east', targetRoomId: 'pilgrim_road_worn_flags', description: '舊旗石路通往東側' },
       { direction: 'north', targetRoomId: 'pilgrim_road_milestone_cairn', description: '里程石堆在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -993,7 +993,7 @@ pilgrim_road_worn_flags: {
     image: 'pilgrim_road_worn_flags.png',
     imagePrompt: '舊旗石路 in pilgrim_road, ancient pilgrimage road with broken stone slabs, roadside shrines, caravan tracks, dry grass, white markers and ambush shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain road, clear lantern light',
     description:
-      '舊旗石路位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，玩家可以 inspect 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞。',
+      '舊旗石路位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_waygate', description: '舊旗石路回到古道起點' },
       { direction: 'east', targetRoomId: 'pilgrim_road_caravan_rut', description: '車轍路在東側' },
@@ -1020,7 +1020,7 @@ pilgrim_road_milestone_cairn: {
     image: 'pilgrim_road_milestone_cairn.png',
     imagePrompt: '里程石堆 in pilgrim_road, ancient pilgrimage road with broken stone slabs, roadside shrines, caravan tracks, dry grass, white markers and ambush shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain road, clear lantern light',
     description:
-      '里程石堆位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，玩家可以 inspect 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞。',
+      '里程石堆位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
     exits: [
       { direction: 'south', targetRoomId: 'pilgrim_road_waygate', description: '里程石堆回到古道起點', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'pilgrim_road_bell_shrine', description: '鐘鈴小祠在東側' },
@@ -1046,7 +1046,7 @@ pilgrim_road_bell_shrine: {
     image: 'pilgrim_road_bell_shrine.png',
     imagePrompt: '鐘鈴小祠 in pilgrim_road, ancient pilgrimage road with broken stone slabs, roadside shrines, caravan tracks, dry grass, white markers and ambush shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain road, clear lantern light',
     description:
-      '鐘鈴小祠位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，玩家可以 inspect 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞。',
+      '鐘鈴小祠位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_milestone_cairn', description: '鐘鈴小祠回到里程石堆' },
       { direction: 'east', targetRoomId: 'pilgrim_road_prayer_steps', description: '祈願階在東側' },
@@ -1073,7 +1073,7 @@ pilgrim_road_caravan_rut: {
     image: 'pilgrim_road_caravan_rut.png',
     imagePrompt: '商隊車轍 in pilgrim_road, ancient pilgrimage road with broken stone slabs, roadside shrines, caravan tracks, dry grass, white markers and ambush shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain road, clear lantern light',
     description:
-      '商隊車轍位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，玩家可以 inspect 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞。',
+      '商隊車轍位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_worn_flags', description: '商隊車轍回到舊旗石路' },
       { direction: 'north', targetRoomId: 'pilgrim_road_bell_shrine', description: '北側商隊車轍沿深車轍上行，穿過白石路標與破碎祈願石階回到鐘鈴小祠', edgeKind: 'distant_route', edgeNote: '商隊車轍回鐘鈴小祠需沿深車轍與祈願石階上行，實際路程長於相鄰一格。' },
@@ -1100,7 +1100,7 @@ pilgrim_road_dry_well: {
     image: 'pilgrim_road_dry_well.png',
     imagePrompt: '乾井 in pilgrim_road, ancient pilgrimage road with broken stone slabs, roadside shrines, caravan tracks, dry grass, white markers and ambush shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain road, clear lantern light',
     description:
-      '乾井位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，玩家可以 inspect 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞。',
+      '乾井位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
     exits: [
       { direction: 'north', targetRoomId: 'pilgrim_road_worn_flags', description: '乾井回到舊旗石路', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'pilgrim_road_thorn_cut', description: '荊棘缺口在東側' },
@@ -1126,7 +1126,7 @@ pilgrim_road_prayer_steps: {
     image: 'pilgrim_road_prayer_steps.png',
     imagePrompt: '祈願階 in pilgrim_road, ancient pilgrimage road with broken stone slabs, roadside shrines, caravan tracks, dry grass, white markers and ambush shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain road, clear lantern light',
     description:
-      '祈願階位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，玩家可以 inspect 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞。',
+      '祈願階位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_bell_shrine', description: '祈願階回到鐘鈴小祠' },
       { direction: 'east', targetRoomId: 'pilgrim_road_saint_bridge', description: '聖徒橋在東側' },
@@ -1152,7 +1152,7 @@ pilgrim_road_abandoned_inn: {
     image: 'pilgrim_road_abandoned_inn.png',
     imagePrompt: '廢棄旅舍 in pilgrim_road, ancient pilgrimage road with broken stone slabs, roadside shrines, caravan tracks, dry grass, white markers and ambush shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain road, clear lantern light',
     description:
-      '廢棄旅舍位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，玩家可以 inspect 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞。',
+      '廢棄旅舍位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_caravan_rut', description: '廢棄旅舍回到商隊車轍' },
       { direction: 'east', targetRoomId: 'pilgrim_road_ambush_bend', description: '伏擊彎道在東側' },
@@ -1179,7 +1179,7 @@ pilgrim_road_thorn_cut: {
     image: 'pilgrim_road_thorn_cut.png',
     imagePrompt: '荊棘缺口 in pilgrim_road, ancient pilgrimage road with broken stone slabs, roadside shrines, caravan tracks, dry grass, white markers and ambush shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain road, clear lantern light',
     description:
-      '荊棘缺口位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，玩家可以 inspect 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞。',
+      '荊棘缺口位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_dry_well', description: '荊棘缺口回到乾井' },
       { direction: 'north', targetRoomId: 'pilgrim_road_abandoned_inn', description: '北側荊棘缺口沿荊棘暗口回穿，越過乾草貨棚與坍塌後門回到廢棄旅舍', edgeKind: 'distant_route', edgeNote: '荊棘缺口回廢棄旅舍需沿荊棘暗口與後門貨棚回穿，實際路程長於相鄰一格。' },

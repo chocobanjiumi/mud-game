@@ -8,7 +8,7 @@ saltwind_flats_sea_serpent_track: {
     image: 'saltwind_flats_sea_serpent_track.png',
     imagePrompt: '海蛇痕 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain coast, clear lantern light',
     description:
-      '海蛇痕位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
+      '海蛇痕位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
     exits: [
       { direction: 'west', targetRoomId: 'saltwind_flats_shallow_cut', description: '回到淺水裂道' },
       { direction: 'north', targetRoomId: 'saltwind_flats_fog_bell', description: '北側霧鐘聲標出回程方向' },
@@ -35,7 +35,7 @@ saltwind_flats_blue_mud_shelf: {
     image: 'saltwind_flats_blue_mud_shelf.png',
     imagePrompt: '藍泥層 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain coast, clear lantern light',
     description:
-      '藍泥層位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
+      '藍泥層位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
     exits: [
       { direction: 'west', targetRoomId: 'saltwind_flats_crab_march', description: '回到蟹行淺灘' },
       { direction: 'east', targetRoomId: 'saltwind_flats_wrecked_skiff', description: '破舟灘在東側' },
@@ -61,7 +61,7 @@ saltwind_flats_wrecked_skiff: {
     image: 'saltwind_flats_wrecked_skiff.png',
     imagePrompt: '破舟灘 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain coast, clear lantern light',
     description:
-      '破舟灘位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
+      '破舟灘位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
     exits: [
       { direction: 'west', targetRoomId: 'saltwind_flats_blue_mud_shelf', description: '回到藍泥層' },
       {
@@ -100,7 +100,7 @@ saltwind_flats_salt_crystal_nest: {
     image: 'saltwind_flats_salt_crystal_nest.png',
     imagePrompt: '鹽晶巢 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain coast, clear lantern light',
     description:
-      '鹽晶巢位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
+      '鹽晶巢位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
     exits: [
       { direction: 'south', targetRoomId: 'saltwind_flats_glass_salt_field', description: '回到玻璃鹽田', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'saltwind_flats_tidewatch_ruin', description: '潮望廢墟在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -126,7 +126,7 @@ saltwind_flats_lowtide_causeway: {
     image: 'saltwind_flats_lowtide_causeway.png',
     imagePrompt: '退潮石道 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain coast, clear lantern light',
     description:
-      '退潮石道位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
+      '退潮石道位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
     exits: [
       {
         direction: 'west',
@@ -165,7 +165,7 @@ saltwind_flats_fog_bell: {
     image: 'saltwind_flats_fog_bell.png',
     imagePrompt: '霧鐘桿 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain coast, clear lantern light',
     description:
-      '霧鐘桿位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
+      '霧鐘桿位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
     exits: [
       {
         direction: 'west',
@@ -197,7 +197,7 @@ saltwind_flats_tidewatch_ruin: {
     image: 'saltwind_flats_tidewatch_ruin.png',
     imagePrompt: '潮望廢墟 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain coast, clear lantern light',
     description:
-      '潮望廢墟位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
+      '潮望廢墟位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
     exits: [
       {
         direction: 'west',
@@ -236,7 +236,7 @@ saltwind_flats_deep_brine_eye: {
     image: 'saltwind_flats_deep_brine_eye.png',
     imagePrompt: '深鹽眼 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain coast, clear lantern light',
     description:
-      '深鹽眼位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
+      '深鹽眼位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
     exits: [
       { direction: 'south', targetRoomId: 'saltwind_flats_tidewatch_ruin', description: '回到潮望廢墟', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
@@ -264,7 +264,7 @@ saltwind_flats_deep_brine_eye: {
     image: 'thornmaze_gate_arch.png',
     imagePrompt: '荊棘入口拱 in thornmaze, living thorn maze with closing briar walls, red thorns, black roots, poisonous flowers, moonlit vines, ancient druid altar, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain fantasy terrain, clear lantern light',
     description:
-      '荊棘入口拱位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，玩家可以 inspect 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記。',
+      '荊棘入口拱位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，旅人可以 觀察 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記',
     exits: [
       { direction: 'east', targetRoomId: 'thornmaze_outer_briar_lane', description: '外環刺徑在東側' },
       { direction: 'north', targetRoomId: 'thornmaze_whispering_hedge', description: '低語樹牆在北側' },
@@ -290,7 +290,7 @@ thornmaze_outer_briar_lane: {
     image: 'thornmaze_outer_briar_lane.png',
     imagePrompt: '外環刺徑 in thornmaze, living thorn maze with closing briar walls, red thorns, black roots, poisonous flowers, moonlit vines, ancient druid altar, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '外環刺徑位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，玩家可以 inspect 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記。',
+      '外環刺徑位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，旅人可以 觀察 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記',
     exits: [
       { direction: 'west', targetRoomId: 'thornmaze_gate_arch', description: '回到荊棘入口拱' },
       { direction: 'east', targetRoomId: 'thornmaze_threefold_fork', description: '三岔刺口在東側' },
@@ -317,7 +317,7 @@ thornmaze_threefold_fork: {
     image: 'thornmaze_threefold_fork.png',
     imagePrompt: '三岔刺口 in thornmaze, living thorn maze with closing briar walls, red thorns, black roots, poisonous flowers, moonlit vines, ancient druid altar, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '三岔刺口位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，玩家可以 inspect 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記。',
+      '三岔刺口位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，旅人可以 觀察 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記',
     exits: [
       { direction: 'west', targetRoomId: 'thornmaze_outer_briar_lane', description: '回到外環刺徑' },
       { direction: 'east', targetRoomId: 'thornmaze_moss_keyhole', description: '苔鑰孔在東側' },
@@ -345,7 +345,7 @@ thornmaze_redthorn_wall: {
     image: 'thornmaze_redthorn_wall.png',
     imagePrompt: '紅刺牆 in thornmaze, living thorn maze with closing briar walls, red thorns, black roots, poisonous flowers, moonlit vines, ancient druid altar, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '紅刺牆位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，玩家可以 inspect 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記。',
+      '紅刺牆位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，旅人可以 觀察 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記',
     exits: [
       { direction: 'south', targetRoomId: 'thornmaze_outer_briar_lane', description: '回到外環刺徑' },
       { direction: 'east', targetRoomId: 'thornmaze_poison_bloom_bed', description: '毒花床在東側' },
@@ -371,7 +371,7 @@ thornmaze_moss_keyhole: {
     image: 'thornmaze_moss_keyhole.png',
     imagePrompt: '苔鑰孔 in thornmaze, living thorn maze with closing briar walls, red thorns, black roots, poisonous flowers, moonlit vines, ancient druid altar, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '苔鑰孔位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，玩家可以 inspect 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記。',
+      '苔鑰孔位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，旅人可以 觀察 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記',
     exits: [
       { direction: 'west', targetRoomId: 'thornmaze_threefold_fork', description: '回到三岔刺口' },
       { direction: 'north', targetRoomId: 'thornmaze_wildrose_snare', description: '野薔薇陷阱在北側' },
@@ -398,7 +398,7 @@ thornmaze_whispering_hedge: {
     image: 'thornmaze_whispering_hedge.png',
     imagePrompt: '低語樹牆 in thornmaze, living thorn maze with closing briar walls, red thorns, black roots, poisonous flowers, moonlit vines, ancient druid altar, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '低語樹牆位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，玩家可以 inspect 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記。',
+      '低語樹牆位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，旅人可以 觀察 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記',
     exits: [
       { direction: 'south', targetRoomId: 'thornmaze_gate_arch', description: '回到荊棘入口拱' },
       { direction: 'east', targetRoomId: 'thornmaze_redthorn_wall', description: '紅刺牆在東側' },
@@ -425,7 +425,7 @@ thornmaze_poison_bloom_bed: {
     image: 'thornmaze_poison_bloom_bed.png',
     imagePrompt: '毒花床 in thornmaze, living thorn maze with closing briar walls, red thorns, black roots, poisonous flowers, moonlit vines, ancient druid altar, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '毒花床位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，玩家可以 inspect 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記。',
+      '毒花床位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，旅人可以 觀察 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記',
     exits: [
       { direction: 'west', targetRoomId: 'thornmaze_redthorn_wall', description: '回到紅刺牆' },
       { direction: 'south', targetRoomId: 'thornmaze_threefold_fork', description: '回到三岔刺口' },
@@ -452,7 +452,7 @@ thornmaze_blackroot_tunnel: {
     image: 'thornmaze_blackroot_tunnel.png',
     imagePrompt: '黑根隧道 in thornmaze, living thorn maze with closing briar walls, red thorns, black roots, poisonous flowers, moonlit vines, ancient druid altar, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '黑根隧道位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，玩家可以 inspect 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記。',
+      '黑根隧道位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，旅人可以 觀察 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記',
     exits: [
       { direction: 'north', targetRoomId: 'thornmaze_threefold_fork', description: '回到三岔刺口' },
       { direction: 'east', targetRoomId: 'thornmaze_spiderthorn_den', description: '蛛刺窟在東側' },
@@ -478,7 +478,7 @@ thornmaze_wildrose_snare: {
     image: 'thornmaze_wildrose_snare.png',
     imagePrompt: '野薔薇陷阱 in thornmaze, living thorn maze with closing briar walls, red thorns, black roots, poisonous flowers, moonlit vines, ancient druid altar, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '野薔薇陷阱位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，玩家可以 inspect 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記。',
+      '野薔薇陷阱位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，旅人可以 觀察 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記',
     exits: [
       { direction: 'west', targetRoomId: 'thornmaze_poison_bloom_bed', description: '回到毒花床' },
       { direction: 'south', targetRoomId: 'thornmaze_moss_keyhole', description: '回到苔鑰孔' },
@@ -505,7 +505,7 @@ thornmaze_druid_marker: {
     image: 'thornmaze_druid_marker.png',
     imagePrompt: '德魯伊刻石 in thornmaze, living thorn maze with closing briar walls, red thorns, black roots, poisonous flowers, moonlit vines, ancient druid altar, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '德魯伊刻石位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，玩家可以 inspect 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記。',
+      '德魯伊刻石位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，旅人可以 觀察 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記',
     exits: [
       { direction: 'west', targetRoomId: 'thornmaze_moss_keyhole', description: '回到苔鑰孔' },
       { direction: 'north', targetRoomId: 'thornmaze_living_wall', description: '活牆在北側' },
@@ -532,7 +532,7 @@ thornmaze_turning_courtyard: {
     image: 'thornmaze_turning_courtyard.png',
     imagePrompt: '旋轉庭 in thornmaze, living thorn maze with closing briar walls, red thorns, black roots, poisonous flowers, moonlit vines, ancient druid altar, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '旋轉庭位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，玩家可以 inspect 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記。',
+      '旋轉庭位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，旅人可以 觀察 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記',
     exits: [
       { direction: 'south', targetRoomId: 'thornmaze_whispering_hedge', description: '回到低語樹牆' },
       { direction: 'east', targetRoomId: 'thornmaze_lost_hunter_camp', description: '失蹤獵營在東側' },
@@ -558,7 +558,7 @@ thornmaze_spiderthorn_den: {
     image: 'thornmaze_spiderthorn_den.png',
     imagePrompt: '蛛刺窟 in thornmaze, living thorn maze with closing briar walls, red thorns, black roots, poisonous flowers, moonlit vines, ancient druid altar, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '蛛刺窟位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，玩家可以 inspect 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記。',
+      '蛛刺窟位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，旅人可以 觀察 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記',
     exits: [
       { direction: 'west', targetRoomId: 'thornmaze_blackroot_tunnel', description: '回到黑根隧道' },
       { direction: 'north', targetRoomId: 'thornmaze_bloodsap_pool', description: '血脂池在北側' },
@@ -584,7 +584,7 @@ thornmaze_moonvine_bridge: {
     image: 'thornmaze_moonvine_bridge.png',
     imagePrompt: '月藤橋 in thornmaze, living thorn maze with closing briar walls, red thorns, black roots, poisonous flowers, moonlit vines, ancient druid altar, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '月藤橋位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，玩家可以 inspect 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記。',
+      '月藤橋位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，旅人可以 觀察 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記',
     exits: [
       { direction: 'west', targetRoomId: 'thornmaze_druid_marker', description: '回到德魯伊刻石' },
       { direction: 'north', targetRoomId: 'thornmaze_silent_stag_glade', description: '靜鹿空地在北側' },
@@ -611,7 +611,7 @@ thornmaze_bloodsap_pool: {
     image: 'thornmaze_bloodsap_pool.png',
     imagePrompt: '血脂池 in thornmaze, living thorn maze with closing briar walls, red thorns, black roots, poisonous flowers, moonlit vines, ancient druid altar, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '血脂池位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，玩家可以 inspect 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記。',
+      '血脂池位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，旅人可以 觀察 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記',
     exits: [
       { direction: 'south', targetRoomId: 'thornmaze_spiderthorn_den', description: '回到蛛刺窟' },
       { direction: 'east', targetRoomId: 'thornmaze_druid_marker', description: '回到德魯伊刻石' },
@@ -639,7 +639,7 @@ thornmaze_lost_hunter_camp: {
     image: 'thornmaze_lost_hunter_camp.png',
     imagePrompt: '失蹤獵營 in thornmaze, living thorn maze with closing briar walls, red thorns, black roots, poisonous flowers, moonlit vines, ancient druid altar, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '失蹤獵營位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，玩家可以 inspect 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記。',
+      '失蹤獵營位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，旅人可以 觀察 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記',
     exits: [
       { direction: 'west', targetRoomId: 'thornmaze_turning_courtyard', description: '回到旋轉庭' },
       { direction: 'east', targetRoomId: 'thornmaze_living_wall', description: '活牆在東側' },
@@ -665,7 +665,7 @@ thornmaze_living_wall: {
     image: 'thornmaze_living_wall.png',
     imagePrompt: '活牆 in thornmaze, living thorn maze with closing briar walls, red thorns, black roots, poisonous flowers, moonlit vines, ancient druid altar, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '活牆位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，玩家可以 inspect 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記。',
+      '活牆位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，旅人可以 觀察 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記',
     exits: [
       { direction: 'south', targetRoomId: 'thornmaze_druid_marker', description: '回到德魯伊刻石' },
       { direction: 'west', targetRoomId: 'thornmaze_lost_hunter_camp', description: '失蹤獵營在西側' },
@@ -692,7 +692,7 @@ thornmaze_silent_stag_glade: {
     image: 'thornmaze_silent_stag_glade.png',
     imagePrompt: '靜鹿空地 in thornmaze, living thorn maze with closing briar walls, red thorns, black roots, poisonous flowers, moonlit vines, ancient druid altar, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '靜鹿空地位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，玩家可以 inspect 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記。',
+      '靜鹿空地位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，旅人可以 觀察 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記',
     exits: [
       { direction: 'west', targetRoomId: 'thornmaze_living_wall', description: '回到活牆' },
       { direction: 'south', targetRoomId: 'thornmaze_moonvine_bridge', description: '回到月藤橋' },
@@ -719,7 +719,7 @@ thornmaze_crooked_totem: {
     image: 'thornmaze_crooked_totem.png',
     imagePrompt: '歪斜圖騰 in thornmaze, living thorn maze with closing briar walls, red thorns, black roots, poisonous flowers, moonlit vines, ancient druid altar, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '歪斜圖騰位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，玩家可以 inspect 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。南側月藤橋與北側內祭環的刺牆會在通過後閉合，只能從那兩處進入圖騰圈。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記。',
+      '歪斜圖騰位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，旅人可以 觀察 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。南側月藤橋與北側內祭環的刺牆會在通過後閉合，只能從那兩處進入圖騰圈。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記',
     exits: [
       { direction: 'west', targetRoomId: 'thornmaze_silent_stag_glade', description: '回到靜鹿空地' },
     ],
@@ -744,7 +744,7 @@ thornmaze_inner_altar_ring: {
     image: 'thornmaze_inner_altar_ring.png',
     imagePrompt: '內祭環 in thornmaze, living thorn maze with closing briar walls, red thorns, black roots, poisonous flowers, moonlit vines, ancient druid altar, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '內祭環位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，玩家可以 inspect 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記。',
+      '內祭環位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，旅人可以 觀察 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記',
     exits: [
       { direction: 'south', targetRoomId: 'thornmaze_bloodsap_pool', description: '回到血脂池' },
       { direction: 'east', targetRoomId: 'thornmaze_crooked_totem', description: '歪斜圖騰在東側' },
@@ -772,7 +772,7 @@ thornmaze_ancient_druid_altar: {
     image: 'thornmaze_ancient_druid_altar.png',
     imagePrompt: '古代德魯伊祭壇 in thornmaze, living thorn maze with closing briar walls, red thorns, black roots, poisonous flowers, moonlit vines, ancient druid altar, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '古代德魯伊祭壇位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，玩家可以 inspect 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記。',
+      '古代德魯伊祭壇位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，旅人可以 觀察 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記',
     exits: [
       { direction: 'south', targetRoomId: 'thornmaze_inner_altar_ring', description: '回到內祭環' },
     ],
@@ -800,7 +800,7 @@ thornmaze_ancient_druid_altar: {
     image: 'ember_march_ash_gate.png',
     imagePrompt: '灰燼入口門 in ember_march, volcanic ash borderland with ember cracks, cinder roads, burned watchposts, slag bridge, war camp ruins, molten breach, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '灰燼入口門位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
+      '灰燼入口門位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，旅人可以 觀察 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線',
     exits: [
       { direction: 'east', targetRoomId: 'ember_march_cinder_road', description: '焦炭路在東側' },
       { direction: 'north', targetRoomId: 'ember_march_burnt_watchpost', description: '燒毀哨站在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -826,7 +826,7 @@ ember_march_cinder_road: {
     image: 'ember_march_cinder_road.png',
     imagePrompt: '焦炭路 in ember_march, volcanic ash borderland with ember cracks, cinder roads, burned watchposts, slag bridge, war camp ruins, molten breach, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain ash, clear lantern light',
     description:
-      '焦炭路位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
+      '焦炭路位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，旅人可以 觀察 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_ash_gate', description: '回到灰燼入口門' },
       { direction: 'east', targetRoomId: 'ember_march_smoke_trench', description: '煙溝在東側' },
@@ -853,7 +853,7 @@ ember_march_smoke_trench: {
     image: 'ember_march_smoke_trench.png',
     imagePrompt: '煙溝 in ember_march, volcanic ash borderland with ember cracks, cinder roads, burned watchposts, slag bridge, war camp ruins, molten breach, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain ash, clear lantern light',
     description:
-      '煙溝位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
+      '煙溝位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，旅人可以 觀察 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_cinder_road', description: '回到焦炭路' },
       { direction: 'east', targetRoomId: 'ember_march_lava_crack', description: '熔裂縫在東側' },
@@ -881,7 +881,7 @@ ember_march_charred_milestone: {
     image: 'ember_march_charred_milestone.png',
     imagePrompt: '焦黑里程碑 in ember_march, volcanic ash borderland with ember cracks, cinder roads, burned watchposts, slag bridge, war camp ruins, molten breach, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain ash, clear lantern light',
     description:
-      '焦黑里程碑位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
+      '焦黑里程碑位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，旅人可以 觀察 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線',
     exits: [
       { direction: 'south', targetRoomId: 'ember_march_cinder_road', description: '回到焦炭路', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'ember_march_war_camp_ruin', description: '東側焦黑里程碑沿熔亮灰脊斜行，繞過倒旗殘樁與戰壕外圈抵達戰營殘址', edgeKind: 'distant_route', edgeNote: '焦黑里程碑到戰營殘址需沿熔亮灰脊與戰壕外圈繞行，實際路程長於相鄰一格。' },
@@ -907,7 +907,7 @@ ember_march_burnt_watchpost: {
     image: 'ember_march_burnt_watchpost.png',
     imagePrompt: '燒毀哨站 in ember_march, volcanic ash borderland with ember cracks, cinder roads, burned watchposts, slag bridge, war camp ruins, molten breach, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain ash, clear lantern light',
     description:
-      '燒毀哨站位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
+      '燒毀哨站位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，旅人可以 觀察 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線',
     exits: [
       { direction: 'south', targetRoomId: 'ember_march_ash_gate', description: '回到灰燼入口門', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'ember_march_charred_milestone', description: '焦黑里程碑在東側' },
@@ -934,7 +934,7 @@ ember_march_lava_crack: {
     image: 'ember_march_lava_crack.png',
     imagePrompt: '熔裂縫 in ember_march, volcanic ash borderland with ember cracks, cinder roads, burned watchposts, slag bridge, war camp ruins, molten breach, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain ash, clear lantern light',
     description:
-      '熔裂縫位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
+      '熔裂縫位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，旅人可以 觀察 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_smoke_trench', description: '回到煙溝' },
       { direction: 'north', targetRoomId: 'ember_march_slag_bridge', description: '渣鐵橋在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -961,7 +961,7 @@ ember_march_glass_ash_field: {
     image: 'ember_march_glass_ash_field.png',
     imagePrompt: '玻璃灰原 in ember_march, volcanic ash borderland with ember cracks, cinder roads, burned watchposts, slag bridge, war camp ruins, molten breach, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain ash, clear lantern light',
     description:
-      '玻璃灰原位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
+      '玻璃灰原位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，旅人可以 觀察 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線',
     exits: [
       { direction: 'south', targetRoomId: 'ember_march_burnt_watchpost', description: '回到燒毀哨站', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'ember_march_war_camp_ruin', description: '戰營殘址在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -987,7 +987,7 @@ ember_march_war_camp_ruin: {
     image: 'ember_march_war_camp_ruin.png',
     imagePrompt: '戰營殘址 in ember_march, volcanic ash borderland with ember cracks, cinder roads, burned watchposts, slag bridge, war camp ruins, molten breach, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain ash, clear lantern light',
     description:
-      '戰營殘址位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
+      '戰營殘址位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，旅人可以 觀察 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_charred_milestone', description: '西側戰營殘址沿焦黑營道折返，穿過倒塌帳架與灰燼里程標回到焦黑里程碑', edgeKind: 'distant_route', edgeNote: '戰營殘址回焦黑里程碑需沿焦黑營道與倒塌帳架折返，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'ember_march_slag_bridge', description: '東側戰營殘址穿過燒紅壕溝與熔渣橋墩，沿斷裂鐵板道抵達渣鐵橋', edgeKind: 'distant_route', edgeNote: '戰營殘址到渣鐵橋需穿過燒紅壕溝與熔渣橋墩，實際路程長於相鄰一格。' },
@@ -1014,7 +1014,7 @@ ember_march_slag_bridge: {
     image: 'ember_march_slag_bridge.png',
     imagePrompt: '渣鐵橋 in ember_march, volcanic ash borderland with ember cracks, cinder roads, burned watchposts, slag bridge, war camp ruins, molten breach, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain ash, clear lantern light',
     description:
-      '渣鐵橋位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
+      '渣鐵橋位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，旅人可以 觀察 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_war_camp_ruin', description: '西側渣鐵橋沿斷裂鐵板道折返，穿過熔渣橋墩與燒紅壕溝回到戰營殘址', edgeKind: 'distant_route', edgeNote: '渣鐵橋回戰營殘址需沿斷裂鐵板道與熔渣橋墩折返，實際路程長於相鄰一格。' },
       { direction: 'south', targetRoomId: 'ember_march_lava_crack', description: '落回熔裂縫', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -1041,7 +1041,7 @@ ember_march_firegrass_flat: {
     image: 'ember_march_firegrass_flat.png',
     imagePrompt: '火草坪 in ember_march, volcanic ash borderland with ember cracks, cinder roads, burned watchposts, slag bridge, war camp ruins, molten breach, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain ash, clear lantern light',
     description:
-      '火草坪位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
+      '火草坪位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，旅人可以 觀察 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線',
     exits: [
       { direction: 'south', targetRoomId: 'ember_march_smoke_trench', description: '南側焦黑補給道下到煙溝' },
       { direction: 'east', targetRoomId: 'ember_march_worm_burrow', description: '熔岩蟲道在東側' },
@@ -1067,7 +1067,7 @@ ember_march_worm_burrow: {
     image: 'ember_march_worm_burrow.png',
     imagePrompt: '熔岩蟲道 in ember_march, volcanic ash borderland with ember cracks, cinder roads, burned watchposts, slag bridge, war camp ruins, molten breach, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain ash, clear lantern light',
     description:
-      '熔岩蟲道位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
+      '熔岩蟲道位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，旅人可以 觀察 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_firegrass_flat', description: '回到火草坪' },
       { direction: 'east', targetRoomId: 'ember_march_scorched_oasis', description: '焦泉在東側' },
@@ -1093,7 +1093,7 @@ ember_march_black_sand_basin: {
     image: 'ember_march_black_sand_basin.png',
     imagePrompt: '黑砂盆地 in ember_march, volcanic ash borderland with ember cracks, cinder roads, burned watchposts, slag bridge, war camp ruins, molten breach, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain ash, clear lantern light',
     description:
-      '黑砂盆地位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
+      '黑砂盆地位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，旅人可以 觀察 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_lava_crack', description: '回到熔裂縫' },
       { direction: 'north', targetRoomId: 'ember_march_ember_forge', description: '餘燼鍛台在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -1120,7 +1120,7 @@ ember_march_ember_forge: {
     image: 'ember_march_ember_forge.png',
     imagePrompt: '餘燼鍛台 in ember_march, volcanic ash borderland with ember cracks, cinder roads, burned watchposts, slag bridge, war camp ruins, molten breach, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain ash, clear lantern light',
     description:
-      '餘燼鍛台位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
+      '餘燼鍛台位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，旅人可以 觀察 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_slag_bridge', description: '回到渣鐵橋' },
       { direction: 'south', targetRoomId: 'ember_march_black_sand_basin', description: '回到黑砂盆地', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -1147,7 +1147,7 @@ ember_march_fallen_banner: {
     image: 'ember_march_fallen_banner.png',
     imagePrompt: '倒旗坡 in ember_march, volcanic ash borderland with ember cracks, cinder roads, burned watchposts, slag bridge, war camp ruins, molten breach, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain ash, clear lantern light',
     description:
-      '倒旗坡位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
+      '倒旗坡位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，旅人可以 觀察 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_ember_forge', description: '回到餘燼鍛台' },
       { direction: 'south', targetRoomId: 'ember_march_bonekiln_pass', description: '南側倒旗坡沿燒斷軍旗列下切，穿過骨灰階坡與熱風窄口抵達骨窯隘口', edgeKind: 'distant_route', edgeNote: '倒旗坡到骨窯隘口需沿軍旗列與骨灰階坡下切，實際路程長於相鄰一格。' },
@@ -1174,7 +1174,7 @@ ember_march_scorched_oasis: {
     image: 'ember_march_scorched_oasis.png',
     imagePrompt: '焦泉 in ember_march, volcanic ash borderland with ember cracks, cinder roads, burned watchposts, slag bridge, war camp ruins, molten breach, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain ash, clear lantern light',
     description:
-      '焦泉位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
+      '焦泉位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，旅人可以 觀察 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_worm_burrow', description: '回到熔岩蟲道' },
       { direction: 'east', targetRoomId: 'ember_march_bonekiln_pass', description: '骨窯隘口在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },

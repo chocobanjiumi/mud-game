@@ -8,7 +8,7 @@ deepsea_temple_whalebone_bridge: {
     image: 'deepsea_temple_whalebone_bridge.png',
     imagePrompt: '鯨骨橋 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain temple, clear lantern light',
     description:
-      '鯨骨橋位於沉入海底的深海神殿中，西側回骨錨臺，東側觸手門通向禁忌祭壇前路，藍色聖火在水下燃燒。破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。',
+      '鯨骨橋位於沉入海底的深海神殿中，西側回骨錨臺，東側觸手門通向禁忌祭壇前路，藍色聖火在水下燃燒。破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，旅人可以 觀察 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲',
     exits: [
       { direction: 'west', targetRoomId: 'deepsea_temple_bone_anchor', description: '鯨骨橋回到骨錨臺' },
       { direction: 'east', targetRoomId: 'deepsea_temple_tentacle_gate', description: '觸手門在前方' },
@@ -34,7 +34,7 @@ deepsea_temple_forbidden_altar: {
     image: 'deepsea_temple_forbidden_altar.png',
     imagePrompt: '禁忌祭壇 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain temple, clear lantern light',
     description:
-      '禁忌祭壇位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。',
+      '禁忌祭壇位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，旅人可以 觀察 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲',
     exits: [
       { direction: 'west', targetRoomId: 'deepsea_temple_statue_trench', description: '禁忌祭壇回到神像裂溝' },
       { direction: 'south', targetRoomId: 'deepsea_temple_sleeping_oracle', description: '祭壇水階通往神諭室' },
@@ -61,7 +61,7 @@ deepsea_temple_sleeping_oracle: {
     image: 'deepsea_temple_sleeping_oracle.png',
     imagePrompt: '沉睡神諭室 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain temple, clear lantern light',
     description:
-      '沉睡神諭室位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。',
+      '沉睡神諭室位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，旅人可以 觀察 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲',
     exits: [
       { direction: 'west', targetRoomId: 'deepsea_temple_abyssal_garden', description: '神諭室回到深淵花園' },
       { direction: 'north', targetRoomId: 'deepsea_temple_forbidden_altar', description: '祭壇水階回到禁忌祭壇' },
@@ -88,7 +88,7 @@ deepsea_temple_tentacle_gate: {
     image: 'deepsea_temple_tentacle_gate.png',
     imagePrompt: '觸手門 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain temple, clear lantern light',
     description:
-      '觸手門位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。',
+      '觸手門位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，旅人可以 觀察 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲',
     exits: [
       { direction: 'west', targetRoomId: 'deepsea_temple_whalebone_bridge', description: '觸手門回到鯨骨橋' },
       { direction: 'east', targetRoomId: 'deepsea_temple_tidal_throne', description: '黑水廊通往潮汐王座' },
@@ -114,7 +114,7 @@ deepsea_temple_godwhisper_chamber: {
     image: 'deepsea_temple_godwhisper_chamber.png',
     imagePrompt: '古神低語室 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain temple, clear lantern light',
     description:
-      '古神低語室位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。',
+      '古神低語室位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，旅人可以 觀察 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲',
     exits: [
       { direction: 'west', targetRoomId: 'deepsea_temple_forbidden_altar', description: '低語室回到禁忌祭壇' },
       { direction: 'south', targetRoomId: 'deepsea_temple_tidal_throne', description: '低語階通往潮汐王座' },
@@ -140,7 +140,7 @@ deepsea_temple_tidal_throne: {
     image: 'deepsea_temple_tidal_throne.png',
     imagePrompt: '潮汐王座 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain temple, clear lantern light',
     description:
-      '潮汐王座位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。南側黑水廊被潮汐王座的壓力壓成單向暗流，只能從觸手門進入王座。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。',
+      '潮汐王座位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，旅人可以 觀察 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。南側黑水廊被潮汐王座的壓力壓成單向暗流，只能從觸手門進入王座。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲',
     exits: [
       { direction: 'west', targetRoomId: 'deepsea_temple_sleeping_oracle', description: '潮汐王座回到沉睡神諭室' },
       { direction: 'north', targetRoomId: 'deepsea_temple_godwhisper_chamber', description: '低語階回到古神低語室' },
@@ -167,7 +167,7 @@ obsidian_depths_mine_lift: {
     image: 'obsidian_depths_mine_lift.png',
     imagePrompt: '深層礦梯 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mine, clear lantern light',
     description:
-      '深層礦梯位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+      '深層礦梯位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，旅人可以 採集 黑曜、火晶、硫磺與熔爐殘片，也能 觀察 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導',
     exits: [
       { direction: 'east', targetRoomId: 'obsidian_depths_glass_vein', description: '黑曜礦脈通往東側' },
       { direction: 'south', targetRoomId: 'obsidian_depths_cooling_shelf', description: '冷卻岩棚向下延伸' },
@@ -192,7 +192,7 @@ obsidian_depths_glass_vein: {
     image: 'obsidian_depths_glass_vein.png',
     imagePrompt: '鏡黑礦脈 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mine, clear lantern light',
     description:
-      '鏡黑礦脈位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+      '鏡黑礦脈位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，旅人可以 採集 黑曜、火晶、硫磺與熔爐殘片，也能 觀察 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導',
     exits: [
       { direction: 'west', targetRoomId: 'obsidian_depths_mine_lift', description: '礦脈回到深層礦梯' },
       { direction: 'east', targetRoomId: 'obsidian_depths_lava_drip', description: '熔滴廊在前方' },
@@ -219,7 +219,7 @@ obsidian_depths_shard_claim: {
     image: 'obsidian_depths_shard_claim.png',
     imagePrompt: '碎曜採區 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mine, clear lantern light',
     description:
-      '碎曜採區位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+      '碎曜採區位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，旅人可以 採集 黑曜、火晶、硫磺與熔爐殘片，也能 觀察 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導',
     exits: [
       { direction: 'south', targetRoomId: 'obsidian_depths_glass_vein', description: '碎曜採區回到鏡黑礦脈' },
       { direction: 'east', targetRoomId: 'obsidian_depths_mirror_chamber', description: '反光洞室在東側' },
@@ -245,7 +245,7 @@ obsidian_depths_cooling_shelf: {
     image: 'obsidian_depths_cooling_shelf.png',
     imagePrompt: '冷卻岩棚 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mine, clear lantern light',
     description:
-      '冷卻岩棚位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+      '冷卻岩棚位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，旅人可以 採集 黑曜、火晶、硫磺與熔爐殘片，也能 觀察 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導',
     exits: [
       { direction: 'north', targetRoomId: 'obsidian_depths_mine_lift', description: '冷卻岩棚回到礦梯' },
       { direction: 'east', targetRoomId: 'obsidian_depths_sulfur_pocket', description: '硫磺袋在東側' },
@@ -271,7 +271,7 @@ obsidian_depths_lava_drip: {
     image: 'obsidian_depths_lava_drip.png',
     imagePrompt: '熔滴廊 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mine, clear lantern light',
     description:
-      '熔滴廊位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+      '熔滴廊位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，旅人可以 採集 黑曜、火晶、硫磺與熔爐殘片，也能 觀察 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導',
     exits: [
       { direction: 'west', targetRoomId: 'obsidian_depths_glass_vein', description: '熔滴廊回到礦脈' },
       { direction: 'east', targetRoomId: 'obsidian_depths_old_furnace', description: '舊熔爐在前方' },
@@ -298,7 +298,7 @@ obsidian_depths_mirror_chamber: {
     image: 'obsidian_depths_mirror_chamber.png',
     imagePrompt: '黑鏡洞室 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mine, clear lantern light',
     description:
-      '黑鏡洞室位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+      '黑鏡洞室位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，旅人可以 採集 黑曜、火晶、硫磺與熔爐殘片，也能 觀察 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導',
     exits: [
       { direction: 'west', targetRoomId: 'obsidian_depths_shard_claim', description: '黑鏡洞室回到採區' },
       { direction: 'east', targetRoomId: 'obsidian_depths_chain_gallery', description: '鐵鏈廊在東側' },
@@ -325,7 +325,7 @@ obsidian_depths_sulfur_pocket: {
     image: 'obsidian_depths_sulfur_pocket.png',
     imagePrompt: '硫磺氣袋 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mine, clear lantern light',
     description:
-      '硫磺氣袋位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+      '硫磺氣袋位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，旅人可以 採集 黑曜、火晶、硫磺與熔爐殘片，也能 觀察 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導',
     exits: [
       { direction: 'west', targetRoomId: 'obsidian_depths_cooling_shelf', description: '硫磺氣袋回到岩棚' },
       { direction: 'north', targetRoomId: 'obsidian_depths_lava_drip', description: '熱氣井回到熔滴廊' },
@@ -352,7 +352,7 @@ obsidian_depths_old_furnace: {
     image: 'obsidian_depths_old_furnace.png',
     imagePrompt: '古代熔爐 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mine, clear lantern light',
     description:
-      '古代熔爐位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+      '古代熔爐位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，旅人可以 採集 黑曜、火晶、硫磺與熔爐殘片，也能 觀察 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導',
     exits: [
       { direction: 'west', targetRoomId: 'obsidian_depths_lava_drip', description: '舊熔爐回到熔滴廊' },
       { direction: 'north', targetRoomId: 'obsidian_depths_mirror_chamber', description: '反光坡回到黑鏡洞室' },
@@ -379,7 +379,7 @@ obsidian_depths_chain_gallery: {
     image: 'obsidian_depths_chain_gallery.png',
     imagePrompt: '鎖鏈長廊 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mine, clear lantern light',
     description:
-      '鎖鏈長廊位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+      '鎖鏈長廊位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，旅人可以 採集 黑曜、火晶、硫磺與熔爐殘片，也能 觀察 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導',
     exits: [
       { direction: 'west', targetRoomId: 'obsidian_depths_mirror_chamber', description: '鎖鏈長廊回到黑鏡洞室' },
       { direction: 'east', targetRoomId: 'obsidian_depths_black_glass_bridge', description: '黑玻橋在東側' },
@@ -405,7 +405,7 @@ obsidian_depths_magma_rill: {
     image: 'obsidian_depths_magma_rill.png',
     imagePrompt: '岩漿細渠 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mine, clear lantern light',
     description:
-      '岩漿細渠位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+      '岩漿細渠位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，旅人可以 採集 黑曜、火晶、硫磺與熔爐殘片，也能 觀察 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導',
     exits: [
       { direction: 'west', targetRoomId: 'obsidian_depths_sulfur_pocket', description: '岩漿細渠回到硫磺袋' },
       { direction: 'east', targetRoomId: 'obsidian_depths_forge_guard_post', description: '熔流路通往守衛臺' },
@@ -432,7 +432,7 @@ obsidian_depths_forge_guard_post: {
     image: 'obsidian_depths_forge_guard_post.png',
     imagePrompt: '熔爐守衛臺 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mine, clear lantern light',
     description:
-      '熔爐守衛臺位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。南側熔流路因守衛臺熱壓上湧而變成單向斜坡，只能由岩漿細渠進入守衛臺。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+      '熔爐守衛臺位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，旅人可以 採集 黑曜、火晶、硫磺與熔爐殘片，也能 觀察 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。南側熔流路因守衛臺熱壓上湧而變成單向斜坡，只能由岩漿細渠進入守衛臺。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導',
     exits: [
       { direction: 'west', targetRoomId: 'obsidian_depths_old_furnace', description: '守衛臺回到古代熔爐' },
       { direction: 'east', targetRoomId: 'obsidian_depths_obsidian_market', description: '棄市礦棚在東側' },
@@ -458,7 +458,7 @@ obsidian_depths_black_glass_bridge: {
     image: 'obsidian_depths_black_glass_bridge.png',
     imagePrompt: '黑玻橋 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mine, clear lantern light',
     description:
-      '黑玻橋位於火山下方的黑曜深層，西側回鎖鏈長廊，東側接深層小祠，南面橋下坡落向棄市礦棚。鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+      '黑玻橋位於火山下方的黑曜深層，西側回鎖鏈長廊，東側接深層小祠，南面橋下坡落向棄市礦棚。鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，旅人可以 採集 黑曜、火晶、硫磺與熔爐殘片，也能 觀察 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導',
     exits: [
       { direction: 'west', targetRoomId: 'obsidian_depths_chain_gallery', description: '黑玻橋回到鎖鏈長廊' },
       { direction: 'east', targetRoomId: 'obsidian_depths_depths_shrine', description: '深層小祠在東側' },
@@ -485,7 +485,7 @@ obsidian_depths_ember_basin: {
     image: 'obsidian_depths_ember_basin.png',
     imagePrompt: '餘燼盆地 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mine, clear lantern light',
     description:
-      '餘燼盆地位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+      '餘燼盆地位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，旅人可以 採集 黑曜、火晶、硫磺與熔爐殘片，也能 觀察 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導',
     exits: [
       { direction: 'north', targetRoomId: 'obsidian_depths_magma_rill', description: '餘燼盆地回到岩漿細渠' },
       { direction: 'east', targetRoomId: 'obsidian_depths_lavafall_overlook', description: '熔瀑臺在東側' },
@@ -511,7 +511,7 @@ obsidian_depths_obsidian_market: {
     image: 'obsidian_depths_obsidian_market.png',
     imagePrompt: '棄市礦棚 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mine, clear lantern light',
     description:
-      '棄市礦棚位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+      '棄市礦棚位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，旅人可以 採集 黑曜、火晶、硫磺與熔爐殘片，也能 觀察 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導',
     exits: [
       { direction: 'west', targetRoomId: 'obsidian_depths_forge_guard_post', description: '礦棚回到守衛臺' },
       { direction: 'north', targetRoomId: 'obsidian_depths_black_glass_bridge', description: '橋下坡回到黑玻橋' },
@@ -538,7 +538,7 @@ obsidian_depths_depths_shrine: {
     image: 'obsidian_depths_depths_shrine.png',
     imagePrompt: '深層火祠 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mine, clear lantern light',
     description:
-      '深層火祠位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+      '深層火祠位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，旅人可以 採集 黑曜、火晶、硫磺與熔爐殘片，也能 觀察 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導',
     exits: [
       { direction: 'west', targetRoomId: 'obsidian_depths_black_glass_bridge', description: '火祠回到黑玻橋' },
       { direction: 'south', targetRoomId: 'obsidian_depths_core_drill', description: '祭火路通往核心鑽井' },
@@ -564,7 +564,7 @@ obsidian_depths_lavafall_overlook: {
     image: 'obsidian_depths_lavafall_overlook.png',
     imagePrompt: '熔瀑臺 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mine, clear lantern light',
     description:
-      '熔瀑臺位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+      '熔瀑臺位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，旅人可以 採集 黑曜、火晶、硫磺與熔爐殘片，也能 觀察 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導',
     exits: [
       { direction: 'west', targetRoomId: 'obsidian_depths_ember_basin', description: '熔瀑臺回到餘燼盆地' },
       { direction: 'east', targetRoomId: 'obsidian_depths_molten_lock', description: '熔鎖門在東側' },
@@ -590,7 +590,7 @@ obsidian_depths_core_drill: {
     image: 'obsidian_depths_core_drill.png',
     imagePrompt: '核心鑽井 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mine, clear lantern light',
     description:
-      '核心鑽井位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+      '核心鑽井位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，旅人可以 採集 黑曜、火晶、硫磺與熔爐殘片，也能 觀察 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導',
     exits: [
       { direction: 'west', targetRoomId: 'obsidian_depths_obsidian_market', description: '核心鑽井回到棄市礦棚' },
       { direction: 'north', targetRoomId: 'obsidian_depths_depths_shrine', description: '祭火路回到深層火祠' },
@@ -617,7 +617,7 @@ obsidian_depths_molten_lock: {
     image: 'obsidian_depths_molten_lock.png',
     imagePrompt: '熔鎖門 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mine, clear lantern light',
     description:
-      '熔鎖門位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+      '熔鎖門位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，旅人可以 採集 黑曜、火晶、硫磺與熔爐殘片，也能 觀察 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導',
     exits: [
       { direction: 'west', targetRoomId: 'obsidian_depths_lavafall_overlook', description: '熔鎖門回到熔瀑臺' },
       { direction: 'east', targetRoomId: 'obsidian_depths_heart_mirror', description: '熔鎖通道通往心鏡廳' },
@@ -643,7 +643,7 @@ obsidian_depths_heart_mirror: {
     image: 'obsidian_depths_heart_mirror.png',
     imagePrompt: '黑曜心鏡 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mine, clear lantern light',
     description:
-      '黑曜心鏡位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。南側熔鎖通道在心鏡反光中只留下假出口，真正通道必須由熔鎖門進入。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+      '黑曜心鏡位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，旅人可以 採集 黑曜、火晶、硫磺與熔爐殘片，也能 觀察 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。南側熔鎖通道在心鏡反光中只留下假出口，真正通道必須由熔鎖門進入。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導',
     exits: [
       { direction: 'west', targetRoomId: 'obsidian_depths_core_drill', description: '心鏡廳回到核心鑽井' },
       { direction: 'east', targetRoomId: 'obsidian_depths_worldforge_core', description: '核心裂口通往世界熔爐' },
@@ -669,7 +669,7 @@ obsidian_depths_worldforge_core: {
     image: 'obsidian_depths_worldforge_core.png',
     imagePrompt: '世界熔爐核心 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mine, clear lantern light',
     description:
-      '世界熔爐核心位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+      '世界熔爐核心位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，旅人可以 採集 黑曜、火晶、硫磺與熔爐殘片，也能 觀察 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導',
     exits: [
       { direction: 'west', targetRoomId: 'obsidian_depths_heart_mirror', description: '核心裂口回到黑曜心鏡' },
     ],
@@ -695,7 +695,7 @@ starfall_crater_rim_gate: {
     image: 'starfall_crater_rim_gate.png',
     imagePrompt: '隕坑邊門 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '隕坑邊門位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+      '隕坑邊門位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，旅人可以 採集 星鐵、彗片、輻光砂與異界殘片，也能 觀察 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確',
     exits: [
       { direction: 'east', targetRoomId: 'starfall_crater_glass_slope', description: '玻化斜坡通往坑內' },
       { direction: 'north', targetRoomId: 'starfall_crater_survey_camp', description: '測量營地在北側' },
@@ -720,7 +720,7 @@ starfall_crater_glass_slope: {
     image: 'starfall_crater_glass_slope.png',
     imagePrompt: '玻化斜坡 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '玻化斜坡位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+      '玻化斜坡位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，旅人可以 採集 星鐵、彗片、輻光砂與異界殘片，也能 觀察 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確',
     exits: [
       { direction: 'west', targetRoomId: 'starfall_crater_rim_gate', description: '玻化斜坡回到邊門' },
       { direction: 'east', targetRoomId: 'starfall_crater_stariron_field', description: '星鐵散地在前方' },
@@ -747,7 +747,7 @@ starfall_crater_survey_camp: {
     image: 'starfall_crater_survey_camp.png',
     imagePrompt: '測量營地 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '測量營地位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+      '測量營地位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，旅人可以 採集 星鐵、彗片、輻光砂與異界殘片，也能 觀察 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確',
     exits: [
       { direction: 'south', targetRoomId: 'starfall_crater_rim_gate', description: '營地路回到隕坑邊門' },
       { direction: 'east', targetRoomId: 'starfall_crater_magnetized_spire', description: '磁化尖塔在東側' },
@@ -773,7 +773,7 @@ starfall_crater_magnetized_spire: {
     image: 'starfall_crater_magnetized_spire.png',
     imagePrompt: '磁化尖塔 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '磁化尖塔位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+      '磁化尖塔位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，旅人可以 採集 星鐵、彗片、輻光砂與異界殘片，也能 觀察 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確',
     exits: [
       { direction: 'west', targetRoomId: 'starfall_crater_survey_camp', description: '尖塔路回到測量營地' },
       { direction: 'east', targetRoomId: 'starfall_crater_radiant_pool', description: '輻光水池在東側' },
@@ -800,7 +800,7 @@ starfall_crater_stariron_field: {
     image: 'starfall_crater_stariron_field.png',
     imagePrompt: '星鐵散地 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '星鐵散地位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+      '星鐵散地位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，旅人可以 採集 星鐵、彗片、輻光砂與異界殘片，也能 觀察 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確',
     exits: [
       { direction: 'west', targetRoomId: 'starfall_crater_glass_slope', description: '星鐵散地回到玻化斜坡' },
       { direction: 'north', targetRoomId: 'starfall_crater_magnetized_spire', description: '磁砂坡回到磁化尖塔' },
@@ -827,7 +827,7 @@ starfall_crater_burning_scree: {
     image: 'starfall_crater_burning_scree.png',
     imagePrompt: '燃石坡 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '燃石坡位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+      '燃石坡位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，旅人可以 採集 星鐵、彗片、輻光砂與異界殘片，也能 觀察 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確',
     exits: [
       { direction: 'north', targetRoomId: 'starfall_crater_glass_slope', description: '燃石坡回到玻化斜坡' },
       { direction: 'east', targetRoomId: 'starfall_crater_fallen_observatory', description: '墜落觀測臺在東側' },
@@ -853,7 +853,7 @@ starfall_crater_radiant_pool: {
     image: 'starfall_crater_radiant_pool.png',
     imagePrompt: '輻光水池 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '輻光水池位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+      '輻光水池位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，旅人可以 採集 星鐵、彗片、輻光砂與異界殘片，也能 觀察 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確',
     exits: [
       { direction: 'west', targetRoomId: 'starfall_crater_magnetized_spire', description: '輻光水池回到磁化尖塔' },
       { direction: 'east', targetRoomId: 'starfall_crater_silvergrass_ring', description: '銀草環在東側' },
@@ -879,7 +879,7 @@ starfall_crater_impact_trench: {
     image: 'starfall_crater_impact_trench.png',
     imagePrompt: '撞擊裂溝 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '撞擊裂溝位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+      '撞擊裂溝位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，旅人可以 採集 星鐵、彗片、輻光砂與異界殘片，也能 觀察 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確',
     exits: [
       { direction: 'west', targetRoomId: 'starfall_crater_stariron_field', description: '裂溝回到星鐵散地' },
       { direction: 'east', targetRoomId: 'starfall_crater_alien_eggs', description: '異卵灘在前方' },
@@ -906,7 +906,7 @@ starfall_crater_fallen_observatory: {
     image: 'starfall_crater_fallen_observatory.png',
     imagePrompt: '墜落觀測臺 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '墜落觀測臺位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+      '墜落觀測臺位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，旅人可以 採集 星鐵、彗片、輻光砂與異界殘片，也能 觀察 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確',
     exits: [
       { direction: 'west', targetRoomId: 'starfall_crater_burning_scree', description: '觀測臺回到燃石坡' },
       { direction: 'north', targetRoomId: 'starfall_crater_impact_trench', description: '斷臺階回到撞擊裂溝' },
@@ -933,7 +933,7 @@ starfall_crater_silvergrass_ring: {
     image: 'starfall_crater_silvergrass_ring.png',
     imagePrompt: '銀草環 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '銀草環位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+      '銀草環位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，旅人可以 採集 星鐵、彗片、輻光砂與異界殘片，也能 觀察 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確',
     exits: [
       { direction: 'west', targetRoomId: 'starfall_crater_radiant_pool', description: '銀草環回到輻光水池' },
       { direction: 'east', targetRoomId: 'starfall_crater_gravity_well', description: '重力井在東側' },
@@ -959,7 +959,7 @@ starfall_crater_alien_eggs: {
     image: 'starfall_crater_alien_eggs.png',
     imagePrompt: '異界卵灘 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '異界卵灘位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+      '異界卵灘位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，旅人可以 採集 星鐵、彗片、輻光砂與異界殘片，也能 觀察 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確',
     exits: [
       { direction: 'west', targetRoomId: 'starfall_crater_impact_trench', description: '異卵灘回到撞擊裂溝' },
       { direction: 'east', targetRoomId: 'starfall_crater_voidglass_arch', description: '虛玻拱在東側' },
@@ -986,7 +986,7 @@ starfall_crater_comet_shard_mine: {
     image: 'starfall_crater_comet_shard_mine.png',
     imagePrompt: '彗片礦井 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '彗片礦井位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+      '彗片礦井位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，旅人可以 採集 星鐵、彗片、輻光砂與異界殘片，也能 觀察 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確',
     exits: [
       { direction: 'west', targetRoomId: 'starfall_crater_fallen_observatory', description: '彗片礦井回到觀測臺' },
       { direction: 'north', targetRoomId: 'starfall_crater_alien_eggs', description: '碎星坡回到異卵灘' },
@@ -1013,7 +1013,7 @@ starfall_crater_gravity_well: {
     image: 'starfall_crater_gravity_well.png',
     imagePrompt: '重力井 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '重力井位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+      '重力井位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，旅人可以 採集 星鐵、彗片、輻光砂與異界殘片，也能 觀察 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確',
     exits: [
       { direction: 'west', targetRoomId: 'starfall_crater_silvergrass_ring', description: '重力井回到銀草環' },
       { direction: 'east', targetRoomId: 'starfall_crater_star_map_ruin', description: '星圖廢墟在東側' },
@@ -1040,7 +1040,7 @@ starfall_crater_voidglass_arch: {
     image: 'starfall_crater_voidglass_arch.png',
     imagePrompt: '虛玻拱 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '虛玻拱位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+      '虛玻拱位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，旅人可以 採集 星鐵、彗片、輻光砂與異界殘片，也能 觀察 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確',
     exits: [
       { direction: 'west', targetRoomId: 'starfall_crater_alien_eggs', description: '虛玻拱回到異卵灘' },
       { direction: 'north', targetRoomId: 'starfall_crater_gravity_well', description: '引力坡回到重力井' },
@@ -1067,7 +1067,7 @@ starfall_crater_meteoric_forge: {
     image: 'starfall_crater_meteoric_forge.png',
     imagePrompt: '隕鐵熔臺 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '隕鐵熔臺位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+      '隕鐵熔臺位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，旅人可以 採集 星鐵、彗片、輻光砂與異界殘片，也能 觀察 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確',
     exits: [
       { direction: 'west', targetRoomId: 'starfall_crater_comet_shard_mine', description: '隕鐵熔臺回到彗片礦井' },
       { direction: 'east', targetRoomId: 'starfall_crater_impact_core', description: '撞擊核心在東側' },
@@ -1093,7 +1093,7 @@ starfall_crater_star_map_ruin: {
     image: 'starfall_crater_star_map_ruin.png',
     imagePrompt: '星圖廢墟 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '星圖廢墟位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+      '星圖廢墟位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，旅人可以 採集 星鐵、彗片、輻光砂與異界殘片，也能 觀察 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確',
     exits: [
       { direction: 'west', targetRoomId: 'starfall_crater_gravity_well', description: '星圖廢墟回到重力井' },
       { direction: 'south', targetRoomId: 'starfall_crater_worldscar_rift', description: '星線落向世界傷痕' },
@@ -1119,7 +1119,7 @@ starfall_crater_worldscar_rift: {
     image: 'starfall_crater_worldscar_rift.png',
     imagePrompt: '世界傷痕 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '世界傷痕位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+      '世界傷痕位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，旅人可以 採集 星鐵、彗片、輻光砂與異界殘片，也能 觀察 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確',
     exits: [
       { direction: 'west', targetRoomId: 'starfall_crater_voidglass_arch', description: '世界傷痕回到虛玻拱' },
       { direction: 'north', targetRoomId: 'starfall_crater_star_map_ruin', description: '星線回到星圖廢墟' },
@@ -1146,7 +1146,7 @@ starfall_crater_impact_core: {
     image: 'starfall_crater_impact_core.png',
     imagePrompt: '撞擊核心 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '撞擊核心位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+      '撞擊核心位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，旅人可以 採集 星鐵、彗片、輻光砂與異界殘片，也能 觀察 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確',
     exits: [
       { direction: 'west', targetRoomId: 'starfall_crater_meteoric_forge', description: '撞擊核心回到隕鐵熔臺' },
       { direction: 'east', targetRoomId: 'starfall_crater_worldboss_core', description: '熔星路通往世界王核心' },
@@ -1172,7 +1172,7 @@ starfall_crater_worldboss_core: {
     image: 'starfall_crater_worldboss_core.png',
     imagePrompt: '世界王星核 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '世界王星核位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。南側熔星路被星核重力折斷成單向坡道，只能從撞擊核心進入世界王星核。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+      '世界王星核位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，旅人可以 採集 星鐵、彗片、輻光砂與異界殘片，也能 觀察 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。南側熔星路被星核重力折斷成單向坡道，只能從撞擊核心進入世界王星核。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確',
     exits: [
       { direction: 'west', targetRoomId: 'starfall_crater_worldscar_rift', description: '裂隙回到世界傷痕' },
       { direction: 'east', targetRoomId: 'starfall_crater_outer_void', description: '外界空洞在星核後方' },
