@@ -1,23 +1,23 @@
 {
-  "generatedAt": "2026-05-30T06:52:40.677Z",
+  "generatedAt": "2026-05-30T07:39:54.416Z",
   "summary": {
     "rooms": 1515,
     "worldRooms": 1515,
     "instanceOnlyRooms": 0,
-    "phase5Targets": 253,
-    "missingPrompt": 201,
-    "missingImageField": 201,
-    "missingAsset": 253,
-    "issues": 1953,
-    "errors": 757,
+    "phase5Targets": 188,
+    "missingPrompt": 188,
+    "missingImageField": 188,
+    "missingAsset": 188,
+    "issues": 1863,
+    "errors": 667,
     "warnings": 1196,
     "byIssueKind": {
       "prompt.room_id": 1196,
-      "asset.missing": 253,
-      "prompt.function": 49,
+      "prompt.function": 50,
       "prompt.style": 39,
-      "image.missing": 201,
-      "prompt.missing": 201,
+      "image.missing": 188,
+      "asset.missing": 188,
+      "prompt.missing": 188,
       "asset.ratio": 13,
       "asset.too_small": 1
     },
@@ -147,9 +147,9 @@
         "rooms": 33,
         "missingPrompt": 0,
         "missingImageField": 0,
-        "missingAsset": 13,
-        "phase5Targets": 13,
-        "errors": 25,
+        "missingAsset": 0,
+        "phase5Targets": 0,
+        "errors": 12,
         "warnings": 20
       },
       "deepsea_temple": {
@@ -187,9 +187,9 @@
         "rooms": 30,
         "missingPrompt": 0,
         "missingImageField": 0,
-        "missingAsset": 10,
-        "phase5Targets": 10,
-        "errors": 30,
+        "missingAsset": 0,
+        "phase5Targets": 0,
+        "errors": 19,
         "warnings": 18
       },
       "ember_march": {
@@ -197,9 +197,9 @@
         "rooms": 30,
         "missingPrompt": 0,
         "missingImageField": 0,
-        "missingAsset": 10,
-        "phase5Targets": 10,
-        "errors": 28,
+        "missingAsset": 0,
+        "phase5Targets": 0,
+        "errors": 18,
         "warnings": 20
       },
       "emerald_canopy": {
@@ -207,9 +207,9 @@
         "rooms": 31,
         "missingPrompt": 0,
         "missingImageField": 0,
-        "missingAsset": 11,
-        "phase5Targets": 11,
-        "errors": 33,
+        "missingAsset": 0,
+        "phase5Targets": 0,
+        "errors": 22,
         "warnings": 20
       },
       "final_battleground": {
@@ -227,9 +227,9 @@
         "rooms": 28,
         "missingPrompt": 0,
         "missingImageField": 0,
-        "missingAsset": 8,
-        "phase5Targets": 8,
-        "errors": 24,
+        "missingAsset": 0,
+        "phase5Targets": 0,
+        "errors": 16,
         "warnings": 20
       },
       "frozen_wastes": {
@@ -565,11 +565,11 @@
       "thundersteppe": {
         "zoneName": "雷鳴草原",
         "rooms": 33,
-        "missingPrompt": 13,
-        "missingImageField": 13,
-        "missingAsset": 13,
-        "phase5Targets": 13,
-        "errors": 39,
+        "missingPrompt": 0,
+        "missingImageField": 0,
+        "missingAsset": 0,
+        "phase5Targets": 0,
+        "errors": 2,
         "warnings": 20
       },
       "time_ruins": {
@@ -625,1662 +625,6 @@
     }
   },
   "phase5Targets": [
-    {
-      "roomId": "dark_forest_fill_n1_13",
-      "roomName": "鐵木影門苔徑",
-      "zoneId": "dark_forest",
-      "zoneName": "暗影森林",
-      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n1_13.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "dark_forest_fill_n1_13",
-          "zoneId": "dark_forest",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n1_13.png"
-        },
-        {
-          "roomId": "dark_forest_fill_n1_13",
-          "zoneId": "dark_forest",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        }
-      ]
-    },
-    {
-      "roomId": "dark_forest_fill_n1_14",
-      "roomName": "軍需陰根道",
-      "zoneId": "dark_forest",
-      "zoneName": "暗影森林",
-      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n1_14.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "dark_forest_fill_n1_14",
-          "zoneId": "dark_forest",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n1_14.png"
-        },
-        {
-          "roomId": "dark_forest_fill_n1_14",
-          "zoneId": "dark_forest",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        }
-      ]
-    },
-    {
-      "roomId": "dark_forest_fill_n1_15",
-      "roomName": "熔爐煙苔路",
-      "zoneId": "dark_forest",
-      "zoneName": "暗影森林",
-      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n1_15.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "dark_forest_fill_n1_15",
-          "zoneId": "dark_forest",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n1_15.png"
-        },
-        {
-          "roomId": "dark_forest_fill_n1_15",
-          "zoneId": "dark_forest",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        }
-      ]
-    },
-    {
-      "roomId": "dark_forest_fill_n1_16",
-      "roomName": "鐵木根牆徑",
-      "zoneId": "dark_forest",
-      "zoneName": "暗影森林",
-      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n1_16.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "dark_forest_fill_n1_16",
-          "zoneId": "dark_forest",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n1_16.png"
-        },
-        {
-          "roomId": "dark_forest_fill_n1_16",
-          "zoneId": "dark_forest",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        }
-      ]
-    },
-    {
-      "roomId": "dark_forest_fill_n2_14",
-      "roomName": "北苔根封口",
-      "zoneId": "dark_forest",
-      "zoneName": "暗影森林",
-      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n2_14.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "dark_forest_fill_n2_14",
-          "zoneId": "dark_forest",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n2_14.png"
-        },
-        {
-          "roomId": "dark_forest_fill_n2_14",
-          "zoneId": "dark_forest",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        }
-      ]
-    },
-    {
-      "roomId": "dark_forest_fill_n3_14",
-      "roomName": "中段腐根欄",
-      "zoneId": "dark_forest",
-      "zoneName": "暗影森林",
-      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n3_14.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "dark_forest_fill_n3_14",
-          "zoneId": "dark_forest",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n3_14.png"
-        }
-      ]
-    },
-    {
-      "roomId": "dark_forest_fill_n4_12",
-      "roomName": "北影苔石坪",
-      "zoneId": "dark_forest",
-      "zoneName": "暗影森林",
-      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n4_12.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "dark_forest_fill_n4_12",
-          "zoneId": "dark_forest",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n4_12.png"
-        },
-        {
-          "roomId": "dark_forest_fill_n4_12",
-          "zoneId": "dark_forest",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        }
-      ]
-    },
-    {
-      "roomId": "dark_forest_fill_n4_14",
-      "roomName": "內林苔階封口",
-      "zoneId": "dark_forest",
-      "zoneName": "暗影森林",
-      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n4_14.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "dark_forest_fill_n4_14",
-          "zoneId": "dark_forest",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n4_14.png"
-        },
-        {
-          "roomId": "dark_forest_fill_n4_14",
-          "zoneId": "dark_forest",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        }
-      ]
-    },
-    {
-      "roomId": "dark_forest_fill_n4_16",
-      "roomName": "南影根幕",
-      "zoneId": "dark_forest",
-      "zoneName": "暗影森林",
-      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n4_16.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "dark_forest_fill_n4_16",
-          "zoneId": "dark_forest",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n4_16.png"
-        },
-        {
-          "roomId": "dark_forest_fill_n4_16",
-          "zoneId": "dark_forest",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        }
-      ]
-    },
-    {
-      "roomId": "dark_forest_fill_n4_17",
-      "roomName": "南腐葉封溝",
-      "zoneId": "dark_forest",
-      "zoneName": "暗影森林",
-      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n4_17.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "dark_forest_fill_n4_17",
-          "zoneId": "dark_forest",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n4_17.png"
-        },
-        {
-          "roomId": "dark_forest_fill_n4_17",
-          "zoneId": "dark_forest",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        }
-      ]
-    },
-    {
-      "roomId": "dark_forest_fill_n4_18",
-      "roomName": "南界苔石斷階",
-      "zoneId": "dark_forest",
-      "zoneName": "暗影森林",
-      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n4_18.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "dark_forest_fill_n4_18",
-          "zoneId": "dark_forest",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n4_18.png"
-        },
-        {
-          "roomId": "dark_forest_fill_n4_18",
-          "zoneId": "dark_forest",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        }
-      ]
-    },
-    {
-      "roomId": "dark_forest_fill_n7_16",
-      "roomName": "西側黑藤欄",
-      "zoneId": "dark_forest",
-      "zoneName": "暗影森林",
-      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n7_16.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "dark_forest_fill_n7_16",
-          "zoneId": "dark_forest",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n7_16.png"
-        },
-        {
-          "roomId": "dark_forest_fill_n7_16",
-          "zoneId": "dark_forest",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        }
-      ]
-    },
-    {
-      "roomId": "darkwood_border_trail",
-      "roomName": "暗林邊徑",
-      "zoneId": "dark_forest",
-      "zoneName": "暗影森林",
-      "assetPath": "client/public/images/rooms/images/rooms/darkwood_border_trail.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "darkwood_border_trail",
-          "zoneId": "dark_forest",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/darkwood_border_trail.png"
-        },
-        {
-          "roomId": "darkwood_border_trail",
-          "zoneId": "dark_forest",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        }
-      ]
-    },
-    {
-      "roomId": "eastern_coast_fill_31_0",
-      "roomName": "北吊機礁封路",
-      "zoneId": "eastern_coast",
-      "zoneName": "東方海岸",
-      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_31_0.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "eastern_coast_fill_31_0",
-          "zoneId": "eastern_coast",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_31_0.png"
-        },
-        {
-          "roomId": "eastern_coast_fill_31_0",
-          "zoneId": "eastern_coast",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "eastern_coast_fill_31_0",
-          "zoneId": "eastern_coast",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "eastern_coast_fill_31_3",
-      "roomName": "王道東側潮封",
-      "zoneId": "eastern_coast",
-      "zoneName": "東方海岸",
-      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_31_3.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "eastern_coast_fill_31_3",
-          "zoneId": "eastern_coast",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_31_3.png"
-        },
-        {
-          "roomId": "eastern_coast_fill_31_3",
-          "zoneId": "eastern_coast",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "eastern_coast_fill_31_3",
-          "zoneId": "eastern_coast",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "eastern_coast_fill_34_4",
-      "roomName": "海盜營南沙封",
-      "zoneId": "eastern_coast",
-      "zoneName": "東方海岸",
-      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_34_4.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "eastern_coast_fill_34_4",
-          "zoneId": "eastern_coast",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_34_4.png"
-        },
-        {
-          "roomId": "eastern_coast_fill_34_4",
-          "zoneId": "eastern_coast",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "eastern_coast_fill_34_4",
-          "zoneId": "eastern_coast",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "eastern_coast_fill_34_5",
-      "roomName": "藍泥北側潮溝",
-      "zoneId": "eastern_coast",
-      "zoneName": "東方海岸",
-      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_34_5.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "eastern_coast_fill_34_5",
-          "zoneId": "eastern_coast",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_34_5.png"
-        },
-        {
-          "roomId": "eastern_coast_fill_34_5",
-          "zoneId": "eastern_coast",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "eastern_coast_fill_34_5",
-          "zoneId": "eastern_coast",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "eastern_coast_fill_34_6",
-      "roomName": "鹽風藍泥北界",
-      "zoneId": "eastern_coast",
-      "zoneName": "東方海岸",
-      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_34_6.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "eastern_coast_fill_34_6",
-          "zoneId": "eastern_coast",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_34_6.png"
-        },
-        {
-          "roomId": "eastern_coast_fill_34_6",
-          "zoneId": "eastern_coast",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "eastern_coast_fill_34_6",
-          "zoneId": "eastern_coast",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "eastern_coast_fill_35_0",
-      "roomName": "斷碼頭東礁封",
-      "zoneId": "eastern_coast",
-      "zoneName": "東方海岸",
-      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_35_0.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "eastern_coast_fill_35_0",
-          "zoneId": "eastern_coast",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_35_0.png"
-        },
-        {
-          "roomId": "eastern_coast_fill_35_0",
-          "zoneId": "eastern_coast",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "eastern_coast_fill_35_0",
-          "zoneId": "eastern_coast",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "eastern_coast_fill_36_2",
-      "roomName": "蛇巢東側浪封",
-      "zoneId": "eastern_coast",
-      "zoneName": "東方海岸",
-      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_36_2.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "eastern_coast_fill_36_2",
-          "zoneId": "eastern_coast",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_36_2.png"
-        },
-        {
-          "roomId": "eastern_coast_fill_36_2",
-          "zoneId": "eastern_coast",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "eastern_coast_fill_36_2",
-          "zoneId": "eastern_coast",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "eastern_coast_fill_37_2",
-      "roomName": "中段碎礁阻帶",
-      "zoneId": "eastern_coast",
-      "zoneName": "東方海岸",
-      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_37_2.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "eastern_coast_fill_37_2",
-          "zoneId": "eastern_coast",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_37_2.png"
-        },
-        {
-          "roomId": "eastern_coast_fill_37_2",
-          "zoneId": "eastern_coast",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "eastern_coast_fill_37_2",
-          "zoneId": "eastern_coast",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "eastern_coast_fill_38_2",
-      "roomName": "霧港西潮前帶",
-      "zoneId": "eastern_coast",
-      "zoneName": "東方海岸",
-      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_38_2.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "eastern_coast_fill_38_2",
-          "zoneId": "eastern_coast",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_38_2.png"
-        },
-        {
-          "roomId": "eastern_coast_fill_38_2",
-          "zoneId": "eastern_coast",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "eastern_coast_fill_38_2",
-          "zoneId": "eastern_coast",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "eastern_coast_fill_39_2",
-      "roomName": "霧港西門路牌潮徑",
-      "zoneId": "eastern_coast",
-      "zoneName": "東方海岸",
-      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_39_2.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "eastern_coast_fill_39_2",
-          "zoneId": "eastern_coast",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_39_2.png"
-        },
-        {
-          "roomId": "eastern_coast_fill_39_2",
-          "zoneId": "eastern_coast",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "eastern_coast_fill_39_2",
-          "zoneId": "eastern_coast",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "ember_march_fill_22_21",
-      "roomName": "星坑東燼封道",
-      "zoneId": "ember_march",
-      "zoneName": "餘燼邊境",
-      "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_22_21.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "ember_march_fill_22_21",
-          "zoneId": "ember_march",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_22_21.png"
-        },
-        {
-          "roomId": "ember_march_fill_22_21",
-          "zoneId": "ember_march",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "ember_march_fill_22_21",
-          "zoneId": "ember_march",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "ember_march_fill_22_24",
-      "roomName": "南燼臺北封灰道",
-      "zoneId": "ember_march",
-      "zoneName": "餘燼邊境",
-      "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_22_24.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "ember_march_fill_22_24",
-          "zoneId": "ember_march",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_22_24.png"
-        },
-        {
-          "roomId": "ember_march_fill_22_24",
-          "zoneId": "ember_march",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "ember_march_fill_26_21",
-      "roomName": "骨窯北封火痕",
-      "zoneId": "ember_march",
-      "zoneName": "餘燼邊境",
-      "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_26_21.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "ember_march_fill_26_21",
-          "zoneId": "ember_march",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_26_21.png"
-        },
-        {
-          "roomId": "ember_march_fill_26_21",
-          "zoneId": "ember_march",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "ember_march_fill_26_21",
-          "zoneId": "ember_march",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "ember_march_fill_28_22",
-      "roomName": "龍印東封灰脊",
-      "zoneId": "ember_march",
-      "zoneName": "餘燼邊境",
-      "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_28_22.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "ember_march_fill_28_22",
-          "zoneId": "ember_march",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_28_22.png"
-        },
-        {
-          "roomId": "ember_march_fill_28_22",
-          "zoneId": "ember_march",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "ember_march_fill_28_22",
-          "zoneId": "ember_march",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "ember_march_fill_30_21",
-      "roomName": "火山灰田西界",
-      "zoneId": "ember_march",
-      "zoneName": "餘燼邊境",
-      "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_30_21.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "ember_march_fill_30_21",
-          "zoneId": "ember_march",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_30_21.png"
-        },
-        {
-          "roomId": "ember_march_fill_30_21",
-          "zoneId": "ember_march",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "ember_march_fill_30_21",
-          "zoneId": "ember_march",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "ember_march_fill_30_23",
-      "roomName": "硫泉西界燼路",
-      "zoneId": "ember_march",
-      "zoneName": "餘燼邊境",
-      "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_30_23.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "ember_march_fill_30_23",
-          "zoneId": "ember_march",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_30_23.png"
-        },
-        {
-          "roomId": "ember_march_fill_30_23",
-          "zoneId": "ember_march",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "ember_march_fill_30_23",
-          "zoneId": "ember_march",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "ember_march_fill_30_24",
-      "roomName": "熔橋西界灰道",
-      "zoneId": "ember_march",
-      "zoneName": "餘燼邊境",
-      "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_30_24.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "ember_march_fill_30_24",
-          "zoneId": "ember_march",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_30_24.png"
-        },
-        {
-          "roomId": "ember_march_fill_30_24",
-          "zoneId": "ember_march",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "ember_march_fill_30_24",
-          "zoneId": "ember_march",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "ember_march_south_portal",
-      "roomName": "南燼傳送石臺",
-      "zoneId": "ember_march",
-      "zoneName": "餘燼邊境",
-      "assetPath": "client/public/images/rooms/images/rooms/ember_march_south_portal.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "ember_march_south_portal",
-          "zoneId": "ember_march",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/ember_march_south_portal.png"
-        },
-        {
-          "roomId": "ember_march_south_portal",
-          "zoneId": "ember_march",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "ember_march_south_shelter",
-      "roomName": "熔灰避風亭",
-      "zoneId": "ember_march",
-      "zoneName": "餘燼邊境",
-      "assetPath": "client/public/images/rooms/images/rooms/ember_march_south_shelter.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "ember_march_south_shelter",
-          "zoneId": "ember_march",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/ember_march_south_shelter.png"
-        },
-        {
-          "roomId": "ember_march_south_shelter",
-          "zoneId": "ember_march",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "ember_march_south_shelter",
-          "zoneId": "ember_march",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "ember_march_south_supply",
-      "roomName": "焦土補給棚",
-      "zoneId": "ember_march",
-      "zoneName": "餘燼邊境",
-      "assetPath": "client/public/images/rooms/images/rooms/ember_march_south_supply.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "ember_march_south_supply",
-          "zoneId": "ember_march",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/ember_march_south_supply.png"
-        },
-        {
-          "roomId": "ember_march_south_supply",
-          "zoneId": "ember_march",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "ember_march_south_supply",
-          "zoneId": "ember_march",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "emerald_canopy_fill_n18_7",
-      "roomName": "琥珀接枝平台",
-      "zoneId": "emerald_canopy",
-      "zoneName": "翡翠樹冠",
-      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n18_7.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "emerald_canopy_fill_n18_7",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n18_7.png"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n18_7",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n18_7",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "emerald_canopy_fill_n19_7",
-      "roomName": "北冠斷枝欄",
-      "zoneId": "emerald_canopy",
-      "zoneName": "翡翠樹冠",
-      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n19_7.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "emerald_canopy_fill_n19_7",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n19_7.png"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n19_7",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n19_7",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "emerald_canopy_fill_n20_7",
-      "roomName": "霧葉封索道",
-      "zoneId": "emerald_canopy",
-      "zoneName": "翡翠樹冠",
-      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n20_7.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "emerald_canopy_fill_n20_7",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n20_7.png"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n20_7",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n20_7",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "emerald_canopy_fill_n21_10",
-      "roomName": "南露藤欄",
-      "zoneId": "emerald_canopy",
-      "zoneName": "翡翠樹冠",
-      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n21_10.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "emerald_canopy_fill_n21_10",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n21_10.png"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n21_10",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n21_10",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "emerald_canopy_fill_n21_7",
-      "roomName": "北風枝籬",
-      "zoneId": "emerald_canopy",
-      "zoneName": "翡翠樹冠",
-      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n21_7.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "emerald_canopy_fill_n21_7",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n21_7.png"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n21_7",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n21_7",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "emerald_canopy_fill_n22_7",
-      "roomName": "翡翠苔枝口",
-      "zoneId": "emerald_canopy",
-      "zoneName": "翡翠樹冠",
-      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n22_7.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "emerald_canopy_fill_n22_7",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n22_7.png"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n22_7",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n22_7",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "emerald_canopy_fill_n22_8",
-      "roomName": "中層葉棚封口",
-      "zoneId": "emerald_canopy",
-      "zoneName": "翡翠樹冠",
-      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n22_8.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "emerald_canopy_fill_n22_8",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n22_8.png"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n22_8",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n22_8",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "emerald_canopy_fill_n23_7",
-      "roomName": "西冠鳥巢欄",
-      "zoneId": "emerald_canopy",
-      "zoneName": "翡翠樹冠",
-      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n23_7.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "emerald_canopy_fill_n23_7",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n23_7.png"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n23_7",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n23_7",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "emerald_canopy_fill_n25_11",
-      "roomName": "西南空枝臺",
-      "zoneId": "emerald_canopy",
-      "zoneName": "翡翠樹冠",
-      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n25_11.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "emerald_canopy_fill_n25_11",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n25_11.png"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n25_11",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n25_11",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "emerald_canopy_fill_n26_10",
-      "roomName": "西界風孔枝",
-      "zoneId": "emerald_canopy",
-      "zoneName": "翡翠樹冠",
-      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n26_10.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "emerald_canopy_fill_n26_10",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n26_10.png"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n26_10",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n26_10",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "emerald_canopy_fill_n26_8",
-      "roomName": "西北葉幕欄",
-      "zoneId": "emerald_canopy",
-      "zoneName": "翡翠樹冠",
-      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n26_8.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "emerald_canopy_fill_n26_8",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n26_8.png"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n26_8",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n26_8",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "frostbite_frozen_divide",
-      "roomName": "霜裂分界",
-      "zoneId": "frostbite_pass",
-      "zoneName": "霜咬隘口",
-      "assetPath": "client/public/images/rooms/images/rooms/frostbite_frozen_divide.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "frostbite_frozen_divide",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/frostbite_frozen_divide.png"
-        },
-        {
-          "roomId": "frostbite_frozen_divide",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "frostbite_frozen_divide",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "frostbite_pass_fill_n19_n12",
-      "roomName": "雨棚西南冰封坡",
-      "zoneId": "frostbite_pass",
-      "zoneName": "霜咬隘口",
-      "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n19_n12.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "frostbite_pass_fill_n19_n12",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n19_n12.png"
-        },
-        {
-          "roomId": "frostbite_pass_fill_n19_n12",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "frostbite_pass_fill_n19_n12",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "frostbite_pass_fill_n19_n13",
-      "roomName": "雨棚西界凍石路牌",
-      "zoneId": "frostbite_pass",
-      "zoneName": "霜咬隘口",
-      "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n19_n13.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "frostbite_pass_fill_n19_n13",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n19_n13.png"
-        },
-        {
-          "roomId": "frostbite_pass_fill_n19_n13",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "frostbite_pass_fill_n19_n13",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "frostbite_pass_fill_n19_n14",
-      "roomName": "高原崖門西凍路牌",
-      "zoneId": "frostbite_pass",
-      "zoneName": "霜咬隘口",
-      "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n19_n14.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "frostbite_pass_fill_n19_n14",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n19_n14.png"
-        },
-        {
-          "roomId": "frostbite_pass_fill_n19_n14",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "frostbite_pass_fill_n19_n14",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "frostbite_pass_fill_n20_n12",
-      "roomName": "東段冰封橫道",
-      "zoneId": "frostbite_pass",
-      "zoneName": "霜咬隘口",
-      "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n20_n12.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "frostbite_pass_fill_n20_n12",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n20_n12.png"
-        },
-        {
-          "roomId": "frostbite_pass_fill_n20_n12",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "frostbite_pass_fill_n20_n12",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "frostbite_pass_fill_n21_n12",
-      "roomName": "極封門南霜脊",
-      "zoneId": "frostbite_pass",
-      "zoneName": "霜咬隘口",
-      "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n21_n12.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "frostbite_pass_fill_n21_n12",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n21_n12.png"
-        },
-        {
-          "roomId": "frostbite_pass_fill_n21_n12",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "frostbite_pass_fill_n21_n12",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "frostbite_pass_fill_n22_n14",
-      "roomName": "龍息台東冰裂牆",
-      "zoneId": "frostbite_pass",
-      "zoneName": "霜咬隘口",
-      "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n22_n14.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "frostbite_pass_fill_n22_n14",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n22_n14.png"
-        },
-        {
-          "roomId": "frostbite_pass_fill_n22_n14",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "frostbite_pass_fill_n22_n14",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
-    {
-      "roomId": "frostbite_pass_fill_n27_n14",
-      "roomName": "空山風門東霜牆",
-      "zoneId": "frostbite_pass",
-      "zoneName": "霜咬隘口",
-      "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n27_n14.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "frostbite_pass_fill_n27_n14",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n27_n14.png"
-        },
-        {
-          "roomId": "frostbite_pass_fill_n27_n14",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
-          "kind": "prompt.function",
-          "message": "imagePrompt must include room function"
-        },
-        {
-          "roomId": "frostbite_pass_fill_n27_n14",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
-          "kind": "prompt.style",
-          "message": "imagePrompt missing required style phrase"
-        }
-      ]
-    },
     {
       "roomId": "frozen_wastes_fill_n24_n17",
       "roomName": "龍息裂谷東雪脊封",
@@ -8092,461 +6436,6 @@
       ]
     },
     {
-      "roomId": "thundersteppe_fill_10_23",
-      "roomName": "雷草西緣",
-      "zoneId": "thundersteppe",
-      "zoneName": "雷鳴草原",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_10_23.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "thundersteppe_fill_10_23",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/thundersteppe_fill_10_23.png"
-        },
-        {
-          "roomId": "thundersteppe_fill_10_23",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/thundersteppe_fill_10_23.png"
-        },
-        {
-          "roomId": "thundersteppe_fill_10_23",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "thundersteppe_fill_10_24",
-      "roomName": "雷雨草徑",
-      "zoneId": "thundersteppe",
-      "zoneName": "雷鳴草原",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_10_24.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "thundersteppe_fill_10_24",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/thundersteppe_fill_10_24.png"
-        },
-        {
-          "roomId": "thundersteppe_fill_10_24",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/thundersteppe_fill_10_24.png"
-        },
-        {
-          "roomId": "thundersteppe_fill_10_24",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "thundersteppe_fill_10_25",
-      "roomName": "風祭草坡",
-      "zoneId": "thundersteppe",
-      "zoneName": "雷鳴草原",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_10_25.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "thundersteppe_fill_10_25",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/thundersteppe_fill_10_25.png"
-        },
-        {
-          "roomId": "thundersteppe_fill_10_25",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/thundersteppe_fill_10_25.png"
-        },
-        {
-          "roomId": "thundersteppe_fill_10_25",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "thundersteppe_fill_11_22",
-      "roomName": "滾雷門北封草",
-      "zoneId": "thundersteppe",
-      "zoneName": "雷鳴草原",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_11_22.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "thundersteppe_fill_11_22",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/thundersteppe_fill_11_22.png"
-        },
-        {
-          "roomId": "thundersteppe_fill_11_22",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/thundersteppe_fill_11_22.png"
-        },
-        {
-          "roomId": "thundersteppe_fill_11_22",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "thundersteppe_fill_12_21",
-      "roomName": "雨影西北焦痕",
-      "zoneId": "thundersteppe",
-      "zoneName": "雷鳴草原",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_12_21.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "thundersteppe_fill_12_21",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/thundersteppe_fill_12_21.png"
-        },
-        {
-          "roomId": "thundersteppe_fill_12_21",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/thundersteppe_fill_12_21.png"
-        },
-        {
-          "roomId": "thundersteppe_fill_12_21",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "thundersteppe_fill_12_25",
-      "roomName": "風祠北崖焦草",
-      "zoneId": "thundersteppe",
-      "zoneName": "雷鳴草原",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_12_25.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "thundersteppe_fill_12_25",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/thundersteppe_fill_12_25.png"
-        },
-        {
-          "roomId": "thundersteppe_fill_12_25",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/thundersteppe_fill_12_25.png"
-        },
-        {
-          "roomId": "thundersteppe_fill_12_25",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "thundersteppe_fill_14_21",
-      "roomName": "月沼南雷封界",
-      "zoneId": "thundersteppe",
-      "zoneName": "雷鳴草原",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_14_21.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "thundersteppe_fill_14_21",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/thundersteppe_fill_14_21.png"
-        },
-        {
-          "roomId": "thundersteppe_fill_14_21",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/thundersteppe_fill_14_21.png"
-        },
-        {
-          "roomId": "thundersteppe_fill_14_21",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "thundersteppe_fill_14_25",
-      "roomName": "雷針南封草場",
-      "zoneId": "thundersteppe",
-      "zoneName": "雷鳴草原",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_14_25.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "thundersteppe_fill_14_25",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/thundersteppe_fill_14_25.png"
-        },
-        {
-          "roomId": "thundersteppe_fill_14_25",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/thundersteppe_fill_14_25.png"
-        },
-        {
-          "roomId": "thundersteppe_fill_14_25",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "thundersteppe_fill_15_24",
-      "roomName": "天火台西南焦坡",
-      "zoneId": "thundersteppe",
-      "zoneName": "雷鳴草原",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_15_24.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "thundersteppe_fill_15_24",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/thundersteppe_fill_15_24.png"
-        },
-        {
-          "roomId": "thundersteppe_fill_15_24",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/thundersteppe_fill_15_24.png"
-        },
-        {
-          "roomId": "thundersteppe_fill_15_24",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "thundersteppe_fill_17_22",
-      "roomName": "龍 storm 眼西封痕",
-      "zoneId": "thundersteppe",
-      "zoneName": "雷鳴草原",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_17_22.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "thundersteppe_fill_17_22",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/thundersteppe_fill_17_22.png"
-        },
-        {
-          "roomId": "thundersteppe_fill_17_22",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/thundersteppe_fill_17_22.png"
-        },
-        {
-          "roomId": "thundersteppe_fill_17_22",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "thundersteppe_fill_20_22",
-      "roomName": "灰門西雷草坡",
-      "zoneId": "thundersteppe",
-      "zoneName": "雷鳴草原",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_20_22.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "thundersteppe_fill_20_22",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/thundersteppe_fill_20_22.png"
-        },
-        {
-          "roomId": "thundersteppe_fill_20_22",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/thundersteppe_fill_20_22.png"
-        },
-        {
-          "roomId": "thundersteppe_fill_20_22",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "thundersteppe_fill_20_23",
-      "roomName": "東界燒哨雷路",
-      "zoneId": "thundersteppe",
-      "zoneName": "雷鳴草原",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_20_23.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "thundersteppe_fill_20_23",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/thundersteppe_fill_20_23.png"
-        },
-        {
-          "roomId": "thundersteppe_fill_20_23",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/thundersteppe_fill_20_23.png"
-        },
-        {
-          "roomId": "thundersteppe_fill_20_23",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "thundersteppe_fill_20_24",
-      "roomName": "玻灰東界草地",
-      "zoneId": "thundersteppe",
-      "zoneName": "雷鳴草原",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_20_24.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "thundersteppe_fill_20_24",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/thundersteppe_fill_20_24.png"
-        },
-        {
-          "roomId": "thundersteppe_fill_20_24",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/thundersteppe_fill_20_24.png"
-        },
-        {
-          "roomId": "thundersteppe_fill_20_24",
-          "zoneId": "thundersteppe",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
       "roomId": "volcano_zone_fill_31_20",
       "roomName": "火山北灰坡",
       "zoneId": "volcano_zone",
@@ -11031,24 +8920,8 @@
       "roomId": "dark_forest_fill_n1_13",
       "zoneId": "dark_forest",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n1_13.png"
-    },
-    {
-      "roomId": "dark_forest_fill_n1_13",
-      "zoneId": "dark_forest",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "dark_forest_fill_n1_14",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n1_14.png"
     },
     {
       "roomId": "dark_forest_fill_n1_14",
@@ -11061,24 +8934,8 @@
       "roomId": "dark_forest_fill_n1_15",
       "zoneId": "dark_forest",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n1_15.png"
-    },
-    {
-      "roomId": "dark_forest_fill_n1_15",
-      "zoneId": "dark_forest",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "dark_forest_fill_n1_16",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n1_16.png"
     },
     {
       "roomId": "dark_forest_fill_n1_16",
@@ -11091,32 +8948,8 @@
       "roomId": "dark_forest_fill_n2_14",
       "zoneId": "dark_forest",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n2_14.png"
-    },
-    {
-      "roomId": "dark_forest_fill_n2_14",
-      "zoneId": "dark_forest",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "dark_forest_fill_n3_14",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n3_14.png"
-    },
-    {
-      "roomId": "dark_forest_fill_n4_12",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n4_12.png"
     },
     {
       "roomId": "dark_forest_fill_n4_12",
@@ -11129,24 +8962,8 @@
       "roomId": "dark_forest_fill_n4_14",
       "zoneId": "dark_forest",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n4_14.png"
-    },
-    {
-      "roomId": "dark_forest_fill_n4_14",
-      "zoneId": "dark_forest",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "dark_forest_fill_n4_16",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n4_16.png"
     },
     {
       "roomId": "dark_forest_fill_n4_16",
@@ -11159,14 +8976,6 @@
       "roomId": "dark_forest_fill_n4_17",
       "zoneId": "dark_forest",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n4_17.png"
-    },
-    {
-      "roomId": "dark_forest_fill_n4_17",
-      "zoneId": "dark_forest",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
     },
@@ -11174,24 +8983,8 @@
       "roomId": "dark_forest_fill_n4_18",
       "zoneId": "dark_forest",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n4_18.png"
-    },
-    {
-      "roomId": "dark_forest_fill_n4_18",
-      "zoneId": "dark_forest",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "dark_forest_fill_n7_16",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n7_16.png"
     },
     {
       "roomId": "dark_forest_fill_n7_16",
@@ -11255,14 +9048,6 @@
       "severity": "warning",
       "kind": "prompt.room_id",
       "message": "Phase 5 target prompts should include room id"
-    },
-    {
-      "roomId": "darkwood_border_trail",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/darkwood_border_trail.png"
     },
     {
       "roomId": "darkwood_border_trail",
@@ -11793,31 +9578,8 @@
       "roomId": "eastern_coast_fill_31_0",
       "zoneId": "eastern_coast",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_31_0.png"
-    },
-    {
-      "roomId": "eastern_coast_fill_31_0",
-      "zoneId": "eastern_coast",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "eastern_coast_fill_31_0",
-      "zoneId": "eastern_coast",
-      "severity": "error",
       "kind": "prompt.style",
       "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "eastern_coast_fill_31_3",
-      "zoneId": "eastern_coast",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_31_3.png"
     },
     {
       "roomId": "eastern_coast_fill_31_3",
@@ -11837,14 +9599,6 @@
       "roomId": "eastern_coast_fill_34_4",
       "zoneId": "eastern_coast",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_34_4.png"
-    },
-    {
-      "roomId": "eastern_coast_fill_34_4",
-      "zoneId": "eastern_coast",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
     },
@@ -11859,14 +9613,6 @@
       "roomId": "eastern_coast_fill_34_5",
       "zoneId": "eastern_coast",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_34_5.png"
-    },
-    {
-      "roomId": "eastern_coast_fill_34_5",
-      "zoneId": "eastern_coast",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
     },
@@ -11881,14 +9627,6 @@
       "roomId": "eastern_coast_fill_34_6",
       "zoneId": "eastern_coast",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_34_6.png"
-    },
-    {
-      "roomId": "eastern_coast_fill_34_6",
-      "zoneId": "eastern_coast",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
     },
@@ -11903,14 +9641,6 @@
       "roomId": "eastern_coast_fill_35_0",
       "zoneId": "eastern_coast",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_35_0.png"
-    },
-    {
-      "roomId": "eastern_coast_fill_35_0",
-      "zoneId": "eastern_coast",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
     },
@@ -11925,14 +9655,6 @@
       "roomId": "eastern_coast_fill_36_2",
       "zoneId": "eastern_coast",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_36_2.png"
-    },
-    {
-      "roomId": "eastern_coast_fill_36_2",
-      "zoneId": "eastern_coast",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
     },
@@ -11947,14 +9669,6 @@
       "roomId": "eastern_coast_fill_37_2",
       "zoneId": "eastern_coast",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_37_2.png"
-    },
-    {
-      "roomId": "eastern_coast_fill_37_2",
-      "zoneId": "eastern_coast",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
     },
@@ -11969,14 +9683,6 @@
       "roomId": "eastern_coast_fill_38_2",
       "zoneId": "eastern_coast",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_38_2.png"
-    },
-    {
-      "roomId": "eastern_coast_fill_38_2",
-      "zoneId": "eastern_coast",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
     },
@@ -11986,14 +9692,6 @@
       "severity": "error",
       "kind": "prompt.style",
       "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "eastern_coast_fill_39_2",
-      "zoneId": "eastern_coast",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_39_2.png"
     },
     {
       "roomId": "eastern_coast_fill_39_2",
@@ -12174,14 +9872,6 @@
       "roomId": "ember_march_fill_22_21",
       "zoneId": "ember_march",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_22_21.png"
-    },
-    {
-      "roomId": "ember_march_fill_22_21",
-      "zoneId": "ember_march",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
     },
@@ -12196,24 +9886,8 @@
       "roomId": "ember_march_fill_22_24",
       "zoneId": "ember_march",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_22_24.png"
-    },
-    {
-      "roomId": "ember_march_fill_22_24",
-      "zoneId": "ember_march",
-      "severity": "error",
       "kind": "prompt.style",
       "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "ember_march_fill_26_21",
-      "zoneId": "ember_march",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_26_21.png"
     },
     {
       "roomId": "ember_march_fill_26_21",
@@ -12233,14 +9907,6 @@
       "roomId": "ember_march_fill_28_22",
       "zoneId": "ember_march",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_28_22.png"
-    },
-    {
-      "roomId": "ember_march_fill_28_22",
-      "zoneId": "ember_march",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
     },
@@ -12255,14 +9921,6 @@
       "roomId": "ember_march_fill_30_21",
       "zoneId": "ember_march",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_30_21.png"
-    },
-    {
-      "roomId": "ember_march_fill_30_21",
-      "zoneId": "ember_march",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
     },
@@ -12277,14 +9935,6 @@
       "roomId": "ember_march_fill_30_23",
       "zoneId": "ember_march",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_30_23.png"
-    },
-    {
-      "roomId": "ember_march_fill_30_23",
-      "zoneId": "ember_march",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
     },
@@ -12294,14 +9944,6 @@
       "severity": "error",
       "kind": "prompt.style",
       "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "ember_march_fill_30_24",
-      "zoneId": "ember_march",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_30_24.png"
     },
     {
       "roomId": "ember_march_fill_30_24",
@@ -12377,24 +10019,8 @@
       "roomId": "ember_march_south_portal",
       "zoneId": "ember_march",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/ember_march_south_portal.png"
-    },
-    {
-      "roomId": "ember_march_south_portal",
-      "zoneId": "ember_march",
-      "severity": "error",
       "kind": "prompt.style",
       "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "ember_march_south_shelter",
-      "zoneId": "ember_march",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/ember_march_south_shelter.png"
     },
     {
       "roomId": "ember_march_south_shelter",
@@ -12409,14 +10035,6 @@
       "severity": "error",
       "kind": "prompt.style",
       "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "ember_march_south_supply",
-      "zoneId": "ember_march",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/ember_march_south_supply.png"
     },
     {
       "roomId": "ember_march_south_supply",
@@ -12485,14 +10103,6 @@
       "roomId": "emerald_canopy_fill_n18_7",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n18_7.png"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n18_7",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
     },
@@ -12507,14 +10117,6 @@
       "roomId": "emerald_canopy_fill_n19_7",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n19_7.png"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n19_7",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
     },
@@ -12529,14 +10131,6 @@
       "roomId": "emerald_canopy_fill_n20_7",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n20_7.png"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n20_7",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
     },
@@ -12551,14 +10145,6 @@
       "roomId": "emerald_canopy_fill_n21_10",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n21_10.png"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n21_10",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
     },
@@ -12573,14 +10159,6 @@
       "roomId": "emerald_canopy_fill_n21_7",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n21_7.png"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n21_7",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
     },
@@ -12595,14 +10173,6 @@
       "roomId": "emerald_canopy_fill_n22_7",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n22_7.png"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n22_7",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
     },
@@ -12617,14 +10187,6 @@
       "roomId": "emerald_canopy_fill_n22_8",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n22_8.png"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n22_8",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
     },
@@ -12639,14 +10201,6 @@
       "roomId": "emerald_canopy_fill_n23_7",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n23_7.png"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n23_7",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
     },
@@ -12661,14 +10215,6 @@
       "roomId": "emerald_canopy_fill_n25_11",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n25_11.png"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n25_11",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
     },
@@ -12683,14 +10229,6 @@
       "roomId": "emerald_canopy_fill_n26_10",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n26_10.png"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n26_10",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
     },
@@ -12700,14 +10238,6 @@
       "severity": "error",
       "kind": "prompt.style",
       "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n26_8",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n26_8.png"
     },
     {
       "roomId": "emerald_canopy_fill_n26_8",
@@ -12972,14 +10502,6 @@
       "roomId": "frostbite_frozen_divide",
       "zoneId": "frostbite_pass",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/frostbite_frozen_divide.png"
-    },
-    {
-      "roomId": "frostbite_frozen_divide",
-      "zoneId": "frostbite_pass",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
     },
@@ -13043,14 +10565,6 @@
       "roomId": "frostbite_pass_fill_n19_n12",
       "zoneId": "frostbite_pass",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n19_n12.png"
-    },
-    {
-      "roomId": "frostbite_pass_fill_n19_n12",
-      "zoneId": "frostbite_pass",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
     },
@@ -13065,14 +10579,6 @@
       "roomId": "frostbite_pass_fill_n19_n13",
       "zoneId": "frostbite_pass",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n19_n13.png"
-    },
-    {
-      "roomId": "frostbite_pass_fill_n19_n13",
-      "zoneId": "frostbite_pass",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
     },
@@ -13087,14 +10593,6 @@
       "roomId": "frostbite_pass_fill_n19_n14",
       "zoneId": "frostbite_pass",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n19_n14.png"
-    },
-    {
-      "roomId": "frostbite_pass_fill_n19_n14",
-      "zoneId": "frostbite_pass",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
     },
@@ -13109,14 +10607,6 @@
       "roomId": "frostbite_pass_fill_n20_n12",
       "zoneId": "frostbite_pass",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n20_n12.png"
-    },
-    {
-      "roomId": "frostbite_pass_fill_n20_n12",
-      "zoneId": "frostbite_pass",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
     },
@@ -13131,14 +10621,6 @@
       "roomId": "frostbite_pass_fill_n21_n12",
       "zoneId": "frostbite_pass",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n21_n12.png"
-    },
-    {
-      "roomId": "frostbite_pass_fill_n21_n12",
-      "zoneId": "frostbite_pass",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
     },
@@ -13153,14 +10635,6 @@
       "roomId": "frostbite_pass_fill_n22_n14",
       "zoneId": "frostbite_pass",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n22_n14.png"
-    },
-    {
-      "roomId": "frostbite_pass_fill_n22_n14",
-      "zoneId": "frostbite_pass",
-      "severity": "error",
       "kind": "prompt.function",
       "message": "imagePrompt must include room function"
     },
@@ -13170,14 +10644,6 @@
       "severity": "error",
       "kind": "prompt.style",
       "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "frostbite_pass_fill_n27_n14",
-      "zoneId": "frostbite_pass",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n27_n14.png"
     },
     {
       "roomId": "frostbite_pass_fill_n27_n14",
@@ -21826,303 +19292,18 @@
       "message": "Phase 5 target prompts should include room id"
     },
     {
-      "roomId": "thundersteppe_fill_10_23",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_10_23.png"
-    },
-    {
-      "roomId": "thundersteppe_fill_10_23",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_10_23.png"
-    },
-    {
-      "roomId": "thundersteppe_fill_10_23",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "thundersteppe_fill_10_24",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_10_24.png"
-    },
-    {
-      "roomId": "thundersteppe_fill_10_24",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_10_24.png"
-    },
-    {
-      "roomId": "thundersteppe_fill_10_24",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "thundersteppe_fill_10_25",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_10_25.png"
-    },
-    {
-      "roomId": "thundersteppe_fill_10_25",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_10_25.png"
-    },
-    {
-      "roomId": "thundersteppe_fill_10_25",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "thundersteppe_fill_11_22",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_11_22.png"
-    },
-    {
-      "roomId": "thundersteppe_fill_11_22",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_11_22.png"
-    },
-    {
-      "roomId": "thundersteppe_fill_11_22",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "thundersteppe_fill_12_21",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_12_21.png"
-    },
-    {
-      "roomId": "thundersteppe_fill_12_21",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_12_21.png"
-    },
-    {
-      "roomId": "thundersteppe_fill_12_21",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "thundersteppe_fill_12_25",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_12_25.png"
-    },
-    {
-      "roomId": "thundersteppe_fill_12_25",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_12_25.png"
-    },
-    {
-      "roomId": "thundersteppe_fill_12_25",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "thundersteppe_fill_14_21",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_14_21.png"
-    },
-    {
-      "roomId": "thundersteppe_fill_14_21",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_14_21.png"
-    },
-    {
-      "roomId": "thundersteppe_fill_14_21",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "thundersteppe_fill_14_25",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_14_25.png"
-    },
-    {
-      "roomId": "thundersteppe_fill_14_25",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_14_25.png"
-    },
-    {
-      "roomId": "thundersteppe_fill_14_25",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "thundersteppe_fill_15_24",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_15_24.png"
-    },
-    {
-      "roomId": "thundersteppe_fill_15_24",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_15_24.png"
-    },
-    {
-      "roomId": "thundersteppe_fill_15_24",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "thundersteppe_fill_17_22",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_17_22.png"
-    },
-    {
-      "roomId": "thundersteppe_fill_17_22",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_17_22.png"
-    },
-    {
-      "roomId": "thundersteppe_fill_17_22",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "thundersteppe_fill_20_22",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_20_22.png"
-    },
-    {
-      "roomId": "thundersteppe_fill_20_22",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_20_22.png"
-    },
-    {
-      "roomId": "thundersteppe_fill_20_22",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
       "roomId": "thundersteppe_fill_20_23",
       "zoneId": "thundersteppe",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_20_23.png"
-    },
-    {
-      "roomId": "thundersteppe_fill_20_23",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_20_23.png"
-    },
-    {
-      "roomId": "thundersteppe_fill_20_23",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
       "roomId": "thundersteppe_fill_20_24",
       "zoneId": "thundersteppe",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_20_24.png"
-    },
-    {
-      "roomId": "thundersteppe_fill_20_24",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/thundersteppe_fill_20_24.png"
-    },
-    {
-      "roomId": "thundersteppe_fill_20_24",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
       "roomId": "thundersteppe_herd_plain",
