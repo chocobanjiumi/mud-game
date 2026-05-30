@@ -310,7 +310,7 @@ celestial_final_seal: {
     image: 'old_farmland_crossroads.png',
     imagePrompt: '舊農路口 in old_farmland, entrance traffic node with muddy cart road, leaning signpost, wheat stubble, village path and soft cloudy light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain road, clear lantern light',
     description:
-      '村外舊農路在此分成數條泥濘小徑，歪斜木牌上還能辨認出穀倉、農舍和舊井的方向。田壟長滿雜草，乾裂車轍裡積著昨夜雨水，遠處傳來田鼠啃咬木板的細碎聲。這裡是老舊農場的入口與安全錨點，玩家可以從路口判斷各支線位置，也能沿西側小路回到新手村外圍農田。',
+      '村外舊農路在此分成數條泥濘小徑，歪斜木牌上還能辨認出穀倉、農舍和舊井的方向。田壟長滿雜草，乾裂車轍裡積著昨夜雨水，遠處傳來田鼠啃咬木板的細碎聲。這裡是老舊農場的入口與安全錨點，旅人可從路口判斷各支線位置，也能沿西側小路回到新手村外圍農田。木牌背面還有被雨水泡軟的分區圖，標出北側荒草麥田、東側鼠患水溝與南側舊車道。',
     exits: [
       {
         direction: 'west',
@@ -344,7 +344,7 @@ old_farmland_overgrown_field: {
     image: 'old_farmland_overgrown_field.png',
     imagePrompt: '荒草麥田 in old_farmland, overgrown wheat rows, tall weeds, rat holes, broken irrigation stakes and grey morning light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '舊麥田多年無人收割，麥稈和野草長到腰間，田埂幾乎被掩埋。風一吹過，草浪下方就會露出一排排田鼠怪物洞，偶爾還有黑鴉停在斷裂灌溉樁上觀察。泥土仍保留肥力，玩家能在草叢中採集野菜或找回遺失農具，但每次翻動田壟都可能驚動藏在根部的鼠群。',
+      '舊麥田多年無人收割，麥稈和野草長到腰間，田埂幾乎被掩埋。風一吹過，草浪下方就會露出一排排田鼠洞，偶爾還有黑鴉停在斷裂灌溉樁上觀察。泥土仍保留肥力，旅人能在草叢中採集野菜或找回遺失農具，但每次翻動田壟都可能驚動藏在根部的鼠群。北側稻草人影子會在草浪間若隱若現，東面塌陷穀倉則傳來乾草與木樑的霉味。',
     exits: [
       { direction: 'south', targetRoomId: 'old_farmland_crossroads', description: '沿田埂回到舊農路口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'north', targetRoomId: 'old_farmland_scarecrow_watch', description: '田中央有一座破稻草人', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -372,7 +372,7 @@ old_farmland_rat_ditch: {
     image: 'old_farmland_rat_ditch.png',
     imagePrompt: '鼠患水溝 in old_farmland, muddy drainage ditch with rat tunnels, broken boards, weeds and dull water reflections, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain water, clear lantern light',
     description:
-      '農路東側的排水溝已被泥沙堵住，淺水散發潮濕腐味，兩岸木板被啃出許多缺口。田鼠沿著水溝築巢，把掉落穀粒和破布拖進洞中，讓整段溝渠像一條會蠕動的灰色帶子。玩家可清理堵塞處恢復灌溉，也能在漂浮雜物裡找到小型材料，但必須留意水面下的史萊姆泡泡。',
+      '農路東側的排水溝已被泥沙堵住，淺水散發潮濕腐味，兩岸木板被啃出許多缺口。田鼠沿著水溝築巢，把掉落穀粒和破布拖進洞中，讓整段溝渠像一條會蠕動的灰色帶子。旅人可清理堵塞處恢復灌溉，也能在漂浮雜物裡找到小型材料，但必須留意水面下的史萊姆泡泡。西側木板回到路口，東面堵塞水流則指向乾涸灌溉渠。',
     exits: [
       { direction: 'west', targetRoomId: 'old_farmland_crossroads', description: '跨過木板回到路口' },
       { direction: 'north', targetRoomId: 'old_farmland_collapsed_barn', description: '水溝延伸到塌穀倉旁', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -399,7 +399,7 @@ old_farmland_scarecrow_watch: {
     image: 'old_farmland_scarecrow_watch.png',
     imagePrompt: '稻草人看守地 in old_farmland, eerie scarecrow in tall wheat, crow feathers, patched coat, dusk field and hidden rat holes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain field, clear lantern light',
     description:
-      '荒草麥田中央立著一座破稻草人，草帽被雨水壓歪，外套袖口掛滿黑鴉羽毛。它原本只是農夫用來趕鳥的工具，如今卻總在沒人看見時換個角度，彷彿仍努力守住這片田。稻草人怪物腳下有許多被啄開的田鼠洞和亮晶晶的小物，玩家若搜索可找到作物種子，也可能驚動盤旋的黑鴉群。',
+      '荒草麥田中央立著一座破稻草人，草帽被雨水壓歪，外套袖口掛滿黑鴉羽毛。它原本只是農夫用來趕鳥的工具，如今卻總在沒人看見時換個角度，彷彿仍努力守住這片田。稻草人腳下有許多被啄開的田鼠洞和亮晶晶的小物，搜索時可找到作物種子，也可能驚動盤旋的黑鴉群。南側草浪能退回荒草麥田，東面破井在田邊投下陰影。',
     exits: [
       { direction: 'south', targetRoomId: 'old_farmland_overgrown_field', description: '穿過草浪回到荒草麥田', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'old_farmland_well', description: '破井在田邊投下陰影', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -466,7 +466,7 @@ old_farmland_well: {
     image: 'old_farmland_well.png',
     imagePrompt: '舊井 in old_farmland, mossy stone well beside fields, cracked bucket, dark water, weeds and pale afternoon light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain stone, clear lantern light',
     description:
-      '田邊舊井的石圈長滿青苔，吊桶繩索已經斷裂，只剩半截泡在黑水裡。靠近井口能聽見水滴聲和微弱回音，像有人在井底敲擊石壁。井旁泥地有野獸腳印和孩子刻下的舊塗鴉，顯示這裡曾是農場居民取水與閒聊的地方。如今井水被魔化作物根鬚污染，偶爾會冒出綠色史萊姆。',
+      '田邊舊井的石圈長滿青苔，吊桶繩索已經斷裂，只剩半截泡在黑水裡。靠近井口能聽見水滴聲和微弱回音，像有人在井底敲擊石壁。井旁泥地有野獸腳印和孩子刻下的舊塗鴉，顯示這裡曾是農場居民取水與閒聊的地方。如今井水被魔化作物根鬚污染，偶爾會冒出綠色史萊姆。西側小徑繞回塌陷穀倉，南側暗渠沿乾裂渠壁接向灌溉渠。',
     exits: [
       {
         direction: 'west',
@@ -550,7 +550,7 @@ old_farmland_mildew_orchard: {
     image: 'old_farmland_mildew_orchard.png',
     imagePrompt: '霉斑果園 in old_farmland, old orchard with spotted fruit, bent apple trees, crow nests and green mildew haze, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '舊果園的蘋果樹和梨樹彎得很低，枝頭掛滿帶霉斑的果實，地上腐果吸引黑鴉與田鼠。樹幹上有農夫刻下的採收記號，旁邊卻長出不自然的綠色菌膜，顯示井水污染已蔓延到根部。玩家可在果園採集尚未腐壞的果子或藥用樹皮，也能找到通往蜂箱行列與舊井的小路。',
+      '舊果園的蘋果樹和梨樹彎得很低，枝頭掛滿帶霉斑的果實，地上腐果吸引黑鴉與田鼠。樹幹上有農夫刻下的採收記號，旁邊卻長出不自然的綠色菌膜，顯示井水污染已蔓延到根部。旅人可在果園採集尚未腐壞的果子或藥用樹皮，也能找到通往蜂箱行列與舊井的小路。西側藤蔓繞回南瓜地，南側樹根坡道會下到青苔井畔。',
     exits: [
       {
         direction: 'west',
@@ -621,7 +621,7 @@ old_farmland_irrigation_channel: {
     image: 'old_farmland_irrigation_channel.png',
     imagePrompt: '乾涸灌溉渠 in old_farmland, cracked irrigation channel with weeds, slime puddles, wooden sluice and muddy banks, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain fantasy terrain, clear lantern light',
     description:
-      '灌溉渠原本把井水送往整片農場，如今大半乾涸，只剩幾處綠色水窪和裂開木閘。渠底的泥土留下不同方向的怪物拖痕，表示史萊姆和田鼠都把這裡當成安全通道。玩家若修好木閘，可以讓水流重新接到南瓜地與果園，也可能把躲在水窪中的史萊姆一起沖出來。',
+      '灌溉渠原本把井水送往整片農場，如今大半乾涸，只剩幾處綠色水窪和裂開木閘。渠底的泥土留下不同方向的怪物拖痕，表示史萊姆和田鼠都把這裡當成安全通道。若修好木閘，可以讓水流重新接到南瓜地與果園，也可能把躲在水窪中的史萊姆一起沖出來。西側堵塞水溝回到鼠患水溝，北側渠壁上行可抵達舊井，東面小糧倉仍能看見破木梯。',
     exits: [
       { direction: 'west', targetRoomId: 'old_farmland_rat_ditch', description: '水溝堵塞處在西邊' },
       {
@@ -771,7 +771,7 @@ old_farmland_root_cellar: {
     image: 'old_farmland_root_cellar.png',
     imagePrompt: '地下根窖 in old_farmland, underground root cellar with shelves, turnips, creeping roots, damp lantern light and slime puddles, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain root, clear lantern light',
     description:
-      '農舍地板下的根窖陰冷潮濕，木架上擺著乾癟蘿蔔、馬鈴薯和幾罐封蠟食物。根鬚從牆縫鑽入，把架子纏成歪斜牢籠，地面水窪裡漂著綠色黏液與怪物滑行痕。根窖深處有通往南瓜地的低矮土洞，也藏著農夫一家離開前留下的密封箱。這裡兼具探索、資源與小型危險事件。',
+      '地下根窖藏在南瓜藤與農舍地板下方，入口木門半陷在濕土裡，門縫透出腐根與冷泥味。階梯兩側堆著舊蘿蔔箱、破陶罐和被啃空的麻袋，牆面還留有農夫用粉筆記下的儲糧日期。根窖深處盤著受污染的作物根鬚，偶爾會把地面上的南瓜藤拉緊。這裡是農舍線索與危險地點，南側可回南瓜地，北面則接近荒廢農舍的地板裂縫。',
     exits: [
       {
         direction: 'east',
