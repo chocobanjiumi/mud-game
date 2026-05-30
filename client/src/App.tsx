@@ -11,6 +11,7 @@ import SkillTablePage from './components/SkillTablePage';
 import type { CreateCharacterPayload } from '@game/shared';
 
 const WikiPage = lazy(() => import('./components/WikiPage'));
+const BattleMockup = lazy(() => import('./components/BattleMockup'));
 const SuffixPage = lazy(() => import('./components/SuffixPage'));
 const MonsterPage = lazy(() => import('./components/MonsterPage'));
 const UniqueItemPage = lazy(() => import('./components/UniqueItemPage'));
@@ -29,6 +30,13 @@ export const arinova = new Arinova({
 
 export default function App() {
   const path = window.location.pathname.replace(/\/+$/, '');
+  if (path === '/mud/battle') {
+    return (
+      <Suspense fallback={<div className="h-full overflow-y-auto bg-bg-primary p-4 text-text-primary">Loading battle mockup...</div>}>
+        <BattleMockup />
+      </Suspense>
+    );
+  }
   if (path === '/mud/wiki') {
     return (
       <Suspense fallback={<div className="h-full overflow-y-auto bg-bg-primary p-4 text-text-primary">Loading wiki...</div>}>
