@@ -468,7 +468,7 @@ export const STATIC_WORLD_FILLER_ROOMS_PART_004: Record<string, RoomDef> = {
     "id": "moonlit_fen_fill_18_13",
     "name": "月沼北汊",
     "zone": "moonlit_fen",
-    "description": "月沼北汊貼著月光濕地北緣，北側湖岸被黑水切斷，南面沉木橋露出一排濕滑木脊。草叢間有霧氣與水草採集痕跡，這裡是北側短路線端點，必須沿南側木脊回到主路。",
+    "description": "月沼北汊貼著月光濕地北緣，北側湖岸被黑水切斷，南面沉木橋露出一排濕滑木脊。草叢間有霧氣、水草和被露水壓彎的蘆穗，舊腳印只到木脊前就消失。北岸水面看似平靜，實際沒有能站穩的踏點，黑泥會把倒影拉成假路。這裡作為北側短線端點，必須沿南側沉木脊回到主路，不能沿湖邊硬走，銀霧很冷。",
     "image": "moonlit_fen_fill_18_13.png",
     "imagePrompt": "月沼北汊 moonlit_fen_fill_18_13 in moonlit_fen 月光濕地, room function danger pocket, terrain moonlit wetland path, reeds, black water channels, drowned logs, silver water light and soft marsh haze, visible path cues: south toward 沉木橋, north toward locked boundary, source room details: 月沼北汊貼著月光濕地北緣，北側湖岸被黑水切斷，南面沉木橋露出一排濕滑木脊。草叢間有霧氣與水草採集痕跡，這裡是北側短路線端點，必須沿南側木脊回到主路。, soft moonlit fen danger, wet ground and hidden water channels, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile terrain and architecture materials, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
@@ -510,7 +510,7 @@ export const STATIC_WORLD_FILLER_ROOMS_PART_004: Record<string, RoomDef> = {
     "id": "moonlit_fen_fill_19_13",
     "name": "沉木北橋",
     "zone": "moonlit_fen",
-    "description": "沉木北橋用三根半沉木橫過淺水，北側黑水汊道被霧氣封住，南面舊舟營傳來蟲鳴與槳影。木縫間長著濕地草藥，這裡是北側路線與採集邊界，不是寬闊安全橋面。",
+    "description": "沉木北橋用三根半沉木橫過淺水，北側黑水汊道被霧氣封住，南面舊舟營傳來蟲鳴與槳影。木縫間長著濕地草藥，銀白菌絲貼著潮濕樹皮延伸，只有中央那根沉木還能承重。橋側沒有欄繩，水下蘆根會勾住靴底，因此這裡只是狹窄通行與採集邊界，不是寬闊安全橋面，通過後應往南接回舊舟營，別久停。",
     "image": "moonlit_fen_fill_19_13.png",
     "imagePrompt": "沉木北橋 moonlit_fen_fill_19_13 in moonlit_fen 月光濕地, room function connector, terrain moonlit wetland path, reeds, black water channels, drowned logs, silver water light and soft marsh haze, visible path cues: south toward 舊舟營, source room details: 沉木北橋用三根半沉木橫過淺水，北側黑水汊道被霧氣封住，南面舊舟營傳來蟲鳴與槳影。木縫間長著濕地草藥，這裡是北側路線與採集邊界，不是寬闊安全橋面。, soft moonlit fen danger, wet ground and hidden water channels, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile terrain and architecture materials, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
@@ -531,7 +531,7 @@ export const STATIC_WORLD_FILLER_ROOMS_PART_004: Record<string, RoomDef> = {
     "id": "moonlit_fen_fill_20_13",
     "name": "舊舟北營",
     "zone": "moonlit_fen",
-    "description": "舊舟北營把破獨木舟拖在泥岸旁，北側黑水和蘆葦圍住退路，南面月光水道仍有可辨認的草墩。這裡是北界路線端點，玩家可沿南側水道返回，不應把北岸當成新通路。",
+    "description": "舊舟北營把破獨木舟拖在泥岸旁，北側黑水和蘆葦圍住退路，南面月光水道仍有可辨認的草墩。獨木舟船腹裂開，裡面積著月露、斷槳和被水泡軟的行囊扣，像是有人曾試著從北岸下水卻失敗。黑水後方沒有浮標，也沒有能重新登岸的泥台。這裡是北界端點，應沿南側水道返回，不把北岸當成新通路。",
     "image": "moonlit_fen_fill_20_13.png",
     "imagePrompt": "舊舟北營 moonlit_fen_fill_20_13 in moonlit_fen 月光濕地, room function danger pocket, terrain moonlit wetland path, reeds, black water channels, drowned logs, silver water light and soft marsh haze, visible path cues: south toward 月光水道, north toward locked boundary, source room details: 舊舟北營把破獨木舟拖在泥岸旁，北側黑水和蘆葦圍住退路，南面月光水道仍有可辨認的草墩。這裡是北界路線端點，玩家可沿南側水道返回，不應把北岸當成新通路。, soft moonlit fen danger, wet ground and hidden water channels, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile terrain and architecture materials, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
