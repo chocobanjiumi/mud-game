@@ -10,7 +10,7 @@ export const EXPANSION_ROOMS_PART_001: Record<string, RoomDef> = {
     image: 'sunflower_field.png',
     imagePrompt: '向日葵田 in plains, exploration room with tall sunflower maze, golden petals, field rat tunnels, bright sun, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain plains, clear lantern light',
     description:
-      '金燦燦的向日葵高過人頭，花盤在陽光下緩慢轉動，形成一座帶著花粉香的天然迷宮。東側穿過花田可回平原入口，北邊有獵人小屋的煙囪，南方傳來河水聲。泥土表面佈滿田鼠洞和烏鴉爪痕，最高那株花下的土色明顯較新，提示旅人可 search 找到小型寶物，也可能驚動田鼠群。向日葵田周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
+      '金燦燦的向日葵高過人頭，花盤在陽光下緩慢轉動，形成一座帶著花粉香的天然迷宮。東側穿過花田可回平原入口，北邊有獵人小屋的煙囪，南方傳來河水聲。泥土表面佈滿田鼠洞和烏鴉爪痕，最高那株花下的土色明顯較新，提示旅人可 搜索 找到小型寶物，也可能驚動田鼠群。向日葵田周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路',
     exits: [
       { direction: 'east', targetRoomId: 'plains_entrance', description: '穿過花田回到平原入口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'north', targetRoomId: 'hunter_lodge', description: '花田盡頭有一間小木屋', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -153,7 +153,7 @@ plains_hare_burrows: {
     image: 'plains_hare_burrows.png',
     imagePrompt: '野兔洞群 in plains, combat room with burrow holes, trampled grass, low morning light, wild rabbit encounter, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain plains, clear lantern light',
     description:
-      '草坡上密密麻麻分布著野兔洞，洞口被乾草和白色絨毛覆住，泥土帶著剛翻開的濕氣。東邊通往平原入口，南側狼跡小路延伸進更高的草叢，西面能聽見遠處石環傳來的風聲。洞口旁有被咬碎的藥草與旅人皮包碎片，提示旅人可在此練習追擊快速怪物，也能 search 找到野兔拖進洞裡的零碎物品。野兔洞群周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
+      '草坡上密密麻麻分布著野兔洞，洞口被乾草和白色絨毛覆住，泥土帶著剛翻開的濕氣。東邊通往平原入口，南側狼跡小路延伸進更高的草叢，西面能聽見遠處石環傳來的風聲。洞口旁有被咬碎的藥草與旅人皮包碎片，提示旅人可在此練習追擊快速怪物，也能 搜索 找到野兔拖進洞裡的零碎物品。野兔洞群周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路',
     exits: [
       {
         direction: 'east',
@@ -594,7 +594,7 @@ dark_forest_raven_perch: {
     image: 'dark_forest_raven_perch.png',
     imagePrompt: '黑鴉棲枝 in dark_forest, exploration room with leaning dead trees, black birds, feathers and cold moonlit branches, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '幾株傾斜枯木在沼澤北側交錯成高枝平台，黑鴉安靜排列在枝頭，只有羽毛偶爾落進霧中。東方螢火小徑透出微光，南邊毒霧沼澤冒著紫泡，西側可繞往月井方向。枝條上掛著亮片、骨戒和被叼來的紙片，提示旅人可 search 鳥巢尋找線索，但驚動鳥群會引來暗影生物注意。黑鴉棲枝周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
+      '幾株傾斜枯木在沼澤北側交錯成高枝平台，黑鴉安靜排列在枝頭，只有羽毛偶爾落進霧中。東方螢火小徑透出微光，南邊毒霧沼澤冒著紫泡，西側可繞往月井方向。枝條上掛著亮片、骨戒和被叼來的紙片，提示旅人可 搜索 鳥巢尋找線索，但驚動鳥群會引來暗影生物注意。黑鴉棲枝周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路',
     exits: [
       {
         direction: 'east',
