@@ -39,7 +39,7 @@ export interface AgentDependencies {
   executeCommand: (characterId: string, command: string) => void;
   submitCombatAction: (combatId: string, action: {
     actorId: string;
-    type: 'attack' | 'skill' | 'defend' | 'flee';
+    type: 'attack' | 'skill' | 'defend' | 'flee' | 'formation';
     skillId?: string;
     targetId?: string;
   }) => void;
@@ -278,8 +278,8 @@ export class AgentController {
     if (inCombat && combat) {
       // 戰鬥模式：提交戰鬥行動
       const actionType = parsed.combatAction?.type ?? 'attack';
-      // Filter out 'item' type which is not supported in submitCombatAction
-      const validType: 'attack' | 'skill' | 'defend' | 'flee' =
+      // Filter out item/mount-only actions which are not supported here.
+      const validType: 'attack' | 'skill' | 'defend' | 'flee' | 'formation' =
         actionType === 'item' || actionType === 'mount_ride' || actionType === 'mount_charge' || actionType === 'mounted_guard'
           ? 'attack'
           : actionType;

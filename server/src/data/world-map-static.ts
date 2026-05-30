@@ -3766,6 +3766,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "火山北灰坡",
     "zone": "volcano_zone",
     "description": "北灰坡路線端位在火山地帶北緣，北面蛇河三角洲的濕泥被熱灰烤成硬殼，南側火山灰原冒出白色蒸氣。這裡是 route 端點，提醒玩家從濕地邊界正式踏入高熱火山路線。",
+    "image": "volcano_zone_fill_31_20.png",
+    "imagePrompt": "火山北灰坡 volcano_zone_fill_31_20 in volcano_zone 火山地帶, room function border road, terrain northern volcanic ash slope at wetland boundary, north serpent delta mud baked into cracked crust with toxic steam, south black ash field venting white vapor, basalt gravel and heat haze, clear north south cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "south",
@@ -4501,6 +4503,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "火山邊道",
     "zone": "volcano_zone",
     "description": "火山灰原南側的灰燼邊道夾在黑色灰丘與硫磺熱霧之間，腳下可見被熱風燒裂的玄武岩。北面回火山灰原，南側熱氣逐漸變黃並接往硫磺熱泉，路旁噴氣孔會提醒玩家放慢腳步觀察噴發節奏。",
+    "image": "volcano_zone_fill_31_22.png",
+    "imagePrompt": "火山邊道 volcano_zone_fill_31_22 in volcano_zone 火山地帶, room function connector, terrain ash road between black ash hills and yellow sulfur mist, north volcanic ash field, south sulfur springs heat haze, cracked basalt underfoot and small steam vents beside path, clear north south cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "north",
@@ -4524,6 +4528,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "火山石路",
     "zone": "volcano_zone",
     "description": "玄武岩階東側的火山石路沿著山巔封印鏈外圈延伸，黑石地面被熔岩光照成暗紅。西面回玄武岩階，東側能看到火山頂的開闊岩脊，路旁裂縫會噴出短促熱風，適合玩家先判斷落腳點再推進。",
+    "image": "volcano_zone_fill_32_25.png",
+    "imagePrompt": "火山石路 volcano_zone_fill_32_25 in volcano_zone 火山地帶, room function connector, terrain volcanic stone road around summit sealing chains, west basalt steps, east open rocky ridge toward volcano summit, cracked black stone glowing dark red from lava light, heat jets from side fissures, clear west east cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "west",
@@ -4547,6 +4553,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "火晶噴口西封岩",
     "zone": "volcano_zone",
     "description": "火晶噴口西封岩位在火晶噴氣口西側，西面熔岩橋熱光斷續閃爍，南側玄武岩階通往火山石路。腳下岩縫定時噴出高溫白汽，這裡是 blocker，封住通往噴口背面的不穩石路。",
+    "image": "volcano_zone_fill_34_24.png",
+    "imagePrompt": "火晶噴口西封岩 volcano_zone_fill_34_24 in volcano_zone 火山地帶, room function danger pocket, terrain sealed basalt rock west of fire-crystal vent, west lava bridge glow, south basalt steps toward volcanic stone road, cracked ground blasting hot white steam, unstable back path blocked, clear west south cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 3,
