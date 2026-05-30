@@ -5,7 +5,7 @@ export const STATIC_WORLD_FILLER_ROOMS_PART_001: Record<string, RoomDef> = {
     "id": "amber_forest_north_portal",
     "name": "琥珀傳送樹庭",
     "zone": "amber_forest",
-    "description": "琥珀傳送樹庭開在森林北緣的高根平台上，透明樹脂包住古老符文石，金色光線沿樹根流向中央傳送陣。東側可走到樹脂補給棚，南側木橋接回琥珀森林內部，玩家可在此啟用琥珀森林傳送陣並確認回程路線。",
+    "description": "琥珀傳送樹庭開在森林北緣的高根平台上，透明樹脂包住古老符文石，金色光線沿樹根流向中央傳送陣。東側根道繞向樹脂補給棚，南側低木橋落回北緣樹脂橋，兩條路都被蜂蜜色薄霧勾出清楚邊線。符文石旁有磨平的行腳痕、乾燥苔蘚和幾枚被樹脂封住的舊銅釘，使這裡像深林中少見的回程地標。",
     "image": "amber_forest_north_portal.png",
     "imagePrompt": "琥珀傳送樹庭 amber_forest_north_portal in amber_forest, room function portal, high root platform and central portal stone wrapped in transparent amber resin, east root path toward supply shed, south resin bridge into forest, golden resin light, damp bark, honey colored mist and safe travel landmark，高根平臺中央的透明傳送石像蜂蜜般發亮，右側補給棚與下方木橋分出兩條明確路線，濕樹皮反射暖光，整體像安全回程地標, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile resin moss root leaf materials, coherent dark atmosphere, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
@@ -31,7 +31,7 @@ export const STATIC_WORLD_FILLER_ROOMS_PART_001: Record<string, RoomDef> = {
     "id": "amber_forest_resin_supply",
     "name": "樹脂補給棚",
     "zone": "amber_forest",
-    "description": "樹脂補給棚用琥珀色帆布與彎曲樹枝搭成，棚下掛著防蜂面罩、採集刀與封蠟藥瓶。西側回傳送樹庭，棚外路牌提醒旅人先啟用傳送陣，再深入封蠟蜂巢與煙菌坡。",
+    "description": "樹脂補給棚用琥珀色帆布與彎曲樹枝搭成，棚下掛著防蜂面罩、採集刀、封蠟藥瓶和沾滿金粉的繩標。西側根道回到琥珀傳送樹庭，棚外陰影則朝更深的樹脂林線壓過來。木桌上留著補給清單、蜂刺刮痕與幾只空瓶，暖燈照得棚內安穩，但棚腳的黏液足跡提醒補給點並非完全遠離危險，夜裡仍會傳來蜂群振翅聲。",
     "image": "amber_forest_resin_supply.png",
     "imagePrompt": "樹脂補給棚 amber_forest_resin_supply in amber_forest, room function town service, amber canvas supply shed under bent branches with gathering knives, wax bottles and bee masks, west root trail returns to portal courtyard, forest deepens beyond the south edge, warm lantern and golden resin light, sticky bark, moss and quiet safe shelter，彎枝棚架下堆著封蠟藥瓶、防蜂面罩與採集刀，西邊根道回到傳送庭，棚外陰影暗示更深林線，氣氛安穩但邊緣有危險, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile resin moss root leaf materials, coherent dark atmosphere, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
@@ -52,7 +52,7 @@ export const STATIC_WORLD_FILLER_ROOMS_PART_001: Record<string, RoomDef> = {
     "id": "amber_forest_north_bridge",
     "name": "北緣樹脂橋",
     "zone": "amber_forest",
-    "description": "北緣樹脂橋跨過黏稠的金色樹液溝，橋板被透明樹脂固定在古根之間，南面可看見琥珀樹道與煙菌坡的霧光。北側回傳送樹庭，這裡作為小村傳送點進入森林主路的過渡段。",
+    "description": "北緣樹脂橋跨過黏稠的金色樹液溝，透明橋板被古根牢牢夾住，腳下能看見慢慢流動的蜂蜜色液面。北側橋板抬升回琥珀傳送樹庭，南側則落向採集入口界樁與森林主路，濕苔在兩端標出上下坡差。橋欄上掛著舊繩結和乾掉的樹脂滴，遠處煙菌坡的霧光若隱若現，使這段橋像安全區與深林危險之間的門檻。",
     "image": "amber_forest_north_bridge.png",
     "imagePrompt": "北緣樹脂橋 amber_forest_north_bridge in amber_forest, room function connector, narrow resin bridge over a golden sap channel between ancient roots, north path climbs to the portal tree court, south path descends to amber forest main road, translucent amber boards, wet moss, honey fog and guarded travel approach，透明橋板橫跨金色樹液溝，北端抬升回傳送平臺，南端落入主林道，濕苔和古根包住橋腳，畫面要能讀出上下坡差, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile resin moss root leaf materials, coherent dark atmosphere, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
