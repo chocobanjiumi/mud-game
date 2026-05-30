@@ -18,7 +18,7 @@
 ## 專案結構
 
 ```
-game2/
+mud-game/
 ├── packages/
 │   └── shared/              # 前後端共用型別與常數
 │       ├── types/
@@ -28,24 +28,25 @@ game2/
 │       │   ├── world.ts     # 房間、地圖、NPC
 │       │   ├── item.ts      # 物品、裝備
 │       │   └── protocol.ts  # WebSocket 訊息格式
-│       └── constants/
-│           ├── classes.ts    # 職業定義與技能表
-│           ├── monsters.ts   # 怪物資料
-│           └── items.ts      # 物品資料
+│       ├── constants/        # 職業、技能、物品、怪物、遊戲常數
+│       └── systems/          # 共用純邏輯，如狀態效果、裝備基礎、道具實例
 │
 ├── server/
 │   ├── src/
 │   │   ├── index.ts         # 進入點，Fastify + WS 啟動
+│   │   ├── logger.ts        # server scoped logger 與 LOG_LEVEL 控制
 │   │   ├── ws/
 │   │   │   ├── handler.ts   # WebSocket 連線管理
 │   │   │   └── protocol.ts  # 訊息路由
 │   │   ├── game/
 │   │   │   ├── world.ts     # 世界管理（房間、區域）
 │   │   │   ├── combat.ts    # 戰鬥引擎
+│   │   │   ├── state.ts     # 全域 manager singleton 與子系統初始化
 │   │   │   ├── player.ts    # 玩家狀態管理
-│   │   │   ├── npc.ts       # NPC 行為
 │   │   │   ├── loot.ts      # 掉落計算
-│   │   │   └── commands.ts  # 指令解析器
+│   │   │   ├── commands.ts  # 指令解析器與主要 command dispatch
+│   │   │   └── commands/    # 已抽出的 command domain，例如 combat helpers
+│   │   ├── data/            # 房間、怪物、NPC、地圖、傳送與副本靜態資料
 │   │   ├── ai/
 │   │   │   ├── agent.ts     # AI agent 控制器
 │   │   │   └── prompt.ts    # Prompt 組裝（戰鬥/探索/對話）
@@ -55,7 +56,7 @@ game2/
 │   │   │   └── currency.ts  # 代幣系統（對接 Arinova economy）
 │   │   └── db/
 │   │       ├── schema.ts    # SQLite schema
-│   │       └── queries.ts   # 資料存取
+│   │       └── queries.ts   # 唯一主要資料存取層
 │   └── package.json
 │
 ├── client/
@@ -69,10 +70,12 @@ game2/
 │   │   │   ├── Inventory.tsx    # 背包
 │   │   │   └── PartyPanel.tsx   # 隊伍面板
 │   │   ├── hooks/
-│   │   │   ├── useWebSocket.ts  # WS 連線管理
-│   │   │   └── useGame.ts      # 遊戲狀態
-│   │   └── stores/
-│   │       └── gameStore.ts    # Zustand 遊戲狀態
+│   │   │   └── useWebSocket.ts  # WS 連線、重連、client/server message handling
+│   │   ├── stores/
+│   │   │   └── gameStore.ts    # Zustand 遊戲狀態
+│   │   └── utils/
+│   │       ├── assetImages.ts  # 圖像資產路徑解析
+│   │       └── gameActions.ts  # UI action bridge：command/shop/leaderboard
 │   └── package.json
 │
 ├── docs/
@@ -80,6 +83,8 @@ game2/
 │   └── architecture.md      # 本文件
 └── package.json             # workspace root
 ```
+
+目前資料存取已收斂到 `server/src/db/queries.ts`；舊的 `db/database.ts` 已移除。前端元件不再透過 `window.dispatchEvent` 傳遞 terminal command，而是透過 `gameStore` 註冊的 action bridge 呼叫 App/useWebSocket 提供的 handler。
 
 ---
 
@@ -99,10 +104,11 @@ game2/
 │  Client   │            │                          │
 │           │  HTTP      │  ┌──────────────────┐    │
 │  - 終端機  │◄──────────►│  │  Game Engine      │    │
-│  - 狀態列  │  (auth)    │  │  ├─ World Manager  │    │
-│  - 小地圖  │            │  │  ├─ Combat Engine  │    │
-│  - 背包   │            │  │  ├─ Command Parser │    │
-│  - 隊伍   │            │  │  └─ Loot System    │    │
+│  - 戰鬥面板 │  (auth)    │  │  ├─ Command Parser │    │
+│  - 房間面板 │            │  │  ├─ World Manager  │    │
+│  - 背包/技能│            │  │  ├─ Combat Engine  │    │
+│  - 隊伍/聊天│            │  │  ├─ Quest/Dungeon  │    │
+│  - 地圖/排行│            │  │  └─ Economy/Kingdom│    │
 └──────────┘            │  └──────────────────┘    │
                         │                          │
                         │  ┌──────────────────┐    │
@@ -112,7 +118,7 @@ game2/
                         │  └──────────────────┘    │
                         │                          │
                         │  ┌──────────────────┐    │
-                        │  │  SQLite Database   │    │
+                        │  │ SQLite + queries   │    │
                         │  └──────────────────┘    │
                         └──────────────────────────┘
 ```
@@ -125,32 +131,34 @@ game2/
 
 ```typescript
 // Client → Server
-interface ClientMessage {
-  type: "command";
-  payload: string;  // 原始指令文字，如 "attack goblin"
-}
+type ClientMessage =
+  | { type: "login"; payload: { userId: string; characterId?: string; accessToken?: string } }
+  | { type: "list_characters"; payload: { userId: string; accessToken?: string } }
+  | { type: "create_character"; payload: CreateCharacterPayload }
+  | { type: "delete_character"; payload: { characterId: string } }
+  | { type: "command"; payload: string }
+  | { type: "shop_open"; payload?: Record<string, never> }
+  | { type: "purchase"; payload: { itemId: string } }
+  | { type: "get_transactions"; payload?: Record<string, never> }
+  | { type: "ping"; payload?: Record<string, never> };
 
 // Server → Client
 interface ServerMessage {
-  type:
-    | "narrative"    // 場景描述、故事文字
-    | "combat"       // 戰鬥訊息
-    | "system"       // 系統提示
-    | "chat"         // 玩家/NPC 對話
-    | "status"       // 狀態更新（HP/MP/EXP 等）
-    | "room"         // 房間資訊（進入新房間時）
-    | "inventory"    // 背包更新
-    | "party";       // 隊伍更新
-  payload: Record<string, any>;
+  type: ServerMessageType;
+  payload: Record<string, unknown>;
   timestamp: number;
 }
 ```
+
+完整型別以 `packages/shared/src/types/protocol.ts` 為準。client 的 `useWebSocket.ts` 負責連線生命週期與 server message dispatch；Zustand `gameStore.ts` 保存畫面狀態、角色資料、房間、戰鬥、背包、聊天、排行榜與 UI 開關。
 
 ---
 
 ## 指令系統
 
 MUD 的核心。玩家（真人或 AI）透過文字指令互動。
+
+目前主要 dispatch 仍在 `server/src/game/commands.ts`，戰鬥相關 command 已開始抽到 `server/src/game/commands/cmd-combat.ts`，共用 helper 位於 `server/src/game/commands/cmd-helpers.ts`。下一階段重構方向是 command registry metadata，讓 `handleCommand`、help、alias 與前端快捷操作共享同一份定義。
 
 ### 基礎指令
 | 指令 | 說明 |
@@ -169,7 +177,8 @@ MUD 的核心。玩家（真人或 AI）透過文字指令互動。
 | `use <物品>` | 使用物品 |
 | `equip <裝備>` | 裝備物品 |
 | `drop <物品>` | 丟棄物品 |
-| `give <玩家> <物品>` | 給予物品 |
+| `shop <NPC>` | 開啟商店 |
+| `buy <物品>` / `sell <物品>` | 買賣 |
 
 ### 戰鬥指令
 | 指令 | 說明 |
@@ -178,6 +187,7 @@ MUD 的核心。玩家（真人或 AI）透過文字指令互動。
 | `skill <技能名> [目標]` | 使用技能 |
 | `defend` | 防禦 |
 | `flee` | 逃跑 |
+| `mounted guard <隊友ID>` | 騎乘守護 |
 
 ### 社交指令
 | 指令 | 說明 |
@@ -186,6 +196,7 @@ MUD 的核心。玩家（真人或 AI）透過文字指令互動。
 | `party invite <玩家>` | 邀請組隊 |
 | `party leave` | 離開隊伍 |
 | `trade <玩家>` | 發起交易 |
+| `friend` / `mail` / `guild` | 好友、郵件、公會 |
 
 ---
 
