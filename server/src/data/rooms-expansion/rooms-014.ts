@@ -562,7 +562,7 @@ astral_wastes_reality_gate: {
     image: 'astral_wastes_reality_gate.png',
     imagePrompt: '現實邊門 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '現實邊門位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '現實邊門像一扇立在沙海盡頭的破碎門框，門內仍映著正常天空，門外卻是倒轉星河與漂浮碎石。東側星砂路在銀色沙粒間延伸，北面錨石丘以沉重黑影固定住地平線。門柱上嵌著多枚現實錨，部分已被虛光磨出裂紋；每當門內影像晃動，腳下星砂會短暫排列成返程符號，提醒此處仍是荒原與現實最後相接的邊界。',
     exits: [
       { direction: 'east', targetRoomId: 'astral_wastes_starsand_track', description: '星砂路通往荒原' },
       { direction: 'north', targetRoomId: 'astral_wastes_anchor_stone', description: '錨石丘在北側' },
@@ -588,7 +588,7 @@ astral_wastes_starsand_track: {
     image: 'astral_wastes_starsand_track.png',
     imagePrompt: '星砂路 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '星砂路位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '星砂路由發光砂粒鋪成，砂面像水一樣緩慢流動，卻能承住腳步與漂浮石影。西側沙線回到現實邊門，東面地平線開始向上彎曲，南側無光沙丘吞掉所有星光。路旁立著幾根細小錨針，針影方向彼此矛盾，只有落在沙面上的銀色波紋仍指向前方；偶爾有砂粒逆流成腳印，像某個未曾抵達此地的人正在返程。',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_reality_gate', description: '星砂路回到現實邊門' },
       { direction: 'east', targetRoomId: 'astral_wastes_bent_horizon', description: '彎曲地平線在前方' },
@@ -615,7 +615,7 @@ astral_wastes_anchor_stone: {
     image: 'astral_wastes_anchor_stone.png',
     imagePrompt: '錨石丘 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '錨石丘位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '錨石丘堆著巨大的黑色石錨，石錨一半埋入星砂，一半伸向無星天空，周圍重力比其他地方更穩。南側坡道回到現實邊門，東面骨白砂帶通向彗骨灘。石錨表面刻滿現實座標，許多數字被虛光拉長成細線；丘頂垂下幾條斷裂鐵鏈，鏈尾懸在半空不落地，像仍努力把整片荒原釘在原本世界上與回聲裡。',
     exits: [
       { direction: 'south', targetRoomId: 'astral_wastes_reality_gate', description: '錨石丘回到現實邊門' },
       { direction: 'east', targetRoomId: 'astral_wastes_comet_bones', description: '彗骨灘在東側' },
@@ -641,7 +641,7 @@ astral_wastes_comet_bones: {
     image: 'astral_wastes_comet_bones.png',
     imagePrompt: '彗骨灘 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '彗骨灘位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '彗骨灘鋪滿弧形白骨與玻璃化砂礫，骨架像巨大彗星撞碎後留下的殘骸，每一截都帶著冷藍光。西側錨石丘的黑影仍能看見，東面鏡面虛空反射出骨灘另一個方向，南側骨砂坡落向彎曲地平線。骨縫裡積著細小星塵，會隨遠方裂縫脈動而發亮；某些骨片內側刻著非人文字，像它們曾是穿越天空的活物。',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_anchor_stone', description: '彗骨灘回到錨石丘' },
       { direction: 'east', targetRoomId: 'astral_wastes_mirror_void', description: '鏡面虛空在東側' },
@@ -668,7 +668,7 @@ astral_wastes_bent_horizon: {
     image: 'astral_wastes_bent_horizon.png',
     imagePrompt: '彎曲地平線 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '彎曲地平線位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '彎曲地平線讓遠方天空像卷起的紙，沙路延伸到一半便折向上方，漂浮岩塊在視線盡頭排成弧形。西側星砂路仍保持平直，北面骨砂坡回到彗骨灘，東側方尖碑懸在彎曲弧線中央。地面沒有可靠影子，只有鞋底壓出的星砂會短暫指出重力方向；若盯著地平線太久，遠處的自己會從另一端倒著走來。',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_starsand_track', description: '地平線回到星砂路' },
       { direction: 'north', targetRoomId: 'astral_wastes_comet_bones', description: '骨砂坡回到彗骨灘' },
@@ -695,7 +695,7 @@ astral_wastes_lightless_dune: {
     image: 'astral_wastes_lightless_dune.png',
     imagePrompt: '無光沙丘 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '無光沙丘位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '無光沙丘並非黑暗，而是所有光都被砂粒吸走，沙脊上沒有影子，也沒有星砂常見的微光。北側亮砂坡回到星砂路，東面低陷處傳來回音坑的層層反響。沙丘表面留下許多突然中斷的足跡，像行走者被自己的影子拖入地下；幾塊漂浮石在丘頂保持靜止，石背卻映出陌生星空，暗示此處下方藏著不屬於荒原的空洞。',
     exits: [
       { direction: 'north', targetRoomId: 'astral_wastes_starsand_track', description: '無光沙丘回到星砂路' },
       { direction: 'east', targetRoomId: 'astral_wastes_echo_crater', description: '回音坑在東側' },
@@ -721,7 +721,7 @@ astral_wastes_mirror_void: {
     image: 'astral_wastes_mirror_void.png',
     imagePrompt: '鏡面虛空 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '鏡面虛空位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '鏡面虛空展開成一片平滑黑鏡，表面不像水也不像石，只倒映出尚未發生的動作。西側彗骨灘的白骨在鏡中變成完整彗星，東側蒼白小祠則被倒映成無門高塔。鏡面邊緣漂著細小裂片，踩近時會看見不同方向的自己同時靠近；若裂片翻面，遠處虛空生物的輪廓會先出現在倒影裡，然後才從實地沙面浮出。',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_comet_bones', description: '鏡面虛空回到彗骨灘' },
       { direction: 'east', targetRoomId: 'astral_wastes_pale_shrine', description: '蒼白小祠在東側' },
@@ -747,7 +747,7 @@ astral_wastes_floating_obelisk: {
     image: 'astral_wastes_floating_obelisk.png',
     imagePrompt: '漂浮方尖碑 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '漂浮方尖碑位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '漂浮方尖碑懸在離地數丈的空中，底部沒有支撐，碑影卻重重壓在星砂上，形成一條斜坡。西側彎曲地平線像弧幕包住碑身，東面重力沉井把砂粒向下拉成螺旋，南側碑影坡落入回音坑。碑面符號會沿垂直方向流動，像有人把整座石碑當作鐘擺；每次符號歸零，附近漂浮岩塊都會短暫排成通往核心的碎橋。',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_bent_horizon', description: '方尖碑回到彎曲地平線' },
       { direction: 'east', targetRoomId: 'astral_wastes_gravity_sink', description: '重力沉井在東側' },
@@ -774,7 +774,7 @@ astral_wastes_echo_crater: {
     image: 'astral_wastes_echo_crater.png',
     imagePrompt: '回音坑 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '回音坑位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '回音坑是一個圓形凹陷，坑壁布滿星砂流紋，任何聲音都會被拉長成不屬於原句的回答。西側暗坡回到無光沙丘，北面碑影坡通向漂浮方尖碑，東側碎裂銀路延向碎月路。坑底有幾道看似乾涸的環形水痕，實際會反射出不同時間的天空；若有砂粒落下，回音會先喊出落點，再讓地面慢半拍震動不止。',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_lightless_dune', description: '回音坑回到無光沙丘' },
       { direction: 'north', targetRoomId: 'astral_wastes_floating_obelisk', description: '碑影坡回到方尖碑' },
@@ -801,7 +801,7 @@ astral_wastes_pale_shrine: {
     image: 'astral_wastes_pale_shrine.png',
     imagePrompt: '蒼白小祠 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '蒼白小祠位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '蒼白小祠由沒有紋理的白石砌成，石面冷得像月光凝固，祠內供著一枚無名星核。西側黑鏡路回到鏡面虛空，東面淡藍水光指向星界湖。小祠四周插著細長骨籤，每根骨籤都投出相反方向的影子；供台下散著破碎願牌，願牌字跡會在靠近時褪色，像此地只保存願望的形狀，不保存願望的主人與影子。',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_mirror_void', description: '蒼白小祠回到鏡面虛空' },
       { direction: 'east', targetRoomId: 'astral_wastes_astral_lake', description: '星界湖在東側' },
@@ -827,7 +827,7 @@ astral_wastes_gravity_sink: {
     image: 'astral_wastes_gravity_sink.png',
     imagePrompt: '重力沉井 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '重力沉井位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '重力沉井不是洞，而是一片向下旋轉的空間，星砂、碎石和光點都沿著看不見的井壁緩慢墜落。西側碑影回到漂浮方尖碑，北面反重力坡升向星界湖，東側裂光邊緣連到虛空裂縫。井心沒有底，只能看見遠處倒掛的岩層；靠近井緣時，身上金屬會發出低鳴，像現實本身正在被拉進更深的座標深處與黑暗。',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_floating_obelisk', description: '重力沉井回到方尖碑' },
       { direction: 'north', targetRoomId: 'astral_wastes_astral_lake', description: '反重力坡通往星界湖' },
@@ -854,7 +854,7 @@ astral_wastes_shattered_moonroad: {
     image: 'astral_wastes_shattered_moonroad.png',
     imagePrompt: '碎月路 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '碎月路位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '碎月路由無數銀白石片懸成斷續小徑，每片都像從同一輪月亮上敲下，邊緣仍散著冷光。西側回音坑的聲波會在石片間跳躍，東面星泥盆地泛著沉重藍光。石片之間沒有固定距離，偶爾會因遠方黑星門脈動而重新排列；路旁漂著幾片倒轉月影，影中能看見舊路仍完整時的拱橋與失落行列殘像。',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_echo_crater', description: '碎月路回到回音坑' },
       { direction: 'east', targetRoomId: 'astral_wastes_star_silt_basin', description: '星泥盆地在東側' },
@@ -880,7 +880,7 @@ astral_wastes_astral_lake: {
     image: 'astral_wastes_astral_lake.png',
     imagePrompt: '星界湖 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '星界湖位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '星界湖平得像一整塊透明夜空，湖面下不是水草，而是緩慢旋轉的星雲與細小白光。西側蒼白小祠倒映在湖邊，南面反重力坡落回重力沉井，東側星線延向失落星座。湖岸沒有潮痕，只有一圈漂浮鹽晶標出曾經的水位；若凝視湖心，會看見自己的倒影被拉到極遠處，像另一顆星正在學習呼吸與發光。',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_pale_shrine', description: '星界湖回到蒼白小祠' },
       { direction: 'south', targetRoomId: 'astral_wastes_gravity_sink', description: '反重力坡回到沉井' },
@@ -907,7 +907,7 @@ astral_wastes_void_rift: {
     image: 'astral_wastes_void_rift.png',
     imagePrompt: '虛空裂縫 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '虛空裂縫位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '虛空裂縫像一道豎直黑傷口切開荒原，裂縫邊緣燃著紫白火花，附近聲音會被吞掉一半。西側重力沉井的螺旋砂流在此中斷，東面黑星門的輪廓從裂光後方浮現，南側裂光坡落向星泥盆地。裂縫周圍漂著被撕成薄片的現實碎屑，其中有石牆、樹影和陌生星圖；每當裂縫收縮，碎屑都會短暫拼成一扇不存在的門。',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_gravity_sink', description: '虛空裂縫回到重力沉井' },
       { direction: 'east', targetRoomId: 'astral_wastes_black_star_gate', description: '黑星門在東側' },
@@ -934,7 +934,7 @@ astral_wastes_star_silt_basin: {
     image: 'astral_wastes_star_silt_basin.png',
     imagePrompt: '星泥盆地 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '星泥盆地位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '星泥盆地低陷而潮濕，藍黑色星泥像稠厚夜空，表面浮著細小氣泡與破碎月光。西側碎月路的銀片插入盆地邊緣，北面裂光坡回到虛空裂縫，東側浮石影指向懸浮遺跡。星泥會吞下輕微震動，再從另一處吐出延遲回響；盆地中央露出幾根古老石柱頂端，柱面符號被泥光照亮，像遺跡仍在下方沉睡。',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_shattered_moonroad', description: '星泥盆地回到碎月路' },
       { direction: 'north', targetRoomId: 'astral_wastes_void_rift', description: '裂光坡回到虛空裂縫' },
@@ -961,7 +961,7 @@ astral_wastes_lost_constellation: {
     image: 'astral_wastes_lost_constellation.png',
     imagePrompt: '失落星座 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '失落星座位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '失落星座並不在天空，而是懸在荒原低處的一串碎星，每顆星都以細線連向看不見的中心。西側湖光回到星界湖，南側星線垂落到黑星門。碎星之間有古老路標漂浮，路標文字會隨觀察角度改變；某些星點缺席的位置留下黑色空洞，空洞邊緣傳出羽翼摩擦聲，像守護星座的生物仍在尋找失落的排列。',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_astral_lake', description: '失落星座回到星界湖' },
       { direction: 'south', targetRoomId: 'astral_wastes_black_star_gate', description: '星線落向黑星門' },
@@ -987,7 +987,7 @@ astral_wastes_black_star_gate: {
     image: 'astral_wastes_black_star_gate.png',
     imagePrompt: '黑星門 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '黑星門位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '黑星門由兩片深黑石翼構成，門心懸著一顆不發光的星，周圍所有星砂都朝它緩慢滑動。西側裂光回到虛空裂縫，北面星線連著失落星座，東側門後可見星界荒原核心的脈動。門柱刻滿反向座標，許多刻痕被新鮮星泥填滿；當黑星旋轉，地面會浮出一圈暗色波紋，像荒原正在試著把入口吞回自己體內。',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_void_rift', description: '黑星門回到虛空裂縫' },
       { direction: 'north', targetRoomId: 'astral_wastes_lost_constellation', description: '星線回到失落星座' },
@@ -1014,7 +1014,7 @@ astral_wastes_levitating_ruins: {
     image: 'astral_wastes_levitating_ruins.png',
     imagePrompt: '懸浮遺跡 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '懸浮遺跡位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '懸浮遺跡是一組碎裂石室與斷橋，全部漂在離地不等的高度，彼此靠星砂光帶相連。西側星泥盆地在下方泛藍，東側浮石橋斷續通往星界荒原核心。牆上仍有古代門框與半截樓梯，卻沒有任何一段完全接地；石室內飄著倒置砂漏，砂粒向上流回玻璃頂端，暗示此處的時間仍被遺跡殘存機關反向牽引。',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_star_silt_basin', description: '懸浮遺跡回到星泥盆地' },
       { direction: 'east', targetRoomId: 'astral_wastes_worldcore_waste', description: '浮石橋通往荒原核心' },
@@ -1040,7 +1040,7 @@ astral_wastes_worldcore_waste: {
     image: 'astral_wastes_worldcore_waste.png',
     imagePrompt: '星界荒原核心 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '星界荒原核心位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。南側浮石橋在核心重力下只剩漂浮殘影，只能由懸浮遺跡踏入荒原核心。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '星界荒原核心是一片向內坍縮的開闊地，所有星砂、裂光與漂浮石影都朝中央無形軸線緩慢旋轉。西側黑星門仍在身後張開，東面外層黑域像無邊黑海貼著核心邊緣。南側浮石橋只剩殘影，說明懸浮遺跡通路曾在此被重力撕碎。核心中央有一枚透明錨核，內部映出現實邊門、星界湖與虛空裂縫的重疊影像，像整片荒原都被綁在這一點上。',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_black_star_gate', description: '荒原核心回到黑星門' },
       { direction: 'east', targetRoomId: 'astral_wastes_outer_dark', description: '外層黑域在核心外側' },
@@ -1067,7 +1067,7 @@ astral_wastes_outer_dark: {
     image: 'astral_wastes_outer_dark.png',
     imagePrompt: '外層黑域 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '外層黑域位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '外層黑域不是夜色，而是一片沒有距離感的黑暗海面，星砂落進去便失去聲音與形狀。西側唯一可辨的光來自星界荒原核心，其餘方向都被無邊黑幕吞沒。黑域邊緣漂著巨大鱗片、斷裂星骨和像眼睛般開合的暗色泡沫；每次核心光芒變弱，黑幕就會向西推近一步，地面上的現實錨也會發出即將斷裂的細響。',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_worldcore_waste', description: '外層黑域回到星界荒原核心' },
     ],
