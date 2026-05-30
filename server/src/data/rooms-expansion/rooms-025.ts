@@ -8,7 +8,7 @@ emerald_canopy_lightning_bark_shrine: {
     image: 'emerald_canopy_lightning_bark_shrine.png',
     imagePrompt: '雷皮小祠 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '雷皮小祠位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '雷皮小祠靠在一塊被雷劈開的樹皮前，焦黑皮層呈現自然裂紋，裂縫中滲出藍白微光。北面綠心跨枝連著主幹脈光，南側雲根橋浮在薄霧上，西方精英巡梢棲木的羽標可見。小祠以濕木、石片和雷擊後的白灰堆成，周圍掛著空果殼與焦葉串；每滴雨落到裂皮上都會濺出細小火花，空氣充滿潮濕樹香與雷味。',
     exits: [
       { direction: 'north', targetRoomId: 'emerald_canopy_greenheart_span', description: '綠心跨枝在北側' },
       { direction: 'south', targetRoomId: 'emerald_canopy_cloudroot_bridge', description: '雲根橋在南側' },
@@ -35,7 +35,7 @@ emerald_canopy_hollow_trunk_market: {
     image: 'emerald_canopy_hollow_trunk_market.png',
     imagePrompt: '空樹市集 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '空樹市集位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '空樹市集藏在一段中空巨幹內，內壁被磨得光滑，天然樹洞分成多個小凹室，擺著藤籃、蜂蠟塊和乾葉束。北側日葉園灑下金光，東面古蜂巢傳來密集嗡鳴。樹洞頂部開著透光裂縫，細藤吊著木牌形葉片與果殼燈，地上有被搬運留下的木粉和樹脂腳印；市場雖安靜，仍保留著高空聚落曾經頻繁交換物資的痕跡。',
     exits: [
       { direction: 'north', targetRoomId: 'emerald_canopy_sunleaf_garden', description: '日葉園在北側' },
       { direction: 'east', targetRoomId: 'emerald_canopy_ancient_bee_hive', description: '古蜂巢在東側' },
@@ -61,7 +61,7 @@ emerald_canopy_ancient_bee_hive: {
     image: 'emerald_canopy_ancient_bee_hive.png',
     imagePrompt: '古蜂巢 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '古蜂巢位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '古蜂巢懸在粗枝與中空樹壁之間，層層蜂蠟板像古老鐘乳垂落，表面泛著琥珀色光。北側精英巡梢棲木的羽標在葉縫間晃動，西面空樹市集傳來乾葉和藤籃氣味，東方雲根橋伸入白霧。巢下滴著黏稠蜜痕，周圍散落花粉、破裂蜂房和被樹脂包住的小骨片；低沉嗡鳴從蜂巢深處傳出，讓整段枝幹都像在震動。',
     exits: [
       { direction: 'north', targetRoomId: 'emerald_canopy_elite_patrol_perch', description: '精英巡梢棲木在北側' },
       { direction: 'west', targetRoomId: 'emerald_canopy_hollow_trunk_market', description: '空樹市集在西側' },
@@ -88,7 +88,7 @@ emerald_canopy_cloudroot_bridge: {
     image: 'emerald_canopy_cloudroot_bridge.png',
     imagePrompt: '雲根橋 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '雲根橋位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '雲根橋由數條白色氣根交織而成，橋身半懸在雲霧裡，根皮吸滿水氣後泛出淡淡銀光。北側雷皮小祠的藍白火花透過葉影閃動，西面古蜂巢傳來厚重嗡鳴，東方鹿冠空地露出開闊綠光。橋下霧層翻湧，氣根間掛著水珠、羽毛和細小藤花，踩磨處呈現深色弧線；整座橋像從雲中長出，柔軟卻牢牢牽住兩側高枝。',
     exits: [
       { direction: 'north', targetRoomId: 'emerald_canopy_lightning_bark_shrine', description: '雷皮小祠在北側' },
       { direction: 'west', targetRoomId: 'emerald_canopy_ancient_bee_hive', description: '古蜂巢在西側' },
@@ -115,7 +115,7 @@ emerald_canopy_stag_crown_clearing: {
     image: 'emerald_canopy_stag_crown_clearing.png',
     imagePrompt: '鹿冠空地 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '鹿冠空地位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '鹿冠空地開在樹冠較平的一片枝臺上，彎曲枝條向外分叉，形狀像巨鹿的角冠托住陽光。西側雲根橋伸入霧中，東方高綠庭被更深的翠色包圍。空地中央長著玻璃般透明的幼葉與細白小花，地面有蹄印狀凹痕、落角碎片和被雨水洗亮的青苔；風穿過分叉枝條時聲音寬闊而清澈，使這裡像樹冠深處少數開放的明亮庭前。',
     exits: [
       { direction: 'west', targetRoomId: 'emerald_canopy_cloudroot_bridge', description: '雲根橋在西側' },
       { direction: 'east', targetRoomId: 'emerald_canopy_high_green_court', description: '高綠庭在東側' },
@@ -141,7 +141,7 @@ emerald_canopy_high_green_court: {
     image: 'emerald_canopy_high_green_court.png',
     imagePrompt: '高綠庭 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '高綠庭位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '高綠庭位於翡翠樹冠最深處，數株古木的頂枝在此交疊成寬闊天然庭院，葉冠高到幾乎遮住天空。西側鹿冠空地仍能看見分叉枝影，其餘方向被厚葉、垂藤和深綠霧光包圍。庭中有巨大葉脈形成的圓紋、古老樹瘤和沉積多年的花粉層，偶爾有玻翼鹿影穿過遠處光斑；整片空間安靜、開闊，帶著樹冠核心才有的古老壓力。',
     exits: [
       { direction: 'west', targetRoomId: 'emerald_canopy_stag_crown_clearing', description: '鹿冠空地在西側' },
     ],

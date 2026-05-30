@@ -816,7 +816,7 @@ bloodsalt_coast_ritual_reef_core: {
     image: 'emerald_canopy_entrance_root_lift.png',
     imagePrompt: '根升入口 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain forest, clear lantern light',
     description:
-      '根升入口位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '根升入口嵌在一株巨木外壁，粗根和濕藤交纏成向上的升降道，樹皮縫裡流著淡綠樹汁。東側低藤橋在霧中晃動，橋下能看見層層葉海和遠處琥珀林的暖光。入口周圍掛著鳥羽繩結、磨亮藤環與被雨水打濕的木踏板，樹根間留有舊攀爬痕和破碎藤籃；潮氣從下層森林升起，使這裡像進入高空樹冠前的第一道濕亮門檻。',
     exits: [
       { direction: 'east', targetRoomId: 'emerald_canopy_vine_bridge_low', description: '低藤橋在東側' },
     ],
@@ -841,7 +841,7 @@ emerald_canopy_vine_bridge_low: {
     image: 'emerald_canopy_vine_bridge_low.png',
     imagePrompt: '低藤橋 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '低藤橋位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '低藤橋由多股活藤編成，橋面覆著厚苔和雨珠，踩痕沿著藤脊向東西兩端延伸。西側根升入口的巨根仍貼在樹幹上，東方苔繩步道更窄更高，南面接雨盆地傳來水滴敲葉的空響。橋下雲霧緩慢流動，藤索上纏著小羽標、裂開的果殼與新生卷鬚；每陣風都讓整座橋微微下沉，露出高空道路特有的不穩與韌性。',
     exits: [
       { direction: 'south', targetRoomId: 'emerald_canopy_raincatch_basin', description: '接雨盆地在南側' },
       { direction: 'west', targetRoomId: 'emerald_canopy_entrance_root_lift', description: '根升入口在西側' },
@@ -868,7 +868,7 @@ emerald_canopy_moss_rope_walk: {
     image: 'emerald_canopy_moss_rope_walk.png',
     imagePrompt: '苔繩步道 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '苔繩步道位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '苔繩步道繞著兩株古樹之間的斜枝延伸，濕苔厚到覆住原本的繩股，只留下被腳步磨亮的中央線。西側低藤橋在葉影後搖晃，南面鳥巢村臺傳出羽翼和木碗碰撞聲。步道邊垂著細藤、露珠草和碎羽，樹皮上有鳥爪停棲的白痕，幾枚青果被苔根半掩；霧氣從板隙間湧上來，讓每一段看似柔軟的繩路都藏著高空深度。',
     exits: [
       { direction: 'south', targetRoomId: 'emerald_canopy_birdfolk_roost', description: '鳥巢村臺在南側' },
       { direction: 'west', targetRoomId: 'emerald_canopy_vine_bridge_low', description: '低藤橋在西側' },
@@ -894,7 +894,7 @@ emerald_canopy_raincatch_basin: {
     image: 'emerald_canopy_raincatch_basin.png',
     imagePrompt: '接雨盆地 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '接雨盆地位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '接雨盆地是一片由巨大葉盤托住的水窪，雨水沿葉脈匯入中央，水面映出上方枝網和飛鳥暗影。北側低藤橋滴下細水，南面蘭花藏層飄來花香，東方鳥巢村臺的竹木欄在葉間露出。盆地邊緣生著銀綠苔、蓄水蕨與透明小菇，葉盤下方以粗根支撐，水滴落入深處時拉出長長回音，讓整個平台既清涼又懸空。',
     exits: [
       { direction: 'north', targetRoomId: 'emerald_canopy_vine_bridge_low', description: '低藤橋在北側' },
       { direction: 'south', targetRoomId: 'emerald_canopy_orchid_cache', description: '蘭花藏層在南側' },
@@ -921,7 +921,7 @@ emerald_canopy_birdfolk_roost: {
     image: 'emerald_canopy_birdfolk_roost.png',
     imagePrompt: '鳥巢村臺 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '鳥巢村臺位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '鳥巢村臺築在多根粗枝交會處，木板、編藤和巨大鳥巢層層搭成半圓平台。北側苔繩步道貼著樹幹升高，南面樹脂瀑溝泛著金亮流痕，西側接雨盆地帶來濕潤水氣，東面雷枝臺偶爾閃出藍白光。平台欄杆掛滿羽串、空果殼和被風磨亮的骨哨，巢下堆著細枝與乾葉，整片聚落在高空風裡發出輕微搖響。',
     exits: [
       { direction: 'north', targetRoomId: 'emerald_canopy_moss_rope_walk', description: '苔繩步道在北側' },
       { direction: 'south', targetRoomId: 'emerald_canopy_sapfall_gully', description: '樹脂瀑溝在南側' },
@@ -949,7 +949,7 @@ emerald_canopy_storm_bough: {
     image: 'emerald_canopy_storm_bough.png',
     imagePrompt: '雷枝臺 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '雷枝臺位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '雷枝臺是一段伸出樹冠外緣的粗大橫枝，樹皮被雷電劈出銀白裂痕，裂縫內仍殘著微弱藍光。西側鳥巢村臺被羽欄遮住，南面鷹望臺立在較低的枝叉上。枝臺上散落燒焦葉片、裂羽和被電光烤硬的樹脂滴，空氣帶著暴雨前的金屬味；每當雲層壓低，細小電弧會沿樹皮紋路爬行，將整段高枝照得忽明忽暗。',
     exits: [
       { direction: 'south', targetRoomId: 'emerald_canopy_hawk_watch', description: '鷹望臺在南側' },
       { direction: 'west', targetRoomId: 'emerald_canopy_birdfolk_roost', description: '鳥巢村臺在西側' },
@@ -975,7 +975,7 @@ emerald_canopy_firefly_bower: {
     image: 'emerald_canopy_firefly_bower.png',
     imagePrompt: '螢光涼亭 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '螢光涼亭位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '螢光涼亭藏在一圈垂葉與透明藤簾後，無數綠金色螢光棲在葉背，照亮濕木小亭和苔石坐臺。東側蘭花藏層散出更濃的花粉香，西面則被交疊枝葉收束成安靜陰影。亭柱上纏著夜開小花、細根和發光菌絲，地面落滿透明翅片、水珠與細小花粉，苔石邊還有淡綠孢塵；光點隨風聚散，像樹冠深處暫時凝成的一池星光。',
     exits: [
       { direction: 'east', targetRoomId: 'emerald_canopy_orchid_cache', description: '蘭花藏層在東側' },
     ],
@@ -1000,7 +1000,7 @@ emerald_canopy_orchid_cache: {
     image: 'emerald_canopy_orchid_cache.png',
     imagePrompt: '蘭花藏層 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain forest, clear lantern light',
     description:
-      '蘭花藏層位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '蘭花藏層位於交錯枝架之間，巨大蘭花從樹皮裂縫垂落，花瓣內側積著淡紫露水。北面接雨盆地的水聲順枝傳來，南側棘絲巢露出尖刺藤影，西面螢光涼亭泛著綠金微光，東方樹脂瀑溝流出甜膩香氣。花叢下有被葉片覆住的木匣、乾花束和藥草割痕，濕香混著蜂蠟味，使整層枝架顯得豐盛卻易驚動。',
     exits: [
       { direction: 'north', targetRoomId: 'emerald_canopy_raincatch_basin', description: '接雨盆地在北側' },
       { direction: 'south', targetRoomId: 'emerald_canopy_thorn_silk_nest', description: '棘絲巢在南側' },
@@ -1028,7 +1028,7 @@ emerald_canopy_sapfall_gully: {
     image: 'emerald_canopy_sapfall_gully.png',
     imagePrompt: '樹脂瀑溝 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '樹脂瀑溝位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '樹脂瀑溝沿著裂開樹幹向下傾斜，金色樹脂從高處一串串滴落，在枝面凝成半透明階痕。北側鳥巢村臺傳來羽聲，南面日葉園被暖光照亮，西側蘭花藏層花香濃重，東方鷹望臺立在開闊枝尖。溝底堆著黏住的葉片、琥珀色蟲殼、折斷小刀和被封住的羽毛，樹脂流在陽光下忽明忽暗，甜味之下藏著黏滯的危險。',
     exits: [
       { direction: 'north', targetRoomId: 'emerald_canopy_birdfolk_roost', description: '鳥巢村臺在北側' },
       { direction: 'south', targetRoomId: 'emerald_canopy_sunleaf_garden', description: '日葉園在南側' },
@@ -1056,7 +1056,7 @@ emerald_canopy_hawk_watch: {
     image: 'emerald_canopy_hawk_watch.png',
     imagePrompt: '鷹望臺 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '鷹望臺位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '鷹望臺立在高枝外緣，以彎曲硬木和羽骨欄杆搭成，視野越過大片翡翠葉海。北側雷枝臺有藍白電光閃動，南面精英巡梢棲木藏在較密枝葉間，西方樹脂瀑溝發出金色反光，東側綠心跨枝橫過樹冠主幹。望臺地面刻著爪印和風向槽，欄上掛著換羽留下的長翎，冷風穿過時整座平台會發出像鷹鳴般的尖聲。',
     exits: [
       { direction: 'north', targetRoomId: 'emerald_canopy_storm_bough', description: '雷枝臺在北側' },
       { direction: 'south', targetRoomId: 'emerald_canopy_elite_patrol_perch', description: '精英巡梢棲木在南側' },
@@ -1084,7 +1084,7 @@ emerald_canopy_greenheart_span: {
     image: 'emerald_canopy_greenheart_span.png',
     imagePrompt: '綠心跨枝 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '綠心跨枝位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '綠心跨枝是一條橫越主幹裂谷的巨大活枝，枝心透出深綠脈光，像整片樹冠的血管裸露在空中。西側鷹望臺立在風口，南面雷皮小祠的焦痕樹皮若隱若現。跨枝兩側垂著長藤與青苔，枝面有鹿蹄狀凹痕、雨水流線、新生嫩葉和細小樹脂珠，裂谷下方則是層層葉雲；站在此處能感到古木緩慢而沉重的脈動。',
     exits: [
       { direction: 'south', targetRoomId: 'emerald_canopy_lightning_bark_shrine', description: '雷皮小祠在南側' },
       { direction: 'west', targetRoomId: 'emerald_canopy_hawk_watch', description: '鷹望臺在西側' },
@@ -1110,7 +1110,7 @@ emerald_canopy_thorn_silk_nest: {
     image: 'emerald_canopy_thorn_silk_nest.png',
     imagePrompt: '棘絲巢 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '棘絲巢位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '棘絲巢盤踞在陰濕枝叉上，帶刺藤蔓和銀白蛛絲纏成半封閉巢團，表面黏著花粉、羽毛和枯葉。北側蘭花藏層垂下紫色花影，東面日葉園透出溫暖金光。巢邊樹皮被細絲勒出深痕，枝面散著碎殼、毒刺、乾藤葉和半透明卵殼，枝根還有黏住的青果；偶爾有絲線在霧中微微繃緊，整個枝叉像被植物和昆蟲共同占據的陷阱。',
     exits: [
       { direction: 'north', targetRoomId: 'emerald_canopy_orchid_cache', description: '蘭花藏層在北側' },
       { direction: 'east', targetRoomId: 'emerald_canopy_sunleaf_garden', description: '日葉園在東側' },
@@ -1135,7 +1135,7 @@ emerald_canopy_sunleaf_garden: {
     image: 'emerald_canopy_sunleaf_garden.png',
     imagePrompt: '日葉園 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '日葉園位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '日葉園展開在一片朝東的寬枝平台，大片金綠葉片向上翻開，將陽光反射成溫暖斑紋。北側樹脂瀑溝滴著琥珀光，南面空樹市集藏在中空樹幹裡，西側棘絲巢顯得陰冷，東方精英巡梢棲木掛著巡哨羽標。園中有高階木芽、亮葉藥草和石盆裡的薄土，葉面露珠像細小鏡片，讓整片平台明亮卻無法放鬆警戒。',
     exits: [
       { direction: 'north', targetRoomId: 'emerald_canopy_sapfall_gully', description: '樹脂瀑溝在北側' },
       { direction: 'south', targetRoomId: 'emerald_canopy_hollow_trunk_market', description: '空樹市集在南側' },
@@ -1163,7 +1163,7 @@ emerald_canopy_elite_patrol_perch: {
     image: 'emerald_canopy_elite_patrol_perch.png',
     imagePrompt: '精英巡梢棲木 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '精英巡梢棲木位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '精英巡梢棲木架在四方路線交會的高枝上，硬木平臺被反覆踩磨，邊緣插著羽標和短矛。北側鷹望臺迎著風口，南面古蜂巢嗡鳴低沉，西側日葉園透來金光，東方雷皮小祠閃著焦黑電痕。棲木下方綁著警鈴果殼與繩網，枝面留有整齊巡行刻痕，周圍葉片被修剪出視線孔，使這裡成為樹冠高處最敏銳的警戒節點。',
     exits: [
       { direction: 'north', targetRoomId: 'emerald_canopy_hawk_watch', description: '鷹望臺在北側' },
       { direction: 'south', targetRoomId: 'emerald_canopy_ancient_bee_hive', description: '古蜂巢在南側' },
