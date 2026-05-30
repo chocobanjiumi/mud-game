@@ -226,13 +226,11 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
         </div>
 
         {inCombat ? (
-          /* BC: merged combat area */
+          /* BC: merged combat area — BattlefieldView 已包含敵人/隊友/目標/approaching */
           <div className="game-actions flex flex-col bg-bg-secondary border-r border-border-dim min-h-0">
             <div className="game-actions-scroll flex-1 min-h-0 overflow-y-auto">
               <BattlefieldView />
               <SkillBar onUseSkill={handleUseSkill} pendingTargetSkillId={pendingTargetSkillId} />
-              <RoomPanel />
-              <SelectedTargetPanel />
             </div>
             <StatusBar compact />
           </div>
