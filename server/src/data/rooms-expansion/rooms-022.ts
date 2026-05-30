@@ -1,0 +1,1198 @@
+import type { RoomDef } from '@game/shared';
+
+export const EXPANSION_ROOMS_PART_022: Record<string, RoomDef> = {
+frostbite_pass_caravan_marker: {
+    id: 'frostbite_pass_caravan_marker',
+    name: '商隊路標',
+    zone: 'frostbite_pass' as RoomDef['zone'],
+    image: 'frostbite_pass_caravan_marker.png',
+    imagePrompt: '商隊路標 in frostbite_pass, frozen mountain pass with blizzard, blue ice bridge, buried caravan wagons, snow gate, glacier cliffs and polar wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain mountain, clear lantern light',
+    description:
+      '商隊路標位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
+    exits: [
+      { direction: 'west', targetRoomId: 'frostbite_pass_snow_gate', description: '回到雪門' },
+      { direction: 'east', targetRoomId: 'frostbite_pass_icewind_cut', description: '冰風切道在東側' },
+      { direction: 'north', targetRoomId: 'frostbite_pass_buried_wagon', description: '埋雪貨車在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+    ],
+    monsters: [
+      { monsterId: 'frostbite_buried_caravan_wight', maxCount: 1, respawnSeconds: 220 },
+      { monsterId: 'frostbite_whiteout_wolf_pack', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[標]',
+    mapX: 1,
+    mapY: 0,
+    guardianHints: {
+      creature: '商隊路標的雪面若被新痕切開，附近雪怪、霜巨人或冰元素可能正在靠近。',
+      treasure: '商隊路標的斷繩、貨箱或冰縫旁可能藏著霜咬隘口商隊線索。',
+      spirit: '商隊路標殘留商隊迷失、暴風雪封路與北境守望者留下的記憶。',
+    },
+  },
+
+frostbite_pass_icewind_cut: {
+    id: 'frostbite_pass_icewind_cut',
+    name: '冰風切道',
+    zone: 'frostbite_pass' as RoomDef['zone'],
+    image: 'frostbite_pass_icewind_cut.png',
+    imagePrompt: '冰風切道 in frostbite_pass, frozen mountain pass with blizzard, blue ice bridge, buried caravan wagons, snow gate, glacier cliffs and polar wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain mountain, clear lantern light',
+    description:
+      '冰風切道位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
+    exits: [
+      { direction: 'west', targetRoomId: 'frostbite_pass_caravan_marker', description: '回到商隊路標' },
+      { direction: 'east', targetRoomId: 'frostbite_pass_blue_ice_bridge', description: '藍冰橋在東側' },
+    ],
+    monsters: [
+      { monsterId: 'frostbite_sleet_harrier', maxCount: 2, respawnSeconds: 190 },
+      { monsterId: 'frostbite_whiteout_wolf_pack', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[風]',
+    mapX: 2,
+    mapY: 0,
+    guardianHints: {
+      creature: '冰風切道的雪面若被新痕切開，附近雪怪、霜巨人或冰元素可能正在靠近。',
+      treasure: '冰風切道的斷繩、貨箱或冰縫旁可能藏著霜咬隘口商隊線索。',
+      spirit: '冰風切道殘留商隊迷失、暴風雪封路與北境守望者留下的記憶。',
+    },
+  },
+
+frostbite_pass_frozen_switchback: {
+    id: 'frostbite_pass_frozen_switchback',
+    name: '凍結折路',
+    zone: 'frostbite_pass' as RoomDef['zone'],
+    image: 'frostbite_pass_frozen_switchback.png',
+    imagePrompt: '凍結折路 in frostbite_pass, frozen mountain pass with blizzard, blue ice bridge, buried caravan wagons, snow gate, glacier cliffs and polar wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain mountain, clear lantern light',
+    description:
+      '凍結折路位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
+    exits: [
+      { direction: 'south', targetRoomId: 'frostbite_pass_snow_gate', description: '回到雪門', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'frostbite_pass_buried_wagon', description: '埋雪貨車在東側' },
+      { direction: 'north', targetRoomId: 'frostbite_pass_coldfire_camp', description: '冷火營在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+    ],
+    monsters: [
+      { monsterId: 'frostbite_whiteout_wolf_pack', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'frostbite_buried_caravan_wight', maxCount: 1, respawnSeconds: 220 },
+    ],
+    mapSymbol: '[折]',
+    mapX: 1,
+    mapY: 1,
+    guardianHints: {
+      creature: '凍結折路的雪面若被新痕切開，附近雪怪、霜巨人或冰元素可能正在靠近。',
+      treasure: '凍結折路的斷繩、貨箱或冰縫旁可能藏著霜咬隘口商隊線索。',
+      spirit: '凍結折路殘留商隊迷失、暴風雪封路與北境守望者留下的記憶。',
+    },
+  },
+
+frostbite_pass_buried_wagon: {
+    id: 'frostbite_pass_buried_wagon',
+    name: '埋雪貨車',
+    zone: 'frostbite_pass' as RoomDef['zone'],
+    image: 'frostbite_pass_buried_wagon.png',
+    imagePrompt: '埋雪貨車 in frostbite_pass, frozen mountain pass with blizzard, blue ice bridge, buried caravan wagons, snow gate, glacier cliffs and polar wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain mountain, clear lantern light',
+    description:
+      '埋雪貨車位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
+    exits: [
+      { direction: 'west', targetRoomId: 'frostbite_pass_frozen_switchback', description: '回到凍結折路' },
+      { direction: 'south', targetRoomId: 'frostbite_pass_caravan_marker', description: '回到商隊路標', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'frostbite_pass_yeti_scrape', description: '雪怪抓痕在東側' },
+    ],
+    monsters: [
+      { monsterId: 'frostbite_buried_caravan_wight', maxCount: 2, respawnSeconds: 220 },
+      { monsterId: 'frostbite_scarred_yeti', maxCount: 1, respawnSeconds: 260 },
+    ],
+    mapSymbol: '[車]',
+    mapX: 2,
+    mapY: 1,
+    guardianHints: {
+      creature: '埋雪貨車的雪面若被新痕切開，附近雪怪、霜巨人或冰元素可能正在靠近。',
+      treasure: '埋雪貨車的斷繩、貨箱或冰縫旁可能藏著霜咬隘口商隊線索。',
+      spirit: '埋雪貨車殘留商隊迷失、暴風雪封路與北境守望者留下的記憶。',
+    },
+  },
+
+frostbite_pass_blue_ice_bridge: {
+    id: 'frostbite_pass_blue_ice_bridge',
+    name: '藍冰橋',
+    zone: 'frostbite_pass' as RoomDef['zone'],
+    image: 'frostbite_pass_blue_ice_bridge.png',
+    imagePrompt: '藍冰橋 in frostbite_pass, frozen mountain pass with blizzard, blue ice bridge, buried caravan wagons, snow gate, glacier cliffs and polar wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain mountain, clear lantern light',
+    description:
+      '藍冰橋位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
+    exits: [
+      { direction: 'west', targetRoomId: 'frostbite_pass_icewind_cut', description: '回到冰風切道' },
+      { direction: 'east', targetRoomId: 'frostbite_pass_glacier_mouth', description: '冰河口在東側' },
+      { direction: 'north', targetRoomId: 'frostbite_pass_yeti_scrape', description: '北側藍冰橋沿裂紋冰脊上行，繞過斷裂繩標與雪怪爪溝抵達抓痕地帶', edgeKind: 'distant_route', edgeNote: '藍冰橋到雪怪抓痕需沿裂紋冰脊與斷裂繩標上行，實際路程長於相鄰一格。' },
+    ],
+    monsters: [
+      { monsterId: 'frostbite_blue_ice_lizard', maxCount: 2, respawnSeconds: 210 },
+      { monsterId: 'frostbite_sleet_harrier', maxCount: 1, respawnSeconds: 190 },
+    ],
+    mapSymbol: '[橋]',
+    mapX: 3,
+    mapY: 0,
+    guardianHints: {
+      creature: '藍冰橋的雪面若被新痕切開，附近雪怪、霜巨人或冰元素可能正在靠近。',
+      treasure: '藍冰橋的斷繩、貨箱或冰縫旁可能藏著霜咬隘口商隊線索。',
+      spirit: '藍冰橋殘留商隊迷失、暴風雪封路與北境守望者留下的記憶。',
+    },
+  },
+
+frostbite_pass_yeti_scrape: {
+    id: 'frostbite_pass_yeti_scrape',
+    name: '雪怪抓痕',
+    zone: 'frostbite_pass' as RoomDef['zone'],
+    image: 'frostbite_pass_yeti_scrape.png',
+    imagePrompt: '雪怪抓痕 in frostbite_pass, frozen mountain pass with blizzard, blue ice bridge, buried caravan wagons, snow gate, glacier cliffs and polar wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain mountain, clear lantern light',
+    description:
+      '雪怪抓痕位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
+    exits: [
+      { direction: 'west', targetRoomId: 'frostbite_pass_buried_wagon', description: '回到埋雪貨車' },
+      { direction: 'south', targetRoomId: 'frostbite_pass_blue_ice_bridge', description: '南側雪怪爪溝沿斷裂繩標折降，穿過裂紋冰脊與結冰防風石堆回到藍冰橋中央', edgeKind: 'distant_route', edgeNote: '雪怪抓痕回藍冰橋需沿爪溝與裂紋冰脊折降，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'frostbite_pass_whiteout_basin', description: '北側雪怪足跡穿過白霧回流與埋雪路標，繞過冰旗殘桿進入白霧盆地外圈', edgeKind: 'distant_route', edgeNote: '雪怪抓痕到白霧盆地需穿過白霧回流與埋雪路標，實際路程長於相鄰一格。' },
+    ],
+    monsters: [
+      { monsterId: 'frostbite_scarred_yeti', maxCount: 2, respawnSeconds: 260 },
+      { monsterId: 'frostbite_whiteout_wolf_pack', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[爪]',
+    mapX: 3,
+    mapY: 1,
+    guardianHints: {
+      creature: '雪怪抓痕的雪面若被新痕切開，附近雪怪、霜巨人或冰元素可能正在靠近。',
+      treasure: '雪怪抓痕的斷繩、貨箱或冰縫旁可能藏著霜咬隘口商隊線索。',
+      spirit: '雪怪抓痕殘留商隊迷失、暴風雪封路與北境守望者留下的記憶。',
+    },
+  },
+
+frostbite_pass_whiteout_basin: {
+    id: 'frostbite_pass_whiteout_basin',
+    name: '白霧盆地',
+    zone: 'frostbite_pass' as RoomDef['zone'],
+    image: 'frostbite_pass_whiteout_basin.png',
+    imagePrompt: '白霧盆地 in frostbite_pass, frozen mountain pass with blizzard, blue ice bridge, buried caravan wagons, snow gate, glacier cliffs and polar wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain mountain, clear lantern light',
+    description:
+      '白霧盆地位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
+    exits: [
+      { direction: 'south', targetRoomId: 'frostbite_pass_yeti_scrape', description: '南側白霧盆地沿埋雪路標折返，穿過回流霧牆與冰旗殘桿回到雪怪抓痕', edgeKind: 'distant_route', edgeNote: '白霧盆地回雪怪抓痕需沿埋雪路標穿過回流霧牆，實際路程長於相鄰一格。' },
+      { direction: 'west', targetRoomId: 'frostbite_pass_coldfire_camp', description: '冷火營在西側' },
+      { direction: 'east', targetRoomId: 'frostbite_pass_sleet_watch', description: '東側冰河口沿冰壁窄棚橫移，穿過雨雪斜風、號旗桿與冰裂警戒線抵達雨雪哨', edgeKind: 'distant_route', edgeNote: '冰河口到雨雪哨需沿冰壁窄棚與號旗桿橫移，實際路程長於相鄰一格。' },
+    ],
+    monsters: [
+      { monsterId: 'frostbite_whiteout_wolf_pack', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'frostbite_sleet_harrier', maxCount: 1, respawnSeconds: 190 },
+    ],
+    mapSymbol: '[霧]',
+    mapX: 2,
+    mapY: 2,
+    guardianHints: {
+      creature: '白霧盆地的雪面若被新痕切開，附近雪怪、霜巨人或冰元素可能正在靠近。',
+      treasure: '白霧盆地的斷繩、貨箱或冰縫旁可能藏著霜咬隘口商隊線索。',
+      spirit: '白霧盆地殘留商隊迷失、暴風雪封路與北境守望者留下的記憶。',
+    },
+  },
+
+frostbite_pass_coldfire_camp: {
+    id: 'frostbite_pass_coldfire_camp',
+    name: '冷火營',
+    zone: 'frostbite_pass' as RoomDef['zone'],
+    image: 'frostbite_pass_coldfire_camp.png',
+    imagePrompt: '冷火營 in frostbite_pass, frozen mountain pass with blizzard, blue ice bridge, buried caravan wagons, snow gate, glacier cliffs and polar wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain mountain, clear lantern light',
+    description:
+      '冷火營位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
+    exits: [
+      { direction: 'south', targetRoomId: 'frostbite_pass_frozen_switchback', description: '回到凍結折路', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'frostbite_pass_whiteout_basin', description: '白霧盆地在東側' },
+      { direction: 'north', targetRoomId: 'frostbite_pass_crystal_fir_grove', description: '晶松林在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+    ],
+    monsters: [
+      { monsterId: 'frostbite_buried_caravan_wight', maxCount: 1, respawnSeconds: 220 },
+      { monsterId: 'frostbite_crystal_fir_lurker', maxCount: 1, respawnSeconds: 260 },
+    ],
+    mapSymbol: '[營]',
+    mapX: 1,
+    mapY: 2,
+    guardianHints: {
+      creature: '冷火營的雪面若被新痕切開，附近雪怪、霜巨人或冰元素可能正在靠近。',
+      treasure: '冷火營的斷繩、貨箱或冰縫旁可能藏著霜咬隘口商隊線索。',
+      spirit: '冷火營殘留商隊迷失、暴風雪封路與北境守望者留下的記憶。',
+    },
+  },
+
+frostbite_pass_glacier_mouth: {
+    id: 'frostbite_pass_glacier_mouth',
+    name: '冰河口',
+    zone: 'frostbite_pass' as RoomDef['zone'],
+    image: 'frostbite_pass_glacier_mouth.png',
+    imagePrompt: '冰河口 in frostbite_pass, frozen mountain pass with blizzard, blue ice bridge, buried caravan wagons, snow gate, glacier cliffs and polar wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain mountain, clear lantern light',
+    description:
+      '冰河口位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
+    exits: [
+      { direction: 'west', targetRoomId: 'frostbite_pass_blue_ice_bridge', description: '回到藍冰橋' },
+      { direction: 'east', targetRoomId: 'frostbite_pass_sleet_watch', description: '雨雪哨在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+    ],
+    monsters: [
+      { monsterId: 'frostbite_glacier_golem', maxCount: 1, respawnSeconds: 360 },
+      { monsterId: 'frostbite_blue_ice_lizard', maxCount: 1, respawnSeconds: 210 },
+    ],
+    mapSymbol: '[河]',
+    mapX: 4,
+    mapY: 0,
+    guardianHints: {
+      creature: '冰河口的雪面若被新痕切開，附近雪怪、霜巨人或冰元素可能正在靠近。',
+      treasure: '冰河口的斷繩、貨箱或冰縫旁可能藏著霜咬隘口商隊線索。',
+      spirit: '冰河口殘留商隊迷失、暴風雪封路與北境守望者留下的記憶。',
+    },
+  },
+
+frostbite_pass_sleet_watch: {
+    id: 'frostbite_pass_sleet_watch',
+    name: '雨雪哨',
+    zone: 'frostbite_pass' as RoomDef['zone'],
+    image: 'frostbite_pass_sleet_watch.png',
+    imagePrompt: '雨雪哨 in frostbite_pass, frozen mountain pass with blizzard, blue ice bridge, buried caravan wagons, snow gate, glacier cliffs and polar wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain mountain, clear lantern light',
+    description:
+      '雨雪哨位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。南側白霧盆地被暴風雪回流遮斷，只能從白霧盆地東側抵達雨雪哨。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
+    exits: [
+      { direction: 'west', targetRoomId: 'frostbite_pass_glacier_mouth', description: '西側雨雪哨沿號旗桿與冰壁窄棚回穿，避開斜風與冰裂警戒線後抵達冰河口', edgeKind: 'distant_route', edgeNote: '雨雪哨回冰河口需沿號旗桿與冰壁窄棚穿行，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'frostbite_pass_frost_giant_steps', description: '霜巨人足跡在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+    ],
+    monsters: [
+      { monsterId: 'frostbite_sleet_harrier', maxCount: 2, respawnSeconds: 190 },
+      { monsterId: 'frostbite_glacier_golem', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[哨]',
+    mapX: 4,
+    mapY: 1,
+    guardianHints: {
+      creature: '雨雪哨的雪面若被新痕切開，附近雪怪、霜巨人或冰元素可能正在靠近。',
+      treasure: '雨雪哨的斷繩、貨箱或冰縫旁可能藏著霜咬隘口商隊線索。',
+      spirit: '雨雪哨殘留商隊迷失、暴風雪封路與北境守望者留下的記憶。',
+    },
+  },
+
+frostbite_pass_bone_sled_path: {
+    id: 'frostbite_pass_bone_sled_path',
+    name: '骨橇路',
+    zone: 'frostbite_pass' as RoomDef['zone'],
+    image: 'frostbite_pass_bone_sled_path.png',
+    imagePrompt: '骨橇路 in frostbite_pass, frozen mountain pass with blizzard, blue ice bridge, buried caravan wagons, snow gate, glacier cliffs and polar wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain mountain, clear lantern light',
+    description:
+      '骨橇路位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
+    exits: [
+      { direction: 'east', targetRoomId: 'frostbite_pass_crystal_fir_grove', description: '晶松林在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'frostbite_pass_lost_merchant_cache', description: '失商藏點在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+    ],
+    monsters: [
+      { monsterId: 'frostbite_scarred_yeti', maxCount: 1, respawnSeconds: 260 },
+      { monsterId: 'frostbite_whiteout_wolf_pack', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[橇]',
+    mapX: 3,
+    mapY: 2,
+    guardianHints: {
+      creature: '骨橇路的雪面若被新痕切開，附近雪怪、霜巨人或冰元素可能正在靠近。',
+      treasure: '骨橇路的斷繩、貨箱或冰縫旁可能藏著霜咬隘口商隊線索。',
+      spirit: '骨橇路殘留商隊迷失、暴風雪封路與北境守望者留下的記憶。',
+    },
+  },
+
+frostbite_pass_crystal_fir_grove: {
+    id: 'frostbite_pass_crystal_fir_grove',
+    name: '晶松林',
+    zone: 'frostbite_pass' as RoomDef['zone'],
+    image: 'frostbite_pass_crystal_fir_grove.png',
+    imagePrompt: '晶松林 in frostbite_pass, frozen mountain pass with blizzard, blue ice bridge, buried caravan wagons, snow gate, glacier cliffs and polar wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain mountain, clear lantern light',
+    description:
+      '晶松林位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
+    exits: [
+      { direction: 'west', targetRoomId: 'frostbite_pass_bone_sled_path', description: '骨橇路在西側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'frostbite_pass_coldfire_camp', description: '回到冷火營', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'frostbite_pass_wind_howl_arch', description: '風嚎拱在東側' },
+    ],
+    monsters: [
+      { monsterId: 'frostbite_crystal_fir_lurker', maxCount: 2, respawnSeconds: 260 },
+      { monsterId: 'frostbite_blue_ice_lizard', maxCount: 1, respawnSeconds: 210 },
+    ],
+    mapSymbol: '[松]',
+    mapX: 1,
+    mapY: 3,
+    guardianHints: {
+      creature: '晶松林的雪面若被新痕切開，附近雪怪、霜巨人或冰元素可能正在靠近。',
+      treasure: '晶松林的斷繩、貨箱或冰縫旁可能藏著霜咬隘口商隊線索。',
+      spirit: '晶松林殘留商隊迷失、暴風雪封路與北境守望者留下的記憶。',
+    },
+  },
+
+frostbite_pass_wind_howl_arch: {
+    id: 'frostbite_pass_wind_howl_arch',
+    name: '風嚎拱',
+    zone: 'frostbite_pass' as RoomDef['zone'],
+    image: 'frostbite_pass_wind_howl_arch.png',
+    imagePrompt: '風嚎拱 in frostbite_pass, frozen mountain pass with blizzard, blue ice bridge, buried caravan wagons, snow gate, glacier cliffs and polar wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain mountain, clear lantern light',
+    description:
+      '風嚎拱位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
+    exits: [
+      { direction: 'west', targetRoomId: 'frostbite_pass_crystal_fir_grove', description: '回到晶松林' },
+      { direction: 'east', targetRoomId: 'frostbite_pass_lost_merchant_cache', description: '東側雪盲路標通往失商藏點' },
+    ],
+    monsters: [
+      { monsterId: 'frostbite_sleet_harrier', maxCount: 1, respawnSeconds: 190 },
+      { monsterId: 'frostbite_giant_pathbreaker', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[拱]',
+    mapX: 2,
+    mapY: 3,
+    guardianHints: {
+      creature: '風嚎拱的雪面若被新痕切開，附近雪怪、霜巨人或冰元素可能正在靠近。',
+      treasure: '風嚎拱的斷繩、貨箱或冰縫旁可能藏著霜咬隘口商隊線索。',
+      spirit: '風嚎拱殘留商隊迷失、暴風雪封路與北境守望者留下的記憶。',
+    },
+  },
+
+frostbite_pass_lost_merchant_cache: {
+    id: 'frostbite_pass_lost_merchant_cache',
+    name: '失商藏點',
+    zone: 'frostbite_pass' as RoomDef['zone'],
+    image: 'frostbite_pass_lost_merchant_cache.png',
+    imagePrompt: '失商藏點 in frostbite_pass, frozen mountain pass with blizzard, blue ice bridge, buried caravan wagons, snow gate, glacier cliffs and polar wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain mountain, clear lantern light',
+    description:
+      '失商藏點位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
+    exits: [
+      { direction: 'west', targetRoomId: 'frostbite_pass_wind_howl_arch', description: '西側雪盲路標回到風嚎拱' },
+      { direction: 'south', targetRoomId: 'frostbite_pass_bone_sled_path', description: '回到骨橇路', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'frostbite_pass_ice_cairn_field', description: '東側半埋貨旗接往冰石堆原' },
+    ],
+    monsters: [
+      { monsterId: 'frostbite_buried_caravan_wight', maxCount: 2, respawnSeconds: 220 },
+      { monsterId: 'frostbite_giant_pathbreaker', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[藏]',
+    mapX: 3,
+    mapY: 3,
+    guardianHints: {
+      creature: '失商藏點的雪面若被新痕切開，附近雪怪、霜巨人或冰元素可能正在靠近。',
+      treasure: '失商藏點的斷繩、貨箱或冰縫旁可能藏著霜咬隘口商隊線索。',
+      spirit: '失商藏點殘留商隊迷失、暴風雪封路與北境守望者留下的記憶。',
+    },
+  },
+
+frostbite_pass_frost_giant_steps: {
+    id: 'frostbite_pass_frost_giant_steps',
+    name: '霜巨人足跡',
+    zone: 'frostbite_pass' as RoomDef['zone'],
+    image: 'frostbite_pass_frost_giant_steps.png',
+    imagePrompt: '霜巨人足跡 in frostbite_pass, frozen mountain pass with blizzard, blue ice bridge, buried caravan wagons, snow gate, glacier cliffs and polar wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain mountain, clear lantern light',
+    description:
+      '霜巨人足跡位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
+    exits: [
+      { direction: 'west', targetRoomId: 'frostbite_pass_lost_merchant_cache', description: '西側霜巨人足跡沿冰裂坡折返，穿過巨大腳印溝與翻倒貨箱回到失商藏點', edgeKind: 'distant_route', edgeNote: '霜巨人足跡回失商藏點需沿冰裂坡與腳印溝折返，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'frostbite_pass_sleet_watch', description: '回到雨雪哨', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'frostbite_pass_northbound_ridge', description: '北側霜巨人足跡沿巨大腳印溝爬升，穿過冰裂坡與風切稜線抵達北行山脊', edgeKind: 'distant_route', edgeNote: '霜巨人足跡到北行山脊需沿腳印溝與風切稜線爬升，實際路程長於相鄰一格。' },
+    ],
+    monsters: [
+      { monsterId: 'frostbite_giant_pathbreaker', maxCount: 2, respawnSeconds: 420 },
+      { monsterId: 'frostbite_scarred_yeti', maxCount: 1, respawnSeconds: 260 },
+    ],
+    mapSymbol: '[足]',
+    mapX: 4,
+    mapY: 2,
+    guardianHints: {
+      creature: '霜巨人足跡的雪面若被新痕切開，附近雪怪、霜巨人或冰元素可能正在靠近。',
+      treasure: '霜巨人足跡的斷繩、貨箱或冰縫旁可能藏著霜咬隘口商隊線索。',
+      spirit: '霜巨人足跡殘留商隊迷失、暴風雪封路與北境守望者留下的記憶。',
+    },
+  },
+
+frostbite_pass_ice_cairn_field: {
+    id: 'frostbite_pass_ice_cairn_field',
+    name: '冰石堆原',
+    zone: 'frostbite_pass' as RoomDef['zone'],
+    image: 'frostbite_pass_ice_cairn_field.png',
+    imagePrompt: '冰石堆原 in frostbite_pass, frozen mountain pass with blizzard, blue ice bridge, buried caravan wagons, snow gate, glacier cliffs and polar wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain mountain, clear lantern light',
+    description:
+      '冰石堆原位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
+    exits: [
+      { direction: 'west', targetRoomId: 'frostbite_pass_lost_merchant_cache', description: '西側半埋貨旗回到失商藏點' },
+      { direction: 'east', targetRoomId: 'frostbite_pass_northbound_ridge', description: '北行山脊在東側' },
+    ],
+    monsters: [
+      { monsterId: 'frostbite_glacier_golem', maxCount: 1, respawnSeconds: 360 },
+      { monsterId: 'frostbite_crystal_fir_lurker', maxCount: 1, respawnSeconds: 260 },
+    ],
+    mapSymbol: '[石]',
+    mapX: 4,
+    mapY: 3,
+    guardianHints: {
+      creature: '冰石堆原的雪面若被新痕切開，附近雪怪、霜巨人或冰元素可能正在靠近。',
+      treasure: '冰石堆原的斷繩、貨箱或冰縫旁可能藏著霜咬隘口商隊線索。',
+      spirit: '冰石堆原殘留商隊迷失、暴風雪封路與北境守望者留下的記憶。',
+    },
+  },
+
+frostbite_pass_northbound_ridge: {
+    id: 'frostbite_pass_northbound_ridge',
+    name: '北行山脊',
+    zone: 'frostbite_pass' as RoomDef['zone'],
+    image: 'frostbite_pass_northbound_ridge.png',
+    imagePrompt: '北行山脊 in frostbite_pass, frozen mountain pass with blizzard, blue ice bridge, buried caravan wagons, snow gate, glacier cliffs and polar wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain mountain, clear lantern light',
+    description:
+      '北行山脊位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
+    exits: [
+      { direction: 'west', targetRoomId: 'frostbite_pass_ice_cairn_field', description: '回到冰石堆原' },
+      { direction: 'south', targetRoomId: 'frostbite_pass_frost_giant_steps', description: '南側北行山脊沿風切稜線折降，穿過冰裂坡與巨大腳印溝回到霜巨人足跡', edgeKind: 'distant_route', edgeNote: '北行山脊回霜巨人足跡需沿風切稜線與腳印溝折降，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'frostbite_pass_dragon_breath_shelf', description: '龍息冰棚在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+    ],
+    monsters: [
+      { monsterId: 'frostbite_giant_pathbreaker', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'frostbite_dragonbreath_whelp', maxCount: 1, respawnSeconds: 480 },
+    ],
+    mapSymbol: '[脊]',
+    mapX: 5,
+    mapY: 3,
+    guardianHints: {
+      creature: '北行山脊的雪面若被新痕切開，附近雪怪、霜巨人或冰元素可能正在靠近。',
+      treasure: '北行山脊的斷繩、貨箱或冰縫旁可能藏著霜咬隘口商隊線索。',
+      spirit: '北行山脊殘留商隊迷失、暴風雪封路與北境守望者留下的記憶。',
+    },
+  },
+
+frostbite_pass_dragon_breath_shelf: {
+    id: 'frostbite_pass_dragon_breath_shelf',
+    name: '龍息冰棚',
+    zone: 'frostbite_pass' as RoomDef['zone'],
+    image: 'frostbite_pass_dragon_breath_shelf.png',
+    imagePrompt: '龍息冰棚 in frostbite_pass, frozen mountain pass with blizzard, blue ice bridge, buried caravan wagons, snow gate, glacier cliffs and polar wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain mountain, clear lantern light',
+    description:
+      '龍息冰棚位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
+    exits: [
+      { direction: 'west', targetRoomId: 'frostbite_pass_northbound_ridge', description: '回到北行山脊', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'frostbite_pass_polar_seal_gate', description: '極北封門在東側' },
+    ],
+    monsters: [
+      { monsterId: 'frostbite_dragonbreath_whelp', maxCount: 1, respawnSeconds: 480 },
+      { monsterId: 'frostbite_glacier_golem', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[龍]',
+    mapX: 5,
+    mapY: 2,
+    guardianHints: {
+      creature: '龍息冰棚的雪面若被新痕切開，附近雪怪、霜巨人或冰元素可能正在靠近。',
+      treasure: '龍息冰棚的斷繩、貨箱或冰縫旁可能藏著霜咬隘口商隊線索。',
+      spirit: '龍息冰棚殘留商隊迷失、暴風雪封路與北境守望者留下的記憶。',
+    },
+  },
+
+frostbite_pass_polar_seal_gate: {
+    id: 'frostbite_pass_polar_seal_gate',
+    name: '極北封門',
+    zone: 'frostbite_pass' as RoomDef['zone'],
+    image: 'frostbite_pass_polar_seal_gate.png',
+    imagePrompt: '極北封門 in frostbite_pass, frozen mountain pass with blizzard, blue ice bridge, buried caravan wagons, snow gate, glacier cliffs and polar wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain mountain, clear lantern light',
+    description:
+      '極北封門位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
+    exits: [
+      { direction: 'west', targetRoomId: 'frostbite_pass_dragon_breath_shelf', description: '回到龍息冰棚' },
+    ],
+    monsters: [
+      { monsterId: 'frostbite_polar_gate_colossus', maxCount: 1, respawnSeconds: 1000 },
+      { monsterId: 'frostbite_dragonbreath_whelp', maxCount: 1, respawnSeconds: 480 },
+      { monsterId: 'frostbite_giant_pathbreaker', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[門]',
+    mapX: 6,
+    mapY: 2,
+    guardianHints: {
+      creature: '極北封門的雪面若被新痕切開，附近雪怪、霜巨人或冰元素可能正在靠近。',
+      treasure: '極北封門的斷繩、貨箱或冰縫旁可能藏著霜咬隘口商隊線索。',
+      spirit: '極北封門殘留商隊迷失、暴風雪封路與北境守望者留下的記憶。',
+    },
+  },
+
+// ─── 死都外門擴充 (Lv 40-52) ───────────────────────────
+
+  necropolis_gate_black_approach: {
+    id: 'necropolis_gate_black_approach',
+    name: '黑門引道',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_black_approach.png',
+    imagePrompt: '黑門引道 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
+    description:
+      '黑門引道位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'east', targetRoomId: 'necropolis_gate_half_open_gate', description: '半開黑門在東側' },
+      { direction: 'north', targetRoomId: 'necropolis_gate_mourner_steps', description: '哀悼階在北側' },
+    ],
+    monsters: [
+      { monsterId: 'necropolis_black_gate_wight', maxCount: 2, respawnSeconds: 300 },
+      { monsterId: 'necropolis_bone_causeway_lancer', maxCount: 1, respawnSeconds: 320 },
+    ],
+    mapSymbol: '[入]',
+    mapX: 0,
+    mapY: 0,
+    guardianHints: {
+      creature: '黑門引道的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '黑門引道的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '黑門引道殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+necropolis_gate_half_open_gate: {
+    id: 'necropolis_gate_half_open_gate',
+    name: '半開黑門',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_half_open_gate.png',
+    imagePrompt: '半開黑門 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
+    description:
+      '半開黑門位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'west', targetRoomId: 'necropolis_gate_black_approach', description: '回到黑門引道' },
+      { direction: 'east', targetRoomId: 'necropolis_gate_bone_causeway', description: '白骨堤道在東側' },
+      { direction: 'north', targetRoomId: 'necropolis_gate_silent_muster', description: '靜默列陣在北側' },
+    ],
+    monsters: [
+      { monsterId: 'necropolis_black_gate_wight', maxCount: 2, respawnSeconds: 300 },
+      { monsterId: 'necropolis_grave_banner_captain', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[門]',
+    mapX: 1,
+    mapY: 0,
+    guardianHints: {
+      creature: '半開黑門的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '半開黑門的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '半開黑門殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+necropolis_gate_bone_causeway: {
+    id: 'necropolis_gate_bone_causeway',
+    name: '白骨堤道',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_bone_causeway.png',
+    imagePrompt: '白骨堤道 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
+    description:
+      '白骨堤道位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'west', targetRoomId: 'necropolis_gate_half_open_gate', description: '回到半開黑門' },
+      { direction: 'east', targetRoomId: 'necropolis_gate_iron_ossuary', description: '鐵骨藏室在東側' },
+      { direction: 'north', targetRoomId: 'necropolis_gate_grave_banner_line', description: '墓旗線在北側' },
+    ],
+    monsters: [
+      { monsterId: 'necropolis_bone_causeway_lancer', maxCount: 3, respawnSeconds: 320 },
+    ],
+    mapSymbol: '[堤]',
+    mapX: 2,
+    mapY: 0,
+    guardianHints: {
+      creature: '白骨堤道的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '白骨堤道的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '白骨堤道殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+necropolis_gate_silent_muster: {
+    id: 'necropolis_gate_silent_muster',
+    name: '靜默列陣',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_silent_muster.png',
+    imagePrompt: '靜默列陣 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
+    description:
+      '靜默列陣位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'south', targetRoomId: 'necropolis_gate_half_open_gate', description: '回到半開黑門' },
+      { direction: 'east', targetRoomId: 'necropolis_gate_grave_banner_line', description: '墓旗線在東側' },
+      { direction: 'north', targetRoomId: 'necropolis_gate_watchless_tower', description: '無守望塔在北側' },
+    ],
+    monsters: [
+      { monsterId: 'necropolis_grave_banner_captain', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'necropolis_black_gate_wight', maxCount: 2, respawnSeconds: 300 },
+    ],
+    mapSymbol: '[陣]',
+    mapX: 1,
+    mapY: 1,
+    guardianHints: {
+      creature: '靜默列陣的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '靜默列陣的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '靜默列陣殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+necropolis_gate_grave_banner_line: {
+    id: 'necropolis_gate_grave_banner_line',
+    name: '墓旗線',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_grave_banner_line.png',
+    imagePrompt: '墓旗線 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
+    description:
+      '墓旗線位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'west', targetRoomId: 'necropolis_gate_silent_muster', description: '回到靜默列陣' },
+      { direction: 'south', targetRoomId: 'necropolis_gate_bone_causeway', description: '回到白骨堤道' },
+      { direction: 'east', targetRoomId: 'necropolis_gate_soul_well', description: '魂井在東側' },
+    ],
+    monsters: [
+      { monsterId: 'necropolis_grave_banner_captain', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'necropolis_bone_causeway_lancer', maxCount: 2, respawnSeconds: 320 },
+    ],
+    mapSymbol: '[旗]',
+    mapX: 2,
+    mapY: 1,
+    guardianHints: {
+      creature: '墓旗線的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '墓旗線的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '墓旗線殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+necropolis_gate_iron_ossuary: {
+    id: 'necropolis_gate_iron_ossuary',
+    name: '鐵骨藏室',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_iron_ossuary.png',
+    imagePrompt: '鐵骨藏室 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain gate, clear lantern light',
+    description:
+      '鐵骨藏室位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'west', targetRoomId: 'necropolis_gate_bone_causeway', description: '回到白骨堤道' },
+      { direction: 'north', targetRoomId: 'necropolis_gate_soul_well', description: '魂井在北側' },
+      { direction: 'east', targetRoomId: 'necropolis_gate_charnel_bridge', description: '屍橋在東側' },
+    ],
+    monsters: [
+      { monsterId: 'necropolis_ossuary_collector', maxCount: 2, respawnSeconds: 360 },
+      { monsterId: 'necropolis_black_gate_wight', maxCount: 1, respawnSeconds: 300 },
+    ],
+    mapSymbol: '[骨]',
+    mapX: 3,
+    mapY: 0,
+    guardianHints: {
+      creature: '鐵骨藏室的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '鐵骨藏室的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '鐵骨藏室殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+necropolis_gate_soul_well: {
+    id: 'necropolis_gate_soul_well',
+    name: '魂井',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_soul_well.png',
+    imagePrompt: '魂井 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
+    description:
+      '魂井位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'west', targetRoomId: 'necropolis_gate_grave_banner_line', description: '回到墓旗線' },
+      { direction: 'south', targetRoomId: 'necropolis_gate_iron_ossuary', description: '回到鐵骨藏室' },
+      { direction: 'north', targetRoomId: 'necropolis_gate_war_drum_yard', description: '戰鼓庭在北側' },
+    ],
+    monsters: [
+      { monsterId: 'necropolis_soul_well_oracle', maxCount: 2, respawnSeconds: 360 },
+      { monsterId: 'necropolis_ossuary_collector', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[井]',
+    mapX: 3,
+    mapY: 1,
+    guardianHints: {
+      creature: '魂井的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '魂井的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '魂井殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+necropolis_gate_mourner_steps: {
+    id: 'necropolis_gate_mourner_steps',
+    name: '哀悼階',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_mourner_steps.png',
+    imagePrompt: '哀悼階 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
+    description:
+      '哀悼階位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'south', targetRoomId: 'necropolis_gate_black_approach', description: '回到黑門引道' },
+      { direction: 'north', targetRoomId: 'necropolis_gate_watchless_tower', description: '無守望塔在北側' },
+    ],
+    monsters: [
+      { monsterId: 'necropolis_black_gate_wight', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'necropolis_soul_well_oracle', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[階]',
+    mapX: 0,
+    mapY: 1,
+    guardianHints: {
+      creature: '哀悼階的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '哀悼階的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '哀悼階殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+necropolis_gate_watchless_tower: {
+    id: 'necropolis_gate_watchless_tower',
+    name: '無守望塔',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_watchless_tower.png',
+    imagePrompt: '無守望塔 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
+    description:
+      '無守望塔位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'south', targetRoomId: 'necropolis_gate_mourner_steps', description: '回到哀悼階' },
+      { direction: 'east', targetRoomId: 'necropolis_gate_crypt_market', description: '墓市廊在東側' },
+    ],
+    monsters: [
+      { monsterId: 'necropolis_grave_banner_captain', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'necropolis_void_crack_revenant', maxCount: 1, respawnSeconds: 520 },
+    ],
+    mapSymbol: '[塔]',
+    mapX: 0,
+    mapY: 2,
+    guardianHints: {
+      creature: '無守望塔的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '無守望塔的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '無守望塔殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+necropolis_gate_crypt_market: {
+    id: 'necropolis_gate_crypt_market',
+    name: '墓市廊',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_crypt_market.png',
+    imagePrompt: '墓市廊 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
+    description:
+      '墓市廊位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'west', targetRoomId: 'necropolis_gate_watchless_tower', description: '回到無守望塔' },
+      { direction: 'east', targetRoomId: 'necropolis_gate_war_drum_yard', description: '戰鼓庭在東側' },
+      { direction: 'north', targetRoomId: 'necropolis_gate_death_roll_archive', description: '死亡名冊庫在北側' },
+    ],
+    monsters: [
+      { monsterId: 'necropolis_crypt_market_broker', maxCount: 2, respawnSeconds: 360 },
+      { monsterId: 'necropolis_black_gate_wight', maxCount: 1, respawnSeconds: 300 },
+    ],
+    mapSymbol: '[市]',
+    mapX: 2,
+    mapY: 2,
+    guardianHints: {
+      creature: '墓市廊的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '墓市廊的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '墓市廊殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+necropolis_gate_war_drum_yard: {
+    id: 'necropolis_gate_war_drum_yard',
+    name: '戰鼓庭',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_war_drum_yard.png',
+    imagePrompt: '戰鼓庭 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
+    description:
+      '戰鼓庭位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'west', targetRoomId: 'necropolis_gate_crypt_market', description: '回到墓市廊' },
+      { direction: 'south', targetRoomId: 'necropolis_gate_soul_well', description: '回到魂井' },
+      { direction: 'east', targetRoomId: 'necropolis_gate_wight_barracks', description: '怨衛兵營在東側' },
+    ],
+    monsters: [
+      { monsterId: 'necropolis_grave_banner_captain', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'necropolis_bone_causeway_lancer', maxCount: 2, respawnSeconds: 320 },
+    ],
+    mapSymbol: '[鼓]',
+    mapX: 3,
+    mapY: 2,
+    guardianHints: {
+      creature: '戰鼓庭的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '戰鼓庭的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '戰鼓庭殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+necropolis_gate_charnel_bridge: {
+    id: 'necropolis_gate_charnel_bridge',
+    name: '屍橋',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_charnel_bridge.png',
+    imagePrompt: '屍橋 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
+    description:
+      '屍橋位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'west', targetRoomId: 'necropolis_gate_iron_ossuary', description: '回到鐵骨藏室' },
+      { direction: 'east', targetRoomId: 'necropolis_gate_plague_censer', description: '疫香爐在東側' },
+    ],
+    monsters: [
+      { monsterId: 'necropolis_plague_censer_bearer', maxCount: 1, respawnSeconds: 480 },
+      { monsterId: 'necropolis_bone_causeway_lancer', maxCount: 1, respawnSeconds: 320 },
+    ],
+    mapSymbol: '[橋]',
+    mapX: 4,
+    mapY: 1,
+    guardianHints: {
+      creature: '屍橋的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '屍橋的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '屍橋殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+necropolis_gate_wight_barracks: {
+    id: 'necropolis_gate_wight_barracks',
+    name: '怨衛兵營',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_wight_barracks.png',
+    imagePrompt: '怨衛兵營 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
+    description:
+      '怨衛兵營位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'west', targetRoomId: 'necropolis_gate_war_drum_yard', description: '回到戰鼓庭' },
+      { direction: 'east', targetRoomId: 'necropolis_gate_void_crack', description: '虛空裂縫在東側' },
+    ],
+    monsters: [
+      { monsterId: 'necropolis_black_gate_wight', maxCount: 2, respawnSeconds: 300 },
+      { monsterId: 'necropolis_crypt_market_broker', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[營]',
+    mapX: 4,
+    mapY: 2,
+    guardianHints: {
+      creature: '怨衛兵營的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '怨衛兵營的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '怨衛兵營殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+necropolis_gate_plague_censer: {
+    id: 'necropolis_gate_plague_censer',
+    name: '疫香爐',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_plague_censer.png',
+    imagePrompt: '疫香爐 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
+    description:
+      '疫香爐位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'west', targetRoomId: 'necropolis_gate_charnel_bridge', description: '回到屍橋' },
+      { direction: 'north', targetRoomId: 'necropolis_gate_void_crack', description: '虛空裂縫在北側' },
+    ],
+    monsters: [
+      { monsterId: 'necropolis_plague_censer_bearer', maxCount: 2, respawnSeconds: 480 },
+      { monsterId: 'necropolis_soul_well_oracle', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[疫]',
+    mapX: 5,
+    mapY: 1,
+    guardianHints: {
+      creature: '疫香爐的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '疫香爐的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '疫香爐殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+necropolis_gate_eclipsed_statue: {
+    id: 'necropolis_gate_eclipsed_statue',
+    name: '蝕日雕像',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_eclipsed_statue.png',
+    imagePrompt: '蝕日雕像 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
+    description:
+      '蝕日雕像位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'east', targetRoomId: 'necropolis_gate_death_roll_archive', description: '死亡名冊庫在東側' },
+    ],
+    monsters: [
+      { monsterId: 'necropolis_soul_well_oracle', maxCount: 1, respawnSeconds: 360 },
+      { monsterId: 'necropolis_plague_censer_bearer', maxCount: 1, respawnSeconds: 480 },
+    ],
+    mapSymbol: '[像]',
+    mapX: 1,
+    mapY: 2,
+    guardianHints: {
+      creature: '蝕日雕像的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '蝕日雕像的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '蝕日雕像殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+necropolis_gate_death_roll_archive: {
+    id: 'necropolis_gate_death_roll_archive',
+    name: '死亡名冊庫',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_death_roll_archive.png',
+    imagePrompt: '死亡名冊庫 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
+    description:
+      '死亡名冊庫位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'west', targetRoomId: 'necropolis_gate_eclipsed_statue', description: '回到蝕日雕像' },
+      { direction: 'south', targetRoomId: 'necropolis_gate_crypt_market', description: '回到墓市廊' },
+      { direction: 'east', targetRoomId: 'necropolis_gate_void_crack', description: '虛空裂縫在東側' },
+    ],
+    monsters: [
+      { monsterId: 'necropolis_soul_well_oracle', maxCount: 2, respawnSeconds: 360 },
+      { monsterId: 'necropolis_crypt_market_broker', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[冊]',
+    mapX: 2,
+    mapY: 3,
+    guardianHints: {
+      creature: '死亡名冊庫的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '死亡名冊庫的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '死亡名冊庫殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+necropolis_gate_void_crack: {
+    id: 'necropolis_gate_void_crack',
+    name: '虛空裂縫',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_void_crack.png',
+    imagePrompt: '虛空裂縫 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
+    description:
+      '虛空裂縫位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'west', targetRoomId: 'necropolis_gate_death_roll_archive', description: '回到死亡名冊庫' },
+      { direction: 'south', targetRoomId: 'necropolis_gate_plague_censer', description: '回到疫香爐' },
+      { direction: 'east', targetRoomId: 'necropolis_gate_inner_portcullis', description: '內城閘在東側' },
+    ],
+    monsters: [
+      { monsterId: 'necropolis_void_crack_revenant', maxCount: 2, respawnSeconds: 520 },
+      { monsterId: 'necropolis_soul_well_oracle', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[裂]',
+    mapX: 5,
+    mapY: 2,
+    guardianHints: {
+      creature: '虛空裂縫的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '虛空裂縫的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '虛空裂縫殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+necropolis_gate_inner_portcullis: {
+    id: 'necropolis_gate_inner_portcullis',
+    name: '內城閘',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_inner_portcullis.png',
+    imagePrompt: '內城閘 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
+    description:
+      '內城閘位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'west', targetRoomId: 'necropolis_gate_void_crack', description: '回到虛空裂縫' },
+      { direction: 'east', targetRoomId: 'necropolis_gate_bone_throne_antechamber', description: '骨王座前廳在東側' },
+    ],
+    monsters: [
+      { monsterId: 'necropolis_inner_portcullis_marshal', maxCount: 1, respawnSeconds: 620 },
+      { monsterId: 'necropolis_grave_banner_captain', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[閘]',
+    mapX: 6,
+    mapY: 2,
+    guardianHints: {
+      creature: '內城閘的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '內城閘的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '內城閘殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+necropolis_gate_bone_throne_antechamber: {
+    id: 'necropolis_gate_bone_throne_antechamber',
+    name: '骨王座前廳',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_bone_throne_antechamber.png',
+    imagePrompt: '骨王座前廳 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
+    description:
+      '骨王座前廳位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'west', targetRoomId: 'necropolis_gate_inner_portcullis', description: '回到內城閘' },
+      { direction: 'east', targetRoomId: 'necropolis_gate_dead_city_threshold', description: '死都門檻在東側' },
+    ],
+    monsters: [
+      { monsterId: 'necropolis_inner_portcullis_marshal', maxCount: 1, respawnSeconds: 620 },
+      { monsterId: 'necropolis_ossuary_collector', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[座]',
+    mapX: 7,
+    mapY: 2,
+    guardianHints: {
+      creature: '骨王座前廳的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '骨王座前廳的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '骨王座前廳殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+necropolis_gate_dead_city_threshold: {
+    id: 'necropolis_gate_dead_city_threshold',
+    name: '死都門檻',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_dead_city_threshold.png',
+    imagePrompt: '死都門檻 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
+    description:
+      '死都門檻位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'west', targetRoomId: 'necropolis_gate_bone_throne_antechamber', description: '回到骨王座前廳' },
+    ],
+    monsters: [
+      { monsterId: 'necropolis_dead_city_gatekeeper', maxCount: 1, respawnSeconds: 1400 },
+      { monsterId: 'necropolis_inner_portcullis_marshal', maxCount: 1, respawnSeconds: 620 },
+    ],
+    mapSymbol: '[都]',
+    mapX: 8,
+    mapY: 2,
+    guardianHints: {
+      creature: '死都門檻的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '死都門檻的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '死都門檻殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+// ─── 日耀尖塔擴充 (Lv 45-58) ───────────────────────────
+
+  sunspire_white_stone_gate: {
+    id: 'sunspire_white_stone_gate',
+    name: '白石塔門',
+    zone: 'sunspire' as RoomDef['zone'],
+    image: 'sunspire_white_stone_gate.png',
+    imagePrompt: '白石塔門 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
+    description:
+      '白石塔門位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+    exits: [
+      { direction: 'east', targetRoomId: 'sunspire_sunlit_stair', description: '日光階在東側' },
+    ],
+    monsters: [
+      { monsterId: 'sunspire_white_stone_acolyte', maxCount: 2, respawnSeconds: 300 },
+      { monsterId: 'sunspire_flameglass_knight', maxCount: 1, respawnSeconds: 320 },
+    ],
+    mapSymbol: '[入]',
+    mapX: 0,
+    mapY: 0,
+    guardianHints: {
+      creature: '白石塔門的日輪光線若突然聚焦，附近天界守衛或熾天使通常正在換位。',
+      treasure: '白石塔門的鏡面、聖歌座或白石縫旁可能藏著日耀尖塔線索。',
+      spirit: '白石塔門殘留追求神聖力量者接受試煉與被日火吞沒的記憶。',
+    },
+  },
+
+sunspire_sunlit_stair: {
+    id: 'sunspire_sunlit_stair',
+    name: '日光階',
+    zone: 'sunspire' as RoomDef['zone'],
+    image: 'sunspire_sunlit_stair.png',
+    imagePrompt: '日光階 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
+    description:
+      '日光階位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sunspire_white_stone_gate', description: '回到白石塔門' },
+      { direction: 'east', targetRoomId: 'sunspire_mirror_plinth', description: '鏡石臺在東側' },
+      { direction: 'north', targetRoomId: 'sunspire_flameglass_walk', description: '焰玻步道在北側' },
+    ],
+    monsters: [
+      { monsterId: 'sunspire_white_stone_acolyte', maxCount: 2, respawnSeconds: 300 },
+      { monsterId: 'sunspire_mirror_lens_keeper', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[階]',
+    mapX: 1,
+    mapY: 0,
+    guardianHints: {
+      creature: '日光階的日輪光線若突然聚焦，附近天界守衛或熾天使通常正在換位。',
+      treasure: '日光階的鏡面、聖歌座或白石縫旁可能藏著日耀尖塔線索。',
+      spirit: '日光階殘留追求神聖力量者接受試煉與被日火吞沒的記憶。',
+    },
+  },
+
+sunspire_mirror_plinth: {
+    id: 'sunspire_mirror_plinth',
+    name: '鏡石臺',
+    zone: 'sunspire' as RoomDef['zone'],
+    image: 'sunspire_mirror_plinth.png',
+    imagePrompt: '鏡石臺 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
+    description:
+      '鏡石臺位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sunspire_sunlit_stair', description: '回到日光階' },
+      { direction: 'east', targetRoomId: 'sunspire_solar_armory', description: '太陽武庫在東側' },
+      { direction: 'north', targetRoomId: 'sunspire_radiant_lift', description: '日耀升降井在北側' },
+    ],
+    monsters: [
+      { monsterId: 'sunspire_mirror_lens_keeper', maxCount: 2, respawnSeconds: 420 },
+      { monsterId: 'sunspire_white_stone_acolyte', maxCount: 1, respawnSeconds: 300 },
+    ],
+    mapSymbol: '[鏡]',
+    mapX: 2,
+    mapY: 0,
+    guardianHints: {
+      creature: '鏡石臺的日輪光線若突然聚焦，附近天界守衛或熾天使通常正在換位。',
+      treasure: '鏡石臺的鏡面、聖歌座或白石縫旁可能藏著日耀尖塔線索。',
+      spirit: '鏡石臺殘留追求神聖力量者接受試煉與被日火吞沒的記憶。',
+    },
+  },
+
+sunspire_flameglass_walk: {
+    id: 'sunspire_flameglass_walk',
+    name: '焰玻步道',
+    zone: 'sunspire' as RoomDef['zone'],
+    image: 'sunspire_flameglass_walk.png',
+    imagePrompt: '焰玻步道 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
+    description:
+      '焰玻步道位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+    exits: [
+      { direction: 'south', targetRoomId: 'sunspire_sunlit_stair', description: '回到日光階' },
+      { direction: 'east', targetRoomId: 'sunspire_radiant_lift', description: '日耀升降井在東側' },
+      { direction: 'north', targetRoomId: 'sunspire_burning_archive', description: '燃書庫在北側' },
+    ],
+    monsters: [
+      { monsterId: 'sunspire_flameglass_knight', maxCount: 2, respawnSeconds: 320 },
+      { monsterId: 'sunspire_sunfire_cantor', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[焰]',
+    mapX: 1,
+    mapY: 1,
+    guardianHints: {
+      creature: '焰玻步道的日輪光線若突然聚焦，附近天界守衛或熾天使通常正在換位。',
+      treasure: '焰玻步道的鏡面、聖歌座或白石縫旁可能藏著日耀尖塔線索。',
+      spirit: '焰玻步道殘留追求神聖力量者接受試煉與被日火吞沒的記憶。',
+    },
+  },
+
+sunspire_radiant_lift: {
+    id: 'sunspire_radiant_lift',
+    name: '日耀升降井',
+    zone: 'sunspire' as RoomDef['zone'],
+    image: 'sunspire_radiant_lift.png',
+    imagePrompt: '日耀升降井 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
+    description:
+      '日耀升降井位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sunspire_flameglass_walk', description: '回到焰玻步道' },
+      { direction: 'south', targetRoomId: 'sunspire_mirror_plinth', description: '回到鏡石臺' },
+      { direction: 'east', targetRoomId: 'sunspire_celestial_guard_hall', description: '天界守衛廳在東側' },
+    ],
+    monsters: [
+      { monsterId: 'sunspire_white_stone_acolyte', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'sunspire_solar_armory_construct', maxCount: 1, respawnSeconds: 480 },
+    ],
+    mapSymbol: '[井]',
+    mapX: 2,
+    mapY: 1,
+    guardianHints: {
+      creature: '日耀升降井的日輪光線若突然聚焦，附近天界守衛或熾天使通常正在換位。',
+      treasure: '日耀升降井的鏡面、聖歌座或白石縫旁可能藏著日耀尖塔線索。',
+      spirit: '日耀升降井殘留追求神聖力量者接受試煉與被日火吞沒的記憶。',
+    },
+  },
+
+sunspire_solar_armory: {
+    id: 'sunspire_solar_armory',
+    name: '太陽武庫',
+    zone: 'sunspire' as RoomDef['zone'],
+    image: 'sunspire_solar_armory.png',
+    imagePrompt: '太陽武庫 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
+    description:
+      '太陽武庫位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sunspire_mirror_plinth', description: '回到鏡石臺' },
+      { direction: 'north', targetRoomId: 'sunspire_hymn_gallery', description: '聖歌廊在北側' },
+    ],
+    monsters: [
+      { monsterId: 'sunspire_solar_armory_construct', maxCount: 2, respawnSeconds: 480 },
+      { monsterId: 'sunspire_flameglass_knight', maxCount: 1, respawnSeconds: 320 },
+    ],
+    mapSymbol: '[武]',
+    mapX: 3,
+    mapY: 0,
+    guardianHints: {
+      creature: '太陽武庫的日輪光線若突然聚焦，附近天界守衛或熾天使通常正在換位。',
+      treasure: '太陽武庫的鏡面、聖歌座或白石縫旁可能藏著日耀尖塔線索。',
+      spirit: '太陽武庫殘留追求神聖力量者接受試煉與被日火吞沒的記憶。',
+    },
+  },
+};
