@@ -48,7 +48,7 @@ export function applyHpRecovery(char: Character, amount: number, combatant?: Com
 }
 
 export function applyResourceRecovery(char: Character, amount: number, combatant?: CombatantState): number {
-  if (char.resourceType === 'rage') return 0;
+  if (char.resourceType === 'rage' || char.resourceType === 'faith' || char.resourceType === 'focus') return 0;
 
   const currentResource = combatant?.resource ?? char.resource;
   const maxResource = combatant?.maxResource ?? char.maxResource;

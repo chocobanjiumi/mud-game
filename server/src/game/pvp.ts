@@ -406,17 +406,25 @@ export class PvPManager {
       winnerChar.gold += goldLost;
     }
 
-    // PvP 額外懲罰：掉落 1 個隨機未裝備物品
+    // PvP 額外懲罰：30% 機率掉落 1 個隨機未裝備、非任務物品
     let droppedItemName: string | null = null;
     try {
-      const loserInv = getInventory(loserId);
-      const nonEquipped = loserInv.filter(item => !item.equipped);
-      if (nonEquipped.length > 0) {
-        const randomItem = nonEquipped[Math.floor(Math.random() * nonEquipped.length)];
-        removeInventoryItem(loserId, randomItem.itemId, 1);
-        addInventoryItem(winnerId, randomItem.itemId, 1);
-        const itemDef = ITEM_DEFS[randomItem.itemId];
-        droppedItemName = itemDef?.name ?? randomItem.itemId;
+      if (Math.random() < 0.3) {
+        const loserInv = getInventory(loserId);
+        const eligible = loserInv.filter(item => {
+          if (item.equipped) return false;
+          const def = ITEM_DEFS[item.itemId];
+          if (!def) return false;
+          if (def.type === 'quest') return false;
+          return true;
+        });
+        if (eligible.length > 0) {
+          const randomItem = eligible[Math.floor(Math.random() * eligible.length)];
+          removeInventoryItem(loserId, randomItem.itemId, 1);
+          addInventoryItem(winnerId, randomItem.itemId, 1);
+          const itemDef = ITEM_DEFS[randomItem.itemId];
+          droppedItemName = itemDef?.name ?? randomItem.itemId;
+        }
       }
     } catch {
       // 物品轉移失敗不影響遊戲
@@ -443,19 +451,13 @@ export class PvPManager {
     saveCharacter(winnerChar);
     saveCharacter(loserChar);
 
-    // 記錄到資料庫
+    // 記錄到資料庫 + 排行榜
     try {
       recordPvp(winnerId, loserId, type);
-    } catch {
-      // DB 寫入失敗不影響遊戲
-    }
-
-    // 更新排行榜
-    try {
       updateLeaderboard(winnerId, 'pvp', this.getElo(winnerId));
       updateLeaderboard(loserId, 'pvp', this.getElo(loserId));
-    } catch {
-      // 忽略
+    } catch (e) {
+      console.error('[PvP] DB record/leaderboard write failed:', e);
     }
 
     // 任務進度：PvP 勝利
@@ -517,8 +519,10 @@ export class PvPManager {
     let winnerChange = Math.round(ELO_K_FACTOR * (1 - expectedWin) * levelFactor);
     let loserChange = Math.round(ELO_K_FACTOR * (0 - expectedLose));
 
-    // 確保最低變動為基礎值的一半
-    winnerChange = Math.max(Math.floor(ELO_BASE / 2), winnerChange);
+    // 最低增量依 ELO 差距遞減：差距越大，保底越低
+    const eloDiff = Math.abs(winnerElo - loserElo);
+    const minGain = eloDiff > 400 ? 0 : eloDiff > 200 ? Math.floor(ELO_BASE / 4) : Math.floor(ELO_BASE / 2);
+    winnerChange = Math.max(minGain, winnerChange);
     loserChange = Math.min(-Math.floor(ELO_BASE / 2), loserChange);
 
     return { winnerChange, loserChange };

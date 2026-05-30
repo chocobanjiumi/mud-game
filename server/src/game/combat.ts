@@ -634,6 +634,9 @@ export class CombatEngine {
     this.processResourceRegen(session, roundLog);
     this.processMountFatigueRecovery(session, roundLog);
 
+    // 回合結束：仇恨衰減 -10% (M-13)
+    this.processThreatDecay(session);
+
     // 回合結束：遞減裝備詞綴內部冷卻
     this.processAffixCooldowns(session);
     this.processSkillCooldowns(session);
@@ -2252,6 +2255,16 @@ export class CombatEngine {
       const next = rounds - 1;
       if (next <= 0) session.skillCooldowns.delete(key);
       else session.skillCooldowns.set(key, next);
+    }
+  }
+
+  private processThreatDecay(session: CombatSession): void {
+    for (const p of session.state.playerTeam) {
+      if (p.isDead) {
+        p.threat = 0;
+      } else if (p.threat > 0) {
+        p.threat = Math.floor(p.threat * 0.9);
+      }
     }
   }
 
