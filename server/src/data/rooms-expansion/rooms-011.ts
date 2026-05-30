@@ -964,7 +964,7 @@ lost_capital_outer_gate: {
     image: 'lost_capital_outer_gate.png',
     imagePrompt: '王都外門 in lost_capital, ruined royal capital frozen in time, shattered marble streets, empty throne motifs, ghostly light and dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain fantasy terrain, clear lantern light',
     description:
-      '王都外門位於失落王都仍停在崩壞前一刻的街區中，破碎旗幟、凝固水流、裂開鐘面與沒有主人的王家徽記讓整座城市像被時間封住。這裡是高階副本入口與世界王前置路線節點，旅人可以 觀察 石碑、卷宗、倒影與王家紋章來判斷王都滅亡順序，也能 搜索 市集殘攤、軍械庫、墓室和禮拜堂尋找鑰匙線索。若隊伍只沿主路衝向王座，亡靈騎士、巫妖殘影、石像鬼與暗影刺客會從側廊合圍；若依序清理廣場、水道、議政廳與加冕階，則能理解空王座為何仍在等待挑戰者，並找出進入真正王城副本的前置鑰匙與回城路標',
+      '王都外門的拱壁被黑雨與歲月啃成鋸齒，半落的王旗仍釘在門樓高處，金線徽記在灰光裡像最後一點餘燼。向東的碎石大道伸入寂靜王道，石板上留著整齊卻無主的軍靴痕；北側斷梯繞上守望塔，塔身裂縫間透出冷白燈火。門洞下堆著碎盾、封蠟令牌與凝住的馬蹄水窪，整座入口不像被攻破，更像在某個命令尚未傳達前突然停止呼吸。',
     exits: [
       { direction: 'east', targetRoomId: 'lost_capital_silent_avenue', description: '碎石大道通往城內' },
       { direction: 'north', targetRoomId: 'lost_capital_watch_tower', description: '斷梯通往守望塔' },
@@ -989,7 +989,7 @@ lost_capital_silent_avenue: {
     image: 'lost_capital_silent_avenue.png',
     imagePrompt: '寂靜王道 in lost_capital, ruined royal capital frozen in time, shattered marble streets, empty throne motifs, ghostly light and dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain fantasy terrain, clear lantern light',
     description:
-      '寂靜王道位於失落王都仍停在崩壞前一刻的街區中，破碎旗幟、凝固水流、裂開鐘面與沒有主人的王家徽記讓整座城市像被時間封住。這裡是高階副本入口與世界王前置路線節點，旅人可以 觀察 石碑、卷宗、倒影與王家紋章來判斷王都滅亡順序，也能 搜索 市集殘攤、軍械庫、墓室和禮拜堂尋找鑰匙線索。若隊伍只沿主路衝向王座，亡靈騎士、巫妖殘影、石像鬼與暗影刺客會從側廊合圍；若依序清理廣場、水道、議政廳與加冕階，則能理解空王座為何仍在等待挑戰者，並找出進入真正王城副本的前置鑰匙與回城路標',
+      '寂靜王道筆直穿過外城，兩側商宅門窗半開，屋內桌椅、酒杯和落下的斗篷都停在同一個無聲瞬間。西面遠處可見王都外門的破拱，東面石攤路連向凝固市集，南側乾渠則把積灰引往破噴泉。大道中央鋪著裂白大理石，王家徽記被踩得模糊，街燈仍亮著青灰火芯，卻照不出任何影子，只把鐘樓斷裂的陰影拉得又長又薄。',
     exits: [
       { direction: 'west', targetRoomId: 'lost_capital_outer_gate', description: '大道回到王都外門' },
       { direction: 'east', targetRoomId: 'lost_capital_frozen_market', description: '石攤路通往凝固市集' },
@@ -1016,7 +1016,7 @@ lost_capital_watch_tower: {
     image: 'lost_capital_watch_tower.png',
     imagePrompt: '守望塔 in lost_capital, ruined royal capital frozen in time, shattered marble streets, empty throne motifs, ghostly light and dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain fantasy terrain, clear lantern light',
     description:
-      '守望塔位於失落王都仍停在崩壞前一刻的街區中，破碎旗幟、凝固水流、裂開鐘面與沒有主人的王家徽記讓整座城市像被時間封住。這裡是高階副本入口與世界王前置路線節點，旅人可以 觀察 石碑、卷宗、倒影與王家紋章來判斷王都滅亡順序，也能 搜索 市集殘攤、軍械庫、墓室和禮拜堂尋找鑰匙線索。若隊伍只沿主路衝向王座，亡靈騎士、巫妖殘影、石像鬼與暗影刺客會從側廊合圍；若依序清理廣場、水道、議政廳與加冕階，則能理解空王座為何仍在等待挑戰者，並找出進入真正王城副本的前置鑰匙與回城路標',
+      '守望塔貼著王都外門北側升起，旋梯斷成數段，鐵欄上掛滿風乾的號角繩與碎裂透鏡。往南能沿斷梯回到外門，往東的塔橋越過空街，直接接向停鐘廣場的鐘影邊緣。塔頂瞭望窗被黑色藤蔓勒住，遠處王座區的尖頂在霧中像一排失去火光的燭芯；地面散落巡邏表、破箭與凝固血珠，顯示守軍曾在鐘聲停下前守著某個從未抵達的訊號。',
     exits: [
       { direction: 'south', targetRoomId: 'lost_capital_outer_gate', description: '斷梯回到王都外門' },
       { direction: 'east', targetRoomId: 'lost_capital_clock_square', description: '塔橋通往停鐘廣場' },
@@ -1042,7 +1042,7 @@ lost_capital_clock_square: {
     image: 'lost_capital_clock_square.png',
     imagePrompt: '停鐘廣場 in lost_capital, ruined royal capital frozen in time, shattered marble streets, empty throne motifs, ghostly light and dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain fantasy terrain, clear lantern light',
     description:
-      '停鐘廣場位於失落王都仍停在崩壞前一刻的街區中，破碎旗幟、凝固水流、裂開鐘面與沒有主人的王家徽記讓整座城市像被時間封住。這裡是高階副本入口與世界王前置路線節點，旅人可以 觀察 石碑、卷宗、倒影與王家紋章來判斷王都滅亡順序，也能 搜索 市集殘攤、軍械庫、墓室和禮拜堂尋找鑰匙線索。若隊伍只沿主路衝向王座，亡靈騎士、巫妖殘影、石像鬼與暗影刺客會從側廊合圍；若依序清理廣場、水道、議政廳與加冕階，則能理解空王座為何仍在等待挑戰者，並找出進入真正王城副本的前置鑰匙與回城路標',
+      '停鐘廣場中央立著裂開的天文鐘，銅針卡在同一刻，齒輪裸露處結著銀白霜屑，每隔片刻便發出沒有回聲的輕響。西側塔橋回望守望塔，東側石階通往市政檔案館，南面的鐘影斜落進凝固市集。廣場地磚鑲著日輪與王冠紋，許多影子被釘在原地，姿態像正在奔逃、請願或跪拜；鐘座底部刻滿小字與斷裂日期，暗示整座王都的時間並非自然停下。',
     exits: [
       { direction: 'west', targetRoomId: 'lost_capital_watch_tower', description: '塔橋回到守望塔' },
       { direction: 'east', targetRoomId: 'lost_capital_civic_archive', description: '石階通往市政檔案館' },
@@ -1069,7 +1069,7 @@ lost_capital_frozen_market: {
     image: 'lost_capital_frozen_market.png',
     imagePrompt: '凝固市集 in lost_capital, ruined royal capital frozen in time, shattered marble streets, empty throne motifs, ghostly light and dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain fantasy terrain, clear lantern light',
     description:
-      '凝固市集位於失落王都仍停在崩壞前一刻的街區中，破碎旗幟、凝固水流、裂開鐘面與沒有主人的王家徽記讓整座城市像被時間封住。這裡是高階副本入口與世界王前置路線節點，旅人可以 觀察 石碑、卷宗、倒影與王家紋章來判斷王都滅亡順序，也能 搜索 市集殘攤、軍械庫、墓室和禮拜堂尋找鑰匙線索。若隊伍只沿主路衝向王座，亡靈騎士、巫妖殘影、石像鬼與暗影刺客會從側廊合圍；若依序清理廣場、水道、議政廳與加冕階，則能理解空王座為何仍在等待挑戰者，並找出進入真正王城副本的前置鑰匙與回城路標',
+      '凝固市集仍保持午市的擁擠形狀，翻倒果籃、稱重銅盤、香料袋與銀幣全懸在薄霜般的時間殼裡。西面的石攤路退回寂靜王道，北側鐘影可上停鐘廣場，東邊破橋跨向王家水道。攤棚布條沒有風卻微微鼓起，魚販木桶裡的水像透明石頭，兩名決鬥者的劍影停在半空；若細看貨架暗格，能讀出市民在崩壞前試圖藏起徽章與家書的慌亂。',
     exits: [
       { direction: 'west', targetRoomId: 'lost_capital_silent_avenue', description: '石攤路回到寂靜王道' },
       { direction: 'north', targetRoomId: 'lost_capital_clock_square', description: '鐘影回到停鐘廣場' },
@@ -1096,7 +1096,7 @@ lost_capital_broken_fountain: {
     image: 'lost_capital_broken_fountain.png',
     imagePrompt: '破噴泉 in lost_capital, ruined royal capital frozen in time, shattered marble streets, empty throne motifs, ghostly light and dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain fantasy terrain, clear lantern light',
     description:
-      '破噴泉位於失落王都仍停在崩壞前一刻的街區中，破碎旗幟、凝固水流、裂開鐘面與沒有主人的王家徽記讓整座城市像被時間封住。這裡是高階副本入口與世界王前置路線節點，旅人可以 觀察 石碑、卷宗、倒影與王家紋章來判斷王都滅亡順序，也能 搜索 市集殘攤、軍械庫、墓室和禮拜堂尋找鑰匙線索。若隊伍只沿主路衝向王座，亡靈騎士、巫妖殘影、石像鬼與暗影刺客會從側廊合圍；若依序清理廣場、水道、議政廳與加冕階，則能理解空王座為何仍在等待挑戰者，並找出進入真正王城副本的前置鑰匙與回城路標',
+      '破噴泉坐落在寂靜王道南側的下沉小庭，白石女神像只剩半張臉，斷手仍捧著乾涸水盤。北面的乾渠回到王道，東側裂石路穿過低矮樹籬前往雕像庭園。泉池底部沉著金幣、碎花瓣與灰黑水痕，水脈卻像被透明力量凍住，在噴口內形成扭曲的玻璃脈絡。周圍長椅排得整齊，幾件斗篷搭在椅背上，留下宴會忽然中止、賓客再也沒有返回的沉默。',
     exits: [
       { direction: 'north', targetRoomId: 'lost_capital_silent_avenue', description: '乾渠回到寂靜王道' },
       { direction: 'east', targetRoomId: 'lost_capital_statue_garden', description: '裂石路通往雕像庭園' },
@@ -1122,7 +1122,7 @@ lost_capital_civic_archive: {
     image: 'lost_capital_civic_archive.png',
     imagePrompt: '市政檔案館 in lost_capital, ruined royal capital frozen in time, shattered marble streets, empty throne motifs, ghostly light and dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain fantasy terrain, clear lantern light',
     description:
-      '市政檔案館位於失落王都仍停在崩壞前一刻的街區中，破碎旗幟、凝固水流、裂開鐘面與沒有主人的王家徽記讓整座城市像被時間封住。這裡是高階副本入口與世界王前置路線節點，旅人可以 觀察 石碑、卷宗、倒影與王家紋章來判斷王都滅亡順序，也能 搜索 市集殘攤、軍械庫、墓室和禮拜堂尋找鑰匙線索。若隊伍只沿主路衝向王座，亡靈騎士、巫妖殘影、石像鬼與暗影刺客會從側廊合圍；若依序清理廣場、水道、議政廳與加冕階，則能理解空王座為何仍在等待挑戰者，並找出進入真正王城副本的前置鑰匙與回城路標',
+      '市政檔案館外牆刻滿戶籍、稅印與王令編號，石門半掩，門縫裡吹出乾紙和冷灰的味道。西側石階連回停鐘廣場，東面的卷宗廊通往審判廳，南方排水梯下降到王家水道。館內書架倒成斜坡，封蠟印章散落一地，許多卷宗仍被藍色火線束住，標籤記著失蹤街區、撤離名單和王冠繼承爭議；窗外鐘針的陰影落在桌上，像一枚永遠不會蓋下的判印。',
     exits: [
       { direction: 'west', targetRoomId: 'lost_capital_clock_square', description: '石階回到停鐘廣場' },
       { direction: 'east', targetRoomId: 'lost_capital_judgment_hall', description: '卷宗廊通往審判廳' },
@@ -1149,7 +1149,7 @@ lost_capital_royal_canal: {
     image: 'lost_capital_royal_canal.png',
     imagePrompt: '王家水道 in lost_capital, ruined royal capital frozen in time, shattered marble streets, empty throne motifs, ghostly light and dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain fantasy terrain, clear lantern light',
     description:
-      '王家水道位於失落王都仍停在崩壞前一刻的街區中，破碎旗幟、凝固水流、裂開鐘面與沒有主人的王家徽記讓整座城市像被時間封住。這裡是高階副本入口與世界王前置路線節點，旅人可以 觀察 石碑、卷宗、倒影與王家紋章來判斷王都滅亡順序，也能 搜索 市集殘攤、軍械庫、墓室和禮拜堂尋找鑰匙線索。若隊伍只沿主路衝向王座，亡靈騎士、巫妖殘影、石像鬼與暗影刺客會從側廊合圍；若依序清理廣場、水道、議政廳與加冕階，則能理解空王座為何仍在等待挑戰者，並找出進入真正王城副本的前置鑰匙與回城路標',
+      '王家水道在城腹下方展開，拱頂鑲著褪色金箔，冷水卻靜得像磨亮的黑鏡。西側破橋接回凝固市集，北面排水梯升往市政檔案館，東邊水鏡路延向鏡庭。渠壁浮雕描著歷代加冕船隊，如今船形燈盞全沉在水面下，只有幽藍光點沿著石縫漂移。鐵閘後傳來緩慢甲片聲，倒影裡偶爾閃過不存在於岸上的人影，使這條供水脈絡更像王都尚未熄滅的記憶血管。',
     exits: [
       { direction: 'west', targetRoomId: 'lost_capital_frozen_market', description: '破橋回到凝固市集' },
       { direction: 'north', targetRoomId: 'lost_capital_civic_archive', description: '排水梯回到檔案館' },
@@ -1176,7 +1176,7 @@ lost_capital_statue_garden: {
     image: 'lost_capital_statue_garden.png',
     imagePrompt: '雕像庭園 in lost_capital, ruined royal capital frozen in time, shattered marble streets, empty throne motifs, ghostly light and dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain fantasy terrain, clear lantern light',
     description:
-      '雕像庭園位於失落王都仍停在崩壞前一刻的街區中，破碎旗幟、凝固水流、裂開鐘面與沒有主人的王家徽記讓整座城市像被時間封住。這裡是高階副本入口與世界王前置路線節點，旅人可以 觀察 石碑、卷宗、倒影與王家紋章來判斷王都滅亡順序，也能 搜索 市集殘攤、軍械庫、墓室和禮拜堂尋找鑰匙線索。若隊伍只沿主路衝向王座，亡靈騎士、巫妖殘影、石像鬼與暗影刺客會從側廊合圍；若依序清理廣場、水道、議政廳與加冕階，則能理解空王座為何仍在等待挑戰者，並找出進入真正王城副本的前置鑰匙與回城路標',
+      '雕像庭園被低牆與乾枯月桂圍住，數十尊歷代官員、將軍與無名侍從排成嚴格隊列，臉部多被細裂紋割開。西側裂石路回到破噴泉，東側雕像列引向鏡庭，南方軍靴印穿入灰兵營。庭中沒有落葉腐味，只有石粉與舊香料的乾澀氣息；幾座雕像腳邊放著新舊不一的王家徽章，像有人在時間停滯後仍悄悄替被抹名者補上位置。',
     exits: [
       { direction: 'west', targetRoomId: 'lost_capital_broken_fountain', description: '裂石路回到破噴泉' },
       { direction: 'east', targetRoomId: 'lost_capital_mirror_court', description: '雕像列通往鏡庭' },
