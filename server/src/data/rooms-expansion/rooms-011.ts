@@ -355,7 +355,7 @@ blackwood_charcoal_gate: {
     image: 'blackwood_charcoal_gate.png',
     imagePrompt: '炭樹入口 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain forest, clear lantern light',
     description:
-      '炭樹入口位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，旅人可以 觀察 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 搜索 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向',
+      '炭樹入口是黑木林最外層的焦黑門廊，兩根被雷火劈裂的巨木像門柱夾住東行灰徑，北側獵人刻痕在樹皮上留下一串舊刀痕。灰白燈光被炭黑樹皮吞掉，只剩根縫裡的冷綠苔光勾出路面。東邊通往灰燼小徑，北邊可循刻痕繞向獵人刻痕；門柱下的狼毛、折斷箭桿與黏在樹根上的黑樹脂，都暗示林內陰影會移動，也會把回程標記悄悄錯開。',
     exits: [
       { direction: 'east', targetRoomId: 'blackwood_ash_path', description: '灰徑通往林內' },
       { direction: 'north', targetRoomId: 'blackwood_hunter_marker', description: '獵人刻痕指向北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -380,7 +380,7 @@ blackwood_ash_path: {
     image: 'blackwood_ash_path.png',
     imagePrompt: '灰燼小徑 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '灰燼小徑位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，旅人可以 觀察 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 搜索 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向',
+      '灰燼小徑鋪滿細碎白灰，腳印很快被樹冠落下的炭粉蓋住，只有兩側焦枝上殘留的火灼紋能分辨方向。西面灰徑回到炭樹入口，東面黑枝逐漸合攏成移動樹叢，南側苔痕沿低窪根溝落往黑苔床。路旁可見被蛛絲纏住的採集袋、帶毒綠光的夜蕨，以及指向錯亂的舊木牌；整條小徑安靜得過分，像在等人把真正的出口和假路標分清。',
     exits: [
       { direction: 'west', targetRoomId: 'blackwood_charcoal_gate', description: '灰徑回到炭樹入口' },
       { direction: 'east', targetRoomId: 'blackwood_moving_copse', description: '樹影通往移動樹叢' },
@@ -407,7 +407,7 @@ blackwood_hunter_marker: {
     image: 'blackwood_hunter_marker.png',
     imagePrompt: '獵人刻痕 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '獵人刻痕位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，旅人可以 觀察 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 搜索 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向',
+      '獵人刻痕刻在一排向北傾斜的炭木上，深淺不同的刀口被黑樹脂填滿，遠看像一串凝固的眼睛。南側刻痕折回炭樹入口，東側羽毛路通向渡鴉棲枝，地面則散著舊箭羽、獸骨扣和被踩碎的狼牙。這裡的樹幹仍保留追獵路線，卻有幾道新生枝條故意覆住舊記號；若順著刀口的年代差異判讀，可以看出黑木林何時開始扭曲獵人的回程。',
     exits: [
       { direction: 'south', targetRoomId: 'blackwood_charcoal_gate', description: '刻痕回到炭樹入口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'blackwood_raven_roost', description: '羽毛路通往渡鴉棲枝' },
@@ -433,7 +433,7 @@ blackwood_raven_roost: {
     image: 'blackwood_raven_roost.png',
     imagePrompt: '渡鴉棲枝 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '渡鴉棲枝位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，旅人可以 觀察 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 搜索 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向',
+      '渡鴉棲枝抬在一片低垂黑枝上方，無數黑羽黏著樹脂垂落，風一吹便像細小的告警旗。西邊羽毛路回到獵人刻痕，東側蛛絲路接往織網岔口，南側低枝則繞下移動樹叢。高處鳥巢裡混著亮石、骨針和被啄碎的符牌，樹下還有暗精靈箭孔留下的細小缺口；所有棲枝都朝不同方向彎曲，讓這裡同時像瞭望點、陷阱和迷路者最後留下的標記。',
     exits: [
       { direction: 'west', targetRoomId: 'blackwood_hunter_marker', description: '羽毛路回到獵人刻痕' },
       { direction: 'east', targetRoomId: 'blackwood_webbed_crossing', description: '蛛絲路通往織網岔口' },
@@ -466,7 +466,7 @@ blackwood_moving_copse: {
     image: 'blackwood_moving_copse.png',
     imagePrompt: '移動樹叢 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '移動樹叢位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，旅人可以 觀察 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 搜索 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向',
+      '移動樹叢的樹幹排列每隔一陣便會微微錯位，剛才還敞開的灰徑會被新生枝椏蓋住，只在樹皮焦痕上留下淡淡擦痕。西面可回灰燼小徑，北側低枝路繞向渡鴉棲枝，東邊盤根路深入盤根迷宮。地面有被拖拽的藤蔓溝、斷裂路標和仍在滲脂的活根，林間黑影像慢慢轉身的守衛；這裡的重點不是道路消失，而是每條路都在試圖偽裝成另一條路。',
     exits: [
       { direction: 'west', targetRoomId: 'blackwood_ash_path', description: '樹影回到灰燼小徑' },
       {
@@ -499,7 +499,7 @@ blackwood_black_moss_bed: {
     image: 'blackwood_black_moss_bed.png',
     imagePrompt: '黑苔床 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '黑苔床位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，旅人可以 觀察 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 搜索 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向',
+      '黑苔床是一片濕冷低地，厚苔覆在炭根與碎石上，踩下去會滲出墨綠水光，連火光都被吸成暗色。北側苔痕可回灰燼小徑，東邊藥草味延伸到女巫樹洞。苔層裡混著夜蕨嫩芽、蛛卵殼和舊瓶塞，幾處被採過的凹痕又被新苔悄悄補平；周圍樹根像沉在泥中的手指，既提供落腳點，也把不小心偏離路面的腳步拖向更深的陰濕處。',
     exits: [
       { direction: 'north', targetRoomId: 'blackwood_ash_path', description: '苔痕回到灰燼小徑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'blackwood_witch_hollow', description: '藥草味通往女巫樹洞' },
@@ -525,7 +525,7 @@ blackwood_webbed_crossing: {
     image: 'blackwood_webbed_crossing.png',
     imagePrompt: '織網岔口 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '織網岔口位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，旅人可以 觀察 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 搜索 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向',
+      '織網岔口被數層灰白蛛絲分成三條半透明通道，絲線上掛著焦葉、黑羽和細小骨片，稍有震動便傳到林冠深處。西側蛛絲路回渡鴉棲枝，南面黏絲斜坡落入盤根迷宮，東邊暗箭路通往暗精靈伏臺。地面仍能看見被拖過的靴痕與折斷短矛，幾根絲線反射出不自然的冷光；這裡的路標不是木牌，而是哪些蛛網已經積灰，哪些仍新得像剛張開。',
     exits: [
       { direction: 'west', targetRoomId: 'blackwood_raven_roost', description: '蛛絲路回到渡鴉棲枝' },
       {
@@ -558,7 +558,7 @@ blackwood_root_maze: {
     image: 'blackwood_root_maze.png',
     imagePrompt: '盤根迷宮 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '盤根迷宮位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，旅人可以 觀察 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 搜索 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向',
+      '盤根迷宮由巨大的黑根交錯堆成，根脊高低不一，形成窄橋、凹井與半封閉拱洞，樹皮裂縫裡流著黏亮樹脂。西面盤根路回到移動樹叢，北側黏絲坡可攀回織網岔口，東面樹脂痕引向黑樹脂池。迷宮裡的根節刻著舊祭符和獵人切口，卻有不少符號被新根吞掉；只要看清哪條根還在滲出新液，就能分辨活路與正在合攏的死路。',
     exits: [
       { direction: 'west', targetRoomId: 'blackwood_moving_copse', description: '盤根路回到移動樹叢' },
       {
@@ -591,7 +591,7 @@ blackwood_witch_hollow: {
     image: 'blackwood_witch_hollow.png',
     imagePrompt: '女巫樹洞 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '女巫樹洞位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，旅人可以 觀察 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 搜索 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向',
+      '女巫樹洞嵌在一株中空炭木腹內，洞口掛著綠火燈、乾草束和用黑線縫起的獸皮袋，苦藥味從樹腹深處慢慢吐出。西面藥草味回到黑苔床，東側骨鈴路通向骨鈴林，南邊無月路落往無月空地。樹洞外的石臼仍留著碾碎夜蕨的濕痕，根縫裡塞著小骨牌與焦黑符紙；這裡不像住處，更像一座把森林病症磨成詛咒的臨時工坊。',
     exits: [
       { direction: 'west', targetRoomId: 'blackwood_black_moss_bed', description: '藥草味回到黑苔床' },
       { direction: 'east', targetRoomId: 'blackwood_bone_chimes', description: '骨鈴路通往骨鈴林' },
@@ -618,7 +618,7 @@ blackwood_dark_elf_blind: {
     image: 'blackwood_dark_elf_blind.png',
     imagePrompt: '暗精靈伏臺 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '暗精靈伏臺位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，旅人可以 觀察 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 搜索 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向',
+      '暗精靈伏臺架在黑枝與樹根交會的陰影裡，矮木牆上開著細長箭孔，孔緣被反覆摩擦得發亮。西側暗箭路回織網岔口，東面毒蕨坡通往毒蕨林，南側黏滑階落向黑樹脂池。伏臺下方散著灰色箭羽、靜音皮扣和被苔覆住的觀測刻線，幾面樹皮屏風刻意遮住月光；從這裡望出去，渡鴉、蛛網與樹脂池都像被拉進同一張獵圖。',
     exits: [
       { direction: 'west', targetRoomId: 'blackwood_webbed_crossing', description: '暗箭路回到織網岔口' },
       { direction: 'east', targetRoomId: 'blackwood_poison_fern', description: '毒蕨坡通往毒蕨林' },
@@ -651,7 +651,7 @@ blackwood_sap_pool: {
     image: 'blackwood_sap_pool.png',
     imagePrompt: '黑樹脂池 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '黑樹脂池位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，旅人可以 觀察 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 搜索 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向',
+      '黑樹脂池是一口緩慢冒泡的深色凹潭，黏稠樹脂沿根脈滴落，映出扭曲的枝影與偶爾浮起的骨片。西邊黏液痕回盤根迷宮，北側滑階可上暗精靈伏臺，東面焦木路接往燒焦圖騰。池邊有被樹脂封住的藥瓶、斷箭和半枚骨鈴，黏液表面還浮著細小綠火；這裡像黑木林的傷口，所有支路留下的毒、灰與血都在此沉積。',
     exits: [
       { direction: 'west', targetRoomId: 'blackwood_root_maze', description: '黏液痕回到盤根迷宮' },
       {
@@ -684,7 +684,7 @@ blackwood_bone_chimes: {
     image: 'blackwood_bone_chimes.png',
     imagePrompt: '骨鈴林 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '骨鈴林位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，旅人可以 觀察 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 搜索 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向',
+      '骨鈴林掛滿由小骨、空果殼與黑線串成的風鈴，聲音被樹冠壓得很低，卻會沿根脈傳到很遠。西側骨鈴路回女巫樹洞，東面吊骨路繞向燒焦圖騰，南側暗坡可落到無月空地。樹幹上有女巫縫線、狼爪刮痕和被煙熏黑的祈願牌，地面則鋪著能發出乾裂聲的骨片；每一串鈴都像在標記曾經有人走錯方向，也像在替仍未靠近的危險先行發聲。',
     exits: [
       { direction: 'west', targetRoomId: 'blackwood_witch_hollow', description: '骨鈴路回到女巫樹洞' },
       {
@@ -723,7 +723,7 @@ blackwood_moonless_glade: {
     image: 'blackwood_moonless_glade.png',
     imagePrompt: '無月空地 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '無月空地位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，旅人可以 觀察 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 搜索 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向',
+      '無月空地被黑樹冠圍成一圈，天空明明敞開，卻沒有一點月光落下，只有草尖上的冷露映著微弱綠火。北側無月路可回女巫樹洞，東邊爪痕獸道通向影狼窩。空地中央有被踩平的草環、碎裂骨牌和幾束反向生長的夜蕨，四周樹影像一圈沉默看客。這裡的安靜帶著獸息，越靠近東側，地面爪印越深，狼群留下的黑毛也越新。',
     exits: [
       { direction: 'north', targetRoomId: 'blackwood_witch_hollow', description: '無月路回到女巫樹洞', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'blackwood_wolf_den', description: '爪痕通往影狼窩' },
@@ -749,7 +749,7 @@ blackwood_poison_fern: {
     image: 'blackwood_poison_fern.png',
     imagePrompt: '毒蕨林 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '毒蕨林位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，旅人可以 觀察 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 搜索 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向',
+      '毒蕨林長滿帶鋸齒的夜蕨，葉背滲著冷綠毒液，低霧貼著地面流動，讓每一步都像踩進潮濕的藥罐。西側毒蕨坡回到暗精靈伏臺，東面倒木橋通往空心木橋，北側煙痕路與燒焦圖騰相連。蕨叢下藏著破陶罐、細骨針和被腐蝕的箭頭，幾株葉片被整齊割過，顯示這裡長期被採集也長期被看守；毒香越濃的地方，越可能掩住真正的腳步聲。',
     exits: [
       { direction: 'west', targetRoomId: 'blackwood_dark_elf_blind', description: '毒蕨坡回到伏臺' },
       { direction: 'east', targetRoomId: 'blackwood_hollow_log_bridge', description: '倒木橋通往空心木橋' },
@@ -775,7 +775,7 @@ blackwood_burnt_totem: {
     image: 'blackwood_burnt_totem.png',
     imagePrompt: '燒焦圖騰 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '燒焦圖騰位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，旅人可以 觀察 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 搜索 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向',
+      '燒焦圖騰立在黑樹脂乾裂的土坡上，由三段焦木和骨繩綁成，表面刻痕被火燒到只剩凹陷的暗紅線。西側焦木路回黑樹脂池，北面煙痕路可繞往毒蕨林，東邊炭圈接向長老樹環。圖騰底下堆著碎骨鈴、焦羽和被樹脂黏住的祭葉，偶爾有煙從裂縫裡向下沉去；它不像祈福物，更像用來警告林中舊力量不要越界的燒痕。',
     exits: [
       { direction: 'west', targetRoomId: 'blackwood_sap_pool', description: '焦木路回到黑樹脂池' },
       {
@@ -808,7 +808,7 @@ blackwood_wolf_den: {
     image: 'blackwood_wolf_den.png',
     imagePrompt: '影狼窩 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '影狼窩位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，旅人可以 觀察 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 搜索 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向',
+      '影狼窩藏在無月空地東側的黑根坳裡，洞口低矮而濕冷，周圍堆著被啃白的獸骨、焦葉和帶樹脂味的狼毛。西面爪痕可回無月空地，東側獸道通往倒塌小祠，北邊界林路被密根與黑影壓得狹窄。洞壁留下成排爪印，深處偶爾傳來壓低的喘息，連附近骨鈴聲都被吞成悶響；這裡標示著狼群真正的領地，也把西側空地和東側小祠隔成兩種不同危險。',
     exits: [
       { direction: 'west', targetRoomId: 'blackwood_moonless_glade', description: '爪痕回到無月空地' },
       { direction: 'east', targetRoomId: 'blackwood_fallen_shrine', description: '獸道通往倒塌小祠' },
@@ -834,7 +834,7 @@ blackwood_hollow_log_bridge: {
     image: 'blackwood_hollow_log_bridge.png',
     imagePrompt: '空心木橋 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '空心木橋位於黑木林深處，西側倒木橋回到毒蕨林，南側黑根階梯落往長老樹環，東面枯枝封徑標出不可穿越的邊界。炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，旅人可以 觀察 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 搜索 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向',
+      '空心木橋是一株倒下的巨木，樹腹被蛀空後架成窄橋，內壁年輪像一圈圈黑色眼紋，走近便能聽見低沉回音。西側倒木橋回毒蕨林，南側黑根階梯落往長老樹環，東面枯枝棚架把錯路封在灰霧裡。橋面有蛛絲補過的裂縫、被毒蕨染綠的水痕與老守衛磨出的爪槽；穿過這裡時，林冠與地面短暫分層，足以看清黑木林深處的核心輪廓。',
     exits: [
       { direction: 'west', targetRoomId: 'blackwood_poison_fern', description: '倒木橋回到毒蕨林' },
       {
@@ -866,7 +866,7 @@ blackwood_elder_ring: {
     image: 'blackwood_elder_ring.png',
     imagePrompt: '長老樹環 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '長老樹環位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，旅人可以 觀察 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 搜索 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向',
+      '長老樹環由數株古老炭木圍成，粗根彼此搭接成圓形階座，中央裸土上刻滿被樹脂填黑的年輪符號。西面炭圈回燒焦圖騰，北側黑根階梯可上空心木橋，東邊年輪路通往黑心木核。環內沒有風，骨鈴聲與狼嚎都在外圈變得模糊，只有根下沉悶脈動持續傳來；這裡像森林的審議場，所有枝影都朝中心傾斜，等待某個更深的意志回應。',
     exits: [
       { direction: 'west', targetRoomId: 'blackwood_burnt_totem', description: '炭圈回到燒焦圖騰' },
       {
@@ -899,7 +899,7 @@ blackwood_fallen_shrine: {
     image: 'blackwood_fallen_shrine.png',
     imagePrompt: '倒塌小祠 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '倒塌小祠位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，旅人可以 觀察 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 搜索 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向',
+      '倒塌小祠半埋在狼徑盡頭，斷柱被黑苔吞住，碎石上的舊神像只剩一張被樹根穿過的臉。西側獸道回影狼窩，北面斷柱路繞向長老樹環，東側祠後根道接近黑心木核。祠前散落供碗、焦黑符紙和被雨水泡爛的祈願帶，幾道新根從祭台底下伸出，像把整座小祠拖向森林心臟；殘留的神聖感已經很薄，只剩崩壞前最後的保護形狀。',
     exits: [
       { direction: 'west', targetRoomId: 'blackwood_wolf_den', description: '獸道回到影狼窩' },
       {
@@ -938,7 +938,7 @@ blackwood_heartwood_core: {
     image: 'blackwood_heartwood_core.png',
     imagePrompt: '黑心木核 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '黑心木核位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，旅人可以 觀察 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 搜索 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。南側祠後根道可見倒塌小祠殘影，但黑心木核周圍樹影反鎖回程，必須由倒塌小祠祠後根道進入。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向',
+      '黑心木核盤踞在長老樹環東側，是一團由巨根、黑樹脂與暗紅木心交纏成的龐大核心，表面像會緩慢呼吸。西邊年輪路仍能退回長老樹環，南側祠後根道的殘影被樹影反鎖，只剩發亮根脈提示倒塌小祠曾經連到此處。核心周圍插著斷矛、骨鈴和被樹脂封住的舊祭牌，黑暗樹人守在根脊之間；所有錯位的路標、移動的樹叢與失常的狼群，最後都指向這個正在污染整片黑木林的木心。',
     exits: [
       { direction: 'west', targetRoomId: 'blackwood_elder_ring', description: '年輪路回到長老樹環' },
     ],
