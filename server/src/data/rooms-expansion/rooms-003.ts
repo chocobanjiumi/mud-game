@@ -345,7 +345,7 @@ dragon_starfall_crater: {
     image: 'abyss_entrance.png',
     imagePrompt: '深淵入口 in abyss_rift, cracked stairway descending from elder dragon sanctum into purple black void, impossible geometry, dimensional hum, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain fantasy terrain, clear lantern light',
     description:
-      '古龍聖殿地板上的裂縫延伸成一道深不見底的階梯，向下通往一片紫黑色的虛空。深淵入口周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
+      '古龍聖殿地板上的裂縫延伸成一道深不見底的階梯，向下通往一片紫黑色的虛空。裂階邊緣殘留舊符號、碎石腳印與回程刻痕，墜星坑餘熱和北方虛空冷光在同一片石面上拉扯。' +
       '空間在此處開始扭曲，牆壁岩石折成不可能的幾何形狀，裂縫邊緣還凝著微亮的時空碎片。' +
       '耳邊傳來低沉嗡鳴，像維度壁壘正被緩慢磨穿；南側仍能感到墜星坑的熱度，北方虛空迴廊吞著星光，東面花園幽香與西側錨鏈震動同時從黑暗裡傳來。',
     exits: [
@@ -377,7 +377,7 @@ void_corridor: {
     image: 'void_corridor.png',
     imagePrompt: '虛空迴廊 in abyss_rift, floating stone corridor over endless purple void, transparent floor with star abyss below, crawling shadow shapes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain stone, clear lantern light',
     description:
-      '一條漂浮在虛空中的石質走廊，兩側是無盡的紫黑色虛無。虛空迴廊周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
+      '一條漂浮在虛空中的石質走廊，兩側是無盡的紫黑色虛無。石廊兩端刻著退路符號與裂縫標記，邊緣碎屑會被紫黑虛無慢慢吸走，留下不穩定的方向感。' +
       '走廊地板時而凝固時而透明，腳下能看見星辰般閃爍的深淵，邊緣則有暗影生物像墨水般貼著石縫蠕動。' +
       '偶爾有扭曲光芒從虛空中射出，照亮牆面缺口，也帶來其他時間線的低語。南端入口仍有裂階輪廓，北方暗影領域吸走光線，東側時間裂縫和西側鏡湖冷光把走廊拉成四條不穩的方向。',
     exits: [
@@ -408,7 +408,7 @@ shadow_realm: {
     image: 'shadow_realm.png',
     imagePrompt: '暗影領域 in abyss_rift, realm swallowed by pure shadow, black rippling floor, ghost eyes and fading body silhouettes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '一片被純粹暗影能量籠罩的空間，所有光源在這裡都會被吞噬。暗影領域周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
+      '一片被純粹暗影能量籠罩的空間，所有光源在這裡都會被吞噬。黑暗中只剩石板邊線、浮塵流向與遠處橋光可辨，退回虛空迴廊的透明輪廓像最後一條細線。' +
       '只有暗影生物的眼睛在黑暗中如幽靈般閃爍，流動地面每受壓一次，就激起漣漪般的黑色波紋。' +
       '南側虛空迴廊還保留一截透明石板輪廓，北方混沌之橋像裂開的彩色傷口，西邊暗影檔案館的書架影子則一排排浮現。黑暗不只是遮蔽視線，更像正在試探每一個能被吞掉的記憶。',
     exits: [
@@ -437,7 +437,7 @@ chaos_bridge: {
     image: 'chaos_bridge.png',
     imagePrompt: '混沌之橋 in abyss_rift, bridge of shifting chaos matter changing between stone crystal and void, elemental colors along both sides, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain bridge, clear lantern light',
     description:
-      '一座由不斷變換形態的混沌物質構成的橋樑，橋面時而是石頭，時而是水晶，時而又像被挖空的虛無。混沌之橋周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
+      '一座由不斷變換形態的混沌物質構成的橋樑，橋面時而是石頭，時而是水晶，時而又像被挖空的虛無。橋面殘留被抹平又重現的腳印、符文刻痕與能量裂線，南北兩端的光色會隨橋身形態改變。' +
       '橋的兩側翻湧著不同顏色的能量，火、冰、雷、光與暗交替閃爍，讓每一步都踩在不同法則上。' +
       '橋面邊緣會短暫浮現先前失敗者留下的腳印，又很快被混沌抹平。南方暗影領域沉得像墨，北端深淵核心一下一下發光，西側引力井與東側記憶迷宮把橋身拉得微微扭曲。',
     exits: [
@@ -467,7 +467,7 @@ nightmare_garden: {
     image: 'nightmare_garden.png',
     imagePrompt: '噩夢花園 in abyss_rift, floating garden of nightmare crystal flowers, silent blooming and withering, twisted human silhouettes in purple mist, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain crystal, clear lantern light',
     description:
-      '一座詭異花園漂浮在虛空之中，花朵由凝固的噩夢結晶長成，每一朵都在無聲綻放與凋零，散發令人昏沉的幽香。噩夢花園周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
+      '一座詭異花園漂浮在虛空之中，花朵由凝固的噩夢結晶長成，每一朵都在無聲綻放與凋零，散發令人昏沉的幽香。花徑邊緣留有被夢晶割出的細痕，西側裂階、北方斷續光帶與東面黑果陰影都在幽香裡若隱若現。' +
       '花叢裡偶爾浮現扭曲人影，像被夢境吞噬後殘留的意識仍在尋找出口。西側深淵入口的裂階輪廓在霧中忽明忽暗，北方花徑被扭曲時間切成斷續光帶，東面更深的果園則垂著半透明黑果。花粉落到地面時會形成短暫夢境，映出不屬於此地的天空。',
     exits: [
       { direction: 'west', targetRoomId: 'abyss_entrance', description: '回到深淵入口' },
@@ -495,7 +495,7 @@ abyss_core: {
     image: 'abyss_core.png',
     imagePrompt: '深淵核心 in abyss_rift, giant dark purple sphere pulsing in collapsed void, broken gravity, warped light, chaos and shadow source, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '裂隙的最深處，一顆巨大的暗紫色球體懸浮在虛空中央，不斷脈動著。深淵核心周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
+      '裂隙的最深處，一顆巨大的暗紫色球體懸浮在虛空中央，不斷脈動著。核心外圍漂著碎石台、斷裂符標與被吸成弧形的粉塵，南方橋光和東側王座陰影在脈動間短暫對齊。' +
       '這是深淵的核心——所有混沌和暗影力量的源頭。' +
       '核心周圍的空間已經完全崩壞，重力、時間、光線都失去了意義。碎裂石台像衛星般繞著核心旋轉，每一次脈動都會把遠處的迴廊、花園與時空區短暫拉近。核心表面浮現無數陌生眼睛，又在下一瞬間變成古代術式，說明它既是入侵錨點，也是封印失敗後扭曲的魔法裝置。脈動間隙裡能聽見古代術士留下的警告，任何對核心的衝擊都會同時震動整條裂隙。西側熔爐正把剝落碎片重新鑄成武器。',
     exits: [
@@ -524,7 +524,7 @@ time_distortion: {
     image: 'time_distortion.png',
     imagePrompt: '時空扭曲區 in abyss_rift, overlapping past present future ruins, branching time streams, broken clocks and dimensional light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '空間在此處嚴重扭曲，過去、現在和未來的景象交疊在一起；同一面斷牆上一半還保持千年前的繁華，一半已化為千年後的廢墟。時空扭曲區周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
+      '空間在此處嚴重扭曲，過去、現在和未來的景象交疊在一起；同一面斷牆上一半還保持千年前的繁華，一半已化為千年後的廢墟。斷牆下方疊著不同年代的腳印與刻痕，西側廊影、南面花粉與北方裂光在同一瞬間交錯。' +
       '時間之流在腳邊分岔又匯合，一步之差就會踩過百年灰塵。西側殘影指回虛空迴廊，南面噩夢花園的花粉被倒流成種子，北方斷裂光帶通往領主之間，東側晶格門後則漂著時間碎片。地面裂縫裡卡著不同年代的武器殘影。',
     exits: [
       { direction: 'west', targetRoomId: 'void_corridor', description: '回到虛空迴廊' },
@@ -554,7 +554,7 @@ abyss_lord_chamber: {
     image: 'abyss_lord_chamber.png',
     imagePrompt: '深淵領主之間 in abyss_rift, enormous floating platform of solid chaos, shadow void throne, many-eyed abyss lord warping reality, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain fantasy terrain, clear lantern light',
     description:
-      '一個懸浮在虛空中心的巨大平台，由凝固的混沌能量構成。深淵領主之間周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
+      '一個懸浮在虛空中心的巨大平台，由凝固的混沌能量構成。平台邊緣殘留核心脈衝燒出的刻痕，南側時空裂光和北方尖塔座標在王座陰影下互相呼應。' +
       '平台中央矗立著一座由暗影和虛空編織而成的王座，深淵領主端坐其上，' +
       '多隻眼睛同時注視著來訪者。牠的存在本身就在扭曲周圍的現實，空間在牠身邊不停裂開又癒合。王座後方懸著破碎的天界門影，腳下則能看見深淵核心的脈動倒影。每當領主抬手，平台邊緣的時鐘、鏡面與暗影柱便會重新排列，像是在為下一次維度入侵校準座標。王座側面的信標持續向外發出黑紫脈衝，北方尖塔則把這些座標刺入天界裂口；西南兩側仍殘留核心與時空區撕出的裂光。',
     exits: [
@@ -775,7 +775,7 @@ memory_maze: {
     image: 'memory_maze.png',
     imagePrompt: '記憶迷宮 in abyss_rift, maze walls made of fading memories, translucent scenes, purple fog corridors and shadow hunters, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '混沌之橋東側的迷宮沒有固定牆壁，通道由來訪者的記憶片段拼成：熟悉的村口、失敗的戰鬥、未完成的承諾，全都像薄幕一樣攔在前方。每次選錯路，迷宮就會拿走一段細節，使人忘記自己為何前進。地面上的銀色線條偶爾會指向深淵核心，也可能故意轉向噩夢果園。牆上嵌著被困冒險者留下的名字，正確順序會讓某些薄幕短暫打開，露出北方迴響庭的聲光；南側則有時間碎片庫的晶格影子在記憶間閃爍。',
+      '混沌之橋東側的迷宮沒有固定牆壁，通道由來訪者的記憶片段拼成：熟悉的村口、失敗的戰鬥、未完成的承諾，全都像薄幕一樣攔在前方。每次選錯路，迷宮就會拿走一段細節，使人忘記自己為何前進。地面上的銀色線條偶爾會指向深淵核心，也可能故意轉向噩夢果園。牆上嵌著被困失路者留下的名字，正確順序會讓某些薄幕短暫打開，露出北方迴響庭的聲光；南側則有時間碎片庫的晶格影子在記憶間閃爍。',
     exits: [
       { direction: 'west', targetRoomId: 'chaos_bridge', description: '沿銀線回到混沌之橋' },
       { direction: 'north', targetRoomId: 'echo_court', description: '迷宮盡頭傳來迴響' },
@@ -830,7 +830,7 @@ echo_court: {
     image: 'echo_court.png',
     imagePrompt: '迴響庭 in abyss_rift, court of floating stone benches and repeating sound waves, purple echoes of past battles, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
     description:
-      '記憶迷宮北端是一座浮空庭院，石椅、審判台與破碎鐘架圍成半圓，每一句話都會被複製成數十個不同情緒的回聲。庭院中央漂著過去戰鬥的殘響，有些影像會重演冒險者被深淵吞噬的瞬間，有些則像證詞一樣指向領主之間。西側裂鐘聲能對應時間碎片庫，但聲橋不穩，只在回音重疊時短暫浮現。南面記憶迷宮送來破碎姓名，北方深淵信標把最響亮的聲音收成座標。審判台後方刻著許多未被聽見的辯詞，暗示深淵連死亡後的聲音也會收割。',
+      '記憶迷宮北端是一座浮空庭院，石椅、審判台與破碎鐘架圍成半圓，每一句話都會被複製成數十個不同情緒的回聲。庭院中央漂著過去戰鬥的殘響，有些影像會重演失路者被深淵吞噬的瞬間，有些則像證詞一樣指向領主之間。西側裂鐘聲能對應時間碎片庫，但聲橋不穩，只在回音重疊時短暫浮現。南面記憶迷宮送來破碎姓名，北方深淵信標把最響亮的聲音收成座標。審判台後方刻著許多未被聽見的辯詞，暗示深淵連身後的聲音也會收割。',
     exits: [
       { direction: 'south', targetRoomId: 'memory_maze', description: '回聲廊道回到記憶迷宮' },
       { direction: 'north', targetRoomId: 'abyssal_beacon', description: '最響亮的回聲指向深淵信標' },

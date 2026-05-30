@@ -330,7 +330,7 @@ marsh_of_mirrors_blackwater_path: {
     image: 'marsh_of_mirrors_blackwater_path.png',
     imagePrompt: '黑水小徑 in marsh_of_mirrors, narrow muddy path over black marsh water, reeds, reflections, pale fog, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain marsh, clear lantern light',
     description:
-      '蘆葦入口後方的黑水小徑只比鞋底寬些，兩側水面深得看不見底，倒影卻清楚得像玻璃。每走幾步，水中倒影就會慢半拍才跟上，讓人忍不住懷疑自己是否還在原來的位置。這裡是鏡沼的主要路線房，連接銀面池、毒蛙泥潭與歪木棧道，也是最容易迷路的第一段。旅人可沿著水邊拾取草藥與腐木，但必須記住真實路標而非倒影。毒蛙、史萊姆和水下蛇影會輪流利用黑水遮掩靠近。若失去方向，應回到蘆葦入口重新校準路線',
+      '黑水小徑從蘆葦入口後方貼著黑水延伸，泥路窄得只容一人通過，兩側倒影卻清晰得像另一條更寬的道路。西面仍能看見蘆葦入口的草標，東側銀面池泛著冷白水光，南方毒蛙泥潭傳來低鳴，北面的歪木棧道在霧裡斜斜浮起。水邊腐木覆著細小藥草與蛇形拖痕，路標有時會在倒影中偏移半寸，使這段入口路線同時帶著資源、伏擊與迷失的預兆。',
     exits: [
       { direction: 'west', targetRoomId: 'marsh_of_mirrors_reed_gate', description: '泥路回到蘆葦入口' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_silver_pool', description: '銀色水光在前方' },
@@ -414,7 +414,7 @@ marsh_of_mirrors_crooked_boardwalk: {
     image: 'marsh_of_mirrors_crooked_boardwalk.png',
     imagePrompt: '歪木棧道 in marsh_of_mirrors, crooked wooden boardwalk over marsh, broken planks, hanging moss, fog and mirrored water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain marsh, clear lantern light',
     description:
-      '黑水小徑北側有一段歪斜木棧道，木板被水泡得發黑，許多地方只靠生鏽釘子勉強固定。棧道下方的水面映出完整直路，與現實裡的破洞和彎折完全不同。北側可看見泥炭小洲的測路桿，但棧道端橋板斷裂，需由小洲方向接回。這裡是交通與探索房，旅人可在較安全高度穿過沼澤，前往霧盲處與沉柳，也能修補木板建立回程捷徑。棧道柱子上綁著前人留下的布條，顏色越新，代表迷路風險越高。若踩到會回聲的空板，水下湖蛇會跟著震動追來',
+      '歪木棧道架在黑水小徑北側，泡爛木板被生鏽釘子勉強固定，許多缺口下方只剩冷亮倒影。南面木階可下回黑水小徑，東側棧板伸向霧盲處，西面的倒木路則要繞過浮根與黑水缺口才會抵達沉水柳。棧柱上綁著褪色布條與刻痕，有些布條在水面倒影裡顏色更新，像故意指向錯誤方向；空板下方偶爾傳來水蛇磨過木樁的沉悶聲。',
     exits: [
       { direction: 'south', targetRoomId: 'marsh_of_mirrors_blackwater_path', description: '木階下回黑水小徑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_mist_blind', description: '棧道伸向霧盲處' },
@@ -725,7 +725,7 @@ marsh_of_mirrors_dark_treant_grove: {
     image: 'marsh_of_mirrors_dark_treant_grove.png',
     imagePrompt: '暗樹林 in marsh_of_mirrors, grove of dark twisted treants, mirror pools, roots, purple shadow sap and fog, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '沉水柳北面的樹林被暗色樹液污染，樹幹扭曲成像人形一樣的姿勢，根系伸入一口口小鏡池中。每棵樹都有兩個影子，一個落在地面，一個倒掛在水下。這裡是精英戰鬥與大型事件前置房，旅人可追查暗黑樹人如何被鏡水腐化，採集暗樹皮與黑色樹液，也能找到通往玻璃水核心的根系路線。暗樹林的敵人行動慢卻壓迫感強，會用根系封路，把隊伍逼到錯誤倒影旁。若旅人淨化沉水柳，這裡的部分樹根會暫時停止攻擊。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影',
+      '暗樹林盤踞在沉水柳北面，黑色樹液沿著扭曲樹幹下滴，根系伸入一口口小鏡池，把地上與水下的影子分成兩套姿勢。南方根路折回沉水柳，東側黑根延向玻璃水核心，西面回聲濕地的聲音被樹幹吞成低鳴。林中樹皮裂縫露出紫暗光澤，腐化根節旁可見被困住的蘆葦與破符片；每當水面影子先行轉頭，整片樹林便像要把道路合攏。',
     exits: [
       {
         direction: 'south',
@@ -798,7 +798,7 @@ marsh_of_mirrors_echo_fen: {
     image: 'marsh_of_mirrors_echo_fen.png',
     imagePrompt: '回聲濕地 in marsh_of_mirrors, open fen with echoing fog, shallow water, reeds, distant lights and mirrored ripples, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain water, clear lantern light',
     description:
-      '泥炭小洲北面是一片開闊濕地，水淺卻沒有明確路線，聲音會在霧裡反覆返回。隊伍喊出的名字可能從三個方向回應，其中一個回聲甚至會多說半句。這裡是迷路事件與交通分岔房，旅人可用測路桿校準聲音來源，尋找失蹤旅人，也能分辨暗樹林、破碎倒影與月光堤道的方向。濕地看似空曠，實際上毒蛙和蜘蛛會被聲音吸引，綠色史萊姆則貼著淺水邊緣移動。若追逐錯誤回聲，隊伍會被帶進霧更厚的區域',
+      '回聲濕地位於泥炭小洲北面，淺水覆過膝高草根，霧氣把遠近燈火折成好幾層模糊方向。南側測路桿仍指回泥炭小洲，東面低沉回聲通往暗樹林，北方月光水線延向月光堤道。濕地中央沒有固定道路，只有半沉木樁、破防水包與被水草纏住的鈴片作為地標；聲音在此處會延遲返回，有時還帶著陌生尾音，使空曠水面比密林更容易令人失去方位。',
     exits: [
       { direction: 'south', targetRoomId: 'marsh_of_mirrors_peat_islet', description: '測路桿回到泥炭小洲', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_dark_treant_grove', description: '低沉回聲來自暗樹林', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },

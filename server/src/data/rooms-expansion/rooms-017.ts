@@ -148,7 +148,7 @@ amber_forest_hunter_blind: {
     image: 'amber_forest_hunter_blind.png',
     imagePrompt: '樹上獵棚 in amber_forest, amber forest resource zone with golden resin, translucent tree roots, glowing insects trapped in amber, herb shelves, smoky bark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '樹上獵棚架在兩株琥珀木之間，木板被樹脂黏住，邊緣掛著褪色繩標和幾支封在金脂裡的短箭。西側燼甲蟲丘的熱氣從枝縫升上來，東面石化花圃透出冷白花光，兩種光在棚底交錯。棚內鋪著觀察獸道用的炭粉圖，圖上標出獸痕樹皮、蜂巢與花圃方向；但欄杆上新的螳螂切痕說明這處高點早已不只屬於獵人。',
+      '樹上獵棚架在兩株琥珀木之間，木板被樹脂黏住，邊緣掛著褪色繩標和幾支封在金脂裡的短箭。西側燼甲蟲丘的熱氣從枝縫升上來，東面石化花圃透出冷白花光，兩種光在棚底交錯。棚內鋪著記錄獸道的的炭粉圖，圖上標出獸痕樹皮、蜂巢與花圃方向；但欄杆上新的螳螂切痕說明這處高點早已不只屬於獵人。',
     exits: [
       {
         direction: 'west',

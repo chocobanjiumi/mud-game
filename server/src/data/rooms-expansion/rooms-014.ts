@@ -961,7 +961,7 @@ astral_wastes_lost_constellation: {
     image: 'astral_wastes_lost_constellation.png',
     imagePrompt: '失落星座 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '失落星座並不在天空，而是懸在荒原低處的一串碎星，每顆星都以細線連向看不見的中心。西側湖光回到星界湖，南側星線垂落到黑星門。碎星之間有古老路標漂浮，路標文字會隨觀察角度改變；某些星點缺席的位置留下黑色空洞，空洞邊緣傳出羽翼摩擦聲，像守護星座的生物仍在尋找失落的排列。',
+      '失落星座並不在天空，而是懸在荒原低處的一串碎星，每顆星都以細線連向看不見的中心。西側湖光回到星界湖，南側星線垂落到黑星門。碎星之間有古老路標漂浮，路標文字會隨視角改變；某些星點缺席的位置留下黑色空洞，空洞邊緣傳出羽翼摩擦聲，像守護星座的生物仍在尋找失落的排列。',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_astral_lake', description: '失落星座回到星界湖' },
       { direction: 'south', targetRoomId: 'astral_wastes_black_star_gate', description: '星線落向黑星門' },

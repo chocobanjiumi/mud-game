@@ -848,7 +848,7 @@ export const STATIC_WORLD_FILLER_ROOMS_PART_001: Record<string, RoomDef> = {
     "id": "dark_forest_fill_n4_12",
     "name": "北影苔石坪",
     "zone": "dark_forest",
-    "description": "北影苔石坪位在暗林北側稍高處，濕滑苔石露出灰白礦脈，水珠沿石縫慢慢滾落。南面遠處傳來盤根橋附近的濕木吱響，東側苔石被黑葉覆住，北面低暗坡在樹冠陰影下收成一道無路可走的灰牆。石坪邊緣散著少量藥草與刮痕，冷光從枝縫斜落，卻照不出新的出口。這裡像被抬高的觀察邊緣，只能看見主路聲息逐漸遠去。",
+    "description": "北影苔石坪位在暗林北側稍高處，濕滑苔石露出灰白礦脈，水珠沿石縫慢慢滾落。南面遠處傳來盤根橋附近的濕木吱響，東側苔石被黑葉覆住，北面低暗坡在樹冠陰影下收成一道無路可走的灰牆。石坪邊緣散著少量藥草與刮痕，冷光從枝縫斜落，卻照不出新的出口。這裡像被抬高的冷寂邊緣，只能看見主路聲息逐漸遠去。",
     "image": "dark_forest_fill_n4_12.png",
     "imagePrompt": "北影苔石坪 dark_forest_fill_n4_12 in dark_forest 暗影森林, room function border road, raised moss stone flat on the northern dark forest edge, south distant wet wood creak from root bridge area, east stones buried under black leaves, north no outlet beyond low shadow bank, terrain slick moss slabs, medicinal grass traces and cold overhead shade，下緣是高處濕滑苔石坪，南側遠處用盤根橋濕木聲和根影暗示正式路線，東側黑葉蓋住石面，北面低暗坡沒有出口。石坪邊緣要有水珠、刮痕與少量可採藥草，冷白光從樹冠縫隙斜落卻照不出新路，外圈陰影像牆面收束，苔面高低差要清楚，石縫間露出灰白礦脈，整體需表現北側封閉 blocker 不接新路, slightly elevated adventurer eye view, readable midground landmark, blocked-route composition, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],

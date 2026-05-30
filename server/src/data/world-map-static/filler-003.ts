@@ -242,7 +242,7 @@ export const STATIC_WORLD_FILLER_ROOMS_PART_003: Record<string, RoomDef> = {
     "id": "marsh_of_mirrors_fill_24_15",
     "name": "夢水鏡面棧道",
     "zone": "marsh_of_mirrors",
-    "description": "夢水鏡面棧道位於月光濕地與鏡沼交界，西側水霧仍帶著銀色蘆光，東面倒影忽然變冷。半沉木樁、繩標與鏡水踏板只保留往西穿回夢水核心的特殊水路，東側鏡面深潭被繩標封住，是明確 邊界 路線 與封路提示。夢水鏡面棧道周邊的路面、植被、舊標記與相鄰地貌都需要被看清，北南東西的可行方向、封閉邊線與回程線索會在場景中自然呈現，讓隊伍能判斷是否採集、折返或接回主路。",
+    "description": "夢水鏡面棧道鋪在月光濕地與鏡沼交界，半沉木樁從黑水中排成斷續弧線，西側仍透著夢水核心的銀霧，東側深潭則冷得沒有一點草影。棧道板面覆著薄薄鏡水，繩標只沿西返水路保留，往東的木樁在水下忽然消失，像被倒影吞掉。蘆葦、舊燈籠與漂浮踏板共同標出可踏之處，安靜水面下偶爾亮起細碎銀光，使這段接界路帶著折返、辨路與沼心誘惑的張力。",
     "image": "marsh_of_mirrors_fill_24_15.png",
     "imagePrompt": "夢水鏡面棧道 marsh_of_mirrors_fill_24_15 in marsh_of_mirrors 鏡沼, room function border road, terrain mirror marsh boardwalk, black water reflections, half-sunk posts, reeds, cold silver light and deceptive water surface, visible path cues: west toward 夢水核心, east toward locked boundary, source room details: 夢水鏡面棧道位於月光濕地與鏡沼交界，西側水霧仍帶著銀色蘆光，東面倒影忽然變冷。半沉木樁、繩標與鏡水踏板只保留往西穿回夢水核心的特殊水路，東側鏡面深潭被繩標封住，是明確 border route 與封路提示。, uneasy reflective swamp danger, routes distorted by water mirror light, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile terrain and architecture materials, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [

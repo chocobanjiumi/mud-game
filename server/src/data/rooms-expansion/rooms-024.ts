@@ -8,7 +8,7 @@ machine_graveyard_core_wake_hall: {
     image: 'machine_graveyard_core_wake_hall.png',
     imagePrompt: '核心甦醒廳 in machine_graveyard, underground ancient machine graveyard with rusted cranes, broken gears, sparking rails, oil cisterns, magnet tower, dormant reactor core, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain tower, clear lantern light',
     description:
-      '核心甦醒廳位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 搜索 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
+      '核心甦醒廳深藏在磁塔基座東面，拱形大廳被藍色脈衝照得忽明忽暗，地板下有巨物緩慢翻身般的震動。西側能回到磁塔基座，北面活塞祠的機械禱聲順著管道傳來。廳中央懸著半透明反應球，外殼裂縫中閃過成排古老指令符號；周圍控制台多已熔毀，只有幾枚紅燈仍按固定節奏亮起，像地下核心正在從漫長報廢狀態中重新記起自己的名字。',
     exits: [
       { direction: 'west', targetRoomId: 'machine_graveyard_magnet_tower_base', description: '回到磁塔基座' },
       { direction: 'north', targetRoomId: 'machine_graveyard_piston_shrine', description: '活塞祠在北側' },
@@ -34,7 +34,7 @@ machine_graveyard_wireweed_garden: {
     image: 'machine_graveyard_wireweed_garden.png',
     imagePrompt: '線草園 in machine_graveyard, underground ancient machine graveyard with rusted cranes, broken gears, sparking rails, oil cisterns, magnet tower, dormant reactor core, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain tower, clear lantern light',
     description:
-      '線草園位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 搜索 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
+      '線草園長在黑油蓄池北側，成束細纜從地面冒出，頂端結著銀色小燈，遠看像一片會發光的枯草。南面油池的黑光在纜絲間反射，東側電池墓窖的冷白電壓沿根部跳動。園中散落舊維修牌、陶瓷絕緣環與被線束纏死的機械鳥，風一吹，所有纜草便同時偏向同一方向，彷彿正在接收來自訊號碟或更深核心的無聲命令。',
     exits: [
       { direction: 'south', targetRoomId: 'machine_graveyard_oil_black_cistern', description: '回到黑油蓄池' },
       { direction: 'east', targetRoomId: 'machine_graveyard_battery_catacomb', description: '電池墓窖在東側' },
@@ -60,7 +60,7 @@ machine_graveyard_battery_catacomb: {
     image: 'machine_graveyard_battery_catacomb.png',
     imagePrompt: '電池墓窖 in machine_graveyard, underground ancient machine graveyard with rusted cranes, broken gears, sparking rails, oil cisterns, magnet tower, dormant reactor core, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain tower, clear lantern light',
     description:
-      '電池墓窖位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 搜索 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
+      '電池墓窖像一座倒置陵園，牆面鑲滿圓筒電池與方形能量棺，許多棺蓋鼓起並滲出藍白霜光。西面線草園的纜根鑽入石縫，南側鐘械巢有發條聲回盪，東方伺服骨場堆著殘肢，北面訊號碟投下細碎雜訊。窖道地面刻著充放電標線，幾座舊供電柱還在微微發熱；每當遠處核心震動，牆上電池便像沉睡士兵般依次亮起。',
     exits: [
       { direction: 'west', targetRoomId: 'machine_graveyard_wireweed_garden', description: '回到線草園' },
       { direction: 'south', targetRoomId: 'machine_graveyard_clockwork_nest', description: '回到鐘械巢' },
@@ -88,7 +88,7 @@ machine_graveyard_servo_bone_yard: {
     image: 'machine_graveyard_servo_bone_yard.png',
     imagePrompt: '伺服骨場 in machine_graveyard, underground ancient machine graveyard with rusted cranes, broken gears, sparking rails, oil cisterns, magnet tower, dormant reactor core, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain tower, clear lantern light',
     description:
-      '伺服骨場位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 搜索 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
+      '伺服骨場堆滿機械臂、膝軸、脊索與被拆開的動力骨架，白陶裝甲片在冷光裡像乾骨。西側電池墓窖供應殘餘電壓，南面磁塔基座牽動鐵屑，東方活塞祠傳來沉重節拍，北側深鑽升降井垂下粗纜。骨場中央有幾具半組裝守衛跪在地上，胸腔空洞朝向同一方向，彷彿在等待古算核庫重新分配意志，周圍還散著細小校準片。',
     exits: [
       { direction: 'west', targetRoomId: 'machine_graveyard_battery_catacomb', description: '回到電池墓窖' },
       { direction: 'south', targetRoomId: 'machine_graveyard_magnet_tower_base', description: '回到磁塔基座' },
@@ -116,7 +116,7 @@ machine_graveyard_piston_shrine: {
     image: 'machine_graveyard_piston_shrine.png',
     imagePrompt: '活塞祠 in machine_graveyard, underground ancient machine graveyard with rusted cranes, broken gears, sparking rails, oil cisterns, magnet tower, dormant reactor core, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain tower, clear lantern light',
     description:
-      '活塞祠位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 搜索 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
+      '活塞祠由四根巨大活塞柱撐起，柱身刻著磨損祈詞與維修刻度，每次上下推動都帶起像鐘聲般的低鳴。西面伺服骨場散著機械骨骸，南側核心甦醒廳透出藍色脈衝，北方古算核庫的晶片光從管線深處浮現。祭台上不是香火，而是油杯、銅線與排列整齊的螺栓；地面震動穩定得近乎虔誠，讓工業殘骸在這裡呈現出某種冷硬的宗教感。',
     exits: [
       { direction: 'west', targetRoomId: 'machine_graveyard_servo_bone_yard', description: '回到伺服骨場' },
       { direction: 'south', targetRoomId: 'machine_graveyard_core_wake_hall', description: '回到核心甦醒廳' },
@@ -143,7 +143,7 @@ machine_graveyard_signal_dish: {
     image: 'machine_graveyard_signal_dish.png',
     imagePrompt: '訊號碟 in machine_graveyard, underground ancient machine graveyard with rusted cranes, broken gears, sparking rails, oil cisterns, magnet tower, dormant reactor core, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain tower, clear lantern light',
     description:
-      '訊號碟位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 搜索 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
+      '訊號碟立在電池墓窖北側的開闊平台上，巨大碟面破了三道裂口，仍固執地朝向沒有星光的上空。南面階梯降回電池墓窖，東側深鑽升降井的鐵架從霧裡升起。平台四周插著折斷天線，空氣裡飄滿斷續雜訊與細小藍火，偶爾會在碟面拼出不完整的座標。那些訊號不像求救，更像機械墳場仍向某個失落工廠回報自己的存活狀態。',
     exits: [
       { direction: 'south', targetRoomId: 'machine_graveyard_battery_catacomb', description: '回到電池墓窖' },
       { direction: 'east', targetRoomId: 'machine_graveyard_deep_bore_lift', description: '深鑽升降井在東側' },
@@ -169,7 +169,7 @@ machine_graveyard_deep_bore_lift: {
     image: 'machine_graveyard_deep_bore_lift.png',
     imagePrompt: '深鑽升降井 in machine_graveyard, underground ancient machine graveyard with rusted cranes, broken gears, sparking rails, oil cisterns, magnet tower, dormant reactor core, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain tower, clear lantern light',
     description:
-      '深鑽升降井位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 搜索 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
+      '深鑽升降井是一口貫穿多層廢土的垂直鐵井，井壁掛滿鑽頭痕、警示燈與被磨斷的升降纜。西側訊號碟的雜訊沿著鐵架傳來，南面伺服骨場堆著機械肢骨，東方古算核庫露出封閉金門。井底深處有冷風往上湧，帶著濕礦味與遠方齒輪聲；升降台停在半空，控制杆被一隻斷裂機械手緊握，像最後一次下探從未完成。',
     exits: [
       { direction: 'west', targetRoomId: 'machine_graveyard_signal_dish', description: '回到訊號碟' },
       { direction: 'south', targetRoomId: 'machine_graveyard_servo_bone_yard', description: '回到伺服骨場' },
@@ -196,7 +196,7 @@ machine_graveyard_ancient_cpu_vault: {
     image: 'machine_graveyard_ancient_cpu_vault.png',
     imagePrompt: '古算核庫 in machine_graveyard, underground ancient machine graveyard with rusted cranes, broken gears, sparking rails, oil cisterns, magnet tower, dormant reactor core, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain tower, clear lantern light',
     description:
-      '古算核庫位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 搜索 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
+      '古算核庫被厚重金門封在深鑽升降井東側，牆面排列著黑曜晶片與銅質散熱翼，微光沿著線路一格格醒來。西面可回深鑽升降井，南側管道連向活塞祠，東方失控守衛列的紅燈透過防爆窗閃爍。庫中央懸著一枚龜裂演算核心，周圍散落寫滿未知算式的金屬薄片；每次脈衝亮起，附近報廢零件都會微微抬頭，像在等待某道舊命令再次發布。',
     exits: [
       { direction: 'west', targetRoomId: 'machine_graveyard_deep_bore_lift', description: '回到深鑽升降井' },
       { direction: 'south', targetRoomId: 'machine_graveyard_piston_shrine', description: '回到活塞祠' },
@@ -223,7 +223,7 @@ machine_graveyard_runaway_guard_line: {
     image: 'machine_graveyard_runaway_guard_line.png',
     imagePrompt: '失控守衛列 in machine_graveyard, underground ancient machine graveyard with rusted cranes, broken gears, sparking rails, oil cisterns, magnet tower, dormant reactor core, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain tower, clear lantern light',
     description:
-      '失控守衛列位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 搜索 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
+      '失控守衛列是一條狹長檢修廊，兩側停著成排守衛機殼，胸口紅燈以不一致的節奏閃爍，像多個壞掉心跳互相干擾。西面古算核庫仍有演算光流動，東側主反應殼的厚門在熱霧中若隱若現。地面布滿拖行刮痕與被打碎的控制面板，頂部軌道懸著空彈匣和斷裂夾臂；每具守衛都面向通道中央，使這裡像一場永不解除的最後檢閱。',
     exits: [
       { direction: 'west', targetRoomId: 'machine_graveyard_ancient_cpu_vault', description: '回到古算核庫' },
       { direction: 'east', targetRoomId: 'machine_graveyard_prime_reactor_shell', description: '主反應殼在東側' },
@@ -249,7 +249,7 @@ machine_graveyard_prime_reactor_shell: {
     image: 'machine_graveyard_prime_reactor_shell.png',
     imagePrompt: '主反應殼 in machine_graveyard, underground ancient machine graveyard with rusted cranes, broken gears, sparking rails, oil cisterns, magnet tower, dormant reactor core, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain tower, clear lantern light',
     description:
-      '主反應殼位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 搜索 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
+      '主反應殼位於機械墳場最深東端，外層裝甲像巨獸肋骨般張開，內部反應爐只剩一團緩慢旋轉的藍白核心。西側唯一通路退回失控守衛列，厚重門框上全是高溫熔痕與警戒符號。殼體周圍散落冷卻管、破裂壓力錶與被燒成玻璃的工具，地面則浮著薄薄磁霧。每一次核心閃光都會照亮整座腔室，讓人明白前方不是寶庫，而是仍可能重新啟動整片墳場的心臟。',
     exits: [
       { direction: 'west', targetRoomId: 'machine_graveyard_runaway_guard_line', description: '回到失控守衛列' },
     ],
@@ -491,7 +491,7 @@ bloodsalt_coast_reef_fishing_post: {
     image: 'bloodsalt_coast_reef_fishing_post.png',
     imagePrompt: '礁釣哨 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain coast, clear lantern light',
     description:
-      '礁釣哨建在幾根被鹽霧咬白的木樁上，吊鉤、破網和魚骨浮標隨風撞出乾硬聲響。西側長路沿鹽玻洞折返，南面濕滑礁階落向海盜烽燈，東側血壇岩棚壓著祭血水槽，北方刃貝床露出一排排刀口般的殼脊。木樁旁有切餌石、記潮刻線和冷鹽晶籃，海面偶爾冒出帶黑斑的背鰭；這裡看似釣點，實際也是觀察整條中段海岸潮線的高位哨。',
+      '礁釣哨建在幾根被鹽霧咬白的木樁上，吊鉤、破網和魚骨浮標隨風撞出乾硬聲響。西側長路沿鹽玻洞折返，南面濕滑礁階落向海盜烽燈，東側血壇岩棚壓著祭血水槽，北方刃貝床露出一排排刀口般的殼脊。木樁旁有切餌石、記潮刻線和冷鹽晶籃，海面偶爾冒出帶黑斑的背鰭；這裡看似釣點，實際也是俯看整條中段海岸潮線的高位哨。',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '回到鹽玻洞', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'south', targetRoomId: 'bloodsalt_coast_pirate_beacon', description: '南側礁釣哨沿礁釣木樁下行，穿過斷旗繩索與濕滑礁階回到海盜烽燈', edgeKind: 'distant_route', edgeNote: '礁釣哨回海盜烽燈需沿礁釣木樁與濕滑礁階下行，實際路程長於相鄰一格。' },

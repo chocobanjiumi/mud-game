@@ -528,7 +528,7 @@ dark_treehollow: {
     image: 'dark_treehollow.png',
     imagePrompt: '黑暗樹洞 in dark_forest, hidden elite room inside dead giant tree, purple fungi, hollow chamber and deep shadow, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain chamber, clear lantern light',
     description:
-      '黑暗樹洞位於一株完全枯死的千年巨木內，樹幹中空成天然暗室，內壁覆滿幽紫菌光與剝落的古老封印紋。北側洞口爬出後可回枯萎之林，西邊樹洞裂隙通向月影井，東側盤根暗路則接回精靈遺跡。空氣混著腐木、濕土與殘餘魔力的味道，深處低鳴沿年輪迴盪，彷彿這棵守護樹死亡後仍保留一絲不肯熄滅的心跳。',
+      '黑暗樹洞位於一株完全枯死的千年巨木內，樹幹中空成天然暗室，內壁覆滿幽紫菌光與剝落的古老封印紋。北側洞口爬出後可回枯萎之林，西邊樹洞裂隙通向月影井，東側盤根暗路則接回精靈遺跡。空氣混著腐木、濕土與殘餘魔力的味道，深處低鳴沿年輪迴盪，彷彿這棵守護樹枯亡後仍保留一絲不肯熄滅的心跳。',
     exits: [
       { direction: 'north', targetRoomId: 'withered_forest', description: '爬出樹洞回到枯萎之林' },
       { direction: 'west', targetRoomId: 'dark_forest_moonwell', description: '西側樹洞出口通往月影井' },
