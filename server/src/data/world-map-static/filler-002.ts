@@ -515,7 +515,7 @@ export const STATIC_WORLD_FILLER_ROOMS_PART_002: Record<string, RoomDef> = {
     "id": "thundersteppe_fill_10_23",
     "name": "雷草西緣",
     "zone": "thundersteppe",
-    "description": "雷草西緣位於琉璃沙丘與雷鳴草原交界，西側玻璃砂逐漸被濕草根壓住，東面滾雷門的銅鈴在風裡晃動。草葉間有雷露草採集痕，這裡是西側 gathering route，讓玩家從沙地踏入草原。",
+    "description": "雷草西緣位於琉璃沙丘與雷鳴草原交界，西側玻璃砂逐漸被濕草根壓住，東面滾雷門的銅鈴在風裡晃動。草葉間有雷露草採集痕，這裡是西側採集通路，讓玩家從沙地踏入草原。",
     "image": "thundersteppe_fill_10_23.png",
     "imagePrompt": "雷草西緣 thundersteppe_fill_10_23 in thundersteppe Thunder Steppe, room function resource path, border between Glass Dunes and Thunder Steppe, west glass sand shards slowly pressed under wet grass roots, east rolling thunder gate with copper bells swinging in wind, terrain wet mud track, charged grass, glassy sand fragments, storm clouds and blue-white lightning，畫面左側保留琉璃沙丘的玻璃砂與透明尖片，右側轉成濕亮雷草與泥徑，東面銅鈴門架是中景地標且不可有可讀文字。草葉間有雷露草採集痕與細小電光，冷白閃電照亮草根，雨後泥面反光，氣氛要像玩家從乾燥沙地踏入帶電草原的正式西側採集路線。, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
@@ -557,7 +557,7 @@ export const STATIC_WORLD_FILLER_ROOMS_PART_002: Record<string, RoomDef> = {
     "id": "thundersteppe_fill_10_25",
     "name": "風祭草坡",
     "zone": "thundersteppe",
-    "description": "風祭草坡位於雷鳴草原西南側，北面雷雨草徑積著淺水，東面風祭小祠的旗繩拍打木柱。坡腳仍有晶化砂殼與雷草種子採集點，這裡是 border gathering route，標示沙丘與草原的南端交界。",
+    "description": "風祭草坡位於雷鳴草原西南側，北面雷雨草徑積著淺水，東面風祭小祠的旗繩拍打木柱。坡腳仍有晶化砂殼與雷草種子採集點，這裡是邊界採集通路，標示沙丘與草原的南端交界。",
     "image": "thundersteppe_fill_10_25.png",
     "imagePrompt": "風祭草坡 thundersteppe_fill_10_25 in thundersteppe Thunder Steppe, room function border road, wind-shrine grass slope at the south end of the dunes-to-steppe transition, north rain grass path with shallow water, east small wind shrine poles with flag ropes striking wood, terrain crystallized sand crust at the slope foot, thundergrass seed gathering marks, wet grass and storm-lit mud，風祭草坡位於雷鳴草原西南側，北面雷雨草徑積著淺水，東面小祠木柱與旗繩在強風裡拍打。坡腳要有晶化砂殼、濕泥、雷草種子採集痕與被雷光照亮的草尖，左下仍帶沙丘乾裂質地，右上轉成帶電草坡；整體要標示沙丘與草原南端交界，是可走的 border gathering route。, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
