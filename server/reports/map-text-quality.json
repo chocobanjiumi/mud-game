@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-30T18:28:51.656Z",
+  "generatedAt": "2026-05-30T18:50:17.660Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -355,7 +355,7 @@
     "systemErrorMessages": 23,
     "systemSuccessMessages": 5,
     "combatLogs": 6,
-    "imagePrompts": 1503,
+    "imagePrompts": 1515,
     "characterNpcImagePrompts": 714,
     "itemIconImagePrompts": 1161,
     "iconAtlasPrompts": 6,
@@ -366,11 +366,11 @@
     "wikiTableRowNotes": 1881,
     "instanceEntryItems": 8,
     "checkedDungeonItems": 192,
-    "issues": 62
+    "issues": 63
   },
   "issuesByKind": {
     "imagePrompt": 50,
-    "batch.repeatedCoreTerm": 12
+    "batch.repeatedCoreTerm": 13
   },
   "issues": [
     {
@@ -930,6 +930,15 @@
       "minimumLength": 30,
       "text": "sapphire_lake/sapphire_lake_fill_20_7, sapphire_lake/sapphire_lake_fill_22_7, sapphire_lake/sapphire_lake_fill_22_8, sapphire_lake/sapphire_lake_fill_22_9",
       "reason": "同批生成內容核心詞「邊界採集」出現於 4/8 筆，超過 30% 門檻"
+    },
+    {
+      "id": "imagePrompt:kingdom_frontier/term:國邊境西",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 33,
+      "minimumLength": 30,
+      "text": "kingdom_frontier/kingdom_frontier_fill_n10_n3, kingdom_frontier/kingdom_frontier_fill_n17_n3, kingdom_frontier/kingdom_frontier_fill_n18_n4, kingdom_frontier/kingdom_frontier_fill_n18_n6",
+      "reason": "同批生成內容核心詞「國邊境西」出現於 4/12 筆，超過 30% 門檻"
     }
   ]
 }
