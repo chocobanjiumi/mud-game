@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-30T07:36:31.365Z",
+  "generatedAt": "2026-05-30T07:44:39.582Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -366,12 +366,21 @@
     "wikiTableRowNotes": 1881,
     "instanceEntryItems": 8,
     "checkedDungeonItems": 192,
-    "issues": 18
+    "issues": 21
   },
   "issuesByKind": {
-    "imagePrompt": 18
+    "imagePrompt": 21
   },
   "issues": [
+    {
+      "id": "thundersteppe/thundersteppe_fill_10_23",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 108,
+      "minimumLength": 80,
+      "text": "雷草西緣 thundersteppe_fill_10_23 in thundersteppe Thunder Steppe, room function resource path, border between Glass Dunes and Thunder Steppe, west glass sand shards slowly pressed under wet grass roots, east rolling thunder gate with copper bells swinging in wind, terrain wet mud track, charged grass, glassy sand fragments, storm clouds and blue-white lightning，畫面左側保留琉璃沙丘的玻璃砂與透明尖片，右側轉成濕亮雷草與泥徑，東面銅鈴門架是中景地標且不可有可讀文字。草葉間有雷露草採集痕與細小電光，冷白閃電照亮草根，雨後泥面反光，氣氛要像玩家從乾燥沙地踏入帶電草原的正式西側採集路線。, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
     {
       "id": "starter_village_ext/starter_village_ext_fill_0_n3",
       "kind": "imagePrompt",
@@ -505,6 +514,24 @@
       "currentLength": 55,
       "minimumLength": 80,
       "text": "避風村南斷崖徑 storm_highlands_fill_n17_n15 in storm_highlands 風暴高原, room function border road, southern cliff path descending from Windrest village supply shed, north canvas shelter above, south windcut gravel path and misty cliff entrance, east basalt ridge blocks crosswind, clear north south east cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_15_24",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 110,
+      "minimumLength": 80,
+      "text": "天火台西南焦坡 thundersteppe_fill_15_24 in thundersteppe Thunder Steppe, room function resource path, scorched slope south of Skyfire Platform, north hot stone platform steaming, west lightning rod field iron shadows in a line, south Eagle Nest Peak grass slope grows steep, terrain charred soil edge, thunder ash gathering marks, hot vapor, wet grass and distant blue lightning，天火台西南焦坡位於天火台南側，北面石台仍冒熱氣，西側避雷針田鐵影排列成線，南面鷹巢峰草坡突然變陡。焦土邊有雷擊草灰採集點，採集痕停在安全泥線內；前景用碎焦土、熱蒸氣、濕草和坡面斷差阻止前進，光線要混合石台熱紅與雷暴冷白，明確是 gathering blocker。, slightly elevated adventurer eye view, readable midground landmark, blocked-route composition, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_17_22",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 104,
+      "minimumLength": 80,
+      "text": "龍 storm 眼西封痕 thundersteppe_fill_17_22 in thundersteppe Thunder Steppe, room function resource path, sealed scorch mark west of the thunder dragon storm eye, south grass pressed into a circular ring by violent wind, west Thunderhoof Ford mud line ends before charred soil, terrain black grass roots, thunder ash, circular wind pressure, storm haze and blue lightning dust，龍 storm 眼西封痕貼近雷龍風眼北側，南面草面被旋風壓成圓環，西側雷蹄渡口泥線斷在焦土前。黑草根可採少量雷灰，但風壓把道路完全阻斷；畫面要有環形倒伏草、焦黑根鬚、旋風霧牆與藍白雷塵，讓採集點停在風壓外緣，不可畫成能穿過風眼的路。, slightly elevated adventurer eye view, readable midground landmark, blocked-route composition, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
       "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
     },
     {

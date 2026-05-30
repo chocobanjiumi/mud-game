@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-30T07:39:54.416Z",
+  "generatedAt": "2026-05-30T07:44:38.077Z",
   "summary": {
     "rooms": 1515,
     "worldRooms": 1515,
@@ -8,12 +8,12 @@
     "missingPrompt": 188,
     "missingImageField": 188,
     "missingAsset": 188,
-    "issues": 1863,
-    "errors": 667,
+    "issues": 1861,
+    "errors": 665,
     "warnings": 1196,
     "byIssueKind": {
       "prompt.room_id": 1196,
-      "prompt.function": 50,
+      "prompt.function": 48,
       "prompt.style": 39,
       "image.missing": 188,
       "asset.missing": 188,
@@ -569,7 +569,7 @@
         "missingImageField": 0,
         "missingAsset": 0,
         "phase5Targets": 0,
-        "errors": 2,
+        "errors": 0,
         "warnings": 20
       },
       "time_ruins": {
@@ -19290,20 +19290,6 @@
       "severity": "warning",
       "kind": "prompt.room_id",
       "message": "Phase 5 target prompts should include room id"
-    },
-    {
-      "roomId": "thundersteppe_fill_20_23",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "thundersteppe_fill_20_24",
-      "zoneId": "thundersteppe",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
     },
     {
       "roomId": "thundersteppe_herd_plain",
