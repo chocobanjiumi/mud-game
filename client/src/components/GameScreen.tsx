@@ -7,6 +7,7 @@ import CommandInput from './CommandInput';
 import StatusBar from './StatusBar';
 import MiniMap from './MiniMap';
 import RoomImage from './RoomImage';
+import BattlefieldView from './BattlefieldView';
 import RoomPanel from './RoomPanel';
 import SelectedTargetPanel from './SelectedTargetPanel';
 import Inventory from './Inventory';
@@ -172,8 +173,8 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
 
   return (
     <div className="h-full flex flex-col bg-bg-primary scanline">
-      {/* Middle: A/B/C/D workspace */}
-      <div className="game-main flex-1 min-h-0">
+      {/* Middle: A/B/C/D workspace (combat: A/BC/D) */}
+      <div className={`game-main flex-1 min-h-0 ${inCombat ? 'in-combat' : ''}`}>
         {/* A: quick actions */}
         <div className="game-left flex flex-col gap-2 p-2 border-r border-border-dim overflow-y-auto">
           <MiniMap />
@@ -224,21 +225,36 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
           </div>
         </div>
 
-        {/* B: scene image */}
-        <div className="game-image min-w-0 bg-bg-secondary border-r border-border-dim overflow-y-auto">
-          <RoomImage />
-        </div>
-
-        {/* C: operation area */}
-        <div className="game-actions flex flex-col bg-bg-secondary border-r border-border-dim min-h-0">
-          <div className="game-actions-scroll flex-1 min-h-0 overflow-y-auto">
-            <SkillBar onUseSkill={handleUseSkill} pendingTargetSkillId={pendingTargetSkillId} />
-            <RoomPanel />
-            <SelectedTargetPanel />
-            <ChatPanel onSendChat={onSendChat} />
+        {inCombat ? (
+          /* BC: merged combat area */
+          <div className="game-actions flex flex-col bg-bg-secondary border-r border-border-dim min-h-0">
+            <div className="game-actions-scroll flex-1 min-h-0 overflow-y-auto">
+              <BattlefieldView />
+              <SkillBar onUseSkill={handleUseSkill} pendingTargetSkillId={pendingTargetSkillId} />
+              <RoomPanel />
+              <SelectedTargetPanel />
+            </div>
+            <StatusBar compact />
           </div>
-          <StatusBar compact />
-        </div>
+        ) : (
+          <>
+            {/* B: scene image */}
+            <div className="game-image min-w-0 bg-bg-secondary border-r border-border-dim overflow-y-auto">
+              <RoomImage />
+            </div>
+
+            {/* C: operation area */}
+            <div className="game-actions flex flex-col bg-bg-secondary border-r border-border-dim min-h-0">
+              <div className="game-actions-scroll flex-1 min-h-0 overflow-y-auto">
+                <SkillBar onUseSkill={handleUseSkill} pendingTargetSkillId={pendingTargetSkillId} />
+                <RoomPanel />
+                <SelectedTargetPanel />
+                <ChatPanel onSendChat={onSendChat} />
+              </div>
+              <StatusBar compact />
+            </div>
+          </>
+        )}
 
         {/* D: text area */}
         <div className="game-center flex flex-col min-w-0 relative">
