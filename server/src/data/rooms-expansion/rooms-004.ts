@@ -8,7 +8,7 @@ celestial_broken_colonnade: {
     image: 'celestial_broken_colonnade.png',
     imagePrompt: '破碎柱廊 in celestial_ruins, collapsed colonnade of glowing white pillars, star dust, torn banners and guardian patrols, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '星光走廊西側的柱廊曾由七十二根光柱撐起，如今只剩半數仍在斷續發亮。每根殘柱都刻著一段諸神戰爭紀錄，有些字句被深淵黑痕抹去，只留下焦黑空白。柱廊南端連向墜星廣場，北端通往永恆聖所，是旅人在主線外觀察天界歷史的安全但不平靜路線。巡邏守衛會在光柱亮起時重整隊形。斷柱之間還掛著沒有風也會飄動的戰旗，旗面上逐漸浮現旅人經過的足跡，讓守軍能追蹤入侵者動向。柱廊地面偶爾會投出完整神殿的昔日幻象，旅人可藉此找到隱藏聖所側門。殘柱陰影裡還藏著被撕下的審判符',
+      '破碎柱廊曾由七十二根光柱撐起，如今只剩半數斷續發亮，殘柱表面刻著諸神戰爭紀錄，部分字句被黑痕抹成空白。東側接回星光走廊，南端裂石路通往墜星廣場，北面白石側門進入永恆聖所。斷柱間掛著無風自動的戰旗，地面偶爾投出完整神殿的昔日幻象；每當光柱亮起，巡邏守衛的影子便在柱影中重整隊形。',
     exits: [
       { direction: 'east', targetRoomId: 'starlight_path', description: '回到星光走廊' },
       { direction: 'south', targetRoomId: 'celestial_starfall_plaza', description: '沿斷柱回到墜星廣場' },
@@ -35,7 +35,7 @@ celestial_scriptorium: {
     image: 'celestial_scriptorium.png',
     imagePrompt: '聖文抄寫室 in celestial_ruins, quiet scriptorium with floating quills of light, unfinished holy scrolls, automaton scribes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '神之圖書館北側是一排安靜抄寫桌，羽筆由光構成，仍在無人指引下把失傳神語寫到透明卷軸上。桌面上壓著未完成的末日預言，墨跡在金色與黑色之間反覆變化，似乎無法決定世界結局。幾台神造抄寫機械在桌間巡行，會修正任何被污染的文字，也會攻擊試圖偷走卷軸的人。東側卷軸軌道可看見流明檔案庫光頁，但傳送軌已停擺，需回神之圖書館走光頁階梯。這裡可承接知識、解謎與任務目標。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
+      '聖文抄寫室藏在神之圖書館北側，細長書桌排成弧線，桌面墨水不是黑色，而是從光頁中滴落的金白文字。南面書架門回圖書館，北側卷宗廊接向審判大廳。牆上懸著未完成的神諭拓本，字句在無人書寫時仍會慢慢延伸，卻有幾行被深淵黑墨截斷。地面散著羽筆、封蠟與審判印章，說明此處曾負責把神意轉成法律，也記錄法律如何被污染。',
     exits: [
       { direction: 'south', targetRoomId: 'divine_library', description: '書架階梯回到神之圖書館' },
       { direction: 'north', targetRoomId: 'judgment_hall', description: '成文律法通向審判大廳' },
@@ -62,7 +62,7 @@ celestial_lumen_archive: {
     image: 'celestial_lumen_archive.png',
     imagePrompt: '流明檔案庫 in celestial_ruins, archive of suspended light pages and golden memory crystals, divine constructs guarding knowledge, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '流明檔案庫不是普通房間，而是一座由懸浮光頁組成的立體迷宮。每片光頁都記錄一段神祇、天使或凡人英雄的記憶，靠近時會把畫面直接投進腦海。檔案庫中央封著數枚金色記憶晶，記載戰神沉睡前最後下達的命令。深淵污染已在部分光頁邊緣形成黑斑，若不整理檔案，審判大廳的法則會繼續失準。南側可看見聖文抄寫室的卷軸軌道，但資料回流已被鎖住，需回神之圖書館再進入抄寫室。檔案庫東側的光頁偶爾會翻到空白頁，等待旅人把本次試煉的見聞寫入天界記錄。若錯誤觸碰污染光頁，整座檔案庫會把旅人過去的任務選擇重播成審判證據。中央記憶晶也會短暫鎖住出口',
+      '流明檔案庫位在神之圖書館東側，半透明書匣懸浮在白金軌道上，每一匣都封存一段天界記憶。西面光頁階梯回圖書館，北側高門通往審判大廳。檔案庫中可見神造兵器的巡邏圖、墜星廣場防線紀錄與熾天使名冊，部分記憶匣則被黑裂縫切成碎光。當軌道轉動時，破碎影像會短暫拼回深淵攻入天界前的最後一刻。',
     exits: [
       { direction: 'west', targetRoomId: 'divine_library', description: '光頁階梯回到神之圖書館' },
       { direction: 'north', targetRoomId: 'judgment_hall', description: '律法檔案指向審判大廳' },
@@ -89,7 +89,7 @@ celestial_fountain_of_oaths: {
     image: 'celestial_fountain_of_oaths.png',
     imagePrompt: '誓約之泉 in celestial_ruins, sacred fountain of glowing oath water beside angel garden, floating vow ribbons, white flowers, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain water, clear lantern light',
     description:
-      '天使花園東側的泉池更小也更莊嚴，水面漂浮著由光織成的誓約緞帶，每一條都寫著曾守護天界者的名字。泉水會映出來者最想守護的事物，也會照見未履行的承諾。許多緞帶已被黑色細線纏住，代表有人在深淵入侵時背棄誓言。這裡可作為治療、任務與事件點，但任何虛假的誓言都會喚醒守泉熾天使。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
+      '誓約之泉位在天使花園東側，泉池較小卻更莊嚴，光織緞帶漂在水面上，每條都寫著曾守護天界者的名字。西面泉渠回花園，北側階路升向熾天使棲台，東面光影水道接入日晷庭。泉水會映出最想守護的事物，也照見未履行的承諾；不少緞帶已被黑色細線纏住，暗示深淵入侵時有人背棄誓言，守泉天使的羽影也因此不再完全溫和。',
     exits: [
       { direction: 'west', targetRoomId: 'angel_garden', description: '泉水回流到天使花園' },
       { direction: 'north', targetRoomId: 'celestial_seraph_roost', description: '泉畔白階通往熾天使棲台' },
@@ -117,7 +117,7 @@ celestial_seraph_roost: {
     image: 'celestial_seraph_roost.png',
     imagePrompt: '熾天使棲台 in celestial_ruins, high white roost with layered golden wings, radiant perches, clouds and seraph sentries, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '誓約之泉北方的高台由層層白石羽翼托起，熾天使會在此休整、療傷與監視王座殿。棲台四周漂浮著金色羽片，每一片都能記錄一次守護行動。部分羽片變得灰暗，顯示天使內部也有人在深淵戰爭中墮落。這裡視野極好，能看見天使花園、王座側門與黎明武庫的光線交會，因此守軍反應極快。高台邊緣有幾處空巢，裡面只剩折斷羽軸與黑色灰燼，提示墮落並非個別事件。若收集灰暗羽片並帶回誓約之泉，或許能追查第一位墮落者的行蹤。棲台鐘聲也會召回巡邏中的熾天使，讓戰鬥逐漸升級。',
+      '熾天使棲台架在誓約之泉北側的高處，半圓露台被金白羽毛鋪滿，欄外可俯瞰天使花園與日晷庭的光影。南面階路回誓約之泉，西側飛橋接向天界王座，東面短廊連到日晷庭。露台中央有數座羽翼形石座，座面仍保留治癒聖光，邊緣卻被黑焰灼出裂痕；巡遊熾天使在此重整羽光，也把下方所有不潔氣息收入視線。',
     exits: [
       { direction: 'south', targetRoomId: 'celestial_fountain_of_oaths', description: '白階下到誓約之泉' },
       { direction: 'west', targetRoomId: 'celestial_throne_room', description: '羽橋連向天界王座側廊' },
@@ -145,7 +145,7 @@ celestial_penitent_steps: {
     image: 'celestial_penitent_steps.png',
     imagePrompt: '懺悔階 in celestial_ruins, long stair of white stone behind judgment hall, kneeling angel statues, golden dust and dark cracks, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
     description:
-      '審判大廳北方有一段長階，每一階都刻著不同的罪名與救贖誓句。階梯兩側跪著無臉天使像，掌心托著空白石牌，等待來者寫下自己的懺悔。越往上走，天界王座的威壓越明顯，越往下看，深淵裂隙留下的黑色脈絡也越清楚。北側能望見聖物庫結界，但階頂門只接受聖所火光，需從永恆聖所進入。這裡是審判線與王座線之間的過渡房，適合放置道德選擇、任務交付或精英伏擊。每當有人說謊，石牌會自行裂開並召出執行裁決的神造機械。長階最高處還有一塊沒有刻字的石板，似乎等待旅人親手定義新的天界法則。階梯下方則回響著被赦免者的腳步聲與鎖鏈聲',
+      '懺悔階從審判大廳北方抬升，每一階都刻著罪名與救贖誓句，兩側無臉天使像托著空白石牌。南面長階落回審判大廳，東側高處可見天界王座白光，北面則遙望聖物庫結界但無法直接穿越。越往上走，王座威壓越重，越往下看，深淵黑脈越清楚；石牌上若浮現裂紋，神造裁決機械的腳步聲便會從階下回響。',
     exits: [
       { direction: 'south', targetRoomId: 'judgment_hall', description: '長階回到審判大廳' },
       { direction: 'east', targetRoomId: 'celestial_throne_room', description: '側門通向天界王座' },
@@ -172,7 +172,7 @@ celestial_reliquary: {
     image: 'celestial_reliquary.png',
     imagePrompt: '天界聖物庫 in celestial_ruins, reliquary vault of holy relics, glass cases, broken halos, eternal flame reflections, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain fantasy terrain, clear lantern light',
     description:
-      '永恆聖所北方的聖物庫被多層金白結界保護，玻璃龕中放著破碎光環、聖釘、祈禱鐘與曾屬於諸神侍者的羽甲。部分龕位已經空了，只留下被強行撬開的痕跡，說明深淵入侵時有人偷走或轉移了關鍵聖物。聖物庫中央有一座小型祭台，能把永恆之火的光引向懺悔階、黎明武庫與王座殿，但西側與東側運送門都被結界鎖住，只作為線索提示。若把受污染裝備放上祭台，結界會顯示需要補齊哪些失落聖物。玻璃龕背面還刻著聖物最後保管者的名字，可延伸成追查遺失聖物的任務。庫房深處有一道只對淨化光芒開啟的門。',
+      '天界聖物庫藏在永恆聖所北面，白金櫃與水晶匣圍成半圓，匣中保存淨化核心、破裂聖杯和被封住的羽冠。南側聖火暗門是唯一清楚回路，門縫外仍能看見永恆之火的暖光。庫內牆面刻著修復最終封印的儀式順序，幾件聖物旁卻附著黑色鹽狀粉末，顯示污染已侵入封存層。沉默守衛像站在櫃列間，手中光槍對準任何擾動結界的陰影。',
     exits: [
       { direction: 'south', targetRoomId: 'eternal_sanctuary', description: '聖火通道回到永恆聖所' },
     ],
@@ -199,7 +199,7 @@ celestial_sundial_court: {
     image: 'celestial_sundial_court.png',
     imagePrompt: '日晷庭 in celestial_ruins, open courtyard with giant golden sundial, moving beams of holy light, white marble and star shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '誓約之泉東側是一座開闊日晷庭，巨大的金色指針懸浮在半空，投下的影子不是時間，而是天界曾經的戰役順序。白石地面被分成十二個光區，每個光區會在不同時刻啟動守護法陣。深淵污染讓其中兩個光區變成黑影，導致巡邏路線出現危險空窗。這裡能作為事件點、定時戰鬥點，也能讓旅人理解天界防線如何運作',
+      '日晷庭位在誓約之泉東側，巨大的金色指針懸浮半空，投下的影子不是時辰，而是天界歷次戰役的順序。西側水光回誓約之泉，北面軍用星軌通往黎明武庫，南側光廊落入流明檔案庫。白石地面分成十二個光區，其中兩區被深淵污染成黑影，讓守衛巡邏節奏出現危險空窗；每當指針轉動，遠處王座與武庫的光也會同步改變。',
     exits: [
       { direction: 'west', targetRoomId: 'celestial_fountain_of_oaths', description: '水光小徑回到誓約之泉' },
       { direction: 'north', targetRoomId: 'celestial_armory_of_dawn', description: '晨光指向黎明武庫' },
@@ -226,7 +226,7 @@ celestial_armory_of_dawn: {
     image: 'celestial_armory_of_dawn.png',
     imagePrompt: '黎明武庫 in celestial_ruins, divine armory of dawn spears, radiant shields, white gold racks and sleeping constructs, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '天界王座東側的武庫保存著黎明長槍、光盾與諸神戰車的殘件，所有兵器都被擺放在白金架上，像等待最後一次出征。武庫深處有幾台尚未啟動的神造兵器，胸口核心隨日晷庭光線一明一暗。部分武器架空缺，旁邊留下墮天使羽毛與深淵灼痕。東側聖物運送門仍映出聖物庫光影，但結界只允許聖所火光通過。這裡是精英戰鬥與裝備線核心，也能解釋戰神神槍的來源。武庫地面刻著武器借用誓約，若沒有完成審判或聖所任務，任何兵器都會化成灼熱光束反擊。最深處的空架標著戰神之槍，仍殘留足以壓迫整座房間的戰意。牆上還標示通往觀測所的軍用星軌。',
+      '黎明武庫位在天界王座東側，白金架上保存黎明長槍、光盾與諸神戰車殘件，所有兵器像等待最後一次出征。西面側門回天界王座，南側光廊連日晷庭，北方軍用星軌通往天象觀測所。深處幾台神造兵器尚未啟動，胸口核心隨日晷光線明滅；最深處空架標著戰神之槍，旁邊散著墮天使羽毛與深淵灼痕，戰意仍壓迫整座武庫。',
     exits: [
       { direction: 'west', targetRoomId: 'celestial_throne_room', description: '武庫門回到天界王座' },
       { direction: 'south', targetRoomId: 'celestial_sundial_court', description: '晨光坡道下到日晷庭' },
@@ -254,7 +254,7 @@ celestial_astral_observatory: {
     image: 'celestial_astral_observatory.png',
     imagePrompt: '天象觀測所 in celestial_ruins, celestial observatory of golden astrolabes, star maps, open dome and divine constellations, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '神之間西側的星軌門通向天象觀測所，穹頂整片敞開，能看見不屬於凡間夜空的神聖星座。金色星盤層層旋轉，把深淵裂隙、龍谷墜星坑與天界王座的位置連成一條明亮弧線。觀測所內散落著戰神沉睡前的星圖批註，提到只有當凡人、龍族與天界試煉全部交會時，最終封印才會鬆動。觀測台下方還有一張被燒焦的星圖，標出深淵信標曾試圖對準的天界薄弱點。若調整星盤角度，旅人能短暫看見其他 zone 的危機投影與未來任務線。星盤核心也記錄著戰神甦醒的倒數，並標出封印失敗後的墜落軌道',
+      '天象觀測所位在神之間西側，穹頂整片敞開，能看見不屬於凡間夜空的神聖星座。東面星軌門回神之間，南側軍用星軌落向黎明武庫，北面光階抵達最終封印。金色星盤層層旋轉，把深淵裂隙、龍谷墜星坑與天界王座連成明亮弧線；觀測台下有燒焦星圖，標出深淵信標曾對準的薄弱點，星盤核心則記錄戰神甦醒與封印鬆動的倒數。',
     exits: [
       { direction: 'east', targetRoomId: 'god_chamber', description: '星軌門回到神之間' },
       { direction: 'south', targetRoomId: 'celestial_armory_of_dawn', description: '觀測台階回到黎明武庫' },
@@ -281,7 +281,7 @@ celestial_final_seal: {
     image: 'celestial_final_seal.png',
     imagePrompt: '最終封印 in celestial_ruins, final divine seal of radiant rings and black abyss cracks, war god light, floating relics, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '神之間東側的光裂縫後方懸著最終封印，數十道金白圓環互相咬合，把一枚黑色裂核鎖在中央。封印周圍漂浮著來自聖所、審判大廳、武庫與觀測所的象徵物，每件都代表解開或加固封印的一種條件。戰神的氣息從南方傳來，與裂核深處的深淵低鳴互相衝撞。這裡是天界遺跡的大型事件鉤子，可承接最終戰後的世界狀態選擇。圓環每轉動一次，凡間、龍谷與深淵的幻象便會輪流浮現，提醒旅人封印結果會影響所有區域。封印中心還有一個空白插槽，大小正好能放入戰神神槍或被淨化的聖物核心',
+      '最終封印懸在神之間東側光裂縫後方，數十道金白圓環互相咬合，把一枚黑色裂核鎖在中央。西側裂光回神之間，南面觀測星階連到天象觀測所。圓環周圍漂浮聖所火焰、審判天秤、黎明武器與觀測星盤的象徵物，每件都代表封印仍需承受的條件。裂核深處傳來深淵低鳴，戰神氣息從西南方壓來；中心空白插槽正好能容納被淨化的聖物核心或戰神神槍。',
     exits: [
       { direction: 'west', targetRoomId: 'god_chamber', description: '光裂縫回到神之間' },
       { direction: 'south', targetRoomId: 'celestial_astral_observatory', description: '星軌下行到天象觀測所' },
