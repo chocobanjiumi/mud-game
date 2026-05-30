@@ -9,7 +9,7 @@ import {
 } from './handler.js';
 import { createCharacter, getCharacterById, getCharacterByName, getCharactersByUserId, addInventoryItem, hasUserEntitlement, addUserEntitlement, getTransactions, deleteCharacter } from '../db/queries.js';
 import { handleCommand } from '../game/commands.js';
-import { partyMgr, world } from '../game/state.js';
+import { combat, partyMgr, world, getPlayerCombatId } from '../game/state.js';
 import { validateToken, getAuthSession, getCachedToken } from '../auth/arinova.js';
 import { CurrencyManager, PREMIUM_ITEMS } from '../economy/currency.js';
 import { CLASS_DEFS, FAITH_DEFS, GENDER_DEFS, ITEM_DEFS, RACE_DEFS, isFaithId, isGenderId, isRaceId } from '@game/shared';
@@ -264,6 +264,7 @@ async function handleLogin(
     handleCommand(session, 'look');
     handleCommand(session, 'status');
     partyMgr.syncCharacterParty(character.id);
+    syncCombatStateOnLogin(session, character.id);
     return;
   }
 
@@ -283,6 +284,7 @@ async function handleLogin(
       handleCommand(session, 'look');
       handleCommand(session, 'status');
       partyMgr.syncCharacterParty(charByName.id);
+      syncCombatStateOnLogin(session, charByName.id);
       return;
     }
   }
@@ -394,6 +396,21 @@ function handleCreateCharacter(
       sendError(session.sessionId, `建立角色失敗: ${errMsg}`);
     }
   }
+}
+
+function syncCombatStateOnLogin(session: WsSession, characterId: string): void {
+  const combatId = getPlayerCombatId(characterId);
+  if (!combatId) return;
+  const state = combat.getCombatState(combatId);
+  if (!state) return;
+  sendToSession(session.sessionId, 'combat_start', {
+    combatId,
+    round: state.round,
+    playerTeam: state.playerTeam,
+    enemyTeam: state.enemyTeam,
+    turnTimer: 5,
+    preferredAttackModes: {},
+  });
 }
 
 function isInitialClassId(classId: unknown): classId is CreateCharacterPayload['classId'] {
