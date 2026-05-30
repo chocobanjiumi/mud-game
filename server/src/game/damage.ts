@@ -175,8 +175,7 @@ export function calculateDamage(input: DamageCalcInput): DamageResult {
   }
 
   // ── 閃避判定 ──────────────────────────────────────────
-  const baseDodgeRate = calcDodgeRate(target.dex, target.luk);
-  const dodgeRate = Math.max(0, Math.min(80, baseDodgeRate + (target.dodgeRate - baseDodgeRate)));
+  const dodgeRate = Math.max(0, Math.min(80, target.dodgeRate));
   if (rollChance(dodgeRate)) {
     result.isDodged = true;
     return result;
@@ -200,8 +199,7 @@ export function calculateDamage(input: DamageCalcInput): DamageResult {
   // pure damage 不吃暴擊和屬性加成 (L-4)
   if (damageType !== 'pure') {
     // ── 暴擊判定 ──────────────────────────────────────────
-    const baseCritRate = calcCritRate(attacker.dex, attacker.luk);
-    const critRate = Math.max(0, Math.min(80, baseCritRate + (attacker.critRate - baseCritRate)));
+    const critRate = Math.max(0, Math.min(80, attacker.critRate));
     if (rollChance(critRate)) {
       result.isCrit = true;
       baseDmg = baseDmg * (attacker.critDamage / 100);

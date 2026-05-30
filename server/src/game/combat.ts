@@ -929,13 +929,7 @@ export class CombatEngine {
           log.push(`${actor.name}使用${skillName}攻擊${target.name}，但本次命中判定失敗，造成 0 點傷害且目標生命值不變。`);
         } else if (dmgResult.isDodged) {
           log.push(`${actor.name}使用${skillName}攻擊${target.name}，但${target.name}成功閃避，造成 0 點傷害且觸發閃避相關效果。`);
-          if (target.resourceType === 'focus' && this.effectEngine.getEffectValue(target.activeEffects, 'dodge_up') > 0) {
-            this.gainResource(target, 20 + this.getCombatantResourceAffixBonus(target.id, target.isPlayer, 'focusRegen'), log, '因閃避獲得');
-          }
-          this.triggerAffixEvents(session, target, 'on_dodge', log, {
-            targetHpPercent,
-            isFirstHit: session.state.round === 1,
-          });
+          this.onDodge(session, target, log);
         } else {
           const critText = dmgResult.isCrit ? '暴擊！' : '';
           log.push(
@@ -1198,16 +1192,9 @@ export class CombatEngine {
       return;
     }
     if (result.isDodged) {
-      // 閃避仍使用 miss 描述（武器揮空的情境）
       const desc = getAttackDescription(actor.name, target.name, weaponItemId, 'miss');
       log.push(`${desc}（被閃避）`);
-      if (target.resourceType === 'focus' && this.effectEngine.getEffectValue(target.activeEffects, 'dodge_up') > 0) {
-        this.gainResource(target, 20 + this.getCombatantResourceAffixBonus(target.id, target.isPlayer, 'focusRegen'), log, '因閃避獲得');
-      }
-      this.triggerAffixEvents(session, target, 'on_dodge', log, {
-        targetHpPercent: this.getHpPercent(target),
-        isFirstHit: session.state.round === 1,
-      });
+      this.onDodge(session, target, log);
       return;
     }
 
@@ -2276,6 +2263,16 @@ export class CombatEngine {
       if (next <= 0) session.skillCooldowns.delete(key);
       else session.skillCooldowns.set(key, next);
     }
+  }
+
+  private onDodge(session: CombatSession, target: CombatantState, log: string[]): void {
+    if (target.resourceType === 'focus' && this.effectEngine.getEffectValue(target.activeEffects, 'dodge_up') > 0) {
+      this.gainResource(target, 20 + this.getCombatantResourceAffixBonus(target.id, target.isPlayer, 'focusRegen'), log, '因閃避獲得');
+    }
+    this.triggerAffixEvents(session, target, 'on_dodge', log, {
+      targetHpPercent: this.getHpPercent(target),
+      isFirstHit: session.state.round === 1,
+    });
   }
 
   private processThreatDecay(session: CombatSession): void {
