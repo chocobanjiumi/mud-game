@@ -337,16 +337,18 @@ function ApproachDot({ dir, index, total, img, name, ticks }: {
 }) {
   const arrow = DIR_ARROW[dir] ?? '?';
   const offset = total > 1 ? (index - (total - 1) / 2) * 34 : 0;
-  const [entered, setEntered] = useState(false);
+  const [phase, setPhase] = useState<'origin' | 'moving' | 'arrived'>('origin');
   const mountedRef = useRef(false);
 
   useEffect(() => {
     if (mountedRef.current) return;
     mountedRef.current = true;
-    requestAnimationFrame(() => setEntered(true));
+    const t1 = setTimeout(() => setPhase('moving'), 600);
+    const t2 = setTimeout(() => setPhase('arrived'), 1800);
+    return () => { clearTimeout(t1); clearTimeout(t2); };
   }, []);
 
-  const dest: React.CSSProperties = { position: 'absolute', transition: entered ? 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none' };
+  const dest: React.CSSProperties = { position: 'absolute', transition: phase === 'moving' ? 'all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none' };
   const origin: React.CSSProperties = { ...dest };
 
   if (dir === 'north') {
@@ -366,10 +368,10 @@ function ApproachDot({ dir, index, total, img, name, ticks }: {
     origin.left = 'calc(16.67% - 16px)'; origin.top = dest.top; origin.transform = dest.transform;
   }
 
-  const style = entered ? dest : origin;
+  const style = phase === 'origin' ? origin : dest;
 
   return (
-    <div className={`flex flex-col items-center z-10 ${entered ? 'animate-pulse' : ''}`} style={style} title={`${name} ${ticks}t`}>
+    <div className={`flex flex-col items-center z-10 ${phase === 'arrived' ? 'animate-pulse' : ''}`} style={style} title={`${name} ${ticks}t`}>
       <div className="rounded-full border-2 border-text-amber/60 overflow-hidden" style={{ width: 24, height: 24 }}>
         {img ? <img src={img} alt={name} className="w-full h-full object-cover" /> : <div className="w-full h-full bg-bg-secondary" />}
       </div>
