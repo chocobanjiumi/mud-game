@@ -1,21 +1,21 @@
 {
-  "generatedAt": "2026-05-30T00:02:23.276Z",
+  "generatedAt": "2026-05-30T00:40:48.602Z",
   "summary": {
     "rooms": 1515,
     "worldRooms": 1515,
     "instanceOnlyRooms": 0,
-    "phase5Targets": 283,
-    "missingPrompt": 283,
-    "missingImageField": 283,
-    "missingAsset": 283,
-    "issues": 2059,
-    "errors": 863,
+    "phase5Targets": 278,
+    "missingPrompt": 278,
+    "missingImageField": 278,
+    "missingAsset": 278,
+    "issues": 2044,
+    "errors": 848,
     "warnings": 1196,
     "byIssueKind": {
       "prompt.room_id": 1196,
-      "image.missing": 283,
-      "asset.missing": 283,
-      "prompt.missing": 283,
+      "image.missing": 278,
+      "asset.missing": 278,
+      "prompt.missing": 278,
       "asset.ratio": 13,
       "asset.too_small": 1
     },
@@ -93,11 +93,11 @@
       "blackwood": {
         "zoneName": "黑木林",
         "rooms": 25,
-        "missingPrompt": 5,
-        "missingImageField": 5,
-        "missingAsset": 5,
-        "phase5Targets": 5,
-        "errors": 15,
+        "missingPrompt": 0,
+        "missingImageField": 0,
+        "missingAsset": 0,
+        "phase5Targets": 0,
+        "errors": 0,
         "warnings": 20
       },
       "bloodsalt_coast": {
@@ -623,181 +623,6 @@
     }
   },
   "phase5Targets": [
-    {
-      "roomId": "blackwood_fill_n11_15",
-      "roomName": "空心木橋東枯枝封",
-      "zoneId": "blackwood",
-      "zoneName": "黑木林",
-      "assetPath": "client/public/images/rooms/blackwood_fill_n11_15.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "blackwood_fill_n11_15",
-          "zoneId": "blackwood",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/blackwood_fill_n11_15.png"
-        },
-        {
-          "roomId": "blackwood_fill_n11_15",
-          "zoneId": "blackwood",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/blackwood_fill_n11_15.png"
-        },
-        {
-          "roomId": "blackwood_fill_n11_15",
-          "zoneId": "blackwood",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "blackwood_fill_n12_13",
-      "roomName": "倒祠北苔根採封",
-      "zoneId": "blackwood",
-      "zoneName": "黑木林",
-      "assetPath": "client/public/images/rooms/blackwood_fill_n12_13.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "blackwood_fill_n12_13",
-          "zoneId": "blackwood",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/blackwood_fill_n12_13.png"
-        },
-        {
-          "roomId": "blackwood_fill_n12_13",
-          "zoneId": "blackwood",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/blackwood_fill_n12_13.png"
-        },
-        {
-          "roomId": "blackwood_fill_n12_13",
-          "zoneId": "blackwood",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "blackwood_fill_n13_13",
-      "roomName": "骨鈴東枯根採封",
-      "zoneId": "blackwood",
-      "zoneName": "黑木林",
-      "assetPath": "client/public/images/rooms/blackwood_fill_n13_13.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "blackwood_fill_n13_13",
-          "zoneId": "blackwood",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/blackwood_fill_n13_13.png"
-        },
-        {
-          "roomId": "blackwood_fill_n13_13",
-          "zoneId": "blackwood",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/blackwood_fill_n13_13.png"
-        },
-        {
-          "roomId": "blackwood_fill_n13_13",
-          "zoneId": "blackwood",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "blackwood_fill_n15_12",
-      "roomName": "女巫樹洞北炭根封",
-      "zoneId": "blackwood",
-      "zoneName": "黑木林",
-      "assetPath": "client/public/images/rooms/blackwood_fill_n15_12.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "blackwood_fill_n15_12",
-          "zoneId": "blackwood",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/blackwood_fill_n15_12.png"
-        },
-        {
-          "roomId": "blackwood_fill_n15_12",
-          "zoneId": "blackwood",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/blackwood_fill_n15_12.png"
-        },
-        {
-          "roomId": "blackwood_fill_n15_12",
-          "zoneId": "blackwood",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "blackwood_fill_n17_13",
-      "roomName": "炭門北黑苔封徑",
-      "zoneId": "blackwood",
-      "zoneName": "黑木林",
-      "assetPath": "client/public/images/rooms/blackwood_fill_n17_13.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "blackwood_fill_n17_13",
-          "zoneId": "blackwood",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/blackwood_fill_n17_13.png"
-        },
-        {
-          "roomId": "blackwood_fill_n17_13",
-          "zoneId": "blackwood",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/blackwood_fill_n17_13.png"
-        },
-        {
-          "roomId": "blackwood_fill_n17_13",
-          "zoneId": "blackwood",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
     {
       "roomId": "bloodsalt_coast_fill_40_7",
       "roomName": "潮門南赤崖棧道",
@@ -11566,121 +11391,6 @@
       "severity": "warning",
       "kind": "prompt.room_id",
       "message": "Phase 5 target prompts should include room id"
-    },
-    {
-      "roomId": "blackwood_fill_n11_15",
-      "zoneId": "blackwood",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/blackwood_fill_n11_15.png"
-    },
-    {
-      "roomId": "blackwood_fill_n11_15",
-      "zoneId": "blackwood",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/blackwood_fill_n11_15.png"
-    },
-    {
-      "roomId": "blackwood_fill_n11_15",
-      "zoneId": "blackwood",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "blackwood_fill_n12_13",
-      "zoneId": "blackwood",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/blackwood_fill_n12_13.png"
-    },
-    {
-      "roomId": "blackwood_fill_n12_13",
-      "zoneId": "blackwood",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/blackwood_fill_n12_13.png"
-    },
-    {
-      "roomId": "blackwood_fill_n12_13",
-      "zoneId": "blackwood",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "blackwood_fill_n13_13",
-      "zoneId": "blackwood",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/blackwood_fill_n13_13.png"
-    },
-    {
-      "roomId": "blackwood_fill_n13_13",
-      "zoneId": "blackwood",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/blackwood_fill_n13_13.png"
-    },
-    {
-      "roomId": "blackwood_fill_n13_13",
-      "zoneId": "blackwood",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "blackwood_fill_n15_12",
-      "zoneId": "blackwood",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/blackwood_fill_n15_12.png"
-    },
-    {
-      "roomId": "blackwood_fill_n15_12",
-      "zoneId": "blackwood",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/blackwood_fill_n15_12.png"
-    },
-    {
-      "roomId": "blackwood_fill_n15_12",
-      "zoneId": "blackwood",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "blackwood_fill_n17_13",
-      "zoneId": "blackwood",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/blackwood_fill_n17_13.png"
-    },
-    {
-      "roomId": "blackwood_fill_n17_13",
-      "zoneId": "blackwood",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/blackwood_fill_n17_13.png"
-    },
-    {
-      "roomId": "blackwood_fill_n17_13",
-      "zoneId": "blackwood",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
     },
     {
       "roomId": "blackwood_heartwood_core",
