@@ -5311,6 +5311,12 @@ function cmdDuel(session: WsSession, args: string[]): void {
       }
       const target = findCharacterByName(targetName);
       if (!target) { sendError(session.sessionId, `找不到玩家「${targetName}」。`); return; }
+      // M-14: 決鬥驗證 — 在線、同房、存活、非戰鬥中
+      if (!getSessionByCharacterId(target.id)) { sendError(session.sessionId, `${target.name}目前不在線。`); return; }
+      if (target.roomId !== char.roomId) { sendError(session.sessionId, `${target.name}不在同一個房間。`); return; }
+      if (target.hp <= 0) { sendError(session.sessionId, `${target.name}已經倒下，無法決鬥。`); return; }
+      if (isInCombat(target.id)) { sendError(session.sessionId, `${target.name}正在戰鬥中，無法決鬥。`); return; }
+      if (isInCombat(char.id)) { sendError(session.sessionId, '你正在戰鬥中，無法發起決鬥。'); return; }
       const message = pvpMgr.duel(char.id, char.name, target.id, target.name);
       sendSystem(session.sessionId, message);
     }

@@ -347,7 +347,9 @@ export class PvPManager {
       // 沒有戰鬥引擎，直接隨機決定勝負
       const winner = Math.random() > 0.5 ? player1Id : player2Id;
       const loser = winner === player1Id ? player2Id : player1Id;
-      this.onPvPEnd(winner, loser, player1Char, player2Char, type);
+      const winnerChar = winner === player1Id ? player1Char : player2Char;
+      const loserChar = winner === player1Id ? player2Char : player1Char;
+      this.onPvPEnd(winner, loser, winnerChar, loserChar, type);
       return;
     }
 
@@ -397,13 +399,11 @@ export class PvPManager {
     const minExp = expRequiredForLevel(loserChar.level);
     loserChar.exp = Math.max(minExp, loserChar.exp - expLost);
 
-    const goldLost = Math.floor(loserChar.gold * 0.1);
+    // 金幣轉移：輸家損失 5%，贏家獲得同額
+    const goldLost = Math.floor(loserChar.gold * GOLD_LOSS_PERCENT);
     loserChar.gold -= goldLost;
-
-    // 金幣轉移（額外 5% 給贏家）
-    const goldTransfer = Math.floor((loserChar.gold + goldLost) * GOLD_LOSS_PERCENT);
-    if (goldTransfer > 0) {
-      winnerChar.gold += goldTransfer;
+    if (goldLost > 0) {
+      winnerChar.gold += goldLost;
     }
 
     // PvP 額外懲罰：掉落 1 個隨機未裝備物品
@@ -476,7 +476,7 @@ export class PvPManager {
       text:
         `${typeText}勝利！\n` +
         `ELO：${winnerElo} → ${winnerElo + winnerChange}（+${winnerChange}）\n` +
-        (goldTransfer > 0 ? `獲得 ${goldTransfer} 金幣。` : '') +
+        (goldLost > 0 ? `獲得 ${goldLost} 金幣。` : '') +
         (droppedItemName ? `\n奪取了對方的「${droppedItemName}」！` : ''),
     });
 
