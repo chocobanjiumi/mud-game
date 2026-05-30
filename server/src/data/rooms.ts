@@ -2150,7 +2150,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'ancient_treehouse.png',
     imagePrompt: '古老樹屋 in dark_forest, exploration room with elven treehouse, spiral stairs, ancient books, shafts of green light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '千年巨木枝幹間架著被遺忘的精靈樹屋，螺旋木階沿樹身盤旋，欄杆雖腐朽仍能看出優雅紋路。西面能回森林入口，東側隱蔽小路通往獵人小屋，樹冠上有幾條通向更高處的斷橋。屋內殘留古書、碎水晶和魔法工具，木板下傳來樹精怪物低鳴，提示旅人可調查精靈歷史或遭遇守護樹靈。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口',
+      '千年巨木枝幹間架著被遺忘的精靈樹屋，螺旋木階沿樹身盤旋，腐朽欄杆仍殘留葉脈般的銀色刻紋。西面樹根間的舊梯可回到森林入口，東側樹冠繩橋越過層層暗枝，遠遠接向獵人小屋所在的林緣獵徑。屋內散落古書、碎水晶與失去光澤的觀星工具，牆面壁畫描繪精靈守衛把最後一批幼樹封入森林深處。木板下傳來低沉樹鳴，書架縫隙與地面刻痕被綠光照亮，像一段尚未腐爛的記憶仍在巨木心部緩慢呼吸。',
     exits: [
       { direction: 'west', targetRoomId: 'forest_entrance', description: '回到森林入口' },
       {
