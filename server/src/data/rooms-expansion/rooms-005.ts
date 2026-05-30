@@ -434,7 +434,7 @@ whispering_valley_whispering_rift: {
     image: 'abandoned_mines_entry_claim.png',
     imagePrompt: '礦坑入口礦權牌 in abandoned_mines, abandoned mine entrance with old claim sign, timber supports, lantern dust and dark tunnel, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain mine, clear lantern light',
     description:
-      '山壁下方的礦坑入口被半塌木架撐住，旁邊斜插著一塊褪色礦權牌，上面還能看出舊礦主的名字與禁止外人進入的警告。冷風從黑暗礦道吹出，帶著礦粉、霉木和蝙蝠糞味。這裡是廢棄礦坑入口與交通錨點，玩家可確認退路、檢查繩標，或沿逃生側洞返回地表邊路。',
+      '山壁下方的礦坑入口被半塌木架撐住，旁邊斜插著一塊褪色礦權牌，上面還能看出舊礦主的名字與嚴厲警告。冷風從黑暗礦道吹出，帶著礦粉、霉木和蝙蝠糞味，吹得繩標在支架間輕輕晃動。入口地面被許多舊鞋印踩硬，近處卻多出幾道新鮮拖痕，像有東西仍在夜裡進出。往深處的礦脈標記尚未完全剝落，北側升降台傳來鐵鏈輕響，南側低洞則滲入一線較乾淨的地表空氣。',
     exits: [
       { direction: 'east', targetRoomId: 'abandoned_mines_vein_path', description: '礦脈標記延向主礦道' },
       { direction: 'north', targetRoomId: 'abandoned_mines_lift_station', description: '舊升降台在北側' },
@@ -461,7 +461,7 @@ abandoned_mines_vein_path: {
     image: 'abandoned_mines_vein_path.png',
     imagePrompt: '裸露礦脈道 in abandoned_mines, tunnel wall with exposed ore veins, pick marks, rope markers and dusty lantern glow, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain tunnel, clear lantern light',
     description:
-      '主礦道兩側岩壁露出灰銀色礦脈，舊鑿痕密密麻麻，像有無數礦工在同一面牆上敲了多年。地上鋪著碎石與斷裂繩標，偶爾能看見新近被拖動的痕跡。玩家可在此採礦、辨認礦脈純度，也要留意從裂縫鑽出的蝙蝠與亡靈礦工。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '主礦道兩側岩壁露出灰銀色礦脈，舊鑿痕密密麻麻，像有無數礦工在同一面牆上敲了多年。地上鋪著碎石、斷裂繩標和落滿粉塵的木楔，偶爾能看見新近被拖動的痕跡。礦脈最亮的地方仍有細小晶粒閃光，裂縫後方卻傳出薄翼摩擦岩面的聲音。北面鐵軌聲若有若無，東側潮氣沿石縫滲來，讓這條看似普通的礦道同時帶著財富氣味與伏擊壓迫。',
     exits: [
       { direction: 'west', targetRoomId: 'abandoned_mines_entry_claim', description: '繩標回到入口' },
       { direction: 'east', targetRoomId: 'abandoned_mines_herb_shelf', description: '礦道旁有潮濕岩棚' },
@@ -488,7 +488,7 @@ abandoned_mines_herb_shelf: {
     image: 'abandoned_mines_herb_shelf.png',
     imagePrompt: '潮濕藥草岩棚 in abandoned_mines, damp stone shelf with cave herbs, dripping roots, mushrooms and pale mineral light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain stone, clear lantern light',
     description:
-      '礦道轉角有一片濕滑岩棚，地下水沿根鬚滴落，讓幾簇耐陰草藥和白色菌菇在礦粉中生長。這裡是少見的地下採集點，藥草能中和礦坑粉塵，也可作為任務材料。岩棚上方有細小蛛絲與蝙蝠抓痕，採集時若動作太大，會驚動洞頂生物。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
+      '礦道轉角有一片濕滑岩棚，地下水沿根鬚滴落，讓幾簇耐陰草藥和白色菌菇在礦粉中生長。草葉邊緣沾著淡藍礦霜，揉碎後能壓住粉塵嗆味，附近也散著礦工用來包紮的舊布條。岩棚上方牽著細小蛛絲，洞頂留有蝙蝠爪痕，水滴落下時會把蛛網震出一圈銀光。西側乾冷礦道與東側積水氣味在此交會，北面的晶光則從裂縫裡滲下來。',
     exits: [
       { direction: 'west', targetRoomId: 'abandoned_mines_vein_path', description: '回到裸露礦脈道' },
       { direction: 'east', targetRoomId: 'abandoned_mines_water_pocket', description: '水聲從前方口袋洞傳來' },
@@ -516,7 +516,7 @@ abandoned_mines_water_pocket: {
     image: 'abandoned_mines_water_pocket.png',
     imagePrompt: '積水口袋洞 in abandoned_mines, small flooded pocket chamber, black water, broken rails, mineral reflections and hanging roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain chamber, clear lantern light',
     description:
-      '礦道低處積成一座口袋洞，黑水淹過腳踝，水面倒映著斷裂鐵軌和木梁。每踩一步都會揚起礦粉和氣泡，像水下有什麼在緩慢呼吸。玩家可在此採水、搜索沉沒工具或找出通往淹沒支道的入口，但積水也讓亡靈與蝙蝠的動向更難判斷。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '礦道低處積成一座口袋洞，黑水淹過腳踝，水面倒映著斷裂鐵軌和壓彎的木梁。每一步都會揚起礦粉和氣泡，像水下有什麼在緩慢呼吸。沉沒工具箱半露在泥裡，鐵扣已被鏽蝕咬開，旁邊的水痕卻像剛被攪動過。西邊岩棚滴水聲清亮，東側爪痕通道傳來刮擦聲，北面的深水則把所有回音拖得更沉。',
     exits: [
       { direction: 'west', targetRoomId: 'abandoned_mines_herb_shelf', description: '濕滑岩棚在西側' },
       { direction: 'east', targetRoomId: 'abandoned_mines_beast_scrape', description: '濕腳印通向獸爪痕' },
@@ -543,7 +543,7 @@ abandoned_mines_beast_scrape: {
     image: 'abandoned_mines_beast_scrape.png',
     imagePrompt: '獸爪刮痕道 in abandoned_mines, tunnel walls clawed by beasts, broken supports, scattered bones and red warning marks, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain tunnel, clear lantern light',
     description:
-      '這段礦道牆面滿是深深爪痕，木支架被抓斷，地上散著小動物骨骸和被拖裂的礦工布條。刮痕有些新，有些已被礦粉覆蓋，顯示某種地下野獸長期把這裡當巡行通道。玩家可追蹤刮痕前往遺物坑，也可能遭遇洞穴蝙蝠和骷髏守衛的夾擊。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '這段礦道牆面滿是深深爪痕，木支架被抓斷，地上散著小動物骨骸和被拖裂的礦工布條。刮痕有些新，有些已被礦粉覆蓋，顯示某種地下野獸長期把這裡當巡行通道。東側坑洞傳來金屬互撞的細響，像遺物堆正在被翻動；西邊濕腳印一路沒入黑水，北面的高洞則偶爾灑下蝙蝠糞與碎石。牆角殘留的血色礦粉把危險輪廓標得很清楚。',
     exits: [
       { direction: 'west', targetRoomId: 'abandoned_mines_water_pocket', description: '濕腳印回到積水口袋洞' },
       { direction: 'east', targetRoomId: 'abandoned_mines_relic_pit', description: '爪痕盡頭是遺物坑' },
@@ -570,7 +570,7 @@ abandoned_mines_relic_pit: {
     image: 'abandoned_mines_relic_pit.png',
     imagePrompt: '遺物坑 in abandoned_mines, pit of old miner relics, helmets, tools, bones, dim lantern and dark stone walls, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain stone, clear lantern light',
     description:
-      '獸爪道盡頭塌成一個圓形坑洞，坑底堆著礦工頭盔、破燈、斷鎬和幾具半埋骨骸。遺物並非全都古舊，有些工具像是最近才被丟下，表面還有新鮮刮痕。這裡是任務與大型事件鉤子，玩家可尋找失蹤礦工證物，並發現礦坑深處仍有人或東西在收集遺物。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
+      '獸爪道盡頭塌成一個圓形坑洞，坑底堆著礦工頭盔、破燈、斷鎬和幾具半埋骨骸。遺物並非全都古舊，有些工具像是最近才被丟下，表面還有新鮮刮痕。幾枚身份牌被整齊排在石塊上，旁邊有尚未乾透的黑泥指印，暗示礦坑深處仍有收集者往返。北側木梯通往工頭留下的辦公室，西側爪痕道則把獸腥味重新送回坑底。',
     exits: [
       { direction: 'west', targetRoomId: 'abandoned_mines_beast_scrape', description: '爬回獸爪刮痕道' },
       { direction: 'north', targetRoomId: 'abandoned_mines_foreman_office', description: '坑壁木梯通向工頭室' },
@@ -596,7 +596,7 @@ abandoned_mines_lift_station: {
     image: 'abandoned_mines_lift_station.png',
     imagePrompt: '舊升降台 in abandoned_mines, rusted lift platform, chains, pulley wheels, deep shaft and dust beams, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '入口北側的舊升降台懸在方形井口上方，鐵鏈生鏽，滑輪卡著碎石和乾掉的油泥。平台邊緣還掛著半截安全繩，像曾有人急著逃離。這裡是礦坑交通節點，可連往礦車場與深層井道；若修好制動桿，玩家能更安全地穿梭上下層。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '入口北側的舊升降台懸在方形井口上方，鐵鏈生鏽，滑輪卡著碎石和乾掉的油泥。平台邊緣還掛著半截安全繩，繩尾被磨得發白，像曾有人在慌亂中抓著它墜下。制動桿後塞著一張折皺草圖，標出幾條已經坍塌的深層軌道。南面入口風聲較冷，東側鐵軌通往礦車調度場，井下偶爾傳來空洞撞擊聲，讓整座平台微微震動。',
     exits: [
       { direction: 'south', targetRoomId: 'abandoned_mines_entry_claim', description: '回到礦坑入口' },
       { direction: 'east', targetRoomId: 'abandoned_mines_cart_yard', description: '鐵軌通向礦車場' },
@@ -622,7 +622,7 @@ abandoned_mines_cart_yard: {
     image: 'abandoned_mines_cart_yard.png',
     imagePrompt: '礦車調度場 in abandoned_mines, abandoned mine cart yard, rusted rails, switch levers, ore carts and lantern haze, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mine, clear lantern light',
     description:
-      '多條鐵軌在此交會，幾輛礦車歪在軌道上，車斗裡還殘留半車碎礦和破布。調度桿上的標牌寫著主礦道、木支廊和冶煉間，但有幾面被人刻意轉反。玩家可推動礦車打開路線，也可能讓金屬撞擊聲驚醒深處守衛。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '多條鐵軌在此交會，幾輛礦車歪在軌道上，車斗裡還殘留半車碎礦和破布。調度桿上的標牌寫著主礦道、木支廊和冶煉間，但有幾面被人刻意轉反，背面刻著只有工頭看得懂的短碼。軌道縫中塞滿灰黑礦粉，任何金屬碰撞都會在四條岔路間放大。西側升降台鐵鏈回響，南面礦脈道較乾，東側木支廊發出受壓呻吟，北面的冷爐味則更重。',
     exits: [
       { direction: 'west', targetRoomId: 'abandoned_mines_lift_station', description: '鐵軌回到升降台' },
       { direction: 'south', targetRoomId: 'abandoned_mines_vein_path', description: '主軌回到礦脈道' },
@@ -650,7 +650,7 @@ abandoned_mines_timber_gallery: {
     image: 'abandoned_mines_timber_gallery.png',
     imagePrompt: '木支廊 in abandoned_mines, tunnel gallery held by old timber supports, sagging beams, dust and warning chalk marks, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain tunnel, clear lantern light',
     description:
-      '礦車場東側的支廊由密集木柱撐住，梁木彎曲，表面畫著已經褪色的白色警告符號。每走幾步都能聽見木頭呻吟，碎石從頂板細縫落下。這裡是危險過渡房，玩家可加固支架或快速通過；若戰鬥拖太久，坍塌聲會引來更多洞穴生物。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '礦車場東側的支廊由密集木柱撐住，梁木彎曲，表面畫著已經褪色的白色警告符號。每走幾步都能聽見木頭呻吟，碎石從頂板細縫落下，落在舊軌上發出脆響。幾根新補的支柱顏色較淺，卻已被蛛絲和爪印覆住，說明這條路荒廢後仍有人試圖維持通行。西邊軌道回到調度場，東端黑口吞著豎井回音，南側矮洞滲出晶洞的冷光。',
     exits: [
       { direction: 'west', targetRoomId: 'abandoned_mines_cart_yard', description: '支軌回到礦車場' },
       { direction: 'east', targetRoomId: 'abandoned_mines_echo_shaft', description: '木廊盡頭是豎井邊' },
@@ -677,7 +677,7 @@ abandoned_mines_echo_shaft: {
     image: 'abandoned_mines_echo_shaft.png',
     imagePrompt: '回音豎井 in abandoned_mines, deep vertical shaft with rope ladders, echoing darkness, hanging chains and bat silhouettes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '木支廊盡頭突然開成一座深豎井，井壁釘著舊繩梯和鐵環，往下看只能看見黑暗。任何聲音都會在井中重複數十次，像有人在下方回話。斷裂升降籠卡在半空，鐵鏈磨著岩壁，落下的灰塵像細雪。井口旁散著測深繩、壞掉滑輪和被撕裂的警示牌，牌上提醒礦工進入下層前必須先點三次安全燈。這裡連接升降台、淹沒橫巷與深部核心，是礦坑中層的重要交通點，也是蝙蝠最密集的區域。玩家必須分辨回音與真正的怪物動靜，否則很容易在窄梯上被包圍；若能穩住繩梯，也能從牆縫找到通往下層的舊維修記號。',
+      '木支廊盡頭突然開成一座深豎井，井壁釘著舊繩梯和鐵環，往下看只能看見黑暗。任何聲音都會在井中重複數十次，像有人在下方回話。斷裂升降籠卡在半空，鐵鏈磨著岩壁，落下的灰塵像細雪。井口旁散著測深繩、壞掉滑輪和被撕裂的警示牌，牌上仍留著點燈順序。西側木廊聲音乾脆，東側水氣較重，通往井底的平巷則把礦核脈動一下一下送上來。',
     exits: [
       { direction: 'west', targetRoomId: 'abandoned_mines_timber_gallery', description: '木廊回到支架區' },
       { direction: 'south', targetRoomId: 'abandoned_mines_deep_core', description: '井底平巷通往深部核心' },
@@ -704,7 +704,7 @@ abandoned_mines_crystal_pocket: {
     image: 'abandoned_mines_crystal_pocket.png',
     imagePrompt: '小晶洞 in abandoned_mines, small crystal pocket with blue white mineral shards, pick marks, damp floor and faint glow, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain crystal, clear lantern light',
     description:
-      '木支廊下方的矮洞通向一座小晶洞，藍白晶簇從岩壁向外生長，照亮地上細小水珠。晶洞裡的礦晶尚未完全被採走，周圍卻有許多匆忙敲擊留下的裂痕。玩家可採集晶體或研究礦脈走向，但晶光也會吸引蝙蝠與更深處的石像守衛注意。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '木支廊下方的矮洞通向一座小晶洞，藍白晶簇從岩壁向外生長，照亮地上細小水珠。晶洞裡的礦晶尚未完全被採走，周圍卻有許多匆忙敲擊留下的裂痕，幾處新斷面還泛著潮亮光澤。南側裂縫帶來藥草與菌菇的濕味，東面高洞飄來刺鼻蝙蝠糞氣息，北側木支廊則不斷落下細灰。晶光映出岩層走向，也把靠近的影子拉得很長。',
     exits: [
       { direction: 'north', targetRoomId: 'abandoned_mines_timber_gallery', description: '矮洞回到木支廊' },
       { direction: 'south', targetRoomId: 'abandoned_mines_herb_shelf', description: '潮濕裂縫回到藥草岩棚' },
@@ -731,7 +731,7 @@ abandoned_mines_bat_roost: {
     image: 'abandoned_mines_bat_roost.png',
     imagePrompt: '蝙蝠棲洞 in abandoned_mines, cave ceiling packed with bats, guano piles, narrow ledges and crystal side light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain cave, clear lantern light',
     description:
-      '晶洞東側的高洞頂密密麻麻倒掛著蝙蝠，地上堆著厚厚蝙蝠糞和被啃碎的蟲殼。空氣刺鼻，任何火光或大聲響都會讓整片洞頂像黑布一樣翻動。這裡是高密度戰鬥房，也是採集蝙蝠翼和糞肥材料的地方；往南可回獸爪道，往北則有通往石像龕的窄縫。',
+      '晶洞東側的高洞頂密密麻麻倒掛著蝙蝠，地上堆著厚厚蝙蝠糞和被啃碎的蟲殼。空氣刺鼻，任何火光或大聲響都會讓整片洞頂像黑布一樣翻動。西側晶光照進洞口，讓糞堆裡的亮色礦片偶爾閃一下；南面低洞帶來獸爪道的腥味，北側窄縫則露出石龕冷硬的輪廓。洞壁上有礦工用粉筆畫下的耳朵符號，提醒後來者不要相信這裡的安靜。',
     exits: [
       { direction: 'west', targetRoomId: 'abandoned_mines_crystal_pocket', description: '晶洞微光在西側' },
       { direction: 'south', targetRoomId: 'abandoned_mines_beast_scrape', description: '低洞通回獸爪刮痕道' },
@@ -758,7 +758,7 @@ abandoned_mines_flooded_crosscut: {
     image: 'abandoned_mines_flooded_crosscut.png',
     imagePrompt: '淹沒橫巷 in abandoned_mines, flooded crosscut tunnel, waist-deep dark water, rails under surface and reflected lanterns, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain tunnel, clear lantern light',
     description:
-      '回音豎井東側的橫巷被水淹沒，水面只露出幾段鐵軌和木支架頂端。牆上白漆水位線顯示這裡曾多次試圖排水，卻一次比一次失敗。玩家可沿牆邊鐵環前進，尋找沉沒支道與排水閘，也要小心骷髏在黑水中突然站起。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '回音豎井東側的橫巷被水淹沒，水面只露出幾段鐵軌和木支架頂端。牆上白漆水位線顯示這裡曾多次試圖排水，卻一次比一次失敗。牆邊鐵環排成歪斜長線，幾枚已被硬生生扯出岩壁，留下新鮮裂口。西側井聲在水面上碎成重影，南面的口袋洞較低，東側沉軌段不時冒出油亮波紋，像有東西在黑水下移動。',
     exits: [
       { direction: 'west', targetRoomId: 'abandoned_mines_echo_shaft', description: '側洞回到回音豎井' },
       { direction: 'south', targetRoomId: 'abandoned_mines_water_pocket', description: '積水流回口袋洞' },
@@ -785,7 +785,7 @@ abandoned_mines_foreman_office: {
     image: 'abandoned_mines_foreman_office.png',
     imagePrompt: '工頭辦公室 in abandoned_mines, ruined foreman office with desk, ledgers, mine maps, locked cabinet and dusty lamp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mine, clear lantern light',
     description:
-      '遺物坑上方的木梯通向一間嵌在岩壁裡的小辦公室，桌面散著礦道圖、薪資帳本和幾封未寄出的事故報告。牆上掛著舊班表，最後一日的名字被墨水塗黑，抽屜裡還留著工頭匆忙收起的礦核樣本標籤。門邊安全燈早已熄滅，卻仍聞得到油煙味；北側後門標著舊冶煉間，但煙道塌落後無法由辦公室直接穿過。鎖櫃上有新的撬痕，地板灰塵被拖出一道痕跡，像有人在礦坑荒廢後又回來翻找過證據。這裡是礦坑任務核心房，玩家可調查事故原因、找出失蹤礦工名冊，也能打開通往火藥室的鎖門。若仔細比對圖紙與班表，還能知道哪些支道在事故當晚被臨時封鎖。',
+      '遺物坑上方的木梯通向一間嵌在岩壁裡的小辦公室，桌面散著礦道圖、薪資帳本和幾封未寄出的事故報告。牆上掛著舊班表，最後一日的名字被墨水塗黑，抽屜裡還留著工頭匆忙收起的礦核樣本標籤。門邊安全燈早已熄滅，卻仍聞得到油煙味；標著舊冶煉間的小門被塌落煙道堵死，只剩西側鐵門還通向火藥室。鎖櫃上有新的撬痕，地板灰塵被拖出一道痕跡，像有人在礦坑荒廢後又回來翻找過證據。',
     exits: [
       { direction: 'south', targetRoomId: 'abandoned_mines_relic_pit', description: '木梯下到遺物坑' },
       { direction: 'west', targetRoomId: 'abandoned_mines_powder_room', description: '鐵門後是火藥室' },
@@ -811,7 +811,7 @@ abandoned_mines_powder_room: {
     image: 'abandoned_mines_powder_room.png',
     imagePrompt: '火藥室 in abandoned_mines, old powder room with barrels, warning signs, dry shelves and cracked stone walls, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain stone, clear lantern light',
     description:
-      '工頭室西側的火藥室乾燥得異常，木桶上印著褪色爆破標記，牆面貼滿禁止明火的告示。多數火藥已經受潮結塊，但角落仍有幾包保持完整，被人用油布重新包好。這裡是事件與捷徑開路點，玩家可取得爆破材料打通堵塞礦道，也要避免戰鬥火花引發坍塌。',
+      '工頭室西側的火藥室乾燥得異常，木桶上印著褪色爆破標記，牆面貼滿禁止明火的告示。多數火藥已經受潮結塊，但角落仍有幾包保持完整，被人用油布重新包好，繩結甚至沒有完全落灰。架上缺了幾支引線，地面拖痕一路朝西側爆破門延伸。東面鐵門透出辦公室的油煙味，西邊石縫則有沉軌段的潮氣鑽入，乾燥與潮濕在門縫間互相拉扯。',
     exits: [
       { direction: 'east', targetRoomId: 'abandoned_mines_foreman_office', description: '鐵門回到工頭辦公室' },
       { direction: 'west', targetRoomId: 'abandoned_mines_sunken_rail', description: '爆破標記指向沉軌段' },
@@ -837,7 +837,7 @@ abandoned_mines_sunken_rail: {
     image: 'abandoned_mines_sunken_rail.png',
     imagePrompt: '沉軌段 in abandoned_mines, sunken rail tunnel with tilted tracks, mud, water pools and collapsed carts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain tunnel, clear lantern light',
     description:
-      '淹沒橫巷東側的鐵軌突然下陷，整段礦道像被巨手按進泥水裡。傾斜礦車半埋在泥中，車輪仍卡著未運出的礦石，軌枕之間長出白色菌絲。牆面有爆破孔和新補上的木板，顯示這裡曾被人試圖打通，卻只讓更多地下水滲入。水面偶爾泛起油亮波紋，露出沉在泥裡的工具箱與折斷信號旗，提醒玩家腳下仍有空洞。玩家可用火藥室材料清理塌方，開啟通往深部核心或舊冶煉間的捷徑，也要提防泥水裡藏著蛛網與未熄的骷髏怨念。若貿然奔跑，傾斜軌道會把聲響傳到更深處，讓潛伏敵人提前靠近。',
+      '淹沒橫巷東側的鐵軌突然下陷，整段礦道像被巨手按進泥水裡。傾斜礦車半埋在泥中，車輪仍卡著未運出的礦石，軌枕之間長出白色菌絲。牆面有爆破孔和新補上的木板，顯示這裡曾被人試圖打通，卻只讓更多地下水滲入。水面偶爾泛起油亮波紋，露出沉在泥裡的工具箱與折斷信號旗。西側黑水拍打橫巷，東面火藥室氣味乾燥刺鼻，北方深處則傳來礦核低沉脈動。',
     exits: [
       { direction: 'west', targetRoomId: 'abandoned_mines_flooded_crosscut', description: '水軌回到淹沒橫巷' },
       { direction: 'east', targetRoomId: 'abandoned_mines_powder_room', description: '爆破門連回火藥室' },
@@ -864,7 +864,7 @@ abandoned_mines_old_smelter: {
     image: 'abandoned_mines_old_smelter.png',
     imagePrompt: '舊冶煉間 in abandoned_mines, abandoned smelter chamber with cold furnace, slag piles, carts and red rust stains, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain chamber, clear lantern light',
     description:
-      '礦車場北端的冶煉間已經熄火多年，冷爐膛裡堆滿黑渣，牆面被煙燻成深灰色。鐵砧旁散著半成品錠條和破裂模具，像工人突然停手離開。這裡是資源與精英戰鬥房，可回收礦渣、尋找冶煉記錄，並通往石像龕或工頭室。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
+      '礦車場北端的冶煉間已經熄火多年，冷爐膛裡堆滿黑渣，牆面被煙燻成深灰色。鐵砧旁散著半成品錠條和破裂模具，像工人突然停手離開。爐底有一塊異色礦錠沒有完全熔化，表面凝著暗紅裂紋，靠近時能聽見極輕的爆裂聲。南面重軌回到礦車場，東側爐後石門透出龕室冷光，北邊塌煙道旁的小門仍殘留工頭辦公室的紙灰氣味。',
     exits: [
       { direction: 'south', targetRoomId: 'abandoned_mines_cart_yard', description: '重軌回到礦車場' },
       { direction: 'east', targetRoomId: 'abandoned_mines_gargoyle_niche', description: '爐後石門通向石像龕' },
@@ -891,7 +891,7 @@ abandoned_mines_gargoyle_niche: {
     image: 'abandoned_mines_gargoyle_niche.png',
     imagePrompt: '石像龕 in abandoned_mines, carved stone niches with gargoyles, mineral dust, broken offerings and cold furnace light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain stone, clear lantern light',
     description:
-      '冶煉間後方的石龕排列著數尊礦坑守護像，牠們有著蝙蝠翼和石爪，表面覆滿礦粉。龕前擺著破碎供品與礦工帽，說明礦工曾把它們當作守護神。地面刻著祈求平安的短句，後半卻被尖銳爪痕刮掉，只剩深部礦核的符號反覆出現。龕壁還嵌著小小銅牌，記錄每次坍方後礦工重新獻祭的日期，最後幾面銅牌字跡明顯變得慌亂。如今部分石像眼縫透出暗光，會攻擊任何接近深層核心的人。這裡是精英守門點，也是解釋礦坑詛咒來源的重要房間。玩家若先破壞供品鏈條，可削弱石像甦醒時的壓迫感。',
+      '冶煉間後方的石龕排列著數尊礦坑守護像，牠們有著蝙蝠翼和石爪，表面覆滿礦粉。龕前擺著破碎供品與礦工帽，說明礦工曾把它們當作守護神。地面刻著祈求平安的短句，後半卻被尖銳爪痕刮掉，只剩深部礦核的符號反覆出現。龕壁還嵌著小小銅牌，記錄每次坍方後重新獻祭的日期，最後幾面銅牌字跡明顯變得慌亂。西側爐灰味厚重，南面蝙蝠窄縫帶來刺鼻氣息，東邊核心紅光則讓石像眼縫一明一暗。',
     exits: [
       { direction: 'west', targetRoomId: 'abandoned_mines_old_smelter', description: '石門回到舊冶煉間' },
       { direction: 'south', targetRoomId: 'abandoned_mines_bat_roost', description: '窄縫下到蝙蝠棲洞' },
@@ -919,7 +919,7 @@ abandoned_mines_deep_core: {
     image: 'abandoned_mines_deep_core.png',
     imagePrompt: '深部礦核 in abandoned_mines, deep mine core with huge dark ore heart, broken rails, crystals, skeleton miners and oppressive glow, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain mine, clear lantern light',
     description:
-      '回音豎井底部是一座巨大空洞，中央裸露著像心臟般的黑色礦核，表面一明一暗地閃著暗紅光。周圍鐵軌全部指向礦核，彷彿整座礦坑都圍繞它修建。碎裂礦燈、斷柄十字鎬和沒有寫完的求救字句散在地上，顯示礦難最後集中在此處爆發。每次礦核脈動，牆上晶簇都會回應般亮起，讓玩家看見岩層中封住的舊手印與求救符號。骷髏礦工在附近徘徊，石像守衛則守住通往出口的裂縫。這裡是廢棄礦坑的大型事件鉤子，玩家可決定採走礦核、封住它，或追查它為何讓礦工無法安息。若選擇久留，礦核會讓整座坑道的敵人更躁動。',
+      '回音豎井底部是一座巨大空洞，中央裸露著像心臟般的黑色礦核，表面一明一暗地閃著暗紅光。周圍鐵軌全部指向礦核，彷彿整座礦坑都圍繞它修建。碎裂礦燈、斷柄十字鎬和沒有寫完的求救字句散在地上，顯示礦難最後集中在此處爆發。每次礦核脈動，牆上晶簇都會回應般亮起，照出岩層中封住的舊手印與求救符號。北側豎井傳來層層回音，西面石像守住冷光裂縫，南方沉軌段被泥水吞沒，東側逃生裂口只漏進一線遙遠空氣。',
     exits: [
       { direction: 'north', targetRoomId: 'abandoned_mines_echo_shaft', description: '平巷回到回音豎井' },
       { direction: 'west', targetRoomId: 'abandoned_mines_gargoyle_niche', description: '石像守門通回石龕' },
@@ -948,7 +948,7 @@ abandoned_mines_escape_adit: {
     image: 'abandoned_mines_escape_adit.png',
     imagePrompt: '逃生側洞 in abandoned_mines, narrow escape adit with daylight slit, support ropes, old footprints and cold dust, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '礦坑入口南側與深部礦核東側都能連到這條狹窄側洞，洞壁粗糙，地上留著朝外奔跑的舊腳印。遠端有一線微弱日光，空氣比主礦道新鮮許多。這裡是逃生捷徑與交通房，玩家若從深處打通堵塞碎石，就能快速回到入口，也能發現當年礦難時有人曾試圖帶著礦核樣本逃離。',
+      '狹窄側洞貼著山腹斜斜延伸，洞壁粗糙，地上留著朝外奔跑的舊腳印。遠端有一線微弱日光，空氣比主礦道新鮮許多，卻混著皮袋裡黑色礦屑的焦味。靠入口一端能聽見木架在風中吱響，靠深處的堵塞裂縫則傳來礦核沉悶脈動。碎石間夾著破裂樣本瓶與乾涸血跡，證明礦難當晚曾有人帶著不該帶走的東西衝到這裡。',
     exits: [
       { direction: 'north', targetRoomId: 'abandoned_mines_entry_claim', description: '側洞回到礦坑入口' },
       { direction: 'west', targetRoomId: 'abandoned_mines_deep_core', description: '堵塞裂縫連向深部礦核' },
