@@ -15,14 +15,12 @@ thundersteppe_split_totem: {
         direction: 'south',
         targetRoomId: 'thundersteppe_nomad_camp',
         description: '南返時繩結路沿濕草圈與避雷樁外緣下行，才回到游牧營地，帳棚煙柱會逐漸變清楚',
-        edgeKind: 'distant_route',
         edgeNote: '裂木圖騰南返游牧營地需沿營地外圈繞行，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'thundersteppe_lightning_rod_field',
         description: '東側銅環反光會先穿過祭品石與焦草斜坡，才接到引雷柱林，雷弧聲會越來越密',
-        edgeKind: 'distant_route',
         edgeNote: '裂木圖騰到引雷柱林需穿過焦草斜坡與祭品區，不是相鄰格。',
       },
     ],
@@ -49,19 +47,16 @@ thundersteppe_charged_bonefield: {
     description:
       '帶電骨原鋪滿被風雨磨白的長骨，許多骨骸仍保持奔跑姿勢，像是在最後一刻被整片天空按倒。靜電沿著肋骨和角鞘滑動，旅人靠近時能聞到焦草與濕泥混在一起的味道。這裡是野獸群躲避風暴失敗後留下的警示，也吸引狼群與雷鷹前來搜尋容易撕開的屍塊。骨堆之間藏有舊戰矛、破碎鞍具與少量被雷煉硬的骨片；但每一次翻動都可能讓積蓄電荷找到新的出口，讓整片骨原像活物般發出尖銳顫音',
     exits: [
-      { direction: 'north', targetRoomId: 'thundersteppe_herd_plain', description: '骨線回到奔獸平原', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'south',
         targetRoomId: 'thundersteppe_boar_run',
         description: '南側碎骨坡沿帶電骨堆下滑，繞過白骨脊與泥槽缺口後才落向野豬衝道',
-        edgeKind: 'distant_route',
         edgeNote: '帶電骨原到野豬衝道需下行碎骨坡與泥槽缺口，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'thundersteppe_wolf_scarp',
         description: '東側狼爪痕穿過靜電骨堆與斜草邊線後，才會抵達狼群崖坡，低嚎會被雷聲拉長',
-        edgeKind: 'distant_route',
         edgeNote: '帶電骨原到狼群崖坡被骨堆與斜草邊線隔開，距離長於相鄰格。',
       },
     ],
@@ -88,8 +83,6 @@ thundersteppe_boar_run: {
     description:
       '野豬衝道是一條被獠牙與厚蹄硬生生犁出的泥路，兩側灌木全被撞斷，枝葉上沾著濕泥和深色血痕。雷聲會讓草原野豬變得格外暴躁，牠們沿著這條低地來回衝撞，把任何擋路物都當成挑戰。東側碎骨坡可看見帶電骨原，但泥槽這端被衝斷，需由骨原高處落下。旅人可以順著衝道快速繞開中線平原，也能在泥壁上觀察最近的獸群規模；但站位錯誤時，隊伍會在狹窄泥槽裡承受連續衝鋒。老獵人把破盾牌插在彎道外側，提醒來者轉角前先聽地面，不要只聽天空',
     exits: [
-      { direction: 'north', targetRoomId: 'thundersteppe_rolling_gate', description: '泥痕回到雷原入口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
-      { direction: 'south', targetRoomId: 'thundersteppe_rain_shadow_gully', description: '低地水線落向雨影溝', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'thunderhoof_boar', maxCount: 4, respawnSeconds: 120 },
@@ -119,14 +112,12 @@ thundersteppe_skyfire_mesa: {
         direction: 'east',
         targetRoomId: 'thundersteppe_stormglass_outcrop',
         description: '東側黑亮裂紋沿台地邊緣繞過引雷裸岩，才會抵達風暴玻岩，雨水在裂面上一路發白',
-        edgeKind: 'distant_route',
         edgeNote: '天火台地到風暴玻岩需沿台地邊緣與裸岩繞行，不是相鄰格。',
       },
       {
         direction: 'south',
         targetRoomId: 'thundersteppe_drum_circle',
         description: '南側鼓點要沿台地背風坡下降，穿過舊灰圈與祭旗殘布後才會抵達雷鼓石圈',
-        edgeKind: 'distant_route',
         edgeNote: '天火台地到雷鼓石圈有台地高差與祭旗路，屬於長路徑。',
       },
     ],
@@ -153,12 +144,10 @@ thundersteppe_wind_shrine: {
     description:
       '風祭小祠藏在水洼北端的蘆草後方，幾塊刻紋石片圍住矮小木架，架上繫滿褪色布條與鳥羽。每當風向改變，布條會先後抬起，像有人用無聲語言指出草原上可以行走的縫隙。祠旁沒有守衛，只有被雨水洗亮的供杯和幾枚壓住紙符的小石頭。旅人若在此獻上羽毛或乾草，可獲得短暫順風與避雷提示；若粗暴翻動祭物，北面的引雷柱林會傳來尖銳共鳴，讓雷鷹誤以為有人挑釁巢域',
     exits: [
-      { direction: 'south', targetRoomId: 'thundersteppe_thunder_pool', description: '蘆草水線回到雷雨水洼', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'east',
         targetRoomId: 'thundersteppe_lightning_rod_field',
         description: '東側布條路穿過蘆草缺口與濕石祭線後，才會進入引雷柱林，柱腳雷弧會逐漸變亮',
-        edgeKind: 'distant_route',
         edgeNote: '風祭小祠到引雷柱林需穿過蘆草祭線，距離長於相鄰格。',
       },
     ],
@@ -186,21 +175,18 @@ thundersteppe_lightning_rod_field: {
         direction: 'west',
         targetRoomId: 'thundersteppe_split_totem',
         description: '西返時銅環反光穿過焦草斜坡與祭品石後，才回到裂木圖騰，圖騰裂光會在雨裡閃動',
-        edgeKind: 'distant_route',
         edgeNote: '引雷柱林西返裂木圖騰需穿越焦草斜坡，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'thundersteppe_eagle_nest_peak',
         description: '東側柱影沿高風脊線拉長，需繞過多根青銅引雷釘後，才會抵達雷鷹巢峰下方',
-        edgeKind: 'distant_route',
         edgeNote: '引雷柱林到雷鷹巢峰需沿高風脊與柱林邊緣繞行，不是相鄰格。',
       },
       {
         direction: 'south',
         targetRoomId: 'thundersteppe_thunderhoof_crossing',
         description: '南側焦草缺口沿地下雷弧下切，穿過濕根與燒焦草圈後才接到雷蹄渡口',
-        edgeKind: 'distant_route',
         edgeNote: '引雷柱林到雷蹄渡口有下切濕根與雷弧路，距離長於相鄰格。',
       },
     ],
@@ -231,7 +217,6 @@ thundersteppe_wolf_scarp: {
         direction: 'west',
         targetRoomId: 'thundersteppe_charged_bonefield',
         description: '西返時狼爪痕沿斜草邊線繞過半塌洞穴，才回到帶電骨原，骨堆靜電會先在遠處作響',
-        edgeKind: 'distant_route',
         edgeNote: '狼群崖坡西返帶電骨原需繞過洞穴與斜草線，屬於長路徑。',
       },
       { direction: 'east', targetRoomId: 'thundersteppe_drum_circle', description: '東側低聲鼓點通往雷鼓石圈' },
@@ -259,9 +244,6 @@ thundersteppe_rain_shadow_gully: {
     description:
       '雨影溝切在草原南側，兩邊黏土壁擋住大半斜雨，只留下上方天空像一條發亮裂口。溝底比外面安靜許多，水滴從草根滲下，形成不規則的細流與泥泡。這裡能讓隊伍短暫躲避落雷，也能繞到狼群崖坡和雷鼓石圈下方；但狹窄地形會放大任何伏擊風險，尤其是野豬從上方滑落時幾乎沒有閃避空間。牆面刻著幾道舊記號，指出哪些泥層會在暴雨後崩落，哪些可以當作臨時攀爬點。',
     exits: [
-      { direction: 'north', targetRoomId: 'thundersteppe_boar_run', description: '泥槽回到野豬衝道', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
-      { direction: 'east', targetRoomId: 'thundersteppe_wolf_scarp', description: '側坡升向狼群崖坡', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
-      { direction: 'south', targetRoomId: 'thundersteppe_drum_circle', description: '低聲鼓點通往雷鼓石圈', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'stormpack_wolf', maxCount: 2, respawnSeconds: 110 },
@@ -290,7 +272,6 @@ thundersteppe_drum_circle: {
         direction: 'north',
         targetRoomId: 'thundersteppe_nomad_camp',
         description: '北返時鼓聲沿低草坡與祭旗殘布回傳，穿過泥帶後才看見游牧營地的低矮皮帳',
-        edgeKind: 'distant_route',
         edgeNote: '雷鼓石圈北返游牧營地需穿過祭旗路與低草坡，屬於長路徑。',
       },
       { direction: 'west', targetRoomId: 'thundersteppe_wolf_scarp', description: '西側草線回到狼群崖坡' },
@@ -299,7 +280,6 @@ thundersteppe_drum_circle: {
         direction: 'south',
         targetRoomId: 'thundersteppe_stormglass_outcrop',
         description: '南側鼓聲沿低草坡與黑玻反光繞向風暴玻岩',
-        edgeKind: 'distant_route',
         edgeNote: '雷鼓石圈到風暴玻岩需沿鼓聲與黑玻反光繞行，屬於草原內特殊長路徑。',
       },
     ],
@@ -331,14 +311,12 @@ thundersteppe_stormglass_outcrop: {
         direction: 'west',
         targetRoomId: 'thundersteppe_skyfire_mesa',
         description: '西返時黑亮裂紋沿裸岩與濕滑台地邊緣回繞，才會登上天火台地，雨水會在腳邊蒸白',
-        edgeKind: 'distant_route',
         edgeNote: '風暴玻岩西返天火台地需沿台地邊緣攀回，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'thundersteppe_dragonstorm_eye',
         description: '東側玻岩脈動穿過多層黑玻裂架與風牆外緣後，才會指向龍雷風眼，遠處龍形閃電會短暫現身',
-        edgeKind: 'distant_route',
         edgeNote: '風暴玻岩到龍雷風眼需穿過黑玻裂架與風牆外緣，不是相鄰格。',
       },
     ],
@@ -365,12 +343,10 @@ thundersteppe_eagle_nest_peak: {
     description:
       '雷鷹巢峰是棲柱群最高的一截，峰頂被巨巢覆蓋，枯枝、骨架與亮羽在狂風中互相摩擦，發出像刀刃刮過金屬的聲音。從這裡向下看，雷鳴草原的路線像濕皮革上的刻線，入口、圖騰、柱林與渡口都清楚可見。雷鷹把巢峰視為天空領地，任何靠近者都必須承受俯衝與落雷同時壓下的威脅。若旅人能在不毀巢的情況下取回任務物，游牧營地會承認隊伍懂得尊重草原獵手，而不是只會掠奪',
     exits: [
-      { direction: 'south', targetRoomId: 'thundersteppe_eagle_roost', description: '石柱脊線回到雷鷹棲柱', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'west',
         targetRoomId: 'thundersteppe_lightning_rod_field',
         description: '西側高空柱影沿巢峰脊線下落，繞過雷鷹巢枝與青銅引雷釘後才回到引雷柱林',
-        edgeKind: 'distant_route',
         edgeNote: '雷鷹巢峰西返引雷柱林需要沿巢峰脊線下行，距離長於相鄰格。',
       },
     ],
@@ -401,7 +377,6 @@ thundersteppe_thunderhoof_crossing: {
         direction: 'north',
         targetRoomId: 'thundersteppe_lightning_rod_field',
         description: '北返時焦草缺口沿濕根雷弧上行，穿過燒焦草圈後才回到引雷柱林，柱腳會先亮起',
-        edgeKind: 'distant_route',
         edgeNote: '雷蹄渡口北返引雷柱林需沿濕根雷弧上行，屬於長路徑。',
       },
       { direction: 'west', targetRoomId: 'thundersteppe_drum_circle', description: '西側溪岸草路回到雷鼓石圈' },
@@ -409,7 +384,6 @@ thundersteppe_thunderhoof_crossing: {
         direction: 'east',
         targetRoomId: 'thundersteppe_dragonstorm_eye',
         description: '東側電流溪線穿過渡口深蹄印與風牆外圍後，才會抵達龍雷風眼，隊伍必須拉開距離前進',
-        edgeKind: 'distant_route',
         edgeNote: '雷蹄渡口到龍雷風眼需沿帶電溪線穿過風牆外圍，距離長於相鄰格。',
       },
     ],
@@ -441,7 +415,6 @@ thundersteppe_dragonstorm_eye: {
         direction: 'west',
         targetRoomId: 'thundersteppe_stormglass_outcrop',
         description: '西返時玻岩脈動會穿過風牆外緣與黑玻裂架，才回到風暴玻岩，雷牆收縮時必須停步等待',
-        edgeKind: 'distant_route',
         edgeNote: '龍雷風眼西返風暴玻岩需穿過風牆與黑玻裂架，屬於長路徑。',
       },
       { direction: 'east', targetRoomId: 'thundersteppe_worldboss_crater', description: '風眼裂縫通往世界王火坑' },
@@ -494,7 +467,6 @@ glass_dunes_sun_gate: {
       '日照玻門像一片被烈日豎起的透明城閘，玻砂沿門腳堆成白亮斜坡，西側日照西門的舊路只剩半截旗影，東面鏡面沙坡反出刺眼銀光，南方半埋商隊的車桿在熱浪裡忽遠忽近。門柱上仍有失落王朝的火紋，裂縫中凝著金色砂珠，風過時會發出細薄鈴聲。地面繩標被砂掩住一半，仍能辨出進入沙丘腹地的主路，也暗示錯踏亮面便會滑向流砂。',
     exits: [
       { direction: 'east', targetRoomId: 'glass_dunes_mirror_slope', description: '玻砂路延向鏡坡' },
-      { direction: 'south', targetRoomId: 'glass_dunes_buried_caravan', description: '半埋車轍通往商隊殘骸', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'glass_sand_skink', maxCount: 2, respawnSeconds: 120 },
@@ -520,7 +492,6 @@ glass_dunes_mirror_slope: {
     exits: [
       { direction: 'west', targetRoomId: 'glass_dunes_sun_gate', description: '反光坡面回到日照玻門' },
       { direction: 'east', targetRoomId: 'glass_dunes_shard_claim', description: '尖碎玻片指向碎晶採區' },
-      { direction: 'north', targetRoomId: 'glass_dunes_singing_ridge', description: '風聲爬上鳴砂脊', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'glass_sand_skink', maxCount: 2, respawnSeconds: 120 },
@@ -547,7 +518,6 @@ glass_dunes_shard_claim: {
     exits: [
       { direction: 'west', targetRoomId: 'glass_dunes_mirror_slope', description: '鏡坡回到西側' },
       { direction: 'east', targetRoomId: 'glass_dunes_vein_gallery', description: '採掘繩標進入琉璃礦廊' },
-      { direction: 'south', targetRoomId: 'glass_dunes_relic_pit', description: '塌砂邊緣通往遺物坑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'shardback_scarab', maxCount: 2, respawnSeconds: 140 },
@@ -571,7 +541,6 @@ glass_dunes_singing_ridge: {
     description:
       '鳴砂脊高出周圍沙面，細玻砂在脊線上不停滑落，形成低而持續的嗡鳴。南側坡音落向鏡面沙坡，東面耐旱藥棚的乾草架在熱風中晃動，遠處碎晶採區的白光偶爾刺入視野。脊背有一串被砂磨平的木釘，標出曾經穩定的落腳線。每當風向轉急，砂音會從悶響變成尖聲，露出下方空腔與暗色裂縫，也把埋在沙中的古代銅鈴震得微微發亮。',
     exits: [
-      { direction: 'south', targetRoomId: 'glass_dunes_mirror_slope', description: '坡音落回鏡面沙坡', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'glass_dunes_herb_shelf', description: '東側耐旱草線通往耐旱藥棚' },
     ],
     monsters: [
@@ -596,9 +565,7 @@ glass_dunes_buried_caravan: {
     description:
       '半埋商隊橫倒在日照玻門南側，幾輛木輪車被透明砂殼吞到車軸，只剩旗桿、貨箱角與乾裂獸轅露在外面。北方門影仍可辨認，東側暗水袋的低窪處泛著冷暗光，南面鹽風切谷吹來白鹽細霧，西側西緣砂路留下紅岩石粉。散落貨牌上刻著失落王朝末期的稅印，玻砂包住破布與銅扣，像時間凝住的琥珀。車底陰影比周圍涼，卻也藏著滑動流砂的輕響。',
     exits: [
-      { direction: 'north', targetRoomId: 'glass_dunes_sun_gate', description: '車轍回到日照玻門', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'glass_dunes_water_pocket', description: '破水囊路通往暗水袋' },
-      { direction: 'south', targetRoomId: 'glass_dunes_saltwind_cut', description: '鹽風裂口通往切谷', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'mirrorsand_stalker', maxCount: 2, respawnSeconds: 130 },
@@ -624,12 +591,10 @@ glass_dunes_vein_gallery: {
       '琉璃礦廊是一條被晶脈撐開的窄廊，透明砂壁裡浮著藍綠光絲，像乾涸河流凝在石中。西側碎晶採區傳來晶片碎響，東面晶魔像場的沉重足印斷續延伸，北方稜鏡拱把光折成七道細線投在廊頂。廊壁有舊鑿痕與熔黑符號，部分礦線仍帶溫度，靠近時能聞到灼沙味。地面鋪著粗砂與崩落晶屑，明暗交界處可分辨通路，也能看見被掩埋的王朝工程痕跡。',
     exits: [
       { direction: 'west', targetRoomId: 'glass_dunes_shard_claim', description: '礦脈回到碎晶採區' },
-      { direction: 'east', targetRoomId: 'glass_dunes_crystal_golem_yard', description: '重腳印通往晶魔像場', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'north',
         targetRoomId: 'glass_dunes_prism_arch',
         description: '北側礦光要先沿琉璃礦脈爬過折射廊道，再穿出高砂脊抵達稜鏡拱，途中反光會遮蔽直路',
-        edgeKind: 'distant_route',
         edgeNote: '琉璃礦廊到稜鏡拱需沿礦脈高差繞行，不是相鄰平面一格。',
       },
     ],
@@ -665,14 +630,12 @@ glass_dunes_herb_shelf: {
         direction: 'east',
         targetRoomId: 'glass_dunes_obsidian_well',
         description: '東側藥棚背後的遮陽繩標先穿過乾根棚架，才會抵達黑曜井，井口黑影在遠處閃動',
-        edgeKind: 'distant_route',
         edgeNote: '耐旱藥棚到黑曜井被棚架與乾根斜坡隔開，屬於長路徑。',
       },
       {
         direction: 'south',
         targetRoomId: 'glass_dunes_relic_pit',
         description: '南側根鬚坡要穿過鬆動玻砂與塌陷邊緣後，才會落到遺物坑，碎陶片標示安全落腳點',
-        edgeKind: 'distant_route',
         edgeNote: '耐旱藥棚到遺物坑有塌坡與高低差，不是相鄰平面一格。',
       },
     ],
@@ -704,14 +667,12 @@ glass_dunes_water_pocket: {
         direction: 'east',
         targetRoomId: 'glass_dunes_beast_scrape',
         description: '東側濕爪痕先繞過暗水袋邊緣的軟砂與破水囊，才接到獸刮地，地面會逐漸變硬',
-        edgeKind: 'distant_route',
         edgeNote: '暗水袋到獸刮地需要避開軟砂水窪，距離長於相鄰格。',
       },
       {
         direction: 'south',
         targetRoomId: 'glass_dunes_saltwind_cut',
         description: '南側細水線沿玻砂裂縫下切，穿過鹽霧與斜坡後才落入鹽風切谷，水聲會被熱風吞沒',
-        edgeKind: 'distant_route',
         edgeNote: '暗水袋到鹽風切谷有下切裂谷與鹽霧坡道，屬於長路徑。',
       },
     ],
@@ -742,21 +703,18 @@ glass_dunes_beast_scrape: {
         direction: 'west',
         targetRoomId: 'glass_dunes_water_pocket',
         description: '西返時需沿濕爪痕穿過硬化玻砂與軟砂水窪，才回到暗水袋，水光會在遠處晃動',
-        edgeKind: 'distant_route',
         edgeNote: '獸刮地西返暗水袋要穿過硬砂與軟砂交界，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'glass_dunes_relic_pit',
         description: '東側碎骨路繞過巨獸磨爪石與塌砂凹地後，才會抵達遺物坑，碎骨會指向安全邊線',
-        edgeKind: 'distant_route',
         edgeNote: '獸刮地到遺物坑被磨爪石與凹地隔開，距離長於相鄰格。',
       },
       {
         direction: 'south',
         targetRoomId: 'glass_dunes_glassstorm_basin',
         description: '南側刮痕一路下滑到風暴盆地外緣，中途要避開旋起的玻砂刃片，不能直線穿越',
-        edgeKind: 'distant_route',
         edgeNote: '獸刮地到玻暴盆地需沿刮痕坡道下行，屬於長路徑。',
       },
     ],
@@ -783,12 +741,10 @@ glass_dunes_relic_pit: {
     description:
       '遺物坑像一只被風掏空的巨大陶碗，坑壁露出王朝磚紋、熔玻碎片與半埋銅環。北方碎晶採區的晶屑順坡滾入坑中，西側獸刮地傳來低沉刮砂聲，東面海市集影的假樓影在熱浪中漂浮。坑底有幾處被砂磨亮的石板，刻痕被日光填成金色細線，似乎曾經支撐某座小殿。碎陶與玻珠混在一起，風一吹便發出細密碰撞聲，讓埋藏物的位置在聲音裡若隱若現。',
     exits: [
-      { direction: 'north', targetRoomId: 'glass_dunes_shard_claim', description: '塌砂坡回到碎晶採區', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'west',
         targetRoomId: 'glass_dunes_beast_scrape',
         description: '西返時碎骨路會先繞過遺物坑崩邊與獸痕凹地，才接回獸刮地，腳下玻片容易滑動',
-        edgeKind: 'distant_route',
         edgeNote: '遺物坑西返獸刮地需繞過坑緣與獸痕凹地，不是相鄰格。',
       },
       { direction: 'east', targetRoomId: 'glass_dunes_mirage_bazaar', description: '幻影旗影指向海市集' },
@@ -821,14 +777,12 @@ glass_dunes_mirage_bazaar: {
         direction: 'north',
         targetRoomId: 'glass_dunes_obsidian_well',
         description: '北側黑影水光會被海市蜃樓拉長，必須沿倒影標記繞過假攤棚，才會找到黑曜井',
-        edgeKind: 'distant_route',
         edgeNote: '海市集影到黑曜井有幻影攤棚與倒影路標，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'glass_dunes_buried_palace_door',
         description: '東側破旗線穿過幻影市集邊緣與半埋石柱後，才會抵達埋宮門，旗影會干擾方向感',
-        edgeKind: 'distant_route',
         edgeNote: '海市集影到埋宮門被幻影市集與半埋石柱隔開，距離長於相鄰格。',
       },
     ],
@@ -859,7 +813,6 @@ glass_dunes_prism_arch: {
         direction: 'south',
         targetRoomId: 'glass_dunes_vein_gallery',
         description: '南側拱影要沿折射礦光下降，繞過高砂脊與碎玻階後，才落回琉璃礦廊',
-        edgeKind: 'distant_route',
         edgeNote: '稜鏡拱南返琉璃礦廊需要下行折射廊道，屬於長路徑。',
       },
       { direction: 'east', targetRoomId: 'glass_dunes_crystal_golem_yard', description: '東側七色反光通往晶魔像場' },
@@ -891,21 +844,18 @@ glass_dunes_obsidian_well: {
         direction: 'west',
         targetRoomId: 'glass_dunes_herb_shelf',
         description: '西返時井繩會帶路穿過乾根棚架與遮陽繩標，才回到耐旱藥棚，黑影逐漸被草色取代',
-        edgeKind: 'distant_route',
         edgeNote: '黑曜井西返耐旱藥棚需穿過棚架與乾根坡，屬於長路徑。',
       },
       {
         direction: 'south',
         targetRoomId: 'glass_dunes_mirage_bazaar',
         description: '南側黑影水光要穿過數段假井影與幻影攤棚，才會回到海市集影，錯看倒影會繞遠',
-        edgeKind: 'distant_route',
         edgeNote: '黑曜井到海市集影受假井影與幻影攤棚干擾，不是相鄰格。',
       },
       {
         direction: 'east',
         targetRoomId: 'glass_dunes_solar_forge',
         description: '東側井壁熱脈沿黑曜裂縫延伸，需繞過燙裂井台後才到日輪熔臺，熱浪會逼人慢行',
-        edgeKind: 'distant_route',
         edgeNote: '黑曜井到日輪熔臺需沿熱脈裂縫繞行，距離長於相鄰格。',
       },
     ],
@@ -936,7 +886,6 @@ glass_dunes_glassstorm_basin: {
         direction: 'north',
         targetRoomId: 'glass_dunes_beast_scrape',
         description: '北返時刮痕坡會逆著玻砂風暴上升，穿過刃片旋流後才回到獸刮地，腳印很快被掩埋',
-        edgeKind: 'distant_route',
         edgeNote: '玻暴盆地北返獸刮地需要逆風上坡，屬於長路徑。',
       },
       {
@@ -944,7 +893,6 @@ glass_dunes_glassstorm_basin: {
         targetRoomId: 'glass_dunes_fill_3_19',
         description: '西側鹽風坡接往沙丘通道',
       },
-      { direction: 'east', targetRoomId: 'glass_dunes_lost_dynasty_altar', description: '風暴裂線指向失朝祭壇', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'glass_sand_skink', maxCount: 2, respawnSeconds: 120 },
@@ -969,7 +917,6 @@ glass_dunes_saltwind_cut: {
     description:
       '鹽風切谷是一道白色風口，細鹽與玻砂沿谷壁橫向刮過，把岩面磨出一層霧亮外殼。北方半埋商隊的旗桿在谷口搖晃，東面碎玻窄脊只剩窄窄一線，谷底偶爾露出暗水袋滲出的濕痕。兩側砂壁像被刀切開，嵌著褐色古磚與破碎貝形玻片。風弱時可聽見遠處車輪殘架吱響，風強時鹽霧會遮住腳下裂縫，只留下繩標與斜插石片指向可踏之處。',
     exits: [
-      { direction: 'north', targetRoomId: 'glass_dunes_buried_caravan', description: '裂谷北返半埋商隊', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'east',
         targetRoomId: 'glass_dunes_fill_3_19',
@@ -1005,7 +952,6 @@ glass_dunes_crystal_golem_yard: {
         direction: 'north',
         targetRoomId: 'glass_dunes_buried_palace_door',
         description: '北側碎石階繞過晶魔像足印後通往埋宮門',
-        edgeKind: 'distant_route',
         edgeNote: '晶魔像場到埋宮門需要沿碎石階斜向上行，距離長於相鄰格。',
       },
     ],
@@ -1062,14 +1008,12 @@ glass_dunes_buried_palace_door: {
         direction: 'west',
         targetRoomId: 'glass_dunes_mirage_bazaar',
         description: '西返時破旗線要穿過半埋石柱與幻影市集外緣，才回到海市集影，旗影會不斷重疊',
-        edgeKind: 'distant_route',
         edgeNote: '埋宮門西返海市集影需穿過石柱群與幻影市集，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'glass_dunes_sunfire_crater',
         description: '東側宮門裂縫會沿埋宮外牆繞過坍落玻砂，才抵達日火坑，坑緣熱浪會逼人貼牆前進',
-        edgeKind: 'distant_route',
         edgeNote: '埋宮門到日火坑需沿坍落宮牆繞行，不是相鄰格。',
       },
       { direction: 'south', targetRoomId: 'glass_dunes_solar_forge', description: '南側熔臺光線回到日輪熔臺' },
@@ -1098,9 +1042,7 @@ glass_dunes_lost_dynasty_altar: {
     description:
       '失朝祭壇立在玻暴盆地東側的高砂臺上，斷階被熱光拉長，石面刻滿失落王朝的日輪與水紋。西面盆地的旋風把白砂吹上祭階，南方埋宮門的門額半沉在沙下，東側日火坑閃著灼紅光。祭壇中央裂開一道細縫，縫內凝著琥珀色玻珠與燒黑香灰。北側假階會在正午浮現，卻只是一片折射光；真正穩固的石階沿南側門影延伸，殘缺浮雕仍指向昔日王宮的中心軸線。',
     exits: [
-      { direction: 'west', targetRoomId: 'glass_dunes_glassstorm_basin', description: '風暴裂線回到玻暴盆地', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'south', targetRoomId: 'glass_dunes_buried_palace_door', description: '南側王朝碎階回到埋宮門' },
-      { direction: 'east', targetRoomId: 'glass_dunes_sunfire_crater', description: '祭壇光脈通往日火坑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'lost_dynasty_sentinel', maxCount: 2, respawnSeconds: 210 },
@@ -1129,7 +1071,6 @@ glass_dunes_sunfire_crater: {
         direction: 'west',
         targetRoomId: 'glass_dunes_buried_palace_door',
         description: '西返時需沿日火坑邊緣逆著熱浪貼牆繞行，穿過坍落玻砂後才回到埋宮門裂縫',
-        edgeKind: 'distant_route',
         edgeNote: '日火坑西返埋宮門需繞過坑緣熱浪與坍落玻砂，屬於長路徑。',
       },
     ],
