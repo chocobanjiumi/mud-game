@@ -1,0 +1,153 @@
+{
+  "sheetId": "item_missing_03",
+  "category": "item",
+  "columns": 4,
+  "rows": 4,
+  "sheetPath": "client/public/images/atlas/source-ai/item_missing_03.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_missing_dark_crystal",
+      "category": "material",
+      "targetId": "dark_crystal",
+      "name": "暗影結晶",
+      "outputPath": "client/public/images/materials/material_missing_dark_crystal.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_missing_golem_core",
+      "category": "material",
+      "targetId": "golem_core",
+      "name": "守衛核心",
+      "outputPath": "client/public/images/materials/material_missing_golem_core.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_missing_golem_fragment",
+      "category": "material",
+      "targetId": "golem_fragment",
+      "name": "魔像碎片",
+      "outputPath": "client/public/images/materials/material_missing_golem_fragment.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_missing_normal_enhance_stone",
+      "category": "material",
+      "targetId": "normal_enhance_stone",
+      "name": "普通強化石",
+      "outputPath": "client/public/images/materials/material_missing_normal_enhance_stone.png",
+      "row": 0,
+      "column": 3
+    },
+    {
+      "assetId": "material_missing_advanced_enhance_stone",
+      "category": "material",
+      "targetId": "advanced_enhance_stone",
+      "name": "高級強化石",
+      "outputPath": "client/public/images/materials/material_missing_advanced_enhance_stone.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_missing_blessing_scroll",
+      "category": "material",
+      "targetId": "blessing_scroll",
+      "name": "祝福卷軸",
+      "outputPath": "client/public/images/materials/material_missing_blessing_scroll.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_missing_enhance_lucky_charm",
+      "category": "material",
+      "targetId": "enhance_lucky_charm",
+      "name": "幸運符",
+      "outputPath": "client/public/images/materials/material_missing_enhance_lucky_charm.png",
+      "row": 1,
+      "column": 2
+    },
+    {
+      "assetId": "material_missing_affix_essence",
+      "category": "material",
+      "targetId": "affix_essence",
+      "name": "詞綴精華",
+      "outputPath": "client/public/images/materials/material_missing_affix_essence.png",
+      "row": 1,
+      "column": 3
+    },
+    {
+      "assetId": "material_missing_reforge_crystal",
+      "category": "material",
+      "targetId": "reforge_crystal",
+      "name": "重鑄水晶",
+      "outputPath": "client/public/images/materials/material_missing_reforge_crystal.png",
+      "row": 2,
+      "column": 0
+    },
+    {
+      "assetId": "material_missing_bronze_key",
+      "category": "material",
+      "targetId": "bronze_key",
+      "name": "銅鑰匙",
+      "outputPath": "client/public/images/materials/material_missing_bronze_key.png",
+      "row": 2,
+      "column": 1
+    },
+    {
+      "assetId": "material_missing_silver_key",
+      "category": "material",
+      "targetId": "silver_key",
+      "name": "銀鑰匙",
+      "outputPath": "client/public/images/materials/material_missing_silver_key.png",
+      "row": 2,
+      "column": 2
+    },
+    {
+      "assetId": "material_missing_gold_key",
+      "category": "material",
+      "targetId": "gold_key",
+      "name": "金鑰匙",
+      "outputPath": "client/public/images/materials/material_missing_gold_key.png",
+      "row": 2,
+      "column": 3
+    },
+    {
+      "assetId": "material_missing_elf_wood",
+      "category": "material",
+      "targetId": "elf_wood",
+      "name": "精靈木",
+      "outputPath": "client/public/images/materials/material_missing_elf_wood.png",
+      "row": 3,
+      "column": 0
+    },
+    {
+      "assetId": "material_missing_spider_silk_cloth",
+      "category": "material",
+      "targetId": "spider_silk_cloth",
+      "name": "蜘蛛絲布",
+      "outputPath": "client/public/images/materials/material_missing_spider_silk_cloth.png",
+      "row": 3,
+      "column": 1
+    },
+    {
+      "assetId": "material_missing_magic_crystal",
+      "category": "material",
+      "targetId": "magic_crystal",
+      "name": "魔力結晶",
+      "outputPath": "client/public/images/materials/material_missing_magic_crystal.png",
+      "row": 3,
+      "column": 2
+    },
+    {
+      "assetId": "material_missing_beast_hide",
+      "category": "material",
+      "targetId": "beast_hide",
+      "name": "獸皮",
+      "outputPath": "client/public/images/materials/material_missing_beast_hide.png",
+      "row": 3,
+      "column": 3
+    }
+  ]
+}

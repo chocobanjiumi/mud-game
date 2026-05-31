@@ -1,0 +1,153 @@
+{
+  "sheetId": "item_missing_01",
+  "category": "item",
+  "columns": 4,
+  "rows": 4,
+  "sheetPath": "client/public/images/atlas/source-ai/item_missing_01.sheet.png",
+  "targets": [
+    {
+      "assetId": "item_missing_mage_hat",
+      "category": "item",
+      "targetId": "mage_hat",
+      "name": "法師帽",
+      "outputPath": "client/public/images/items/item_missing_mage_hat.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "item_missing_adventurer_belt",
+      "category": "item",
+      "targetId": "adventurer_belt",
+      "name": "冒險者腰帶",
+      "outputPath": "client/public/images/items/item_missing_adventurer_belt.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "item_missing_sword_saint_armor",
+      "category": "item",
+      "targetId": "sword_saint_armor",
+      "name": "劍聖鎧甲",
+      "outputPath": "client/public/images/items/item_missing_sword_saint_armor.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "item_missing_sword_saint_ring",
+      "category": "item",
+      "targetId": "sword_saint_ring",
+      "name": "劍聖戒指",
+      "outputPath": "client/public/images/items/item_missing_sword_saint_ring.png",
+      "row": 0,
+      "column": 3
+    },
+    {
+      "assetId": "item_missing_archmage_set_robe",
+      "category": "item",
+      "targetId": "archmage_set_robe",
+      "name": "大法師法袍",
+      "outputPath": "client/public/images/items/item_missing_archmage_set_robe.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "item_missing_archmage_set_ring",
+      "category": "item",
+      "targetId": "archmage_set_ring",
+      "name": "大法師魔戒",
+      "outputPath": "client/public/images/items/item_missing_archmage_set_ring.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "item_missing_guardian_plate",
+      "category": "item",
+      "targetId": "guardian_plate",
+      "name": "守護者板甲",
+      "outputPath": "client/public/images/items/item_missing_guardian_plate.png",
+      "row": 1,
+      "column": 2
+    },
+    {
+      "assetId": "item_missing_archmage_robe",
+      "category": "item",
+      "targetId": "archmage_robe",
+      "name": "大法師長袍",
+      "outputPath": "client/public/images/items/item_missing_archmage_robe.png",
+      "row": 1,
+      "column": 3
+    },
+    {
+      "assetId": "item_missing_wind_runner_armor",
+      "category": "item",
+      "targetId": "wind_runner_armor",
+      "name": "疾風者輕甲",
+      "outputPath": "client/public/images/items/item_missing_wind_runner_armor.png",
+      "row": 2,
+      "column": 0
+    },
+    {
+      "assetId": "item_missing_mithril_helm",
+      "category": "item",
+      "targetId": "mithril_helm",
+      "name": "秘銀頭盔",
+      "outputPath": "client/public/images/items/item_missing_mithril_helm.png",
+      "row": 2,
+      "column": 1
+    },
+    {
+      "assetId": "item_missing_mithril_greaves",
+      "category": "item",
+      "targetId": "mithril_greaves",
+      "name": "秘銀脛甲",
+      "outputPath": "client/public/images/items/item_missing_mithril_greaves.png",
+      "row": 2,
+      "column": 2
+    },
+    {
+      "assetId": "item_missing_warriors_pendant",
+      "category": "item",
+      "targetId": "warriors_pendant",
+      "name": "戰士之墜",
+      "outputPath": "client/public/images/items/item_missing_warriors_pendant.png",
+      "row": 2,
+      "column": 3
+    },
+    {
+      "assetId": "item_missing_mage_earring",
+      "category": "item",
+      "targetId": "mage_earring",
+      "name": "魔導耳環",
+      "outputPath": "client/public/images/items/item_missing_mage_earring.png",
+      "row": 3,
+      "column": 0
+    },
+    {
+      "assetId": "item_missing_spider_silk_robe",
+      "category": "item",
+      "targetId": "spider_silk_robe",
+      "name": "蜘蛛絲袍",
+      "outputPath": "client/public/images/items/item_missing_spider_silk_robe.png",
+      "row": 3,
+      "column": 1
+    },
+    {
+      "assetId": "item_missing_ancient_relic",
+      "category": "item",
+      "targetId": "ancient_relic",
+      "name": "古代遺物",
+      "outputPath": "client/public/images/items/item_missing_ancient_relic.png",
+      "row": 3,
+      "column": 2
+    },
+    {
+      "assetId": "item_missing_wisdom_potion",
+      "category": "item",
+      "targetId": "wisdom_potion",
+      "name": "智慧藥水",
+      "outputPath": "client/public/images/items/item_missing_wisdom_potion.png",
+      "row": 3,
+      "column": 3
+    }
+  ]
+}

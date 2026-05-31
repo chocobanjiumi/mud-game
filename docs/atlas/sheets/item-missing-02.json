@@ -1,0 +1,153 @@
+{
+  "sheetId": "item_missing_02",
+  "category": "item",
+  "columns": 4,
+  "rows": 4,
+  "sheetPath": "client/public/images/atlas/source-ai/item_missing_02.sheet.png",
+  "targets": [
+    {
+      "assetId": "item_missing_fortitude_potion",
+      "category": "item",
+      "targetId": "fortitude_potion",
+      "name": "堅韌藥水",
+      "outputPath": "client/public/images/items/item_missing_fortitude_potion.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "item_missing_luck_potion",
+      "category": "item",
+      "targetId": "luck_potion",
+      "name": "幸運藥水",
+      "outputPath": "client/public/images/items/item_missing_luck_potion.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "item_missing_allstat_potion",
+      "category": "item",
+      "targetId": "allstat_potion",
+      "name": "全能藥水",
+      "outputPath": "client/public/images/items/item_missing_allstat_potion.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "item_missing_teleport_stone",
+      "category": "item",
+      "targetId": "teleport_stone",
+      "name": "傳送石",
+      "outputPath": "client/public/images/items/item_missing_teleport_stone.png",
+      "row": 0,
+      "column": 3
+    },
+    {
+      "assetId": "item_missing_memory_crystal",
+      "category": "item",
+      "targetId": "memory_crystal",
+      "name": "記憶水晶",
+      "outputPath": "client/public/images/items/item_missing_memory_crystal.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "item_missing_magic_dessert",
+      "category": "item",
+      "targetId": "magic_dessert",
+      "name": "魔法甜點",
+      "outputPath": "client/public/images/items/item_missing_magic_dessert.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "item_missing_elf_bread",
+      "category": "item",
+      "targetId": "elf_bread",
+      "name": "精靈麵包",
+      "outputPath": "client/public/images/items/item_missing_elf_bread.png",
+      "row": 1,
+      "column": 2
+    },
+    {
+      "assetId": "item_missing_feast",
+      "category": "item",
+      "targetId": "feast",
+      "name": "宴會大餐",
+      "outputPath": "client/public/images/items/item_missing_feast.png",
+      "row": 1,
+      "column": 3
+    },
+    {
+      "assetId": "item_missing_bronze_chest",
+      "category": "item",
+      "targetId": "bronze_chest",
+      "name": "銅寶箱",
+      "outputPath": "client/public/images/items/item_missing_bronze_chest.png",
+      "row": 2,
+      "column": 0
+    },
+    {
+      "assetId": "item_missing_silver_chest",
+      "category": "item",
+      "targetId": "silver_chest",
+      "name": "銀寶箱",
+      "outputPath": "client/public/images/items/item_missing_silver_chest.png",
+      "row": 2,
+      "column": 1
+    },
+    {
+      "assetId": "item_missing_gold_chest",
+      "category": "item",
+      "targetId": "gold_chest",
+      "name": "金寶箱",
+      "outputPath": "client/public/images/items/item_missing_gold_chest.png",
+      "row": 2,
+      "column": 2
+    },
+    {
+      "assetId": "item_missing_flash_bomb",
+      "category": "item",
+      "targetId": "flash_bomb",
+      "name": "閃光彈",
+      "outputPath": "client/public/images/items/item_missing_flash_bomb.png",
+      "row": 2,
+      "column": 3
+    },
+    {
+      "assetId": "item_missing_trap_item",
+      "category": "item",
+      "targetId": "trap_item",
+      "name": "陷阱",
+      "outputPath": "client/public/images/items/item_missing_trap_item.png",
+      "row": 3,
+      "column": 0
+    },
+    {
+      "assetId": "item_missing_hp_steak",
+      "category": "item",
+      "targetId": "hp_steak",
+      "name": "回復牛排",
+      "outputPath": "client/public/images/items/item_missing_hp_steak.png",
+      "row": 3,
+      "column": 1
+    },
+    {
+      "assetId": "item_missing_energy_drink",
+      "category": "item",
+      "targetId": "energy_drink",
+      "name": "能量飲料",
+      "outputPath": "client/public/images/items/item_missing_energy_drink.png",
+      "row": 3,
+      "column": 2
+    },
+    {
+      "assetId": "item_missing_ice_cream",
+      "category": "item",
+      "targetId": "ice_cream",
+      "name": "冰元素冰淇淋",
+      "outputPath": "client/public/images/items/item_missing_ice_cream.png",
+      "row": 3,
+      "column": 3
+    }
+  ]
+}

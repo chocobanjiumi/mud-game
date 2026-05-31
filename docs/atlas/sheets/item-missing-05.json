@@ -1,0 +1,153 @@
+{
+  "sheetId": "item_missing_05",
+  "category": "item",
+  "columns": 4,
+  "rows": 4,
+  "sheetPath": "client/public/images/atlas/source-ai/item_missing_05.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_missing_crystal_shrimp",
+      "category": "material",
+      "targetId": "crystal_shrimp",
+      "name": "水晶蝦",
+      "outputPath": "client/public/images/materials/material_missing_crystal_shrimp.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_missing_dragon_koi",
+      "category": "material",
+      "targetId": "dragon_koi",
+      "name": "龍錦鯉",
+      "outputPath": "client/public/images/materials/material_missing_dragon_koi.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_missing_moonlight_eel",
+      "category": "material",
+      "targetId": "moonlight_eel",
+      "name": "月光鰻",
+      "outputPath": "client/public/images/materials/material_missing_moonlight_eel.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_missing_abyssal_angler",
+      "category": "material",
+      "targetId": "abyssal_angler",
+      "name": "深淵鮟鱇",
+      "outputPath": "client/public/images/materials/material_missing_abyssal_angler.png",
+      "row": 0,
+      "column": 3
+    },
+    {
+      "assetId": "material_missing_phoenix_fish",
+      "category": "material",
+      "targetId": "phoenix_fish",
+      "name": "鳳凰魚",
+      "outputPath": "client/public/images/materials/material_missing_phoenix_fish.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_missing_frost_salmon",
+      "category": "material",
+      "targetId": "frost_salmon",
+      "name": "霜之鮭魚",
+      "outputPath": "client/public/images/materials/material_missing_frost_salmon.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_missing_thunder_ray",
+      "category": "material",
+      "targetId": "thunder_ray",
+      "name": "雷鰩",
+      "outputPath": "client/public/images/materials/material_missing_thunder_ray.png",
+      "row": 1,
+      "column": 2
+    },
+    {
+      "assetId": "material_missing_sea_dragon_fry",
+      "category": "material",
+      "targetId": "sea_dragon_fry",
+      "name": "海龍幼魚",
+      "outputPath": "client/public/images/materials/material_missing_sea_dragon_fry.png",
+      "row": 1,
+      "column": 3
+    },
+    {
+      "assetId": "material_missing_celestial_jellyfish",
+      "category": "material",
+      "targetId": "celestial_jellyfish",
+      "name": "天界水母",
+      "outputPath": "client/public/images/materials/material_missing_celestial_jellyfish.png",
+      "row": 2,
+      "column": 0
+    },
+    {
+      "assetId": "material_missing_void_squid",
+      "category": "material",
+      "targetId": "void_squid",
+      "name": "虛空烏賊",
+      "outputPath": "client/public/images/materials/material_missing_void_squid.png",
+      "row": 2,
+      "column": 1
+    },
+    {
+      "assetId": "material_missing_world_serpent_scale",
+      "category": "material",
+      "targetId": "world_serpent_scale",
+      "name": "世界蛇之鱗",
+      "outputPath": "client/public/images/materials/material_missing_world_serpent_scale.png",
+      "row": 2,
+      "column": 2
+    },
+    {
+      "assetId": "item_missing_abyss_survey_scroll",
+      "category": "item",
+      "targetId": "abyss_survey_scroll",
+      "name": "深淵測繪卷軸",
+      "outputPath": "client/public/images/items/item_missing_abyss_survey_scroll.png",
+      "row": 2,
+      "column": 3
+    },
+    {
+      "assetId": "item_missing_class_change_scroll_swordsman",
+      "category": "item",
+      "targetId": "class_change_scroll_swordsman",
+      "name": "戰士轉職卷軸",
+      "outputPath": "client/public/images/items/item_missing_class_change_scroll_swordsman.png",
+      "row": 3,
+      "column": 0
+    },
+    {
+      "assetId": "item_missing_class_change_scroll_mage",
+      "category": "item",
+      "targetId": "class_change_scroll_mage",
+      "name": "法師轉職卷軸",
+      "outputPath": "client/public/images/items/item_missing_class_change_scroll_mage.png",
+      "row": 3,
+      "column": 1
+    },
+    {
+      "assetId": "item_missing_class_change_scroll_ranger",
+      "category": "item",
+      "targetId": "class_change_scroll_ranger",
+      "name": "遊俠轉職卷軸",
+      "outputPath": "client/public/images/items/item_missing_class_change_scroll_ranger.png",
+      "row": 3,
+      "column": 2
+    },
+    {
+      "assetId": "item_missing_class_change_scroll_priest",
+      "category": "item",
+      "targetId": "class_change_scroll_priest",
+      "name": "祭司轉職卷軸",
+      "outputPath": "client/public/images/items/item_missing_class_change_scroll_priest.png",
+      "row": 3,
+      "column": 3
+    }
+  ]
+}

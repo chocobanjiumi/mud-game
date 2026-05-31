@@ -1,0 +1,27 @@
+{
+  "sheetId": "item_missing_06",
+  "category": "item",
+  "columns": 4,
+  "rows": 4,
+  "sheetPath": "client/public/images/atlas/source-ai/item_missing_06.sheet.png",
+  "targets": [
+    {
+      "assetId": "item_missing_tidebone_compass",
+      "category": "item",
+      "targetId": "tidebone_compass",
+      "name": "潮骨羅盤",
+      "outputPath": "client/public/images/items/item_missing_tidebone_compass.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "item_missing_ashen_vigil_offering",
+      "category": "item",
+      "targetId": "ashen_vigil_offering",
+      "name": "灰守祭品",
+      "outputPath": "client/public/images/items/item_missing_ashen_vigil_offering.png",
+      "row": 0,
+      "column": 1
+    }
+  ]
+}

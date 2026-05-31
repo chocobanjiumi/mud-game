@@ -1,0 +1,153 @@
+{
+  "sheetId": "item_missing_04",
+  "category": "item",
+  "columns": 4,
+  "rows": 4,
+  "sheetPath": "client/public/images/atlas/source-ai/item_missing_04.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_missing_ancient_coin",
+      "category": "material",
+      "targetId": "ancient_coin",
+      "name": "古代硬幣",
+      "outputPath": "client/public/images/materials/material_missing_ancient_coin.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_missing_rare_fossil",
+      "category": "material",
+      "targetId": "rare_fossil",
+      "name": "稀有化石",
+      "outputPath": "client/public/images/materials/material_missing_rare_fossil.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_missing_elf_feather",
+      "category": "material",
+      "targetId": "elf_feather",
+      "name": "精靈羽毛",
+      "outputPath": "client/public/images/materials/material_missing_elf_feather.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_missing_ancient_runestone",
+      "category": "material",
+      "targetId": "ancient_runestone",
+      "name": "遠古符文石",
+      "outputPath": "client/public/images/materials/material_missing_ancient_runestone.png",
+      "row": 0,
+      "column": 3
+    },
+    {
+      "assetId": "material_missing_crab_shell",
+      "category": "material",
+      "targetId": "crab_shell",
+      "name": "海蟹殼",
+      "outputPath": "client/public/images/materials/material_missing_crab_shell.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_missing_ice_core",
+      "category": "material",
+      "targetId": "ice_core",
+      "name": "冰元素核心",
+      "outputPath": "client/public/images/materials/material_missing_ice_core.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_missing_fishman_fin",
+      "category": "material",
+      "targetId": "fishman_fin",
+      "name": "魚人鰭",
+      "outputPath": "client/public/images/materials/material_missing_fishman_fin.png",
+      "row": 1,
+      "column": 2
+    },
+    {
+      "assetId": "material_missing_small_fish",
+      "category": "material",
+      "targetId": "small_fish",
+      "name": "小魚",
+      "outputPath": "client/public/images/materials/material_missing_small_fish.png",
+      "row": 1,
+      "column": 3
+    },
+    {
+      "assetId": "material_missing_river_carp",
+      "category": "material",
+      "targetId": "river_carp",
+      "name": "河鯉",
+      "outputPath": "client/public/images/materials/material_missing_river_carp.png",
+      "row": 2,
+      "column": 0
+    },
+    {
+      "assetId": "material_missing_mud_loach",
+      "category": "material",
+      "targetId": "mud_loach",
+      "name": "泥鰍",
+      "outputPath": "client/public/images/materials/material_missing_mud_loach.png",
+      "row": 2,
+      "column": 1
+    },
+    {
+      "assetId": "material_missing_freshwater_shrimp",
+      "category": "material",
+      "targetId": "freshwater_shrimp",
+      "name": "淡水蝦",
+      "outputPath": "client/public/images/materials/material_missing_freshwater_shrimp.png",
+      "row": 2,
+      "column": 2
+    },
+    {
+      "assetId": "material_missing_silver_trout",
+      "category": "material",
+      "targetId": "silver_trout",
+      "name": "銀鱒魚",
+      "outputPath": "client/public/images/materials/material_missing_silver_trout.png",
+      "row": 2,
+      "column": 3
+    },
+    {
+      "assetId": "material_missing_spotted_bass",
+      "category": "material",
+      "targetId": "spotted_bass",
+      "name": "斑點鱸魚",
+      "outputPath": "client/public/images/materials/material_missing_spotted_bass.png",
+      "row": 3,
+      "column": 0
+    },
+    {
+      "assetId": "material_missing_blue_catfish",
+      "category": "material",
+      "targetId": "blue_catfish",
+      "name": "藍鯰魚",
+      "outputPath": "client/public/images/materials/material_missing_blue_catfish.png",
+      "row": 3,
+      "column": 1
+    },
+    {
+      "assetId": "material_missing_golden_crab",
+      "category": "material",
+      "targetId": "golden_crab",
+      "name": "金色螃蟹",
+      "outputPath": "client/public/images/materials/material_missing_golden_crab.png",
+      "row": 3,
+      "column": 2
+    },
+    {
+      "assetId": "material_missing_rainbow_fish",
+      "category": "material",
+      "targetId": "rainbow_fish",
+      "name": "彩虹魚",
+      "outputPath": "client/public/images/materials/material_missing_rainbow_fish.png",
+      "row": 3,
+      "column": 3
+    }
+  ]
+}
