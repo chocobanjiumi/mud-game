@@ -10,7 +10,7 @@ storm_highlands_basalt_spine: {
     description:
       '玄武岩脊位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。旅人可以 觀察 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 搜索 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線',
     exits: [
-      { direction: 'north', targetRoomId: 'storm_highlands_goat_ledge', description: '黑岩脊回到山羊岩階', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'storm_highlands_goat_ledge', description: '黑岩脊回到山羊岩階' },
       { direction: 'east', targetRoomId: 'storm_highlands_screaming_gully', description: '裂隙通往嘯風谷' },
     ],
     monsters: [
@@ -38,7 +38,7 @@ storm_highlands_eagle_scarp: {
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_griffin_watch', description: '羽痕回到獅鷲哨臺' },
       { direction: 'east', targetRoomId: 'storm_highlands_nest_pillars', description: '巢柱通往高處' },
-      { direction: 'south', targetRoomId: 'storm_highlands_old_windmill', description: '南側外露崖路繞過雷鷹巢痕與碎羽陡坡，沿風車斷翼陰影落向舊風車臺', edgeKind: 'distant_route', edgeNote: '雷鷹崖南側需沿外露崖路繞行到舊風車臺，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'storm_highlands_old_windmill', description: '南側外露崖路繞過雷鷹巢痕與碎羽陡坡，沿風車斷翼陰影落向舊風車臺' },
     ],
     monsters: [
       { monsterId: 'stormwatch_griffin', maxCount: 2, respawnSeconds: 170 },
@@ -64,7 +64,7 @@ storm_highlands_old_windmill: {
       '舊風車臺位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。旅人可以 觀察 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 搜索 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線',
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_thunder_pool', description: '水渠回到雷雨池' },
-      { direction: 'north', targetRoomId: 'storm_highlands_eagle_scarp', description: '北側崖路逆著亂風繞過斷翼石階，再貼著外露峭壁攀回雷鷹崖外緣', edgeKind: 'distant_route', edgeNote: '舊風車臺北側回雷鷹崖要繞過斷翼石階與外崖，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'storm_highlands_eagle_scarp', description: '北側崖路逆著亂風繞過斷翼石階，再貼著外露峭壁攀回雷鷹崖外緣' },
       { direction: 'east', targetRoomId: 'storm_highlands_storm_altar', description: '折翼階通往風神祭壇' },
     ],
     monsters: [
@@ -92,7 +92,7 @@ storm_highlands_screaming_gully: {
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_basalt_spine', description: '裂隙回到玄武岩脊' },
       { direction: 'east', targetRoomId: 'storm_highlands_lightning_tree', description: '風聲通往雷擊枯樹' },
-      { direction: 'north', targetRoomId: 'storm_highlands_old_windmill', description: '北側嘯風斜坡沿谷壁折返並穿過亂流，越過碎石風口後回到舊風車臺', edgeKind: 'distant_route', edgeNote: '嘯風谷北側斜坡被橫風切斷，需要沿谷壁折返舊風車臺，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'storm_highlands_old_windmill', description: '北側嘯風斜坡沿谷壁折返並穿過亂流，越過碎石風口後回到舊風車臺' },
     ],
     monsters: [
       { monsterId: 'cloudbridge_raider', maxCount: 2, respawnSeconds: 150 },
@@ -144,7 +144,7 @@ storm_highlands_storm_altar: {
       '風神祭壇位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。旅人可以 觀察 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 搜索 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線',
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_old_windmill', description: '折翼階回到舊風車臺' },
-      { direction: 'north', targetRoomId: 'storm_highlands_sky_cairns', description: '祭階升向天葬石堆', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'storm_highlands_sky_cairns', description: '祭階升向天葬石堆' },
       { direction: 'east', targetRoomId: 'storm_highlands_eye_of_gale', description: '祭紋通往暴風眼' },
     ],
     monsters: [
@@ -197,7 +197,7 @@ storm_highlands_sky_cairns: {
       '天葬石堆位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。旅人可以 觀察 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 搜索 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線',
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_nest_pillars', description: '石堆路回到高巢石柱' },
-      { direction: 'south', targetRoomId: 'storm_highlands_storm_altar', description: '祭階回到風神祭壇', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'storm_highlands_storm_altar', description: '祭階回到風神祭壇' },
       { direction: 'east', targetRoomId: 'storm_highlands_griffin_aerie', description: '羽骨路通往獅鷲巢臺' },
     ],
     monsters: [
@@ -225,7 +225,7 @@ storm_highlands_broken_beacon: {
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_lightning_tree', description: '焦木路回到雷擊枯樹' },
       { direction: 'east', targetRoomId: 'storm_highlands_stormglass_mine', description: '碎光路通往風暴玻礦' },
-      { direction: 'north', targetRoomId: 'storm_highlands_eye_of_gale', description: '北側烽臺階繞過倒塌烽火座並穿過旋風裂口，沿雷光石階升向暴風眼', edgeKind: 'distant_route', edgeNote: '斷烽臺北側階梯會繞過倒塌烽火座與旋風裂口，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'storm_highlands_eye_of_gale', description: '北側烽臺階繞過倒塌烽火座並穿過旋風裂口，沿雷光石階升向暴風眼' },
     ],
     monsters: [
       { monsterId: 'basalt_storm_colossus', maxCount: 1, respawnSeconds: 210 },
@@ -251,7 +251,7 @@ storm_highlands_eye_of_gale: {
       '暴風眼位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。旅人可以 觀察 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 搜索 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線',
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_storm_altar', description: '祭紋回到風神祭壇' },
-      { direction: 'south', targetRoomId: 'storm_highlands_broken_beacon', description: '南側旋風階道穿過倒塌烽火座陰影，沿雷光石階與碎旗樁折降回斷烽臺', edgeKind: 'distant_route', edgeNote: '暴風眼南側回斷烽臺需穿過旋風階道與倒塌烽火座，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'storm_highlands_broken_beacon', description: '南側旋風階道穿過倒塌烽火座陰影，沿雷光石階與碎旗樁折降回斷烽臺' },
       { direction: 'east', targetRoomId: 'storm_highlands_worldboss_peak', description: '風牆裂口通往風暴王峰' },
     ],
     monsters: [
@@ -278,7 +278,7 @@ storm_highlands_griffin_aerie: {
       '獅鷲巢臺位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。旅人可以 觀察 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 搜索 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線',
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_sky_cairns', description: '羽骨路回到天葬石堆' },
-      { direction: 'south', targetRoomId: 'storm_highlands_worldboss_peak', description: '南側巢臺風道越過羽骨棧脊與高低落差，穿過獅鷲盤旋區後通往風暴王峰', edgeKind: 'distant_route', edgeNote: '獅鷲巢臺南側風道跨過羽骨棧脊與高低落差，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'storm_highlands_worldboss_peak', description: '南側巢臺風道越過羽骨棧脊與高低落差，穿過獅鷲盤旋區後通往風暴王峰' },
     ],
     monsters: [
       { monsterId: 'stormwatch_griffin', maxCount: 3, respawnSeconds: 170 },
@@ -304,7 +304,7 @@ storm_highlands_stormglass_mine: {
       '風暴玻礦位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。旅人可以 觀察 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 搜索 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線',
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_broken_beacon', description: '碎光路回到斷烽臺' },
-      { direction: 'north', targetRoomId: 'storm_highlands_worldboss_peak', description: '北側玻化礦脈斜坡穿過閃電岩縫，沿帶電礦脊與碎玻石階一路攀上風暴王峰', edgeKind: 'distant_route', edgeNote: '風暴玻礦北側需沿玻化礦脈斜坡攀上王峰，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'storm_highlands_worldboss_peak', description: '北側玻化礦脈斜坡穿過閃電岩縫，沿帶電礦脊與碎玻石階一路攀上風暴王峰' },
     ],
     monsters: [
       { monsterId: 'stormglass_minebeast', maxCount: 2, respawnSeconds: 230 },
@@ -330,8 +330,8 @@ storm_highlands_worldboss_peak: {
       '風暴王峰位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。旅人可以 觀察 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 搜索 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線',
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_eye_of_gale', description: '風牆裂口回到暴風眼' },
-      { direction: 'north', targetRoomId: 'storm_highlands_griffin_aerie', description: '北側羽骨風道逆風越過棧脊與高低落差，穿過盤旋氣流回到獅鷲巢臺', edgeKind: 'distant_route', edgeNote: '風暴王峰北側回巢臺要逆風穿過羽骨棧脊與高低落差，實際路程長於相鄰一格。' },
-      { direction: 'south', targetRoomId: 'storm_highlands_stormglass_mine', description: '南側玻化礦脈斜坡沿閃電岩縫折降，繞過帶電礦脊與碎玻石階回到風暴玻礦', edgeKind: 'distant_route', edgeNote: '風暴王峰南側下到玻礦需沿玻化礦脈折降，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'storm_highlands_griffin_aerie', description: '北側羽骨風道逆風越過棧脊與高低落差，穿過盤旋氣流回到獅鷲巢臺' },
+      { direction: 'south', targetRoomId: 'storm_highlands_stormglass_mine', description: '南側玻化礦脈斜坡沿閃電岩縫折降，繞過帶電礦脊與碎玻石階回到風暴玻礦' },
     ],
     monsters: [
       { monsterId: 'gale_king_griffin', maxCount: 1, respawnSeconds: 1800 },
@@ -358,7 +358,7 @@ blackwood_charcoal_gate: {
       '炭樹入口是黑木林最外層的焦黑門廊，兩根被雷火劈裂的巨木像門柱夾住東行灰徑，北側獵人刻痕在樹皮上留下一串舊刀痕。灰白燈光被炭黑樹皮吞掉，只剩根縫裡的冷綠苔光勾出路面。東邊通往灰燼小徑，北邊可循刻痕繞向獵人刻痕；門柱下的狼毛、折斷箭桿與黏在樹根上的黑樹脂，都暗示林內陰影會移動，也會把回程標記悄悄錯開。',
     exits: [
       { direction: 'east', targetRoomId: 'blackwood_ash_path', description: '灰徑通往林內' },
-      { direction: 'north', targetRoomId: 'blackwood_hunter_marker', description: '獵人刻痕指向北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'blackwood_hunter_marker', description: '獵人刻痕指向北側' },
     ],
     monsters: [
       { monsterId: 'charcoal_bark_wolf', maxCount: 2, respawnSeconds: 130 },
@@ -384,7 +384,7 @@ blackwood_ash_path: {
     exits: [
       { direction: 'west', targetRoomId: 'blackwood_charcoal_gate', description: '灰徑回到炭樹入口' },
       { direction: 'east', targetRoomId: 'blackwood_moving_copse', description: '樹影通往移動樹叢' },
-      { direction: 'south', targetRoomId: 'blackwood_black_moss_bed', description: '苔痕落向黑苔床', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'blackwood_black_moss_bed', description: '苔痕落向黑苔床' },
     ],
     monsters: [
       { monsterId: 'charcoal_bark_wolf', maxCount: 2, respawnSeconds: 130 },
@@ -409,7 +409,7 @@ blackwood_hunter_marker: {
     description:
       '獵人刻痕刻在一排向北傾斜的炭木上，深淺不同的刀口被黑樹脂填滿，遠看像一串凝固的眼睛。南側刻痕折回炭樹入口，東側羽毛路通向渡鴉棲枝，地面則散著舊箭羽、獸骨扣和被踩碎的狼牙。這裡的樹幹仍保留追獵路線，卻有幾道新生枝條故意覆住舊記號；若順著刀口的年代差異判讀，可以看出黑木林何時開始扭曲獵人的回程。',
     exits: [
-      { direction: 'south', targetRoomId: 'blackwood_charcoal_gate', description: '刻痕回到炭樹入口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'blackwood_charcoal_gate', description: '刻痕回到炭樹入口' },
       { direction: 'east', targetRoomId: 'blackwood_raven_roost', description: '羽毛路通往渡鴉棲枝' },
     ],
     monsters: [
@@ -441,8 +441,6 @@ blackwood_raven_roost: {
         direction: 'south',
         targetRoomId: 'blackwood_moving_copse',
         description: '南側低枝路要穿過渡鴉羽毛、交錯黑枝與會移位的樹影，才回到移動樹叢',
-        edgeKind: 'distant_route',
-        edgeNote: '渡鴉棲枝到移動樹叢需要穿過低枝、羽毛與移位樹影，屬於黑木林內長路徑。',
       },
     ],
     monsters: [
@@ -473,8 +471,6 @@ blackwood_moving_copse: {
         direction: 'north',
         targetRoomId: 'blackwood_raven_roost',
         description: '北側低枝路要沿會移位的樹影上繞，穿過渡鴉羽毛雨後才抵達棲枝',
-        edgeKind: 'distant_route',
-        edgeNote: '移動樹叢到渡鴉棲枝需要沿低枝、黑枝與渡鴉羽毛繞行，屬於黑木林內長路徑。',
       },
       { direction: 'east', targetRoomId: 'blackwood_root_maze', description: '盤根路通往根迷宮' },
     ],
@@ -501,7 +497,7 @@ blackwood_black_moss_bed: {
     description:
       '黑苔床是一片濕冷低地，厚苔覆在炭根與碎石上，踩下去會滲出墨綠水光，連火光都被吸成暗色。北側苔痕可回灰燼小徑，東邊藥草味延伸到女巫樹洞。苔層裡混著夜蕨嫩芽、蛛卵殼和舊瓶塞，幾處被採過的凹痕又被新苔悄悄補平；周圍樹根像沉在泥中的手指，既提供落腳點，也把不小心偏離路面的腳步拖向更深的陰濕處。',
     exits: [
-      { direction: 'north', targetRoomId: 'blackwood_ash_path', description: '苔痕回到灰燼小徑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'blackwood_ash_path', description: '苔痕回到灰燼小徑' },
       { direction: 'east', targetRoomId: 'blackwood_witch_hollow', description: '藥草味通往女巫樹洞' },
     ],
     monsters: [
@@ -532,8 +528,6 @@ blackwood_webbed_crossing: {
         direction: 'south',
         targetRoomId: 'blackwood_root_maze',
         description: '南側網線要穿過數層黏蛛絲與塌陷樹根，沿低暗根縫落入盤根迷宮',
-        edgeKind: 'distant_route',
-        edgeNote: '織網岔口到盤根迷宮需要穿過黏蛛絲與塌陷根縫，屬於黑木林內長路徑。',
       },
       { direction: 'east', targetRoomId: 'blackwood_dark_elf_blind', description: '暗箭路通往暗精靈伏臺' },
     ],
@@ -565,8 +559,6 @@ blackwood_root_maze: {
         direction: 'north',
         targetRoomId: 'blackwood_webbed_crossing',
         description: '北側回織網岔口要攀過糾結樹根與黏絲斜坡，才能重新看見蛛網路標',
-        edgeKind: 'distant_route',
-        edgeNote: '盤根迷宮回織網岔口需要攀過糾結樹根與黏絲斜坡，屬於黑木林內長路徑。',
       },
       { direction: 'east', targetRoomId: 'blackwood_sap_pool', description: '黏液痕通往黑樹脂池' },
     ],
@@ -595,7 +587,7 @@ blackwood_witch_hollow: {
     exits: [
       { direction: 'west', targetRoomId: 'blackwood_black_moss_bed', description: '藥草味回到黑苔床' },
       { direction: 'east', targetRoomId: 'blackwood_bone_chimes', description: '骨鈴路通往骨鈴林' },
-      { direction: 'south', targetRoomId: 'blackwood_moonless_glade', description: '無月空地向南展開', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'blackwood_moonless_glade', description: '無月空地向南展開' },
     ],
     monsters: [
       { monsterId: 'nightfern_witch', maxCount: 2, respawnSeconds: 180 },
@@ -626,8 +618,6 @@ blackwood_dark_elf_blind: {
         direction: 'south',
         targetRoomId: 'blackwood_sap_pool',
         description: '南側斜梯藏在伏臺陰影下，要避開暗箭孔並踩過樹脂滑階才落到黑樹脂池',
-        edgeKind: 'distant_route',
-        edgeNote: '暗精靈伏臺到黑樹脂池需要沿陰影斜梯與樹脂滑階下行，屬於黑木林內長路徑。',
       },
     ],
     monsters: [
@@ -658,8 +648,6 @@ blackwood_sap_pool: {
         direction: 'north',
         targetRoomId: 'blackwood_dark_elf_blind',
         description: '北側回伏臺要沿黏滑樹脂階上爬，穿過暗箭孔下方陰影才抵達平台',
-        edgeKind: 'distant_route',
-        edgeNote: '黑樹脂池回暗精靈伏臺需要沿樹脂滑階與暗箭陰影上行，屬於黑木林內長路徑。',
       },
       { direction: 'east', targetRoomId: 'blackwood_burnt_totem', description: '焦木路通往燒焦圖騰' },
     ],
@@ -691,15 +679,11 @@ blackwood_bone_chimes: {
         direction: 'east',
         targetRoomId: 'blackwood_burnt_totem',
         description: '東側吊骨路要穿過一串風動骨鈴與焦黑藤索，繞過炭根才到燒焦圖騰前方',
-        edgeKind: 'distant_route',
-        edgeNote: '骨鈴林到燒焦圖騰需要穿過吊骨路、風動骨鈴與焦黑藤索，屬於黑木林內長路徑。',
       },
       {
         direction: 'south',
         targetRoomId: 'blackwood_moonless_glade',
         description: '南側鈴聲會把人引下暗坡，穿過無光樹冠與骨牌線後才抵達無月空地',
-        edgeKind: 'distant_route',
-        edgeNote: '骨鈴林到無月空地需要沿暗坡、無光樹冠與骨牌線下行，屬於黑木林內長路徑。',
       },
     ],
     monsters: [
@@ -725,7 +709,7 @@ blackwood_moonless_glade: {
     description:
       '無月空地被黑樹冠圍成一圈，天空明明敞開，卻沒有一點月光落下，只有草尖上的冷露映著微弱綠火。北側無月路可回女巫樹洞，東邊爪痕獸道通向影狼窩。空地中央有被踩平的草環、碎裂骨牌和幾束反向生長的夜蕨，四周樹影像一圈沉默看客。這裡的安靜帶著獸息，越靠近東側，地面爪印越深，狼群留下的黑毛也越新。',
     exits: [
-      { direction: 'north', targetRoomId: 'blackwood_witch_hollow', description: '無月路回到女巫樹洞', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'blackwood_witch_hollow', description: '無月路回到女巫樹洞' },
       { direction: 'east', targetRoomId: 'blackwood_wolf_den', description: '爪痕通往影狼窩' },
     ],
     monsters: [
@@ -782,8 +766,6 @@ blackwood_burnt_totem: {
         direction: 'north',
         targetRoomId: 'blackwood_poison_fern',
         description: '北側煙痕路要繞過燒焦圖騰背面，穿過毒蕨煙霧與低刺根才到毒蕨林',
-        edgeKind: 'distant_route',
-        edgeNote: '燒焦圖騰到毒蕨林需要穿過煙痕路、毒蕨煙霧與低刺根，屬於黑木林內長路徑。',
       },
       { direction: 'east', targetRoomId: 'blackwood_elder_ring', description: '炭圈通往長老樹環' },
     ],
@@ -841,8 +823,6 @@ blackwood_hollow_log_bridge: {
         direction: 'south',
         targetRoomId: 'blackwood_elder_ring',
         description: '南側樹洞階要穿過空心倒木內部，沿年輪裂縫與黑根階梯落向長老樹環',
-        edgeKind: 'distant_route',
-        edgeNote: '空心木橋到長老樹環需要穿過倒木內部、年輪裂縫與黑根階梯，屬於黑木林內長路徑。',
       },
     ],
     monsters: [
@@ -873,8 +853,6 @@ blackwood_elder_ring: {
         direction: 'north',
         targetRoomId: 'blackwood_hollow_log_bridge',
         description: '北側回空心木橋要沿黑根階梯上爬，穿過年輪裂縫與倒木中空腹部',
-        edgeKind: 'distant_route',
-        edgeNote: '長老樹環回空心木橋需要沿黑根階梯、年輪裂縫與倒木內部上行，屬於黑木林內長路徑。',
       },
       { direction: 'east', targetRoomId: 'blackwood_heartwood_core', description: '年輪路通往黑心木核' },
     ],
@@ -906,15 +884,11 @@ blackwood_fallen_shrine: {
         direction: 'north',
         targetRoomId: 'blackwood_elder_ring',
         description: '北側斷柱路要穿過倒塌小祠碎石與纏根拱門，才接上長老樹環外圈',
-        edgeKind: 'distant_route',
-        edgeNote: '倒塌小祠到長老樹環需要穿過斷柱、碎石與纏根拱門，屬於黑木林內長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'blackwood_heartwood_core',
         description: '東側祠後根道被黑樹脂封住邊緣，必須沿發亮根脈繞到黑心木核外壁',
-        edgeKind: 'distant_route',
-        edgeNote: '倒塌小祠到黑心木核需要沿祠後根道、黑樹脂邊緣與發亮根脈繞行，屬於黑木林內長路徑。',
       },
     ],
     monsters: [

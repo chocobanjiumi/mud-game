@@ -316,12 +316,10 @@ celestial_final_seal: {
         direction: 'west',
         targetRoomId: 'village_farmland',
         description: '西側小路要沿泥濘車轍繞過兩片荒田，穿過舊籬笆缺口後才回到新手村外圍農田',
-        edgeKind: 'distant_route',
-        edgeNote: '舊農路口到新手村外圍農田跨過荒田與籬笆缺口，實際路程長於相鄰一格。',
       },
-      { direction: 'north', targetRoomId: 'old_farmland_overgrown_field', description: '北側田壟雜草叢生', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'old_farmland_overgrown_field', description: '北側田壟雜草叢生' },
       { direction: 'east', targetRoomId: 'old_farmland_rat_ditch', description: '東邊水溝傳來窸窣聲' },
-      { direction: 'south', targetRoomId: 'old_farmland_cart_shortcut', description: '南側舊車道可繞過農田', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'old_farmland_cart_shortcut', description: '南側舊車道可繞過農田' },
     ],
     monsters: [
       { monsterId: 'field_rat', maxCount: 2, respawnSeconds: 25 },
@@ -346,8 +344,8 @@ old_farmland_overgrown_field: {
     description:
       '舊麥田多年無人收割，麥稈和野草長到腰間，田埂幾乎被掩埋。風一吹過，草浪下方就會露出一排排田鼠洞，偶爾還有黑鴉停在斷裂灌溉樁上觀察。泥土仍保留肥力，旅人能在草叢中採集野菜或找回遺失農具，但每次翻動田壟都可能驚動藏在根部的鼠群。北側稻草人影子會在草浪間若隱若現，東面塌陷穀倉則傳來乾草與木樑的霉味。',
     exits: [
-      { direction: 'south', targetRoomId: 'old_farmland_crossroads', description: '沿田埂回到舊農路口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
-      { direction: 'north', targetRoomId: 'old_farmland_scarecrow_watch', description: '田中央有一座破稻草人', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'old_farmland_crossroads', description: '沿田埂回到舊農路口' },
+      { direction: 'north', targetRoomId: 'old_farmland_scarecrow_watch', description: '田中央有一座破稻草人' },
       { direction: 'east', targetRoomId: 'old_farmland_collapsed_barn', description: '東方可見塌陷穀倉' },
     ],
     monsters: [
@@ -375,7 +373,7 @@ old_farmland_rat_ditch: {
       '農路東側的排水溝已被泥沙堵住，淺水散發潮濕腐味，兩岸木板被啃出許多缺口。田鼠沿著水溝築巢，把掉落穀粒和破布拖進洞中，讓整段溝渠像一條會蠕動的灰色帶子。旅人可清理堵塞處恢復灌溉，也能在漂浮雜物裡找到小型材料，但必須留意水面下的史萊姆泡泡。西側木板回到路口，東面堵塞水流則指向乾涸灌溉渠。',
     exits: [
       { direction: 'west', targetRoomId: 'old_farmland_crossroads', description: '跨過木板回到路口' },
-      { direction: 'north', targetRoomId: 'old_farmland_collapsed_barn', description: '水溝延伸到塌穀倉旁', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'old_farmland_collapsed_barn', description: '水溝延伸到塌穀倉旁' },
       { direction: 'east', targetRoomId: 'old_farmland_irrigation_channel', description: '堵塞水流通往灌溉渠' },
     ],
     monsters: [
@@ -401,9 +399,9 @@ old_farmland_scarecrow_watch: {
     description:
       '荒草麥田中央立著一座破稻草人，草帽被雨水壓歪，外套袖口掛滿黑鴉羽毛。它原本只是農夫用來趕鳥的工具，如今卻總在沒人看見時換個角度，彷彿仍努力守住這片田。稻草人腳下有許多被啄開的田鼠洞和亮晶晶的小物，搜索時可找到作物種子，也可能驚動盤旋的黑鴉群。南側草浪能退回荒草麥田，東面破井在田邊投下陰影。',
     exits: [
-      { direction: 'south', targetRoomId: 'old_farmland_overgrown_field', description: '穿過草浪回到荒草麥田', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
-      { direction: 'east', targetRoomId: 'old_farmland_well', description: '破井在田邊投下陰影', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
-      { direction: 'north', targetRoomId: 'old_farmland_harvest_circle', description: '北側作物排成奇怪圓形', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'old_farmland_overgrown_field', description: '穿過草浪回到荒草麥田' },
+      { direction: 'east', targetRoomId: 'old_farmland_well', description: '破井在田邊投下陰影' },
+      { direction: 'north', targetRoomId: 'old_farmland_harvest_circle', description: '北側作物排成奇怪圓形' },
     ],
     monsters: [
       { monsterId: 'straw_watchman', maxCount: 1, respawnSeconds: 90 },
@@ -429,20 +427,16 @@ old_farmland_collapsed_barn: {
       '穀倉屋頂塌了一半，陽光從破洞照進堆滿霉味的乾草與碎木樑。牆邊舊穀袋被咬破，穀粒灑了一地，引來田鼠、黑鴉和偶爾鑽入的野狼。穀倉後門通往南瓜地，東側有一條去舊井的小徑。旅人可在乾草堆裡找材料或任務物品，但不穩的木樑會在戰鬥中掉落。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口',
     exits: [
       { direction: 'west', targetRoomId: 'old_farmland_overgrown_field', description: '回到荒草麥田' },
-      { direction: 'south', targetRoomId: 'old_farmland_rat_ditch', description: '水溝從倉牆旁流過', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'old_farmland_rat_ditch', description: '水溝從倉牆旁流過' },
       {
         direction: 'east',
         targetRoomId: 'old_farmland_well',
         description: '東側舊井需繞過塌落木樑與濕泥小徑，從穀倉外牆缺口旁才能抵達',
-        edgeKind: 'distant_route',
-        edgeNote: '塌陷穀倉到舊井需要繞過塌落木樑與濕泥小徑，屬於長路徑。',
       },
       {
         direction: 'north',
         targetRoomId: 'old_farmland_pumpkin_patch',
         description: '北側後門被南瓜藤纏住，必須沿穀倉背牆繞過倒塌屋頂後才進入南瓜地',
-        edgeKind: 'distant_route',
-        edgeNote: '塌陷穀倉到膨脹南瓜地需要繞過倒塌屋頂與藤蔓，屬於長路徑。',
       },
     ],
     monsters: [
@@ -472,22 +466,16 @@ old_farmland_well: {
         direction: 'west',
         targetRoomId: 'old_farmland_collapsed_barn',
         description: '西側小徑沿井邊濕泥繞過塌落木樑，穿過穀倉外牆缺口才回到塌陷穀倉',
-        edgeKind: 'distant_route',
-        edgeNote: '舊井回塌陷穀倉需要沿濕泥小徑繞過塌落木樑，屬於長路徑。',
       },
       {
         direction: 'south',
         targetRoomId: 'old_farmland_irrigation_channel',
         description: '南側井水暗渠先穿過堵塞木閘與泥溝，沿乾裂渠壁下行才接到灌溉渠',
-        edgeKind: 'distant_route',
-        edgeNote: '舊井到乾涸灌溉渠需要沿堵塞暗渠與乾裂渠壁下行，屬於長路徑。',
       },
       {
         direction: 'north',
         targetRoomId: 'old_farmland_mildew_orchard',
         description: '北側果園隔著被污染的樹根坡，必須沿井畔石階繞上霉斑果樹間入口',
-        edgeKind: 'distant_route',
-        edgeNote: '舊井到霉斑果園需要沿井畔石階與污染樹根坡上行，屬於長路徑。',
       },
     ],
     monsters: [
@@ -517,17 +505,13 @@ old_farmland_pumpkin_patch: {
         direction: 'south',
         targetRoomId: 'old_farmland_collapsed_barn',
         description: '南側回穀倉要穿過糾結南瓜藤，沿倒塌屋頂邊緣繞回後門缺口旁邊',
-        edgeKind: 'distant_route',
-        edgeNote: '膨脹南瓜地回塌陷穀倉需要穿過南瓜藤與倒塌屋頂邊緣，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'old_farmland_mildew_orchard',
         description: '東側藤蔓小路需繞過幾顆膨脹南瓜與腐果溝，才會進入霉斑果園內側',
-        edgeKind: 'distant_route',
-        edgeNote: '膨脹南瓜地到霉斑果園需要沿藤蔓小路繞過腐果溝，屬於長路徑。',
       },
-      { direction: 'north', targetRoomId: 'old_farmland_root_cellar', description: '南瓜藤遮住地窖入口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'old_farmland_root_cellar', description: '南瓜藤遮住地窖入口' },
     ],
     monsters: [
       { monsterId: 'thorn_pumpkin', maxCount: 2, respawnSeconds: 45 },
@@ -556,22 +540,16 @@ old_farmland_mildew_orchard: {
         direction: 'west',
         targetRoomId: 'old_farmland_pumpkin_patch',
         description: '西側藤蔓小路穿過腐果溝與低矮籬笆，繞回被膨脹南瓜擋住的田埂',
-        edgeKind: 'distant_route',
-        edgeNote: '霉斑果園回膨脹南瓜地需要穿過腐果溝與籬笆，屬於長路徑。',
       },
       {
         direction: 'south',
         targetRoomId: 'old_farmland_well',
         description: '南側樹根坡道沿污染水痕下滑，經過幾段青苔石階後才回到舊井邊',
-        edgeKind: 'distant_route',
-        edgeNote: '霉斑果園回舊井需要沿污染樹根坡與青苔石階下行，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'old_farmland_beehive_rows',
         description: '東側蜂箱行列隔著密果樹與嗡鳴蜂道，必須繞過低枝才能靠近入口',
-        edgeKind: 'distant_route',
-        edgeNote: '霉斑果園到蜂箱行列需要穿過密果樹與蜂道，屬於長路徑。',
       },
     ],
     monsters: [
@@ -598,7 +576,7 @@ old_farmland_granary: {
       '水渠旁的小糧倉比主穀倉完整，但木門已被啃出洞，地板下傳來密集奔跑聲。牆邊堆著幾袋發霉穀物，最上方的袋子被人重新縫過，像是有人最近翻找過。糧倉可作為任務與資源點，旅人能回收穀袋、種子或老農具；若踩到鬆動地板，藏在底下的田鼠群會立刻湧出。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口',
     exits: [
       { direction: 'west', targetRoomId: 'old_farmland_irrigation_channel', description: '木梯回到灌溉渠旁' },
-      { direction: 'north', targetRoomId: 'old_farmland_abandoned_farmhouse', description: '糧倉後方通往農舍', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'old_farmland_abandoned_farmhouse', description: '糧倉後方通往農舍' },
       { direction: 'east', targetRoomId: 'old_farmland_toolshed', description: '東側有一間工具棚' },
     ],
     monsters: [
@@ -628,8 +606,6 @@ old_farmland_irrigation_channel: {
         direction: 'north',
         targetRoomId: 'old_farmland_well',
         description: '北側水渠源頭要沿乾裂渠壁上行，穿過堵塞木閘與泥溝後才回到舊井',
-        edgeKind: 'distant_route',
-        edgeNote: '乾涸灌溉渠回舊井需要沿乾裂渠壁與堵塞暗渠上行，屬於長路徑。',
       },
       { direction: 'east', targetRoomId: 'old_farmland_granary', description: '水渠旁有小糧倉' },
     ],
@@ -656,15 +632,13 @@ old_farmland_abandoned_farmhouse: {
     description:
       '農舍木門半開，門廊下的搖椅仍朝著田地，像主人只是暫時離開。屋內桌上留著發黃餐具和一盞熄滅油燈，牆上掛著褪色全家畫像。藤蔓從窗戶爬進來，根鬚壓住地板通往地下根窖的縫隙。這裡是農場任務線的核心房，旅人可調查日記、家書與失蹤農夫留下的線索。日記最後幾頁反覆提到收成圓陣、舊石界碑與一場失敗的豐收儀式，桌腳旁還有被田鼠怪物咬碎的求救信。若旅人先修復水渠或清理根窖，屋內某些隱藏抽屜會變得更容易發現。火爐灰燼裡還壓著半枚焦黑護符，與稻草人胸口的布片圖案相同',
     exits: [
-      { direction: 'south', targetRoomId: 'old_farmland_granary', description: '後門回到小糧倉', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'old_farmland_granary', description: '後門回到小糧倉' },
       {
         direction: 'west',
         targetRoomId: 'old_farmland_root_cellar',
         description: '西側屋後根道低矮潮濕，必須繞過塌陷地板與纏牆根鬚才到地下根窖',
-        edgeKind: 'distant_route',
-        edgeNote: '荒廢農舍到地下根窖需要穿過低矮根道與塌陷地板，屬於長路徑。',
       },
-      { direction: 'east', targetRoomId: 'old_farmland_chicken_coop', description: '窗外就是破雞舍', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'old_farmland_chicken_coop', description: '窗外就是破雞舍' },
     ],
     monsters: [
       { monsterId: 'barn_rat_swarm', maxCount: 1, respawnSeconds: 30 },
@@ -693,11 +667,9 @@ old_farmland_beehive_rows: {
         direction: 'west',
         targetRoomId: 'old_farmland_mildew_orchard',
         description: '西側果樹小路要穿過嗡鳴蜂道與密集低枝，才會回到霉斑果園內側',
-        edgeKind: 'distant_route',
-        edgeNote: '蜂箱行列回霉斑果園需要穿過蜂道與低枝果樹，屬於長路徑。',
       },
       { direction: 'east', targetRoomId: 'old_farmland_chicken_coop', description: '東側破籬笆通往雞舍' },
-      { direction: 'north', targetRoomId: 'old_farmland_windbreak_trees', description: '北側有一排防風樹', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'old_farmland_windbreak_trees', description: '北側有一排防風樹' },
     ],
     monsters: [
       { monsterId: 'dark_crow', maxCount: 2, respawnSeconds: 35 },
@@ -777,10 +749,8 @@ old_farmland_root_cellar: {
         direction: 'east',
         targetRoomId: 'old_farmland_abandoned_farmhouse',
         description: '東側低矮根道要穿過潮濕根鬚與塌陷地板下方，才能回到荒廢農舍後門',
-        edgeKind: 'distant_route',
-        edgeNote: '地下根窖回荒廢農舍需要穿過潮濕根道與塌陷地板，屬於長路徑。',
       },
-      { direction: 'south', targetRoomId: 'old_farmland_pumpkin_patch', description: '低矮土洞通往南瓜地', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'old_farmland_pumpkin_patch', description: '低矮土洞通往南瓜地' },
     ],
     monsters: [
       { monsterId: 'ditch_sludge', maxCount: 2, respawnSeconds: 35 },
@@ -805,7 +775,7 @@ old_farmland_chicken_coop: {
     description:
       '農舍東側的雞舍早已沒有家禽，只剩破網、乾草窩和滿地羽毛。幾個巢箱裡堆著田鼠偷來的穀粒，屋樑上則有黑鴉築巢。雞舍連接工具棚和蜂箱行列，東側破柵欄後可望見牧草地但洞口太窄無法直接通過。旅人可搜索巢箱取得小材料，但要注意腳下破網會絆住移動。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
-      { direction: 'west', targetRoomId: 'old_farmland_abandoned_farmhouse', description: '窗邊小路回到農舍', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'west', targetRoomId: 'old_farmland_abandoned_farmhouse', description: '窗邊小路回到農舍' },
       { direction: 'north', targetRoomId: 'old_farmland_fill_n4_1', description: '北側廢棄農道回到工具棚' },
     ],
     monsters: [
@@ -831,9 +801,9 @@ old_farmland_windbreak_trees: {
     description:
       '農場北側種著一排老防風樹，樹幹被歲月吹得向同一方向傾斜，根部盤住石界碑與蜂箱小路。鳥巢、乾草和舊繩子掛在枝間，黑鴉會利用樹影遮蔽行蹤。這裡能阻擋平原強風，也把農場和更北方荒野分隔開來。旅人可調查根部裂縫，找到石界碑與牧草地之間的隱藏路線。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口',
     exits: [
-      { direction: 'south', targetRoomId: 'old_farmland_beehive_rows', description: '樹根小路回到蜂箱行列', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'old_farmland_beehive_rows', description: '樹根小路回到蜂箱行列' },
       { direction: 'east', targetRoomId: 'old_farmland_moonlit_pasture', description: '樹影外是月光牧草地' },
-      { direction: 'north', targetRoomId: 'old_farmland_stone_marker', description: '樹根纏住一座石界碑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'old_farmland_stone_marker', description: '樹根纏住一座石界碑' },
     ],
     monsters: [
       { monsterId: 'dark_crow', maxCount: 3, respawnSeconds: 35 },
@@ -858,7 +828,7 @@ old_farmland_stone_marker: {
     description:
       '防風樹列北端立著一座舊石界碑，碑面刻著農場邊界、灌溉權和豐收祝禱。字跡大多被苔蘚覆蓋，但仍能看出幾個近期被重新描深的符號。東側能望見月光牧草地，北側倒伏草痕與野狼怪物足跡指向收成圓陣，但界碑周圍根鬚封住兩條舊路，需從防風樹列或稻草人看守地繞行。這裡是探索點與事件點，可揭示農場荒廢並非單純天災，而與收成儀式有關。',
     exits: [
-      { direction: 'south', targetRoomId: 'old_farmland_windbreak_trees', description: '樹根小路回到防風樹列', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'old_farmland_windbreak_trees', description: '樹根小路回到防風樹列' },
     ],
     monsters: [
       { monsterId: 'wild_wolf', maxCount: 2, respawnSeconds: 45 },
@@ -883,7 +853,7 @@ old_farmland_harvest_circle: {
     description:
       '農場最北側的作物並非自然生長，而是被排列成一個巨大的收成圓陣。麥穗、南瓜藤、果枝和草繩交錯成古老符號，中心插著一把生鏽鐮刀。圓陣周圍安靜得不自然，連黑鴉都只敢停在邊緣，亡靈怪物的冷霧貼著麥穗流動。東側倒伏草痕可對應舊石界碑，但根鬚封住界碑方向，需從稻草人看守地重新繞回。這裡是老舊農場的大型事件鉤子，可能與豐收祝福失控、農夫失蹤和魔化作物來源有關。旅人若在此完成調查，能串起舊井、根窖、界碑與稻草人的線索',
     exits: [
-      { direction: 'south', targetRoomId: 'old_farmland_scarecrow_watch', description: '草影回到稻草人看守地', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'old_farmland_scarecrow_watch', description: '草影回到稻草人看守地' },
     ],
     monsters: [
       { monsterId: 'harvest_wight', maxCount: 1, respawnSeconds: 900 },
@@ -909,13 +879,11 @@ old_farmland_cart_shortcut: {
     description:
       '路口南側的舊車道繞過大部分田地，兩側低矮籬笆倒了一半，泥地上還留著深深車輪印。斷掉的木車橫在路中央，車斗裡堆著空麻袋和幾只被啃破的木箱。東側車輪印指向工具棚但木車卡住岔口，需回舊農路口再走小糧倉路線。這裡是交通與捷徑節點，旅人清理木車後可快速往返路口和村外小路，也能作為低等旅人撤退時的安全路線',
     exits: [
-      { direction: 'north', targetRoomId: 'old_farmland_crossroads', description: '車道回到舊農路口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'old_farmland_crossroads', description: '車道回到舊農路口' },
       {
         direction: 'west',
         targetRoomId: 'village_outskirts',
         description: '西側舊車道先繞過斷木車與低矮籬笆，穿過荒田邊界後才回到村外小路',
-        edgeKind: 'distant_route',
-        edgeNote: '舊車道捷徑回村外小路需要跨過荒田邊界與斷木車，實際路程長於相鄰一格。',
       },
     ],
     monsters: [
@@ -947,10 +915,8 @@ old_farmland_cart_shortcut: {
         direction: 'south',
         targetRoomId: 'old_farmland_stone_marker',
         description: '南向小徑沿岩壁外緣回到老農場石界碑，路程比相鄰房間更長，谷風會提醒玩家已離開溪谷',
-        edgeKind: 'distant_route',
-        edgeNote: '溪谷入口南側需沿岩壁外緣走回廢田界碑，實際路程長於相鄰一格。',
       },
-      { direction: 'north', targetRoomId: 'whispering_valley_reed_bank', description: '溪水流向蘆葦岸', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'whispering_valley_reed_bank', description: '溪水流向蘆葦岸' },
       { direction: 'east', targetRoomId: 'whispering_valley_mossy_footbridge', description: '苔石小橋跨過溪水' },
       { direction: 'west', targetRoomId: 'whispering_valley_ranger_post', description: '西側木棚像巡林哨站' },
     ],
@@ -977,8 +943,8 @@ whispering_valley_reed_bank: {
     description:
       '溪谷入口北側長滿及肩蘆葦，細長葉片在風裡彼此摩擦，像無數人在輕聲交談。泥岸上留著田鼠、野狼和巡林靴印，溪面則偶爾泛起史萊姆經過的圓形波紋。旅人可採集蘆葦、尋找魚餌或沿岸追蹤腳印，但視線會被草葉遮住。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
-      { direction: 'south', targetRoomId: 'whispering_valley_entrance', description: '沿岸回到溪谷入口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
-      { direction: 'north', targetRoomId: 'whispering_valley_clear_stream', description: '溪水變得更清澈', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'whispering_valley_entrance', description: '沿岸回到溪谷入口' },
+      { direction: 'north', targetRoomId: 'whispering_valley_clear_stream', description: '溪水變得更清澈' },
       { direction: 'east', targetRoomId: 'whispering_valley_fishing_bend', description: '水流轉向釣魚灣' },
     ],
     monsters: [
@@ -1004,8 +970,8 @@ whispering_valley_clear_stream: {
     description:
       '溪水在此變淺，能看見鵝卵石、魚苗和幾片被水流打磨得發亮的藥草葉。淺灘兩側岩壁回音很強，腳步聲會被放大成遠處低語。旅人可在這裡釣小魚、清洗採集物或搜索水底亮點，但過於靠近水泡會驚動潛伏的史萊姆。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
-      { direction: 'south', targetRoomId: 'whispering_valley_reed_bank', description: '水流回到蘆葦岸', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
-      { direction: 'north', targetRoomId: 'whispering_valley_echo_rocks', description: '上游有回音岩群', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'whispering_valley_reed_bank', description: '水流回到蘆葦岸' },
+      { direction: 'north', targetRoomId: 'whispering_valley_echo_rocks', description: '上游有回音岩群' },
       { direction: 'east', targetRoomId: 'whispering_valley_herb_slope', description: '東側斜坡長滿草藥' },
     ],
     monsters: [
@@ -1085,7 +1051,7 @@ whispering_valley_fishing_bend: {
       '溪水在蘆葦岸東側轉出一個平靜彎灣，幾塊扁平石頭正好能坐下垂釣。水面有銀色魚影穿梭，岸邊還插著被遺忘的竹釣竿。這裡是明顯資源點，旅人可釣魚、找魚餌或修補舊竿，但腐木下的田鼠和水邊史萊姆會干擾安靜作業。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       { direction: 'west', targetRoomId: 'whispering_valley_reed_bank', description: '回到蘆葦岸' },
-      { direction: 'east', targetRoomId: 'whispering_valley_mist_pool', description: '彎灣深處起了霧', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'whispering_valley_mist_pool', description: '彎灣深處起了霧' },
       { direction: 'north', targetRoomId: 'whispering_valley_mossy_footbridge', description: '北側溪岸小徑回到苔石小橋' },
       { direction: 'south', targetRoomId: 'whispering_valley_herb_slope', description: '南側濕石小徑通往草藥斜坡' },
     ],
@@ -1112,20 +1078,16 @@ whispering_valley_echo_rocks: {
     description:
       '上游岩壁崩落形成一片奇特岩群，每塊岩石都能把聲音折成不同方向。站在中央說話，回音會像從四面八方的陌生人嘴裡傳回。岩面刻有巡林記號與更古老的溪谷符號，旅人可藉回音尋找隱藏通道，也可能被黑鴉和野狼利用聲音誤導。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進',
     exits: [
-      { direction: 'south', targetRoomId: 'whispering_valley_clear_stream', description: '下坡回到清溪淺灘', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'whispering_valley_clear_stream', description: '下坡回到清溪淺灘' },
       {
         direction: 'east',
         targetRoomId: 'whispering_valley_ice_fern_patch',
         description: '往東的冷聲穿過折音石縫與冷霧岔路，最後接到冰蕨叢，需要靠霜痕辨路',
-        edgeKind: 'distant_route',
-        edgeNote: '回音岩群東側要穿過折音石縫與冷霧岔路，才會接到冰蕨叢。',
       },
       {
         direction: 'north',
         targetRoomId: 'whispering_valley_waterfall_base',
         description: '循上游回音繞過多塊崩落岩，才會抵達瀑布底部，途中回聲常讓方向感混亂',
-        edgeKind: 'distant_route',
-        edgeNote: '回音岩群北側需循著上游水聲繞過多塊崩落岩，瀑布並非相鄰一格。',
       },
     ],
     monsters: [
@@ -1155,8 +1117,6 @@ whispering_valley_willow_camp: {
         direction: 'west',
         targetRoomId: 'whispering_valley_cold_spring',
         description: '西側柳枝小路繞過垂枝與冷泉外圍後才回到泉邊，濕土與拖痕會顯示這是長路',
-        edgeKind: 'distant_route',
-        edgeNote: '柳樹營地西側小路會繞過低垂柳枝與冷泉外圍，實際距離長於一格。',
       },
       {
         direction: 'north',

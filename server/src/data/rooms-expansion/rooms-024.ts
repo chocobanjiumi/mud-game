@@ -307,7 +307,7 @@ bloodsalt_coast_red_salt_flats: {
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_entrance_tidegate', description: '回到潮門入口' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_wreckers_marker', description: '拾荒者標記在東側' },
-      { direction: 'north', targetRoomId: 'bloodsalt_coast_bone_net_shoal', description: '骨網淺灘在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_bone_net_shoal', description: '骨網淺灘在北側' },
     ],
     monsters: [
       { monsterId: 'bloodsalt_red_salt_reaver', maxCount: 2, respawnSeconds: 260 },
@@ -333,7 +333,7 @@ bloodsalt_coast_wreckers_marker: {
       '拾荒者標記由半截船桅、破燈籠和紅鹽繩結綁成，歪斜插在紅鹽灘東側的殘骸堆前。西邊鹽殼路退回紅鹽灘，北側長路沿濕滑礁階與斷旗影子通向海盜烽燈。標記周圍散落拆下的銅釘、刮乾的魚骨網和被潮水泡爛的貨箱牌，木桅上刻著分贓符號與警戒缺口；這裡不像營地，更像海岸拾荒者用來辨認潮線、沉船位置和安全撤離時機的粗糙記號。',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_red_salt_flats', description: '回到紅鹽灘' },
-      { direction: 'north', targetRoomId: 'bloodsalt_coast_pirate_beacon', description: '海盜烽燈在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_pirate_beacon', description: '海盜烽燈在北側' },
     ],
     monsters: [
       { monsterId: 'bloodsalt_red_salt_reaver', maxCount: 1, respawnSeconds: 260 },
@@ -358,9 +358,9 @@ bloodsalt_coast_bone_net_shoal: {
     description:
       '骨網淺灘的水位只到膝下，卻鋪滿以魚骨、繩索和鹽晶結成的白色網架，紅潮從網孔間慢慢滲過。南側魚骨浮網可繞回紅鹽灘，東面破網與旗影接向海盜烽燈，北側鹽晶潮溝斜上鹽玻洞。淺水裡有魚人火堆殘灰、刃貝殼痕和被割斷的走私繩，網結上還黏著暗紅祭血；越靠北，鹽晶越透明，顯示潮水正把這片淺灘拖向洞穴深處。',
     exits: [
-      { direction: 'south', targetRoomId: 'bloodsalt_coast_red_salt_flats', description: '回到紅鹽灘', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_red_salt_flats', description: '回到紅鹽灘' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_pirate_beacon', description: '海盜烽燈在東側' },
-      { direction: 'north', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '北側骨網淺灘沿魚骨浮網斜上，穿過鹽晶潮溝與碎玻潮洞抵達鹽玻洞', edgeKind: 'distant_route', edgeNote: '骨網淺灘到鹽玻洞需沿魚骨浮網與鹽晶潮溝斜行，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '北側骨網淺灘沿魚骨浮網斜上，穿過鹽晶潮溝與碎玻潮洞抵達鹽玻洞' },
     ],
     monsters: [
       { monsterId: 'bloodsalt_bone_net_murloc', maxCount: 2, respawnSeconds: 280 },
@@ -386,9 +386,9 @@ bloodsalt_coast_pirate_beacon: {
       '海盜烽燈架在一座紅鹽礁台上，鐵籠裡燃著帶綠邊的暗火，斷旗繩索被鹽風拉得不停敲擊木桿。西面回骨網淺灘，南側長路折向拾荒者標記，東邊赤潮池發出濃重腥甜味，北側礁階可上礁釣哨。烽燈下壓著分贓刻板、鏽刀和被潮水泡黑的航圖；南側崖壁另有一條被鹽晶侵蝕的窄梯，陰冷腐味從深處湧上，暗示海岸下方仍連著更古老的墓穴。',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_bone_net_shoal', description: '回到骨網淺灘' },
-      { direction: 'south', targetRoomId: 'bloodsalt_coast_wreckers_marker', description: '回到拾荒者標記', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_wreckers_marker', description: '回到拾荒者標記' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_crimson_tide_pool', description: '赤潮池在東側' },
-      { direction: 'north', targetRoomId: 'bloodsalt_coast_reef_fishing_post', description: '北側海盜烽燈沿濕滑礁階上行，繞過斷旗繩索與礁釣木樁抵達礁釣哨', edgeKind: 'distant_route', edgeNote: '海盜烽燈到礁釣哨需沿濕滑礁階與斷旗繩索上行，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_reef_fishing_post', description: '北側海盜烽燈沿濕滑礁階上行，繞過斷旗繩索與礁釣木樁抵達礁釣哨' },
     ],
     monsters: [
       { monsterId: 'bloodsalt_warflag_privateer', maxCount: 1, respawnSeconds: 520 },
@@ -414,7 +414,7 @@ bloodsalt_coast_crimson_tide_pool: {
       '赤潮池是一口被珊瑚裂階圍住的潮潭，水色紅得近乎凝固，泡沫在池面形成一圈圈像祭文的白痕。西側可回海盜烽燈，北面紅潮石脊攀上血壇岩棚。池邊掛著破魚骨網、鹽晶祭杯和被血潮染黑的貝殼，水下偶爾閃過魚人祭司留下的骨杖影子；潮池每次鼓泡，都會把血壇方向的低鳴送回礁台，讓人分辨這裡不是普通水窪，而是整段祭路的下層回聲。',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_pirate_beacon', description: '回到海盜烽燈' },
-      { direction: 'north', targetRoomId: 'bloodsalt_coast_blood_altar_ledge', description: '北側赤潮池沿紅潮石脊攀升，穿過祭血水槽與珊瑚裂階抵達血壇岩棚', edgeKind: 'distant_route', edgeNote: '赤潮池到血壇岩棚需沿紅潮石脊與祭血水槽攀升，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_blood_altar_ledge', description: '北側赤潮池沿紅潮石脊攀升，穿過祭血水槽與珊瑚裂階抵達血壇岩棚' },
     ],
     monsters: [
       { monsterId: 'bloodsalt_crimson_tide_oracle', maxCount: 1, respawnSeconds: 420 },
@@ -440,7 +440,7 @@ bloodsalt_coast_brine_cut_path: {
       '鹵蝕小徑沿紅色海崖被鹽風切出，岩面像遭刀刮過，白鹵水在裂縫裡流成細亮線。北側鏽木棧道接回潮門南赤崖棧道，東面鹽風切溝橫移至鹽玻洞。小徑邊堆著被腐蝕的魚叉、破鹽罐和深紅潮砂，腳下石面濕滑又帶刺，稍遠處能看見南側尖礁把錯路封死。這裡的方向感來自崖壁刮痕與鹽霧濃淡，而不是任何明顯路牌。',
     exits: [
       { direction: 'north', targetRoomId: 'bloodsalt_coast_fill_40_7', description: '北側赤色海崖回到潮門入口' },
-      { direction: 'east', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '東側鹵蝕小徑沿鹽風切溝橫移，穿過白鹵水洼與碎玻潮洞抵達鹽玻洞', edgeKind: 'distant_route', edgeNote: '鹵蝕小徑到鹽玻洞需沿鹽風切溝與白鹵水洼橫移，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '東側鹵蝕小徑沿鹽風切溝橫移，穿過白鹵水洼與碎玻潮洞抵達鹽玻洞' },
     ],
     monsters: [
       { monsterId: 'bloodsalt_smuggler_cutthroat', maxCount: 2, respawnSeconds: 300 },
@@ -465,10 +465,10 @@ bloodsalt_coast_saltglass_cave: {
     description:
       '鹽玻洞的洞壁結滿半透明鹽晶，紅潮光穿過晶面後變成碎裂的暗粉色，地面則覆著會割靴底的玻璃鹽片。西側碎玻潮洞折回鹵蝕小徑，南面魚骨浮網落回骨網淺灘，東邊礁釣哨的木樁影子透進洞口，北方沉水望塔在鹽霧裡像一截斷骨。洞內藏著冷鹽晶、腐繩與黑水裂縫，深處東側還滲出帶陳年腐味的水線，暗示海岸下方另有古老地下空間。',
     exits: [
-      { direction: 'west', targetRoomId: 'bloodsalt_coast_brine_cut_path', description: '西側鹽玻洞沿碎玻潮洞折返，穿過白鹵水洼與鹽風切溝回到鹵蝕小徑', edgeKind: 'distant_route', edgeNote: '鹽玻洞回鹵蝕小徑需沿碎玻潮洞與鹽風切溝折返，實際路程長於相鄰一格。' },
-      { direction: 'south', targetRoomId: 'bloodsalt_coast_bone_net_shoal', description: '南側鹽玻洞沿碎玻潮洞下切，穿過鹽晶潮溝與魚骨浮網回到骨網淺灘', edgeKind: 'distant_route', edgeNote: '鹽玻洞回骨網淺灘需沿碎玻潮洞與魚骨浮網下切，實際路程長於相鄰一格。' },
+      { direction: 'west', targetRoomId: 'bloodsalt_coast_brine_cut_path', description: '西側鹽玻洞沿碎玻潮洞折返，穿過白鹵水洼與鹽風切溝回到鹵蝕小徑' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_bone_net_shoal', description: '南側鹽玻洞沿碎玻潮洞下切，穿過鹽晶潮溝與魚骨浮網回到骨網淺灘' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_reef_fishing_post', description: '礁釣哨在東側' },
-      { direction: 'north', targetRoomId: 'bloodsalt_coast_drowned_watchtower', description: '沉水望塔在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_drowned_watchtower', description: '沉水望塔在北側' },
     ],
     monsters: [
       { monsterId: 'bloodsalt_ghost_keel_wraith', maxCount: 1, respawnSeconds: 480 },
@@ -493,10 +493,10 @@ bloodsalt_coast_reef_fishing_post: {
     description:
       '礁釣哨建在幾根被鹽霧咬白的木樁上，吊鉤、破網和魚骨浮標隨風撞出乾硬聲響。西側長路沿鹽玻洞折返，南面濕滑礁階落向海盜烽燈，東側血壇岩棚壓著祭血水槽，北方刃貝床露出一排排刀口般的殼脊。木樁旁有切餌石、記潮刻線和冷鹽晶籃，海面偶爾冒出帶黑斑的背鰭；這裡看似釣點，實際也是俯看整條中段海岸潮線的高位哨。',
     exits: [
-      { direction: 'west', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '回到鹽玻洞', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
-      { direction: 'south', targetRoomId: 'bloodsalt_coast_pirate_beacon', description: '南側礁釣哨沿礁釣木樁下行，穿過斷旗繩索與濕滑礁階回到海盜烽燈', edgeKind: 'distant_route', edgeNote: '礁釣哨回海盜烽燈需沿礁釣木樁與濕滑礁階下行，實際路程長於相鄰一格。' },
+      { direction: 'west', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '回到鹽玻洞' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_pirate_beacon', description: '南側礁釣哨沿礁釣木樁下行，穿過斷旗繩索與濕滑礁階回到海盜烽燈' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_blood_altar_ledge', description: '血壇岩棚在東側' },
-      { direction: 'north', targetRoomId: 'bloodsalt_coast_razor_clam_beds', description: '刃貝床在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_razor_clam_beds', description: '刃貝床在北側' },
     ],
     monsters: [
       { monsterId: 'bloodsalt_bone_net_murloc', maxCount: 2, respawnSeconds: 280 },
@@ -522,9 +522,9 @@ bloodsalt_coast_blood_altar_ledge: {
       '血壇岩棚突出在紅潮上方，珊瑚裂階、祭血水槽和黑色石壇疊成一座濕滑平台，壇邊刻著奧瑟冥河守門者的亡者安息文字。西面礁釣哨仍有木樁聲，南側石脊下切赤潮池，東邊走私者小灣藏在低霧後，北方鯊齒隘露出鋸齒礁影。岩棚上有鹽晶祭杯、乾血繩和被潮水洗亮的骨片，每一道水槽都把紅潮導向不同方向，像在替海岸分配祭品與退路。',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_reef_fishing_post', description: '回到礁釣哨' },
-      { direction: 'south', targetRoomId: 'bloodsalt_coast_crimson_tide_pool', description: '南側血壇岩棚沿珊瑚裂階下切，穿過祭血水槽與紅潮石脊回到赤潮池', edgeKind: 'distant_route', edgeNote: '血壇岩棚回赤潮池需沿珊瑚裂階與紅潮石脊下切，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_crimson_tide_pool', description: '南側血壇岩棚沿珊瑚裂階下切，穿過祭血水槽與紅潮石脊回到赤潮池' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_smuggler_cove', description: '走私者小灣在東側' },
-      { direction: 'north', targetRoomId: 'bloodsalt_coast_sharktooth_pass', description: '鯊齒隘在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_sharktooth_pass', description: '鯊齒隘在北側' },
     ],
     monsters: [
       { monsterId: 'bloodsalt_crimson_tide_oracle', maxCount: 2, respawnSeconds: 420 },
@@ -550,7 +550,7 @@ bloodsalt_coast_smuggler_cove: {
       '走私者小灣被兩道暗紅礁臂夾住，低霧貼著水面，幾艘小船只剩半截船腹露在鹽沫裡。西側可回血壇岩棚，北面冰暗湧道的黑潮從礁縫間推來冷氣。灣內散著油布包、破酒瓶、私印木箱和被紅鹽包住的繩梯，岩壁上還有新舊不一的暗號刻痕；這裡的危險不像祭壇那樣高聲宣告，而是藏在霧後的船影、貨箱空隙和忽然變冷的回潮聲裡。',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_blood_altar_ledge', description: '回到血壇岩棚' },
-      { direction: 'north', targetRoomId: 'bloodsalt_coast_ice_dark_surge', description: '冰暗湧道在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_ice_dark_surge', description: '冰暗湧道在北側' },
     ],
     monsters: [
       { monsterId: 'bloodsalt_smuggler_cutthroat', maxCount: 2, respawnSeconds: 300 },
@@ -575,7 +575,7 @@ bloodsalt_coast_drowned_watchtower: {
     description:
       '沉水望塔只剩下半截石塔露出紅潮，塔腳長滿鹽晶與黑藻，斷梁像濕透的肋骨伸向海面。南側長路沿鹽霧回到鹽玻洞，東邊刃貝床的殼脊在水線上閃著冷光。塔內舊瞭望梯被潮水淹沒，牆上仍留有海盜火號、祭船方位和魚人刻痕，幾處箭孔被紅鹽堵住；站在這裡能同時感到洞穴冷光與北面戰旗沙丘的鹽風，是海岸中段最明顯的垂直地標。',
     exits: [
-      { direction: 'south', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '回到鹽玻洞', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '回到鹽玻洞' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_razor_clam_beds', description: '刃貝床在東側' },
     ],
     monsters: [
@@ -602,9 +602,9 @@ bloodsalt_coast_razor_clam_beds: {
       '刃貝床鋪滿立起的巨大貝殼，殼緣薄得像刀，紅潮退去時會露出一排排銀白鋸齒。西側回沉水望塔，南面潮路落回礁釣哨，東邊鯊齒隘由黑礁尖牙夾出窄口，北方戰旗沙丘隔著一段潮砂高起。貝床間有被割斷的網繩、珍珠碎屑和魚人祭針，血水在殼溝裡流得很慢；這裡既是材料堆，也是天然拒馬，任何行動都會被貝殼聲放大。',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_drowned_watchtower', description: '回到沉水望塔' },
-      { direction: 'south', targetRoomId: 'bloodsalt_coast_reef_fishing_post', description: '回到礁釣哨', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_reef_fishing_post', description: '回到礁釣哨' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_sharktooth_pass', description: '鯊齒隘在東側' },
-      { direction: 'north', targetRoomId: 'bloodsalt_coast_warflag_dune', description: '戰旗沙丘在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_warflag_dune', description: '戰旗沙丘在北側' },
     ],
     monsters: [
       { monsterId: 'bloodsalt_razor_clam_colony', maxCount: 2, respawnSeconds: 320 },
@@ -630,9 +630,9 @@ bloodsalt_coast_sharktooth_pass: {
       '鯊齒隘由兩排尖黑礁夾成，礁尖綴著紅鹽晶，遠看像一張半開的鯊口。西面刃貝床反射冷光，南側長路下接血壇岩棚，東邊冰暗湧道送來黑色冷浪，北方幽艏船墓的斷船影在霧裡浮沉。隘口地面散著鯊齒護符、斷矛和被咬碎的木盾，潮水穿過礁縫時會發出低吼；此地形成海岸高壓路線的咽喉，四個方向的氣味與聲音都在此交錯。',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_razor_clam_beds', description: '回到刃貝床' },
-      { direction: 'south', targetRoomId: 'bloodsalt_coast_blood_altar_ledge', description: '回到血壇岩棚', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_blood_altar_ledge', description: '回到血壇岩棚' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_ice_dark_surge', description: '冰暗湧道在東側' },
-      { direction: 'north', targetRoomId: 'bloodsalt_coast_ghost_keel_grave', description: '幽艏船墓在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_ghost_keel_grave', description: '幽艏船墓在北側' },
     ],
     monsters: [
       { monsterId: 'bloodsalt_warflag_privateer', maxCount: 1, respawnSeconds: 520 },
@@ -658,8 +658,8 @@ bloodsalt_coast_ice_dark_surge: {
       '冰暗湧道的潮水呈近黑色，邊緣卻結著薄薄冷鹽霜，浪花拍上礁壁時會冒出藍白寒氣。西側回鯊齒隘，南面長路繞回走私者小灣，北側冷潮裂縫升向紅珊瑚迷宮。湧道旁卡著幽艏船板、祭司骨飾和被冰鹽凍硬的走私布袋，水聲裡混著低沉祈禱與船殼摩擦聲；這裡像血鹽海岸的一條冷脈，把祭壇、迷宮和沉船亡魂連在一起。',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_sharktooth_pass', description: '回到鯊齒隘' },
-      { direction: 'south', targetRoomId: 'bloodsalt_coast_smuggler_cove', description: '回到走私者小灣', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
-      { direction: 'north', targetRoomId: 'bloodsalt_coast_red_coral_labyrinth', description: '紅珊瑚迷宮在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_smuggler_cove', description: '回到走私者小灣' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_red_coral_labyrinth', description: '紅珊瑚迷宮在北側' },
     ],
     monsters: [
       { monsterId: 'bloodsalt_ghost_keel_wraith', maxCount: 1, respawnSeconds: 480 },
@@ -684,7 +684,7 @@ bloodsalt_coast_warflag_dune: {
     description:
       '戰旗沙丘由紅鹽砂與破帆布堆成，數根斷槳插在丘頂，黑紅戰旗被鹽風扯得獵獵作響。南側潮砂長路落回刃貝床，東面幽艏船墓的船骨從霧中伸出。沙丘腳下散著私掠者彈丸、銹槍機件和被潮水洗白的號角骨，旗杆上刻著勝負記號與潮位日期；這裡不像安營地，更像海盜勢力曾經集結、宣戰和清點掠物的高處。',
     exits: [
-      { direction: 'south', targetRoomId: 'bloodsalt_coast_razor_clam_beds', description: '回到刃貝床', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_razor_clam_beds', description: '回到刃貝床' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_ghost_keel_grave', description: '幽艏船墓在東側' },
     ],
     monsters: [
@@ -711,7 +711,7 @@ bloodsalt_coast_ghost_keel_grave: {
       '幽艏船墓是一片半埋在紅鹽砂中的沉船龍骨，船艏雕像只剩空洞眼窩，潮霧穿過肋骨時會發出像哭聲的回響。西面戰旗沙丘仍有破旗聲，南側長路折回鯊齒隘，東邊紅珊瑚迷宮堵著密集珊瑚牆。船腹裡可見水手骨扣、濕航海圖和被祭血染紅的壓艙石，幾段木板帶著幽藍光；這裡既是失事船墳，也是通往東段珊瑚與儀式區前最後的亡魂標記。',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_warflag_dune', description: '回到戰旗沙丘' },
-      { direction: 'south', targetRoomId: 'bloodsalt_coast_sharktooth_pass', description: '回到鯊齒隘', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_sharktooth_pass', description: '回到鯊齒隘' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_red_coral_labyrinth', description: '紅珊瑚迷宮在東側' },
     ],
     monsters: [
@@ -738,7 +738,7 @@ bloodsalt_coast_red_coral_labyrinth: {
       '紅珊瑚迷宮由血色珊瑚牆和鹽晶枝交錯長成，通道窄而鋒利，潮水在腳邊分成許多細小支流。西側回幽艏船墓，南面長路落回冰暗湧道，東側血稅棧橋的木樁穿過珊瑚縫隙可見。珊瑚表面有魚人祭紋、割裂網繩和被紅潮磨亮的貝片，深處偶爾傳來大型水獸擦過礁壁的聲音；這裡的迷路感來自相似的紅牆，也來自每一次潮水改道後留下的新血痕。',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_ghost_keel_grave', description: '回到幽艏船墓' },
-      { direction: 'south', targetRoomId: 'bloodsalt_coast_ice_dark_surge', description: '回到冰暗湧道', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_ice_dark_surge', description: '回到冰暗湧道' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_tithe_of_blood_pier', description: '血稅棧橋在東側' },
     ],
     monsters: [

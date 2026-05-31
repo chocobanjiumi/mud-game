@@ -68,15 +68,11 @@ saltwind_flats_wrecked_skiff: {
         direction: 'north',
         targetRoomId: 'saltwind_flats_shallow_cut',
         description: '北側回淺水裂道要穿過破舟木板與藍泥水線，再爬上被鹽殼覆住的碎坡',
-        edgeKind: 'distant_route',
-        edgeNote: '破舟灘回淺水裂道需要穿過破舟木板、藍泥水線與鹽殼碎坡上行，屬於鹽風灘長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'saltwind_flats_fog_bell',
         description: '東側要穿過破舟木板間的積鹽水坑與纜繩殘段，循著鐘聲才找到霧鐘桿',
-        edgeKind: 'distant_route',
-        edgeNote: '破舟灘到霧鐘桿需要穿過破舟木板、積鹽水坑與纜繩殘段，屬於鹽風灘長路徑。',
       },
     ],
     monsters: [
@@ -102,8 +98,8 @@ saltwind_flats_salt_crystal_nest: {
     description:
       '鹽晶巢位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 搜索 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
     exits: [
-      { direction: 'south', targetRoomId: 'saltwind_flats_glass_salt_field', description: '回到玻璃鹽田', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
-      { direction: 'east', targetRoomId: 'saltwind_flats_tidewatch_ruin', description: '潮望廢墟在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'saltwind_flats_glass_salt_field', description: '回到玻璃鹽田' },
+      { direction: 'east', targetRoomId: 'saltwind_flats_tidewatch_ruin', description: '潮望廢墟在東側' },
     ],
     monsters: [
       { monsterId: 'glasssalt_elemental', maxCount: 2, respawnSeconds: 260 },
@@ -132,16 +128,12 @@ saltwind_flats_lowtide_causeway: {
         direction: 'west',
         targetRoomId: 'saltwind_flats_fisher_cache',
         description: '西側回漁夫藏點要離開退潮石道，穿過碎石鹽脊、乾網繩與藏箱陰影',
-        edgeKind: 'distant_route',
-        edgeNote: '退潮石道回漁夫藏點需要穿過碎石鹽脊、乾網繩與藏箱陰影，屬於鹽風灘長路徑。',
       },
       { direction: 'north', targetRoomId: 'saltwind_flats_sea_serpent_track', description: '北側海蛇拖痕回到霧鐘方向' },
       {
         direction: 'east',
         targetRoomId: 'saltwind_flats_tidewatch_ruin',
         description: '東側退潮石道要穿過一段會被潮霧吞沒的石梁，才抵達潮望廢墟外牆',
-        edgeKind: 'distant_route',
-        edgeNote: '退潮石道到潮望廢墟需要穿過潮霧石梁與廢墟外牆，屬於鹽風灘長路徑。',
       },
     ],
     monsters: [
@@ -171,8 +163,6 @@ saltwind_flats_fog_bell: {
         direction: 'west',
         targetRoomId: 'saltwind_flats_wrecked_skiff',
         description: '西側回破舟灘要循著霧鐘聲穿過纜繩殘段、積鹽水坑與破船木影邊緣',
-        edgeKind: 'distant_route',
-        edgeNote: '霧鐘桿回破舟灘需要穿過纜繩殘段、積鹽水坑與破船木影，屬於鹽風灘長路徑。',
       },
       { direction: 'south', targetRoomId: 'saltwind_flats_sea_serpent_track', description: '南側海蛇拖痕通往退潮石道' },
     ],
@@ -203,17 +193,13 @@ saltwind_flats_tidewatch_ruin: {
         direction: 'west',
         targetRoomId: 'saltwind_flats_lowtide_causeway',
         description: '西側回退潮石道要沿潮望廢墟外牆撤出，穿過潮霧石梁才回到乾鹽高地',
-        edgeKind: 'distant_route',
-        edgeNote: '潮望廢墟回退潮石道需要沿廢墟外牆、潮霧石梁與乾鹽高地撤回，屬於鹽風灘長路徑。',
       },
       {
         direction: 'south',
         targetRoomId: 'saltwind_flats_fog_bell',
         description: '南側要從潮望廢墟台階繞下鹽坡，循著斷續鐘聲穿過濃霧到霧鐘桿',
-        edgeKind: 'distant_route',
-        edgeNote: '潮望廢墟到霧鐘桿需要沿廢墟台階、鹽坡與濃霧鐘聲下行，屬於鹽風灘長路徑。',
       },
-      { direction: 'north', targetRoomId: 'saltwind_flats_deep_brine_eye', description: '深鹽眼在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'saltwind_flats_deep_brine_eye', description: '深鹽眼在北側' },
     ],
     monsters: [
       { monsterId: 'lowtide_serpent', maxCount: 1, respawnSeconds: 280 },
@@ -238,7 +224,7 @@ saltwind_flats_deep_brine_eye: {
     description:
       '深鹽眼位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 搜索 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
     exits: [
-      { direction: 'south', targetRoomId: 'saltwind_flats_tidewatch_ruin', description: '回到潮望廢墟', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'saltwind_flats_tidewatch_ruin', description: '回到潮望廢墟' },
     ],
     monsters: [
       { monsterId: 'deep_brine_eye_keeper', maxCount: 1, respawnSeconds: 1200 },
@@ -803,7 +789,7 @@ thornmaze_ancient_druid_altar: {
       '灰燼入口門立在餘燼邊境西緣，兩根焦黑門柱被火山灰磨得發白，門縫間仍有暗紅熱光沿石紋流動。東側焦炭路留下被車輪碾碎的黑砂，北面燒毀哨站的殘木在熱風裡吱響，西側雷草坡被灰幕遮成模糊輪廓。門下散著軍靴灰印、裂開的銅扣與凝固熔渣，空氣帶著硫味和遠雷回聲，像一條把草原寒濕推入焦土火線的門檻。',
     exits: [
       { direction: 'east', targetRoomId: 'ember_march_cinder_road', description: '焦炭路在東側' },
-      { direction: 'north', targetRoomId: 'ember_march_burnt_watchpost', description: '燒毀哨站在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'ember_march_burnt_watchpost', description: '燒毀哨站在北側' },
     ],
     monsters: [
       { monsterId: 'ashroad_sparkling', maxCount: 2, respawnSeconds: 180 },
@@ -830,7 +816,7 @@ ember_march_cinder_road: {
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_ash_gate', description: '回到灰燼入口門' },
       { direction: 'east', targetRoomId: 'ember_march_smoke_trench', description: '煙溝在東側' },
-      { direction: 'north', targetRoomId: 'ember_march_charred_milestone', description: '焦黑里程碑在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'ember_march_charred_milestone', description: '焦黑里程碑在北側' },
     ],
     monsters: [
       { monsterId: 'ashroad_sparkling', maxCount: 2, respawnSeconds: 180 },
@@ -883,8 +869,8 @@ ember_march_charred_milestone: {
     description:
       '焦黑里程碑斜插在灰坡上，原本刻線被高溫烤成玻璃狀黑痕，只剩幾道不成字的方向刻槽。南側坡道折回焦炭路，東面灰脊繞向戰營殘址，沿途能看見倒旗殘樁和壕溝暗影。碑座周圍堆滿風化鐵釘、焦布和裂開的水囊，熱浪從地底滲出，使碑影像火舌般顫動；它不像路標，更像戰線退卻時最後留下的沉默記號。',
     exits: [
-      { direction: 'south', targetRoomId: 'ember_march_cinder_road', description: '回到焦炭路', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
-      { direction: 'east', targetRoomId: 'ember_march_war_camp_ruin', description: '東側焦黑里程碑沿熔亮灰脊斜行，繞過倒旗殘樁與戰壕外圈抵達戰營殘址', edgeKind: 'distant_route', edgeNote: '焦黑里程碑到戰營殘址需沿熔亮灰脊與戰壕外圈繞行，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'ember_march_cinder_road', description: '回到焦炭路' },
+      { direction: 'east', targetRoomId: 'ember_march_war_camp_ruin', description: '東側焦黑里程碑沿熔亮灰脊斜行，繞過倒旗殘樁與戰壕外圈抵達戰營殘址' },
     ],
     monsters: [
       { monsterId: 'burnt_banner_raider', maxCount: 1, respawnSeconds: 260 },
@@ -909,9 +895,9 @@ ember_march_burnt_watchpost: {
     description:
       '燒毀哨站只剩幾根碳化木樁支著半塌平台，風一吹便灑下黑灰。南側灰燼入口門在灰幕中若隱若現，東方焦黑里程碑立在斜坡，北面玻璃灰原反射冷亮碎光，西側雷路被焦草和煙塵切開。哨站地面散著破陶哨、熔彎箭頭與燒裂望筒，木樁內側還保留被火烤出的環形影子，像守望者曾在此看見整片邊境陷入紅光。',
     exits: [
-      { direction: 'south', targetRoomId: 'ember_march_ash_gate', description: '回到灰燼入口門', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'ember_march_ash_gate', description: '回到灰燼入口門' },
       { direction: 'east', targetRoomId: 'ember_march_charred_milestone', description: '焦黑里程碑在東側' },
-      { direction: 'north', targetRoomId: 'ember_march_glass_ash_field', description: '玻璃灰原在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'ember_march_glass_ash_field', description: '玻璃灰原在北側' },
     ],
     monsters: [
       { monsterId: 'glass_ash_lizard', maxCount: 1, respawnSeconds: 230 },
@@ -937,7 +923,7 @@ ember_march_lava_crack: {
       '熔裂縫橫在焦土地表，裂口內部流動的橘紅岩漿映亮兩側黑石，熱氣把灰塵推成翻卷薄幕。西面煙溝的黑煙沿地勢滑來，北側渣鐵橋跨過更深的熔溝，東方黑砂盆地則被細碎黑砂覆成低陷圓弧。裂縫邊緣有剛冷卻的熔殼、被燒亮的金屬片和蛇形拖痕，偶爾一聲爆裂從地底傳出，整片岩面都跟著微微震動。',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_smoke_trench', description: '回到煙溝' },
-      { direction: 'north', targetRoomId: 'ember_march_slag_bridge', description: '渣鐵橋在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'ember_march_slag_bridge', description: '渣鐵橋在北側' },
       { direction: 'east', targetRoomId: 'ember_march_black_sand_basin', description: '黑砂盆地在東側' },
     ],
     monsters: [
@@ -963,8 +949,8 @@ ember_march_glass_ash_field: {
     description:
       '玻璃灰原鋪滿薄而鋒利的灰晶，遠看像一片被月光凍住的火山雪，近處卻處處透著燙紅裂線。南側燒毀哨站的黑樁投下斷影，東面戰營殘址隔著熱霧露出營牆骨架，西邊雷草地的草色被灰晶反光切碎。每一步風都捲起細小晶片，發出輕微鈴響；灰原上散著熔化又凝固的盾片和琉璃般足印，冷亮外表下藏著不穩的熱層。',
     exits: [
-      { direction: 'south', targetRoomId: 'ember_march_burnt_watchpost', description: '回到燒毀哨站', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
-      { direction: 'east', targetRoomId: 'ember_march_war_camp_ruin', description: '戰營殘址在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'ember_march_burnt_watchpost', description: '回到燒毀哨站' },
+      { direction: 'east', targetRoomId: 'ember_march_war_camp_ruin', description: '戰營殘址在東側' },
     ],
     monsters: [
       { monsterId: 'glass_ash_lizard', maxCount: 2, respawnSeconds: 230 },
@@ -989,8 +975,8 @@ ember_march_war_camp_ruin: {
     description:
       '戰營殘址由塌陷帳架、焦黑壕溝和半埋盾牌組成，營地中央仍有一圈被熔火烤硬的灰土。西側道路繞回焦黑里程碑，東面斷裂鐵板通向渣鐵橋，北側煙溝把黑煙推進營牆缺口。倒下的旗杆壓著燒裂軍牌，破箱中露出碳化糧袋和空水壺，地面遍布凌亂撤退痕跡；熱風穿過營棚骨架時帶出低沉呼嘯，像殘兵未散的喘息。',
     exits: [
-      { direction: 'west', targetRoomId: 'ember_march_charred_milestone', description: '西側戰營殘址沿焦黑營道折返，穿過倒塌帳架與灰燼里程標回到焦黑里程碑', edgeKind: 'distant_route', edgeNote: '戰營殘址回焦黑里程碑需沿焦黑營道與倒塌帳架折返，實際路程長於相鄰一格。' },
-      { direction: 'east', targetRoomId: 'ember_march_slag_bridge', description: '東側戰營殘址穿過燒紅壕溝與熔渣橋墩，沿斷裂鐵板道抵達渣鐵橋', edgeKind: 'distant_route', edgeNote: '戰營殘址到渣鐵橋需穿過燒紅壕溝與熔渣橋墩，實際路程長於相鄰一格。' },
+      { direction: 'west', targetRoomId: 'ember_march_charred_milestone', description: '西側戰營殘址沿焦黑營道折返，穿過倒塌帳架與灰燼里程標回到焦黑里程碑' },
+      { direction: 'east', targetRoomId: 'ember_march_slag_bridge', description: '東側戰營殘址穿過燒紅壕溝與熔渣橋墩，沿斷裂鐵板道抵達渣鐵橋' },
       { direction: 'north', targetRoomId: 'ember_march_smoke_trench', description: '北側塌旗營牆回到煙溝' },
     ],
     monsters: [
@@ -1016,8 +1002,8 @@ ember_march_slag_bridge: {
     description:
       '渣鐵橋以熔渣、鐵板和焦石臨時拼成，橋下裂谷翻著暗紅熱浪，橋面每條接縫都滲出細微火光。西側斷板道回到戰營殘址，南面低處是熔裂縫的紅亮裂口，東側餘燼鍛台的砧座輪廓在煙霧後浮現。橋欄早已扭曲成黑色鉤刺，鐵板上殘留拖拽痕、硬化血鏽與熔渣氣泡，走近時能聞到濕鐵被再次燒熱的刺鼻味。',
     exits: [
-      { direction: 'west', targetRoomId: 'ember_march_war_camp_ruin', description: '西側渣鐵橋沿斷裂鐵板道折返，穿過熔渣橋墩與燒紅壕溝回到戰營殘址', edgeKind: 'distant_route', edgeNote: '渣鐵橋回戰營殘址需沿斷裂鐵板道與熔渣橋墩折返，實際路程長於相鄰一格。' },
-      { direction: 'south', targetRoomId: 'ember_march_lava_crack', description: '落回熔裂縫', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'west', targetRoomId: 'ember_march_war_camp_ruin', description: '西側渣鐵橋沿斷裂鐵板道折返，穿過熔渣橋墩與燒紅壕溝回到戰營殘址' },
+      { direction: 'south', targetRoomId: 'ember_march_lava_crack', description: '落回熔裂縫' },
       { direction: 'east', targetRoomId: 'ember_march_ember_forge', description: '餘燼鍛台在東側' },
     ],
     monsters: [
@@ -1096,8 +1082,8 @@ ember_march_black_sand_basin: {
       '黑砂盆地低陷在熔裂縫與骨窯熱流之間，細砂被熱風吹成同心紋，踩實處會泛出微弱紅光。西側熔裂縫像一道亮口，北面餘燼鍛台的鐵影橫在高坡上，東方乾渠繞向骨窯隘口。盆地邊緣堆著焦骨路標、裂開水罐和被砂掩住的車軸，黑砂裡混著玻璃灰粒與硫黃色粉塵，蒸汽從砂縫裡慢慢升起，使整片低地像仍在呼吸。',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_lava_crack', description: '回到熔裂縫' },
-      { direction: 'north', targetRoomId: 'ember_march_ember_forge', description: '餘燼鍛台在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
-      { direction: 'east', targetRoomId: 'ember_march_bonekiln_pass', description: '東側黑砂盆地沿蒸汽乾渠繞開骨窯熱流，穿過焦骨路標與熔灰坡抵達骨窯隘口', edgeKind: 'distant_route', edgeNote: '黑砂盆地到骨窯隘口需沿蒸汽乾渠繞過骨窯熱流，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'ember_march_ember_forge', description: '餘燼鍛台在北側' },
+      { direction: 'east', targetRoomId: 'ember_march_bonekiln_pass', description: '東側黑砂盆地沿蒸汽乾渠繞開骨窯熱流，穿過焦骨路標與熔灰坡抵達骨窯隘口' },
     ],
     monsters: [
       { monsterId: 'burnt_banner_raider', maxCount: 1, respawnSeconds: 260 },
@@ -1123,7 +1109,7 @@ ember_march_ember_forge: {
       '餘燼鍛台坐落在焦石高臺，中央鐵砧被熔火燒得暗紅，周圍散落半成形兵刃和碎裂模具。西側渣鐵橋的鐵板聲在熱風裡回響，南面黑砂盆地低陷成灰黑圓弧，東方倒旗坡立著一列燒斷旗桿。鍛台下方有冷卻水槽的白痕、被踩硬的煤灰和深深錘印，空中瀰漫金屬焦味；即使無人操作，火膛仍以不規則節奏吐出紅光。',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_slag_bridge', description: '回到渣鐵橋' },
-      { direction: 'south', targetRoomId: 'ember_march_black_sand_basin', description: '回到黑砂盆地', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'ember_march_black_sand_basin', description: '回到黑砂盆地' },
       { direction: 'east', targetRoomId: 'ember_march_fallen_banner', description: '倒旗坡在東側' },
     ],
     monsters: [
@@ -1150,7 +1136,7 @@ ember_march_fallen_banner: {
       '倒旗坡斜斜升向東側，坡面插滿燒斷旗桿，殘布被熱風拉成黑色長帶。西面餘燼鍛台的火膛映出鐵光，南側骨灰階坡下切到骨窯隘口，東方熔火關卡的紅色門洞在坡頂閃動。旗桿根部纏著熔化繩索和破甲片，灰土中留有密集撤退腳印，越往上火山灰越厚，旗影也越混亂，像整支軍列在高溫中一瞬間倒伏。',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_ember_forge', description: '回到餘燼鍛台' },
-      { direction: 'south', targetRoomId: 'ember_march_bonekiln_pass', description: '南側倒旗坡沿燒斷軍旗列下切，穿過骨灰階坡與熱風窄口抵達骨窯隘口', edgeKind: 'distant_route', edgeNote: '倒旗坡到骨窯隘口需沿軍旗列與骨灰階坡下切，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'ember_march_bonekiln_pass', description: '南側倒旗坡沿燒斷軍旗列下切，穿過骨灰階坡與熱風窄口抵達骨窯隘口' },
       { direction: 'east', targetRoomId: 'ember_march_molten_toll', description: '熔火關卡在東側' },
     ],
     monsters: [
@@ -1177,7 +1163,7 @@ ember_march_scorched_oasis: {
       '焦泉是一處被火山灰包圍的黑水窪，水面浮著油亮薄膜，邊緣卻長出少量焦綠蘆葉。西側熔岩蟲道的灰丘延伸到水邊，東方骨窯隘口被熱風和骨粉煙遮住。泉旁石塊呈現燒裂白紋，水汽帶著苦鹽與硫磺味，破陶罐、獸骨和灰化藥草堆在低處，偶爾有氣泡從水底冒起，炸開後露出短暫紅光，使這片水源顯得既誘人又不安。',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_worm_burrow', description: '回到熔岩蟲道' },
-      { direction: 'east', targetRoomId: 'ember_march_bonekiln_pass', description: '骨窯隘口在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'ember_march_bonekiln_pass', description: '骨窯隘口在東側' },
     ],
     monsters: [
       { monsterId: 'glass_ash_lizard', maxCount: 2, respawnSeconds: 230 },
