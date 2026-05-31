@@ -7,3 +7,9 @@ build.log
 *.log
 .DS_Store
 tmp/
+
+# Images are served from Cloudflare R2, not tracked in git (see scripts/r2_sync.py)
+client/public/images/
+
+# Python bytecode
+__pycache__/
