@@ -122,6 +122,7 @@ export function CrossRoomCombatPanelView({
   const [selectedCurrentTargetId, setSelectedCurrentTargetId] = useState<string | null>(initialCurrentTargetId);
   const [selectedAdjacentTargetId, setSelectedAdjacentTargetId] = useState<string | null>(initialAdjacentTargetId);
   const setSelectedCrossRoomDirection = useGameStore((s) => s.setSelectedCrossRoomDirection);
+  const setSelectedCrossRoomTargetId = useGameStore((s) => s.setSelectedCrossRoomTargetId);
   const roomMonsters = getRoomMonsters(room);
   const exitByDirection = new Map(room.exits.map((exit) => [exit.direction, exit]));
   const nearby = room.nearbyCombat;
@@ -132,7 +133,10 @@ export function CrossRoomCombatPanelView({
 
   const setSelectedLane = (lane: LaneId) => {
     setSelectedLaneState(lane);
-    if (lane !== selectedLane) setSelectedAdjacentTargetId(null);
+    if (lane !== selectedLane) {
+      setSelectedAdjacentTargetId(null);
+      setSelectedCrossRoomTargetId(null);
+    }
     setSelectedCrossRoomDirection(lane === 'self' ? null : lane);
   };
 
@@ -406,6 +410,7 @@ function AdjacentRoomPreview({
   onSelectTarget: (targetId: string | null) => void;
   onSelectDirection: () => void;
 }) {
+  const setSelectedCrossRoomTargetId = useGameStore((s) => s.setSelectedCrossRoomTargetId);
   const passable = neighbor?.passable ?? Boolean(exit);
   if (!passable) {
     return <div className="cross-room-empty">{DIRECTION_LABEL[direction]}側沒有可通行房間。</div>;
@@ -441,6 +446,7 @@ function AdjacentRoomPreview({
                 onClick={() => {
                   onSelectDirection();
                   onSelectTarget(monster.id);
+                  setSelectedCrossRoomTargetId(monster.id);
                 }}
               />
             ))}

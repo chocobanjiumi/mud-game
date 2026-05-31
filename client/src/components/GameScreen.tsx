@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useGameStore } from '../stores/gameStore';
 import type { ChatChannel } from '../stores/gameStore';
 import { SKILL_DEFS } from '@game/shared';
+import { findNearbyMonsterDirection } from '../utils/crossRoom';
 import Terminal from './Terminal';
 import CommandInput from './CommandInput';
 import StatusBar from './StatusBar';
@@ -57,6 +58,7 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
   const worldMapOpen = useGameStore((s) => s.worldMapOpen);
   const selectedCombatTargetId = useGameStore((s) => s.selectedCombatTargetId);
   const selectedCrossRoomDirection = useGameStore((s) => s.selectedCrossRoomDirection);
+  const selectedCrossRoomTargetId = useGameStore((s) => s.selectedCrossRoomTargetId);
   const selectedEntity = useGameStore((s) => s.selectedEntity);
   const character = useGameStore((s) => s.character);
   const addTerminalLine = useGameStore((s) => s.addTerminalLine);
@@ -133,12 +135,19 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
       if (isFourWay) {
         suffix = '';
       } else if (needsDirection) {
-        if (!selectedCrossRoomDirection) {
+        // 若已點選鄰房怪物作為目標，方向就以「該怪物所在的房間」為準（把牠的房間當作指定出口）。
+        const derivedDirection = findNearbyMonsterDirection(useGameStore.getState().room, selectedCrossRoomTargetId);
+        const direction = derivedDirection ?? selectedCrossRoomDirection;
+        if (!direction) {
           setPendingTargetSkillId(skillId);
-          addTerminalLine(`請先在周邊戰鬥選擇「${def.name}」的方向。`, 'system');
+          addTerminalLine(`請先在周邊戰鬥選擇「${def.name}」的方向，或點選鄰房怪物作為目標。`, 'system');
           return;
         }
-        suffix = ` direction:${selectedCrossRoomDirection}`;
+        // 單體跨房技能：只有當所選怪物確實位於某個相鄰房間時，才連同該怪物一起指定（避免帶到上個房間的殘留目標）。
+        const crossTarget = derivedDirection && selectedCrossRoomTargetId && def.targetType === 'single_enemy'
+          ? ` ${selectedCrossRoomTargetId}`
+          : '';
+        suffix = ` direction:${direction}${crossTarget}`;
       } else if (def.targetType === 'single_enemy') {
         const targetId = inCombat ? selectedCombatTargetId : selectedRoomMonsterId;
         if (!targetId) {
@@ -154,7 +163,7 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
       setPendingTargetSkillId(null);
       onCommand(`skill ${skillId}${suffix}`, `使用技能 ${def.name}`);
     },
-    [addTerminalLine, character?.id, inCombat, onCommand, selectedCombatTargetId, selectedCrossRoomDirection, selectedEntity],
+    [addTerminalLine, character?.id, inCombat, onCommand, selectedCombatTargetId, selectedCrossRoomDirection, selectedCrossRoomTargetId, selectedEntity],
   );
 
   return (

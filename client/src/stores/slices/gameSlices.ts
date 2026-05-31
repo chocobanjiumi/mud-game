@@ -40,6 +40,7 @@ export const createSessionSlice: GameSlice = (set) => ({
       inCombat: false,
       selectedCombatTargetId: null,
       selectedCrossRoomDirection: null,
+      selectedCrossRoomTargetId: null,
       inventory: [],
       equipment: null,
       skills: [],
@@ -118,6 +119,7 @@ export const createWorldSlice: GameSlice = (set) => ({
   combat: null,
   selectedCombatTargetId: null,
   selectedCrossRoomDirection: null,
+  selectedCrossRoomTargetId: null,
   setCombat: (combat) => set((state) => {
     const selectedCombatTargetId = combat?.enemyTeam.some(enemy => (
       !enemy.isDead && enemy.id === state.selectedCombatTargetId
@@ -134,6 +136,7 @@ export const createWorldSlice: GameSlice = (set) => ({
   })),
   setSelectedCombatTargetId: (selectedCombatTargetId) => set({ selectedCombatTargetId }),
   setSelectedCrossRoomDirection: (selectedCrossRoomDirection) => set({ selectedCrossRoomDirection }),
+  setSelectedCrossRoomTargetId: (selectedCrossRoomTargetId) => set({ selectedCrossRoomTargetId }),
 
   mapData: null,
   setMapData: (mapData) => set({ mapData }),

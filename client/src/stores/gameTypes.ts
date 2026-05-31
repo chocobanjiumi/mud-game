@@ -312,6 +312,8 @@ export interface GameState {
   setSelectedCombatTargetId: (id: string | null) => void;
   selectedCrossRoomDirection: CardinalDirection | null;
   setSelectedCrossRoomDirection: (direction: CardinalDirection | null) => void;
+  selectedCrossRoomTargetId: string | null;
+  setSelectedCrossRoomTargetId: (id: string | null) => void;
 
   // Inventory
   inventory: InventoryItem[];
