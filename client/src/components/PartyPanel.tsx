@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { SKILL_DEFS, type Character, type LearnedSkill } from '@game/shared';
 import { useGameStore, type PartyMember } from '../stores/gameStore';
-import { getClassIconPath, getPublicAssetPath } from '../utils/assetImages';
+import { getClassIconPath, getPublicAssetPath, BLANK_SKILL_ICON } from '../utils/assetImages';
 
 const CLASS_NAMES: Record<string, string> = {
   adventurer: '冒險者',
@@ -135,7 +135,7 @@ export function PartyPanelView({
                   ) : (
                     allySkills.map((skill) => {
                       const def = SKILL_DEFS[skill.skillId]!;
-                      const iconPath = getPublicAssetPath(def.iconPath) ?? '/mud/images/skills/icons/starter_blank_01.png';
+                      const iconPath = getPublicAssetPath(def.iconPath) ?? BLANK_SKILL_ICON;
                       const onCooldown = skill.currentCooldown > 0;
                       const lacksResource = Boolean(character && character.resource < def.resourceCost);
                       const disabled = onCooldown || lacksResource;
@@ -152,7 +152,7 @@ export function PartyPanelView({
                             src={iconPath}
                             alt=""
                             onError={(event) => {
-                              event.currentTarget.src = '/mud/images/skills/icons/starter_blank_01.png';
+                              event.currentTarget.src = BLANK_SKILL_ICON;
                             }}
                           />
                           <span>{def.name}</span>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { RoomEntity, RoomEntityAction } from '@game/shared';
 import { useGameStore } from '../stores/gameStore';
-import { getEntityImagePath } from '../utils/assetImages';
+import { getEntityImagePath, assetUrl } from '../utils/assetImages';
 import { runCommand } from '../utils/gameActions';
 
 function sendCommand(command: string, echo?: string) {
@@ -40,8 +40,8 @@ export default function RoomImage() {
   const roomImage = room.image ?? `${room.id}.png`;
   const zoneImage = `${room.zone.replaceAll('_', '-')}.png`;
   const imagePath = useFallback
-    ? `/mud/images/zones/${zoneImage}`
-    : `/mud/images/rooms/${roomImage}`;
+    ? assetUrl(`zones/${zoneImage}`)
+    : assetUrl(`rooms/${roomImage}`);
   const gatheringEntities = getGatheringEntities(room);
   const openGathering = gatheringEntities.find((node) => node.id === openGatheringId);
 

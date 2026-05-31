@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 import { CLASS_DEFS, SKILL_DEFS } from '@game/shared';
 import type { ClassDef, ClassId, SkillDef } from '@game/shared';
-import { getPublicAssetPath } from '../utils/assetImages';
+import { getPublicAssetPath, BLANK_SKILL_ICON } from '../utils/assetImages';
 
 const RESOURCE_LABELS: Record<string, string> = {
   mp: '魔力',
@@ -289,7 +289,7 @@ function SkillClassBlock({ title, subtitle, skills, nested = false }: { title: s
                 <Td>
                   <div className="flex min-w-[180px] items-start gap-2">
                     <img
-                      src={getPublicAssetPath(skill.iconPath) ?? '/mud/images/skills/icons/starter_blank_01.png'}
+                      src={getPublicAssetPath(skill.iconPath) ?? BLANK_SKILL_ICON}
                       alt=""
                       className="h-10 w-10 rounded border border-border-dim object-cover"
                       loading="lazy"

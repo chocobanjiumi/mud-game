@@ -21,7 +21,7 @@ import { FAITH_ALTARS } from '../../../server/src/data/faith-altars';
 import { MonsterWikiContent } from './MonsterPage';
 import { SkillWikiSection } from './SkillTablePage';
 import { SuffixWikiContent } from './SuffixPage';
-import { getItemImagePath } from '../utils/assetImages';
+import { getItemImagePath, IMAGE_BASE } from '../utils/assetImages';
 
 const NAV_ITEMS = [
   { id: 'combat-guide', label: '戰鬥指南' },
@@ -545,7 +545,7 @@ function formatFaithAltarLocation(faithId: keyof typeof FAITH_ALTARS) {
 }
 
 function getFaithHeraldryPath(faithId: string) {
-  return `/mud/images/wiki/faiths/faith_${faithId}_heraldry.png`;
+  return `${IMAGE_BASE}/wiki/faiths/faith_${faithId}_heraldry.webp`;
 }
 
 function EquipmentPage() {

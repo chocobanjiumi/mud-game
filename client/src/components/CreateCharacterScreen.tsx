@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import type { FormEvent } from 'react';
+import { IMAGE_BASE } from '../utils/assetImages';
 import {
   CLASS_DEFS,
   DEFAULT_FAITH_ID,
@@ -51,19 +52,19 @@ const resourceLabels = {
 };
 
 function getCharacterArtPath(classId: InitialClassId, genderId: GenderId, raceId: RaceId): string {
-  return `/mud/images/ui/characters/classes/${classId}-${genderId}-${raceId}.png`;
+  return `${IMAGE_BASE}/ui/characters/classes/${classId}-${genderId}-${raceId}.webp`;
 }
 
 function getFaithSigilPath(faithId: FaithId): string {
-  return `/mud/images/wiki/faiths/faith_${faithId}_heraldry.png`;
+  return `${IMAGE_BASE}/wiki/faiths/faith_${faithId}_heraldry.webp`;
 }
 
 function getRaceIconPath(raceId: RaceId): string {
-  return `/mud/images/wiki/origins/race_${raceId}_icon.png`;
+  return `${IMAGE_BASE}/wiki/origins/race_${raceId}_icon.webp`;
 }
 
 function getClassIconPath(classId: InitialClassId): string {
-  return `/mud/images/wiki/origins/class_${classId}_icon.png`;
+  return `${IMAGE_BASE}/wiki/origins/class_${classId}_icon.webp`;
 }
 
 export default function CreateCharacterScreen({ onCreate, onBackToCharacters }: CreateCharacterScreenProps) {

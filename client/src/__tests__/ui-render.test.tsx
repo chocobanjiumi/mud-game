@@ -132,10 +132,10 @@ describe('key UI component rendering', () => {
     expect(html).toContain('建立角色');
     expect(html).toContain('初始職業');
     expect(html).toContain('角色預覽');
-    expect(html).toContain('/mud/images/ui/characters/classes/swordsman-male-human.png');
-    expect(html).toContain('/mud/images/wiki/origins/race_human_icon.png');
-    expect(html).toContain('/mud/images/wiki/origins/class_swordsman_icon.png');
-    expect(html).toContain('/mud/images/wiki/faiths/faith_aelora_heraldry.png');
+    expect(html).toContain('/ui/characters/classes/swordsman-male-human.webp');
+    expect(html).toContain('/wiki/origins/race_human_icon.webp');
+    expect(html).toContain('/wiki/origins/class_swordsman_icon.webp');
+    expect(html).toContain('/wiki/faiths/faith_aelora_heraldry.webp');
   });
 
   it('renders character selection slots', () => {
@@ -183,8 +183,8 @@ describe('key UI component rendering', () => {
     expect(html).toContain('-35 專注');
     expect(html).toContain('CD 3 tick');
     expect(html).toContain('single_target');
-    expect(html).toContain('/mud/images/skills/icons/warrior_slash.png');
-    expect(html).toContain('/mud/images/skills/icons/heal.png');
+    expect(html).toContain('/skills/icons/warrior_slash.webp');
+    expect(html).toContain('/skills/icons/heal.webp');
   });
 
   it('renders the game wiki from current code data', () => {
@@ -310,7 +310,7 @@ describe('key UI component rendering', () => {
 
     const html = renderToStaticMarkup(<SkillLearnedModalView notice={notice} remaining={0} onDismiss={() => undefined} />);
     expect(html).toContain('防禦');
-    expect(html).toContain('/mud/images/skills/icons/iron_wall.png');
+    expect(html).toContain('/skills/icons/iron_wall.webp');
     expect(html).toContain('Lv.2');
     expect(html).toContain('戰鬥');
     expect(html).toContain('技能已加入快捷列與技能列表');
@@ -385,7 +385,7 @@ describe('key UI component rendering', () => {
     expect(roomHtml).toContain('附近物件');
     expect(roomHtml).toContain('史萊姆#1');
     expect(roomHtml).toContain('測試法師');
-    expect(roomHtml).toContain('/mud/images/wiki/origins/class_mage_icon.png');
+    expect(roomHtml).toContain('/wiki/origins/class_mage_icon.webp');
     expect(roomHtml).toContain('room-player-grid');
     expect(roomHtml).toContain('搜刮');
     expect(roomHtml).not.toContain('party invite 測試法師');
@@ -473,10 +473,10 @@ describe('key UI component rendering', () => {
     );
 
     expect(html).toContain('戰士');
-    expect(html).toContain('/mud/images/wiki/origins/class_swordsman_icon.png');
+    expect(html).toContain('/wiki/origins/class_swordsman_icon.webp');
     expect(html).toContain('跟隨');
     expect(html).toContain('治癒');
-    expect(html).toContain('/mud/images/skills/icons/heal.png');
+    expect(html).toContain('/skills/icons/heal.webp');
 
     const selfHtml = renderToStaticMarkup(
       <PartyPanelView
@@ -653,7 +653,7 @@ describe('key UI component rendering', () => {
     expect(html).toContain('東側小徑');
     expect(html).toContain('本房');
     expect(html).toContain('史萊姆#1');
-    expect(html).toContain('/mud/images/monsters/monster_low_wilds_slime.png');
+    expect(html).toContain('/monsters/monster_low_wilds_slime.webp');
     expect(html).not.toContain('/images/monsters/monster_slime.png');
     expect(html).not.toContain('cross-room-lane-scout');
     expect(eastDetailHtml).toContain('cross-room-action-scout');
@@ -811,7 +811,7 @@ describe('key UI component rendering', () => {
     expect(html).toContain('+1');
     expect(html).toContain('+5');
     expect(html).toContain('charsheet-mannequin');
-    expect(html).toContain('/mud/images/ui/characters/classes/ranger-female-elf.png');
+    expect(html).toContain('/ui/characters/classes/ranger-female-elf.webp');
     expect(html).toContain('頭部');
     expect(html).toContain('身體');
     expect(html).toContain('腰部');
@@ -1162,6 +1162,6 @@ describe('key UI component rendering', () => {
     expect(html).toContain('火球術');
     expect(html).toContain('2 未知');
     expect(html).toContain('cross-room-action-icon');
-    expect(html).toContain('/mud/images/skills/icons/fireball.png');
+    expect(html).toContain('/skills/icons/fireball.webp');
   });
 });

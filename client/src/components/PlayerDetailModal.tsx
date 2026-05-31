@@ -9,7 +9,7 @@ import {
   ITEM_DEFS,
   RACE_DEFS,
 } from '@game/shared';
-import { getBaseClassId } from '../utils/assetImages';
+import { getBaseClassId, IMAGE_BASE } from '../utils/assetImages';
 import { runCommand } from '../utils/gameActions';
 
 function sendCommand(command: string, echo?: string) {
@@ -41,7 +41,7 @@ const equipmentSlotLabels: { key: keyof EquipmentSlots; label: string }[] = [
 
 function getCharacterArtPath(classId: string | undefined, genderId: string | undefined, raceId: string | undefined): string {
   const baseClassId = getBaseClassId(classId);
-  return `/mud/images/ui/characters/classes/${baseClassId}-${genderId ?? DEFAULT_GENDER_ID}-${raceId ?? DEFAULT_RACE_ID}.png`;
+  return `${IMAGE_BASE}/ui/characters/classes/${baseClassId}-${genderId ?? DEFAULT_GENDER_ID}-${raceId ?? DEFAULT_RACE_ID}.webp`;
 }
 
 export default function PlayerDetailModal({

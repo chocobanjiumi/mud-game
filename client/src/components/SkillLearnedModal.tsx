@@ -1,6 +1,6 @@
 import { useGameStore } from '../stores/gameStore';
 import type { SkillLearnedNotice } from '../stores/gameStore';
-import { getPublicAssetPath } from '../utils/assetImages';
+import { getPublicAssetPath, BLANK_SKILL_ICON } from '../utils/assetImages';
 
 const targetLabels: Record<string, string> = {
   single_enemy: '單體敵人',
@@ -35,7 +35,7 @@ export function SkillLearnedModalView({
   remaining: number;
   onDismiss: () => void;
 }) {
-  const iconPath = getPublicAssetPath(notice.iconPath) ?? '/mud/images/skills/icons/starter_blank_01.png';
+  const iconPath = getPublicAssetPath(notice.iconPath) ?? BLANK_SKILL_ICON;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4">
@@ -47,7 +47,7 @@ export function SkillLearnedModalView({
             alt=""
             className="h-20 w-20 rounded border border-border-glow object-cover"
             onError={(event) => {
-              event.currentTarget.src = '/mud/images/skills/icons/starter_blank_01.png';
+              event.currentTarget.src = BLANK_SKILL_ICON;
             }}
           />
           <div className="min-w-0">

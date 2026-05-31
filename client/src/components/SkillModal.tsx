@@ -12,7 +12,7 @@ import {
   type SkillPointSummary,
 } from '@game/shared';
 import { useGameStore } from '../stores/gameStore';
-import { getPublicAssetPath } from '../utils/assetImages';
+import { getPublicAssetPath, BLANK_SKILL_ICON } from '../utils/assetImages';
 
 interface SkillModalProps {
   open: boolean;
@@ -115,7 +115,7 @@ function SkillCard({
   onUpgradeSkill: (skillId: string, skillName: string) => void;
 }) {
   const name = def?.name ?? learned.skillId;
-  const iconPath = getPublicAssetPath(def?.iconPath) ?? '/mud/images/skills/icons/starter_blank_01.png';
+  const iconPath = getPublicAssetPath(def?.iconPath) ?? BLANK_SKILL_ICON;
   const isOrigin = isOriginPassive(learned.skillId);
   const maxLevel = def ? getSkillMaxLevel(def.id) : 1;
   const upgradeCost = def ? getSkillUpgradeCost(def.id, learned.level) : undefined;
@@ -147,7 +147,7 @@ function SkillCard({
           className="h-12 w-12 shrink-0 rounded border border-border-dim object-cover"
           draggable={false}
           onError={(event) => {
-            event.currentTarget.src = '/mud/images/skills/icons/starter_blank_01.png';
+            event.currentTarget.src = BLANK_SKILL_ICON;
           }}
         />
         <div className="min-w-0 flex-1">

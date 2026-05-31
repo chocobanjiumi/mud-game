@@ -1,6 +1,6 @@
 import { useGameStore } from '../stores/gameStore';
 import { SKILL_DEFS, type Character, type LearnedSkill, type RoomEntity, type SkillDef } from '@game/shared';
-import { getPublicAssetPath } from '../utils/assetImages';
+import { getPublicAssetPath, BLANK_SKILL_ICON } from '../utils/assetImages';
 import SkillHoverCard from './SkillHoverCard';
 
 interface SkillBarProps {
@@ -50,7 +50,7 @@ export function SkillBarView({
           const def = SKILL_DEFS[skill.skillId];
           const onCooldown = skill.currentCooldown > 0;
           const hotkey = index < 9 ? `${index + 1}` : null;
-          const iconPath = getPublicAssetPath(def?.iconPath) ?? '/mud/images/skills/icons/starter_blank_01.png';
+          const iconPath = getPublicAssetPath(def?.iconPath) ?? BLANK_SKILL_ICON;
           const targetMode = def ? describeTargetMode(def, {
             inCombat,
             hasCombatTarget: !!selectedCombatTargetId,
@@ -88,7 +88,7 @@ export function SkillBarView({
                 className={`h-full w-full object-cover ${onCooldown ? 'grayscale opacity-50' : ''}`}
                 draggable={false}
                 onError={(event) => {
-                  event.currentTarget.src = '/mud/images/skills/icons/starter_blank_01.png';
+                  event.currentTarget.src = BLANK_SKILL_ICON;
                 }}
               />
               {/* Cooldown overlay */}

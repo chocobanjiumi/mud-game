@@ -1,3 +1,5 @@
+import { assetUrl } from '../utils/assetImages';
+
 export default function BattleMockup() {
   return (
     <div className="h-screen bg-[#0a0f1a] text-[#e0e8ff] flex">
@@ -44,7 +46,7 @@ export default function BattleMockup() {
                 <div className="flex-1 flex flex-col justify-center">
                   <div className="flex items-center gap-1.5 mb-1">
                     <div className="w-10 h-10 rounded-lg border-2 border-red-500/60 overflow-hidden shrink-0">
-                      <img src="/mud/images/monsters/monster_astral_time_minute_zero_dragon.png" alt="" className="w-full h-full object-cover" />
+                      <img src={assetUrl('monsters/monster_astral_time_minute_zero_dragon.png')} alt="" className="w-full h-full object-cover" />
                     </div>
                     <div className="min-w-0">
                       <div className="flex items-center gap-1">
@@ -257,7 +259,7 @@ function PartyRow({ icon, name, cls, hp, res, resType, effects, me, lowHp }: {
   const hpColor = hp < 30 ? '#ff4444' : hp < 60 ? '#ffb800' : '#00ff88';
   return (
     <div className={`flex items-center gap-1 rounded px-1 py-0.5 ${me ? 'bg-[#00ff88]/5' : lowHp ? 'bg-red-500/5' : ''}`}>
-      <img src={`/mud/images/wiki/origins/${icon}`} alt="" className="w-5 h-5 rounded border border-[#1a3a5c] object-cover shrink-0" />
+      <img src={assetUrl(`wiki/origins/${icon}`)} alt="" className="w-5 h-5 rounded border border-[#1a3a5c] object-cover shrink-0" />
       <div className="min-w-0 flex-1">
         <div className="flex items-center gap-0.5">
           <span className={`text-[8px] font-bold truncate ${me ? 'text-[#00ff88]' : 'text-[#e0e8ff]'}`}>{name}</span>
@@ -318,7 +320,7 @@ function Mon({ img, name, hp, boss, selected, cast, size = 36 }: {
         <div className="h-full rounded-full" style={{ width: `${hp}%`, backgroundColor: hpColor }} />
       </div>
       <div className={`rounded-lg border-2 overflow-hidden transition ${selected ? 'border-[#00ff88] shadow-[0_0_8px_rgba(0,255,136,0.3)]' : boss ? 'border-red-500/60' : 'border-[#1a3a5c] group-hover:border-[#00ff88]/40'}`} style={{ width: size, height: size }}>
-        <img src={`/mud/images/monsters/${img}`} alt={name} className="w-full h-full object-cover" />
+        <img src={assetUrl(`monsters/${img}`)} alt={name} className="w-full h-full object-cover" />
       </div>
       <span className={`text-[8px] leading-none ${boss ? 'text-red-300 font-bold' : 'text-[#5a6a8a]'}`}>{name}</span>
     </div>
@@ -336,7 +338,7 @@ function Ally({ img, name, hp, me, mount, lowHp }: {
         <div className="h-full rounded-full" style={{ width: `${hp}%`, backgroundColor: hpColor }} />
       </div>
       <div className={`rounded-lg border-2 overflow-hidden ${me ? 'border-[#00ff88]/60' : lowHp ? 'border-red-500/40' : 'border-[#1a3a5c]'}`} style={{ width: 32, height: 32 }}>
-        <img src={`/mud/images/wiki/origins/${img}`} alt={name} className="w-full h-full object-cover" />
+        <img src={assetUrl(`wiki/origins/${img}`)} alt={name} className="w-full h-full object-cover" />
       </div>
       <div className="flex items-center gap-0.5">
         {mount && <span className="text-[7px]">🐴</span>}
@@ -351,7 +353,7 @@ function ApproachDot({ img, name, ticks, dir }: { img: string; name: string; tic
   return (
     <div className="flex flex-col items-center animate-pulse" title={`${name} ${ticks}t後到達`}>
       <div className="rounded-full border-2 border-[#ffb800]/60 overflow-hidden" style={{ width: 28, height: 28 }}>
-        <img src={`/mud/images/monsters/${img}`} alt={name} className="w-full h-full object-cover" />
+        <img src={assetUrl(`monsters/${img}`)} alt={name} className="w-full h-full object-cover" />
       </div>
       <span className="text-[7px] text-[#ffb800] font-bold leading-none mt-0.5">{dir}{ticks}t</span>
     </div>

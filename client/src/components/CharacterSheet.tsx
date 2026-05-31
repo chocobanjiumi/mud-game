@@ -17,7 +17,7 @@ import {
 } from '@game/shared';
 import { runCommand } from '../utils/gameActions';
 import type { DerivedStats, TooltipItemData } from '../stores/gameStore';
-import { getItemImagePath } from '../utils/assetImages';
+import { getItemImagePath, IMAGE_BASE } from '../utils/assetImages';
 
 function sendCommand(command: string, echo?: string) {
   runCommand(command, echo);
@@ -67,7 +67,7 @@ const CHARACTER_ART_CLASS_BY_CLASS_ID: Record<string, CharacterArtClassId> = {
 
 function getCharacterArtPath(classId: string, genderId: GenderId, raceId: RaceId): string {
   const artClassId = CHARACTER_ART_CLASS_BY_CLASS_ID[classId] ?? 'swordsman';
-  return `/mud/images/ui/characters/classes/${artClassId}-${genderId}-${raceId}.png`;
+  return `${IMAGE_BASE}/ui/characters/classes/${artClassId}-${genderId}-${raceId}.webp`;
 }
 
 const STAT_LABELS: { key: string; label: string; color: string }[] = [
