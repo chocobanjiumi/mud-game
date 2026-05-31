@@ -5409,3 +5409,49 @@ function normalizeExitsToWorldGrid(): void {
 }
 
 normalizeExitsToWorldGrid();
+
+// ============================================================
+//  語意阻擋出口 — 由 haiku 掃描房間名稱/描述，判定「空間上不合理」的相鄰連接後封鎖（雙向）。
+//  已通過連通性檢查：每條都是非橋邊，封鎖後不會讓任何房間變得無法抵達。
+//  在 normalizeExitsToWorldGrid() 之後執行，直接把對應方向的出口鎖住。
+// ============================================================
+const SEMANTIC_BLOCKED_EXITS: [string, Direction][] = [
+  ['demon_hellhound_kennel', 'south'], // 地獄犬欄→戰爭熔爐：描述說南側通往受詛祭壇而非戰爭熔爐
+  ['demon_war_forge', 'north'],         // 反向 戰爭熔爐→地獄犬欄
+  ['demon_shadow_market', 'north'],     // 影市→戰爭熔爐：描述把戰爭熔爐放在南方，方向相反
+  ['demon_war_forge', 'south'],         // 反向 戰爭熔爐→影市
+  ['emerald_canopy_fill_n23_7', 'west'],   // 西冠鳥巢欄→苔繩步道：描述明說西側沒有開口
+  ['emerald_canopy_moss_rope_walk', 'east'], // 反向 苔繩步道→西冠鳥巢欄
+  ['emerald_canopy_fill_n26_10', 'south'], // 西界風孔枝→龍谷入口：林冠樹枝直通山谷無過渡，物理不合理
+  ['dragon_valley_entrance', 'north'],     // 反向 龍谷入口→西界風孔枝
+  ['mountain_camp', 'south'],   // 雪山營地→雪狼巢穴：描述把狼穴放在東側而非南側
+  ['wolf_den', 'north'],        // 反向 雪狼巢穴→雪山營地
+  ['crystal_ice_cave', 'north'], // 冰晶洞穴→雪狼巢穴：描述說北側通往城堡大門而非狼穴
+  ['wolf_den', 'south'],         // 反向 雪狼巢穴→冰晶洞穴
+  ['crystal_ice_cave', 'east'],  // 冰晶洞穴→雪人石堆：描述說東側通往冰晶尖塔而非雪人石堆
+  ['frozen_wastes_yeti_cairn', 'west'], // 反向 雪人石堆→冰晶洞穴
+  ['aurora_field', 'north'],    // 極光之地→凍湖：描述把凍湖放在南方而非北方
+  ['frozen_lake', 'south'],     // 反向 凍湖→極光之地
+  ['aurora_field', 'east'],     // 極光之地→冰封王座：戶外極光地直接進室內王座不需經城門，空間不合理
+  ['ice_throne', 'west'],       // 反向 冰封王座→極光之地
+  ['ice_castle_gate', 'south'], // 冰封城堡大門→冰封王座：描述說王座在門的北方而非南方
+  ['ice_throne', 'north'],      // 反向 冰封王座→冰封城堡大門
+  ['ice_throne', 'east'],       // 冰封王座→冰晶尖塔：描述說東側是龍息裂隙而非冰晶尖塔
+  ['frozen_wastes_crystal_spire', 'west'], // 反向 冰晶尖塔→冰封王座
+  ['marsh_of_mirrors_sinking_shrine', 'north'], // 沉沒小祠→南看台鎖門：半沉濕地祠堂直通封閉競技場內門，毫無關聯
+  ['arena_quarter_fill_27_12', 'south'],        // 反向 南看台鎖門→沉沒小祠
+  ['sapphire_lake_pebble_weir', 'north'], // 卵石水堰→月紋裁縫坊：使用者指定，空間不合理
+  ['lakeside_tailor', 'south'],           // 反向 月紋裁縫坊→卵石水堰
+];
+
+for (const [roomId, dir] of SEMANTIC_BLOCKED_EXITS) {
+  const room = ROOMS[roomId];
+  if (!room) continue;
+  const exit = room.exits.find(e => e.direction === dir);
+  if (exit) {
+    exit.locked = true;
+    exit.targetRoomId = '';
+  } else {
+    room.exits.push({ direction: dir, targetRoomId: '', locked: true });
+  }
+}
