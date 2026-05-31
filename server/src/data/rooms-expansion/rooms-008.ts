@@ -17,6 +17,7 @@ redrock_badlands_outlaw_camp: {
         direction: 'south',
         targetRoomId: 'redrock_badlands_blackflag_lookout',
         description: '南側黑旗坡沿營地後方高地曲折上升，繞過落石後才到瞭望點，旗影會引導方向',
+        edgeKind: 'distant_route',
         edgeNote: '盜匪營地到黑旗瞭望點有高地落差與曲折坡道，屬於長路徑。',
       },
     ],
@@ -51,6 +52,7 @@ redrock_badlands_bone_marker: {
         direction: 'east',
         targetRoomId: 'redrock_badlands_ambush_canyon',
         description: '東側碎骨坡穿過乾風與骸骨標記後，才會下切到伏擊峽谷，崖壁適合埋伏',
+        edgeKind: 'distant_route',
         edgeNote: '骨標地到伏擊峽谷需要沿碎骨坡下切，距離長於相鄰格。',
       },
     ],
@@ -82,6 +84,7 @@ redrock_badlands_viper_flats: {
         direction: 'west',
         targetRoomId: 'redrock_badlands_dry_gulch',
         description: '西側蛇洞路繞過荊棘、骨堆與裂土地面後，才會回到乾裂谷，毒蛇痕跡密集',
+        edgeKind: 'distant_route',
         edgeNote: '毒蛇平地西返乾裂谷需要沿蛇洞與裂土繞行，屬於長路徑。',
       },
       { direction: 'east', targetRoomId: 'redrock_badlands_flame_spirit_basin', description: '熱霧路通向火靈盆地' },
@@ -110,13 +113,16 @@ redrock_badlands_red_ore_cut: {
     description:
       '碎岩脊南側的山壁被人鑿開一道巨大切口，裸露出深紅礦脈與黑色火成岩。廢棄礦車歪在軌道旁，車斗裡還有盜匪沒來得及搬走的礦石。這裡是資源、爭奪與中段交通房，旅人可採集赤礦、追查盜匪供應線，也能繞往毒蛇平地、哨塔或岩石巨人棲息的高處。礦脈本身帶著熱度，敲擊聲會沿山壁傳開，引來守礦的岩石巨人或其他旅人。若採集過量，切口內會掉落碎石，短暫封住安全路線',
     exits: [
+      { direction: 'north', targetRoomId: 'redrock_badlands_splinter_ridge', description: '礦痕回到碎岩脊', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'west',
         targetRoomId: 'redrock_badlands_viper_flats',
         description: '西側礦痕退回時要穿過蛇洞群與鬆散紅沙，才會回到毒蛇平地，需避開塌陷洞口',
+        edgeKind: 'distant_route',
         edgeNote: '紅礦切口西返毒蛇平地需要繞過蛇洞與礦渣，屬於長路徑。',
       },
       { direction: 'east', targetRoomId: 'redrock_badlands_rock_giant_perch', description: '礦脈上方有巨人棲地' },
+      { direction: 'south', targetRoomId: 'redrock_badlands_flame_spirit_basin', description: '熱礦路通向火靈盆地', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'red_ore_golem', maxCount: 2, respawnSeconds: 180 },
@@ -142,6 +148,7 @@ redrock_badlands_burnt_wagon: {
     description:
       '沙塵隘口北面停著一輛被燒到只剩黑骨架的商隊馬車，車輪陷在紅沙中，鐵箍因高熱扭曲。貨箱被撬開，布匹、陶罐碎片與焦黑糧袋散了一地。北側遠處可見黑旗瞭望點，但車轍被落石截斷，需由黑旗高處下到殘骸。這裡是任務線索與伏擊房，旅人可調查商隊遇襲原因、尋找失蹤護衛徽章，或判斷盜匪是否使用火焰精靈掩蓋痕跡。殘骸周圍有狼群與盜匪回收隊出沒，火焰殘味也會吸引更深處的元素生物。若旅人翻動錯誤箱子，藏在車底的盜匪會立刻發難',
     exits: [
+      { direction: 'south', targetRoomId: 'redrock_badlands_dust_gate', description: '焦黑車轍回到隘口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'redrock_badlands_echo_arch', description: '風穿過東側拱岩' },
     ],
     monsters: [
@@ -173,8 +180,10 @@ redrock_badlands_echo_arch: {
         direction: 'south',
         targetRoomId: 'redrock_badlands_splinter_ridge',
         description: '南側岩路沿拱岩落石坡下切，穿過多段碎石平台後才回到碎岩脊，回音會干擾判斷',
+        edgeKind: 'distant_route',
         edgeNote: '回聲拱岩南下碎岩脊有高低落差與落石坡，距離長於相鄰格。',
       },
+      { direction: 'north', targetRoomId: 'redrock_badlands_blackflag_lookout', description: '拱岩上方通往黑旗瞭望點', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'blackflag_marksman', maxCount: 2, respawnSeconds: 120 },
@@ -205,6 +214,7 @@ redrock_badlands_duel_stones: {
         direction: 'east',
         targetRoomId: 'redrock_badlands_blackflag_lookout',
         description: '東側黑旗坡先向東北升起，再繞過旗索與落石才抵達瞭望點，坡道暴露在視線中',
+        edgeKind: 'distant_route',
         edgeNote: '決鬥石圈到黑旗瞭望點需沿高坡斜向繞行，距離長於相鄰格。',
       },
     ],
@@ -264,6 +274,7 @@ redrock_badlands_rock_giant_perch: {
         direction: 'east',
         targetRoomId: 'redrock_badlands_scarlet_crater',
         description: '東側巨石路沿岩臺邊緣與落石斜坡前進，最後指向猩紅火口，巨人腳印清楚可見',
+        edgeKind: 'distant_route',
         edgeNote: '岩巨人棲臺到猩紅火口需沿高岩臺和落石坡繞行，距離較長。',
       },
     ],
@@ -290,17 +301,20 @@ redrock_badlands_flame_spirit_basin: {
     description:
       '紅礦切口南側陷成一個淺盆地，地面覆著黑色礦殼，裂縫中冒出橘紅火舌。火焰精靈像小型旋風般在盆地裡遊走，遇到金屬聲或血腥味便會變得躁動。這裡是元素戰鬥與材料房，旅人可收集火成結晶、完成耐火測試任務，也能繞往焦泉、岩巨人棲臺或熔岩蟲陷坑。盆地熱浪會扭曲視線，使其他旅人和盜匪看起來像殘影。若隊伍停留太久，地下熱流會把熔岩蟲引到盆地中心',
     exits: [
+      { direction: 'north', targetRoomId: 'redrock_badlands_red_ore_cut', description: '熱礦路回到紅礦切口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'west', targetRoomId: 'redrock_badlands_viper_flats', description: '西側熱霧路回到毒蛇平地' },
       {
         direction: 'east',
         targetRoomId: 'redrock_badlands_rock_giant_perch',
         description: '東側熱岩坡沿巨人腳印上攀，繞過鬆動礦石後才回到巨人棲臺，落石聲很近',
+        edgeKind: 'distant_route',
         edgeNote: '火靈盆地到岩巨人棲臺有明顯高度差與熱岩坡，距離長於相鄰格。',
       },
       {
         direction: 'south',
         targetRoomId: 'redrock_badlands_lava_worm_sink',
         description: '南側裂縫沿橘光地縫下切，穿過鬆散紅土後才到熔岩蟲陷坑，地底有刮擦聲',
+        edgeKind: 'distant_route',
         edgeNote: '火靈盆地南下熔岩蟲陷坑需要穿過熱裂地縫，屬於長路徑。',
       },
     ],
@@ -331,6 +345,7 @@ redrock_badlands_lava_worm_sink: {
         direction: 'north',
         targetRoomId: 'redrock_badlands_flame_spirit_basin',
         description: '北側裂縫需沿熔岩蟲鑽出的斜道上攀，才會回到火靈盆地，熱風會迎面灌入',
+        edgeKind: 'distant_route',
         edgeNote: '熔岩蟲陷坑北返火靈盆地需要爬出熱裂斜道，距離長於相鄰格。',
       },
       { direction: 'south', targetRoomId: 'redrock_badlands_viper_flats', description: '南側熱浪路回到毒蛇平地' },
@@ -368,6 +383,7 @@ redrock_badlands_ambush_canyon: {
         direction: 'east',
         targetRoomId: 'redrock_badlands_exile_den',
         description: '東側窄路繞過谷壁暗口後通向流放者洞穴',
+        edgeKind: 'distant_route',
         edgeNote: '伏擊峽谷到流放者洞穴需穿過谷壁暗口與碎石封路，屬於長路徑。',
       },
     ],
@@ -395,10 +411,12 @@ redrock_badlands_blackflag_lookout: {
     description:
       '回聲拱岩上方的高處插著一面黑旗，旗布被沙風磨得像刀口。從這裡可以俯瞰焚車殘骸、盜匪營地、決鬥石圈與遠處猩紅火口，是整片赤岩荒地最重要的視野點之一。東側決鬥石圈與北側火口都在視線內，但黑旗這端高坡被旗索與落石擋住，需從石圈或火口方向接近。這裡是大型 PvP 交通與情報房，旅人可控制瞭望點、標記敵對旅人動向、截聽盜匪旗號，或開啟高地路線。黑旗旁有一架破舊望遠鏡，鏡片被刻意刮花，只有在沙塵最濃時才能看見隱藏路徑。若黑旗被放倒，附近盜匪會短暫陷入混亂',
     exits: [
+      { direction: 'south', targetRoomId: 'redrock_badlands_echo_arch', description: '下坡回到回聲拱岩', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'west',
         targetRoomId: 'redrock_badlands_burnt_wagon',
         description: '西側下方的焦黑車轍需沿旗索高坡折返，才會接回焚車殘骸，黑旗在頭頂飄動',
+        edgeKind: 'distant_route',
         edgeNote: '黑旗瞭望點西返焚車殘骸有高地落差與旗索坡，屬於長路徑。',
       },
     ],
@@ -429,6 +447,7 @@ redrock_badlands_scarlet_crater: {
         direction: 'north',
         targetRoomId: 'redrock_badlands_rock_giant_perch',
         description: '北側巨石路需繞過火口裂縫與落石坡，才會回到岩巨人棲臺，赤光會逐漸變暗',
+        edgeKind: 'distant_route',
         edgeNote: '猩紅火口西返岩巨人棲臺需要沿巨石坡繞行，距離長於相鄰格。',
       },
       { direction: 'west', targetRoomId: 'redrock_badlands_fill_n4_19', description: '西側赤色裂光路回到熔岩蟲陷坑' },
@@ -459,6 +478,7 @@ sunken_catacombs_tide_stair: {
     description:
       '入口石階被黑水反覆淹沒，牆上潮痕像年輪一樣層層堆疊。這裡是沉沒墓窟入口與回程錨點，旅人可確認水位、點亮防潮燈，並從刻在階梯側面的名字判斷哪些探險隊曾經進入後沒有回來。水聲會掩蓋骷髏腳步，黑水裡偶爾還有蛇影掠過。若潮痕突然上升，代表墓窟深處的排水機關正在反向運轉，隊伍應先標記退路再深入',
     exits: [
+      { direction: 'west', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '西側石壁裂縫沿鹽晶潮洞斜切而出，通往血鹽海岸的鹽玻璃洞', edgeKind: 'distant_route', edgeNote: '潮汐階梯西出血鹽海岸需穿過墓窟裂縫與鹽晶潮洞，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'sunken_catacombs_flooded_narthex', description: '潮濕石階通向淹沒前廳' },
     ],
     monsters: [
@@ -999,6 +1019,8 @@ thundersteppe_rolling_gate: {
       '雷原入口立在西境草海邊緣，兩根被雷劈黑的木柱夾住低矮石門，門後草浪在風暴下翻成銀灰色。游牧部族把銅鈴、獸骨與避雷符掛在柱上，旅人通過時能聽見每一枚鈴都用不同節奏警告天候。這裡是雷鳴草原的交通節點與安全整隊處，東面牧道能深入風暴，北面淺溝通往雷雨積水區，南面則能看見野獸踩出的奔行痕。守門人留下乾燥柴束與粗略風向記號，提醒隊伍先檢查金屬裝備、藥草與坐騎，因為草原上的路會被暴雨在一刻鐘內改寫。入口旁還刻著簡短巡邏紀錄，標出最近雷獸、狼群與商隊失蹤的位置，讓新來者能先判斷今日是否適合深入草原。',
     exits: [
       { direction: 'east', targetRoomId: 'thundersteppe_stormgrass_track', description: '銅鈴聲引向雷草牧道' },
+      { direction: 'north', targetRoomId: 'thundersteppe_thunder_pool', description: '濕草坡通往雷雨水洼', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'thundersteppe_boar_run', description: '泥痕延伸到野豬衝道', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [{ monsterId: 'stormgrass_strider', maxCount: 1, respawnSeconds: 100 }],
     mapSymbol: '[門]',
@@ -1022,6 +1044,7 @@ thundersteppe_stormgrass_track: {
     exits: [
       { direction: 'west', targetRoomId: 'thundersteppe_rolling_gate', description: '牧道回到雷原入口' },
       { direction: 'east', targetRoomId: 'thundersteppe_herd_plain', description: '蹄印深入奔獸平原' },
+      { direction: 'north', targetRoomId: 'thundersteppe_eagle_roost', description: '斷柱坡升向雷鷹棲柱', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'stormgrass_strider', maxCount: 2, respawnSeconds: 100 },
@@ -1048,6 +1071,7 @@ thundersteppe_herd_plain: {
     exits: [
       { direction: 'west', targetRoomId: 'thundersteppe_stormgrass_track', description: '蹄痕回到雷草牧道' },
       { direction: 'east', targetRoomId: 'thundersteppe_nomad_camp', description: '煙柱指向游牧營地' },
+      { direction: 'south', targetRoomId: 'thundersteppe_charged_bonefield', description: '白骨線通往帶電骨原', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'stormgrass_strider', maxCount: 3, respawnSeconds: 100 },
@@ -1072,7 +1096,9 @@ thundersteppe_thunder_pool: {
     description:
       '雷雨水洼沿著入口北側低地展開，許多淺池被暴雨連成銀色碎帶，雷光落在水面時會沿著泥岸跳躍。池邊蘆草彎得很低，葉片上掛滿細小水珠，任何重靴踩入都會驚起一圈藍白火花。這裡適合收集雨水、洗去草原塵土，也適合觀察天空倒影裡的風暴裂縫；但濕地會放大聲音，遠處雷鷹與風暴野獸能準確聽見金屬碰撞。若有人在水洼中央看見不屬於隊伍的影子，通常代表雷暴中的舊魂正在提醒來者改變路線。',
     exits: [
+      { direction: 'south', targetRoomId: 'thundersteppe_rolling_gate', description: '濕坡回到雷原入口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'thundersteppe_eagle_roost', description: '水邊斜路通往雷鷹棲柱' },
+      { direction: 'north', targetRoomId: 'thundersteppe_wind_shrine', description: '蘆草缺口通往風祭小祠', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'stormwing_eagle', maxCount: 2, respawnSeconds: 130 },
@@ -1097,8 +1123,10 @@ thundersteppe_eagle_roost: {
     description:
       '雷鷹棲柱是一排被古雷劈出的石柱，每根柱頂都堆著枯草、獸骨與發亮的羽毛。風從柱間穿過時會形成尖銳嘯聲，像有看不見的獵鳥正在低空掠過。這裡能俯瞰入口、牧道與北側水洼，也能看見更遠處引雷柱林反射出的白線。攀上石柱可以取得戰術視野，但雷鷹會把任何接近巢位的金屬閃光視為挑釁。若隊伍願意留下獸肉或折斷的箭鏃，偶爾能換來一根帶靜電的羽毛，作為追蹤風向與即將落雷位置的信物。',
     exits: [
+      { direction: 'south', targetRoomId: 'thundersteppe_stormgrass_track', description: '柱影落回雷草牧道', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'west', targetRoomId: 'thundersteppe_thunder_pool', description: '濕風回到雷雨水洼' },
       { direction: 'east', targetRoomId: 'thundersteppe_split_totem', description: '斷柱線通往裂木圖騰' },
+      { direction: 'north', targetRoomId: 'thundersteppe_eagle_nest_peak', description: '石柱脊線通往雷鷹巢峰', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'stormwing_eagle', maxCount: 3, respawnSeconds: 130 },
@@ -1129,12 +1157,14 @@ thundersteppe_nomad_camp: {
         direction: 'north',
         targetRoomId: 'thundersteppe_split_totem',
         description: '北側繩結路先繞過帳棚避雷樁與濕草圈，才會抵達裂木圖騰，沿途銅鈴會提示風向',
+        edgeKind: 'distant_route',
         edgeNote: '游牧營地到裂木圖騰需繞過營地外圈與避雷樁，距離長於相鄰格。',
       },
       {
         direction: 'south',
         targetRoomId: 'thundersteppe_drum_circle',
         description: '南側鼓聲要穿過低草坡、舊祭旗與雨水泥帶後，才會抵達雷鼓石圈，聲音會在草面貼地傳來',
+        edgeKind: 'distant_route',
         edgeNote: '游牧營地到雷鼓石圈被低坡與祭旗路隔開，屬於長路徑。',
       },
     ],

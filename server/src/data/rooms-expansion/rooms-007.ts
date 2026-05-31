@@ -307,6 +307,7 @@ marsh_of_mirrors_reed_gate: {
       '鏡沼外圍的蘆葦高過人頭，入口只是一道被旅人踩出的濕泥缺口，兩側插著刻有警告符號的木樁。水面倒映出的天空比真實天空更暗，偶爾還會映出不存在的鳥影。這裡是進出鏡沼的交通錨點，旅人可整理解毒藥、標記回程路線，並從木樁上的缺口判斷最近有哪些隊伍進入後沒有返回。入口附近看似安靜，實際上毒蛙會藏在蘆葦根部，史萊姆則沿黑水邊緣蠕動。若霧突然變厚，回頭路會被蘆葦重新遮住。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵',
     exits: [
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_blackwater_path', description: '黑水小徑伸入沼澤' },
+      { direction: 'north', targetRoomId: 'marsh_of_mirrors_peat_islet', description: '較乾的泥脊通向泥炭小洲', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'mirror_mire_toad', maxCount: 2, respawnSeconds: 95 },
@@ -333,6 +334,8 @@ marsh_of_mirrors_blackwater_path: {
     exits: [
       { direction: 'west', targetRoomId: 'marsh_of_mirrors_reed_gate', description: '泥路回到蘆葦入口' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_silver_pool', description: '銀色水光在前方' },
+      { direction: 'south', targetRoomId: 'marsh_of_mirrors_frog_mire', description: '蛙鳴來自南側泥潭', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'marsh_of_mirrors_crooked_boardwalk', description: '歪斜木棧道在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'mirror_mire_toad', maxCount: 2, respawnSeconds: 95 },
@@ -360,6 +363,7 @@ marsh_of_mirrors_silver_pool: {
     exits: [
       { direction: 'west', targetRoomId: 'marsh_of_mirrors_blackwater_path', description: '黑水小徑在西側' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_mirror_pond', description: '更深倒影通向鏡池' },
+      { direction: 'north', targetRoomId: 'marsh_of_mirrors_mist_blind', description: '霧幕缺口在北面', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'mirror_mire_toad', maxCount: 1, respawnSeconds: 95 },
@@ -385,7 +389,9 @@ marsh_of_mirrors_frog_mire: {
     description:
       '黑水小徑南側的泥潭被毒蛙佔據，濃綠氣泡從泥底冒出，破裂時釋放出刺鼻霧氣。泥面看似柔軟，實際下方有許多被蛙舌拖出的深洞。這裡是高密度戰鬥與採集房，旅人可收集毒腺、蛙皮與解毒草，也能完成清理毒霧或捕捉活體樣本的任務。泥潭周圍的蘆葦倒影比實物更加密集，會遮住真正安全的落腳點。若不先辨認氣泡方向，隊伍可能被毒蛙從三面同時包圍。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進',
     exits: [
+      { direction: 'north', targetRoomId: 'marsh_of_mirrors_blackwater_path', description: '泥痕回到黑水小徑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_poison_bloom_bed', description: '毒花氣味往東延伸' },
+      { direction: 'south', targetRoomId: 'marsh_of_mirrors_spider_reeds', description: '蛛絲掛在南側蘆葦', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'mirror_mire_toad', maxCount: 4, respawnSeconds: 95 },
@@ -410,11 +416,13 @@ marsh_of_mirrors_crooked_boardwalk: {
     description:
       '歪木棧道架在黑水小徑北側，泡爛木板被生鏽釘子勉強固定，許多缺口下方只剩冷亮倒影。南面木階可下回黑水小徑，東側棧板伸向霧盲處，西面的倒木路則要繞過浮根與黑水缺口才會抵達沉水柳。棧柱上綁著褪色布條與刻痕，有些布條在水面倒影裡顏色更新，像故意指向錯誤方向；空板下方偶爾傳來水蛇磨過木樁的沉悶聲。',
     exits: [
+      { direction: 'south', targetRoomId: 'marsh_of_mirrors_blackwater_path', description: '木階下回黑水小徑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_mist_blind', description: '棧道伸向霧盲處' },
       {
         direction: 'west',
         targetRoomId: 'marsh_of_mirrors_sunken_willow',
         description: '西側倒木路要沿歪斜棧板、浮根與黑水缺口繞行，才會抵達沉水柳，倒影會故意縮短距離',
+        edgeKind: 'distant_route',
         edgeNote: '歪木棧道到沉水柳需沿倒木與黑水缺口繞行，屬於長路徑。',
       },
     ],
@@ -442,10 +450,12 @@ marsh_of_mirrors_mist_blind: {
       '銀面池與歪木棧道之間有一片霧盲處，白霧濃到伸手只能看見指尖水珠。聲音在霧裡被拉長，腳步聲可能來自同伴，也可能只是倒影模仿。這裡是迷路與任務觸發房，旅人可用蘆葦入口取得的標記校準方向，尋找被霧困住的旅人，或追蹤一盞總在遠處閃爍的假燈。霧盲處不適合久留，毒蛙與蜘蛛會利用視線阻隔進行伏擊。若旅人跟著倒影前進，可能直接走入鏡池或破碎倒影區',
     exits: [
       { direction: 'west', targetRoomId: 'marsh_of_mirrors_crooked_boardwalk', description: '摸索回歪木棧道' },
+      { direction: 'south', targetRoomId: 'marsh_of_mirrors_silver_pool', description: '銀色水光在南面', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'east',
         targetRoomId: 'marsh_of_mirrors_mirror_pond',
         description: '東側遠方假燈穿過霧盲水窪與錯位蘆影後，才會通向鏡池，路線必須靠腳下水聲辨認',
+        edgeKind: 'distant_route',
         edgeNote: '霧盲處到鏡池受濃霧與錯位倒影干擾，不是相鄰格。',
       },
     ],
@@ -478,12 +488,14 @@ marsh_of_mirrors_mirror_pond: {
         direction: 'east',
         targetRoomId: 'marsh_of_mirrors_sunken_willow',
         description: '東側倒柳影子會沿鏡池邊緣反折，穿過錯位水面與浮根縫隙後才通向沉水柳',
+        edgeKind: 'distant_route',
         edgeNote: '鏡池到沉水柳被反折倒影與浮根水面隔開，屬於長路徑。',
       },
       {
         direction: 'south',
         targetRoomId: 'marsh_of_mirrors_poison_bloom_bed',
         description: '南側毒花倒影要沿鏡池裂光下沉，穿過綠霧水窪後才抵達毒花床，花影會誤導直行',
+        edgeKind: 'distant_route',
         edgeNote: '鏡池到毒花床需穿過綠霧水窪與錯位花影，距離長於相鄰格。',
       },
     ],
@@ -515,6 +527,7 @@ marsh_of_mirrors_sunken_willow: {
         direction: 'north',
         targetRoomId: 'marsh_of_mirrors_dark_treant_grove',
         description: '北側根系要穿過沉水柳下方的黑水與倒掛樹影，才會延進暗樹林，腳下真根與倒影會交錯',
+        edgeKind: 'distant_route',
         edgeNote: '沉水柳到暗樹林需沿水下根系繞行，不是相鄰平面一格。',
       },
     ],
@@ -547,12 +560,14 @@ marsh_of_mirrors_poison_bloom_bed: {
         direction: 'north',
         targetRoomId: 'marsh_of_mirrors_mirror_pond',
         description: '北返時要沿毒花根部與綠霧水窪回溯，避開錯位花影後才會看見鏡池平整水面',
+        edgeKind: 'distant_route',
         edgeNote: '毒花床北返鏡池需穿過綠霧水窪，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'marsh_of_mirrors_shattered_reflection',
         description: '東側黑霧沿毒花床邊緣擴散，穿過數片錯誤倒影後才會指向破碎倒影',
+        edgeKind: 'distant_route',
         edgeNote: '毒花床到破碎倒影被黑霧與錯誤倒影隔開，距離長於相鄰格。',
       },
     ],
@@ -579,6 +594,7 @@ marsh_of_mirrors_spider_reeds: {
     description:
       '毒蛙泥潭南面是一片密集蘆叢，蛛絲從蘆葉連到枯木，掛滿水珠後像一面面破碎小鏡。許多絲線不在視線正前方，而是藏在倒影裡，等旅人跨步時才拉住腳踝。這裡是戰鬥與採集房，旅人可收集蛛絲、蛛毒和被困旅人的物品，也能清出一條通往失路石堆的安全路線。蜘蛛會利用毒霧與水面反光遮掩位置，毒蛙則躲在蘆根補上第二波攻擊。若隊伍帶火，蛛網會迅速收縮，暴露隱藏巢穴。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵。務必小心前進',
     exits: [
+      { direction: 'north', targetRoomId: 'marsh_of_mirrors_frog_mire', description: '蛙鳴來自北側泥潭', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_lost_cairn', description: '蛛絲路通往失路石堆' },
     ],
     monsters: [
@@ -609,8 +625,10 @@ marsh_of_mirrors_lost_cairn: {
         direction: 'east',
         targetRoomId: 'marsh_of_mirrors_shattered_reflection',
         description: '東側錯誤箭頭會先繞過失路石堆與漂浮護符，才指向破碎倒影，霧中會出現多條假支路',
+        edgeKind: 'distant_route',
         edgeNote: '失路石堆到破碎倒影需辨認多條假支路，屬於長路徑。',
       },
+      { direction: 'south', targetRoomId: 'marsh_of_mirrors_serpent_channel', description: '低水道通向蛇道', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'reedshade_stalker', maxCount: 2, respawnSeconds: 110 },
@@ -640,18 +658,21 @@ marsh_of_mirrors_shattered_reflection: {
         direction: 'west',
         targetRoomId: 'marsh_of_mirrors_lost_cairn',
         description: '西返時錯誤箭頭會在破碎水面間重組，必須繞過漂浮護符與假支路後才回到失路石堆',
+        edgeKind: 'distant_route',
         edgeNote: '破碎倒影西返失路石堆需穿過重組倒影與假支路，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'marsh_of_mirrors_glasswater_core',
         description: '東側無延遲倒影只在水面裂片同步時出現，隊伍要踩過連續倒影碎片才會抵達玻璃水核心',
+        edgeKind: 'distant_route',
         edgeNote: '破碎倒影到玻璃水核心需穿過不連續倒影碎片，不是相鄰格。',
       },
       {
         direction: 'north',
         targetRoomId: 'marsh_of_mirrors_echo_fen',
         description: '北側回聲濕地要沿破碎水面邊緣繞過延遲倒影，才會抵達開闊淺水區',
+        edgeKind: 'distant_route',
         edgeNote: '破碎倒影到回聲濕地受延遲倒影與淺水邊緣阻隔，距離長於相鄰格。',
       },
     ],
@@ -679,7 +700,9 @@ marsh_of_mirrors_peat_islet: {
     description:
       '蘆葦入口北面的泥炭小洲是少數不會立刻下陷的乾地，地面覆滿黑褐苔蘚，中央留著舊營火圈與幾根插成三角的測路桿。這裡是補給與交通房，旅人可短暫休息、重新整理鏡沼標記，也能從營火灰裡發現前一隊留下的未完成地圖。小洲邊緣水面不斷退縮又回來，像有什麼在測量岸線。若旅人修復測路桿，可以建立通往歪木棧道與回聲濕地的穩定捷徑；若忽略苔蘚上的蛇痕，夜裡會被湖蛇包圍',
     exits: [
+      { direction: 'south', targetRoomId: 'marsh_of_mirrors_reed_gate', description: '泥脊回到蘆葦入口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_crooked_boardwalk', description: '乾木橋通往歪木棧道' },
+      { direction: 'north', targetRoomId: 'marsh_of_mirrors_echo_fen', description: '測路桿指向回聲濕地', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'lake_serpent', maxCount: 1, respawnSeconds: 120 },
@@ -708,8 +731,11 @@ marsh_of_mirrors_dark_treant_grove: {
         direction: 'south',
         targetRoomId: 'marsh_of_mirrors_sunken_willow',
         description: '南返時根路沿暗樹林水下根脈回折，穿過倒掛樹影後才回到沉水柳，黑水會遮住真實落腳點',
+        edgeKind: 'distant_route',
         edgeNote: '暗樹林南返沉水柳需沿水下根脈回折，屬於長路徑。',
       },
+      { direction: 'east', targetRoomId: 'marsh_of_mirrors_glasswater_core', description: '黑根延向玻璃水核心', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'west', targetRoomId: 'marsh_of_mirrors_echo_fen', description: '回聲濕地在西側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'dark_treant', maxCount: 2, respawnSeconds: 160 },
@@ -735,16 +761,19 @@ marsh_of_mirrors_serpent_channel: {
     description:
       '失路石堆南面的水道蜿蜒得像巨蛇身體，水面一段明亮一段漆黑，讓人難以看清深度。兩岸蘆葦低伏，像被巨大身軀反覆壓過。這裡是高風險通道與戰鬥房，旅人可沿水道繞往沉沒小祠，也能追查湖蛇巢穴與失蹤貨箱。水道中段有多處氣泡旋渦，若倒影裡先出現波紋，真正的湖蛇很快會從身旁水面竄出。毒蛙也會利用蛇道留下的空洞藏身，形成連續伏擊。安全通過後，隊伍可取得通往小祠的隱蔽路線。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵',
     exits: [
+      { direction: 'north', targetRoomId: 'marsh_of_mirrors_lost_cairn', description: '低水道回到失路石堆', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'east',
         targetRoomId: 'marsh_of_mirrors_sinking_shrine',
         description: '東側水道沿蛇形暗流繞過氣泡旋渦與低伏蘆葦後，才會通往沉沒小祠',
+        edgeKind: 'distant_route',
         edgeNote: '蛇行水道到沉沒小祠需沿蛇形暗流繞行，距離長於相鄰格。',
       },
       {
         direction: 'west',
         targetRoomId: 'marsh_of_mirrors_spider_reeds',
         description: '西側蘆葦缺口要逆著蛇形水道與蛛絲倒影回繞，才會連回蛛網蘆叢',
+        edgeKind: 'distant_route',
         edgeNote: '蛇行水道西返蛛網蘆叢需穿過水道回彎與蛛絲倒影，屬於長路徑。',
       },
     ],
@@ -771,6 +800,9 @@ marsh_of_mirrors_echo_fen: {
     description:
       '回聲濕地位於泥炭小洲北面，淺水覆過膝高草根，霧氣把遠近燈火折成好幾層模糊方向。南側測路桿仍指回泥炭小洲，東面低沉回聲通往暗樹林，北方月光水線延向月光堤道。濕地中央沒有固定道路，只有半沉木樁、破防水包與被水草纏住的鈴片作為地標；聲音在此處會延遲返回，有時還帶著陌生尾音，使空曠水面比密林更容易令人失去方位。',
     exits: [
+      { direction: 'south', targetRoomId: 'marsh_of_mirrors_peat_islet', description: '測路桿回到泥炭小洲', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'marsh_of_mirrors_dark_treant_grove', description: '低沉回聲來自暗樹林', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'marsh_of_mirrors_moonlit_causeway', description: '月光水線通向堤道', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'reedshade_stalker', maxCount: 2, respawnSeconds: 110 },
@@ -796,11 +828,14 @@ marsh_of_mirrors_moonlit_causeway: {
     description:
       '回聲濕地北面浮出一條由白石鋪成的窄堤，石面像被月光浸過，即使陰天也會發出微亮光澤。堤道兩側水面倒映著不存在的滿月，讓石路看起來像懸在夜空上。這裡是通往鏡沼深處的交通節點，旅人可藉由白石排列判斷前往沉沒小祠、巫燈處與玻璃水核心的路線。月光堤道上的敵人不多，但一旦戰鬥，任何後退都可能踏進倒影而非真路。若旅人帶著鏡池樣本，白石會短暫顯示安全順序。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵。務必小心前進',
     exits: [
+      { direction: 'south', targetRoomId: 'marsh_of_mirrors_echo_fen', description: '回聲濕地在南側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_fill_27_19', description: '東側鏡沼通道接向巫燈處' },
+      { direction: 'west', targetRoomId: 'marsh_of_mirrors_sinking_shrine', description: '白石支路通向沉沒小祠', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'north',
         targetRoomId: 'marsh_of_mirrors_glasswater_core',
         description: '北側最亮石路沿月光堤道反折，穿過水面假月與黑蘆外圈後才會通向玻璃水核心',
+        edgeKind: 'distant_route',
         edgeNote: '月光堤道到玻璃水核心需沿反折石路穿過黑蘆外圈，不是相鄰格。',
       },
     ],
@@ -831,12 +866,15 @@ marsh_of_mirrors_sinking_shrine: {
         direction: 'west',
         targetRoomId: 'marsh_of_mirrors_serpent_channel',
         description: '西返時蛇形水道要沿沉沒祠堂外牆與氣泡旋渦回繞，才會回到蛇行水道',
+        edgeKind: 'distant_route',
         edgeNote: '沉沒小祠西返蛇行水道需繞過祠堂外牆與旋渦，屬於長路徑。',
       },
+      { direction: 'east', targetRoomId: 'marsh_of_mirrors_moonlit_causeway', description: '白石支路回到月光堤道', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'north',
         targetRoomId: 'marsh_of_mirrors_hag_lantern',
         description: '北側護符路穿過半沉供桌、低霧與歪木桿倒影後，才會抵達巫燈處，燈影在水面反覆偏移',
+        edgeKind: 'distant_route',
         edgeNote: '沉沒小祠到巫燈處需穿過低霧與倒影木桿，距離長於相鄰格。',
       },
     ],
@@ -869,12 +907,14 @@ marsh_of_mirrors_hag_lantern: {
         direction: 'south',
         targetRoomId: 'marsh_of_mirrors_sinking_shrine',
         description: '南返時護符路沿歪木桿倒影與低霧回落，穿過半沉供桌後才回到沉沒小祠',
+        edgeKind: 'distant_route',
         edgeNote: '巫燈處南返沉沒小祠需沿倒影木桿與低霧路回繞，屬於長路徑。',
       },
       {
         direction: 'north',
         targetRoomId: 'marsh_of_mirrors_glasswater_core',
         description: '北側雙色燈影必須等綠光與紫影重疊時才能辨認，沿黑蘆外圈繞行後才到玻璃水核心',
+        edgeKind: 'distant_route',
         edgeNote: '巫燈處到玻璃水核心需等待雙色燈影重疊並繞過黑蘆外圈，不是相鄰格。',
       },
     ],
@@ -906,12 +946,14 @@ marsh_of_mirrors_glasswater_core: {
         direction: 'south',
         targetRoomId: 'marsh_of_mirrors_moonlit_causeway',
         description: '南返時最亮石路會沿黑蘆外圈反折，穿過假月水面後才回到月光堤道',
+        edgeKind: 'distant_route',
         edgeNote: '玻璃水核心南返月光堤道需沿黑蘆外圈與反折石路回行，屬於長路徑。',
       },
       {
         direction: 'west',
         targetRoomId: 'marsh_of_mirrors_shattered_reflection',
         description: '西側裂紋水面要等核心倒影偏移後才會連上，隊伍需踩過連續碎片回到破碎倒影',
+        edgeKind: 'distant_route',
         edgeNote: '玻璃水核心西返破碎倒影需穿過偏移倒影碎片，不是相鄰格。',
       },
     ],
@@ -941,6 +983,7 @@ redrock_badlands_dust_gate: {
       '赤岩荒地的入口是一道被紅色岩壁夾住的狹長隘口，風把細沙推成斜線，打在警告木樁與破旗上。地面同時有商隊車轍、盜匪靴印和野獸爪痕，沒有哪一種痕跡能保持完整太久。這裡是荒地的交通錨點與 PvP 風險提示房，旅人可確認補水、標記撤退路線，並從木樁上的懸賞紙判斷近期哪支盜匪團最活躍。隘口不完全安全，落單旅人常在進入後第一道轉彎就被盯上。若風聲突然變低，代表岩脊上有人正在觀察。這裡的地形與視野會直接影響旅人遭遇和撤退判定，隊伍最好先確認高處、掩體與回程路線',
     exits: [
       { direction: 'east', targetRoomId: 'redrock_badlands_rustwash_pass', description: '紅沙路通向鏽水隘道' },
+      { direction: 'north', targetRoomId: 'redrock_badlands_burnt_wagon', description: '焦黑車轍通向焚車殘骸', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'dust_road_raider', maxCount: 2, respawnSeconds: 95 },
@@ -967,6 +1010,7 @@ redrock_badlands_rustwash_pass: {
     exits: [
       { direction: 'west', targetRoomId: 'redrock_badlands_dust_gate', description: '紅沙路回到沙塵隘口' },
       { direction: 'east', targetRoomId: 'redrock_badlands_splinter_ridge', description: '河道爬向碎岩脊' },
+      { direction: 'south', targetRoomId: 'redrock_badlands_dry_gulch', description: '乾裂谷在南側下陷', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'dust_road_raider', maxCount: 3, respawnSeconds: 95 },
@@ -993,10 +1037,12 @@ redrock_badlands_splinter_ridge: {
     exits: [
       { direction: 'west', targetRoomId: 'redrock_badlands_rustwash_pass', description: '碎坡回到鏽水隘道' },
       { direction: 'east', targetRoomId: 'redrock_badlands_bandit_watch', description: '岩脊通向盜匪哨塔' },
+      { direction: 'south', targetRoomId: 'redrock_badlands_red_ore_cut', description: '紅色礦痕往南延伸', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'north',
         targetRoomId: 'redrock_badlands_echo_arch',
         description: '北面風聲穿過多段碎岩脊與落石坡，繞上高處後才抵達回聲拱岩，沿途視野開闊',
+        edgeKind: 'distant_route',
         edgeNote: '碎岩脊到回聲拱岩需要沿高低落差明顯的岩脊繞行，屬於長路徑。',
       },
     ],
@@ -1030,6 +1076,7 @@ redrock_badlands_bandit_watch: {
         direction: 'south',
         targetRoomId: 'redrock_badlands_red_ore_cut',
         description: '塔下礦車路沿紅岩坡折向南方，穿過斷軌與礦渣後才到紅礦切口，車輪痕可辨路',
+        edgeKind: 'distant_route',
         edgeNote: '盜匪哨塔到紅礦切口要繞過塔基斷軌與礦車路，距離長於相鄰格。',
       },
     ],
@@ -1056,16 +1103,19 @@ redrock_badlands_dry_gulch: {
     description:
       '鏽水隘道南側陷成一條乾裂谷，谷底泥土龜裂成大片硬殼，裂縫間有熱氣與細小蛇洞。風被谷壁擋住，空氣悶得像石窯，連遠方喊聲都變得模糊。這裡是資源與戰鬥房，旅人可採集乾土礦、蛇毒與耐旱草根，也能避開主路哨塔繞往毒蛇平地或焦泉。乾裂谷看似低調，實際常被盜匪當成藏貨線，地上骨頭多半不是野獸留下。若裂縫突然冒出熱氣，附近可能有熔岩蟲通道',
     exits: [
+      { direction: 'north', targetRoomId: 'redrock_badlands_rustwash_pass', description: '爬坡回到鏽水隘道', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'east',
         targetRoomId: 'redrock_badlands_viper_flats',
         description: '東側蛇洞密集處沿乾裂土坡展開，繞過荊棘與骨堆後才到毒蛇平地',
+        edgeKind: 'distant_route',
         edgeNote: '乾裂谷到毒蛇平地需沿蛇洞與裂土繞行，不是直接相鄰格。',
       },
       {
         direction: 'south',
         targetRoomId: 'redrock_badlands_cinder_spring',
         description: '南側熱氣從裂谷底部升起，需沿黑色礦殼下切後才會抵達焦泉，地面持續發燙',
+        edgeKind: 'distant_route',
         edgeNote: '乾裂谷南下焦泉有垂直下切與熱氣阻隔，屬於長路徑。',
       },
     ],
@@ -1096,6 +1146,7 @@ redrock_badlands_cinder_spring: {
         direction: 'north',
         targetRoomId: 'redrock_badlands_dry_gulch',
         description: '北返乾谷時需攀過黑色礦殼與蒸汽裂縫，熱風會遮住回頭路，岩面也容易碎裂',
+        edgeKind: 'distant_route',
         edgeNote: '焦泉回乾裂谷需要沿熱泉邊坡上切，距離長於相鄰格。',
       },
       { direction: 'east', targetRoomId: 'redrock_badlands_viper_flats', description: '東側蛇洞平地接向熱霧路' },
@@ -1103,6 +1154,7 @@ redrock_badlands_cinder_spring: {
         direction: 'south',
         targetRoomId: 'redrock_badlands_lava_worm_sink',
         description: '南側裂地沿冒煙地縫下沉，繞過鬆動紅土後才到熔岩蟲陷坑，腳下震動明顯',
+        edgeKind: 'distant_route',
         edgeNote: '焦泉南下熔岩蟲陷坑有崩塌地縫阻隔，不是相鄰格。',
       },
     ],

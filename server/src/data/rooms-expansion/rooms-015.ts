@@ -436,6 +436,7 @@ moonlit_fen_reed_gate: {
       '蘆葦入口位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，旅人可以 採集 夜花、燈苔、毒腺與濕地草藥，也能 觀察 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處',
     exits: [
       { direction: 'east', targetRoomId: 'moonlit_fen_moonflower_bank', description: '月花岸在東側' },
+      { direction: 'north', targetRoomId: 'moonlit_fen_firefly_pool', description: '螢火池在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'moonlit_reed_sprite', maxCount: 2, respawnSeconds: 60 },
@@ -461,6 +462,7 @@ moonlit_fen_moonflower_bank: {
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_reed_gate', description: '月花岸回到蘆葦入口' },
       { direction: 'east', targetRoomId: 'moonlit_fen_silver_mire', description: '銀泥沼在東側' },
+      { direction: 'south', targetRoomId: 'moonlit_fen_fishing_cut', description: '釣水缺口向南延伸', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'moonflower_mantis', maxCount: 1, respawnSeconds: 90 },
@@ -485,6 +487,7 @@ moonlit_fen_firefly_pool: {
     description:
       '螢火池位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，旅人可以 採集 夜花、燈苔、毒腺與濕地草藥，也能 觀察 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處',
     exits: [
+      { direction: 'south', targetRoomId: 'moonlit_fen_reed_gate', description: '螢火池回到蘆葦入口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'moonlit_fen_willow_hush', description: '靜柳叢在東側' },
     ],
     monsters: [
@@ -512,6 +515,7 @@ moonlit_fen_willow_hush: {
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_firefly_pool', description: '靜柳叢回到螢火池' },
       { direction: 'east', targetRoomId: 'moonlit_fen_glimmer_ford', description: '微光淺灘在東側' },
+      { direction: 'south', targetRoomId: 'moonlit_fen_silver_mire', description: '南側靜柳叢沿露出水面的柳根路斜落，穿過銀霧水洼與倒影草線抵達銀泥沼', edgeKind: 'distant_route', edgeNote: '靜柳叢到銀泥沼需沿柳根路與倒影草線斜行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'willow_whisper_root', maxCount: 2, respawnSeconds: 100 },
@@ -537,6 +541,7 @@ moonlit_fen_silver_mire: {
       '銀泥沼位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，旅人可以 採集 夜花、燈苔、毒腺與濕地草藥，也能 觀察 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_moonflower_bank', description: '銀泥沼回到月花岸' },
+      { direction: 'north', targetRoomId: 'moonlit_fen_willow_hush', description: '北側銀泥沼沿倒影草線上行，穿過銀霧水洼與露根水道回到靜柳叢', edgeKind: 'distant_route', edgeNote: '銀泥沼回靜柳叢需沿倒影草線與露根水道上行，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'moonlit_fen_frog_choir', description: '蛙鳴洲在東側' },
     ],
     monsters: [
@@ -562,6 +567,7 @@ moonlit_fen_fishing_cut: {
     description:
       '釣水缺口位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，旅人可以 採集 夜花、燈苔、毒腺與濕地草藥，也能 觀察 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處',
     exits: [
+      { direction: 'north', targetRoomId: 'moonlit_fen_moonflower_bank', description: '釣水缺口回到月花岸', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'moonlit_fen_mosquito_haze', description: '蚊霧溝在東側' },
     ],
     monsters: [
@@ -615,6 +621,7 @@ moonlit_fen_frog_choir: {
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_silver_mire', description: '蛙鳴洲回到銀泥沼' },
       { direction: 'east', targetRoomId: 'moonlit_fen_lantern_moss', description: '燈苔坡在東側' },
+      { direction: 'south', targetRoomId: 'moonlit_fen_mosquito_haze', description: '南側蛙鳴洲沿濕草道斜落，穿過蛙卵淺灣、月影水痕與銀蚊霧帶抵達蚊霧溝', edgeKind: 'distant_route', edgeNote: '蛙鳴洲到蚊霧溝需沿濕草道與銀蚊霧帶斜行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'blackwater_leech_bloom', maxCount: 2, respawnSeconds: 110 },
@@ -640,6 +647,7 @@ moonlit_fen_mosquito_haze: {
       '蚊霧溝位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，旅人可以 採集 夜花、燈苔、毒腺與濕地草藥，也能 觀察 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_fishing_cut', description: '蚊霧溝回到釣水缺口' },
+      { direction: 'north', targetRoomId: 'moonlit_fen_frog_choir', description: '北側蚊霧溝沿銀蚊霧帶回穿，踏過月影水痕、蛙卵淺灣與濕草道回到蛙鳴洲', edgeKind: 'distant_route', edgeNote: '蚊霧溝回蛙鳴洲需沿銀蚊霧帶與濕草道回穿，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'moonlit_fen_blackwater_run', description: '黑水流在東側' },
     ],
     monsters: [
@@ -692,6 +700,7 @@ moonlit_fen_lantern_moss: {
       '燈苔坡位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，旅人可以 採集 夜花、燈苔、毒腺與濕地草藥，也能 觀察 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_frog_choir', description: '燈苔坡回到蛙鳴洲' },
+      { direction: 'north', targetRoomId: 'moonlit_fen_fae_ring', description: '苔光路通往妖光環', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'moonlit_fen_halfmoon_pond', description: '半月池在東側' },
     ],
     monsters: [
@@ -744,6 +753,7 @@ moonlit_fen_fae_ring: {
       '妖光環位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，旅人可以 採集 夜花、燈苔、毒腺與濕地草藥，也能 觀察 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_night_bloom_grove', description: '妖光環回到夜花小林' },
+      { direction: 'south', targetRoomId: 'moonlit_fen_lantern_moss', description: '苔光路回到燈苔坡', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'moonlit_fen_moonwell', description: '月井在東側' },
     ],
     monsters: [
@@ -795,6 +805,7 @@ moonlit_fen_sunken_log_bridge: {
     description:
       '沉木橋位於月光濕地的銀色水道與夜花叢之間，北側半沉木支脈連向黑水汊道，東側舊舟營仍有微弱槳影。水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，旅人可以 採集 夜花、燈苔、毒腺與濕地草藥，也能 觀察 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處',
     exits: [
+      { direction: 'north', targetRoomId: 'moonlit_fen_fill_18_13', description: '北側沉木支脈沿黑水汊道上行，回到月沼北汊', edgeKind: 'distant_route', edgeNote: '沉木橋北返月沼北汊需沿半沉木支脈繞過黑水汊道，實際路程長於相鄰一格。' },
       { direction: 'west', targetRoomId: 'moonlit_fen_blackwater_run', description: '沉木橋回到黑水流' },
       { direction: 'east', targetRoomId: 'moonlit_fen_old_canoe_camp', description: '舊舟營在東側' },
     ],
@@ -822,6 +833,7 @@ moonlit_fen_moonwell: {
       '月井位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，旅人可以 採集 夜花、燈苔、毒腺與濕地草藥，也能 觀察 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_fae_ring', description: '月井回到妖光環' },
+      { direction: 'south', targetRoomId: 'moonlit_fen_white_reed_maze', description: '南側月井沿井邊濕石路斜落，穿過月影水紋與白蘆迴圈入口抵達白蘆迷道', edgeKind: 'distant_route', edgeNote: '月井到白蘆迷道需沿井邊濕石路與白蘆迴圈斜行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'fae_ring_trickster', maxCount: 1, respawnSeconds: 240 },
@@ -847,6 +859,7 @@ moonlit_fen_white_reed_maze: {
       '白蘆迷道位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，旅人可以 採集 夜花、燈苔、毒腺與濕地草藥，也能 觀察 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_halfmoon_pond', description: '白蘆迷道回到半月池' },
+      { direction: 'north', targetRoomId: 'moonlit_fen_moonwell', description: '北側白蘆迷道沿白蘆迴圈折返，穿過月影水紋與井邊濕石路回到月井', edgeKind: 'distant_route', edgeNote: '白蘆迷道回月井需沿白蘆迴圈與井邊濕石路折返，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'moonlit_fen_lunar_altar', description: '月沼祭壇在東側' },
     ],
     monsters: [
@@ -873,6 +886,7 @@ moonlit_fen_old_canoe_camp: {
       '舊舟營位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，旅人可以 採集 夜花、燈苔、毒腺與濕地草藥，也能 觀察 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_sunken_log_bridge', description: '舊舟營回到沉木橋' },
+      { direction: 'east', targetRoomId: 'moonlit_fen_lunar_altar', description: '東側舊舟營沿半沉舟痕橫渡，繞過黑水倒影與白蘆暗汊抵達月沼祭壇', edgeKind: 'distant_route', edgeNote: '舊舟營到月沼祭壇需沿半沉舟痕與白蘆暗汊橫渡，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'white_reed_stalker', maxCount: 1, respawnSeconds: 260 },
@@ -928,6 +942,7 @@ moonlit_fen_dreamwater_core: {
         direction: 'east',
         targetRoomId: 'marsh_of_mirrors_fill_24_15',
         description: '東側夢水邊界穿過銀霧與鏡沼棧道，接入鏡沼外緣',
+        edgeKind: 'distant_route',
         edgeNote: '夢水核心到鏡沼棧道跨越月光濕地與鏡沼邊界，實際路程長於相鄰一格。',
       },
     ],
@@ -956,6 +971,7 @@ pilgrim_road_waygate: {
       '古道起點位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 搜索 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
     exits: [
       { direction: 'east', targetRoomId: 'pilgrim_road_worn_flags', description: '舊旗石路通往東側' },
+      { direction: 'north', targetRoomId: 'pilgrim_road_milestone_cairn', description: '里程石堆在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'road_dust_stray', maxCount: 2, respawnSeconds: 75 },
@@ -981,6 +997,7 @@ pilgrim_road_worn_flags: {
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_waygate', description: '舊旗石路回到古道起點' },
       { direction: 'east', targetRoomId: 'pilgrim_road_caravan_rut', description: '車轍路在東側' },
+      { direction: 'south', targetRoomId: 'pilgrim_road_dry_well', description: '乾井在南側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'road_dust_stray', maxCount: 2, respawnSeconds: 75 },
@@ -1005,6 +1022,7 @@ pilgrim_road_milestone_cairn: {
     description:
       '里程石堆位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 搜索 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
     exits: [
+      { direction: 'south', targetRoomId: 'pilgrim_road_waygate', description: '里程石堆回到古道起點', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'pilgrim_road_bell_shrine', description: '鐘鈴小祠在東側' },
     ],
     monsters: [
@@ -1032,6 +1050,7 @@ pilgrim_road_bell_shrine: {
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_milestone_cairn', description: '鐘鈴小祠回到里程石堆' },
       { direction: 'east', targetRoomId: 'pilgrim_road_prayer_steps', description: '祈願階在東側' },
+      { direction: 'south', targetRoomId: 'pilgrim_road_caravan_rut', description: '南側鐘鈴小祠沿破碎祈願石階斜落，穿過白石路標與深車轍抵達商隊車轍', edgeKind: 'distant_route', edgeNote: '鐘鈴小祠到商隊車轍需沿祈願石階與深車轍斜行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'shrine_bell_wraith', maxCount: 1, respawnSeconds: 120 },
@@ -1057,6 +1076,7 @@ pilgrim_road_caravan_rut: {
       '商隊車轍位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 搜索 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_worn_flags', description: '商隊車轍回到舊旗石路' },
+      { direction: 'north', targetRoomId: 'pilgrim_road_bell_shrine', description: '北側商隊車轍沿深車轍上行，穿過白石路標與破碎祈願石階回到鐘鈴小祠', edgeKind: 'distant_route', edgeNote: '商隊車轍回鐘鈴小祠需沿深車轍與祈願石階上行，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'pilgrim_road_abandoned_inn', description: '廢棄旅舍在東側' },
     ],
     monsters: [
@@ -1082,6 +1102,7 @@ pilgrim_road_dry_well: {
     description:
       '乾井位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 搜索 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
     exits: [
+      { direction: 'north', targetRoomId: 'pilgrim_road_worn_flags', description: '乾井回到舊旗石路', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'pilgrim_road_thorn_cut', description: '荊棘缺口在東側' },
     ],
     monsters: [
@@ -1135,6 +1156,7 @@ pilgrim_road_abandoned_inn: {
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_caravan_rut', description: '廢棄旅舍回到商隊車轍' },
       { direction: 'east', targetRoomId: 'pilgrim_road_ambush_bend', description: '伏擊彎道在東側' },
+      { direction: 'south', targetRoomId: 'pilgrim_road_thorn_cut', description: '南側廢棄旅舍從坍塌後門下切，穿過乾草貨棚與荊棘暗口抵達荊棘缺口', edgeKind: 'distant_route', edgeNote: '廢棄旅舍到荊棘缺口需穿過後門貨棚與荊棘暗口，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'caravan_rut_cutpurse', maxCount: 2, respawnSeconds: 95 },
@@ -1160,6 +1182,7 @@ pilgrim_road_thorn_cut: {
       '荊棘缺口位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 搜索 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_dry_well', description: '荊棘缺口回到乾井' },
+      { direction: 'north', targetRoomId: 'pilgrim_road_abandoned_inn', description: '北側荊棘缺口沿荊棘暗口回穿，越過乾草貨棚與坍塌後門回到廢棄旅舍', edgeKind: 'distant_route', edgeNote: '荊棘缺口回廢棄旅舍需沿荊棘暗口與後門貨棚回穿，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'pilgrim_road_smuggler_cache', description: '走私藏點在東側' },
     ],
     monsters: [

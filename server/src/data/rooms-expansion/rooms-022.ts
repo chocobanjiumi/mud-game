@@ -12,6 +12,7 @@ frostbite_pass_caravan_marker: {
     exits: [
       { direction: 'west', targetRoomId: 'frostbite_pass_snow_gate', description: '回到雪門' },
       { direction: 'east', targetRoomId: 'frostbite_pass_icewind_cut', description: '冰風切道在東側' },
+      { direction: 'north', targetRoomId: 'frostbite_pass_buried_wagon', description: '埋雪貨車在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'frostbite_buried_caravan_wight', maxCount: 1, respawnSeconds: 220 },
@@ -62,7 +63,9 @@ frostbite_pass_frozen_switchback: {
     description:
       '凍結折路沿山壁急轉數次，石階全被透明冰殼封住，只能從冰下辨出舊路邊線。南側雪門沉在低處風雪裡，東面埋雪貨車卡在轉角外，北面冷火營有微弱藍焰映過雪幕。折路護欄多處斷裂，冰面夾著鐵釘、凍草和商隊行囊扣，風從每個轉角反彈回來，讓這段路像一條被冰固定住的蛇形傷口。近旁霜粉不斷堆積在石縫與繩結上，讓最近的方向線索仍能從白茫茫風雪中分辨出來。',
     exits: [
+      { direction: 'south', targetRoomId: 'frostbite_pass_snow_gate', description: '回到雪門', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'frostbite_pass_buried_wagon', description: '埋雪貨車在東側' },
+      { direction: 'north', targetRoomId: 'frostbite_pass_coldfire_camp', description: '冷火營在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'frostbite_whiteout_wolf_pack', maxCount: 1, respawnSeconds: 180 },
@@ -88,6 +91,7 @@ frostbite_pass_buried_wagon: {
       '埋雪貨車側翻在凍結折路與雪怪抓痕之間，車篷被積雪壓塌，只露出一圈冰硬輪輻。西側折路貼著山壁回轉，南面商隊路標在雪坡下方，東方爪痕地帶的雪牆被撕出深槽。車廂內有凍裂木箱、硬成板狀的毛毯和被冰封住的銅鈴，貨物散在雪下形成不自然隆起；整輛車像暴風雪忽然合上的陷阱。近旁霜粉不斷堆積在石縫與繩結上，讓最近的方向線索仍能從白茫茫風雪中分辨出來。',
     exits: [
       { direction: 'west', targetRoomId: 'frostbite_pass_frozen_switchback', description: '回到凍結折路' },
+      { direction: 'south', targetRoomId: 'frostbite_pass_caravan_marker', description: '回到商隊路標', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'frostbite_pass_yeti_scrape', description: '雪怪抓痕在東側' },
     ],
     monsters: [
@@ -115,6 +119,7 @@ frostbite_pass_blue_ice_bridge: {
     exits: [
       { direction: 'west', targetRoomId: 'frostbite_pass_icewind_cut', description: '回到冰風切道' },
       { direction: 'east', targetRoomId: 'frostbite_pass_glacier_mouth', description: '冰河口在東側' },
+      { direction: 'north', targetRoomId: 'frostbite_pass_yeti_scrape', description: '北側藍冰橋沿裂紋冰脊上行，繞過斷裂繩標與雪怪爪溝抵達抓痕地帶', edgeKind: 'distant_route', edgeNote: '藍冰橋到雪怪抓痕需沿裂紋冰脊與斷裂繩標上行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'frostbite_blue_ice_lizard', maxCount: 2, respawnSeconds: 210 },
@@ -140,6 +145,8 @@ frostbite_pass_yeti_scrape: {
       '雪怪抓痕刻在冰壁與雪坡交界處，三道深槽從高處斜落，槽底露出被爪尖磨亮的藍冰。西面埋雪貨車的破輪仍在雪中，南側裂紋冰脊下接藍冰橋，北方白霧盆地的霧牆緩慢回流。抓痕旁散著白毛、凍血和被折斷的木槍，雪面被巨大足跡壓出深坑；風穿過爪槽時帶出低沉嘯聲，使這裡像某種巨獸留下的警告。',
     exits: [
       { direction: 'west', targetRoomId: 'frostbite_pass_buried_wagon', description: '回到埋雪貨車' },
+      { direction: 'south', targetRoomId: 'frostbite_pass_blue_ice_bridge', description: '南側雪怪爪溝沿斷裂繩標折降，穿過裂紋冰脊與結冰防風石堆回到藍冰橋中央', edgeKind: 'distant_route', edgeNote: '雪怪抓痕回藍冰橋需沿爪溝與裂紋冰脊折降，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'frostbite_pass_whiteout_basin', description: '北側雪怪足跡穿過白霧回流與埋雪路標，繞過冰旗殘桿進入白霧盆地外圈', edgeKind: 'distant_route', edgeNote: '雪怪抓痕到白霧盆地需穿過白霧回流與埋雪路標，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'frostbite_scarred_yeti', maxCount: 2, respawnSeconds: 260 },
@@ -164,7 +171,9 @@ frostbite_pass_whiteout_basin: {
     description:
       '白霧盆地陷在三面雪坡之間，霧氣像白水般在盆底翻滾，所有遠景都被吞成模糊輪廓。南側雪怪足跡從霧牆外延入，西面冷火營透出藍色火點，東方雨雪哨的號旗桿在斜風裡時隱時現。盆地裡有埋雪路標、冰旗殘桿和被霧霜包住的狼骨，雪面忽高忽低，聲音進入霧中便變得遲鈍。近旁霜粉不斷堆積在石縫與繩結上，讓最近的方向線索仍能從白茫茫風雪中分辨出來。',
     exits: [
+      { direction: 'south', targetRoomId: 'frostbite_pass_yeti_scrape', description: '南側白霧盆地沿埋雪路標折返，穿過回流霧牆與冰旗殘桿回到雪怪抓痕', edgeKind: 'distant_route', edgeNote: '白霧盆地回雪怪抓痕需沿埋雪路標穿過回流霧牆，實際路程長於相鄰一格。' },
       { direction: 'west', targetRoomId: 'frostbite_pass_coldfire_camp', description: '冷火營在西側' },
+      { direction: 'east', targetRoomId: 'frostbite_pass_sleet_watch', description: '東側冰河口沿冰壁窄棚橫移，穿過雨雪斜風、號旗桿與冰裂警戒線抵達雨雪哨', edgeKind: 'distant_route', edgeNote: '冰河口到雨雪哨需沿冰壁窄棚與號旗桿橫移，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'frostbite_whiteout_wolf_pack', maxCount: 2, respawnSeconds: 180 },
@@ -189,7 +198,9 @@ frostbite_pass_coldfire_camp: {
     description:
       '冷火營靠在背風雪壁下，幾座塌帳圍著藍白色冷火，火焰不吐熱氣，反而在周圍結出細霜。南側凍結折路落回低處，東面白霧盆地被霧浪蓋住，北方晶松林透著冰晶反光。營地裡散著鐵鍋、凍肉、破皮囊和被冰封的火石，帳繩硬得像鐵線；冷火照亮的每個物件都像商隊離開前一刻被凍住。近旁霜粉不斷堆積在石縫與繩結上，讓最近的方向線索仍能從白茫茫風雪中分辨出來。',
     exits: [
+      { direction: 'south', targetRoomId: 'frostbite_pass_frozen_switchback', description: '回到凍結折路', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'frostbite_pass_whiteout_basin', description: '白霧盆地在東側' },
+      { direction: 'north', targetRoomId: 'frostbite_pass_crystal_fir_grove', description: '晶松林在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'frostbite_buried_caravan_wight', maxCount: 1, respawnSeconds: 220 },
@@ -215,6 +226,7 @@ frostbite_pass_glacier_mouth: {
       '冰河口是一面高聳冰壁裂出的拱形缺口，裂口內有緩慢推移的藍白冰舌。西側藍冰橋接到裂谷邊，東面雨雪哨要沿冰壁窄棚與號旗桿橫移。冰壁表面有層層壓縮雪紋、凍住氣泡和深色岩屑，缺口下散著冰塊與舊繩樁；冰河內部偶爾傳來沉悶擠壓聲，像山體仍在慢慢推動整條隘口。近旁霜粉不斷堆積在石縫與繩結上，讓最近的方向線索仍能從白茫茫風雪中分辨出來。',
     exits: [
       { direction: 'west', targetRoomId: 'frostbite_pass_blue_ice_bridge', description: '回到藍冰橋' },
+      { direction: 'east', targetRoomId: 'frostbite_pass_sleet_watch', description: '雨雪哨在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'frostbite_glacier_golem', maxCount: 1, respawnSeconds: 360 },
@@ -239,6 +251,8 @@ frostbite_pass_sleet_watch: {
     description:
       '雨雪哨架在冰壁外側的狹窄棚臺上，號旗桿被凍雨拉得筆直，旗布只剩冰硬碎片。西側冰河口隱在藍白裂壁後，北面霜巨人足跡沿斜坡抬升，南側白霧盆地被暴風雪回流切開。棚臺上有風向骨牌、碎鈴和結冰哨杯，欄杆外便是斜落雪幕；冷雨打在石面上形成細亮線，使整座哨臺像被釘在風口。近旁霜粉不斷堆積在石縫與繩結上，讓最近的方向線索仍能從白茫茫風雪中分辨出來。',
     exits: [
+      { direction: 'west', targetRoomId: 'frostbite_pass_glacier_mouth', description: '西側雨雪哨沿號旗桿與冰壁窄棚回穿，避開斜風與冰裂警戒線後抵達冰河口', edgeKind: 'distant_route', edgeNote: '雨雪哨回冰河口需沿號旗桿與冰壁窄棚穿行，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'frostbite_pass_frost_giant_steps', description: '霜巨人足跡在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'frostbite_sleet_harrier', maxCount: 2, respawnSeconds: 190 },
@@ -263,6 +277,8 @@ frostbite_pass_bone_sled_path: {
     description:
       '骨橇路由巨大肋骨和滑木殘件排成，路面被長年拖行磨出兩條凍亮槽線。東側晶松林反射淡藍光，北面失商藏點被半埋貨旗指向，周圍雪坡留著舊橇繩的黑色磨痕。路邊散著骨鉤、破革帶和凍住的狼牙，雪下偶爾露出被冰封的貨物角；整段路帶著商隊最後一次拖運補給的沉重痕跡。近旁霜粉不斷堆積在石縫與繩結上，讓最近的方向線索仍能從白茫茫風雪中分辨出來。',
     exits: [
+      { direction: 'east', targetRoomId: 'frostbite_pass_crystal_fir_grove', description: '晶松林在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'frostbite_pass_lost_merchant_cache', description: '失商藏點在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'frostbite_scarred_yeti', maxCount: 1, respawnSeconds: 260 },
@@ -287,6 +303,8 @@ frostbite_pass_crystal_fir_grove: {
     description:
       '晶松林生在高寒雪坡上，松枝被透明冰晶包成銳利輪廓，陽光穿過時散出冷藍碎光。西側骨橇路的槽痕被雪半掩，南面冷火營有幽藍火點，東方風嚎拱在樹影後露出拱形岩口。林地裡積著霜草、松針冰簇和被凍住的小獸足印，樹幹敲起來像玻璃；每陣風都讓冰枝互相撞響。近旁霜粉不斷堆積在石縫與繩結上，讓最近的方向線索仍能從白茫茫風雪中分辨出來。',
     exits: [
+      { direction: 'west', targetRoomId: 'frostbite_pass_bone_sled_path', description: '骨橇路在西側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'frostbite_pass_coldfire_camp', description: '回到冷火營', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'frostbite_pass_wind_howl_arch', description: '風嚎拱在東側' },
     ],
     monsters: [
@@ -339,6 +357,7 @@ frostbite_pass_lost_merchant_cache: {
       '失商藏點藏在風嚎拱東側的雪窩裡，半埋貨旗和翻倒木箱在白霧中露出暗色邊角。西側雪盲路標回到風嚎拱，南面骨橇路的槽線被雪切斷，東方冰石堆原排著低矮冰 cairn。藏點裡有凍硬藥包、碎銀扣、濕皮帳和被冰封的記帳板，貨物散得很有秩序，反而顯出主人離開時極其倉促。近旁霜粉不斷堆積在石縫與繩結上，讓最近的方向線索仍能從白茫茫風雪中分辨出來。',
     exits: [
       { direction: 'west', targetRoomId: 'frostbite_pass_wind_howl_arch', description: '西側雪盲路標回到風嚎拱' },
+      { direction: 'south', targetRoomId: 'frostbite_pass_bone_sled_path', description: '回到骨橇路', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'frostbite_pass_ice_cairn_field', description: '東側半埋貨旗接往冰石堆原' },
     ],
     monsters: [
@@ -364,6 +383,9 @@ frostbite_pass_frost_giant_steps: {
     description:
       '霜巨人足跡是一串深陷雪坡的巨大腳印，每一個坑底都露出壓碎藍冰和岩屑。西側冰裂坡折回失商藏點，南面雨雪哨的號旗在斜風中搖晃，北方風切稜線爬向北行山脊。足跡邊緣有斷樹般的冰柱、白毛和被踩扁的貨箱板，坑中積著暗色雪水；這些痕跡讓整條山路顯得突然變小。近旁霜粉不斷堆積在石縫與繩結上，讓最近的方向線索仍能從白茫茫風雪中分辨出來。',
     exits: [
+      { direction: 'west', targetRoomId: 'frostbite_pass_lost_merchant_cache', description: '西側霜巨人足跡沿冰裂坡折返，穿過巨大腳印溝與翻倒貨箱回到失商藏點', edgeKind: 'distant_route', edgeNote: '霜巨人足跡回失商藏點需沿冰裂坡與腳印溝折返，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'frostbite_pass_sleet_watch', description: '回到雨雪哨', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'frostbite_pass_northbound_ridge', description: '北側霜巨人足跡沿巨大腳印溝爬升，穿過冰裂坡與風切稜線抵達北行山脊', edgeKind: 'distant_route', edgeNote: '霜巨人足跡到北行山脊需沿腳印溝與風切稜線爬升，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'frostbite_giant_pathbreaker', maxCount: 2, respawnSeconds: 420 },
@@ -415,6 +437,8 @@ frostbite_pass_northbound_ridge: {
       '北行山脊是一條被風切成刀背的雪脊，兩側落差被白霧遮住，只剩中央硬雪線可辨。西側冰石堆原低伏在後方，南面腳印溝折回霜巨人足跡，東方龍息冰棚隔著長段風切稜線泛出焦黑霜痕。山脊上有破冰爪印、斷旗短桿和被風吹平的血色雪斑，行進方向被冷光拉得筆直。近旁霜粉不斷堆積在石縫與繩結上，讓最近的方向線索仍能從白茫茫風雪中分辨出來。',
     exits: [
       { direction: 'west', targetRoomId: 'frostbite_pass_ice_cairn_field', description: '回到冰石堆原' },
+      { direction: 'south', targetRoomId: 'frostbite_pass_frost_giant_steps', description: '南側北行山脊沿風切稜線折降，穿過冰裂坡與巨大腳印溝回到霜巨人足跡', edgeKind: 'distant_route', edgeNote: '北行山脊回霜巨人足跡需沿風切稜線與腳印溝折降，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'frostbite_pass_dragon_breath_shelf', description: '龍息冰棚在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'frostbite_giant_pathbreaker', maxCount: 1, respawnSeconds: 420 },
@@ -439,6 +463,7 @@ frostbite_pass_dragon_breath_shelf: {
     description:
       '龍息冰棚伸出北行山脊東側，冰面被灼熱吐息燒出焦黑霜痕，黑痕周圍又迅速結成玻璃般薄冰。西側北行山脊在風雪中收窄，東面極北封門的藍霜門柱顯出輪廓。冰棚邊緣散著燒裂鱗片、融凍石粉和被熱風拋開的雪浪，冷熱痕跡彼此交疊，像龍息剛剛掃過仍未消散。近旁霜粉不斷堆積在石縫與繩結上，讓最近的方向線索仍能從白茫茫風雪中分辨出來。',
     exits: [
+      { direction: 'west', targetRoomId: 'frostbite_pass_northbound_ridge', description: '回到北行山脊', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'frostbite_pass_polar_seal_gate', description: '極北封門在東側' },
     ],
     monsters: [

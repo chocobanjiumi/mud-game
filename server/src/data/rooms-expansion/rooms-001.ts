@@ -12,6 +12,9 @@ export const EXPANSION_ROOMS_PART_001: Record<string, RoomDef> = {
     description:
       '金燦燦的向日葵高過人頭，花盤在陽光下緩慢轉動，形成一座帶著花粉香的天然迷宮。東側穿過花田可回平原入口，北邊有獵人小屋的煙囪，南方傳來河水聲。泥土表面佈滿田鼠洞和烏鴉爪痕，最高那株花下的土色明顯較新，提示旅人可 搜索 找到小型寶物，也可能驚動田鼠群。向日葵田周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路',
     exits: [
+      { direction: 'east', targetRoomId: 'plains_entrance', description: '穿過花田回到平原入口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'hunter_lodge', description: '花田盡頭有一間小木屋', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'riverside_fishing', description: '花田南邊傳來潺潺水聲', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'field_rat', maxCount: 3, respawnSeconds: 25 },
@@ -42,6 +45,7 @@ hunter_lodge: {
         direction: 'west',
         targetRoomId: 'ancient_treehouse',
         description: '小屋西側獵徑沿獸皮標記鑽入林緣，攀過樹冠繩橋與盤根木階後抵達古老樹屋',
+        edgeKind: 'distant_route',
         edgeNote: '獵人小屋到古老樹屋需穿過林緣獵徑並攀上樹冠繩橋，實際路程長於相鄰一格。',
       },
     ],
@@ -71,6 +75,7 @@ abandoned_minecart: {
         direction: 'south',
         targetRoomId: 'cave_entrance',
         description: '南側廢棄礦車道順鏽軌下滑，穿過塌方木架與濕石彎道後抵達洞窟入口',
+        edgeKind: 'distant_route',
         edgeNote: '廢棄礦車道到洞窟入口需沿礦車斜井與塌方彎道下降，實際路程長於相鄰一格。',
       },
     ],
@@ -98,6 +103,8 @@ riverside_fishing: {
     description:
       '清澈小河蜿蜒穿過平原，柳樹枝條垂成綠色簾幕，幾塊平整大石延伸入水，是天然釣魚平台。北岸通往向日葵田，東側可走向風車內部的水車聲，河泥上有野兔腳印與被田鼠怪物拖走的麥粒。水面銀魚閃動，風帶來濕潤涼意，提示旅人能採集、釣魚或追蹤被沖來的旅人遺物。河邊釣場周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
     exits: [
+      { direction: 'north', targetRoomId: 'sunflower_field', description: '沿河岸走回向日葵田', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'windmill_interior', description: '東側河邊釣場沿濕滑河岸繞過水車溝渠，穿過石板小徑才進入風車內部', edgeKind: 'distant_route', edgeNote: '河邊釣場到風車內部需沿河岸與水車溝渠繞行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'wild_rabbit', maxCount: 2, respawnSeconds: 30 },
@@ -122,6 +129,7 @@ windmill_interior: {
     description:
       '厚重木門後方是緩慢轉動的巨大齒輪與石磨，咔嗒聲在圓形塔身內反覆迴盪，麵粉粉塵漂浮在狹窗光束中。北門回風車農場，西側門通往河邊釣場，樓梯陰影裡能看到田鼠怪物拖麥粒留下的細痕。石磨底座有鬆動板塊，提示旅人可調查機關、找回農夫失物，並小心烏鴉從高處俯衝伏擊。風車內部周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
     exits: [
+      { direction: 'west', targetRoomId: 'riverside_fishing', description: '西側風車內部沿石板小徑折返，穿過水車溝渠與濕滑河岸回到河邊釣場', edgeKind: 'distant_route', edgeNote: '風車內部回河邊釣場需沿石板小徑與水車溝渠折返，實際路程長於相鄰一格。' },
       { direction: 'south', targetRoomId: 'hunter_lodge', description: '南側獵人小屋通往風車農場' },
     ],
     monsters: [
@@ -151,6 +159,7 @@ plains_hare_burrows: {
         direction: 'east',
         targetRoomId: 'plains_entrance',
         description: '東側要穿過野兔洞群外圍的低草坡與幾段塌陷洞道，才繞回平原入口',
+        edgeKind: 'distant_route',
         edgeNote: '野兔洞群回平原入口需要穿過低草坡、塌陷洞道與入口草路，屬於平原內長路徑。',
       },
       { direction: 'south', targetRoomId: 'plains_wolf_tracks', description: '狼爪印一路延伸向南' },
@@ -178,6 +187,7 @@ plains_wolf_tracks: {
         direction: 'east',
         targetRoomId: 'grass_path',
         description: '東側要沿狼爪印穿過倒伏高草與破木欄，繞過獸腥泥痕才接回草原小徑中段',
+        edgeKind: 'distant_route',
         edgeNote: '狼跡草坡到草原小徑需要沿狼爪印、倒伏高草與破木欄繞行，屬於平原內長路徑。',
       },
       { direction: 'west', targetRoomId: 'plains_moonlit_copse', description: '陰涼樹影覆蓋西方小林' },
@@ -204,6 +214,7 @@ plains_bandit_hideout: {
         direction: 'north',
         targetRoomId: 'abandoned_minecart',
         description: '北側要沿矮丘背面穿過盜賊煙灰、車轍斜坡與碎石軌道，才回到廢棄礦車道',
+        edgeKind: 'distant_route',
         edgeNote: '盜賊藏身處到廢棄礦車道需要沿矮丘、車轍斜坡與碎石軌道繞行，屬於平原內長路徑。',
       },
       { direction: 'west', targetRoomId: 'plains_herb_slope', description: '藥草坡在西邊' },
@@ -251,6 +262,7 @@ plains_herb_slope: {
         direction: 'north',
         targetRoomId: 'grass_path',
         description: '北側回草原小徑要沿藥草斜坡上行，穿過蜜蜂草叢與採集者小刀痕',
+        edgeKind: 'distant_route',
         edgeNote: '藥草斜坡回草原小徑需要沿斜坡、蜜蜂草叢與採集者刀痕上行，屬於平原內長路徑。',
       },
       { direction: 'east', targetRoomId: 'plains_bandit_hideout', description: '煙味來自東側藏身處' },
@@ -278,12 +290,14 @@ plains_shepherd_camp: {
         direction: 'west',
         targetRoomId: 'windmill_farm',
         description: '西側回風車農場要穿過羊圈外的緩坡、歪斜木欄與農場背面草路入口',
+        edgeKind: 'distant_route',
         edgeNote: '牧羊人營地回風車農場需要穿過羊圈緩坡、歪斜木欄與農場背路，屬於平原內長路徑。',
       },
       {
         direction: 'south',
         targetRoomId: 'plains_herb_slope',
         description: '南側羊群踩出的路要穿過高草與散落羊毛，繞過盜賊煙柱才抵達藥草坡',
+        edgeKind: 'distant_route',
         edgeNote: '牧羊人營地到藥草斜坡需要沿羊群草路、散落羊毛與盜賊煙柱繞行，屬於平原內長路徑。',
       },
     ],
@@ -310,6 +324,7 @@ plains_broken_bridge: {
         direction: 'west',
         targetRoomId: 'crossroads',
         description: '西側要沿斷橋旁泥路繞過倒木與溪水缺口，才回到十字路口路標前',
+        edgeKind: 'distant_route',
         edgeNote: '斷木橋回十字路口需要沿泥路、倒木與溪水缺口繞行，屬於平原內長路徑。',
       },
     ],
@@ -336,8 +351,10 @@ plains_stone_circle: {
         direction: 'east',
         targetRoomId: 'old_well',
         description: '東側荒草路要穿過石環外圍倒伏草線與烏鴉羽痕，繞過冷風石縫才通到古井旁',
+        edgeKind: 'distant_route',
         edgeNote: '古石環到古井需要穿過倒伏草線、烏鴉羽痕與荒草路，屬於平原內長路徑。',
       },
+      { direction: 'south', targetRoomId: 'plains_watch_mound', description: '石環南側是守望土丘', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'dark_crow', maxCount: 3, respawnSeconds: 45 },
@@ -357,12 +374,15 @@ plains_watch_mound: {
     description:
       '守望土丘比周圍草地高出一截，腐朽旗杆插在頂端，風從四面吹來，能同時看見北方石環、東方十字路口和更南側陰暗狼穴入口。草坡上留有舊營火灰、破望遠鏡和被風磨平的哨兵刻字。這裡本身不算危險，但提供方向感與戰術視野，提示旅人可在進入更深處前確認路線、整理任務並觀察狼群巡邏。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進',
     exits: [
+      { direction: 'north', targetRoomId: 'plains_stone_circle', description: '回到古石環', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'east',
         targetRoomId: 'crossroads',
         description: '東側下坡要沿守望土丘旗杆影子穿過草浪與舊營火灰，才回到十字路口',
+        edgeKind: 'distant_route',
         edgeNote: '守望土丘回十字路口需要沿旗杆影子、草浪與舊營火灰下坡，屬於平原內長路徑。',
       },
+      { direction: 'south', targetRoomId: 'plains_alpha_den', description: '南坡通往狼群首領的棲地', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     mapSymbol: '[^]',
     mapX: 1,
@@ -378,6 +398,8 @@ plains_alpha_den: {
     description:
       '土丘南面的高草被踩成圓形空地，中央堆著白骨、破披風和被咬碎的木盾，血腥味與濕草味混在低沉狼嚎裡。北方斜坡回到守望土丘，東面斷橋方向仍有盜賊丟下的贓物痕跡，西側草牆幾乎封死，只留下狼群出入的窄道。這裡是平原狼群首領活動的棲地，草叢邊緣有多組伏擊腳印與巨大爪痕；旅人進入前應確認藥水、裝備和任務目標，戰鬥後可搜查骨堆取得區域事件線索。空地邊緣插著半截路標，上面還留有從十字路口拖來的鐵釘，顯示狼群已威脅主要道路。風穿過草牆時會暴露幾條短暫撤退縫隙，但狼王嚎叫後這些路徑很快會被狼群封住',
     exits: [
+      { direction: 'north', targetRoomId: 'plains_watch_mound', description: '沿斜坡撤回守望土丘', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'plains_broken_bridge', description: '血跡小徑通往斷木橋', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'wolf_king', maxCount: 1, respawnSeconds: 1800 },
@@ -399,6 +421,9 @@ plains_alpha_den: {
     description:
       '螢火蟲小徑被藍綠光點鋪成細長走廊，柔軟苔蘚在腳下泛出微弱磷光，灌木間偶爾露出被拖曳過的鞋印與細小骨片。西側光點沿濕苔回到密林小道，南方光芒漸次熄滅並沉入毒霧沼澤深處，東邊銀白亮線則指向精靈祭壇，北側蘆草界在高枝後方晃動。螢火忽明忽暗，像在避開看不見的獵食者，也把這條美麗小徑染成容易暴露行跡的危險通道。',
     exits: [
+      { direction: 'west', targetRoomId: 'dense_trail', description: '沿著光點回到密林小道', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'deep_poison_swamp', description: '南側螢火蟲小徑沿熄光苔徑下沉，穿過潮濕樹根與紫毒霧帶抵達毒霧沼澤深處', edgeKind: 'distant_route', edgeNote: '螢火蟲小徑到毒霧沼澤深處需沿熄光苔徑與毒霧帶下沉，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'elf_altar', description: '一道柔和的銀光從東方透出', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'shadow_wolf', maxCount: 2, respawnSeconds: 50 },
@@ -423,6 +448,7 @@ deep_poison_swamp: {
     description:
       '毒霧沼澤深處被紫色霧氣壓得極低，枯樹幹像肋骨般伸出泥面，發光毒菇沿腐木一簇簇亮起。西側濃霧帶可繞回螢火蟲小徑，北面高枝上落著黑鴉棲枝的羽影，南方銀苔小徑通向森林女巫小屋，東邊濕泥逐漸接回蘑菇沼澤。水泡破裂時會吐出刺鼻甜味，泥下偶爾滑過長影，使每處看似穩固的踏點都像薄皮覆住的深坑。',
     exits: [
+      { direction: 'west', targetRoomId: 'firefly_trail', description: '西側毒霧沼澤深處沿紫毒霧帶回穿，越過潮濕樹根與熄光苔徑回到螢火蟲小徑', edgeKind: 'distant_route', edgeNote: '毒霧沼澤深處回螢火蟲小徑需沿毒霧帶與熄光苔徑回穿，實際路程長於相鄰一格。' },
       { direction: 'north', targetRoomId: 'dark_forest_raven_perch', description: '北側黑鴉羽毛標出高枝平台' },
       { direction: 'south', targetRoomId: 'dark_forest_witch_hut', description: '南側銀苔小徑回到女巫小屋' },
       { direction: 'east', targetRoomId: 'mushroom_swamp', description: '沼澤邊緣連接著蘑菇沼澤' },
@@ -451,6 +477,8 @@ elf_altar: {
     description:
       '精靈祭壇由古老白石柱圍成半圓，中央月亮紋章仍散出銀白光輝，把周圍暗影推在石階之外。西側螢火蟲小徑的微光在林間閃爍，南方枯萎之林泛著灰白枝影，祭壇水晶球內則浮現森林深處與古樹心庭的破碎倒影。石面留有新鮮爪痕、乾涸血跡與銀色露水，月光照過時，符文像尚未熄滅的脈搏，把庇護、記憶與詛咒的來源纏在一起。',
     exits: [
+      { direction: 'west', targetRoomId: 'firefly_trail', description: '回到螢火蟲小徑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'withered_forest', description: '南側精靈祭壇沿銀光石階下行，穿過破裂結界與灰白枯枝線抵達枯萎之林', edgeKind: 'distant_route', edgeNote: '精靈祭壇到枯萎之林需沿銀光石階與破裂結界下行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'treant', maxCount: 2, respawnSeconds: 70 },
@@ -475,6 +503,7 @@ withered_forest: {
     description:
       '枯萎之林裡所有樹木都失去葉片，灰白枝幹扭成向外伸出的手臂，厚灰覆在地面上，走過便揚起令人窒息的粉塵。北側枯枝線能回到精靈祭壇，南面最大枯木底部裂出黑暗樹洞，東邊樹線則連向森林深處。樹皮上有紫色裂紋緩慢脈動，根縫間埋著結晶化樹心與焦黑葉片，沉重腳步聲在枯木之間來回傳遞，像整片林地仍被詛咒拖著行走。',
     exits: [
+      { direction: 'north', targetRoomId: 'elf_altar', description: '北側枯萎之林沿灰白枯枝線回穿，越過破裂結界與銀光石階回到精靈祭壇', edgeKind: 'distant_route', edgeNote: '枯萎之林回精靈祭壇需沿枯枝線與銀光石階回穿，實際路程長於相鄰一格。' },
       { direction: 'south', targetRoomId: 'dark_treehollow', description: '最大的枯木底部有個漆黑的洞穴' },
       { direction: 'east', targetRoomId: 'deep_forest', description: '枯林邊緣連接著森林深處' },
     ],
@@ -533,6 +562,7 @@ dark_forest_spider_web: {
         direction: 'west',
         targetRoomId: 'dense_trail',
         description: '西側必須沿被蛛絲封住的枝縫慢慢退回，穿過兩段下垂蛛網後才接密林小道',
+        edgeKind: 'distant_route',
         edgeNote: '蛛網密室回密林小道需要穿過封閉蛛網枝縫，屬於長路徑。',
       },
       { direction: 'south', targetRoomId: 'dark_forest_root_bridge', description: '粗大樹根延伸向南' },
@@ -559,6 +589,7 @@ dark_forest_raven_perch: {
         direction: 'east',
         targetRoomId: 'firefly_trail',
         description: '東側螢火光隔著枯枝平台閃動，需要沿黑鴉標記的枝路繞下才接到螢火小徑',
+        edgeKind: 'distant_route',
         edgeNote: '黑鴉棲枝到螢火小徑需要沿高枝平台下降，屬於長路徑。',
       },
       { direction: 'south', targetRoomId: 'deep_poison_swamp', description: '南側毒霧沼澤在低處翻泡' },
@@ -610,6 +641,7 @@ dark_forest_witch_hut: {
         direction: 'west',
         targetRoomId: 'withered_forest',
         description: '屋後小徑先穿過掛滿骨鈴的根門，再繞過灰化樹籬才進入枯萎之林',
+        edgeKind: 'distant_route',
         edgeNote: '森林女巫小屋到枯萎之林需要穿越根門與灰化樹籬，屬於長路徑。',
       },
     ],
@@ -656,18 +688,21 @@ dark_forest_hunter_blind: {
         direction: 'north',
         targetRoomId: 'ancient_treehouse',
         description: '北側繩梯要繞過獵棚偽裝枝葉，沿樹幹螺旋木階爬回古老樹屋平台',
+        edgeKind: 'distant_route',
         edgeNote: '獵人瞭望棚到古老樹屋需要沿偽裝繩梯與螺旋木階上行，屬於長路徑。',
       },
       {
         direction: 'south',
         targetRoomId: 'dark_forest_spider_web',
         description: '南側蛛網密室藏在枝葉後方，必須沿獵人繩標下降並穿過幾層白絲屏障',
+        edgeKind: 'distant_route',
         edgeNote: '獵人瞭望棚到蛛網密室需要沿繩標下降並穿越蛛絲屏障，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'dark_forest_root_bridge',
         description: '東側盤根橋露出一角，需要沿瞭望棚外緣下坡，再繞過黑水溪岸才抵達',
+        edgeKind: 'distant_route',
         edgeNote: '獵人瞭望棚到盤根橋需要下坡並繞過黑水溪岸，屬於長路徑。',
       },
     ],
@@ -690,6 +725,7 @@ dark_forest_bramble_maze: {
       '荊棘迷宮由活物般的黑刺牆交錯而成，撕裂布條、暗紅樹液與被纏住的獸骨掛在轉角上。西側盤根路回到盤根橋，東面荊棘縫隙遠遠通向暗影空地，迷宮上方只有破碎月光能落入。枝條會在風中緩慢移位，把剛才的缺口遮成尖刺幕牆，地面則留下被拖行的靴痕和折斷箭羽。這裡不像普通灌木叢，而像森林用傷口長出的一段會記仇的道路。',
     exits: [
       { direction: 'west', targetRoomId: 'dark_forest_root_bridge', description: '西側盤根路通向月井方向' },
+      { direction: 'east', targetRoomId: 'dark_forest_shadow_clearing', description: '荊棘縫隙通向暗影空地', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'forest_spider', maxCount: 2, respawnSeconds: 60 },
@@ -710,6 +746,8 @@ dark_forest_shadow_clearing: {
       '暗影空地被低旋黑霧佔據，月光落到地面前便碎成斑駁銀片，周圍樹皮滿是巨大的爪痕。北方盤根橋橫在黑水溪上，西側遠路可退入荊棘迷宮，南面沉重心跳聲從古樹心庭方向傳來。地面圓形足跡像狼群反覆圍獵留下的痕跡，破碎月光照不進空地中央，只照亮一圈潮濕草葉與斷裂箭桿，讓這裡成為森林暗影真正開始聚攏的前哨。',
     exits: [
       { direction: 'north', targetRoomId: 'dark_forest_root_bridge', description: '盤根橋在北方黑水溪上' },
+      { direction: 'west', targetRoomId: 'dark_forest_bramble_maze', description: '荊棘迷宮可作側向撤退', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'dark_forest_elder_grove', description: '沉重心跳聲來自南方老樹叢', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'shadow_wolf', maxCount: 3, respawnSeconds: 45 },
@@ -729,16 +767,19 @@ dark_forest_elder_grove: {
     description:
       '古樹心庭被環狀巨根圍成近乎封閉的庭院，中央古木樹心裂開，暗紫光隨低沉脈動一明一滅。北方裂根路回到暗影空地，西側根牆開合處可繞向黑暗樹洞，東邊腐化根徑接回精靈遺跡。地上散落精靈封印石、碎裂水晶與狼王爪痕，樹心旁的結晶化樹皮像凝固血痂。每次心跳都讓根牆微微收緊，彷彿整座暗影森林的病灶正在此處呼吸。',
     exits: [
+      { direction: 'north', targetRoomId: 'dark_forest_shadow_clearing', description: '回到暗影空地', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'west',
         targetRoomId: 'dark_treehollow',
         description: '西側裂根要等根牆開合時穿過，沿腐化樹心外圈繞到黑暗樹洞入口',
+        edgeKind: 'distant_route',
         edgeNote: '古樹心庭到黑暗樹洞需要穿過開合根牆與腐化樹心外圈，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'elf_ruins',
         description: '東側破碎結界必須沿精靈封印石繞行，穿過暗影根牆後才回到精靈遺跡',
+        edgeKind: 'distant_route',
         edgeNote: '古樹心庭到精靈遺跡需要沿封印石與暗影根牆繞行，屬於長路徑。',
       },
     ],

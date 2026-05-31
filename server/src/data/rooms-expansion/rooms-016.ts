@@ -37,6 +37,7 @@ pilgrim_road_ambush_bend: {
       '伏擊彎道位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 搜索 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_abandoned_inn', description: '伏擊彎道回到旅舍' },
+      { direction: 'north', targetRoomId: 'pilgrim_road_white_marker', description: '斜坡通往白石路標', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'pilgrim_road_broken_causeway', description: '斷石道在東側' },
     ],
     monsters: [
@@ -89,6 +90,7 @@ pilgrim_road_white_marker: {
       '白石路標位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 搜索 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_saint_bridge', description: '白石路標回到聖徒橋' },
+      { direction: 'south', targetRoomId: 'pilgrim_road_ambush_bend', description: '斜坡回到伏擊彎道', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'pilgrim_road_old_cemetery_turn', description: '舊墓岔路在東側' },
     ],
     monsters: [
@@ -141,6 +143,7 @@ pilgrim_road_bandit_watch: {
       '盜匪望臺位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 搜索 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_smuggler_cache', description: '盜匪望臺回到走私藏點' },
+      { direction: 'east', targetRoomId: 'pilgrim_road_sunset_camp', description: '東側盜匪望臺沿暗哨土脊橫移，繞過瞭望繩梯與落日營火線抵達日暮營地', edgeKind: 'distant_route', edgeNote: '盜匪望臺到日暮營地需沿暗哨土脊與瞭望繩梯橫移，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'smuggler_cache_guard', maxCount: 1, respawnSeconds: 300 },
@@ -166,6 +169,7 @@ pilgrim_road_old_cemetery_turn: {
       '舊墓岔路位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 搜索 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_white_marker', description: '舊墓岔路回到白石路標' },
+      { direction: 'south', targetRoomId: 'pilgrim_road_sunset_camp', description: '南側舊墓岔路沿碎墓碑小徑斜落，穿過枯草墓牆與落日營火線抵達日暮營地', edgeKind: 'distant_route', edgeNote: '舊墓岔路到日暮營地需沿碎墓碑小徑與墓牆斜行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'saint_bridge_penitent', maxCount: 1, respawnSeconds: 260 },
@@ -191,7 +195,9 @@ pilgrim_road_sunset_camp: {
       '日暮營地位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 搜索 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_broken_causeway', description: '日暮營地回到斷石道' },
+      { direction: 'north', targetRoomId: 'pilgrim_road_old_cemetery_turn', description: '北側日暮營地沿落日營火線回穿，穿過枯草墓牆與碎墓碑小徑回到舊墓岔路', edgeKind: 'distant_route', edgeNote: '日暮營地回舊墓岔路需沿營火線與碎墓碑小徑回穿，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'pilgrim_road_sanctuary_gate', description: '聖地門在東側' },
+      { direction: 'south', targetRoomId: 'sapphire_lake_entry_claim', description: '南側白石路標沿乾涸支道下切，越過湖岸礫坡通往藍寶石湖入口界標', edgeKind: 'distant_route', edgeNote: '日暮營地南下藍寶石湖需離開古道並繞過湖岸礫坡，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'final_marker_lightsworn', maxCount: 1, respawnSeconds: 360 },
@@ -218,10 +224,12 @@ pilgrim_road_sanctuary_gate: {
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_sunset_camp', description: '聖地門回到日暮營地' },
       { direction: 'east', targetRoomId: 'pilgrim_road_final_marker', description: '終點聖碑在東側' },
+      { direction: 'south', targetRoomId: 'sapphire_lake_vein_path', description: '南側聖地門階道沿礦脈石徑下降，接入藍寶石湖畔的發光礦脈路', edgeKind: 'distant_route', edgeNote: '聖地門南下藍寶石湖需穿過聖地外階與礦脈石徑，實際路程長於相鄰一格。' },
       {
         direction: 'north',
         targetRoomId: 'lakeside_town_fill_15_6',
         description: '北側石階沿古道邊牆上行，接回湖畔城鎮商店旁巷',
+        edgeKind: 'distant_route',
         edgeNote: '聖地門北返湖畔城鎮需穿過古道邊牆與城鎮巷口，實際路程長於相鄰一格。',
       },
     ],
@@ -249,6 +257,7 @@ pilgrim_road_final_marker: {
       '終點聖碑位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 搜索 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_sanctuary_gate', description: '終點聖碑回到聖地門' },
+      { direction: 'south', targetRoomId: 'pilgrim_road_quiet_overlook', description: '靜望臺在南側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'sanctuary_gate_trialkeeper', maxCount: 1, respawnSeconds: 1200 },
@@ -273,10 +282,13 @@ pilgrim_road_quiet_overlook: {
     description:
       '靜望臺位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 搜索 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞。古道在此處恰好觸及湖畔鎮商業區的邊緣，北面鍛坊的爐火隱約可見，東側裁縫坊的布旗隨風飄動，提醒旅人已靠近城鎮補給圈',
     exits: [
+      { direction: 'north', targetRoomId: 'pilgrim_road_final_marker', description: '靜望臺回到終點聖碑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'lakeside_tailor', description: '東側布旗小徑穿過古道望臺與湖畔商業巷，抵達城鎮裁縫坊門前', edgeKind: 'distant_route', edgeNote: '靜望臺東入湖畔裁縫坊需穿過古道望臺與商業巷口，實際路程長於相鄰一格。' },
       {
         direction: 'west',
         targetRoomId: 'lakeside_town_fill_15_6',
         description: '西側湖畔石巷穿過市鎮邊門與古道望臺之間的斜坡',
+        edgeKind: 'distant_route',
         edgeNote: '靜望臺西返湖畔城鎮需穿過市鎮邊門與古道斜坡，實際路程長於相鄰一格。',
       },
     ],
@@ -306,6 +318,7 @@ pilgrim_road_quiet_overlook: {
       '傳送陣庭鋪著黑石圓臺，淡藍傳送光從刻槽中緩慢旋轉，映在鐵木外門的鉚釘與北側軍需行列的木牌上。西面苔徑仍帶著森林冷濕氣味，東側門洞則傳來城門鐵鏈摩擦聲。庭邊堆著封存補給箱、破旗桿與被魔光照白的石獅，地面有多次軍靴踩出的弧形磨痕。每當陣光收縮，牆上舊戰旗便短暫顯出褪色徽紋，讓這裡既像抵達點，也像要塞守備線的第一道篩門。',
     exits: [
       { direction: 'east', targetRoomId: 'ironwood_fort_outer_gate', description: '鐵木外門在東側' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_quartermaster_row', description: '軍需行列在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'ironwood_gate_sentinel', maxCount: 2, respawnSeconds: 120 },
@@ -360,6 +373,8 @@ ironwood_fort_muster_square: {
     exits: [
       { direction: 'west', targetRoomId: 'ironwood_fort_outer_gate', description: '回到鐵木外門' },
       { direction: 'east', targetRoomId: 'ironwood_fort_east_bastion', description: '東堡牆在東側' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_barracks_hall', description: '兵營大廳在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'ironwood_fort_supply_tunnel', description: '補給隧道在南側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'ironwood_gate_sentinel', maxCount: 2, respawnSeconds: 120 },
@@ -384,7 +399,9 @@ ironwood_fort_quartermaster_row: {
     description:
       '軍需行列貼著要塞西側排開，鐵木檐棚下堆滿封蠟箱、箭袋、皮甲與半拆的車輪。南面傳送陣庭的藍光沿石路滲來，東側西側堡牆投下長影，北方鐵木鍛坊傳出爐火紅光，西側軍需陰根道則被樹根與苔石夾住。每個櫃臺後都有不同顏色的補給牌，部分已被急令刮去編號。潮濕木板吸住油味與鐵味，使這排棚屋像一條仍在計算戰備重量的沉默帳冊。',
     exits: [
+      { direction: 'south', targetRoomId: 'ironwood_fort_portal_yard', description: '回到傳送陣庭', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'ironwood_fort_west_bastion', description: '西堡牆在東側' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_forge_works', description: '鍛造工坊在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'quartermaster_renegade', maxCount: 2, respawnSeconds: 95 },
@@ -438,6 +455,8 @@ ironwood_fort_east_bastion: {
       '東側堡牆比西牆更靠近外圍荒坡，城垛間架著重弩，鐵木支架被煙火燻成暗褐色。西面點兵廣場的隊列線在牆下延展，北方烽火信號塔高出屋脊，南側隱蔽突門藏在轉角陰影中。牆面插著數枚斷箭與黑旗釘，地上有拖運燃料桶留下的圓痕。遠處風吹來時，弩索會微微震動，和塔上火盆的噼啪聲混成一種緊繃的邊防節奏。',
     exits: [
       { direction: 'west', targetRoomId: 'ironwood_fort_muster_square', description: '回到點兵廣場' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_signal_tower', description: '信號塔在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'ironwood_fort_hidden_sally', description: '隱蔽突門在南側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'bastion_crossbowman', maxCount: 2, respawnSeconds: 120 },
@@ -462,7 +481,10 @@ ironwood_fort_barracks_hall: {
     description:
       '兵營大廳由厚重鐵木梁撐起，成排床鋪、軍械架與戰旗把空間切成整齊走道。南側長路通往點兵廣場，西面牆道接上西側堡牆，東側軍械牆道繞向戰圖室，北方哨兵木梯折往斥候棲臺。梁柱上掛著巡防牌、破盾與封存軍令，地板被靴釘磨出深色亮痕。爐火雖低，空氣裡仍有油布、皮甲和冷鐵混成的氣味，像整座兵營隨時準備被號角喚醒。',
     exits: [
+      { direction: 'south', targetRoomId: 'ironwood_fort_muster_square', description: '回到點兵廣場', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'west', targetRoomId: 'ironwood_fort_west_bastion', description: '牆道通往西堡牆' },
+      { direction: 'east', targetRoomId: 'ironwood_fort_war_room', description: '東側軍械牆道穿過兵器架與戰旗廊，繞過上層轉角後抵達戰圖室門前', edgeKind: 'distant_route', edgeNote: '兵營大廳到戰圖室需要穿過軍械牆道與上層轉角，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_scout_roost', description: '北側哨兵木梯沿外牆折上，越過箭孔平台與守備吊橋後抵達斥候棲臺', edgeKind: 'distant_route', edgeNote: '兵營大廳北側到斥候棲臺有樓層落差與外牆平台，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'ironwood_gate_sentinel', maxCount: 2, respawnSeconds: 120 },
@@ -487,7 +509,9 @@ ironwood_fort_forge_works: {
     description:
       '鐵木鍛坊坐在要塞西北內線，爐口吐出暗紅火光，照亮鐵木梁上的黑煙與成排半成品甲片。南側軍需行列送來車輪與鐵料，東面高架棧道通向斥候棲臺，北方鐵木林圃的根影從石縫爬近，西側熔爐煙苔路帶著濕煙味延伸。砧座旁散著火星、鉗痕與冷卻水痕，牆上掛滿磨損模具。每次風穿過煙道，爐火都會壓低再猛然抬起，像鍛坊仍在為漫長防線補齊缺口。',
     exits: [
+      { direction: 'south', targetRoomId: 'ironwood_fort_quartermaster_row', description: '回到軍需行列', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'ironwood_fort_scout_roost', description: '高架棧道通往斥候棲臺' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_ironwood_grove', description: '鐵木林圃在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'forge_cinder_guard', maxCount: 2, respawnSeconds: 150 },
@@ -512,6 +536,9 @@ ironwood_fort_signal_tower: {
     description:
       '烽火信號塔立在東牆高處，螺旋石階繞著塔心上升，塔頂火盆把紅光投向指揮長廊與東側堡牆。南面牆道回到東側堡牆，西側信號牆道繞過燃料架後接向戰圖室，北方則通往上層指揮長廊。塔內掛滿旗語布、油罐與銅哨，牆上有被煙熏黑的風向刻痕。火盆忽明忽暗時，遠處城垛、戰旗與高堡門影會被同時照亮，像整座要塞只靠這束火維持呼吸。',
     exits: [
+      { direction: 'south', targetRoomId: 'ironwood_fort_east_bastion', description: '回到東側堡牆', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'west', targetRoomId: 'ironwood_fort_war_room', description: '西側信號牆道繞過烽火燃料架與旗語平台，沿塔身陰影通往戰圖室後門', edgeKind: 'distant_route', edgeNote: '烽火信號塔西側到戰圖室需經旗語平台與燃料架，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_command_walk', description: '指揮長廊在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'bastion_crossbowman', maxCount: 2, respawnSeconds: 120 },
@@ -536,6 +563,9 @@ ironwood_fort_war_room: {
     description:
       '戰圖室低而寬，中央長桌覆著邊境地圖、石鎮與鐵針，牆上戰旗垂到近乎碰地。西側戰旗廊折回兵營大廳，東面旗語平台連到烽火信號塔，北側長路通向誓約禮拜堂。桌邊擺著磨損沙盤、封蠟軍令與被刀尖刻滿記號的木椅，窗縫透入塔火紅光。每次外牆傳來號角，桌上鐵針都會微微顫動，讓地圖像仍在記錄尚未結束的邊境攻防。',
     exits: [
+      { direction: 'west', targetRoomId: 'ironwood_fort_barracks_hall', description: '西側戰旗廊穿過戰圖桌與軍械牆道，繞過上層轉角折回兵營大廳內門', edgeKind: 'distant_route', edgeNote: '戰圖室西側回兵營大廳需穿過戰旗廊與軍械牆道，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'ironwood_fort_signal_tower', description: '東側旗語平台繞過烽火燃料架，沿塔身陰影與石階通往烽火信號塔內梯', edgeKind: 'distant_route', edgeNote: '戰圖室東側到信號塔要經旗語平台與塔內階梯，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_oath_chapel', description: '誓約禮拜堂在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'command_tablet_construct', maxCount: 1, respawnSeconds: 360 },
@@ -560,6 +590,7 @@ ironwood_fort_scout_roost: {
     description:
       '斥候棲臺架在外牆與高架棧道交會處，薄木平台伸向城牆陰影，四周掛著望筒、繩梯與羽標。東側外牆平台折回兵營大廳，西面棧道通往鐵木鍛坊，北側梯道接西側堡牆，南方石階落入囚牢石廊。平台欄杆被風雨磨得發灰，箭孔下方堆著替換弩弦與信管。從這裡能聽見鍛坊火聲、兵營低語與囚牢鏈聲同時傳來，所有聲音都被高度拉得細而清楚。',
     exits: [
+      { direction: 'east', targetRoomId: 'ironwood_fort_barracks_hall', description: '東側外牆平台沿哨兵木梯折降，穿過箭孔陰影與守備吊橋回到兵營大廳', edgeKind: 'distant_route', edgeNote: '斥候棲臺東側回兵營大廳需沿外牆平台下樓並繞過箭孔平台，實際路程長於相鄰一格。' },
       { direction: 'west', targetRoomId: 'ironwood_fort_forge_works', description: '棧道通往鐵木鍛坊' },
       { direction: 'north', targetRoomId: 'ironwood_fort_west_bastion', description: '北側外牆梯道回到西側堡牆' },
       { direction: 'south', targetRoomId: 'ironwood_fort_prison_block', description: '南側囚牢石階通往囚牢石廊' },
@@ -613,6 +644,7 @@ ironwood_fort_supply_tunnel: {
     description:
       '補給隧道藏在點兵廣場南側下方，低矮拱頂由黑石與鐵木支撐，兩旁堆著鹽袋、油桶與成捆弩矢。北側坡道回到廣場，東面暗道接隱蔽突門，西側濕冷支道通往舊蓄水池。地面車轍被反覆碾壓成兩條深槽，槽中積著灰水與散落補給牌。隧道中段有一排窄通風孔，外面的號角聲被切成短促碎音，使這裡像要塞腹部持續運送血液的暗脈。',
     exits: [
+      { direction: 'north', targetRoomId: 'ironwood_fort_muster_square', description: '回到點兵廣場', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'ironwood_fort_hidden_sally', description: '暗道通往隱蔽突門' },
       { direction: 'west', targetRoomId: 'ironwood_fort_old_cistern', description: '濕冷支道通往舊蓄水池' },
     ],
@@ -665,6 +697,7 @@ ironwood_fort_ironwood_grove: {
     description:
       '鐵木林圃被圈在要塞石牆內，黑色鐵木從方形土床中長出，根系鑽入牆縫與軍械庫地基。南側長路折回鐵木鍛坊，東面木根小徑通往囚牢石廊，西側鐵木根牆徑延向外圍林影。樹幹上掛著修枝刀、鐵箍與防火符牌，落葉厚重如薄甲。風過時枝葉會發出金屬般摩擦聲，讓這片林圃不像園地，更像要塞把活木養成梁柱與拒馬的安靜工坊。',
     exits: [
+      { direction: 'south', targetRoomId: 'ironwood_fort_forge_works', description: '回到鐵木鍛坊', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'ironwood_fort_prison_block', description: '木根小徑通往囚牢石廊' },
     ],
     monsters: [
@@ -691,6 +724,7 @@ ironwood_fort_hidden_sally: {
       '隱蔽突門藏在東側堡牆南下的陰影裡，門扇與石壁同色，只在邊緣露出一圈油黑鉸鏈。西側暗道接補給隧道，北方長牆路回到東側堡牆。門前地面沒有旗幟，只有被拖動拒馬留下的弧痕、幾枚斷弩釘與新近掃過的灰塵。牆內風聲在門縫處忽然變窄，像整座要塞把一口短促呼吸藏在此處；外側若有火光移動，鉸鏈會反出極細的冷亮線。',
     exits: [
       { direction: 'west', targetRoomId: 'ironwood_fort_supply_tunnel', description: '回到補給隧道' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_east_bastion', description: '回到東側堡牆', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'signal_fire_sapper', maxCount: 2, respawnSeconds: 180 },
@@ -715,6 +749,9 @@ ironwood_fort_command_walk: {
     description:
       '指揮長廊位於要塞上層，石窗連續開向內庭，黑鐵欄杆外能看見烽火信號塔與遠處高堡門影。南側長路下接信號塔，西面穿過封令拱門可抵誓約禮拜堂，東側長廊收束到內堡門。牆上排列軍官座席、紅黑戰旗與封存令牌，地面被披甲靴步磨成暗亮長線。長廊中央的風比下層更冷，會把不同方向的鼓聲與鏈聲帶到同一處，像所有軍令都曾在這裡被壓低聲音後送出。',
     exits: [
+      { direction: 'south', targetRoomId: 'ironwood_fort_signal_tower', description: '回到烽火信號塔', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'west', targetRoomId: 'ironwood_fort_oath_chapel', description: '西側指揮長廊越過封令拱門與軍官座席，繞過戰旗屏風接到誓約禮拜堂側門', edgeKind: 'distant_route', edgeNote: '指揮長廊西側到禮拜堂需穿過封令拱門與座席區，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'ironwood_fort_keep_gate', description: '內堡門在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'command_tablet_construct', maxCount: 2, respawnSeconds: 360 },
@@ -739,7 +776,10 @@ ironwood_fort_oath_chapel: {
     description:
       '誓約禮拜堂嵌在指揮區與囚牢石廊之間，黑鐵聖徽懸在矮祭壇上，兩側長椅被盔甲擦出灰亮痕跡。南側長路回到戰圖室，西面側廊接囚牢石廊，東側側門穿向指揮長廊，北方宣誓階梯升至內堡門。燭臺上殘蠟與軍牌混在一起，牆面刻滿守城誓詞。這裡沒有華麗彩窗，只有狹縫透入塔火與冷日，使誓詞看起來像刻在兵刃背面的命令。',
     exits: [
+      { direction: 'south', targetRoomId: 'ironwood_fort_war_room', description: '回到戰圖室', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'west', targetRoomId: 'ironwood_fort_prison_block', description: '側廊通往囚牢石廊' },
+      { direction: 'east', targetRoomId: 'ironwood_fort_command_walk', description: '東側側門穿過封令拱門與軍官座席，繞過戰旗屏風接回指揮長廊中央', edgeKind: 'distant_route', edgeNote: '誓約禮拜堂東側到指揮長廊需穿過封令拱門與座席區，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_keep_gate', description: '北側宣誓階梯沿黑鐵聖徽上行，繞過內堡閘鏈與守門鐵柱抵達內堡門', edgeKind: 'distant_route', edgeNote: '誓約禮拜堂北側到內堡門有宣誓階梯與閘鏈阻隔，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'oath_chapel_knight', maxCount: 2, respawnSeconds: 320 },
@@ -764,6 +804,8 @@ ironwood_fort_keep_gate: {
     description:
       '內堡門比外門更窄也更沉重，兩根鐵木門柱包著黑鐵箍，門楣上懸有高堡徽記與斷裂吊鏈。西側長廊通回指揮長廊，南方宣誓階梯折向誓約禮拜堂，東面高堡核心的深色門洞壓在視線盡頭。門前石階被守衛長年站出兩片暗痕，旁邊立著封令架與槍盾座。風從高堡內部吹出時帶著乾冷鐵味，讓此門像把普通要塞與真正軍權中心分隔開。',
     exits: [
+      { direction: 'west', targetRoomId: 'ironwood_fort_command_walk', description: '回到指揮長廊', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'ironwood_fort_oath_chapel', description: '南側內堡閘鏈旁的宣誓階梯折降，沿黑鐵聖徽與守門鐵柱回到誓約禮拜堂', edgeKind: 'distant_route', edgeNote: '內堡門南側回禮拜堂需沿宣誓階梯折降並繞過閘鏈，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'ironwood_fort_high_keep', description: '高堡核心在東側' },
     ],
     monsters: [
@@ -818,6 +860,7 @@ ironwood_fort_high_keep: {
       '採集入口界樁立在琥珀森林外緣，金色樹脂從樹幹裂口緩慢淌下，把舊繩標、蟲翼和半透明根脈封在同一層光裡。界樁上刻著採集隊留下的短線記號，新的刮痕則沿根系往北伸向凝脂樹門。東側琥珀脈徑有淡亮礦脂在土面流動，北方樹門散出蜂蠟氣味，兩條路都帶著材料光澤，也都藏著被巡行獸群踩亂的落葉。',
     exits: [
       { direction: 'east', targetRoomId: 'amber_forest_vein_path', description: '琥珀脈徑在東側' },
+      { direction: 'north', targetRoomId: 'amber_forest_resin_gate', description: '樹脂門在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'amber_sapling_lurker', maxCount: 2, respawnSeconds: 140 },
@@ -844,6 +887,7 @@ amber_forest_vein_path: {
     exits: [
       { direction: 'west', targetRoomId: 'amber_forest_entry_claim', description: '回到採集入口界樁' },
       { direction: 'east', targetRoomId: 'amber_forest_herb_shelf', description: '藥草層在東側' },
+      { direction: 'north', targetRoomId: 'amber_forest_golden_canopy', description: '金冠樹幕在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'resin_vein_lizard', maxCount: 2, respawnSeconds: 120 },
@@ -870,6 +914,7 @@ amber_forest_herb_shelf: {
     exits: [
       { direction: 'west', targetRoomId: 'amber_forest_vein_path', description: '回到琥珀脈徑' },
       { direction: 'east', targetRoomId: 'amber_forest_water_pocket', description: '水囊窪地在東側' },
+      { direction: 'north', targetRoomId: 'amber_forest_wasp_nests', description: '蜂巢高枝在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'suntrap_bloom_mantis', maxCount: 1, respawnSeconds: 150 },
@@ -896,6 +941,7 @@ amber_forest_water_pocket: {
     exits: [
       { direction: 'west', targetRoomId: 'amber_forest_herb_shelf', description: '回到樹脂藥草層' },
       { direction: 'east', targetRoomId: 'amber_forest_beast_scrape', description: '獸痕樹皮在東側' },
+      { direction: 'south', targetRoomId: 'amber_forest_sapfall_gully', description: '樹脂落溝在南側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'amber_water_serpent', maxCount: 2, respawnSeconds: 150 },
@@ -949,6 +995,7 @@ amber_forest_relic_pit: {
       '封存遺物坑塌在獸痕樹皮東側，坑底堆著被琥珀包住的採集刀、舊徽章、破燈和幾段不知年代的根骨。西側刮痕道的獸腥味沿坡滑下，北方石化花圃的冷白花光隔著樹影閃爍。坑壁樹脂像蜂蠟一樣層層封住遺物，某些物件卻有剛被翻動過的痕跡；坑邊還殘留重物拖曳出的溝槽，暗示晶化守衛會把闖入者也變成下一層封存品。',
     exits: [
       { direction: 'west', targetRoomId: 'amber_forest_beast_scrape', description: '回到獸痕樹皮' },
+      { direction: 'north', targetRoomId: 'amber_forest_petrified_bloom', description: '石化花圃在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'petrified_resin_golem', maxCount: 1, respawnSeconds: 360 },
@@ -973,6 +1020,7 @@ amber_forest_resin_gate: {
     description:
       '凝脂樹門由兩株透明根木交纏而成，厚重樹脂在門縫間凝成金色簾幕，封著許多還在發光的昆蟲。南方入口界樁的繩標被樹液拉得筆直，東側金冠樹幕把枝葉垂到門楣上，形成一條向上延伸的亮路。門下堆著碎蠟、斷刺和被黏住的羽翼，偶爾有幼樹伏擊者在樹脂後方移動，使整扇樹門像仍在緩慢呼吸。',
     exits: [
+      { direction: 'south', targetRoomId: 'amber_forest_entry_claim', description: '回到採集入口界樁', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'amber_forest_golden_canopy', description: '金冠樹幕在東側' },
     ],
     monsters: [
@@ -999,7 +1047,9 @@ amber_forest_golden_canopy: {
       '金冠樹幕高懸在透明根木之上，大片琥珀葉像金屬薄片般交疊，把林光切成細碎亮斑。西側凝脂樹門仍可見封蠟門楣，南方琥珀脈徑在樹根下方閃爍，東面封蠟蜂巢傳來密集振翅聲，北方玻璃根橋則像一條冷亮脊梁跨過樹冠。葉脈間黏著蜂刺和螳螂殼，任何突然落下的金粉都可能不是花粉，而是伏擊前的樹冠震動。',
     exits: [
       { direction: 'west', targetRoomId: 'amber_forest_resin_gate', description: '回到凝脂樹門' },
+      { direction: 'south', targetRoomId: 'amber_forest_vein_path', description: '落回琥珀脈徑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'amber_forest_wasp_nests', description: '蜂巢高枝在東側' },
+      { direction: 'north', targetRoomId: 'amber_forest_glassroot_bridge', description: '玻璃根橋在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'sealed_wax_wasp', maxCount: 2, respawnSeconds: 110 },
@@ -1025,6 +1075,7 @@ amber_forest_wasp_nests: {
       '封蠟蜂巢吊在數層琥珀枝間，蜂房外殼被金色樹脂封得半透明，裡面仍能看見幼蟲般的暗影蠕動。西側金冠樹幕的亮葉一路延到巢邊，南方樹脂藥草層散出苦草味，東面日陷空地則有刺眼陽光穿過蜂群。巢下落滿硬化蜂蠟和被啃空的昆蟲殼，封蠟黃蜂的翅音會在樹脂壁上反覆放大，讓人很難判斷真正的距離。',
     exits: [
       { direction: 'west', targetRoomId: 'amber_forest_golden_canopy', description: '回到金冠樹幕' },
+      { direction: 'south', targetRoomId: 'amber_forest_herb_shelf', description: '落回樹脂藥草層', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'amber_forest_suntrap_clearing', description: '日陷空地在東側' },
     ],
     monsters: [
@@ -1050,16 +1101,19 @@ amber_forest_sapfall_gully: {
     description:
       '樹脂落溝是一道被金色樹液沖出的低谷，黏稠液流沿透明根脈往下墜，表面浮著發光昆蟲和半熟孢子。北方琥珀水囊的潮氣順坡滑落，東面焦木林列露出黑色樹樁，西側煙菌坡則用灰白孢霧遮住回路。溝底的樹脂有些地方已硬化成可踩踏的脊，有些仍像沼泥般緩慢吞物；水蛇留下的細痕與菌人拖出的孢粉線在谷底交叉。',
     exits: [
+      { direction: 'north', targetRoomId: 'amber_forest_water_pocket', description: '回到琥珀水囊', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'east',
         targetRoomId: 'amber_forest_charcoal_stand',
         description: '東側樹脂溝要沿焦黑根脈下切，再穿過黏稠樹液坡才會抵達焦木林列',
+        edgeKind: 'distant_route',
         edgeNote: '樹脂落溝到焦木林列需要沿焦黑根脈與樹液坡繞行，屬於長路徑。',
       },
       {
         direction: 'west',
         targetRoomId: 'amber_forest_smoke_mycology',
         description: '西側煙菌坡被孢霧隔開，必須繞過封蠟根牆與低窪樹脂池才能抵達',
+        edgeKind: 'distant_route',
         edgeNote: '樹脂落溝到煙菌坡需要繞過封蠟根牆與樹脂池，屬於長路徑。',
       },
     ],
@@ -1086,6 +1140,9 @@ amber_forest_glassroot_bridge: {
     description:
       '玻璃根橋由數條透明巨根並排伸出，橋下是被樹脂淹沒的舊林道，深處封著古老葉片與發光甲殼。南方金冠樹幕的亮斑在橋面折射，東側煙菌坡飄來灰白孢霧，北方發光樹洞像一盞藏在根網後的冷燈。橋面看似堅硬，實際有些根脈內部已裂出細紋，樹脂蜥的爪印和石化守衛的重痕交錯在透明表層下。',
     exits: [
+      { direction: 'south', targetRoomId: 'amber_forest_golden_canopy', description: '回到金冠樹幕', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'amber_forest_smoke_mycology', description: '煙菌坡在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'amber_forest_glowing_hollow', description: '發光樹洞在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'resin_vein_lizard', maxCount: 2, respawnSeconds: 120 },
@@ -1115,11 +1172,13 @@ amber_forest_suntrap_clearing: {
         direction: 'south',
         targetRoomId: 'amber_forest_charcoal_stand',
         description: '南側日光陷坑要沿琥珀斜坡滑下，穿過焦黑樹樁列後才到焦木林列',
+        edgeKind: 'distant_route',
         edgeNote: '日陷空地到焦木林列有高度落差與焦木樹樁阻隔，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'amber_forest_ember_beetle_mound',
+        description: '東側焦黑灰線通往燼甲蟲丘', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。',
       },
     ],
     monsters: [

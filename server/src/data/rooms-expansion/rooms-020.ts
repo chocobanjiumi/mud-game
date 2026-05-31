@@ -10,6 +10,8 @@ sapphire_lake_blueheart_sanctum: {
     description:
       '藍心聖潭位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 搜索 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
     exits: [
+      { direction: 'south', targetRoomId: 'sapphire_lake_sapphire_lode', description: '回到藍寶礦脈', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'west', targetRoomId: 'sapphire_lake_deep_vein_window', description: '西側藍心聖潭水道繞過聖潭渦流與藍光礦幕，沿深水繩標回到深脈窗', edgeKind: 'distant_route', edgeNote: '藍心聖潭西側回深脈窗需繞過聖潭渦流與礦幕，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'blueheart_lode_spirit', maxCount: 1, respawnSeconds: 720 },
@@ -38,6 +40,7 @@ sapphire_lake_blueheart_sanctum: {
       '傳送陣廣場鋪著淺灰王道石板，藍白陣光在中央圓槽裡緩慢旋轉，西側王道西市石路接入貨車動線，東面十字攤街展開布棚與攤旗，北側衛兵亭的銅鈴在巡線中輕響。廣場邊緣立著里程牌、旅商告示與成排行李架，石縫裡積著馬蹄泥和香料粉。陣光照到攤棚底部時，整座市集像從這裡向外分流，安全、交易與遠行的氣息同時聚在廣場中央。',
     exits: [
       { direction: 'east', targetRoomId: 'kingsroad_market_crossroad_stalls', description: '十字攤街在東側' },
+      { direction: 'north', targetRoomId: 'kingsroad_market_guard_post', description: '衛兵亭在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [],
     mapSymbol: '[傳]',
@@ -61,6 +64,8 @@ kingsroad_market_crossroad_stalls: {
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_portal_plaza', description: '回到傳送陣廣場' },
       { direction: 'east', targetRoomId: 'kingsroad_market_grain_arcade', description: '穀物拱廊在東側' },
+      { direction: 'north', targetRoomId: 'kingsroad_market_spice_awning', description: '香料棚在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'kingsroad_market_well_court', description: '水井小庭在南側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [],
     mapSymbol: '[攤]',
@@ -84,6 +89,7 @@ kingsroad_market_grain_arcade: {
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_crossroad_stalls', description: '回到十字攤街' },
       { direction: 'east', targetRoomId: 'kingsroad_market_blacksmith_row', description: '鍛匠列在東側' },
+      { direction: 'north', targetRoomId: 'kingsroad_market_cloth_lane', description: '布商巷在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [],
     mapSymbol: '[穀]',
@@ -105,7 +111,9 @@ kingsroad_market_spice_awning: {
     description:
       '香料棚掛著一排褪色紅黃帆布，曬乾椒串、鹽包與磨香料的小石臼堆在木桌上。南面十字攤街人聲翻湧，東側布商巷的染布在風中拍響，北方草藥方場送來苦草與乾花味。棚柱被香粉染成深色，地上散著月桂葉、胡椒粒和破陶勺。每當商隊車輪從遠處壓過，細粉便從布篷縫裡落下，像一層暖色薄霧，讓這角落比主街更濃、更慢。',
     exits: [
+      { direction: 'south', targetRoomId: 'kingsroad_market_crossroad_stalls', description: '回到十字攤街', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'kingsroad_market_cloth_lane', description: '布商巷在東側' },
+      { direction: 'north', targetRoomId: 'kingsroad_market_herbal_square', description: '草藥方場在北側', edgeKind: 'distant_route', edgeNote: '香料棚北側要繞過兩排布棚與秤藥桌，實際路程長於相鄰一格。' },
     ],
     monsters: [],
     mapSymbol: '[香]',
@@ -128,6 +136,7 @@ kingsroad_market_blacksmith_row: {
       '鍛匠列沿市集南側排開，爐火與水槽交替發出紅光和白汽，西面穀物拱廊的粉塵一到此處便被鐵味壓住。北方長路折回冒險委託板，東面商隊院堆著待修車軸與蹄鐵。鐵砧旁掛滿農具、短刃、鍋架與門鉸，並非戰場兵庫，而是市集日常的硬骨。地上水痕混著煤屑，火星落在黑石板上立刻暗去，只留下密密麻麻的燒點。',
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_grain_arcade', description: '回到穀物拱廊' },
+      { direction: 'north', targetRoomId: 'kingsroad_market_adventurer_board', description: '冒險委託板在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'kingsroad_market_caravan_yard', description: '商隊院在東側' },
     ],
     monsters: [],
@@ -151,6 +160,7 @@ kingsroad_market_cloth_lane: {
       '布商巷被一整排染布遮成彩色窄道，西側香料棚的辛香貼著布邊飄入，南面穀物拱廊的麻袋堆壓住巷口，東側冒險委託板旁的人聲透過布幕傳來。木架上掛著羊毛披肩、雨布、旗料與修補好的馬毯，水槽裡漂著淡藍染液。石板長年被濕布拖過，顏色比主街更暗。巷頂布帶互相摩擦時，會露出一線天光，照在價牌和量尺上。',
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_spice_awning', description: '回到香料棚' },
+      { direction: 'south', targetRoomId: 'kingsroad_market_grain_arcade', description: '回到穀物拱廊', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'kingsroad_market_adventurer_board', description: '冒險委託板在東側' },
     ],
     monsters: [],
@@ -174,7 +184,9 @@ kingsroad_market_adventurer_board: {
       '冒險委託板立在市集中段的遮雨木棚下，木板上疊著懸賞紙、商隊護送單、尋物告示與破舊路線圖。西側布商巷的彩布掠過棚角，南方鍛匠列傳來鐵槌聲，東面錢幣兌換所響著清脆算籌，北側拍賣帳棚的人群聲斷續傳來。板腳被無數靴印磨亮，旁邊有墨瓶、斷羽筆與被撕下的封條。這裡像市集的消息肺葉，把遠路、貨價和危險傳聞一起呼吸。',
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_cloth_lane', description: '回到布商巷' },
+      { direction: 'south', targetRoomId: 'kingsroad_market_blacksmith_row', description: '回到鍛匠列', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'kingsroad_market_coin_exchange', description: '錢幣兌換所在東側' },
+      { direction: 'north', targetRoomId: 'kingsroad_market_auction_tent', description: '拍賣帳棚在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [],
     mapSymbol: '[任]',
@@ -197,6 +209,8 @@ kingsroad_market_caravan_yard: {
       '商隊院是一片被車輪壓實的方形院落，西側鍛匠列送來修好的輪箍，北面錢幣兌換所的銅鈴聲穿過帳棚，東方馱獸圈的繩欄與草料味沿風傳來。院內停著高蓬車、貨籠和旅行箱，木牌上寫著不同城鎮名。地面有新舊車轍交錯，雨水積在深槽裡反出旗影。貨物雖多，卻按路線分堆，像整座市集的外來脈絡都先在這裡落腳。',
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_blacksmith_row', description: '回到鍛匠列' },
+      { direction: 'north', targetRoomId: 'kingsroad_market_coin_exchange', description: '錢幣兌換所在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'kingsroad_market_pack_animal_ring', description: '馱獸圈在東側', edgeKind: 'distant_route', edgeNote: '商隊院東側道路需穿過車轍與圍欄門，實際路程長於相鄰一格。' },
     ],
     monsters: [],
     mapSymbol: '[車]',
@@ -219,6 +233,8 @@ kingsroad_market_coin_exchange: {
       '錢幣兌換所是一座半開石櫃臺，銅秤、砝碼和小鎖箱在油燈下泛著溫光。西側冒險委託板的人聲不斷，南面商隊院送來沉重錢袋，北方文書角則飄著墨水與封蠟味。櫃臺後方掛著各地幣樣，旁邊的厚帳本以皮帶綁住。地面石板被排隊人潮磨出弧線，散落的微小金屬屑卡在縫裡，使這一角比市集其他地方更安靜，也更精確。',
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_adventurer_board', description: '回到冒險委託板' },
+      { direction: 'south', targetRoomId: 'kingsroad_market_caravan_yard', description: '回到商隊院', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'kingsroad_market_scribe_corner', description: '文書角在北側', edgeKind: 'distant_route', edgeNote: '錢幣兌換所北側要沿帳棚外緣繞到文書桌，實際路程長於相鄰一格。' },
     ],
     monsters: [],
     mapSymbol: '[幣]',
@@ -240,6 +256,7 @@ kingsroad_market_herbal_square: {
     description:
       '草藥方場由一圈低棚與曬架圍成，乾花、藥根、鹽漬葉與小陶瓶按氣味分區擺放。南側香料棚的熱辣氣息和這裡的苦草味混在一起，東面魚販石階送來潮濕水聲。石桌上鋪著切草刀、草繩和小銅秤，幾隻玻璃瓶在陽光下投出綠影。方場邊緣有衛兵路線留下的空隙，讓搬運藥籃的人能從攤棚間穿過而不撞上主街人潮。',
     exits: [
+      { direction: 'south', targetRoomId: 'kingsroad_market_spice_awning', description: '回到香料棚', edgeKind: 'distant_route', edgeNote: '草藥方場南側需繞過藥籃、秤桌與棚柱，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'kingsroad_market_fishmonger_steps', description: '魚販石階在東側' },
     ],
     monsters: [],
@@ -264,6 +281,7 @@ kingsroad_market_fishmonger_steps: {
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_herbal_square', description: '回到草藥方場' },
       { direction: 'east', targetRoomId: 'kingsroad_market_auction_tent', description: '東側拍賣帳棚通往文書角' },
+      { direction: 'south', targetRoomId: 'kingsroad_market_cloth_lane', description: '回到布商巷', edgeKind: 'distant_route', edgeNote: '魚販石階南側要沿濕石階折返布棚巷口，實際路程長於相鄰一格。' },
     ],
     monsters: [],
     mapSymbol: '[魚]',
@@ -286,6 +304,8 @@ kingsroad_market_scribe_corner: {
       '文書角夾在拍賣帳棚與錢幣兌換所之間，長桌上鋪著契紙、印泥、封蠟和一排削尖羽筆。西側帳棚的木槌聲不時震動紙角，南面兌換所傳來錢幣清響，東側窄門通往後巷帳本處。棚柱上掛著抄寫價目與送件木牌，墨水瓶旁有砂盒用來吸乾新字。這一角不如主街熱鬧，卻把交易、委託和貨權用細密字跡固定下來。',
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_auction_tent', description: '西側拍賣帳棚回到魚販石階' },
+      { direction: 'south', targetRoomId: 'kingsroad_market_coin_exchange', description: '回到錢幣兌換所', edgeKind: 'distant_route', edgeNote: '文書角南側需繞過抄寫桌與封蠟欄杆，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'kingsroad_market_back_alley_ledgers', description: '後巷帳本處在東側', edgeKind: 'distant_route', edgeNote: '文書角東側通往後巷帳本處需穿過窄門與帳棚背面，實際路程長於相鄰一格。' },
     ],
     monsters: [],
     mapSymbol: '[書]',
@@ -307,6 +327,8 @@ kingsroad_market_guard_post: {
     description:
       '衛兵亭靠在傳送陣廣場北側，木亭下有檢查桌、銅鈴、通行牌和一排掛整齊的短矛。南面廣場陣光映在桌腳，東側巡線繞向草藥方場，西面窄石巷通往王道西哨巷。亭旁石牆貼滿失物公告與市集規章，角落放著封存的違禁貨箱。衛兵靴痕繞亭形成深色半圈，使這裡不像關卡那樣壓迫，卻讓整個市集的秩序有了清楚邊界。',
     exits: [
+      { direction: 'south', targetRoomId: 'kingsroad_market_portal_plaza', description: '回到傳送陣廣場', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'kingsroad_market_herbal_square', description: '草藥方場在東側', edgeKind: 'distant_route', edgeNote: '衛兵亭東側巡邏線會繞過貨車與攤棚，實際路程長於相鄰一格。' },
     ],
     monsters: [],
     mapSymbol: '[衛]',
@@ -328,6 +350,7 @@ kingsroad_market_well_court: {
     description:
       '水井小庭藏在十字攤街南側，圓井周圍鋪著深色濕石，井架掛滿水桶、麻繩和修補過的木滑輪。北面主街人聲從攤棚縫裡流入，東側酒館門前飄來麥酒和燉肉味。井邊有洗菜盆、碎陶杯和孩子刻下的小記號，水面映著布棚和油燈。這裡的聲音比主街低，打水、閒談與短暫歇腳的動作讓市集露出日常而穩定的一面。',
     exits: [
+      { direction: 'north', targetRoomId: 'kingsroad_market_crossroad_stalls', description: '回到十字攤街', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'kingsroad_market_tavern_front', description: '酒館門前在東側' },
     ],
     monsters: [],
@@ -350,8 +373,10 @@ kingsroad_market_auction_tent: {
     description:
       '拍賣帳棚撐在市集北段，厚帆布遮住木槌臺、貨箱和半圈臨時座席。南面長路回到冒險委託板，西側魚販石階帶來潮氣，東面文書角準備契紙，北方高看台投下石欄陰影。帳內吊著號牌、封繩和小油燈，貨箱上有來自不同商隊的蠟印。每次木槌落下，帆布頂會微微震動，帳外人群也隨之安靜一瞬，連遠處攤販叫賣都像被短暫收進帳縫裡。',
     exits: [
+      { direction: 'south', targetRoomId: 'kingsroad_market_adventurer_board', description: '回到冒險委託板', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'west', targetRoomId: 'kingsroad_market_fishmonger_steps', description: '西側魚販石階回到市場水渠邊' },
       { direction: 'east', targetRoomId: 'kingsroad_market_scribe_corner', description: '文書角在東側' },
+      { direction: 'north', targetRoomId: 'kingsroad_market_high_balcony', description: '高看台在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [],
     mapSymbol: '[拍]',
@@ -374,6 +399,7 @@ kingsroad_market_tavern_front: {
       '酒館門前位於水井小庭東側，厚木門常年半開，門內暖光照出酒桶、長凳和掛滿杯子的橫梁。西面井庭的濕石反著燈色，東側長路繞往馱獸圈，空氣裡混著麥酒、燉肉、濕馬毯和煙草味。門旁公告架貼著演奏時辰、失物紙條與幾張被雨水捲邊的路線圖。石階被來往腳步磨得圓滑，像整個市集在喧鬧之外保留的一處歇息口。',
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_well_court', description: '回到水井小庭' },
+      { direction: 'east', targetRoomId: 'kingsroad_market_pack_animal_ring', description: '馱獸圈在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [],
     mapSymbol: '[酒]',
@@ -395,6 +421,8 @@ kingsroad_market_pack_animal_ring: {
     description:
       '馱獸圈用粗木欄圍在市集東南角，草料、鞍袋和水槽沿欄內排開，幾條繩索固定在磨亮的木樁上。西側長路繞回商隊院，北面路神小祠的祈路布條在風中晃動。圈外泥地佈滿蹄印與車轍，空氣裡有乾草、皮革和熱獸息。欄門旁掛著商隊號牌與餵料記錄，顯示每支遠行商旅在離開市場前，都會在此整理最後的重量與節奏。',
     exits: [
+      { direction: 'west', targetRoomId: 'kingsroad_market_caravan_yard', description: '回到商隊院', edgeKind: 'distant_route', edgeNote: '馱獸圈西側要繞過欄門與車轍回到商隊院，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'kingsroad_market_shrine_of_routes', description: '路神小祠在北側', edgeKind: 'distant_route', edgeNote: '馱獸圈北側需沿繩欄與祈路標記繞行，實際路程長於相鄰一格。' },
     ],
     monsters: [],
     mapSymbol: '[獸]',
@@ -416,6 +444,9 @@ kingsroad_market_shrine_of_routes: {
     description:
       '路神小祠是一座小小石龕，立在馱獸圈北側與後巷之間，龕內放著磨平的路石、銅鈴和被香煙熏黑的木牌。南面馱獸圈傳來蹄聲，西側錢幣兌換所的清響隔著棚布，北方後巷帳本處藏在貨箱陰影裡。祠前繫著各色行路布條，旁邊有倒空的水囊與小硬幣。這裡不高大，卻把商隊出發、歸來和迷路者的願望都收在低矮石龕前。',
     exits: [
+      { direction: 'south', targetRoomId: 'kingsroad_market_pack_animal_ring', description: '回到馱獸圈', edgeKind: 'distant_route', edgeNote: '路神小祠南側要繞過祈願石與馱獸欄門，實際路程長於相鄰一格。' },
+      { direction: 'west', targetRoomId: 'kingsroad_market_coin_exchange', description: '回到錢幣兌換所', edgeKind: 'distant_route', edgeNote: '路神小祠西側沿商隊祈路繞回兌換所，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'kingsroad_market_back_alley_ledgers', description: '後巷帳本處在北側', edgeKind: 'distant_route', edgeNote: '路神小祠北側要穿過貨箱陰影與後巷口，實際路程長於相鄰一格。' },
     ],
     monsters: [],
     mapSymbol: '[祠]',
@@ -437,6 +468,9 @@ kingsroad_market_back_alley_ledgers: {
     description:
       '後巷帳本處位於市集背面的窄巷中，貨箱、舊帳冊和封存木櫃把牆邊擠得只剩一條暗路。西側繞回文書角，南面路神小祠的香煙從巷口飄入，北側窄梯通向市集高看台。帳本封皮被潮氣翹起，紙頁間夾著乾花、票根和褪色押印。巷內光線被棚布切得細碎，遠處主街喧鬧像隔著厚布，只有翻頁聲與木箱摩擦聲格外清楚。',
     exits: [
+      { direction: 'west', targetRoomId: 'kingsroad_market_scribe_corner', description: '回到文書角', edgeKind: 'distant_route', edgeNote: '後巷帳本處西側要繞過帳冊貨箱與抄寫桌，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'kingsroad_market_shrine_of_routes', description: '回到路神小祠', edgeKind: 'distant_route', edgeNote: '後巷帳本處南側需沿暗巷折回路神小祠，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'kingsroad_market_high_balcony', description: '高看台在北側', edgeKind: 'distant_route', edgeNote: '後巷帳本處北側窄梯通往高看台，屬於高低落差路徑而非相鄰平面。' },
     ],
     monsters: [],
     mapSymbol: '[帳]',
@@ -458,6 +492,7 @@ kingsroad_market_high_balcony: {
     description:
       '市集高看台架在拍賣帳棚北側，高出攤棚與人潮，石欄外能看見傳送陣廣場的藍光、十字攤街的彩棚和東側商隊院的車頂。南面階道回到拍賣帳棚，後方窄梯則靠近帳本後巷。看台地面鋪著磨亮石板，欄杆上掛著節慶旗繩和幾盞防風燈。從這裡聽見的市場聲音會被拉成一片連續波紋，讓整座市集的路線與人流一目了然。',
     exits: [
+      { direction: 'south', targetRoomId: 'kingsroad_market_auction_tent', description: '回到拍賣帳棚', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [],
     mapSymbol: '[台]',
@@ -482,6 +517,7 @@ kingsroad_market_high_balcony: {
       '競技城門以厚重石拱撐起整片城區入口，拱頂掛著被煙火燻黑的勝場旗，門洞下方鋪滿被靴跟磨亮的石階。東側人潮流入票券柱廊，北面高牆浮雕指向冠軍牆，西側拱廊外則能遠眺藍寶湖的粼粼波光。城門兩旁立著裁判銅鐘、賽程木牌與封蠟通行箱，湖風吹進門內時會把沙塵、酒味和觀眾歡呼一起捲起，像把整座競技場的秩序先壓在入口前。',
     exits: [
       { direction: 'east', targetRoomId: 'arena_quarter_ticket_colonnade', description: '票券柱廊在東側' },
+      { direction: 'north', targetRoomId: 'arena_quarter_champion_wall', description: '冠軍牆在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [],
     mapSymbol: '[入]',
@@ -505,6 +541,7 @@ arena_quarter_ticket_colonnade: {
     exits: [
       { direction: 'west', targetRoomId: 'arena_quarter_grand_gate', description: '回到競技城門' },
       { direction: 'east', targetRoomId: 'arena_quarter_betting_house', description: '下注所在東側' },
+      { direction: 'north', targetRoomId: 'arena_quarter_weapon_check', description: '武器檢查處在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [],
     mapSymbol: '[票]',
@@ -550,16 +587,19 @@ arena_quarter_weapon_check: {
     description:
       '武器檢查處擺滿長桌、驗刃石和掛著號牌的寄放架，桌面留下無數刀尖刮出的細白痕。南側欄杆回到票券柱廊，東側繞過封條與登記牌後進入訓練場，北面鎖甲聲沿窄巷傳向甲架巷。裁判把不同武器的允許長度刻在銅尺上，旁邊還有被沒收的倒鉤、毒針與破裂護腕；若銅鐘連響三次，代表某件兵器需要送往裁判席重新判定。',
     exits: [
+      { direction: 'south', targetRoomId: 'arena_quarter_ticket_colonnade', description: '回到票券柱廊', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'east',
         targetRoomId: 'arena_quarter_training_yard',
         description: '東側需繞過武器封條、驗刃桌與登記欄杆後，才會進入訓練場範圍，沿途裁判會反覆查驗',
+        edgeKind: 'distant_route',
         edgeNote: '武器檢查處到訓練場需穿過檢查動線與欄杆，距離長於相鄰格。',
       },
       {
         direction: 'north',
         targetRoomId: 'arena_quarter_armor_rack_lane',
         description: '北側穿過寄放牌、鎖甲架與窄巷轉角後，才會抵達甲架巷，盔甲摩擦聲會逐漸變近',
+        edgeKind: 'distant_route',
         edgeNote: '武器檢查處到甲架巷需繞過寄放裝備區與窄巷，屬於長路徑。',
       },
     ],
@@ -615,6 +655,7 @@ arena_quarter_duel_ring_east: {
         direction: 'west',
         targetRoomId: 'arena_quarter_duel_ring_west',
         description: '西側需穿過兩圈決鬥邊線與裁判旗架，才會接到西決鬥圈入口，場內人潮會阻擋直行',
+        edgeKind: 'distant_route',
         edgeNote: '東西決鬥圈之間隔著裁判線與觀戰欄，不是相鄰平面一格。',
       },
       { direction: 'south', targetRoomId: 'arena_quarter_referee_box', description: '南側裁判線通往裁判席' },
@@ -646,12 +687,15 @@ arena_quarter_duel_ring_west: {
         direction: 'east',
         targetRoomId: 'arena_quarter_duel_ring_east',
         description: '東返時需穿過裁判旗架、觀戰欄與沙地邊線，才會回到東決鬥圈，腳下沙痕能辨識路線',
+        edgeKind: 'distant_route',
         edgeNote: '西決鬥圈到東決鬥圈需要繞過場內分隔線，屬於長路徑。',
       },
+      { direction: 'west', targetRoomId: 'arena_quarter_training_yard', description: '訓練場在西側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'north',
         targetRoomId: 'arena_quarter_referee_box',
         description: '北側需沿決鬥圈外緣繞過判定旗與封鎖繩後，才到裁判席，階梯旁有衛兵把守',
+        edgeKind: 'distant_route',
         edgeNote: '西決鬥圈到裁判席要沿外圈繞行，距離長於相鄰格。',
       },
     ],
@@ -682,12 +726,15 @@ arena_quarter_training_yard: {
         direction: 'west',
         targetRoomId: 'arena_quarter_weapon_check',
         description: '西返時需穿過訓練木樁、沙坑邊線與登記欄杆，才回到武器檢查處，隊列會拖慢移動',
+        edgeKind: 'distant_route',
         edgeNote: '訓練場西返武器檢查處需要沿訓練區外緣繞行，屬於長路徑。',
       },
+      { direction: 'east', targetRoomId: 'arena_quarter_duel_ring_west', description: '西決鬥圈在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'north',
         targetRoomId: 'arena_quarter_strategy_tables',
         description: '北側穿過訓練隊列與沙地分隔繩後，才會到達戰術桌區，木牌標示今日演練路線',
+        edgeKind: 'distant_route',
         edgeNote: '訓練場到戰術桌要穿過隊列與分隔繩，距離長於相鄰格。',
       },
     ],
@@ -715,6 +762,7 @@ arena_quarter_healer_bench: {
       '醫護長椅排在熱身沙地東側，白布棚下擺著鹽水盆、縫針、冰袋與沾滿藥草汁的繃帶。西側沙地仍有練習木劍敲擊聲，北面階梯繞向下層看台，旁邊的傷者名牌按嚴重程度倒掛在木板上。長椅腿部被磨出深痕，顯示無數鬥士曾在此等待判定；棚柱後還藏著一排染血盾牌，只有確認無法再戰時才會被送往武器檢查處封存。',
     exits: [
       { direction: 'west', targetRoomId: 'arena_quarter_warmup_sand', description: '回到熱身沙地' },
+      { direction: 'north', targetRoomId: 'arena_quarter_lower_stands', description: '下層看台在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [],
     mapSymbol: '[醫]',
@@ -740,12 +788,14 @@ arena_quarter_armor_rack_lane: {
         direction: 'south',
         targetRoomId: 'arena_quarter_weapon_check',
         description: '南側沿甲架巷穿過鎖甲架與寄放牌，最後才回到武器檢查處，路旁有修甲火盆',
+        edgeKind: 'distant_route',
         edgeNote: '甲架巷南返武器檢查處需穿過裝備寄放動線，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'arena_quarter_strategy_tables',
         description: '東側需繞過整排護甲架與維修台，才會接到戰術桌旁的通道，裝備箱會擋住直線',
+        edgeKind: 'distant_route',
         edgeNote: '甲架巷到戰術桌被裝備架與維修台隔開，距離長於相鄰格。',
       },
     ],
@@ -772,16 +822,19 @@ arena_quarter_champion_wall: {
     description:
       '冠軍牆是一面長而微彎的黑石浮雕牆，牆上刻著勝者姓名、武器輪廓與最後一擊的姿態，許多字槽被獻花灰燼染成銀白。南側紀念階回到競技城門，東面銘牌牆繞向甲架巷，北側獻花階通往勝利拱，西側湖風從藍寶湖方向灌入。牆根散著乾花、斷劍穗與未寄出的挑戰書，某些新刻名字仍帶著石粉，像剛從裁判席送來。',
     exits: [
+      { direction: 'south', targetRoomId: 'arena_quarter_grand_gate', description: '回到競技城門', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'east',
         targetRoomId: 'arena_quarter_armor_rack_lane',
         description: '東側沿冠軍銘牌牆繞過紀念柱後，才會進入甲架巷，觀眾獻花會佔住牆邊通道',
+        edgeKind: 'distant_route',
         edgeNote: '冠軍牆到甲架巷要沿紀念牆與柱廊繞行，屬於長路徑。',
       },
       {
         direction: 'north',
         targetRoomId: 'arena_quarter_victory_arch',
         description: '北側需穿過冠軍銘牌、獻花階與拱門前廊後，才抵達勝利拱，地面刻滿冠軍年份',
+        edgeKind: 'distant_route',
         edgeNote: '冠軍牆到勝利拱有紀念階與拱門前廊，距離長於相鄰格。',
       },
     ],
@@ -808,16 +861,19 @@ arena_quarter_lower_stands: {
     description:
       '下層看台貼近場邊，石座被觀眾磨得發亮，欄杆上纏著用來分隔押注席與普通席的紅繩。南側階梯下到醫護長椅，西側場門通入中央競技場，北側座席階梯爬向上層看台。此處能清楚聞到沙地血鐵味，也能聽見裁判席的哨聲；座位底下塞著舊票根、碎陶杯與短鉛筆，顯示每一排看台都在記錄自己的勝負偏見。',
     exits: [
+      { direction: 'south', targetRoomId: 'arena_quarter_healer_bench', description: '回到醫護長椅', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'west',
         targetRoomId: 'arena_quarter_center_arena',
         description: '西側需沿下層看台欄杆與觀眾通道繞行，才會進入中央競技場，場門會分批開放',
+        edgeKind: 'distant_route',
         edgeNote: '下層看台到中央競技場需穿過觀眾欄杆與場門，屬於長路徑。',
       },
       {
         direction: 'north',
         targetRoomId: 'arena_quarter_upper_stands',
         description: '北側階梯繞過觀眾席、旗桿與護欄後，才會爬到上層看台，階梯會隨人潮堵塞',
+        edgeKind: 'distant_route',
         edgeNote: '下層看台到上層看台有階梯高低差，不是平面相鄰格。',
       },
     ],
@@ -848,8 +904,10 @@ arena_quarter_upper_stands: {
         direction: 'south',
         targetRoomId: 'arena_quarter_lower_stands',
         description: '南側階梯沿觀眾席護欄下行，繞過旗桿後才回到下層看台，呼喊聲會越來越近',
+        edgeKind: 'distant_route',
         edgeNote: '上層看台南返下層看台需要走階梯與護欄通道，屬於長路徑。',
       },
+      { direction: 'west', targetRoomId: 'arena_quarter_private_boxes', description: '貴賓包廂在西側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'arena_veteran_gladiator', maxCount: 1, respawnSeconds: 420 },
@@ -878,12 +936,14 @@ arena_quarter_roar_tavern: {
         direction: 'west',
         targetRoomId: 'arena_quarter_healer_bench',
         description: '西側穿過酒館後門、休息棚與傷藥車後，才會到醫護長椅，藥草味會指引方向',
+        edgeKind: 'distant_route',
         edgeNote: '怒吼酒館到醫護長椅需要繞過休息棚與後門通道，距離較長。',
       },
       {
         direction: 'north',
         targetRoomId: 'arena_quarter_lower_stands',
         description: '北側需穿過觀戰人潮與酒館外廊後，才會進入下層看台，酒杯聲會逐漸被歡呼取代',
+        edgeKind: 'distant_route',
         edgeNote: '怒吼酒館到下層看台被人潮與外廊隔開，屬於長路徑。',
       },
     ],
@@ -911,14 +971,17 @@ arena_quarter_strategy_tables: {
         direction: 'south',
         targetRoomId: 'arena_quarter_training_yard',
         description: '南側需收起戰術圖板、繞過沙地分隔繩後，才回到訓練場，路上能看見演練箭標',
+        edgeKind: 'distant_route',
         edgeNote: '戰術桌南返訓練場需要穿過戰術區與訓練隊列，距離長於相鄰格。',
       },
       {
         direction: 'west',
         targetRoomId: 'arena_quarter_armor_rack_lane',
         description: '西側沿戰術桌邊緣繞過維修台與護甲架後，才會到甲架巷，圖板與箱架會擋住直行',
+        edgeKind: 'distant_route',
         edgeNote: '戰術桌西返甲架巷被維修台與護甲架隔開，屬於長路徑。',
       },
+      { direction: 'east', targetRoomId: 'arena_quarter_referee_box', description: '裁判席在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'arena_rookie_mage', maxCount: 1, respawnSeconds: 330 },
@@ -947,8 +1010,10 @@ arena_quarter_referee_box: {
         direction: 'north',
         targetRoomId: 'arena_quarter_duel_ring_west',
         description: '北側沿裁判席階梯與判定旗繞下去，才會回到西決鬥圈，裁判哨聲會標示入口',
+        edgeKind: 'distant_route',
         edgeNote: '裁判席北返西決鬥圈需沿階梯與裁判旗區繞行，屬於長路徑。',
       },
+      { direction: 'west', targetRoomId: 'arena_quarter_strategy_tables', description: '戰術桌在西側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'south',
         targetRoomId: 'arena_quarter_private_boxes',
@@ -983,6 +1048,7 @@ arena_quarter_prize_counter: {
         direction: 'east',
         targetRoomId: 'arena_quarter_warmup_sand',
         description: '東側需繞過獎品櫃、兌換欄杆與賽程告示後，才會接到熱身沙地，獎牌櫃會吸引人潮',
+        edgeKind: 'distant_route',
         edgeNote: '獎品櫃到熱身沙地需要穿過兌換動線與告示區，屬於長路徑。',
       },
     ],
@@ -1006,6 +1072,7 @@ arena_quarter_private_boxes: {
     description:
       '貴賓包廂被深紅簾幕與銅欄隔開，桌上擺著銀杯、私下注冊、印有家徽的座牌和能直接看見場心的單筒鏡。東側護欄接回上層看台，北側內階上到裁判席，南側包廂階梯通入中央競技場。簾幕後方有數條狹窄服務道，牆上掛著靜音鈴繩；當鈴繩被拉動，附近侍從會先看向裁判席，再決定是否放下包廂前的遮簾。',
     exits: [
+      { direction: 'east', targetRoomId: 'arena_quarter_upper_stands', description: '回到上層看台', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'north',
         targetRoomId: 'arena_quarter_referee_box',
@@ -1040,12 +1107,14 @@ arena_quarter_victory_arch: {
         direction: 'south',
         targetRoomId: 'arena_quarter_champion_wall',
         description: '南側穿過勝利拱前廊、獻花階與銘牌牆後，才回到冠軍牆，石階上刻著勝場紀錄',
+        edgeKind: 'distant_route',
         edgeNote: '勝利拱南返冠軍牆有紀念階與前廊，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'arena_quarter_private_boxes',
         description: '東側沿勝利拱內廊與貴賓護欄繞行後，才會抵達包廂區，簾幕後有私人通道',
+        edgeKind: 'distant_route',
         edgeNote: '勝利拱到貴賓包廂需要沿內廊與護欄繞行，距離長於相鄰格。',
       },
     ],
@@ -1074,6 +1143,7 @@ arena_quarter_center_arena: {
         direction: 'east',
         targetRoomId: 'arena_quarter_lower_stands',
         description: '東側需穿過場門、觀戰欄杆與下層通道後，才會進入下層看台，觀眾席通道較擁擠',
+        edgeKind: 'distant_route',
         edgeNote: '中央競技場到下層看台被場門與觀眾欄杆隔開，不是相鄰格。',
       },
     ],
@@ -1103,6 +1173,7 @@ arena_quarter_center_arena: {
       '獵角門位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，旅人可以 觀察 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 搜索 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章',
     exits: [
       { direction: 'east', targetRoomId: 'royal_hunting_grounds_permit_lodge', description: '狩獵許可屋在東側' },
+      { direction: 'north', targetRoomId: 'royal_hunting_grounds_deer_run', description: '鹿徑在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'royal_hunt_hound_pack', maxCount: 2, respawnSeconds: 120 },

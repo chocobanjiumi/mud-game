@@ -1541,6 +1541,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '爐邊水槽不斷冒出白霧，敲打聲會隨鐵匠動作在屋樑間回響。櫃檯下方擺著待鑑定的舊短劍和木箱，牆上的箭頭牌標示修補工棚方向，提醒玩家戰鬥前檢查武器、耐久和背包空位。',
     exits: [
       { direction: 'west', targetRoomId: 'village_square', description: '回到廣場' },
+      { direction: 'east', targetRoomId: 'starter_village_crafting_shed', description: '小工棚裡傳出磨刀與修補聲', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     npcs: ['blacksmith'],
     mapSymbol: '[W]',
@@ -1593,12 +1594,14 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'plains_entrance',
         description: '南側要踏出木柵門，沿安全哨線外的泥路走過草坡後才抵達翠綠平原入口',
+        edgeKind: 'distant_route',
         edgeNote: '村口到平原入口需穿過安全哨線與草坡泥路，實際路程長於相鄰一格。',
       },
       {
         direction: 'west',
         targetRoomId: 'village_outskirts',
         description: '西側小路先繞過木柵牆與守衛火把，再沿野花坡下降到村外小路入口',
+        edgeKind: 'distant_route',
         edgeNote: '村口到村外小路需要繞過木柵牆與野花坡，實際路程長於相鄰一格。',
       },
     ],
@@ -1625,6 +1628,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '夕陽的餘暉將練習場映成金色，新手們的影子在地上拉得長長的。教官把受控怪物、史萊姆和夜間捕來的小蝙蝠關在繩欄內，讓新人只在可撤退的訓練範圍內練習 attack 與 loot corpse。',
     exits: [
       { direction: 'west', targetRoomId: 'village_gate', description: '回到村口' },
+      { direction: 'north', targetRoomId: 'starter_village_rooftop_walk', description: '北側木梯沿訓練場牆邊上行，繞過稻草靶與繩索護欄抵達屋頂棧道', edgeKind: 'distant_route', edgeNote: '訓練場到屋頂棧道需要爬木梯並繞過訓練器具，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'slime', maxCount: 3, respawnSeconds: 25 },
@@ -1683,6 +1687,7 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '晨光禮拜堂由白石和舊木梁搭成，彩色玻璃把清晨光線切成淡金與淺藍的碎片，灑在簡樸祭壇前。南門連到市場小巷，西側通向舊書庫，祭壇旁的祈願簿記著許多失敗又重新出發的冒險者姓名。這裡沒有怪物，卻提示旅人死亡後安全點、治療服務與祭司職業相關任務的方向。長椅間能聞到蠟油和雨濕木頭的味道，祭壇背後掛著村內安全路線圖，標明廣場、傳送祠堂和村口哨所的位置。幾張祈禱紙提到復活、護送與治療委託，暗示旅人可從 NPC 對話或任務看板取得支援型目標，也能辨認安靜側廊的出口',
     exits: [
+      { direction: 'south', targetRoomId: 'starter_village_market_lane', description: '南側禮拜堂石階穿過雨棚與祈願紙，繞到攤販燈火旁的市場小巷入口', edgeKind: 'distant_route', edgeNote: '禮拜堂到市場小巷需下石階並穿過雨棚與攤位，實際路程長於相鄰一格。' },
       { direction: 'west', targetRoomId: 'starter_village_old_library', description: '側廊通往舊書庫' },
     ],
     mapSymbol: '[C]',
@@ -1700,6 +1705,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '傳送祠堂藏在廣場噴泉後方的半地下石室，圓形地面刻滿被腳步磨亮的古代符文，藍白光線從符文縫隙緩緩升起。北側石階回到村口，東側窄廊能通向守衛哨所下方，牆面掛著交通網路、解鎖條件與傳送費用的木牌。祠堂中央的傳送陣被公會封印穩定住，適合新手學習 activate portal，也提醒背包過重或攜帶特殊資源時可能無法使用一般傳送。石壁上的裂紋會隨魔力脈衝發亮，低沉嗡鳴提示傳送節點已解鎖；地面箭頭刻痕清楚指回廣場與哨所，避免旅人在地下空間迷路或錯過啟用提示。石柱旁還有記錄啟用者姓名的小銅牌',
     exits: [
       { direction: 'west', targetRoomId: 'starter_village_fill_1_3', description: '低地小徑通往溪畔石階' },
+      { direction: 'east', targetRoomId: 'starter_village_guard_post', description: '窄廊通向守衛哨所下方', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     mapSymbol: '[O]',
     mapX: 2,
@@ -1715,6 +1721,8 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '市場小巷夾在武器店、禮拜堂與馬廄之間，濕潤石路上反射著攤棚燈火，水果籃、皮革包和破舊地圖擺得略顯凌亂。西邊能回到武器店，北側是安靜禮拜堂，南方傳來馬匹噴鼻聲。攤販低聲談論平原怪物與缺貨材料，提示旅人可從交易、對話和支線委託取得下一個探索方向。市場小巷周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
     exits: [
+      { direction: 'west', targetRoomId: 'weapon_shop', description: '西側市場石路穿過攤棚與木箱堆，繞過鐵匠煤煙後抵達武器店前門', edgeKind: 'distant_route', edgeNote: '市場小巷到武器店需穿過攤棚與貨箱，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'starter_village_chapel', description: '北側市場雨棚沿祈願紙與石階上行，避開攤販燈火回到晨光禮拜堂', edgeKind: 'distant_route', edgeNote: '市場小巷北側回禮拜堂要穿過雨棚與石階，實際路程長於相鄰一格。' },
       { direction: 'south', targetRoomId: 'starter_village_crafting_shed', description: '南側修補工棚通往馬廄院' },
     ],
     mapSymbol: '[M]',
@@ -1731,6 +1739,7 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '修補工棚半倚在武器店後牆，木桌上擺著磨刀石、皮革碎片、釘槌和幾把等待修復的短劍。南面通往訓練場，西側回到武器店，東側有小門通向馬廄院。牆上掛著裝備耐久與基礎製作步驟的圖板，暗示旅人能從掉落材料、採集資源和工匠服務逐步改善初期裝備。修補工棚周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
     exits: [
+      { direction: 'west', targetRoomId: 'weapon_shop', description: '回到武器店前廳', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'north', targetRoomId: 'starter_village_market_lane', description: '北側攤棚燈火回到市場小巷' },
       { direction: 'south', targetRoomId: 'starter_village_stable_yard', description: '南側小門外是馬廄院' },
     ],
@@ -1748,6 +1757,8 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '告示角落位在廣場南西側的轉角，數塊木板被雨水泡得發黑，仍釘著尋物、採集、巡邏和協助新人的短委託。北邊是藥水店，東方可到村口，西側狹路延伸到古井。紙張邊緣有被撕下的痕跡，提示旅人查看 quest、追蹤任務目標，並留意有些委託需要 搜索 或 觀察 才能找到線索。木板下方散落舊蠟封與泥腳印，表示有人匆忙撕走其中一張任務單；旁邊的箭頭牌標示藥水店、古井與村口方向，使旅人能根據任務文字快速規劃路線，還能發現被雨水暈開的暗號。角落油燈下壓著一張缺角地圖，標出村內可調查處與回報路線',
     exits: [
+      { direction: 'north', targetRoomId: 'potion_shop', description: '北側告示板後巷穿過雨棚與藥草木箱，沿淡綠藥粉痕跡繞回藥水店門口', edgeKind: 'distant_route', edgeNote: '告示角落到藥水店需穿過後巷雨棚與藥草箱，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'village_gate', description: '東側告示角落沿濕石路穿過任務牌與守衛火把，繞到村口柵門內側', edgeKind: 'distant_route', edgeNote: '告示角落到村口需沿濕石路穿過任務牌與火把區，實際路程長於相鄰一格。' },
       { direction: 'west', targetRoomId: 'starter_village_well_path', description: '狹路通往村內古井' },
     ],
     mapSymbol: '[N]',
@@ -1816,6 +1827,8 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '守衛哨所架在村門上方，窄木板因長年雨水而發黑，瞭望燈籠把南方平原道路照成一條淡黃線。北側可回傳送祠堂，西側窄廊亦可繞往祠堂方向，東面屋頂棧道能俯看訓練場。桌上放著巡邏表、怪物出沒圖與撤退信號旗，提示旅人離村後遇到危險可尋找安全點或回程路線。哨窗旁的風鈴會根據南方草原風勢改變聲音，守衛用粉筆標出最近一次史萊姆靠近的位置，讓新人理解安全區與野外遭遇區的界線，也看懂撤退方向。旗架上還綁著回城信號的顏色說明，牆角備有給新人辨識路線的木牌與哨音',
     exits: [
+      { direction: 'west', targetRoomId: 'starter_village_portal_shrine', description: '窄廊通往傳送祠堂', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'starter_village_rooftop_walk', description: '東側哨所窄廊沿木柵上緣延伸，越過火把平台後接上屋頂棧道入口', edgeKind: 'distant_route', edgeNote: '守衛哨所到屋頂棧道需沿木柵上緣與火把平台繞行，實際路程長於相鄰一格。' },
     ],
     mapSymbol: '[B]',
     mapX: 2,
@@ -1832,6 +1845,8 @@ export const ROOMS: Record<string, RoomDef> = {
       '馬廄院裡堆著乾草、木桶與尚未修好的車輪，泥地被馬蹄踩出深淺不一的水坑，油燈掛在橫梁下緩慢晃動。北方連到市場小巷，西側是修補工棚，南邊屋頂棧道投下細長陰影。牆上釘著運送路線與村外風險標記，暗示交通、背包負重和區域解鎖會影響旅人能否安全移動。馬廄院周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
     exits: [
       { direction: 'north', targetRoomId: 'starter_village_crafting_shed', description: '北側修補工棚接回市場小巷' },
+      { direction: 'west', targetRoomId: 'starter_village_crafting_shed', description: '修補工棚在西邊', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'starter_village_rooftop_walk', description: '南側馬廄木階穿過乾草棚與車輪架，沿屋簷陰影接上屋頂棧道入口', edgeKind: 'distant_route', edgeNote: '馬廄院到屋頂棧道需穿過乾草棚與車輪架，實際路程長於相鄰一格。' },
     ],
     mapSymbol: '[H]',
     mapX: 4,
@@ -1865,6 +1880,9 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '屋頂棧道由繩索和窄木板固定在訓練場與馬廄之間，腳下能看見新手揮舞木劍，遠方村門火把像小星點般閃爍。下方梯子回到訓練場，西面連向守衛哨所，東邊可沿木階下到馬廄院。棧道扶手綁著風向布條與觀戰標記，提示旅人從高處判讀道路方向，也能避開地面擁擠路線快速回到服務區。屋頂棧道周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
     exits: [
+      { direction: 'south', targetRoomId: 'training_ground', description: '南側棧道木梯沿繩索護欄折降，繞過稻草靶後回到訓練場北側空地', edgeKind: 'distant_route', edgeNote: '屋頂棧道回訓練場需下木梯並繞過訓練器具，實際路程長於相鄰一格。' },
+      { direction: 'west', targetRoomId: 'starter_village_guard_post', description: '西側屋頂棧道沿木柵上緣回走，越過火把平台與窄廊抵達守衛哨所', edgeKind: 'distant_route', edgeNote: '屋頂棧道到守衛哨所需沿木柵上緣與火把平台繞行，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'starter_village_stable_yard', description: '北側屋簷木階穿過車輪架與乾草棚陰影，折下到馬廄院泥地旁的燈柱', edgeKind: 'distant_route', edgeNote: '屋頂棧道到馬廄院需沿木階穿過車輪架與乾草棚，實際路程長於相鄰一格。' },
     ],
     mapSymbol: '[^]',
     mapX: 3,
@@ -1886,10 +1904,12 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'village_gate',
         description: '北側回村口要沿草坡泥路穿過安全哨線，最後才抵達木柵門與守衛火把',
+        edgeKind: 'distant_route',
         edgeNote: '平原入口回村口需穿過草坡泥路與安全哨線，實際路程長於相鄰一格。',
       },
       { direction: 'south', targetRoomId: 'grass_path', description: '沿著草原小徑前進' },
       { direction: 'east', targetRoomId: 'windmill_farm', description: '通往風車農場的叉路' },
+      { direction: 'west', targetRoomId: 'sunflower_field', description: '西邊的花田在陽光下閃耀', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'wild_rabbit', maxCount: 3, respawnSeconds: 25 },
@@ -1941,6 +1961,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '高大風車立在金黃麥田中央，木葉片推動齒輪發出低沉咔嗒聲，麥穗在夕光裡像潮水一樣搖晃。西路回到平原入口，南門通向風車內部，東邊生鏽礦車道消失在草丘後。柵欄旁有被撬開的穀倉鎖、凌亂腳印與敵人巡邏痕跡，農夫低聲抱怨盜賊夜裡出沒，提示這裡兼具補給、資源與小規模戰鬥事件。',
     exits: [
       { direction: 'west', targetRoomId: 'plains_entrance', description: '回到平原入口' },
+      { direction: 'north', targetRoomId: 'hunter_lodge', description: '北側獵人小屋通往風車內部', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'abandoned_minecart', description: '農場東邊有廢棄的礦車道' },
     ],
     monsters: [
@@ -1970,12 +1991,14 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'forest_entrance',
         description: '南側十字路口沿破路標下行，穿過草坡警戒線與陰影樹門後抵達暗影森林入口',
+        edgeKind: 'distant_route',
         edgeNote: '十字路口到暗影森林入口跨越平原邊界與陰影樹門，實際路程長於相鄰一格。',
       },
       {
         direction: 'east',
         targetRoomId: 'town_gate',
         description: '東側道路要沿車轍穿過湖畔外牆前的緩坡與衛兵哨，才會抵達湖畔城門',
+        edgeKind: 'distant_route',
         edgeNote: '十字路口到湖畔城門跨越城外道路與外牆緩坡，實際路程長於相鄰一格。',
       },
       { direction: 'west', targetRoomId: 'old_well', description: '走向古井' },
@@ -2008,6 +2031,7 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'cave_entrance',
         description: '古井西側裂縫沿濕滑井壁下探，穿過垂降繩索與藍晶岩縫才抵達洞窟入口',
+        edgeKind: 'distant_route',
         edgeNote: '古井旁到洞窟入口需沿井壁裂縫垂降並穿過藍晶岩縫，實際路程長於相鄰一格。',
       },
     ],
@@ -2039,6 +2063,7 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'crossroads',
         description: '北側森林入口沿陰影樹門退出，穿過草坡警戒線與破路標後回到平原十字路口',
+        edgeKind: 'distant_route',
         edgeNote: '暗影森林入口到十字路口跨越陰影樹門與平原邊界，實際路程長於相鄰一格。',
       },
       { direction: 'south', targetRoomId: 'dense_trail', description: '深入密林小道' },
@@ -2047,6 +2072,7 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'snowfield_entrance',
         description: '西側森林冷徑穿過結霜樹根與覆雪矮坡，沿寒風石碑抵達冰封雪原入口',
+        edgeKind: 'distant_route',
         edgeNote: '暗影森林入口到雪原入口需穿過結霜林界與覆雪矮坡，實際路程長於相鄰一格。',
       },
     ],
@@ -2075,6 +2101,7 @@ export const ROOMS: Record<string, RoomDef> = {
       { direction: 'north', targetRoomId: 'forest_entrance', description: '退回森林入口' },
       { direction: 'west', targetRoomId: 'mushroom_swamp', description: '空氣中飄來沼澤的氣味' },
       { direction: 'south', targetRoomId: 'deep_forest', description: '更深的黑暗在前方等待' },
+      { direction: 'east', targetRoomId: 'firefly_trail', description: '林間閃爍著微弱的螢光', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'shadow_wolf', maxCount: 2, respawnSeconds: 45 },
@@ -2130,6 +2157,7 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'hunter_lodge',
         description: '東側樹屋階梯沿樹冠繩橋下降，穿過林緣獵徑與獸皮標記抵達獵人小屋',
+        edgeKind: 'distant_route',
         edgeNote: '古老樹屋到獵人小屋需由樹冠繩橋下降並穿過林緣獵徑，實際路程長於相鄰一格。',
       },
     ],
@@ -2190,6 +2218,7 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'volcano_base',
         description: '遺跡南側的白石階先穿過焦黑樹根與熱風荒地，繞過兩道裂谷後才抵達火山山腳',
+        edgeKind: 'distant_route',
         edgeNote: '精靈遺跡到火山山腳跨越森林邊界與熱風荒地，實際路程長於相鄰一格。',
       },
     ],
@@ -2222,6 +2251,7 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'old_well',
         description: '洞窟東側藍晶岩縫沿濕滑繩索上攀，穿過古井暗壁後回到平原古井旁',
+        edgeKind: 'distant_route',
         edgeNote: '洞窟入口到古井旁需穿過藍晶岩縫並沿井壁上攀，實際路程長於相鄰一格。',
       },
       { direction: 'south', targetRoomId: 'luminous_tunnel', description: '沿著發光的隧道前進' },
@@ -2229,6 +2259,7 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'abandoned_minecart',
         description: '北側洞窟礦車斜井沿鏽軌上升，繞過塌方木架與濕石彎道後抵達廢棄礦車道',
+        edgeKind: 'distant_route',
         edgeNote: '洞窟入口到廢棄礦車道需沿礦車斜井與塌方彎道上升，實際路程長於相鄰一格。',
       },
     ],
@@ -2367,6 +2398,7 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'crossroads',
         description: '西側出城後要沿湖畔外牆緩坡與車轍走完整段城外道路，才會回到十字路口',
+        edgeKind: 'distant_route',
         edgeNote: '湖畔城門回十字路口需要穿過城外道路與外牆緩坡，實際路程長於相鄰一格。',
       },
       { direction: 'east', targetRoomId: 'market_street', description: '進入商業街' },
@@ -2374,6 +2406,7 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'coastal_boardwalk',
         description: '城門南側需穿過湖畔外道與鹽風木階，才會接上海岸棧道入口，沿途能聽見海鷗聲',
+        edgeKind: 'distant_route',
         edgeNote: '湖畔城門南側到東方海岸棧道需穿過外道與鹽風木階，實際路程長於相鄰一格。',
       },
     ],
@@ -2444,6 +2477,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '轉職大廳位於城鎮廣場北側，四根高柱支起穹頂，柱面刻著劍、杖、弓與聖徽，南面廣場水聲從開門處傳入，東側走廊連向公會大廳。大廳中央有圓形石紋，燈火沿符線緩慢流動，四周擺放導師座椅、訓練木牌與舊誓詞。地面被許多靴印磨成暗亮環形，像不同道路在此短暫交會後重新分開。整個空間安靜而莊重，帶著選擇前的重量。',
     exits: [
       { direction: 'south', targetRoomId: 'town_plaza', description: '回到城鎮廣場' },
+      { direction: 'east', targetRoomId: 'guild_hall', description: '東邊走廊通往公會大廳', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     npcs: [
       'sword_instructor',
@@ -2495,6 +2529,8 @@ export const ROOMS: Record<string, RoomDef> = {
       '偶爾能看到綠色的半透明生物在草叢間蠕動。' +
       '從山頂可以俯瞰整個新手村，視野開闊。下坡能回村莊廣場，東側小路通往溪邊，西側則有破舊木屋；玩家可在巨石下 search 找到先祖符印或驚動史萊姆。山風會把村口鐘聲和溪水聲一起送上坡頂，讓新手能判斷安全退路與下一個練級方向。草叢裡的腳印分成田鼠與史萊姆拖痕，提示玩家先清理小怪再調查石縫寶物。坡頂木牌還標出村莊、溪流、磨坊與墓地方向，是外圍區域的第一個導航點與任務提示點。',
     exits: [
+      { direction: 'south', targetRoomId: 'village_creek', description: '山坡小路繞向溪邊', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'village_outskirts', description: '山坡路接回村外小路', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'west', targetRoomId: 'abandoned_cottage', description: '山坡上有一間破舊的小屋' },
     ],
     monsters: [
@@ -2523,6 +2559,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '幾隻綠史萊姆怪物在溪邊吸收水氣，半透明的身軀在陽光下閃爍著果凍般的光澤。' +
       '微風送來泥土和青草的清新氣息，偶爾傳來村婦在上游洗衣的捶打聲。',
     exits: [
+      { direction: 'north', targetRoomId: 'village_backhill', description: '沿小路回到後山', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'south', targetRoomId: 'village_farmland', description: '溪水流向農田方向' },
     ],
     monsters: [
@@ -2556,6 +2593,7 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'village_outskirts',
         description: '南側田埂要沿水渠外緣繞過幾排作物與田鼠洞，才接到村外小路入口',
+        edgeKind: 'distant_route',
         edgeNote: '農田到村外小路需要沿田埂與水渠外緣繞行，屬於長路徑。',
       },
     ],
@@ -2622,6 +2660,7 @@ export const ROOMS: Record<string, RoomDef> = {
         description: '南側鏽蝕鐵門後要穿過彎曲墓道與低矮石階，才會抵達更深處的墓地',
         locked: true,
         keyItemId: 'bronze_key',
+        edgeKind: 'distant_route',
         edgeNote: '墓地入口到墓地深處需要穿過鎖門後的墓道與石階，屬於長路徑。',
       },
     ],
@@ -2655,6 +2694,7 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'graveyard_entrance',
         description: '北側回程要沿彎曲墓道穿過低矮石階與鏽門陰影，才回到墓地入口',
+        edgeKind: 'distant_route',
         edgeNote: '墓地深處回墓地入口需要沿墓道與石階折返，屬於長路徑。',
       },
     ],
@@ -2717,6 +2757,7 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'village_farmland',
         description: '北側要沿村外泥路爬上田埂，繞過野花坡與幾排作物後才進入農田',
+        edgeKind: 'distant_route',
         edgeNote: '村外小路回農田需要沿泥路與田埂上行，屬於長路徑。',
       },
       { direction: 'south', targetRoomId: 'graveyard_entrance', description: '遠處隱約可見鐵門' },
@@ -2724,8 +2765,10 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'village_gate',
         description: '東側回村口要沿野花坡上行，繞過木柵牆與守衛火把後才到木門前方',
+        edgeKind: 'distant_route',
         edgeNote: '村外小路回村口需要沿野花坡與木柵牆繞行，實際路程長於相鄰一格。',
       },
+      { direction: 'west', targetRoomId: 'village_backhill', description: '山坡路通往村莊後山', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'green_slime', maxCount: 2, respawnSeconds: 30 },
@@ -2782,6 +2825,7 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'village_farmland',
         description: '西側田壟要沿舊水車溝渠繞回農田，途中會穿過半塌磨坊木架下方',
+        edgeKind: 'distant_route',
         edgeNote: '舊磨坊小徑回農田需要沿水車溝渠與磨坊木架繞行，屬於長路徑。',
       },
       { direction: 'south', targetRoomId: 'starter_ext_frog_pond', description: '溪聲通往蛙鳴池' },
@@ -2807,6 +2851,7 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'village_orchard',
         description: '西側要穿過掛滿蜂巢的低矮樹叢，繞過落果堆後才回到村外果園內側',
+        edgeKind: 'distant_route',
         edgeNote: '蜂巢樹叢回果園需要穿過蜂巢樹叢與落果堆，屬於長路徑。',
       },
       { direction: 'south', targetRoomId: 'starter_ext_herb_garden', description: '藥草香從南側飄來' },
@@ -2830,6 +2875,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '村醫照看的藥草圃被矮籬圍住，薄荷、止血草與紫葉草分成整齊小畦，露水在葉尖閃著柔綠光。北面是蜂巢樹叢，西南可繞回村外小路。泥土裡有被啃咬的根莖和小腳印，旅人可 採集 藥草、搜索 破陶牌找配方線索，也能追查田鼠是否把草根拖向墓地。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       { direction: 'north', targetRoomId: 'starter_ext_beehive_grove', description: '回到蜂巢樹叢' },
+      { direction: 'west', targetRoomId: 'starter_ext_training_clearing', description: '西側木樁小徑接往練習空地', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'field_rat', maxCount: 2, respawnSeconds: 30 },
@@ -2876,8 +2922,10 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'village_outskirts',
         description: '西側草路先繞過武器架與低矮灌木，再接到村外小路的野花坡下方',
+        edgeKind: 'distant_route',
         edgeNote: '練習空地到村外小路需要繞過武器架與低矮灌木，屬於長路徑。',
       },
+      { direction: 'east', targetRoomId: 'starter_ext_bandit_footpath', description: '可疑腳印往東延伸', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'training_dummy', maxCount: 2, respawnSeconds: 25 },
@@ -2897,6 +2945,9 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '一條被硬靴踩出的窄路藏在荊棘後，斷枝、布條和偷來的麻繩沿路散落，夕光被樹影切得很碎。西面回練習空地，南側通往空心樹樁，東面隱約能看見柳樹神龕。這裡提示村外已不只有小怪，旅人可 搜索 足跡找盜匪藏物，也要準備面對落單盜賊或被驚動的烏鴉。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口',
     exits: [
+      { direction: 'west', targetRoomId: 'starter_ext_training_clearing', description: '回到練習空地', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'starter_ext_hollow_stump', description: '足跡繞向空心樹樁', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'starter_ext_willow_shrine', description: '柳枝後有一座小神龕', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'bandit', maxCount: 1, respawnSeconds: 60 },
@@ -2916,16 +2967,19 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '古老柳樹垂下長長枝條，枝間掛著村民祈願木牌，石製小神龕被銀色暮光照亮，空氣裡有濕葉與香灰味。西側藏著盜匪足跡，南邊坡道通往墓地入口，東面有繞回瞭望台的窄路。神龕前的供盤被移動過，旅人可 觀察 木牌找出失蹤孩童的願望，也能 搜索 祭壇底座取得一次性祝福或任務線索。柳枝上有烏鴉羽毛與被扯斷的紅線，暗示盜匪曾在這裡觀察村民動向。若旅人先清理周圍小怪，再調查供盤灰痕，就能把墓地、瞭望台與村外支線串在一起。神龕背面刻著舊巡邏記號，提示安全返回村口的路線標示',
     exits: [
+      { direction: 'west', targetRoomId: 'starter_ext_bandit_footpath', description: '荊棘路回到盜匪足跡', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'south',
         targetRoomId: 'graveyard_entrance',
         description: '南側坡道被柳枝和墓地冷霧遮住，必須沿石階下行才到墓地入口鐵門',
+        edgeKind: 'distant_route',
         edgeNote: '柳樹神龕到墓地入口需要沿柳枝坡道與石階下行，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'watchtower',
         description: '東側窄路繞過柳根與碎石坡，沿瞭望台背面的草階上行才抵達塔下',
+        edgeKind: 'distant_route',
         edgeNote: '柳樹神龕到瞭望台需要繞過柳根與碎石坡，屬於長路徑。',
       },
     ],
@@ -2974,10 +3028,12 @@ export const ROOMS: Record<string, RoomDef> = {
       '舊炭窯靠在林邊土坡下，黑色木炭堆仍冒著微煙，斧痕木柴和灰色腳印散在泥地上，空氣充滿焦木味。北面回舊磨坊小徑，東側灰路連到斷橋，南邊可繞向墓地入口。旅人可採集木炭材料、觀察 灰腳印追蹤盜匪，也要留意被煙味吸引來的烏鴉和田鼠。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       { direction: 'north', targetRoomId: 'starter_ext_frog_pond', description: '北側灰路回到蛙鳴池' },
+      { direction: 'east', targetRoomId: 'starter_ext_ruined_bridge', description: '灰路通向斷橋', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'south',
         targetRoomId: 'graveyard_entrance',
         description: '南側林邊小路要穿過炭灰腳印、低矮枯木與一段黑土斜坡，最後繞到墓地鐵門前方',
+        edgeKind: 'distant_route',
         edgeNote: '炭窯到墓地入口需要沿林邊灰路與枯木繞行，屬於長路徑。',
       },
     ],
@@ -3000,6 +3056,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '一座老木橋斷在淺溝上方，腐朽木板垂進水裡，橋樁長滿苔蘚，陰雲讓溝底水面顯得發冷。北面通蛙鳴池，西側灰路回炭窯，東邊可接村外小路。這裡是路線事件點，旅人可 觀察 斷木判斷是否被人破壞，搜索 橋下取回掉落貨物，也可能被史萊姆從水溝邊偷襲。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       { direction: 'east', targetRoomId: 'starter_ext_frog_pond', description: '東側水聲通回蛙鳴池' },
+      { direction: 'west', targetRoomId: 'starter_ext_charcoal_kiln', description: '灰路回到炭窯', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'green_slime', maxCount: 2, respawnSeconds: 30 },
@@ -3018,10 +3075,12 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '一截巨大的空心樹樁倒在灌木深處，內部被挖出根道，偷來的鈕扣、麥粒和小銅幣塞在樹洞裡，綠色光束從裂縫照入。北側是盜匪足跡，西邊根痕指向遠處根窖但無法直接通行，南面小坡可回墓地深處外牆。旅人可 搜索 樹洞取得一次性藏物，觀察 根道確認小怪巢穴，也要準備面對較密集的田鼠群與烏鴉騷擾。樹洞底部有新鮮爪痕和被咬破的任務布袋，提示這裡是低等區域的小型精英事件點；若先調查根窖線索，再從盜匪足跡繞進來，可以避開部分迷路風險並保留撤退路。樹皮刻痕還指向墓地外牆，暗示盜匪與亡者活動可能相互牽連，需要追查來源處',
     exits: [
+      { direction: 'north', targetRoomId: 'starter_ext_bandit_footpath', description: '回到盜匪足跡', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'south',
         targetRoomId: 'graveyard_depths',
         description: '南側小坡沿根道靠近墓地深處外牆，穿過倒木與碎碑後才抵達外門',
+        edgeKind: 'distant_route',
         edgeNote: '空心樹樁到墓地深處需要沿根道與墓地外牆繞行，屬於長路徑。',
       },
     ],
@@ -3053,6 +3112,7 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'town_gate',
         description: '沿棧道北返時要穿過鹽風木階與湖畔外道，最後回到城門口，城牆鐘聲會逐漸清楚',
+        edgeKind: 'distant_route',
         edgeNote: '海邊棧道北側回湖畔城門需要走完整段外道，實際路程長於相鄰一格。',
       },
       { direction: 'south', targetRoomId: 'sandy_beach', description: '沙灘在前方延伸' },
@@ -3111,6 +3171,7 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'coral_shallows',
         description: '東側淺水區沿潮池與海藻帶延伸，繞過濕滑礁石後才到珊瑚淺灘，退潮時較安全',
+        edgeKind: 'distant_route',
         edgeNote: '潮間帶到珊瑚淺灘要循退潮水線繞行，距離長於相鄰一格。',
       },
     ],
@@ -3142,6 +3203,7 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'underwater_cave',
         description: '東側潮池暗道需潛過海蝕裂縫與水下氣泡帶，才通往海底洞穴，需注意呼吸空間',
+        edgeKind: 'distant_route',
         edgeNote: '海蝕洞到海底洞穴是水下暗道，不是同平面相鄰格。',
       },
     ],
@@ -3174,6 +3236,7 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'lighthouse',
         description: '沿碼頭南側海岸繞過繩樁與潮濕岩面，才會走到燈塔塔基，途中風浪會拍上木板',
+        edgeKind: 'distant_route',
         edgeNote: '漁村碼頭到燈塔需要沿岸繞行，實際路程長於相鄰一格。',
       },
     ],
@@ -3201,6 +3264,7 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'fishing_dock',
         description: '北返漁村碼頭時需沿燈塔塔基與潮濕海岸繞行，海風會遮住腳步聲',
+        edgeKind: 'distant_route',
         edgeNote: '燈塔北側回碼頭是沿岸長路徑，不是直接相鄰格。',
       },
       { direction: 'west', targetRoomId: 'sandy_beach', description: '西側白石路回到沙灘' },
@@ -3236,6 +3300,7 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'tidal_zone',
         description: '西側需沿退潮水線穿過海藻與礁石縫，才能回到潮間帶，濕滑珊瑚會拖慢腳步',
+        edgeKind: 'distant_route',
         edgeNote: '珊瑚淺灘西返潮間帶需要繞行潮池與濕礁，屬於長路徑。',
       },
       { direction: 'south', targetRoomId: 'shipwreck', description: '遠處海面上露出船的殘骸' },
@@ -3268,6 +3333,7 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'dark_reef',
         description: '沉船後方需繞過破船板與急流礁縫，才會進入暗礁區，破桅杆會遮住視線',
+        edgeKind: 'distant_route',
         edgeNote: '沉船到暗礁要穿過危險水道與船骸，距離長於相鄰一格。',
       },
       {
@@ -3364,12 +3430,14 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'shipwreck',
         description: '北側需穿過急流礁縫與破船板陰影，才會回到沉船殘骸，暗流會把人推向礁石',
+        edgeKind: 'distant_route',
         edgeNote: '暗礁北返沉船殘骸需要穿越危險水道，不是相鄰一格。',
       },
       {
         direction: 'south',
         targetRoomId: 'underwater_cave',
         description: '南側水下通道穿過暗礁急流與氣泡裂縫後，才會進入海底洞穴，深處光線明顯變藍',
+        edgeKind: 'distant_route',
         edgeNote: '暗礁到海底洞穴是水下長通道，不是地表相鄰格。',
       },
     ],
@@ -3400,12 +3468,14 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'sea_cave',
         description: '西側潮池暗道需逆著氣泡與海蝕裂縫游回，最後才到海蝕洞，水壓會讓路程變慢',
+        edgeKind: 'distant_route',
         edgeNote: '海底洞穴西返海蝕洞需要穿過水下暗道，屬於長路徑。',
       },
       {
         direction: 'north',
         targetRoomId: 'dark_reef',
         description: '北側水道要逆流穿過氣泡邊界與黑礁縫隙，才游回暗礁區，途中會遇到急流牽引',
+        edgeKind: 'distant_route',
         edgeNote: '海底洞穴北返暗礁需穿過水下通道與急流，距離長於相鄰格。',
       },
     ],
@@ -3435,12 +3505,14 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'tidal_zone',
         description: '東側濕滑石路繞過鏡面潮池與貝殼標記後，才回到潮間帶，低潮時會露出路標',
+        edgeKind: 'distant_route',
         edgeNote: '潮池岩穴東返潮間帶需要穿過礁石遮蔽的小路，屬於長路徑。',
       },
       {
         direction: 'south',
         targetRoomId: 'sea_cave',
         description: '南側裂縫沿潮池底部下切，繞過藍光洞壁後才通向海蝕洞，狹窄處只能側身前進',
+        edgeKind: 'distant_route',
         edgeNote: '潮池岩穴到海蝕洞是低矮裂縫通道，不是平面相鄰格。',
       },
     ],
@@ -3465,18 +3537,21 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'sandy_beach',
         description: '北側沙地需穿過大片濕海藻與漂木帶，退回到較乾的沙灘，蟹洞會干擾直線行走',
+        edgeKind: 'distant_route',
         edgeNote: '海藻灘北返沙灘要跨過退潮平灘，距離長於相鄰一格。',
       },
       {
         direction: 'east',
         targetRoomId: 'coral_shallows',
         description: '東側水線穿過厚海藻、漂木與水母淺池後，才通往珊瑚淺灘，水色會逐步轉亮',
+        edgeKind: 'distant_route',
         edgeNote: '海藻灘到珊瑚淺灘需要沿退潮水線繞行，屬於長路徑。',
       },
       {
         direction: 'south',
         targetRoomId: 'eastern_coast_tidepool_grotto',
         description: '南側需繞過礁石背面與破網堆，才會找到潮池岩穴入口，入口被潮聲掩住',
+        edgeKind: 'distant_route',
         edgeNote: '海藻灘到潮池岩穴要繞過礁石遮蔽地形，距離較長。',
       },
     ],
@@ -3502,6 +3577,7 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'cliff_path',
         description: '西側沿背風崖壁繞過貨箱暗號與礫石坡，才回到海崖步道，提燈節奏可當路標',
+        edgeKind: 'distant_route',
         edgeNote: '走私者海灣西返海崖步道需要沿崖壁繞行，屬於長路徑。',
       },
       { direction: 'south', targetRoomId: 'eastern_coast_serpent_nest', description: '南側暗流水線通往海蛇巢' },
@@ -3528,6 +3604,7 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'fishing_dock',
         description: '北側需沿斷裂木樁與焦油水面繞回，最後才接到漁村碼頭，鬆板會發出警告聲',
+        edgeKind: 'distant_route',
         edgeNote: '斷裂棧橋北返碼頭要繞過破損木樁，距離長於相鄰格。',
       },
       { direction: 'south', targetRoomId: 'cliff_path', description: '南側斷木棧道接上海崖步道' },
@@ -3535,6 +3612,7 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'lighthouse',
         description: '西側沿岸穿過鬆動木板與潮濕岩面後，才會抵達燈塔塔基，海蟹常躲在木樁下',
+        edgeKind: 'distant_route',
         edgeNote: '斷裂棧橋到燈塔是沿岸斜向長路徑，不是直接相鄰房間。',
       },
     ],
@@ -3560,6 +3638,7 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'pirate_camp',
         description: '南側陡坡要沿警示石堆與碎岩下切，才能俯衝到海盜營地外圍，強風會影響站位',
+        edgeKind: 'distant_route',
         edgeNote: '觀潮斷崖到海盜營地有崖壁高低差，屬於長路徑。',
       },
     ],
@@ -3638,6 +3717,7 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'dark_reef',
         description: '東側裂谷沿鋸齒礁壁深入急流，最後才會接到暗礁區，海蛇鱗痕會標示路線',
+        edgeKind: 'distant_route',
         edgeNote: '海蛇巢到暗礁需要沿水下裂谷斜向前進，屬於長路徑。',
       },
     ],
@@ -3668,6 +3748,7 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'elf_ruins',
         description: '沿北側冷卻熔岩坡穿過熱風荒地與焦黑樹根，繞回暗影森林裡的精靈遺跡',
+        edgeKind: 'distant_route',
         edgeNote: '火山山腳回精靈遺跡需要跨越火山邊界與焦黑林緣，實際路程長於相鄰一格。',
       },
       { direction: 'south', targetRoomId: 'lava_trail', description: '一條小徑通往火山上方' },
@@ -3763,12 +3844,14 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'fire_temple_entrance',
         description: '東側石門需沿火山口內壁繞過兩段灼熱棧道，才會抵達火焰神殿入口',
+        edgeKind: 'distant_route',
         edgeNote: '火山口到火焰神殿入口不是相鄰格，需要沿內壁棧道繞行。',
       },
       {
         direction: 'west',
         targetRoomId: 'volcano_lava_bridge',
         description: '西側熔岩橋要先沿火山口外緣下降，再跨過碎裂玄武岩橋面才能抵達',
+        edgeKind: 'distant_route',
         edgeNote: '火山口到熔岩橋高度差明顯，屬於外緣下降後跨橋的長路徑。',
       },
     ],
@@ -3801,6 +3884,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '熔岩蟲在岩漿河中自在穿行，火蜥蜴則在河岸捕食。西面回熔岩小徑，南側黑色洞口通往黑曜石洞，東面有閃亮晶簇噴氣口；玩家可採集冷卻岩漿外殼。',
     exits: [
       { direction: 'west', targetRoomId: 'lava_trail', description: '回到熔岩小徑' },
+      { direction: 'south', targetRoomId: 'obsidian_cave', description: '南側岩漿河沿冷卻黑石河岸下切，穿過熱浪裂階與漆黑洞口抵達黑曜石洞', edgeKind: 'distant_route', edgeNote: '岩漿河到黑曜石洞需沿冷卻河岸與熱浪裂階下切，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'volcano_steam_lift', description: '東側蒸汽管線通往升降梯' },
     ],
     monsters: [
@@ -3828,6 +3912,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '洞內的溫度意外地比外面低一些，但空氣中仍帶著焦灼的味道。' +
       '岩石巨人和熔岩蟲在這裡守護著地底的礦脈。北面回岩漿河，南方火光指向神殿入口，東側採場可取得高品質黑曜石。',
     exits: [
+      { direction: 'north', targetRoomId: 'magma_river', description: '北側黑曜石洞沿漆黑洞口回穿，越過熱浪裂階與冷卻黑石河岸回到岩漿河', edgeKind: 'distant_route', edgeNote: '黑曜石洞回岩漿河需沿洞口與冷卻河岸回穿，實際路程長於相鄰一格。' },
       { direction: 'south', targetRoomId: 'fire_temple_entrance', description: '深處有微弱的火光' },
       { direction: 'east', targetRoomId: 'volcano_obsidian_quarry', description: '採石聲來自東側黑曜石採場' },
     ],
@@ -3860,6 +3945,7 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'volcano_crater',
         description: '西側神殿石階沿內壁折返，穿過火盆與熱風棧道後才回到火山口邊緣',
+        edgeKind: 'distant_route',
         edgeNote: '火焰神殿入口回火山口需要沿內壁石階折返，屬於長路徑。',
       },
       { direction: 'north', targetRoomId: 'obsidian_cave', description: '回到黑曜石洞' },
@@ -3924,6 +4010,7 @@ export const ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'dwarf_mine', description: '西側礦車軌道回到矮人礦坑' },
       { direction: 'east', targetRoomId: 'volcano_ember_barracks', description: '東側黑鐵巡邏走廊通往餘燼兵房' },
+      { direction: 'south', targetRoomId: 'volcano_forge_storage', description: '南側鍛造大廳沿服務長廊轉入，穿過冷卻架、礦錠推車與黑鐵庫門抵達鍛造庫房', edgeKind: 'distant_route', edgeNote: '鍛造大廳到鍛造庫房需沿服務長廊與黑鐵庫門轉入，避免與星隕坑入口座標重疊，屬於長路徑。' },
     ],
     npcs: ['dwarf_blacksmith'],
     monsters: [
@@ -4013,6 +4100,7 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'volcano_crater',
         description: '橋尾先貼著岩漿湖外圈緩慢上升，越過碎裂橋墩後才接回火山口邊緣安全處',
+        edgeKind: 'distant_route',
         edgeNote: '熔岩橋到火山口需要沿岩漿湖外圈上升，屬於長路徑。',
       },
       { direction: 'south', targetRoomId: 'volcano_basalt_steps', description: '南側熔岩橋尾接到玄武岩階' },
@@ -4041,6 +4129,7 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'volcano_obsidian_quarry',
         description: '南側下層軌道先繞過蒸汽管與斷裂升降架，下降兩層後才抵達黑曜石採場',
+        edgeKind: 'distant_route',
         edgeNote: '蒸汽升降梯到黑曜石採場存在高度差與繞行軌道，屬於長路徑。',
       },
     ],
@@ -4140,6 +4229,7 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'volcano_steam_lift',
         description: '北側礦車軌道沿採場邊坡爬升，繞過崩落黑玻璃台階後才抵達蒸汽升降梯',
+        edgeKind: 'distant_route',
         edgeNote: '黑曜石採場到蒸汽升降梯需要沿採場邊坡爬升，屬於長路徑。',
       },
     ],
@@ -4184,6 +4274,7 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '鍛造大廳東側的庫房堆滿鐵錠、黑曜石板與標記清楚的工具箱，冷卻架上還冒著白煙，牆角傳來低沉爐鳴。西面回鍛造大廳，北側貨道接餘燼兵房。旅人可 搜索 鎖箱取得材料樣本，觀察 出庫牌追蹤鍛造任務需求，也要處理從通風口竄出的火元素。這裡是火山資源線的城鎮服務延伸點，貨架按武器、護甲、飾品和消耗品分區，方便旅人確認缺少哪種礦材。牆上封蠟記錄還標示哪些箱子屬於公會訂單，錯拿會觸發守衛盤查。地上的紅色箭頭指向熔爐、礦坑與兵房三個出口，讓滿載材料的旅人能快速選擇加工、補給或撤退方向',
     exits: [
+      { direction: 'west', targetRoomId: 'forge_hall', description: '西側鍛造庫房穿過黑鐵庫門折返，沿礦錠推車與冷卻架服務長廊回到鍛造大廳', edgeKind: 'distant_route', edgeNote: '鍛造庫房回鍛造大廳需沿黑鐵庫門與服務長廊折返，避免與星隕坑入口座標重疊，屬於長路徑。' },
       {
         direction: 'north',
         targetRoomId: 'volcano_crystal_vent',
@@ -4238,8 +4329,11 @@ export const ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'forest_entrance',
         description: '東側雪原入口沿寒風石碑折返，穿過覆雪矮坡與結霜樹根回到暗影森林入口',
+        edgeKind: 'distant_route',
         edgeNote: '雪原入口到暗影森林入口需跨過覆雪矮坡與結霜林界，實際路程長於相鄰一格。',
       },
+      { direction: 'north', targetRoomId: 'blizzard_path', description: '踏入暴風雪中', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'mountain_camp', description: '南方有營火的光芒', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'west', targetRoomId: 'frozen_wastes_snowdrift_pass', description: '雪堆間有一條西行通道' },
     ],
     monsters: [
@@ -4265,6 +4359,8 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '暴風雪路夾在雪原入口與冰河之間，風雪像白牆般橫掃山路，近處旗桿只剩黑色短影。南面雪原入口的石碑很快被雪幕吞沒，北方冰河裂縫在風中忽隱忽現。道路兩側積著被吹歪的木樁、破布旗和凍硬補給箱，雪粒貼著地面疾走，將狼爪與靴印切成斷續線段；風聲一陣高過一陣，讓每個方向都顯得搖晃。',
     exits: [
+      { direction: 'south', targetRoomId: 'snowfield_entrance', description: '退回雪原入口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'glacier', description: '風暴的另一端是冰河', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'snow_wolf', maxCount: 3, respawnSeconds: 40 },
@@ -4289,6 +4385,8 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '冰河像一條緩慢凝固的藍色巨流，表面裂開深不見底的冰縫，冰層中封著古代植物和獸骨。南面暴風雪路被白幕切開，北方冰面延伸到凍湖，東側冰壁洞口通向冰晶洞穴，西面裂縫落向冰河裂縫。冰面上有雪狼爪痕、冰元素滑過的光帶和被霜封住的舊標桿；遠處冰層擠壓聲低沉，像整條河仍在地下前進。',
     exits: [
+      { direction: 'south', targetRoomId: 'blizzard_path', description: '回到暴風雪路', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'frozen_lake', description: '冰河延伸至凍湖', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'crystal_ice_cave', description: '冰壁上有一個洞口' },
       { direction: 'west', targetRoomId: 'frozen_wastes_glacier_crevasse', description: '西側裂縫能深入冰河底層' },
     ],
@@ -4315,6 +4413,8 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '凍湖是一片廣闊鏡面，厚冰下隱約有魚群與暗影游動，湖面漂著低低冰霧。南側冰河推來深藍裂紋，北岸極光之地把彩光灑在冰上，西面冰釣洞的木架在霧裡露出輪廓。冰面有細裂、被霜封住的舊漁線和冰元素留下的圓形滑痕，遠處偶爾傳來冰層收縮的悶響；整座湖看似平整，卻處處藏著深水與薄冰。',
     exits: [
+      { direction: 'south', targetRoomId: 'glacier', description: '回到冰河', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'aurora_field', description: '湖的北岸有奇異的光芒', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'west', targetRoomId: 'frozen_wastes_ice_fishing_hole', description: '冰孔在湖西側發出水聲' },
     ],
     monsters: [
@@ -4340,6 +4440,9 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '雪山營地躲在巨大岩壁背風處，獸皮帳與木樁圍著橘色篝火，火光把雪地照成溫暖小圈。北面雪原入口冷風直灌，東側雪狼巢穴有低沉獸吼，西面廢棄雪橇的斷繩在風裡搖晃。木箱裡放著乾肉、藥草與毛皮毯，岩壁刻著前人留下的路線與警告；營火外幾步便是徹骨寒意，讓這裡成為雪原中少見的庇護點。',
     exits: [
+      { direction: 'north', targetRoomId: 'snowfield_entrance', description: '回到雪原入口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'wolf_den', description: '營地東方傳來狼嚎', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'west', targetRoomId: 'frozen_wastes_abandoned_sledge', description: '西側雪地有廢棄雪橇', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'frostpine_stalker', maxCount: 1, respawnSeconds: 60 },
@@ -4365,6 +4468,8 @@ export const ROOMS: Record<string, RoomDef> = {
       '冰晶洞穴的洞壁由透明晶柱組成，微光在稜面間折射成彩虹碎片，連呼出的白霧都會被染上淡色。西面冰河的冷風灌入洞口，北方洞穴深處通向冰封城堡大門，東側晶柱裂縫延往冰晶尖塔。地上有冰元素滑過的光痕、霜巨人踩碎的晶片和沉在冰層中的古老植物，洞內每次回聲都像從多面晶壁同時傳回。',
     exits: [
       { direction: 'west', targetRoomId: 'glacier', description: '回到冰河' },
+      { direction: 'north', targetRoomId: 'ice_castle_gate', description: '洞穴深處通向一座冰封城堡', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'frozen_wastes_crystal_spire', description: '晶柱裂縫通向冰晶尖塔', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'ice_elemental', maxCount: 2, respawnSeconds: 50 },
@@ -4389,6 +4494,8 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '極光之地鋪展在凍湖北岸，雪面被綠、紫、藍三色光幕反覆照亮，像結了一層會流動的薄晶。南面凍湖的冰霧沿低坡漫來，東方彩光雪脊斜向冰封城堡大門，西側符石環在光幕下逐一發亮。雪地裡散著極光石、雪人深足印與冰河骨亡靈拖出的細痕，空氣有微弱靜電聲；每次光幕垂落，遠處輪廓都會短暫變成幻象。',
     exits: [
+      { direction: 'south', targetRoomId: 'frozen_lake', description: '回到凍湖', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'ice_castle_gate', description: '東側極光之地沿彩光雪脊斜行，穿過冰晶風口與城堡外坡抵達冰封城堡大門', edgeKind: 'distant_route', edgeNote: '極光之地到冰封城堡大門需沿彩光雪脊與城堡外坡斜行，實際路程長於相鄰一格。' },
       { direction: 'west', targetRoomId: 'frozen_wastes_runestone_circle', description: '符石環在極光下發亮' },
     ],
     monsters: [
@@ -4417,6 +4524,7 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '雪狼巢穴是一個被狼群占據的岩洞，洞口散落獵物殘骸、啃碎骨頭和帶血皮毛，腥味被冷風壓在低處。西面雪山營地的火光被岩壁遮住，北側窄洞通向雪人石堆的回聲但已被冰塊堵住，東面只剩被拖入深處的獵物痕跡。洞頂冰柱會放大腳步聲，牆邊抓痕和焦黑火把痕顯出狼群曾被火光逼退。近旁霜粉、斷枝與被風磨亮的冰痕持續標出回程方向，也讓周圍危險在白茫茫雪光中保留清楚輪廓。',
     exits: [
+      { direction: 'west', targetRoomId: 'mountain_camp', description: '逃回雪山營地', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'snow_wolf', maxCount: 4, respawnSeconds: 35 },
@@ -4441,6 +4549,9 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '冰封城堡大門聳立在風雪中，巨大冰門刻著龍紋，門縫透出冷冽藍光與低沉龍息。南面冰晶洞穴的晶光退入雪霧，西側彩光雪脊折回極光之地，北面冰門後是王座大廳，東面城牆旁連著結冰哨塔。門前石階被冰雪覆蓋，兩尊霜巨人雕像守在左右，階縫裡有巡邏重靴痕、凍住鑰匙孔和亮度變化的冰燈。',
     exits: [
+      { direction: 'south', targetRoomId: 'crystal_ice_cave', description: '退回冰晶洞穴', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'west', targetRoomId: 'aurora_field', description: '西側冰封城堡大門沿城堡外坡折返，穿過冰晶風口與彩光雪脊回到極光之地', edgeKind: 'distant_route', edgeNote: '冰封城堡大門回極光之地需沿城堡外坡與彩光雪脊折返，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'ice_throne', description: '推開冰門，進入城堡', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。', locked: true, keyItemId: 'gold_key' },
       { direction: 'east', targetRoomId: 'frozen_wastes_frozen_watchpost', description: '城牆旁有結冰哨塔' },
     ],
     monsters: [
@@ -4467,12 +4578,15 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '冰封王座位於城堡最深處，穹頂高聳，四壁冰晶映出巨大龍影，中央王座覆著層層霜紋。南面冰封城堡大門仍有藍光回照，北側王座背後裂縫通向魔族邊境，東方冰霧裡能感到龍息裂谷震動。王座上沉睡的幼年冰龍呼吸成霜，地面霜紋沿階梯緩慢蔓延；牆上碎晶會提前折出下一道吐息方向。近旁霜粉、斷枝與被風磨亮的冰痕持續標出回程方向，也讓周圍危險在白茫茫雪光中保留清楚輪廓。',
     exits: [
+      { direction: 'south', targetRoomId: 'ice_castle_gate', description: '退回城堡大門', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'north',
         targetRoomId: 'demon_border',
         description: '北側王座裂縫穿過冰晶斷階與黑煙深谷，越過冷熱交界後抵達魔族邊境石橋',
+        edgeKind: 'distant_route',
         edgeNote: '冰封王座到魔族邊境需穿過王座裂縫與黑煙深谷，實際路程長於相鄰一格。',
       },
+      { direction: 'east', targetRoomId: 'frozen_wastes_dragon_breath_rift', description: '冰霧裂谷傳來龍息', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'ice_dragon_whelp', maxCount: 1, respawnSeconds: 1800 },
@@ -4499,6 +4613,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '積雪隘口位於雪原入口西側，高高積雪把岩壁擠成狹長通道，半埋路標只露出冰冷鐵環。東面回到雪原入口，北側可接暴風雪路外緣，南面雪坡通往廢棄雪橇。雪粒打在岩壁上發出沙沙聲，雪堆裡露出被埋補給箱、斷木杖和雪狼追擊留下的爪痕；窄道越往內越暗，像被風雪慢慢壓低。近旁霜粉、斷枝與被風磨亮的冰痕持續標出回程方向，也讓周圍危險在白茫茫雪光中保留清楚輪廓。',
     exits: [
       { direction: 'east', targetRoomId: 'snowfield_entrance', description: '回到雪原入口' },
+      { direction: 'north', targetRoomId: 'blizzard_path', description: '北側積雪隘口沿半埋路標上行，穿過雪牆缺口與狼蹄痕抵達暴風雪路外緣', edgeKind: 'distant_route', edgeNote: '積雪隘口到暴風雪路需穿過雪牆缺口與路標區，實際路程長於相鄰一格。' },
       { direction: 'south', targetRoomId: 'frozen_wastes_abandoned_sledge', description: '雪橇殘骸在南側' },
     ],
     monsters: [
@@ -4539,6 +4654,9 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '霜松林位於雪山營地東北方，霜壓彎的松枝掛著藍綠針葉，極光照過時樹冠會泛出微亮冷色。南面雪山營地有橘色營火，東側雪狼巢穴的腥味從林影裡傳來，北面符石環的光柱在樹隙間閃動。樹根旁滿是狼爪、拖痕、乾枝與霜松樹脂，幾個獵人風鈴被凍在枝上，鈴聲忽遠忽近。近旁霜粉、斷枝與被風磨亮的冰痕持續標出回程方向，也讓周圍危險在白茫茫雪光中保留清楚輪廓。',
     exits: [
+      { direction: 'south', targetRoomId: 'mountain_camp', description: '南側霜松林雪坡繞過倒木與狼爪痕，沿獵人風鈴與營火煙線折回雪山營地', edgeKind: 'distant_route', edgeNote: '霜松林到雪山營地需繞過倒木與狼爪痕雪坡，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'wolf_den', description: '東側霜松根道穿過密林陰影與獵物拖痕，沿狼嚎方向抵達雪狼巢穴', edgeKind: 'distant_route', edgeNote: '霜松林到雪狼巢穴需穿過密林根道與拖痕區，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'frozen_wastes_runestone_circle', description: '北側霜松斷枝標記穿過極光雪坡與冰霜林隙，抵達古老符石環外圈', edgeKind: 'distant_route', edgeNote: '霜松林到符石環需沿斷枝標記穿過極光雪坡，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'snow_wolf', maxCount: 3, respawnSeconds: 40 },
@@ -4559,6 +4677,8 @@ export const ROOMS: Record<string, RoomDef> = {
       '廢棄雪橇半埋在雪坡下，斷裂滑木從雪裡翹出，翻倒箱子旁凝著黑色凍血。北面積雪隘口被高雪牆夾住，東側雪山營地的岩壁較為避風，南邊坡道連向雪人石堆。雪橇繩索被寒風拉得細響，箱內露出凍硬乾肉、破毛毯和被啃過的皮帶；血痕在雪面上斷斷續續，像襲擊者把貨物拖向更深風雪。近旁霜粉、斷枝與被風磨亮的冰痕持續標出回程方向，也讓周圍危險在白茫茫雪光中保留清楚輪廓。',
     exits: [
       { direction: 'north', targetRoomId: 'frozen_wastes_snowdrift_pass', description: '雪坡回到積雪隘口' },
+      { direction: 'east', targetRoomId: 'mountain_camp', description: '營火光在東側閃動', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'frozen_wastes_yeti_cairn', description: '巨大腳印通往雪人石堆', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'snow_wolf', maxCount: 2, respawnSeconds: 45 },
@@ -4582,6 +4702,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '冰河裂縫從冰河西側撕開，深藍冰壁垂直落下，繩梯被厚霜封在裂縫邊。東面可攀回冰河，北側裂壁暗道通向半埋雪坡與廢棄雪橇。冰壁中封著古代獸骨、破碎器具和暗色植物，裂縫底部傳來空洞回聲；雪粉沿繩梯落入深處，很久都聽不見落地。近旁霜粉、斷枝與被風磨亮的冰痕持續標出回程方向，也讓周圍危險在白茫茫雪光中保留清楚輪廓。',
     exits: [
       { direction: 'east', targetRoomId: 'glacier', description: '攀回冰河表面' },
+      { direction: 'north', targetRoomId: 'frozen_wastes_abandoned_sledge', description: '北側結霜繩梯沿藍冰窄縫上行，先抵達半埋雪坡下的廢棄雪橇', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'ice_elemental', maxCount: 3, respawnSeconds: 50 },
@@ -4602,6 +4723,8 @@ export const ROOMS: Record<string, RoomDef> = {
       '符石環立在極光之地西側，古老石柱圍住中央冰雪祭壇，綠紫光柱在符文間緩慢移動。東面極光雪原開闊，南側霜松林的樹影貼著坡下，北面結冰哨塔露出冰封塔身。每塊符石都刻著不同方向記號，底座有凍裂刻痕、霜封祭灰和微弱靜電聲；極光最亮時，石影會短暫映出王朝覆滅前的行列。近旁霜粉、斷枝與被風磨亮的冰痕持續標出回程方向，也讓周圍危險在白茫茫雪光中保留清楚輪廓。',
     exits: [
       { direction: 'east', targetRoomId: 'aurora_field', description: '極光路回到極光之地' },
+      { direction: 'south', targetRoomId: 'frozen_wastes_frostpine_grove', description: '南側符石環雪坡沿極光刻痕下降，穿過冰霜林隙與斷枝路標回到霜松林深處', edgeKind: 'distant_route', edgeNote: '符石環到霜松林需沿極光刻痕與林隙雪坡下降，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'frozen_wastes_frozen_watchpost', description: '北側符石環雪坡穿過王朝巡邏標記與斷冰橋陰影，沿冰牆缺口通向結冰哨塔', edgeKind: 'distant_route', edgeNote: '符石環到結冰哨塔需穿過巡邏標記與斷冰橋陰影，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'yeti', maxCount: 2, respawnSeconds: 60 },
@@ -4626,6 +4749,8 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '雪人石堆立在雪坡上，幾座巨石被霜雪黏成粗糙祭堆，石縫裡插著破矛、獸骨和凍住鈴鐺。北面廢棄雪橇的坡道回到車轍，西面霜松林有狼爪與松影，東側窄洞傳來雪狼巢穴的回聲但已被冰塊堵住。巨大足印圍著石堆繞行，陰影裡散著霜骨碎片和破布條，低沉咆哮在風中反覆滾動。近旁霜粉、斷枝與被風磨亮的冰痕持續標出回程方向，也讓周圍危險在白茫茫雪光中保留清楚輪廓。',
     exits: [
+      { direction: 'north', targetRoomId: 'frozen_wastes_abandoned_sledge', description: '巨大腳印回到廢棄雪橇', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'west', targetRoomId: 'frozen_wastes_frostpine_grove', description: '雪坡繞回霜松林', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'yeti', maxCount: 2, respawnSeconds: 70 },
@@ -4646,6 +4771,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '結冰哨塔立在冰封城堡東側，塔身被厚冰包住，城垛上的破裂號角覆滿霜刺。西面城堡大門的藍光沿牆根滲來，南面符石環雪坡上有王朝巡邏標記，遠處冰晶尖塔反射冷光。塔門前留著霜巨人腳印，內部兵器架和結冰地圖半埋在雪下；塔頂視野能同時看見冰堡、極光與龍息裂谷。近旁霜粉、斷枝與被風磨亮的冰痕持續標出回程方向，也讓周圍危險在白茫茫雪光中保留清楚輪廓。',
     exits: [
       { direction: 'west', targetRoomId: 'ice_castle_gate', description: '城牆路回冰封城堡大門' },
+      { direction: 'south', targetRoomId: 'frozen_wastes_runestone_circle', description: '南側結冰哨塔雪坡沿斷冰橋陰影折返，穿過王朝巡邏標記回到符石環', edgeKind: 'distant_route', edgeNote: '結冰哨塔到符石環需沿斷冰橋陰影與巡邏標記折返，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'frost_giant', maxCount: 1, respawnSeconds: 70 },
@@ -4668,6 +4794,7 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '冰晶尖塔從冰晶洞穴東側升起，藍色晶柱像螺旋階梯般環繞上升，尖端把寒霧切成刺眼白光。西面晶洞入口反射彩虹光，北側遠遠能望見結冰哨塔的殘影，東方裂谷方向傳來低沉龍息。塔身晶面封著氣泡、冰草和細小獸骨，底部散落高純冰晶碎片；當極光掃過時，整座尖塔會把雪原照成短暫的藍色鐘樓。',
     exits: [
+      { direction: 'west', targetRoomId: 'crystal_ice_cave', description: '晶柱階梯回冰晶洞穴', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'frost_giant', maxCount: 1, respawnSeconds: 75 },
@@ -4688,10 +4815,12 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '龍息裂谷劈開冰封王座東側的荒原，兩側冰壁高聳，藍白寒流在裂縫底部翻滾。西面王座方向有黑藍冰霧滲出，北面寒霧裂口通向魔族邊境，南側只能遠望冰晶尖塔折射出的光。裂谷壁布滿巨大爪痕、斷裂鎖鏈與被凍住的鱗片，寒流週期性噴上岩棚，把新雪瞬間凍成硬殼；遠處黑煙預示著下一片土地的惡意。',
     exits: [
+      { direction: 'west', targetRoomId: 'ice_throne', description: '裂谷回到冰封王座', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'north',
         targetRoomId: 'demon_border',
         description: '北側龍息裂谷沿寒霧裂口前進，穿過冰龍爪痕與黑煙深谷抵達魔族邊境石橋',
+        edgeKind: 'distant_route',
         edgeNote: '龍息裂谷到魔族邊境需沿寒霧裂口穿過冰龍爪痕與黑煙深谷，實際路程長於相鄰一格。',
       },
     ],
