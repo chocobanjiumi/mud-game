@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import type { RoomEntity, RoomEntityAction } from '@game/shared';
 import { useGameStore } from '../stores/gameStore';
 import { getEntityImagePath, assetUrl } from '../utils/assetImages';
+import { useAdjacentPreload } from '../utils/preloadImages';
 import { runCommand } from '../utils/gameActions';
 
 function sendCommand(command: string, echo?: string) {
@@ -34,6 +35,9 @@ export default function RoomImage() {
     window.addEventListener('click', close);
     return () => window.removeEventListener('click', close);
   }, [openGatheringId]);
+
+  // 預載相鄰房間場景圖與怪物頭像，移動時更順暢。
+  useAdjacentPreload(room);
 
   if (!room) return null;
 
