@@ -55,6 +55,7 @@ export function findTwoStepDirectionCycleCandidates(
     for (const exit of room.exits) {
       if (!AUDITED_DIRECTION_SET.has(exit.direction)) continue;
       if (!isNormalTopologyExit(exit.edgeKind)) continue;
+      if (exit.locked) continue; // 鎖住的通道不是可通行路線，不計入方向環
 
       const targetRoom = rooms[exit.targetRoomId];
       if (!targetRoom) continue;
@@ -62,6 +63,7 @@ export function findTwoStepDirectionCycleCandidates(
       for (const backExit of targetRoom.exits) {
         if (!AUDITED_DIRECTION_SET.has(backExit.direction)) continue;
         if (!isNormalTopologyExit(backExit.edgeKind)) continue;
+        if (backExit.locked) continue; // 同上：略過鎖住的反向通道
         if (backExit.targetRoomId !== room.id) continue;
 
         const isLegalReverse = backExit.direction === OPPOSITE_DIRECTION[exit.direction];

@@ -174,7 +174,7 @@ plains_wolf_tracks: {
     image: 'plains_wolf_tracks.png',
     imagePrompt: '狼跡草坡 in plains, combat room with tall grass, wolf tracks, broken fence and cold side light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain plains, clear lantern light',
     description:
-      '草坡被數道狼爪印切開，倒伏草葉一路指向南方陰影，空氣裡有濃重獸腥味和泥土濕味。北邊是野兔洞群，東側可回草原小徑，西邊月光小林的樹影在白天也顯得偏暗。折斷的牧羊杖插在路旁，提醒旅人狼群會結伴出現，若任務要求擊殺野狼，這裡是最直接但也最危險的練功點。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口',
+      '草坡被數道狼爪印切開，倒伏草葉一路指向南方陰影，空氣裡有濃重獸腥味和泥土濕味。北邊是野兔洞群，東側可回草原小徑，西邊月影小林的樹影在白天也顯得偏暗。折斷的牧羊杖插在路旁，提醒旅人狼群會結伴出現，若任務要求擊殺野狼，這裡是最直接但也最危險的練功點。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口',
     exits: [
       { direction: 'north', targetRoomId: 'plains_hare_burrows', description: '回到野兔洞群' },
       {

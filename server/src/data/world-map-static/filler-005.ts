@@ -61,14 +61,14 @@ export const STATIC_WORLD_FILLER_ROOMS_PART_005: Record<string, RoomDef> = {
     "id": "starter_village_fill_6_3",
     "name": "東柵月林青石界",
     "zone": "starter_village",
-    "description": "東柵月林青石界位在新手村東界，西側守衛哨所與民宅木柵仍有燈火，東面翠綠平原的月光小林貼著草坡展開。這裡是 邊界 路線，青石路轉為野草，提醒新手離開安全區。東柵月林青石界周邊的路面、植被、舊標記與相鄰地貌都需要被看清，北南東西的可行方向、封閉邊線與回程線索會在場景中自然呈現，讓隊伍能判斷是否採集、折返或接回主路。",
+    "description": "東柵月林青石界位在新手村東界，西側守衛哨所與民宅木柵仍有燈火，東面翠綠平原的月影小林貼著草坡展開。這裡是 邊界 路線，青石路轉為野草，提醒新手離開安全區。東柵月林青石界周邊的路面、植被、舊標記與相鄰地貌都需要被看清，北南東西的可行方向、封閉邊線與回程線索會在場景中自然呈現，讓隊伍能判斷是否採集、折返或接回主路。",
     "image": "starter_village_fill_6_3.png",
     "imagePrompt": "東柵月林青石界 starter_village_fill_6_3 in starter_village 新手村, room function border road, east village fence where bluestone road turns into grassy slope toward plains moonlit copse, west guard post lamps and cottage fence still visible, clear east west transition cue, low saturation night lantern and moonlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "east",
         "targetRoomId": "plains_moonlit_copse",
-        "description": "東側青石路越過木柵後變成野草坡，接往翠綠平原的月光小林"
+        "description": "東側青石路越過木柵後變成野草坡，接往翠綠平原的月影小林"
       }
     ],
     "mapSymbol": "[·]",

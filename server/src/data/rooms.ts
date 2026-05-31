@@ -1,6 +1,6 @@
 // 房間定義 - 所有區域與房間資料
 
-import type { Direction, RoomDef, ZoneDef } from '@game/shared';
+import type { Direction, RoomDef, RoomExit, ZoneDef } from '@game/shared';
 
 const RESOURCE_NODE_ROOM_COUNT = 6;
 const RESOURCE_NODE_ROOM_SUFFIXES = [
@@ -5113,7 +5113,7 @@ const DESCRIPTION_OVERRIDES: Record<string, string> = {
   frostbite_pass_fill_n19_n13: '雨棚西界凍石路牌立在霜咬隘口東側，牌面被冰痕覆住，只有木石輪廓能辨出邊界地標。北面崖門西界繼續抬升，南側薄冰坡被冷雨封住，東邊風暴高原雨棚透出較濕暖的灰綠氣流。地面保留東向濕石路線，冰水、雪泥和風削碎石分層清楚，冷暖氣流在路牌旁交會成濕白霧。近旁霜粉不斷堆積在石縫與繩結上，讓最近的方向線索仍能從白茫茫風雪中分辨出來。',
   pilgrim_road_fill_13_9: '藍寶湖西燈標古道位在巡禮古道與藍寶湖交界，北面舊墓園轉角仍有白石灰粉，東方碼頭燈籠映在湖霧裡。路標下散著旅人物資箱、乾糧包、破水囊與白石灰粉袋，可採少量補給；往東會從乾石路轉入湖岸棧道。pilgrim_road_fill_13_9周邊的地面材質、相鄰地貌、邊界標記與回程方向需要清楚呈現，讓隊伍能從北南東西的路徑線索判斷此處是通行、採集、服務、封閉或跨區銜接點。',
   // 新手村東緣 → 平原過渡
-  starter_village_fill_6_3: '東柵月林青石界位在新手村東界，西側守衛哨所與民宅木柵仍有燈火，東面翠綠平原的月光小林貼著草坡展開。這裡是 邊界 路線，青石路轉為野草，提醒新手離開安全區。starter_village_fill_6_3周邊的地面材質、相鄰地貌、邊界標記與回程方向需要清楚呈現，讓隊伍能從北南東西的路徑線索判斷此處是通行、採集、服務、封閉或跨區銜接點。',
+  starter_village_fill_6_3: '東柵月林青石界位在新手村東界，西側守衛哨所與民宅木柵仍有燈火，東面翠綠平原的月影小林貼著草坡展開。這裡是 邊界 路線，青石路轉為野草，提醒新手離開安全區。starter_village_fill_6_3周邊的地面材質、相鄰地貌、邊界標記與回程方向需要清楚呈現，讓隊伍能從北南東西的路徑線索判斷此處是通行、採集、服務、封閉或跨區銜接點。',
   starter_village_fill_6_4: '最後幾戶民宅擠在柵欄內側，牆縫裡長滿青苔。透過歪斜的籬笆，東邊可見幾塊蒼老巨石佇立在霧氣之中。',
   starter_village_fill_6_5: '加固的木柵上釘著褪色的警告牌，鐵絲纏繞的欄杆外是無人看管的荒野。遠處偶爾傳來低沉的狼嚎。',
   // 舊農田東緣 → 村莊過渡
@@ -5213,7 +5213,7 @@ const EXIT_DESCRIPTION_OVERRIDES: Record<string, string> = {
   'mist_harbor_fog_gate:west': '西側穿過霧港城門拱影與潮濕路牌亭，接往東方海岸最東端礁水潮徑',
   'glass_dunes_sun_gate:west': '西側沿日門玻砂脊下行，接往西側玻沙採集界坡',
   'glass_dunes_buried_caravan:west': '西側繞過半埋車隊殘輪與玻砂堆，接往西側沙脊殘道',
-  'plains_moonlit_copse:west': '西側穿過月光小林草坡與新手村東柵木門，接回村內青石安全路',
+  'plains_moonlit_copse:west': '西側穿過月影小林草坡與新手村東柵木門，接回村內青石安全路',
   'blackwood_wolf_den:north': '北側沿影狼爪痕與樹脂根脈上行，接往琥珀森林南緣金葉林界',
   'deepsea_temple_tide_gate:west': '西側穿過半沉潮門與鹽蝕斷棧，接回血鹽海岸東端路牌亭',
 };
@@ -5340,3 +5340,72 @@ export function getRoomWorldCoord(roomId: string): { worldX: number; worldY: num
   if (!room || typeof room.worldX !== 'number' || typeof room.worldY !== 'number') return undefined;
   return { worldX: room.worldX, worldY: room.worldY };
 }
+
+// ============================================================
+//  出口正規化 — 以世界座標格為唯一真實來源重建 on-grid 房間的 normal 出口
+//  （路線 B：移動 resolveMove 與顯示 enrichRoomExits 早已用世界座標格；
+//    此處讓「儲存的」exits 也與其一致，修正歷史上 map 版本遺留的方向漂移。）
+//  慣例：north=Y-1, south=Y+1, east=X+1, west=X-1
+//  保留不動：locked/blocked 出口、非 normal 特殊邊（portal/distant_route…）、
+//            以及無世界座標的副本／傳送型房間（整個跳過）。
+// ============================================================
+
+const _NORMALIZE_DELTAS: { dir: Direction; dx: number; dy: number }[] = [
+  { dir: 'north', dx: 0, dy: -1 },
+  { dir: 'south', dx: 0, dy: 1 },
+  { dir: 'east', dx: 1, dy: 0 },
+  { dir: 'west', dx: -1, dy: 0 },
+];
+
+// buildExitDescription 的相鄰房間樣板（同 4849 行）；用來辨識「自動產生」的描述
+const AUTO_NORMAL_EXIT_DESC = /^「.+」就在[北南東西]側石路盡頭方向$/;
+
+function normalizeExitsToWorldGrid(): void {
+  for (const room of Object.values(ROOMS)) {
+    const coord = getRoomWorldCoord(room.id);
+    if (!coord) continue; // 副本／無世界座標房間：完全不動
+
+    // locked/blocked 與非 normal 特殊出口「擁有」其方向，原樣保留
+    const preserved = room.exits.filter(
+      e => e.locked || e.targetRoomId === '' || (e.edgeKind != null && e.edgeKind !== 'normal'),
+    );
+    const ownedDirs = new Set<Direction>(preserved.map(e => e.direction));
+    // 既有 normal 出口（依方向索引，用來在重指向時保留原描述）
+    const priorNormalByDir = new Map<Direction, RoomExit>();
+    for (const e of room.exits) {
+      if (!preserved.includes(e)) priorNormalByDir.set(e.direction, e);
+    }
+
+    const gridExits: RoomExit[] = [];
+    for (const { dir, dx, dy } of _NORMALIZE_DELTAS) {
+      if (ownedDirs.has(dir)) continue; // 該方向已被 locked/特殊邊佔用
+      const neighbor = getRoomByWorldCoord(coord.worldX + dx, coord.worldY + dy);
+      if (!neighbor) continue; // 該方向沒有相鄰房間 → 不產生 normal 出口（移除幻影出口）
+
+      const exit: RoomExit = { direction: dir, targetRoomId: neighbor.id };
+      const isCrossZone = neighbor.zone !== room.zone;
+      if (isCrossZone) {
+        exit.targetZoneId = neighbor.zone;
+        const zoneName = ZONES[neighbor.zone]?.name;
+        if (zoneName) exit.targetZoneName = zoneName;
+      }
+      const prior = priorNormalByDir.get(dir);
+      const priorDesc = prior?.description;
+      // 自動樣板描述（含 target 不存在時的「前方房間」退化值）不具策展價值，可安全重生
+      const priorIsAutoTemplate = priorDesc ? AUTO_NORMAL_EXIT_DESC.test(priorDesc) : false;
+      if (prior && prior.targetRoomId === neighbor.id && priorDesc && !priorIsAutoTemplate) {
+        // 目標未改變且為人工／策展描述：保留
+        exit.description = priorDesc;
+      } else {
+        // 目標被重指向、為新增出口、或原本只是（可能過時的）自動樣板：
+        // 依「最終」鄰房重新生成，避免殘留 enrichRoomExitDescriptions 階段的舊文字。
+        exit.description = buildExitDescription(room, exit, neighbor, isCrossZone, false);
+      }
+      gridExits.push(exit);
+    }
+
+    room.exits = [...preserved, ...gridExits];
+  }
+}
+
+normalizeExitsToWorldGrid();

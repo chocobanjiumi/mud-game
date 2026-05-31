@@ -227,14 +227,17 @@ describe('room exit topology', () => {
   });
 
   it('keeps known flattened routes reversible', () => {
-    expect(ROOMS.training_ground.exits.find(exit => exit.direction === 'north')?.targetRoomId)
-      .toBe('starter_village_rooftop_walk');
-    expect(ROOMS.starter_village_rooftop_walk.exits.find(exit => exit.direction === 'south')?.targetRoomId)
-      .toBe('training_ground');
-    expect(ROOMS.starter_village_stable_yard.exits.find(exit => exit.direction === 'south')?.targetRoomId)
+    // 出口已依世界座標格正規化：rooftop_walk (3,3) 在 training_ground (3,2) 南方
+    expect(ROOMS.training_ground.exits.find(exit => exit.direction === 'south')?.targetRoomId)
       .toBe('starter_village_rooftop_walk');
     expect(ROOMS.starter_village_rooftop_walk.exits.find(exit => exit.direction === 'north')?.targetRoomId)
+      .toBe('training_ground');
+    // stable_yard (4,3) 在 rooftop_walk (3,3) 東方
+    expect(ROOMS.starter_village_stable_yard.exits.find(exit => exit.direction === 'west')?.targetRoomId)
+      .toBe('starter_village_rooftop_walk');
+    expect(ROOMS.starter_village_rooftop_walk.exits.find(exit => exit.direction === 'east')?.targetRoomId)
       .toBe('starter_village_stable_yard');
+    // 無世界座標的副本房間維持原本作者定義的拓樸
     expect(ROOMS.time_splinter_vault.exits.find(exit => exit.direction === 'north')?.targetRoomId)
       .toBe('chaos_observatory');
     expect(ROOMS.chaos_observatory.exits.find(exit => exit.direction === 'south')?.targetRoomId)
